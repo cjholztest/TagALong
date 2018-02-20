@@ -170,7 +170,7 @@
 }
 
 - (IBAction)onClickback:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onClickSport:(id)sender {
@@ -319,6 +319,8 @@
         NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
                                                                        options:kNilOptions
                                                                          error:&error];
+        
+        NSLog(@"sdfasdf: %@", responseObject);
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];

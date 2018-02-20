@@ -378,10 +378,10 @@
                                 <rect key="frame" x="7" y="21" width="40" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_back" translatesAutoresizingMaskIntoConstraints="NO" id="u4e-yp-mfj">
-                                        <rect key="frame" x="7.5" y="12" width="25" height="16"/>
+                                        <rect key="frame" x="7.5" y="12.5" width="25" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="11u-Gm-s0Z"/>
-                                            <constraint firstAttribute="height" constant="16" id="bG3-pI-uLW"/>
+                                            <constraint firstAttribute="height" constant="15" id="bG3-pI-uLW"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -469,9 +469,9 @@
                                         <rect key="frame" x="7" y="29" width="40" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_back" translatesAutoresizingMaskIntoConstraints="NO" id="uJ9-iD-AWX">
-                                                <rect key="frame" x="8" y="12" width="25" height="16"/>
+                                                <rect key="frame" x="8" y="12.5" width="25" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="2kG-W4-r5Y"/>
+                                                    <constraint firstAttribute="height" constant="15" id="2kG-W4-r5Y"/>
                                                     <constraint firstAttribute="width" constant="25" id="ODN-lT-eom"/>
                                                 </constraints>
                                             </imageView>
@@ -1533,10 +1533,10 @@ someone wants to Tag-A-Long</string>
                                         <rect key="frame" x="-0.5" y="0.0" width="375" height="68"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eK5-pl-UA6" userLabel="Reset View" customClass="UIControl">
-                                        <rect key="frame" x="325" y="0.0" width="50" height="68"/>
+                                        <rect key="frame" x="319" y="29" width="40" height="39"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUt-kw-nUz">
-                                                <rect key="frame" x="0.0" y="39" width="38" height="14"/>
+                                                <rect key="frame" x="0.0" y="8" width="38" height="14"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1544,8 +1544,7 @@ someone wants to Tag-A-Long</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="RUt-kw-nUz" firstAttribute="centerY" secondItem="eK5-pl-UA6" secondAttribute="centerY" constant="12" id="RIA-sA-edy"/>
-                                            <constraint firstAttribute="width" constant="50" id="s8K-bh-6PF"/>
+                                            <constraint firstAttribute="width" constant="40" id="s8K-bh-6PF"/>
                                             <constraint firstItem="RUt-kw-nUz" firstAttribute="leading" secondItem="eK5-pl-UA6" secondAttribute="leading" id="vjC-Nt-WWz"/>
                                         </constraints>
                                         <connections>
@@ -1553,17 +1552,17 @@ someone wants to Tag-A-Long</string>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRb-CV-o33" userLabel="Close View" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="68"/>
+                                        <rect key="frame" x="0.0" y="29" width="110" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_close1" translatesAutoresizingMaskIntoConstraints="NO" id="Igj-KB-RId">
-                                                <rect key="frame" x="25" y="39" width="16" height="16"/>
+                                                <rect key="frame" x="25" y="7.5" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="7Po-lv-mBc"/>
                                                     <constraint firstAttribute="width" constant="16" id="ZwA-1H-qDG"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biH-8a-5RI">
-                                                <rect key="frame" x="66" y="37" width="44" height="19"/>
+                                                <rect key="frame" x="66" y="9" width="44" height="12"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1573,9 +1572,10 @@ someone wants to Tag-A-Long</string>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="biH-8a-5RI" secondAttribute="trailing" id="2un-DU-6b0"/>
                                             <constraint firstItem="Igj-KB-RId" firstAttribute="leading" secondItem="hRb-CV-o33" secondAttribute="leading" constant="25" id="HVE-Bl-RSl"/>
+                                            <constraint firstItem="biH-8a-5RI" firstAttribute="top" secondItem="hRb-CV-o33" secondAttribute="topMargin" constant="1" id="PEQ-z5-d9F"/>
                                             <constraint firstItem="Igj-KB-RId" firstAttribute="centerY" secondItem="biH-8a-5RI" secondAttribute="centerY" id="RXb-Xg-bkF"/>
                                             <constraint firstItem="biH-8a-5RI" firstAttribute="leading" secondItem="Igj-KB-RId" secondAttribute="trailing" constant="25" id="SUD-vJ-kGT"/>
-                                            <constraint firstItem="biH-8a-5RI" firstAttribute="centerY" secondItem="hRb-CV-o33" secondAttribute="centerY" constant="12" id="q8n-86-Kwb"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="biH-8a-5RI" secondAttribute="bottom" constant="10" id="meE-i8-ghY"/>
                                         </constraints>
                                         <connections>
                                             <action selector="onClickClose:" destination="EEl-wv-OHn" eventType="touchUpInside" id="xLg-UT-p4p"/>
@@ -1585,13 +1585,14 @@ someone wants to Tag-A-Long</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="eK5-pl-UA6" secondAttribute="bottom" id="1BW-gN-mlb"/>
-                                    <constraint firstItem="eK5-pl-UA6" firstAttribute="top" secondItem="knz-uu-oPe" secondAttribute="top" id="A8m-Q0-eUp"/>
-                                    <constraint firstItem="hRb-CV-o33" firstAttribute="top" secondItem="knz-uu-oPe" secondAttribute="top" id="F68-iE-or9"/>
+                                    <constraint firstItem="eK5-pl-UA6" firstAttribute="top" secondItem="hRb-CV-o33" secondAttribute="top" id="9bv-JX-Pf0"/>
                                     <constraint firstItem="hRb-CV-o33" firstAttribute="leading" secondItem="knz-uu-oPe" secondAttribute="leading" id="Kgo-yM-y3g"/>
                                     <constraint firstItem="kWE-jk-dIA" firstAttribute="height" secondItem="knz-uu-oPe" secondAttribute="height" id="MFX-PN-Hqv"/>
+                                    <constraint firstItem="RUt-kw-nUz" firstAttribute="centerY" secondItem="biH-8a-5RI" secondAttribute="centerY" id="Nal-YN-vtN"/>
                                     <constraint firstItem="kWE-jk-dIA" firstAttribute="centerY" secondItem="knz-uu-oPe" secondAttribute="centerY" id="YYk-9e-dVV"/>
-                                    <constraint firstAttribute="trailing" secondItem="eK5-pl-UA6" secondAttribute="trailing" id="bO0-Tb-lFa"/>
+                                    <constraint firstAttribute="trailing" secondItem="eK5-pl-UA6" secondAttribute="trailing" constant="16" id="bO0-Tb-lFa"/>
                                     <constraint firstAttribute="height" constant="68" id="crJ-FP-fuE"/>
+                                    <constraint firstItem="hRb-CV-o33" firstAttribute="top" secondItem="knz-uu-oPe" secondAttribute="topMargin" constant="1" id="dXJ-9N-rnr"/>
                                     <constraint firstAttribute="bottom" secondItem="hRb-CV-o33" secondAttribute="bottom" id="gqi-qZ-DWP"/>
                                     <constraint firstItem="kWE-jk-dIA" firstAttribute="width" secondItem="knz-uu-oPe" secondAttribute="width" id="jyQ-FE-RlX"/>
                                     <constraint firstItem="kWE-jk-dIA" firstAttribute="centerX" secondItem="knz-uu-oPe" secondAttribute="centerX" id="ukW-AN-bde"/>
@@ -2076,7 +2077,7 @@ someone wants to Tag-A-Long</string>
                             <constraint firstItem="AzO-d4-zUf" firstAttribute="leading" secondItem="HrG-sq-F2z" secondAttribute="leading" id="FJZ-x8-ZXm"/>
                             <constraint firstAttribute="trailing" secondItem="knz-uu-oPe" secondAttribute="trailing" id="MRR-xa-2y8"/>
                             <constraint firstAttribute="trailing" secondItem="AzO-d4-zUf" secondAttribute="trailing" id="Pka-iy-6ea"/>
-                            <constraint firstItem="knz-uu-oPe" firstAttribute="top" secondItem="XJO-dH-37v" secondAttribute="bottom" constant="-20" id="bCi-tn-HM2"/>
+                            <constraint firstItem="knz-uu-oPe" firstAttribute="top" secondItem="HrG-sq-F2z" secondAttribute="top" id="mIv-Jr-ZLE"/>
                             <constraint firstItem="knz-uu-oPe" firstAttribute="leading" secondItem="HrG-sq-F2z" secondAttribute="leading" id="nmt-8d-yfN"/>
                             <constraint firstItem="AzO-d4-zUf" firstAttribute="top" secondItem="knz-uu-oPe" secondAttribute="bottom" id="u3d-Tt-LK6"/>
                         </constraints>
@@ -2454,10 +2455,10 @@ someone wants to Tag-A-Long</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eX-mC-Xvr" userLabel="Alarm View" customClass="UIControl">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="58"/>
+                                        <rect key="frame" x="331" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm" translatesAutoresizingMaskIntoConstraints="NO" id="xV8-dS-Jkv">
-                                                <rect key="frame" x="7" y="36" width="16" height="16"/>
+                                                <rect key="frame" x="14" y="7" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="CvJ-wF-zc7"/>
                                                     <constraint firstAttribute="width" constant="16" id="X5h-Nu-kk7"/>
@@ -2466,7 +2467,7 @@ someone wants to Tag-A-Long</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="YFd-3d-cBc"/>
+                                            <constraint firstAttribute="width" constant="44" id="YFd-3d-cBc"/>
                                             <constraint firstItem="xV8-dS-Jkv" firstAttribute="centerX" secondItem="6eX-mC-Xvr" secondAttribute="centerX" id="nZh-xG-8bX"/>
                                         </constraints>
                                     </view>
@@ -2477,10 +2478,10 @@ someone wants to Tag-A-Long</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQ3-Ly-AFL" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="-30" width="50" height="98"/>
+                                        <rect key="frame" x="0.0" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_back" translatesAutoresizingMaskIntoConstraints="NO" id="aMN-AP-6om">
-                                                <rect key="frame" x="13" y="66" width="25" height="15"/>
+                                                <rect key="frame" x="10" y="7.5" width="25" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="2F1-Dj-pPt"/>
                                                     <constraint firstAttribute="height" constant="15" id="EFe-Os-Z9h"/>
@@ -2490,7 +2491,7 @@ someone wants to Tag-A-Long</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="aMN-AP-6om" firstAttribute="centerX" secondItem="jQ3-Ly-AFL" secondAttribute="centerX" id="K7l-s1-v5n"/>
-                                            <constraint firstAttribute="width" constant="50" id="cS5-4z-cxD"/>
+                                            <constraint firstAttribute="width" constant="44" id="cS5-4z-cxD"/>
                                         </constraints>
                                         <connections>
                                             <action selector="onClickCancel:" destination="3gD-1m-Evz" eventType="touchUpInside" id="5rt-oF-OdP"/>
@@ -2500,18 +2501,18 @@ someone wants to Tag-A-Long</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6eX-mC-Xvr" secondAttribute="trailing" id="3c8-6A-FNi"/>
-                                    <constraint firstItem="6eX-mC-Xvr" firstAttribute="top" secondItem="97a-Ei-xIw" secondAttribute="top" id="8bw-VT-QGS"/>
                                     <constraint firstItem="YiD-zC-oZ9" firstAttribute="width" secondItem="97a-Ei-xIw" secondAttribute="width" id="Ask-oQ-HP0"/>
                                     <constraint firstAttribute="height" constant="68" id="Atb-NJ-TX4"/>
                                     <constraint firstItem="YiD-zC-oZ9" firstAttribute="height" secondItem="97a-Ei-xIw" secondAttribute="height" id="BS9-ae-xjn"/>
                                     <constraint firstItem="Yu5-0w-sOq" firstAttribute="centerY" secondItem="97a-Ei-xIw" secondAttribute="centerY" constant="10" id="F8A-YN-VFg"/>
-                                    <constraint firstItem="jQ3-Ly-AFL" firstAttribute="top" secondItem="97a-Ei-xIw" secondAttribute="top" constant="-30" id="H1L-Dg-yAd"/>
+                                    <constraint firstItem="jQ3-Ly-AFL" firstAttribute="top" secondItem="97a-Ei-xIw" secondAttribute="topMargin" constant="1" id="JOn-hv-pWa"/>
                                     <constraint firstItem="Yu5-0w-sOq" firstAttribute="centerX" secondItem="97a-Ei-xIw" secondAttribute="centerX" id="LMm-tP-W0Y"/>
                                     <constraint firstAttribute="bottom" secondItem="jQ3-Ly-AFL" secondAttribute="bottom" id="NvA-sO-dPW"/>
                                     <constraint firstItem="jQ3-Ly-AFL" firstAttribute="leading" secondItem="97a-Ei-xIw" secondAttribute="leading" id="W03-J6-I3E"/>
+                                    <constraint firstItem="6eX-mC-Xvr" firstAttribute="top" secondItem="97a-Ei-xIw" secondAttribute="topMargin" constant="1" id="aje-ic-GTY"/>
                                     <constraint firstItem="YiD-zC-oZ9" firstAttribute="centerX" secondItem="97a-Ei-xIw" secondAttribute="centerX" id="dI3-2T-lkI"/>
                                     <constraint firstItem="YiD-zC-oZ9" firstAttribute="centerY" secondItem="97a-Ei-xIw" secondAttribute="centerY" id="goG-C5-x4t"/>
-                                    <constraint firstAttribute="bottom" secondItem="6eX-mC-Xvr" secondAttribute="bottom" constant="10" id="ilY-gJ-xVh"/>
+                                    <constraint firstAttribute="bottom" secondItem="6eX-mC-Xvr" secondAttribute="bottom" id="ilY-gJ-xVh"/>
                                     <constraint firstItem="xV8-dS-Jkv" firstAttribute="centerY" secondItem="Yu5-0w-sOq" secondAttribute="centerY" id="qv6-7I-9gW"/>
                                     <constraint firstItem="aMN-AP-6om" firstAttribute="centerY" secondItem="Yu5-0w-sOq" secondAttribute="centerY" id="ybu-wK-sTa"/>
                                 </constraints>
@@ -2890,10 +2891,10 @@ someone wants to Tag-A-Long</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGP-Xa-slE" userLabel="Alarm View" customClass="UIControl">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="58"/>
+                                        <rect key="frame" x="331" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm" translatesAutoresizingMaskIntoConstraints="NO" id="jDf-e4-fsP">
-                                                <rect key="frame" x="7" y="41" width="16" height="16"/>
+                                                <rect key="frame" x="14" y="11.5" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="Ne7-7h-hJ5"/>
                                                     <constraint firstAttribute="height" constant="16" id="aPp-hV-l0q"/>
@@ -2903,8 +2904,8 @@ someone wants to Tag-A-Long</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="jDf-e4-fsP" firstAttribute="centerX" secondItem="qGP-Xa-slE" secondAttribute="centerX" id="2fV-L1-lJv"/>
-                                            <constraint firstAttribute="width" constant="30" id="ZSb-Fq-Zay"/>
-                                            <constraint firstItem="jDf-e4-fsP" firstAttribute="centerY" secondItem="qGP-Xa-slE" secondAttribute="centerY" constant="20" id="tO0-D0-nbh"/>
+                                            <constraint firstAttribute="width" constant="44" id="ZSb-Fq-Zay"/>
+                                            <constraint firstItem="jDf-e4-fsP" firstAttribute="centerY" secondItem="qGP-Xa-slE" secondAttribute="centerY" id="tO0-D0-nbh"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gold`s Gym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJK-lA-h87">
@@ -2914,17 +2915,17 @@ someone wants to Tag-A-Long</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdH-qR-aGN">
-                                        <rect key="frame" x="0.0" y="-30" width="50" height="98"/>
+                                        <rect key="frame" x="0.0" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_back" translatesAutoresizingMaskIntoConstraints="NO" id="wrO-zF-MIC">
-                                                <rect key="frame" x="10" y="66" width="30" height="17"/>
+                                                <rect key="frame" x="9.5" y="12" width="25" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="hN0-0d-FVS"/>
-                                                    <constraint firstAttribute="height" constant="17" id="vac-Vd-hIi"/>
+                                                    <constraint firstAttribute="width" constant="25" id="hN0-0d-FVS"/>
+                                                    <constraint firstAttribute="height" constant="15" id="vac-Vd-hIi"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKs-Lw-yiS">
-                                                <rect key="frame" x="2" y="34" width="46" height="64"/>
+                                                <rect key="frame" x="2" y="0.0" width="40" height="39"/>
                                                 <connections>
                                                     <action selector="onClickCancel:" destination="8gy-e8-xiq" eventType="touchUpInside" id="9Ee-pV-KtH"/>
                                                 </connections>
@@ -2933,12 +2934,12 @@ someone wants to Tag-A-Long</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xKs-Lw-yiS" secondAttribute="trailing" constant="2" id="FyZ-QS-pA2"/>
-                                            <constraint firstItem="xKs-Lw-yiS" firstAttribute="top" secondItem="AdH-qR-aGN" secondAttribute="top" constant="34" id="NPD-1U-tbq"/>
+                                            <constraint firstItem="xKs-Lw-yiS" firstAttribute="top" secondItem="AdH-qR-aGN" secondAttribute="top" id="NPD-1U-tbq"/>
                                             <constraint firstItem="wrO-zF-MIC" firstAttribute="centerX" secondItem="AdH-qR-aGN" secondAttribute="centerX" id="WkU-NN-ggW"/>
-                                            <constraint firstAttribute="width" constant="50" id="Xof-vj-Lkh"/>
+                                            <constraint firstAttribute="width" constant="44" id="Xof-vj-Lkh"/>
                                             <constraint firstItem="xKs-Lw-yiS" firstAttribute="leading" secondItem="AdH-qR-aGN" secondAttribute="leading" constant="2" id="axh-Ox-n36"/>
                                             <constraint firstAttribute="bottom" secondItem="xKs-Lw-yiS" secondAttribute="bottom" id="yXP-TP-1Yx"/>
-                                            <constraint firstItem="wrO-zF-MIC" firstAttribute="centerY" secondItem="AdH-qR-aGN" secondAttribute="centerY" constant="25" id="yff-em-V9S"/>
+                                            <constraint firstItem="wrO-zF-MIC" firstAttribute="centerY" secondItem="AdH-qR-aGN" secondAttribute="centerY" id="yff-em-V9S"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2951,10 +2952,10 @@ someone wants to Tag-A-Long</string>
                                     <constraint firstItem="cki-Vc-aA2" firstAttribute="width" secondItem="I7k-dg-bYd" secondAttribute="width" id="SPD-LT-yYH"/>
                                     <constraint firstItem="cki-Vc-aA2" firstAttribute="centerX" secondItem="I7k-dg-bYd" secondAttribute="centerX" id="UlC-WE-fWL"/>
                                     <constraint firstItem="gJK-lA-h87" firstAttribute="centerX" secondItem="I7k-dg-bYd" secondAttribute="centerX" id="cTp-3T-vY4"/>
-                                    <constraint firstItem="AdH-qR-aGN" firstAttribute="top" secondItem="I7k-dg-bYd" secondAttribute="top" constant="-30" id="cXR-sc-UOS"/>
                                     <constraint firstAttribute="height" constant="68" id="cvJ-kJ-HWT"/>
-                                    <constraint firstAttribute="bottom" secondItem="qGP-Xa-slE" secondAttribute="bottom" constant="10" id="gCc-0L-D0C"/>
-                                    <constraint firstItem="qGP-Xa-slE" firstAttribute="top" secondItem="I7k-dg-bYd" secondAttribute="top" id="gvg-LY-kXW"/>
+                                    <constraint firstAttribute="bottom" secondItem="qGP-Xa-slE" secondAttribute="bottom" id="gCc-0L-D0C"/>
+                                    <constraint firstItem="qGP-Xa-slE" firstAttribute="top" secondItem="I7k-dg-bYd" secondAttribute="topMargin" constant="1" id="j9T-eF-X2P"/>
+                                    <constraint firstItem="AdH-qR-aGN" firstAttribute="top" secondItem="I7k-dg-bYd" secondAttribute="topMargin" constant="1" id="oXM-nI-BMZ"/>
                                     <constraint firstItem="AdH-qR-aGN" firstAttribute="leading" secondItem="I7k-dg-bYd" secondAttribute="leading" id="wd6-ta-9wo"/>
                                     <constraint firstItem="cki-Vc-aA2" firstAttribute="centerY" secondItem="I7k-dg-bYd" secondAttribute="centerY" id="xuT-Jk-kYB"/>
                                 </constraints>
@@ -3322,10 +3323,10 @@ Terms of Use and Privacy Policy</string>
                                         <rect key="frame" x="-0.5" y="0.0" width="375" height="68"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ic3-rr-6Ko" userLabel="Alarm View" customClass="UIControl">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="58"/>
+                                        <rect key="frame" x="331" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm" translatesAutoresizingMaskIntoConstraints="NO" id="m9q-kS-Kll">
-                                                <rect key="frame" x="7" y="41" width="16" height="16"/>
+                                                <rect key="frame" x="14" y="7.5" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="Cn3-el-Fez"/>
                                                     <constraint firstAttribute="height" constant="16" id="FYI-Bn-g5Q"/>
@@ -3335,8 +3336,7 @@ Terms of Use and Privacy Policy</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="m9q-kS-Kll" firstAttribute="centerX" secondItem="ic3-rr-6Ko" secondAttribute="centerX" id="7lH-Yx-ZT7"/>
-                                            <constraint firstAttribute="width" constant="30" id="HMs-wh-tdt"/>
-                                            <constraint firstItem="m9q-kS-Kll" firstAttribute="centerY" secondItem="ic3-rr-6Ko" secondAttribute="centerY" constant="20" id="XZI-kh-905"/>
+                                            <constraint firstAttribute="width" constant="44" id="HMs-wh-tdt"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Workout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqk-zy-Gvh">
@@ -3349,14 +3349,14 @@ Terms of Use and Privacy Policy</string>
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="68"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_back" translatesAutoresizingMaskIntoConstraints="NO" id="SEK-DR-1Fr">
-                                                <rect key="frame" x="13" y="39" width="25" height="15"/>
+                                                <rect key="frame" x="13" y="37" width="25" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="BoH-2q-AR1"/>
                                                     <constraint firstAttribute="width" constant="25" id="exE-89-qqN"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiB-pY-NBQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="68"/>
+                                                <rect key="frame" x="0.0" y="29" width="50" height="39"/>
                                                 <connections>
                                                     <action selector="onClickBack:" destination="rEv-kG-2bc" eventType="touchUpInside" id="j5F-Db-kN3"/>
                                                 </connections>
@@ -3365,28 +3365,29 @@ Terms of Use and Privacy Policy</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="ZiB-pY-NBQ" secondAttribute="trailing" id="EjH-k7-qhU"/>
-                                            <constraint firstItem="ZiB-pY-NBQ" firstAttribute="top" secondItem="Cg4-02-Z3N" secondAttribute="top" id="JPV-6H-cfK"/>
+                                            <constraint firstItem="ZiB-pY-NBQ" firstAttribute="top" secondItem="Cg4-02-Z3N" secondAttribute="topMargin" constant="1" id="H8M-Ux-LAJ"/>
                                             <constraint firstAttribute="width" constant="50" id="Tc2-Xf-SZW"/>
                                             <constraint firstItem="ZiB-pY-NBQ" firstAttribute="leading" secondItem="Cg4-02-Z3N" secondAttribute="leading" id="Vqe-KC-UpI"/>
                                             <constraint firstAttribute="bottom" secondItem="ZiB-pY-NBQ" secondAttribute="bottom" id="bi7-in-b08"/>
                                             <constraint firstItem="SEK-DR-1Fr" firstAttribute="centerX" secondItem="Cg4-02-Z3N" secondAttribute="centerX" id="es6-u5-70t"/>
-                                            <constraint firstItem="SEK-DR-1Fr" firstAttribute="centerY" secondItem="Cg4-02-Z3N" secondAttribute="centerY" constant="12" id="gcG-07-9sZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Cg4-02-Z3N" firstAttribute="top" secondItem="keL-uS-UYz" secondAttribute="top" id="3Jy-sW-Gud"/>
-                                    <constraint firstItem="ic3-rr-6Ko" firstAttribute="top" secondItem="keL-uS-UYz" secondAttribute="top" id="6Iw-uk-uTR"/>
                                     <constraint firstItem="yqk-zy-Gvh" firstAttribute="centerX" secondItem="keL-uS-UYz" secondAttribute="centerX" id="9bD-yu-CpQ"/>
                                     <constraint firstAttribute="trailing" secondItem="ic3-rr-6Ko" secondAttribute="trailing" id="Bak-Hw-t1g"/>
-                                    <constraint firstAttribute="bottom" secondItem="ic3-rr-6Ko" secondAttribute="bottom" constant="10" id="PRh-xf-iCh"/>
+                                    <constraint firstAttribute="bottom" secondItem="ic3-rr-6Ko" secondAttribute="bottom" id="PRh-xf-iCh"/>
                                     <constraint firstAttribute="bottom" secondItem="Cg4-02-Z3N" secondAttribute="bottom" id="Su1-wa-7NA"/>
+                                    <constraint firstItem="ic3-rr-6Ko" firstAttribute="top" secondItem="keL-uS-UYz" secondAttribute="topMargin" constant="1" id="WRS-Aj-IbY"/>
                                     <constraint firstAttribute="height" constant="68" id="YFa-76-Mij"/>
                                     <constraint firstItem="yqk-zy-Gvh" firstAttribute="centerY" secondItem="keL-uS-UYz" secondAttribute="centerY" constant="10" id="cv8-Ec-x7b"/>
                                     <constraint firstItem="Mmr-Fx-Z5x" firstAttribute="height" secondItem="keL-uS-UYz" secondAttribute="height" id="f9O-vp-76C"/>
+                                    <constraint firstItem="m9q-kS-Kll" firstAttribute="centerY" secondItem="yqk-zy-Gvh" secondAttribute="centerY" id="hBp-Su-J4l"/>
                                     <constraint firstItem="Mmr-Fx-Z5x" firstAttribute="centerY" secondItem="keL-uS-UYz" secondAttribute="centerY" id="hDy-tS-uUN"/>
                                     <constraint firstItem="Mmr-Fx-Z5x" firstAttribute="width" secondItem="keL-uS-UYz" secondAttribute="width" id="mwX-RB-PNz"/>
+                                    <constraint firstItem="SEK-DR-1Fr" firstAttribute="centerY" secondItem="yqk-zy-Gvh" secondAttribute="centerY" id="obP-yy-0k7"/>
                                     <constraint firstItem="Cg4-02-Z3N" firstAttribute="leading" secondItem="keL-uS-UYz" secondAttribute="leading" id="syi-go-uzg"/>
                                     <constraint firstItem="Mmr-Fx-Z5x" firstAttribute="centerX" secondItem="keL-uS-UYz" secondAttribute="centerX" id="zjc-77-f4o"/>
                                 </constraints>
@@ -4466,10 +4467,10 @@ Terms of Use and Privacy Policy</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBC-F2-o5W" userLabel="Alarm View" customClass="UIControl">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="58"/>
+                                        <rect key="frame" x="331" y="29" width="44" height="39"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm" translatesAutoresizingMaskIntoConstraints="NO" id="4cD-mx-tnw">
-                                                <rect key="frame" x="7" y="41" width="16" height="16"/>
+                                                <rect key="frame" x="14" y="7" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="XrS-Kj-rak"/>
                                                     <constraint firstAttribute="width" constant="16" id="sKd-Cl-VCa"/>
@@ -4479,8 +4480,7 @@ Terms of Use and Privacy Policy</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="4cD-mx-tnw" firstAttribute="centerX" secondItem="qBC-F2-o5W" secondAttribute="centerX" id="Bl3-YQ-vl3"/>
-                                            <constraint firstAttribute="width" constant="30" id="OeY-rg-agR"/>
-                                            <constraint firstItem="4cD-mx-tnw" firstAttribute="centerY" secondItem="qBC-F2-o5W" secondAttribute="centerY" constant="20" id="gRz-hc-CG4"/>
+                                            <constraint firstAttribute="width" constant="44" id="OeY-rg-agR"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNs-8j-AOZ">
@@ -4495,12 +4495,13 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="L7X-BD-Vhq" firstAttribute="width" secondItem="TKi-uc-Is3" secondAttribute="width" id="1lA-uJ-VO9"/>
                                     <constraint firstItem="L7X-BD-Vhq" firstAttribute="centerX" secondItem="TKi-uc-Is3" secondAttribute="centerX" id="1pn-7E-8IO"/>
                                     <constraint firstAttribute="height" constant="68" id="4CW-Qi-7bg"/>
+                                    <constraint firstItem="4cD-mx-tnw" firstAttribute="centerY" secondItem="cNs-8j-AOZ" secondAttribute="centerY" id="FU9-7N-18U"/>
                                     <constraint firstItem="cNs-8j-AOZ" firstAttribute="centerX" secondItem="TKi-uc-Is3" secondAttribute="centerX" id="VSC-GW-rwo"/>
                                     <constraint firstItem="L7X-BD-Vhq" firstAttribute="height" secondItem="TKi-uc-Is3" secondAttribute="height" id="Wiy-1K-Cmw"/>
                                     <constraint firstItem="L7X-BD-Vhq" firstAttribute="centerY" secondItem="TKi-uc-Is3" secondAttribute="centerY" id="ZkF-ub-jIG"/>
-                                    <constraint firstAttribute="bottom" secondItem="qBC-F2-o5W" secondAttribute="bottom" constant="10" id="oIq-Wy-ykg"/>
+                                    <constraint firstItem="qBC-F2-o5W" firstAttribute="top" secondItem="TKi-uc-Is3" secondAttribute="topMargin" constant="1" id="gS5-5P-44m"/>
+                                    <constraint firstAttribute="bottom" secondItem="qBC-F2-o5W" secondAttribute="bottom" id="oIq-Wy-ykg"/>
                                     <constraint firstItem="cNs-8j-AOZ" firstAttribute="centerY" secondItem="TKi-uc-Is3" secondAttribute="centerY" constant="10" id="rTv-Bu-wZv"/>
-                                    <constraint firstItem="qBC-F2-o5W" firstAttribute="top" secondItem="TKi-uc-Is3" secondAttribute="top" id="w35-BL-4Te"/>
                                     <constraint firstAttribute="trailing" secondItem="qBC-F2-o5W" secondAttribute="trailing" id="y8S-6U-Ykh"/>
                                 </constraints>
                             </view>
@@ -5418,7 +5419,7 @@ Terms of Use and Privacy Policy</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUX-91-FwB">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="88"/>
+                                                <rect key="frame" x="0.0" y="29" width="50" height="59"/>
                                                 <connections>
                                                     <action selector="onClickBack:" destination="FNI-wR-0h8" eventType="touchUpInside" id="nN1-BU-C2N"/>
                                                 </connections>
@@ -5426,10 +5427,9 @@ Terms of Use and Privacy Policy</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="8F6-HM-TGY" firstAttribute="centerY" secondItem="LbA-Gc-RIw" secondAttribute="centerY" constant="15" id="3JE-JY-Bqn"/>
+                                            <constraint firstItem="KUX-91-FwB" firstAttribute="top" secondItem="LbA-Gc-RIw" secondAttribute="topMargin" constant="1" id="0vq-ls-oDH"/>
                                             <constraint firstAttribute="bottom" secondItem="KUX-91-FwB" secondAttribute="bottom" id="8zd-eE-SrM"/>
                                             <constraint firstAttribute="trailing" secondItem="KUX-91-FwB" secondAttribute="trailing" id="Bhd-MN-lch"/>
-                                            <constraint firstItem="KUX-91-FwB" firstAttribute="top" secondItem="LbA-Gc-RIw" secondAttribute="top" id="VQ8-ws-yTZ"/>
                                             <constraint firstItem="KUX-91-FwB" firstAttribute="leading" secondItem="LbA-Gc-RIw" secondAttribute="leading" id="WIL-A7-xIK"/>
                                             <constraint firstAttribute="width" constant="50" id="jEs-V6-yum"/>
                                             <constraint firstItem="8F6-HM-TGY" firstAttribute="centerX" secondItem="LbA-Gc-RIw" secondAttribute="centerX" id="sbd-bM-MCZ"/>
@@ -5443,6 +5443,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="LbA-Gc-RIw" firstAttribute="top" secondItem="nTY-fT-ei8" secondAttribute="top" id="BKq-5T-7O5"/>
                                     <constraint firstItem="Dz0-kw-iS8" firstAttribute="centerX" secondItem="nTY-fT-ei8" secondAttribute="centerX" id="SUt-UO-4RD"/>
                                     <constraint firstAttribute="height" constant="88" id="UpI-0a-QSc"/>
+                                    <constraint firstItem="8F6-HM-TGY" firstAttribute="centerY" secondItem="Dz0-kw-iS8" secondAttribute="centerY" id="eQ7-8L-e5g"/>
                                     <constraint firstItem="KSY-Aa-Alm" firstAttribute="centerX" secondItem="nTY-fT-ei8" secondAttribute="centerX" id="loA-d7-owD"/>
                                     <constraint firstItem="KSY-Aa-Alm" firstAttribute="height" secondItem="nTY-fT-ei8" secondAttribute="height" id="qWm-eB-lLG"/>
                                     <constraint firstAttribute="bottom" secondItem="LbA-Gc-RIw" secondAttribute="bottom" id="sSB-K8-CdN"/>
@@ -5718,7 +5719,7 @@ Terms of Use and Privacy Policy</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNW-NT-Xgr">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="88"/>
+                                                <rect key="frame" x="0.0" y="29" width="50" height="59"/>
                                                 <connections>
                                                     <action selector="onClickback:" destination="E2S-gL-lcH" eventType="touchUpInside" id="aT5-qe-660"/>
                                                 </connections>
@@ -5727,12 +5728,12 @@ Terms of Use and Privacy Policy</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pNW-NT-Xgr" secondAttribute="trailing" id="8TU-pd-Imo"/>
-                                            <constraint firstItem="pNW-NT-Xgr" firstAttribute="top" secondItem="jWL-2J-sjn" secondAttribute="top" id="EqL-K6-n0O"/>
                                             <constraint firstItem="ic2-iX-2DA" firstAttribute="centerX" secondItem="jWL-2J-sjn" secondAttribute="centerX" id="Rxd-1w-kTK"/>
                                             <constraint firstItem="pNW-NT-Xgr" firstAttribute="leading" secondItem="jWL-2J-sjn" secondAttribute="leading" id="U4l-Fo-weI"/>
                                             <constraint firstAttribute="bottom" secondItem="pNW-NT-Xgr" secondAttribute="bottom" id="Ygr-Ub-LDe"/>
                                             <constraint firstItem="ic2-iX-2DA" firstAttribute="centerY" secondItem="jWL-2J-sjn" secondAttribute="centerY" constant="15" id="ece-F4-TLX"/>
                                             <constraint firstAttribute="width" constant="50" id="lvF-E2-JWm"/>
+                                            <constraint firstItem="pNW-NT-Xgr" firstAttribute="top" secondItem="jWL-2J-sjn" secondAttribute="topMargin" constant="1" id="o6e-8i-LLX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -6152,10 +6153,10 @@ Terms of Use and Privacy Policy</string>
                                         <rect key="frame" x="-0.5" y="0.0" width="375" height="88"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rE5-PU-wwh" userLabel="Alarm View" customClass="UIControl">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="78"/>
+                                        <rect key="frame" x="331" y="29" width="44" height="59"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-Ak-dxb">
-                                                <rect key="frame" x="7" y="56" width="16" height="16"/>
+                                                <rect key="frame" x="14" y="22.5" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="I1P-bb-Q2m"/>
                                                     <constraint firstAttribute="height" constant="16" id="geA-J0-1Oa"/>
@@ -6165,8 +6166,7 @@ Terms of Use and Privacy Policy</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="NEQ-Ak-dxb" firstAttribute="centerX" secondItem="rE5-PU-wwh" secondAttribute="centerX" id="CGl-7l-Ao1"/>
-                                            <constraint firstItem="NEQ-Ak-dxb" firstAttribute="centerY" secondItem="rE5-PU-wwh" secondAttribute="centerY" constant="25" id="NAp-BS-V3O"/>
-                                            <constraint firstAttribute="width" constant="30" id="oVC-3W-Wiu"/>
+                                            <constraint firstAttribute="width" constant="44" id="oVC-3W-Wiu"/>
                                         </constraints>
                                         <connections>
                                             <action selector="onClickAlarm:" destination="8Td-zm-KdY" eventType="touchUpInside" id="qRa-fR-iUA"/>
@@ -6182,15 +6182,16 @@ Terms of Use and Privacy Policy</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="UBJ-YV-co3" firstAttribute="centerX" secondItem="FmA-e5-Mav" secondAttribute="centerX" id="3is-0K-r6h"/>
-                                    <constraint firstItem="rE5-PU-wwh" firstAttribute="top" secondItem="FmA-e5-Mav" secondAttribute="top" id="Aqp-Td-UYy"/>
                                     <constraint firstItem="Yk8-ju-l2A" firstAttribute="centerY" secondItem="FmA-e5-Mav" secondAttribute="centerY" constant="15" id="D3k-un-xSW"/>
                                     <constraint firstItem="UBJ-YV-co3" firstAttribute="width" secondItem="FmA-e5-Mav" secondAttribute="width" id="NK6-cZ-wQE"/>
                                     <constraint firstItem="Yk8-ju-l2A" firstAttribute="centerX" secondItem="FmA-e5-Mav" secondAttribute="centerX" id="SIr-le-SLU"/>
                                     <constraint firstItem="UBJ-YV-co3" firstAttribute="centerY" secondItem="FmA-e5-Mav" secondAttribute="centerY" id="XcB-iP-IYS"/>
+                                    <constraint firstItem="rE5-PU-wwh" firstAttribute="top" secondItem="FmA-e5-Mav" secondAttribute="topMargin" constant="1" id="aJC-ap-nOm"/>
                                     <constraint firstItem="UBJ-YV-co3" firstAttribute="height" secondItem="FmA-e5-Mav" secondAttribute="height" id="ndt-8d-kfL"/>
-                                    <constraint firstAttribute="bottom" secondItem="rE5-PU-wwh" secondAttribute="bottom" constant="10" id="oGd-yX-sxn"/>
+                                    <constraint firstAttribute="bottom" secondItem="rE5-PU-wwh" secondAttribute="bottom" id="oGd-yX-sxn"/>
                                     <constraint firstAttribute="trailing" secondItem="rE5-PU-wwh" secondAttribute="trailing" id="odD-ah-KVa"/>
                                     <constraint firstAttribute="height" constant="88" id="yab-r1-lLX"/>
+                                    <constraint firstItem="NEQ-Ak-dxb" firstAttribute="centerY" secondItem="Yk8-ju-l2A" secondAttribute="centerY" id="ynY-ml-FZM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cw-da-6fC" userLabel="Main View">

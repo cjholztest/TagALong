@@ -126,7 +126,7 @@
 
 //go back
 - (IBAction)onClickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
