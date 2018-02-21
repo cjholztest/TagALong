@@ -64,29 +64,35 @@
 - (void)setPage {
     
     if (nCurPageIdx == PAGE_MENU_TYPE) {
-        _lblTitle.text = @"Type of Workout";
+        self.navigationItem.title = @"Workout Type";
+        //_lblTitle.text = @"Type of Workout";
         _svContent.contentOffset = CGPointMake(_svContent.frame.size.width * (0), 0);
         if (vcTypeWrokout == nil) {
             vcTypeWrokout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TypeWorkoutViewController"];
             vcTypeWrokout.vcParent = self;
             vcTypeWrokout.view.frame = CGRectMake(0, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
-            [_svContent addSubview:vcTypeWrokout.view];
-            [self addChildViewController:vcTypeWrokout];
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                [_svContent addSubview:vcTypeWrokout.view];
+                [self addChildViewController:vcTypeWrokout];
+            }];
         }
         
     } else if (nCurPageIdx == PAGE_MENU_AREA) {
-        _lblTitle.text = @"Focus Area of the Workout";
+        //_lblTitle.text = @"Focus Area of the Workout";
+        self.navigationItem.title = @"Workout Focus Area";
         _svContent.contentOffset = CGPointMake(_svContent.frame.size.width * (1), 0);
         if (vcAreaWorkout == nil) {
             vcAreaWorkout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AreaWorkoutViewController"];
             vcAreaWorkout.vcParent = self;
             vcAreaWorkout.view.frame = CGRectMake(_svContent.bounds.size.width, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
-            [_svContent addSubview:vcAreaWorkout.view];
-            [self addChildViewController:vcAreaWorkout];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                [_svContent addSubview:vcAreaWorkout.view];
+                [self addChildViewController:vcAreaWorkout];
+            }];
         }
-        
     }
-    
 }
 
 #pragma mark - click events
@@ -111,16 +117,13 @@
         vc.sport_uid = vcTypeWrokout.sport_uid;
         [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 - (IBAction)onClickLeft:(id)sender {
-    
-    [self setPage];
     nCurPageIdx = PAGE_MENU_TYPE;
-
+    [self setPage];
 }
 - (IBAction)onClickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 @end

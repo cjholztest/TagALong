@@ -71,14 +71,14 @@
 
 -(void)goLogin{
     UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; 
-    [self presentViewController:vc animated:NO completion:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)goHome{
 //    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
 //    [self.navigationController pushViewController:vc animated:YES];
-    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavHome"];
-    [self presentViewController:vc animated:NO completion:nil];
+    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavStart"];
+    [self presentViewController:vc animated:YES completion:nil];
 
 }
 

@@ -374,16 +374,16 @@
 -(void)changeSort:(NSString*)type{
     sort_index = type;
     
-    [_btnDistance setAlpha:1.0];
-    [_btnDuration setAlpha:1.0];
-    [_btnTime setAlpha:1.0];
+    [_btnDistance setAlpha:0.5];
+    [_btnDuration setAlpha:0.5];
+    [_btnTime setAlpha:0.5];
     
     if ([type isEqualToString:@"distance"]) {
-        [_btnDistance setAlpha:0.5];
+        [_btnDistance setAlpha:1];
     } else if ([type isEqualToString:@"duration"]){
-        [_btnDuration setAlpha:0.5];
+        [_btnDuration setAlpha:1];
     } else if ([type isEqualToString:@"start_time"]){
-        [_btnTime setAlpha:0.5];
+        [_btnTime setAlpha:1];
     }
     
     [_tvSportList setContentOffset:CGPointMake(0, 0)];

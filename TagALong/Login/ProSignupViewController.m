@@ -65,8 +65,23 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
+    
+    [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 -(BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

@@ -135,6 +135,8 @@ static const NSInteger kMaxImageCnt = 1;
     
 //    [self initData];
     [_vwNoData setHidden:YES];
+    //[self.calendarView setSingleRowMode:YES];
+    //self.calendarView.singleRowMode = YES;
     
     [self.calendarView addTarget:self action:@selector(calendarViewDidChange:) forControlEvents:UIControlEventValueChanged];
     
@@ -144,7 +146,7 @@ static const NSInteger kMaxImageCnt = 1;
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    
+    //[self.calendarView jumpToDate:curdate];
     [self ReqGetUserProfile:today];
 }
 

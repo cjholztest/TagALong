@@ -83,7 +83,9 @@
     if (![[profileInfo objectForKey:API_RES_KEY_LASTNAME] isEqual:[NSNull null]]) {
         last_name = [profileInfo objectForKey:API_RES_KEY_LASTNAME];
     }
-    _lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
+    //_lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     _lblAddress.text = [profileInfo objectForKey:API_RES_KEY_USER_LOCATION];
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
@@ -188,7 +190,7 @@
 }
 
 - (IBAction)onClickCancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 #pragma mark - Network
@@ -268,8 +270,10 @@
             if ([self.where isEqualToString:@"profile"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ExportProfile" object:nil];
             }
-            [self.navigationController popViewControllerAnimated:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
+            [self showSuccessAlert];
+            //MARK: Pop up
+//            [self.navigationController popViewControllerAnimated:YES];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
 
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
@@ -289,5 +293,18 @@
     }];
 }
 
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"You booked successfully" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                    //            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 @end

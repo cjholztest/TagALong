@@ -86,6 +86,24 @@
 //-(BOOL)prefersStatusBarHidden{
 //    return NO;
 //}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
+    
+    [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
+//    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize: 14]}];
+//    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Arial" size:17.0], NSFontAttributeName, nil];
+//
+//    self.navigationController.navigationBar.titleTextAttributes = size;
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationItem.rightBarButtonItem setEnabled: NO];
+    [self.navigationController setNavigationBarHidden: NO animated: YES];
+}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -226,23 +244,23 @@
 }
 
 -(void)changeBottomButton{
-    [_ivProfile setAlpha:1.0];
-    [_ivSearch setAlpha:1.0];
-    [_ivSubmit setAlpha:1.0];
+    [_ivProfile setAlpha:0.5];
+    [_ivSearch setAlpha:0.5];
+    [_ivSubmit setAlpha:0.5];
     
-    [_lblProfile setAlpha:1.0];
-    [_lblSearch setAlpha:1.0];
-    [_lblSubmit setAlpha:1.0];
+    [_lblProfile setAlpha:0.5];
+    [_lblSearch setAlpha:0.5];
+    [_lblSubmit setAlpha:0.5];
     
     if (nCurButtonIdx == BUTTON_PROFILE) {
-        [_ivProfile setAlpha:0.5];
-        [_lblProfile setAlpha:0.5];
+        [_ivProfile setAlpha:1];
+        [_lblProfile setAlpha:1];
     } else if (nCurButtonIdx == BUTTON_SEARDCH) {
-        [_ivSearch setAlpha:0.5];
-        [_lblSearch setAlpha:0.5];
+        [_ivSearch setAlpha:1];
+        [_lblSearch setAlpha:1];
     } else if (nCurButtonIdx == BUTTON_SUBMIT) {
-        [_ivSubmit setAlpha:0.5];
-        [_lblSubmit setAlpha:0.5];
+        [_ivSubmit setAlpha:1];
+        [_lblSubmit setAlpha:1];
     }
 }
 
@@ -308,8 +326,9 @@
             vcOtherProfile = nil;
             bOtherPage = false;
         } else {
-            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+//            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
     } else {
         [Commons clearUserInfo];
@@ -387,7 +406,7 @@
     [self removeviewsFromMain];
     
     WorkoutSelectViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WorkoutSelectViewController"];
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 

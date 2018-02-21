@@ -40,9 +40,12 @@
     
 }
 
-//-(BOOL)prefersStatusBarHidden{
-//    return YES;
-//}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -97,10 +100,11 @@
 
 #pragma mark - user defined functions
 -(void)goHome{
-//    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
 //    [self.navigationController pushViewController:vc animated:YES];
-    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavHome"];
-    [self presentViewController:vc animated:NO completion:nil];
+    //UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavHome"];
+    [self.navigationController pushViewController:vc animated:YES];
+    //[self presentViewController:vc animated:YES completion:nil];
 
 }
 
@@ -135,7 +139,6 @@
     [Preference setString:PREFCONST_LONGTITUDE value:Global.g_user.user_longitude];
     [Preference setString:PREFCONST_ADDRESS_UID value:@""];
     [self goHome];
-
 }
 
 
@@ -147,12 +150,38 @@
 }
 
 - (IBAction)onClickBack:(id)sender {
-
-    [Commons clearUserInfo];
     
-    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; //NavExpertLogin
-    [self presentViewController:vc animated:NO completion:nil];
-
+    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you shure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                                    [Commons clearUserInfo];
+                                    
+    [UIView transitionFromView:self.view
+                        toView:vc.view
+                      duration:0.75
+                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                    completion:^(BOOL finished) {
+                        
+            appDelegate.window.rootViewController = vc;
+    }];
+                                }];
+    
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"Cancel"
+                               style:UIAlertActionStyleDefault
+                               handler:nil];
+    
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 #pragma mark - Network

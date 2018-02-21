@@ -32,6 +32,7 @@
     _ivProfile.layer.cornerRadius = _ivProfile.frame.size.width / 2;
     _arrWorkout = [[NSMutableArray alloc]  init];
     // Do any additional setup after loading the view, typically from a nib.
+    self.calendarView.singleRowMode = YES;
     [self.calendarView addTarget:self action:@selector(calendarViewDidChange:) forControlEvents:UIControlEventValueChanged];
     
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"OtherUserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"OtherUserProfilePlanTableViewCell"];
