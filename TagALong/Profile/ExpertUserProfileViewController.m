@@ -157,6 +157,11 @@
     [self ReqGetExportUserProfile:today];
 }
 
+-(void)addEditInfoBarButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
+    self.navigationController.navigationItem.rightBarButtonItem = editButton;
+}
+
 -(void)setUserInfo:(NSDictionary*)dicInfo{
     NSString *first_name = @"";
     NSString *last_name = @"";

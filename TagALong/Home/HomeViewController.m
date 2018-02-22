@@ -340,7 +340,6 @@
 //            [self.navigationController pushViewController:vc animated:YES];
         }
     } else {
-        [Commons clearUserInfo];
         
         UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; //NavExpertLogin
 //        [self presentViewController:vc animated:NO completion:nil];
@@ -359,7 +358,7 @@
                                                           duration:0.75
                                                            options:UIViewAnimationOptionTransitionFlipFromBottom
                                                         completion:^(BOOL finished) {
-
+                                                            
                                                             appDelegate.window.rootViewController = vc;
                                                         }];
                                     }];
