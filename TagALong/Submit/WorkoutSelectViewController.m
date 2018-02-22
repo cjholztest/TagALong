@@ -71,11 +71,8 @@
             vcTypeWrokout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TypeWorkoutViewController"];
             vcTypeWrokout.vcParent = self;
             vcTypeWrokout.view.frame = CGRectMake(0, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                [_svContent addSubview:vcTypeWrokout.view];
-                [self addChildViewController:vcTypeWrokout];
-            }];
+            [_svContent addSubview:vcTypeWrokout.view];
+            [self addChildViewController:vcTypeWrokout];
         }
         
     } else if (nCurPageIdx == PAGE_MENU_AREA) {
@@ -86,11 +83,8 @@
             vcAreaWorkout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AreaWorkoutViewController"];
             vcAreaWorkout.vcParent = self;
             vcAreaWorkout.view.frame = CGRectMake(_svContent.bounds.size.width, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
-
-            [UIView animateWithDuration:0.3 animations:^{
-                [_svContent addSubview:vcAreaWorkout.view];
-                [self addChildViewController:vcAreaWorkout];
-            }];
+            [_svContent addSubview:vcAreaWorkout.view];
+            [self addChildViewController:vcAreaWorkout];
         }
     }
 }

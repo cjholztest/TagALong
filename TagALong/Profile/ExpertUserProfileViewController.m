@@ -207,7 +207,7 @@
     vc.nickname = nickname;
     vc.arrSchedule = _arrWorkout;
     vc.vcParent = self.vcParent;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Network

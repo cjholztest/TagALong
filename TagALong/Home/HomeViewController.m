@@ -65,6 +65,7 @@
     bOtherPage = false;
     nCurPageIdx = PAGE_MENU_MAP;
     nCurButtonIdx = BUTTON_SEARDCH;
+
     [_vwPaySuccess setHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -110,6 +111,11 @@
     return UIStatusBarStyleLightContent;
 }
 
+-(void)successViewTapped {
+    [self.navigationItem.leftBarButtonItem setEnabled:YES];
+    [_vwPaySuccess setHidden:YES];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
@@ -137,6 +143,9 @@
 
 //notification
 - (void)PaySuccess {
+    UITapGestureRecognizer *tapReg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(successViewTapped)];
+    [_vwPaySuccess addGestureRecognizer:tapReg];
+    [self.navigationItem.leftBarButtonItem setEnabled:NO];
     [_vwPaySuccess setHidden:NO];
 }
 
@@ -334,7 +343,36 @@
         [Commons clearUserInfo];
         
         UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; //NavExpertLogin
-        [self presentViewController:vc animated:NO completion:nil];
+//        [self presentViewController:vc animated:NO completion:nil];
+        
+         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you shure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                                        [Commons clearUserInfo];
+                                        [self.navigationController setNavigationBarHidden:YES animated:NO];
+                                        [UIView transitionFromView:self.view
+                                                            toView:vc.view
+                                                          duration:0.75
+                                                           options:UIViewAnimationOptionTransitionFlipFromBottom
+                                                        completion:^(BOOL finished) {
+
+                                                            appDelegate.window.rootViewController = vc;
+                                                        }];
+                                    }];
+        
+        UIAlertAction* noButton = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+        
+        [alert addAction:yesButton];
+        [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
