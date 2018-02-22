@@ -15,13 +15,16 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BookWorkoutViewController.h"
+#import "FSCalendar.h"
 
-@interface User1ProfileViewController ()<UIImagePickerControllerDelegate>{
+@interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>{
     NSString *file_url;
     NSString *file_name;
     NSString *nickname;
     NSString *phone;
     NSData *imgData;
+    NSDateFormatter *formatter;
+    NSCalendar *gregorian;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -29,7 +32,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblLevel;
 @property (strong, nonatomic) IBOutlet UIView *vwLevel;
 
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UIButton *prevButton;
+
 @property (weak, nonatomic) IBOutlet DAYCalendarView *calendarView;
+
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
+
 @property (weak, nonatomic) IBOutlet UITableView *tvSchedule;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lctvScheduleHeight;
 
@@ -38,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet UIView *vwNoData;
 @property (nonatomic, strong) NSMutableArray *arM_Photo;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
+
 @end
 
 static const NSInteger kMaxImageCnt = 1;
@@ -48,6 +59,8 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    formatter = [[NSDateFormatter alloc] init];
     [self initUI];
 }
 
@@ -72,6 +85,8 @@ static const NSInteger kMaxImageCnt = 1;
     
     return _arrWorkout.count;
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -115,6 +130,11 @@ static const NSInteger kMaxImageCnt = 1;
     return 46;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -132,12 +152,13 @@ static const NSInteger kMaxImageCnt = 1;
     _arrWorkout = [[NSMutableArray alloc]  init];
     _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.width / 2;
     
-//    [self initData];
+    self.calendar.scope = FSCalendarScopeWeek;
+    [self.calendar bringSubviewToFront:self.nextButton];
+    [self.calendar bringSubviewToFront:self.prevButton];
+    //[self initData];
     [_vwNoData setHidden:YES];
-    //[self.calendarView setSingleRowMode:YES];
-    //self.calendarView.singleRowMode = YES;
     
-    [self.calendarView addTarget:self action:@selector(calendarViewDidChange:) forControlEvents:UIControlEventValueChanged];
+   // [self.calendarView addTarget:self action:@selector(calendarViewDidChange:) forControlEvents:UIControlEventValueChanged];
     
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"UserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserProfilePlanTableViewCell"];
     
@@ -145,7 +166,7 @@ static const NSInteger kMaxImageCnt = 1;
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    //[self.calendarView jumpToDate:curdate];
+
     [self ReqGetUserProfile:today];
 }
 
@@ -207,6 +228,19 @@ static const NSInteger kMaxImageCnt = 1;
     UIGraphicsEndImageContext();
     
     return compressedImage;
+}
+
+- (IBAction)previousClicked:(id)sender {
+    
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *previousMonth = [gregorian dateByAddingUnit:NSCalendarUnitWeekOfMonth value:-1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:previousMonth animated:YES];
+}
+
+- (IBAction)nextClicked:(id)sender {
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *nextMonth = [gregorian dateByAddingUnit:NSCalendarUnitWeekOfMonth value:1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:nextMonth animated:YES];
 }
 
 - (IBAction)onClickProfile:(id)sender {
@@ -544,5 +578,18 @@ static const NSInteger kMaxImageCnt = 1;
     }];
 }
 
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
+    _calendarHeightConstraint.constant = CGRectGetHeight(bounds);
+    [self.view layoutIfNeeded];
+}
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    
+    formatter.dateFormat = @"YYYY-MM-dd";
+    
+    NSString *seldate = [formatter stringFromDate:date];
+    [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self ReqGetUserProfile:seldate];
+}
 
 @end

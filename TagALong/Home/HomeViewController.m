@@ -174,8 +174,9 @@
         vcOtherProfile.type = post_type;
             vcOtherProfile.view.frame = CGRectMake(0, 0, _vwContent.bounds.size.width, _vwContent.bounds.size.height);
             vcOtherProfile.vcParent = self;
-            [_vwContent addSubview:vcOtherProfile.view];
-            [self addChildViewController:vcOtherProfile];
+            [self.navigationController pushViewController:vcOtherProfile animated:YES];
+            //[_vwContent addSubview:vcOtherProfile.view];
+            //[self addChildViewController:vcOtherProfile];
 //        } else {
 //            
 //            vcUser1Profile = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"User1ProfileViewController"];

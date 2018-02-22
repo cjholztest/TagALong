@@ -10,8 +10,12 @@
 #import "Daysquare.h"
 #import "OtherUserProfilePlanTableViewCell.h"
 #import "BookWorkoutViewController.h"
+#import "FSCalendar.h"
 
-@interface OtherUserProfileViewController ()
+@interface OtherUserProfileViewController ()<FSCalendarDataSource, FSCalendarDelegate> {
+    NSDateFormatter *formatter;
+    NSCalendar *gregorian;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *ivProfile;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 
@@ -21,19 +25,30 @@
 
 @property (weak, nonatomic) IBOutlet UIView *vwNoData;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
+
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UIButton *prevButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
 @end
+
 
 @implementation OtherUserProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = self.title;
+    gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    formatter = [[NSDateFormatter alloc] init];
     [_vwNoData setHidden:YES];
+    
     _ivProfile.layer.cornerRadius = _ivProfile.frame.size.width / 2;
     _arrWorkout = [[NSMutableArray alloc]  init];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.calendarView.singleRowMode = YES;
-    [self.calendarView addTarget:self action:@selector(calendarViewDidChange:) forControlEvents:UIControlEventValueChanged];
+
+    self.calendar.scope = FSCalendarScopeWeek;
+    [self.calendar bringSubviewToFront:self.nextButton];
+    [self.calendar bringSubviewToFront:self.prevButton];
     
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"OtherUserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"OtherUserProfilePlanTableViewCell"];
     
@@ -43,22 +58,6 @@
     NSString *today = [dateformat stringFromDate:curdate];
 
     [self ReqExportWorkoutList:today];
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)calendarViewDidChange:(id)sender {
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"YYYY-MM-dd";
-    NSLog(@"%@", [formatter stringFromDate:self.calendarView.selectedDate]);
-    
-    NSString *seldate = [formatter stringFromDate:self.calendarView.selectedDate];
-    [self ReqExportWorkoutList:seldate];
 }
 
 #pragma mark -  UITableViewDataSource
@@ -98,9 +97,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-//    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
+    NSDictionary *dic = _arrWorkout[indexPath.row];
+    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
+    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+    vc.where = @"profile";
+    [self.vcParent.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -165,6 +166,10 @@
     
 }
 
+- (IBAction)backButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)onClickBookNow:(UIButton *)btn{
     //go BOOKNOW PAGE
     
@@ -173,7 +178,6 @@
     vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
     vc.where = @"profile";
     [self.vcParent.navigationController pushViewController:vc animated:YES];
-
 }
 
 #pragma mark - Network
@@ -245,6 +249,33 @@
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
     }];
+}
+
+- (IBAction)previousClicked:(id)sender {
+    
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *previousMonth = [gregorian dateByAddingUnit:NSCalendarUnitWeekOfMonth value:-1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:previousMonth animated:YES];
+}
+
+- (IBAction)nextClicked:(id)sender {
+    NSDate *currentMonth = self.calendar.currentPage;
+    NSDate *nextMonth = [gregorian dateByAddingUnit:NSCalendarUnitWeekOfMonth value:1 toDate:currentMonth options:0];
+    [self.calendar setCurrentPage:nextMonth animated:YES];
+}
+
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
+    _calendarHeightConstraint.constant = CGRectGetHeight(bounds);
+    [self.view layoutIfNeeded];
+}
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
+    
+    formatter.dateFormat = @"YYYY-MM-dd";
+    
+    NSString *seldate = [formatter stringFromDate:date];
+    [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self ReqExportWorkoutList:seldate];
 }
 
 @end

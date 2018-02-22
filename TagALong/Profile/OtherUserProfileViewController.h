@@ -11,6 +11,7 @@
 @interface OtherUserProfileViewController : UIViewController
 @property (nonatomic, retain) UIViewController *vcParent;
 @property (nonatomic, strong) NSString *_id;
-@property (nonatomic, strong) NSString *type;;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *title;
 @end
 
