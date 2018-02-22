@@ -61,10 +61,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self setDefaulttitle];
-
+    [self addAlarmBarButton];
     bOtherPage = false;
     nCurPageIdx = PAGE_MENU_MAP;
     nCurButtonIdx = BUTTON_SEARDCH;
+    
+    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+        [self addLogoutButton];
+    }
 
     [_vwPaySuccess setHidden:YES];
     
@@ -84,9 +88,11 @@
 
 }
 
-//-(BOOL)prefersStatusBarHidden{
-//    return NO;
-//}
+-(void)addLogoutButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickBack:)];
+    self.navigationItem.leftBarButtonItem = editButton;
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -102,8 +108,11 @@
 //    self.navigationController.navigationBar.titleTextAttributes = size;
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationItem.rightBarButtonItem setEnabled: NO];
+    //[self.navigationItem.rightBarButtonItem setEnabled: NO];
     [self.navigationController setNavigationBarHidden: NO animated: YES];
+    
+    [self setPage];
+    [self changeBottomButton];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -121,8 +130,7 @@
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
     
-    [self setPage];
-    [self changeBottomButton];
+
     
 //    if ([Global.g_user.user_login isEqualToString:@"expert"]) {
 //        [self onClickProfile:self];
@@ -194,10 +202,10 @@
 
     _lblMap.textColor = [UIColor whiteColor];
     _lblList.textColor = [UIColor whiteColor];
-    
+    [self addAlarmBarButton];
     [_ivMapLine setHidden:YES];
     [_ivListLine setHidden:YES];
-    
+    nCurButtonIdx = BUTTON_SEARDCH;
     if (nCurPageIdx == PAGE_MENU_MAP) {
     
         [_ivMapLine setHidden:NO];
@@ -428,6 +436,7 @@
     [self removeviewsFromMain];
     [self removeMainPages];
 
+    [self addAlarmBarButton];
     nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
     
@@ -445,6 +454,12 @@
     WorkoutSelectViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WorkoutSelectViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(void)addAlarmBarButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_alarm_normal"] style:UIBarButtonItemStylePlain target:self action: nil];
+    [editButton setEnabled:NO];
+    self.navigationItem.rightBarButtonItem = editButton;
 }
 
 @end

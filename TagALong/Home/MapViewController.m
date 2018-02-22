@@ -101,10 +101,6 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-//
-//-(BOOL)prefersStatusBarHidden{
-//    return YES;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -49,7 +49,6 @@ static const NSInteger kMaxImageCnt = 1;
     [super viewDidLoad];
     
     [self initUI];
-    
 }
 
 - (void)didReceiveMemoryWarning {

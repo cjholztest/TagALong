@@ -421,7 +421,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Sp-sE-oJe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="536"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAW-bw-j41" userLabel="Sub Title View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -499,14 +499,14 @@
                                                 </constraints>
                                             </view>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkF-xp-bEV">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="486"/>
+                                                <rect key="frame" x="0.0" y="50" width="375" height="504"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="R43-GD-84L" id="17T-d9-DyT"/>
                                                 </connections>
                                             </scrollView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tg6-TY-HNY" userLabel="Pay Success View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="536"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_icon" translatesAutoresizingMaskIntoConstraints="NO" id="E4W-7H-Bqh">
                                                         <rect key="frame" x="33" y="0.0" width="350" height="350"/>
@@ -545,13 +545,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUA-1A-srq" userLabel="View2">
-                                                        <rect key="frame" x="5" y="232" width="364" height="284"/>
+                                                        <rect key="frame" x="5" y="232" width="364" height="302"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkO-YU-Pds">
-                                                                <rect key="frame" x="1" y="1" width="362" height="282"/>
+                                                                <rect key="frame" x="1" y="1" width="362" height="300"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zP-K6-2ON">
-                                                                        <rect key="frame" x="15" y="114" width="332" height="54"/>
+                                                                        <rect key="frame" x="15" y="123" width="332" height="54"/>
                                                                         <string key="text">We will notify you when
 someone wants to Tag-A-Long</string>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
@@ -606,22 +606,23 @@ someone wants to Tag-A-Long</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnX-aq-DJS" userLabel="Bottom View">
-                                        <rect key="frame" x="0.0" y="536" width="375" height="67"/>
+                                        <rect key="frame" x="0.0" y="554" width="375" height="49"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_profile_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="dgs-k8-c2o">
-                                                <rect key="frame" x="-0.5" y="0.0" width="375" height="67"/>
+                                                <rect key="frame" x="-0.5" y="0.0" width="375" height="49"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azs-JW-el2" userLabel="Profile View" customClass="UIControl">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="67"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="49"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_white" translatesAutoresizingMaskIntoConstraints="NO" id="R2d-kU-DrK">
-                                                        <rect key="frame" x="52.5" y="15" width="21" height="21.5"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="R2d-kU-DrK">
+                                                        <rect key="frame" x="51.5" y="8" width="22" height="22.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="R2d-kU-DrK" secondAttribute="height" multiplier="1:1" id="IaE-QO-gXd"/>
+                                                            <constraint firstAttribute="width" constant="22" id="Jg0-MY-2w8"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9x-ncQ">
-                                                        <rect key="frame" x="46" y="46.5" width="34" height="14"/>
+                                                        <rect key="frame" x="46" y="32.5" width="34" height="14"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -630,23 +631,22 @@ someone wants to Tag-A-Long</string>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="CAa-9x-ncQ" firstAttribute="centerX" secondItem="Azs-JW-el2" secondAttribute="centerX" id="1ku-w3-WRn"/>
-                                                    <constraint firstItem="R2d-kU-DrK" firstAttribute="top" secondItem="Azs-JW-el2" secondAttribute="top" constant="15" id="5BF-u1-mYu"/>
-                                                    <constraint firstItem="R2d-kU-DrK" firstAttribute="height" secondItem="Azs-JW-el2" secondAttribute="height" multiplier="1:3" id="Qdf-YU-lII"/>
+                                                    <constraint firstItem="R2d-kU-DrK" firstAttribute="top" secondItem="Azs-JW-el2" secondAttribute="top" constant="8" id="5BF-u1-mYu"/>
                                                     <constraint firstItem="R2d-kU-DrK" firstAttribute="centerX" secondItem="Azs-JW-el2" secondAttribute="centerX" id="axy-Ej-bWl"/>
-                                                    <constraint firstItem="CAa-9x-ncQ" firstAttribute="top" secondItem="R2d-kU-DrK" secondAttribute="bottom" constant="10" id="yvJ-iJ-z86"/>
+                                                    <constraint firstItem="CAa-9x-ncQ" firstAttribute="top" secondItem="R2d-kU-DrK" secondAttribute="bottom" constant="2" id="yvJ-iJ-z86"/>
                                                 </constraints>
                                                 <connections>
                                                     <action selector="onClickProfile:" destination="R43-GD-84L" eventType="touchUpInside" id="7Wd-fV-wCl"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkD-6N-zEe" userLabel="Search View" customClass="UIControl">
-                                                <rect key="frame" x="125" y="0.0" width="125" height="67"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="49"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="fic-eH-W0M">
-                                                        <rect key="frame" x="52.5" y="15" width="21" height="21.5"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search_tab" translatesAutoresizingMaskIntoConstraints="NO" id="fic-eH-W0M">
+                                                        <rect key="frame" x="51.5" y="8" width="22" height="22.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irx-Lo-Rhg">
-                                                        <rect key="frame" x="44" y="46.5" width="38" height="14"/>
+                                                        <rect key="frame" x="43" y="32.5" width="38" height="14"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -654,9 +654,9 @@ someone wants to Tag-A-Long</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="irx-Lo-Rhg" firstAttribute="top" secondItem="fic-eH-W0M" secondAttribute="bottom" constant="10" id="64E-xx-kSV"/>
+                                                    <constraint firstItem="irx-Lo-Rhg" firstAttribute="top" secondItem="fic-eH-W0M" secondAttribute="bottom" constant="2" id="64E-xx-kSV"/>
                                                     <constraint firstItem="fic-eH-W0M" firstAttribute="centerX" secondItem="CkD-6N-zEe" secondAttribute="centerX" id="GZA-7d-i0B"/>
-                                                    <constraint firstItem="fic-eH-W0M" firstAttribute="top" secondItem="CkD-6N-zEe" secondAttribute="top" constant="15" id="h1A-Mm-bB3"/>
+                                                    <constraint firstItem="fic-eH-W0M" firstAttribute="top" secondItem="CkD-6N-zEe" secondAttribute="top" constant="8" id="h1A-Mm-bB3"/>
                                                     <constraint firstItem="irx-Lo-Rhg" firstAttribute="centerX" secondItem="fic-eH-W0M" secondAttribute="centerX" id="zco-I9-i6d"/>
                                                 </constraints>
                                                 <connections>
@@ -664,13 +664,13 @@ someone wants to Tag-A-Long</string>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-pG-RRz" userLabel="Submit View" customClass="UIControl">
-                                                <rect key="frame" x="250" y="0.0" width="125" height="67"/>
+                                                <rect key="frame" x="250" y="0.0" width="125" height="49"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_submit" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-sz-guq">
-                                                        <rect key="frame" x="52.5" y="15" width="21" height="21.5"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_submit_tub" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-sz-guq">
+                                                        <rect key="frame" x="51.5" y="8" width="22" height="22.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSN-Hv-3cb">
-                                                        <rect key="frame" x="44.5" y="46.5" width="36" height="14"/>
+                                                        <rect key="frame" x="44.5" y="32.5" width="36" height="14"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -679,9 +679,9 @@ someone wants to Tag-A-Long</string>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="mSN-Hv-3cb" firstAttribute="centerX" secondItem="ZXt-sz-guq" secondAttribute="centerX" id="0OA-nh-DDE"/>
-                                                    <constraint firstItem="mSN-Hv-3cb" firstAttribute="top" secondItem="ZXt-sz-guq" secondAttribute="bottom" constant="10" id="HiR-hF-Hi5"/>
+                                                    <constraint firstItem="mSN-Hv-3cb" firstAttribute="top" secondItem="ZXt-sz-guq" secondAttribute="bottom" constant="2" id="HiR-hF-Hi5"/>
                                                     <constraint firstItem="ZXt-sz-guq" firstAttribute="centerX" secondItem="KTl-pG-RRz" secondAttribute="centerX" id="n5w-Bv-JSF"/>
-                                                    <constraint firstItem="ZXt-sz-guq" firstAttribute="top" secondItem="KTl-pG-RRz" secondAttribute="top" constant="15" id="rCb-Hg-FV1"/>
+                                                    <constraint firstItem="ZXt-sz-guq" firstAttribute="top" secondItem="KTl-pG-RRz" secondAttribute="top" constant="8" id="rCb-Hg-FV1"/>
                                                 </constraints>
                                                 <connections>
                                                     <action selector="onClickSubmit:" destination="R43-GD-84L" eventType="touchUpInside" id="2ei-54-fjG"/>
@@ -700,6 +700,7 @@ someone wants to Tag-A-Long</string>
                                             <constraint firstAttribute="bottom" secondItem="KTl-pG-RRz" secondAttribute="bottom" id="Q0R-AW-MJB"/>
                                             <constraint firstItem="fic-eH-W0M" firstAttribute="height" secondItem="R2d-kU-DrK" secondAttribute="height" id="UWk-vW-7De"/>
                                             <constraint firstItem="dgs-k8-c2o" firstAttribute="width" secondItem="UnX-aq-DJS" secondAttribute="width" id="WKI-rP-tRi"/>
+                                            <constraint firstAttribute="height" constant="49" id="bwt-oE-6dk"/>
                                             <constraint firstItem="CkD-6N-zEe" firstAttribute="top" secondItem="UnX-aq-DJS" secondAttribute="top" id="dS6-Bc-gdy"/>
                                             <constraint firstItem="ZXt-sz-guq" firstAttribute="height" secondItem="R2d-kU-DrK" secondAttribute="height" id="dq5-Bq-O67"/>
                                             <constraint firstItem="Azs-JW-el2" firstAttribute="leading" secondItem="UnX-aq-DJS" secondAttribute="leading" id="eLs-av-hDS"/>
@@ -721,7 +722,6 @@ someone wants to Tag-A-Long</string>
                                     <constraint firstItem="2Sp-sE-oJe" firstAttribute="bottom" secondItem="UnX-aq-DJS" secondAttribute="top" id="aUH-t2-Rbu"/>
                                     <constraint firstItem="2Sp-sE-oJe" firstAttribute="leading" secondItem="D8q-v4-mNH" secondAttribute="leading" id="aid-T7-Vq5"/>
                                     <constraint firstItem="2Sp-sE-oJe" firstAttribute="top" secondItem="D8q-v4-mNH" secondAttribute="top" id="bpr-jS-L9I"/>
-                                    <constraint firstItem="UnX-aq-DJS" firstAttribute="height" secondItem="D8q-v4-mNH" secondAttribute="height" multiplier="1:9" id="la1-a2-3NY"/>
                                     <constraint firstItem="UnX-aq-DJS" firstAttribute="leading" secondItem="D8q-v4-mNH" secondAttribute="leading" id="ycE-pz-S8c"/>
                                 </constraints>
                             </view>
@@ -1246,6 +1246,7 @@ someone wants to Tag-A-Long</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0D4-kh-Og5"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="ic_search_tab" id="hfk-PC-QD7"/>
                     <navigationItem key="navigationItem" title="Explore Workouts" id="xSW-MO-aFz"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -2306,6 +2307,7 @@ someone wants to Tag-A-Long</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tiY-Kh-ACL"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="iHR-rZ-TMA"/>
                     <navigationItem key="navigationItem" id="bWw-47-txK"/>
                     <connections>
                         <outlet property="ivProfile" destination="nsw-yi-kBk" id="3Se-rK-gEb"/>
@@ -3288,6 +3290,7 @@ Terms of Use and Privacy Policy</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mh3-J6-FhT"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Create" image="ic_submit_tub" id="tF1-FU-kX5"/>
                     <navigationItem key="navigationItem" title="Workout Type" id="68e-wb-0CX">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="ic_white_back" id="vbr-eK-dpK">
                             <connections>
@@ -5861,6 +5864,7 @@ within the next 24 hours.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JAv-kS-2A5"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ic_profile_tab" id="jlk-kx-YLf"/>
                     <navigationItem key="navigationItem" id="VdS-Re-gbY"/>
                     <connections>
                         <outlet property="calendarView" destination="YgM-5A-PYH" id="jya-Zp-vcM"/>
@@ -5874,7 +5878,7 @@ within the next 24 hours.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugC-tX-mBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4089" y="2098"/>
+            <point key="canvasLocation" x="4420" y="2277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lFe-Da-rpI">
@@ -5929,16 +5933,16 @@ within the next 24 hours.</string>
         <image name="ic_pencil" width="49" height="49"/>
         <image name="ic_pro" width="83" height="94"/>
         <image name="ic_profile_black" width="190" height="190"/>
-        <image name="ic_profile_white" width="146" height="146"/>
+        <image name="ic_profile_tab" width="24" height="24"/>
         <image name="ic_rectangle" width="334" height="73"/>
         <image name="ic_rectangle1" width="729" height="75"/>
         <image name="ic_rectangle_blue" width="142" height="84"/>
         <image name="ic_rectangle_white" width="167" height="84"/>
         <image name="ic_right_arrow1" width="28" height="51"/>
         <image name="ic_right_arrow2" width="28" height="52"/>
-        <image name="ic_search" width="146" height="146"/>
+        <image name="ic_search_tab" width="24" height="24"/>
         <image name="ic_small_profile" width="51" height="52"/>
-        <image name="ic_submit" width="146" height="146"/>
+        <image name="ic_submit_tub" width="24" height="25"/>
         <image name="ic_traner" width="48" height="100"/>
         <image name="ic_white_back" width="57" height="22"/>
         <image name="intro" width="781" height="1390"/>

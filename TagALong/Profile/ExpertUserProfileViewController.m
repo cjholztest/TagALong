@@ -153,13 +153,14 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    
+    [self addEditInfoBarButton];
     [self ReqGetExportUserProfile:today];
 }
 
 -(void)addEditInfoBarButton {
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
-    self.navigationController.navigationItem.rightBarButtonItem = editButton;
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
+    self.vcParent.navigationItem.rightBarButtonItem = editButton;
+    //self.navigationController.navigationItem.rightBarButtonItem = editButton;
 }
 
 -(void)setUserInfo:(NSDictionary*)dicInfo{
