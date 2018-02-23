@@ -304,7 +304,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"You booked successfully" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"Yes"
+                                actionWithTitle:@"Great"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     [self.navigationController popViewControllerAnimated:YES];

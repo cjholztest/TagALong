@@ -127,6 +127,19 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"THANK YOU" message:@"Due to the qualification and approval process someone from TAG-A-LONG will contact you within next 24 hours" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Great"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - user defined functions
 -(void)Background:(UITapGestureRecognizer *)recognizer{
     [_tfFirstName resignFirstResponder];
@@ -298,9 +311,10 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
-            vc.delegate = self;
-            [self.navigationController pushViewController:vc animated:YES];
+            [self showSuccessAlert];
+//            SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
+//            vc.delegate = self;
+//            [self.navigationController pushViewController:vc animated:YES];
             
         } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
             [Commons showToast:@"This Phone has been duplicated"];

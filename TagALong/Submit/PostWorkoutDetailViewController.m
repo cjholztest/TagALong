@@ -435,7 +435,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"You posted your workout successfully" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"Yes"
+                                actionWithTitle:@"Great"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     [self.navigationController popViewControllerAnimated: NO];

@@ -139,6 +139,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"THANK YOU" message:@"You registered successfully" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Great"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 #pragma mark - Network
 -(void)ReqRegister{
@@ -183,8 +196,10 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [Commons showToast:@"Congratulations on your joining."];
-            [self.navigationController popViewControllerAnimated:NO];
+//            [Commons showToast:@"Congratulations on your joining."];
+//            [self.navigationController popViewControllerAnimated:NO];
+            
+            [self showSuccessAlert];
             
         } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
             [Commons showToast:@"This email is in use."];
