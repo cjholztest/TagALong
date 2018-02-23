@@ -54,6 +54,11 @@
     [self ReqWorkoutInfo];    
 }
 
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.height / 2;
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
