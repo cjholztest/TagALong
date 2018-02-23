@@ -42,11 +42,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    arrLevel = [NSArray arrayWithObjects:@"Pro", @"Trainer", @"Classes", @"Individual", nil];
+    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+        arrLevel = [NSArray arrayWithObjects:@"Trainer", @"Classes", @"Individual", nil];
+    } else {
+        arrLevel = [NSArray arrayWithObjects:@"Pro", @"Trainer", @"Classes", @"Individual", nil];
+    }
+    
+    
     arrLevelIndex = [NSArray arrayWithObjects:@"2", @"3", @"1", @"0", nil];
     arrTraining = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth", @"Other Sports/Equipment", nil];
     arrWorkout = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"Balance", @"Intervals/Circuit", @"Flexibility", @"High Intensity", @"Weights", @"Conditioning", nil];
-    arrDistance = [NSArray arrayWithObjects:@"0.25", @"2", @"3", @"10", @"25", nil];
+    arrDistance = [NSArray arrayWithObjects:@"0.25", @"2", @"5", @"10", nil];
     
     [self initData];
     
@@ -82,9 +88,8 @@
     
 }
 
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     NSInteger width = (collectionView.bounds.size.width - 10) / 2;
     return CGSizeMake(width, 35);
 }
@@ -94,7 +99,7 @@
     
     if (collectionView == _clLevel) {
         cell.lblName.text = arrLevel[indexPath.row];
-        cell.lcNameLeft.constant = 38.0f;
+        cell.lcNameLeft.constant = 8.0f;
         if (arrLevelSel[indexPath.row] == 1) {
             [cell.ivCheck setHidden:NO];
         } else {
@@ -240,7 +245,7 @@
 
 
 - (IBAction)onClickClose:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onClickDistance:(id)sender {

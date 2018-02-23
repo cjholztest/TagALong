@@ -102,13 +102,9 @@
     [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
     
     [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
-//    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize: 14]}];
-//    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Arial" size:17.0], NSFontAttributeName, nil];
-//
-//    self.navigationController.navigationBar.titleTextAttributes = size;
+
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    //[self.navigationItem.rightBarButtonItem setEnabled: NO];
     [self.navigationController setNavigationBarHidden: NO animated: YES];
     
     [self setPage];
@@ -332,7 +328,7 @@
     vc.sport_filter = vcList.sport_filter;
     vc.cate_filter = vcList.cate_filter;
     vc.distance_limit = vcList.distance_limit;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -353,7 +349,7 @@
         UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; //NavExpertLogin
 //        [self presentViewController:vc animated:NO completion:nil];
         
-         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you shure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
+         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you sure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* yesButton = [UIAlertAction
                                     actionWithTitle:@"Yes"

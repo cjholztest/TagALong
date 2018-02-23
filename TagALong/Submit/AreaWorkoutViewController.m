@@ -12,7 +12,7 @@
 @interface AreaWorkoutViewController (){
     NSArray *arrAreaImg;
     NSArray *arrAreaName;
-    NSInteger arrSels[8];
+    NSInteger arrSels[6];
 }
 
 @property (strong, nonatomic) IBOutlet UICollectionView *clArea;
@@ -25,13 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    arrAreaImg = [NSArray arrayWithObjects:@"ic_cardio.png", @"ic_flexibility.png", @"ic_strength.png", @"ic_intensity.png", @"ic_balance.png", @"ic_weights.png", @"ic_interval.png", @"ic_conditioning.png", nil];
-    arrAreaName = [NSArray arrayWithObjects:@"Cardio", @"Flexibility", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Interval/Circuit", @"Conditioning", nil];
+    arrAreaImg = [NSArray arrayWithObjects:@"ic_cardio.png", @"ic_strength.png", @"ic_intensity.png", @"ic_balance.png", @"ic_weights.png", @"ic_interval.png", nil];
+    arrAreaName = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
     
     static NSString * const identifier = @"TypeWorkoutCollectionViewCell";
     [_clArea registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellWithReuseIdentifier:identifier];
     
-    for (NSInteger i = 0; i < 8; i++)
+    for (NSInteger i = 0; i < 6; i++)
         arrSels[i] = -1;
 }
 
@@ -86,9 +86,6 @@
     }
     _categories = [_categories stringByTrimmingCharactersInSet:
               [NSCharacterSet characterSetWithCharactersInString:@","]];
-
-    
-    
 }
 
 @end
