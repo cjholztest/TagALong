@@ -10,7 +10,7 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
-@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate>{
+@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate>{
     NSString *title;
     NSString *location;
     NSString *date;
@@ -25,6 +25,9 @@
     NSMutableArray *arrStartTime;
     NSMutableArray *arrDuration;
     NSArray *arrSportNM;
+    CLLocationManager *locationManager;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
@@ -57,10 +60,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+
     [self initUI];
 //    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
     arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    
+    UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
+    [self.tfLocation addGestureRecognizer:tapRecog];
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -84,10 +90,7 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - UIPickerViewDelegate / DataSource
 
@@ -351,30 +354,21 @@
     
     //현재 시간을 가지고 조합
     NSInteger index = 0;
-
-//    if (min < 15) {
-//        index = hour * 4 + 1;
-//    } else if (min >= 15 && min < 30){
-//        index = hour * 4 + 2;
-//    } else if (min >= 30 && min < 45){
-//        index = hour * 4 + 3;
-//    } else if (min >= 45 ){
-//        index = (hour + 1) * 4;
-//    }
     
     for (NSInteger i = index; i < 96; i++) {
         NSString *temp = @"";
         if (i >= 48) {
             temp = [NSString stringWithFormat:@"%0ld:%02ld pm", ((i - 48) * 15) / 60 , ((i - 48) * 15) % 60];
+            [arrStartTime addObject:temp];
         } else {
-            temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
+            if (i >= 32) {
+                temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
+                [arrStartTime addObject:temp];
+            }
         }
-        
-        [arrStartTime addObject:temp];
     }
-    startindex = index;
+    startindex = 2;
     [_picStartTime reloadAllComponents];
-
 }
 
 - (IBAction)onClickDuration:(id)sender {
@@ -397,7 +391,6 @@
         } else {
             temp = [NSString stringWithFormat:@"%0ldh %0ldmin", (i * 15) / 60, (i  * 15) % 60];
         }
-        
         [arrDuration addObject:temp];
     }
     [_picDuration reloadAllComponents];
@@ -412,6 +405,31 @@
 
     [_btnDuration setTitle:duration forState:UIControlStateNormal];
 }
+
+- (void)showLoctionPopup {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"TagALong" message:@"Do you want to use your current location or to input it manually?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *locationAction = [UIAlertAction actionWithTitle:@"Current" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [SharedAppDelegate showLoading];
+        locationManager = [[CLLocationManager alloc] init];
+        geocoder = [[CLGeocoder alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.delegate = self;
+        [locationManager requestWhenInUseAuthorization];
+        [locationManager startUpdatingLocation];
+    }];
+    UIAlertAction *manualyAction = [UIAlertAction actionWithTitle:@"Input" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tfLocation becomeFirstResponder];
+    }];
+    
+    [alertVC addAction:manualyAction];
+    [alertVC addAction:locationAction];
+    
+    if (!self.tfLocation.isEditing) {
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
+}
+
 
 -(void)showSuccessAlert {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"You posted your workout successfully" preferredStyle:UIAlertControllerStyleAlert];
@@ -510,6 +528,38 @@
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
     }];
+}
+
+//MARK: CLLocationManager
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to Get Your Location" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+            if (error == nil && [placemarks count] > 0) {
+                placemark = [placemarks lastObject];
+                
+                NSString *address = [NSString stringWithFormat:@"%@ %@\n%@\n",
+                                     placemark.subThoroughfare, placemark.thoroughfare, placemark.locality];
+                self.tfLocation.text = address;
+                [SharedAppDelegate closeLoading];
+
+            } else {
+                NSLog(@"%@", error.debugDescription);
+            }
+        }];
+    }
 }
 
 @end
