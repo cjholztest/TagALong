@@ -29,7 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     nCurPageIdx = PAGE_MENU_TYPE;
-
+    
+    [SharedAppDelegate showLoading];
+    
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [_vwBlueBG setHidden:YES];
     } else {
@@ -73,6 +75,7 @@
             vcTypeWrokout.view.frame = CGRectMake(0, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
             [_svContent addSubview:vcTypeWrokout.view];
             [self addChildViewController:vcTypeWrokout];
+            [SharedAppDelegate closeLoading];
         }
         
     } else if (nCurPageIdx == PAGE_MENU_AREA) {
@@ -85,6 +88,7 @@
             vcAreaWorkout.view.frame = CGRectMake(_svContent.bounds.size.width, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
             [_svContent addSubview:vcAreaWorkout.view];
             [self addChildViewController:vcAreaWorkout];
+            [SharedAppDelegate closeLoading];
         }
     }
 }

@@ -388,7 +388,7 @@
     
     [arrDuration removeAllObjects];
     
-    for (NSInteger i = 1; i < (96 - startTimeindex); i++) {
+    for (NSInteger i = 1; i < (25 - startTimeindex); i++) {
         NSString *temp = @"";
         if ((i * 15) / 60 == 0) {
             temp = [NSString stringWithFormat:@"%0ld min", (i  * 15) % 60];
