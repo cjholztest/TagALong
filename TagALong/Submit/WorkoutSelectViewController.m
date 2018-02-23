@@ -59,7 +59,7 @@
 #pragma mark - user defined functions
 //PostWorkoutDetailViewController Delegate
 -(void)dismiss{
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 - (void)setPage {
     

@@ -59,7 +59,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self initUI];
-    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
+//    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
+    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -387,7 +388,7 @@
     
     [arrDuration removeAllObjects];
     
-    for (NSInteger i = 0; i < (96 - startTimeindex); i++) {
+    for (NSInteger i = 1; i < (96 - startTimeindex); i++) {
         NSString *temp = @"";
         if ((i * 15) / 60 == 0) {
             temp = [NSString stringWithFormat:@"%0ld min", (i  * 15) % 60];
@@ -412,6 +413,19 @@
     [_btnDuration setTitle:duration forState:UIControlStateNormal];
 }
 
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"You posted your workout successfully" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated: NO];
+                                    [self.delegate dismiss];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - Network
 -(void)ReqReqWorkout{
@@ -473,11 +487,13 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [Commons showToast:@"Register workout success!"];
+            [self showSuccessAlert];
             
-            [self.navigationController popViewControllerAnimated:NO];
-            [self.delegate dismiss];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
+            //[Commons showToast:@"Register workout success!"];
+            
+            //[self.navigationController popViewControllerAnimated:NO];
+            //[self.delegate dismiss];
+            //[[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:[responseObject objectForKey:API_RES_KEY_MSG]];

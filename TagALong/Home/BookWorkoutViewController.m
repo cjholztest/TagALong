@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btnWorkout;
+@property (weak, nonatomic) IBOutlet UIImageView *bigArrowIcon;
 
 @end
 
@@ -172,8 +173,9 @@
     NSString *result = [dateformat stringFromDate:[dateConvertor dateFromString:nsdate]];
     _lblDate.text = result;
     
-    
-    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.bigArrowIcon.alpha = 1;
+    }];
 //    [dateFormat setDateFormat:@"yyyyMMdd"];
 //    NSDate *date = [dateFormat dateFromString:dateStr];
 //    

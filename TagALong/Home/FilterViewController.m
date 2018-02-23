@@ -34,6 +34,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbldis4;
 @property (weak, nonatomic) IBOutlet UILabel *lbldis5;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *workoutTypeCollectionHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *focusOnCollectionHeight;
+
 @end
 
 @implementation FilterViewController
@@ -50,8 +53,8 @@
     
     
     arrLevelIndex = [NSArray arrayWithObjects:@"2", @"3", @"1", @"0", nil];
-    arrTraining = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth", @"Other Sports/Equipment", nil];
-    arrWorkout = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"Balance", @"Intervals/Circuit", @"Flexibility", @"High Intensity", @"Weights", @"Conditioning", nil];
+    arrTraining = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    arrWorkout = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"Balance", @"Interval", @"High Intensity", @"Weights", nil];
     arrDistance = [NSArray arrayWithObjects:@"0.25", @"2", @"5", @"10", nil];
     
     [self initData];
@@ -60,7 +63,9 @@
     [_clLevel registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellWithReuseIdentifier:identifier];
     [_clTraining registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellWithReuseIdentifier:identifier];
     [_clWorkout registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellWithReuseIdentifier:identifier];
-
+    
+    _workoutTypeCollectionHeight.constant = 35 * arrTraining.count/2 + 10 * arrTraining.count/2;
+    _focusOnCollectionHeight.constant = 35 * arrWorkout.count/2 + 10 * arrWorkout.count/2;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
