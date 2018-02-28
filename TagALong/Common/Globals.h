@@ -18,7 +18,7 @@
 @property(nonatomic, retain) MUser *g_user;
 @property(nonatomic, retain) MExpertUser *g_expert;
 
-@property(nonatomic, retain) NSString *g_token;
+@property(nonatomic, retain) NSString *access_token;
 
 
 @end

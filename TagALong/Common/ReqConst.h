@@ -12,7 +12,8 @@
 /** TenSec 서버 주소**/
 //#define SERVER_URL          @"http://192.168.0.30:11117/api/"
 //#define SERVER_URL          @"http://192.168.0.10:9983/api/"
-#define SERVER_URL          @"http://54.70.143.61/api/"
+#define SERVER_URL            @"http://54.70.143.61/api/"
+#define TEST_SERVER_URL       @"http://18.218.218.141:8080/api/"
 
 /**
  * API REQ KEY

@@ -121,6 +121,7 @@
         Global.g_user.user_gender = [jResult objectForKey:API_RES_KEY_USER_GENDER];
         Global.g_user.user_location = [jResult objectForKey:API_RES_KEY_USER_LOCATION];
         Global.g_user.user_login = @"1";
+        Global.access_token = jResult[@"token"];
         
         [self saveUserInfoToPrefrence:strPwd];
     }  @catch (NSException *e) {

@@ -88,23 +88,22 @@
 -(BOOL)CheckValidForLogin{
     
     if (_tfEmail.text.length == 0) {
-//        [Commons showToast:@"Input email!"];
-        [Commons showOneBtnDlg:@"Input email!" id:self];
-        //[_tfEmail becomeFirstResponder];
+        [self showAlert:@"Input email!"];
         return NO;
     }
     
     if (![Commons checkEmail:_tfEmail.text]) {
-//        [Commons showToast:@"Please enter in email format."];
-        [Commons showOneBtnDlg:@"Please enter in email format." id:self];
-//        [_tfEmail becomeFirstResponder];
+        [self showAlert:@"Please enter in email format"];
         return NO;
     }
     
     if (_tfPassword.text.length == 0) {
-//        [Commons showToast:@"Input password"];
-        [Commons showOneBtnDlg:@"Input password!." id:self];
-//        [_tfPassword becomeFirstResponder];
+        [self showAlert:@"Input password!"];
+        return NO;
+    }
+    
+    if (_tfPassword.text.length < 5) {
+        [self showAlert:@"The password must be at least 5 symbols length"];
         return NO;
     }
     
@@ -145,38 +144,48 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)showAlert:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Network
 -(void)ReqLogin{
+    
     NSString *_email = _tfEmail.text;
     NSString *_pwd   = _tfPassword.text;
     
     latitude = self.locationManager.location.coordinate.latitude;
     longitude = self.locationManager.location.coordinate.longitude;
     
-    //    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
-    
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"login"];
+    //NSString *url = [NSString stringWithFormat:SERVER_URL, @"login"];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LOGIN,
                              API_REQ_KEY_USER_EMAIL         :   _email,
                              API_REQ_KEY_USER_PWD           :   _pwd,
                              API_REQ_KEY_LOGIN_TYPE         :   @"1",
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_TOKEN              :   Global.g_token,
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -187,16 +196,14 @@
             [Commons parseAndSaveUserInfo:responseObject pwd:_pwd];
             [self goStartedPage];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
-//            [_tfPassword becomeFirstResponder];
+            [self showAlert:@"The password is incorrects"];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
-            [Commons showToast:@"User does not exist."];
-//            [_tfEmail becomeFirstResponder];
+            [self showAlert:@"User does not exist"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
-        [Commons showToast:@"Failed to communicate with the server"];
+        [self showAlert:@"Failed to communicate with the server"];
     }];
 }
 

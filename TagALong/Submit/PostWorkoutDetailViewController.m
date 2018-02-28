@@ -323,7 +323,7 @@
 
 - (IBAction)onClickStartTimeConfirm:(id)sender {
     if ([startTime isEqualToString:@""]) {
-        startTime = @"00:00";
+        startTime = @"8:00";
         startTimeindex= 0;
     }
 
@@ -358,10 +358,13 @@
     for (NSInteger i = index; i < 96; i++) {
         NSString *temp = @"";
         if (i >= 48) {
-            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", ((i - 48) * 15) / 60 , ((i - 48) * 15) % 60];
+            NSInteger hours = ((i - 48) * 15) / 60;
+            NSInteger mins = ((i - 48) * 15) % 60;
+            if (hours == 0) hours = 12;
+            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
             [arrStartTime addObject:temp];
         } else {
-            if (i >= 32) {
+            if (i == 20 || i == 24 || i == 28 || i >= 32) {
                 temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
                 [arrStartTime addObject:temp];
             }
@@ -369,6 +372,7 @@
     }
     startindex = 2;
     [_picStartTime reloadAllComponents];
+    [_picStartTime selectRow:3 inComponent:0 animated:YES];
 }
 
 - (IBAction)onClickDuration:(id)sender {
@@ -399,7 +403,7 @@
     [_vwDuration setHidden:YES];
     
     if ([duration isEqualToString:@""]) {
-        duration = @"00:00";
+        duration = @"15 min";
         durationindex= 0;
     }
 

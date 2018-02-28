@@ -169,20 +169,12 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     dateformat.dateStyle = kCFDateFormatterFullStyle;
     dateformat.timeStyle = NSDateFormatterNoStyle;
-//    dateformat.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSString *result = [dateformat stringFromDate:[dateConvertor dateFromString:nsdate]];
     _lblDate.text = result;
     
     [UIView animateWithDuration:0.25 animations:^{
         self.bigArrowIcon.alpha = 1;
     }];
-//    [dateFormat setDateFormat:@"yyyyMMdd"];
-//    NSDate *date = [dateFormat dateFromString:dateStr];
-//    
-//    // Convert date object to desired output format
-//    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-//    dateStr = [dateFormat stringFromDate:date];
-//    [dateFormat release];
 }
 
 #pragma mark - click events
