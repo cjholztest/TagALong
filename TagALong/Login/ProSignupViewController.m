@@ -65,8 +65,23 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
+    
+    [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 -(BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -110,6 +125,19 @@
 //signup result delegate
 -(void)dismiss{
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"THANK YOU" message:@"Due to the qualification and approval process someone from TAG-A-LONG will contact you within next 24 hours" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Great"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - user defined functions
@@ -170,7 +198,7 @@
 }
 
 - (IBAction)onClickback:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onClickSport:(id)sender {
@@ -283,9 +311,10 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
-            vc.delegate = self;
-            [self.navigationController pushViewController:vc animated:YES];
+            [self showSuccessAlert];
+//            SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
+//            vc.delegate = self;
+//            [self.navigationController pushViewController:vc animated:YES];
             
         } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
             [Commons showToast:@"This Phone has been duplicated"];
@@ -319,6 +348,8 @@
         NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
                                                                        options:kNilOptions
                                                                          error:&error];
+        
+        NSLog(@"sdfasdf: %@", responseObject);
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];

@@ -15,6 +15,7 @@
 @interface DAYCalendarView () {
     NSUInteger _visibleYear;
     NSUInteger _visibleMonth;
+    NSUInteger _visibleDay;
     NSUInteger _currentVisibleRow;
     NSArray *_eventsInVisibleMonth;
 }
@@ -88,8 +89,10 @@
     // Set visible viewport to one contains today by default.
     NSDate *todayDate = [NSDate dateWithTimeIntervalSinceNow:0];
     NSDateComponents *comps = [DAYUtils dateComponentsFromDate:todayDate];
+    
     self->_visibleYear = comps.year;
     self->_visibleMonth = comps.month;
+    self->_visibleDay = comps.day;
     
     // Initialize default appearance settings.
     self.weekdayHeaderTextColor = [UIColor whiteColor];
@@ -569,6 +572,15 @@
 }
 
 #pragma mark - Actions
+
+- (void)jumpToDate:(NSDate*)date {
+    if (self.singleRowMode) {
+        NSDateComponents *dateComps = [DAYUtils dateComponentsFromDate:date];
+        if (dateComps.day != _visibleDay) {
+            [self jumpToNextMonth];
+        }
+    }
+}
 
 - (void)jumpToNextMonth {
     if (self.singleRowMode) {

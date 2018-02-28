@@ -61,10 +61,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self setDefaulttitle];
-
+    [self addAlarmBarButton];
     bOtherPage = false;
     nCurPageIdx = PAGE_MENU_MAP;
     nCurButtonIdx = BUTTON_SEARDCH;
+    
+    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+        [self addLogoutButton];
+    }
+
     [_vwPaySuccess setHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -83,13 +88,37 @@
 
 }
 
-//-(BOOL)prefersStatusBarHidden{
-//    return NO;
-//}
+-(void)addLogoutButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickBack:)];
+    self.navigationItem.leftBarButtonItem = editButton;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
+    
+    [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
+
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationController setNavigationBarHidden: NO animated: YES];
+    
+    [self setPage];
+    [self changeBottomButton];
+}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+-(void)successViewTapped {
+    [self.navigationItem.leftBarButtonItem setEnabled:YES];
+    [_vwPaySuccess setHidden:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -97,8 +126,7 @@
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
     
-    [self setPage];
-    [self changeBottomButton];
+
     
 //    if ([Global.g_user.user_login isEqualToString:@"expert"]) {
 //        [self onClickProfile:self];
@@ -119,6 +147,9 @@
 
 //notification
 - (void)PaySuccess {
+    UITapGestureRecognizer *tapReg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(successViewTapped)];
+    [_vwPaySuccess addGestureRecognizer:tapReg];
+    [self.navigationItem.leftBarButtonItem setEnabled:NO];
     [_vwPaySuccess setHidden:NO];
 }
 
@@ -139,8 +170,9 @@
         vcOtherProfile.type = post_type;
             vcOtherProfile.view.frame = CGRectMake(0, 0, _vwContent.bounds.size.width, _vwContent.bounds.size.height);
             vcOtherProfile.vcParent = self;
-            [_vwContent addSubview:vcOtherProfile.view];
-            [self addChildViewController:vcOtherProfile];
+            [self.navigationController pushViewController:vcOtherProfile animated:YES];
+            //[_vwContent addSubview:vcOtherProfile.view];
+            //[self addChildViewController:vcOtherProfile];
 //        } else {
 //            
 //            vcUser1Profile = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"User1ProfileViewController"];
@@ -167,10 +199,10 @@
 
     _lblMap.textColor = [UIColor whiteColor];
     _lblList.textColor = [UIColor whiteColor];
-    
+    [self addAlarmBarButton];
     [_ivMapLine setHidden:YES];
     [_ivListLine setHidden:YES];
-    
+    nCurButtonIdx = BUTTON_SEARDCH;
     if (nCurPageIdx == PAGE_MENU_MAP) {
     
         [_ivMapLine setHidden:NO];
@@ -226,23 +258,23 @@
 }
 
 -(void)changeBottomButton{
-    [_ivProfile setAlpha:1.0];
-    [_ivSearch setAlpha:1.0];
-    [_ivSubmit setAlpha:1.0];
+    [_ivProfile setAlpha:0.5];
+    [_ivSearch setAlpha:0.5];
+    [_ivSubmit setAlpha:0.5];
     
-    [_lblProfile setAlpha:1.0];
-    [_lblSearch setAlpha:1.0];
-    [_lblSubmit setAlpha:1.0];
+    [_lblProfile setAlpha:0.5];
+    [_lblSearch setAlpha:0.5];
+    [_lblSubmit setAlpha:0.5];
     
     if (nCurButtonIdx == BUTTON_PROFILE) {
-        [_ivProfile setAlpha:0.5];
-        [_lblProfile setAlpha:0.5];
+        [_ivProfile setAlpha:1];
+        [_lblProfile setAlpha:1];
     } else if (nCurButtonIdx == BUTTON_SEARDCH) {
-        [_ivSearch setAlpha:0.5];
-        [_lblSearch setAlpha:0.5];
+        [_ivSearch setAlpha:1];
+        [_lblSearch setAlpha:1];
     } else if (nCurButtonIdx == BUTTON_SUBMIT) {
-        [_ivSubmit setAlpha:0.5];
-        [_lblSubmit setAlpha:0.5];
+        [_ivSubmit setAlpha:1];
+        [_lblSubmit setAlpha:1];
     }
 }
 
@@ -296,7 +328,7 @@
     vc.sport_filter = vcList.sport_filter;
     vc.cate_filter = vcList.cate_filter;
     vc.distance_limit = vcList.distance_limit;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -308,14 +340,43 @@
             vcOtherProfile = nil;
             bOtherPage = false;
         } else {
-            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+//            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
     } else {
-        [Commons clearUserInfo];
         
         UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; //NavExpertLogin
-        [self presentViewController:vc animated:NO completion:nil];
+//        [self presentViewController:vc animated:NO completion:nil];
+        
+         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you sure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                                        [Commons clearUserInfo];
+                                        [self.navigationController setNavigationBarHidden:YES animated:NO];
+                                        [UIView transitionFromView:self.view
+                                                            toView:vc.view
+                                                          duration:0.75
+                                                           options:UIViewAnimationOptionTransitionFlipFromBottom
+                                                        completion:^(BOOL finished) {
+                                                            
+                                                            appDelegate.window.rootViewController = vc;
+                                                        }];
+                                    }];
+        
+        UIAlertAction* noButton = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+        
+        [alert addAction:yesButton];
+        [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -372,6 +433,7 @@
     [self removeviewsFromMain];
     [self removeMainPages];
 
+    [self addAlarmBarButton];
     nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
     
@@ -387,8 +449,14 @@
     [self removeviewsFromMain];
     
     WorkoutSelectViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WorkoutSelectViewController"];
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(void)addAlarmBarButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_alarm_normal"] style:UIBarButtonItemStylePlain target:self action: nil];
+    [editButton setEnabled:NO];
+    self.navigationItem.rightBarButtonItem = editButton;
 }
 
 @end

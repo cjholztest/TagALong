@@ -31,6 +31,7 @@
 
 - (void)reloadViewAnimated:(BOOL)animated;   // Invalidate the original view, use it after changing the appearance settings.
 
+- (void)jumpToDate:(NSDate*)date;
 - (void)jumpToNextMonth;
 - (void)jumpToPreviousMonth;
 - (void)jumpToMonth:(NSUInteger)month year:(NSUInteger)year;

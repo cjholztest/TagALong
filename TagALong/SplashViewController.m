@@ -71,15 +71,20 @@
 
 -(void)goLogin{
     UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"]; 
-    [self presentViewController:vc animated:NO completion:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)goHome{
 //    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
 //    [self.navigationController pushViewController:vc animated:YES];
-    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavHome"];
-    [self presentViewController:vc animated:NO completion:nil];
+    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavStart"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
+-(void)goExpertHome{
+
+    UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavHome"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 
@@ -169,7 +174,7 @@
         if (res_code == RESULT_CODE_SUCCESS) {
 
             [Commons parseAndSaveExpertUserInfo:responseObject pwd:pass1];
-            [self goHome];
+            [self goExpertHome];
         } else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
         } else if(res_code == RESULT_ERROR_PASSWORD){

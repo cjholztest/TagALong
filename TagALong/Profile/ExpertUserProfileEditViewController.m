@@ -63,13 +63,19 @@ static const NSInteger kMaxImageCnt = 1;
     [self setLevel];
     _lblArea.text = location;
     _lblPhone.text = phone;
+    self.navigationItem.title = nickname;
     _lblTitle.text = nickname;
     
-    _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.width / 2;
+    //
     [_ivProfile sd_setImageWithURL:[NSURL URLWithString:self.url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
 
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"UserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserProfilePlanTableViewCell"];
 
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.height / 2;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -151,18 +157,18 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - user defined functions
 -(void)setLevel{
-    [_vwGYM setAlpha:1.0];
-    [_vwPRO setAlpha:1.0];
-    [_vwTRAINER setAlpha:1.0];
+    [_vwGYM setAlpha:0.5];
+    [_vwPRO setAlpha:0.5];
+    [_vwTRAINER setAlpha:0.5];
     
     if (nCurSelLevel == LEVEL_GYM) {
-        [_vwGYM setAlpha:0.5];
+        [_vwGYM setAlpha:1];
         _lbLevel.text = @"GYM";
     } else if (nCurSelLevel == LEVEL_PRO) {
-        [_vwPRO setAlpha:0.5];
+        [_vwPRO setAlpha:1];
         _lbLevel.text = @"PRO";
     } else if (nCurSelLevel == LEVEL_TRAINER) {
-        [_vwTRAINER setAlpha:0.5];
+        [_vwTRAINER setAlpha:1];
         _lbLevel.text = @"TRAINER";
     }
 }
@@ -243,7 +249,7 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - click events
 - (IBAction)onClickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (IBAction)onClickconfirm:(id)sender {

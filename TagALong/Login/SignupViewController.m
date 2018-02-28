@@ -41,12 +41,22 @@
 
 }
 
--(BOOL)prefersStatusBarHidden{
-    return YES;
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.blackColor];
+    
+    [self.navigationController.navigationBar setTintColor:UIColor.whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
@@ -126,7 +136,20 @@
 
 //go back
 - (IBAction)onClickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)showSuccessAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"THANK YOU" message:@"You registered successfully" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Great"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                }];
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
@@ -173,8 +196,10 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [Commons showToast:@"Congratulations on your joining."];
-            [self.navigationController popViewControllerAnimated:NO];
+//            [Commons showToast:@"Congratulations on your joining."];
+//            [self.navigationController popViewControllerAnimated:NO];
+            
+            [self showSuccessAlert];
             
         } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
             [Commons showToast:@"This email is in use."];

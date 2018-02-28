@@ -49,6 +49,8 @@
     
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"email@email.com" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];
     _tfEmail.attributedPlaceholder = str;
+    NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];
+    _tfPassword.attributedPlaceholder = pass;
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
@@ -56,9 +58,17 @@
 
 }
 
-//-(BOOL)prefersStatusBarHidden{
-//    return YES;
-//}
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController.navigationBar setTranslucent: YES];
+    [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
+    [self.navigationController.navigationBar setBarTintColor: UIColor.clearColor];
+    [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;

@@ -42,11 +42,6 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark -  UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -153,8 +148,14 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    
+    [self addEditInfoBarButton];
     [self ReqGetExportUserProfile:today];
+}
+
+-(void)addEditInfoBarButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
+    self.vcParent.navigationItem.rightBarButtonItem = editButton;
+    //self.navigationController.navigationItem.rightBarButtonItem = editButton;
 }
 
 -(void)setUserInfo:(NSDictionary*)dicInfo{
@@ -207,7 +208,7 @@
     vc.nickname = nickname;
     vc.arrSchedule = _arrWorkout;
     vc.vcParent = self.vcParent;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Network

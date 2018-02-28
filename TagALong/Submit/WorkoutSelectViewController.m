@@ -29,7 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     nCurPageIdx = PAGE_MENU_TYPE;
-
+    
+    [SharedAppDelegate showLoading];
+    
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [_vwBlueBG setHidden:YES];
     } else {
@@ -59,12 +61,13 @@
 #pragma mark - user defined functions
 //PostWorkoutDetailViewController Delegate
 -(void)dismiss{
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 - (void)setPage {
     
     if (nCurPageIdx == PAGE_MENU_TYPE) {
-        _lblTitle.text = @"Type of Workout";
+        self.navigationItem.title = @"Workout Type";
+        //_lblTitle.text = @"Type of Workout";
         _svContent.contentOffset = CGPointMake(_svContent.frame.size.width * (0), 0);
         if (vcTypeWrokout == nil) {
             vcTypeWrokout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TypeWorkoutViewController"];
@@ -72,10 +75,12 @@
             vcTypeWrokout.view.frame = CGRectMake(0, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
             [_svContent addSubview:vcTypeWrokout.view];
             [self addChildViewController:vcTypeWrokout];
+            [SharedAppDelegate closeLoading];
         }
         
     } else if (nCurPageIdx == PAGE_MENU_AREA) {
-        _lblTitle.text = @"Focus Area of the Workout";
+        //_lblTitle.text = @"Focus Area of the Workout";
+        self.navigationItem.title = @"Workout Focus Area";
         _svContent.contentOffset = CGPointMake(_svContent.frame.size.width * (1), 0);
         if (vcAreaWorkout == nil) {
             vcAreaWorkout = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AreaWorkoutViewController"];
@@ -83,10 +88,9 @@
             vcAreaWorkout.view.frame = CGRectMake(_svContent.bounds.size.width, 0, _svContent.bounds.size.width, _svContent.bounds.size.height);
             [_svContent addSubview:vcAreaWorkout.view];
             [self addChildViewController:vcAreaWorkout];
+            [SharedAppDelegate closeLoading];
         }
-        
     }
-    
 }
 
 #pragma mark - click events
@@ -111,16 +115,13 @@
         vc.sport_uid = vcTypeWrokout.sport_uid;
         [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 - (IBAction)onClickLeft:(id)sender {
-    
-    [self setPage];
     nCurPageIdx = PAGE_MENU_TYPE;
-
+    [self setPage];
 }
 - (IBAction)onClickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 @end

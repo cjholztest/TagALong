@@ -3,7 +3,7 @@
 
 target 'TagALong' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+use_frameworks!
 
   # Pods for TagALong
 
@@ -21,5 +21,5 @@ target 'TagALong' do
   pod 'JElasticPullToRefresh', '~>1.0.3'
   pod 'AFNetworking', '~>3.1.0'
   pod 'SVProgressHUD', '~>2.0.3'
-
+  pod 'FSCalendar'
 end

@@ -337,15 +337,24 @@
     NSDictionary *dic = _arrSportList[btn.tag];
     
     NSString *post_type = [dic objectForKey:API_RES_KEY_POST_TYPE];
-    
+    NSString *title = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
     if ([post_type isEqualToString:@"2"]) {
         NSString *export_uid = [dic objectForKey:API_REQ_KEY_EXPERT_UID];
-        [self.delegate addOtherUserProfile:export_uid type:post_type];
+        [self addOtherUserProfile:export_uid type:post_type title:title];
     } else {
         NSString *usr_uid = [dic objectForKey:API_REQ_KEY_USER_UID];
-        [self.delegate addOtherUserProfile:usr_uid type:post_type];
+        [self addOtherUserProfile:usr_uid type:post_type title:title];
     }
+}
 
+-(void)addOtherUserProfile:(NSString *)_uid type:(NSString *)post_type title:(NSString *)title {
+    
+    vcOtherProfile = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"OtherUserProfileViewController"];
+    vcOtherProfile._id = _uid;
+    vcOtherProfile.type = post_type;
+    vcOtherProfile.title = title;
+    vcOtherProfile.vcParent = self.vcParent;
+    [self.navigationController pushViewController:vcOtherProfile animated:YES];
 }
 
 //fiterview delegate
@@ -374,16 +383,16 @@
 -(void)changeSort:(NSString*)type{
     sort_index = type;
     
-    [_btnDistance setAlpha:1.0];
-    [_btnDuration setAlpha:1.0];
-    [_btnTime setAlpha:1.0];
+    [_btnDistance setAlpha:0.5];
+    [_btnDuration setAlpha:0.5];
+    [_btnTime setAlpha:0.5];
     
     if ([type isEqualToString:@"distance"]) {
-        [_btnDistance setAlpha:0.5];
+        [_btnDistance setAlpha:1];
     } else if ([type isEqualToString:@"duration"]){
-        [_btnDuration setAlpha:0.5];
+        [_btnDuration setAlpha:1];
     } else if ([type isEqualToString:@"start_time"]){
-        [_btnTime setAlpha:0.5];
+        [_btnTime setAlpha:1];
     }
     
     [_tvSportList setContentOffset:CGPointMake(0, 0)];
@@ -425,7 +434,7 @@
     vc.sport_filter = _sport_filter;
     vc.cate_filter = _cate_filter;
     vc.distance_limit = _distance_limit;
-    [self.navigationController pushViewController:vc animated:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 #pragma mark - Network
