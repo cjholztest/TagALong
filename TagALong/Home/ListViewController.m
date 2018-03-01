@@ -88,6 +88,30 @@
     return YES;
 }
 
+-(NSString *)startTime:(NSInteger)startTime {
+    
+    NSString *temp = @"";
+    
+    if (startTime >= 48) {
+        NSInteger hours = ((startTime - 48) * 15) / 60;
+        NSInteger mins = ((startTime - 48) * 15) % 60;
+        if (hours == 0) hours = 12;
+        temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
+        return temp;
+    } else {
+        NSInteger hours = (startTime * 15) / 60;
+        NSInteger mins = (startTime * 15) % 60;
+        if (hours == 0) hours = 12;
+        temp = [NSString stringWithFormat:@"%0ld:%02ld am", hours, mins];
+        return temp;
+//        if (startTime == 20 || startTime == 24 || startTime == 28 || startTime >= 32) {
+//            temp = [NSString stringWithFormat:@"%0ld:%02ld am", (startTime * 15) / 60, (startTime * 15) % 60];
+//            return temp;
+//        }
+    }
+    return @"";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -115,7 +139,7 @@
         SportsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
         NSDictionary *dic = _arrSportList[indexPath.row];
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
         NSString *distance = @"";
         NSInteger startTime = 0;
@@ -136,8 +160,15 @@
             duration = [[dic objectForKey:API_RES_KEY_DURATION] intValue];
         }
 
-        NSString *post_tyoe = [dic objectForKey:API_RES_KEY_POST_TYPE];
-        if ([post_tyoe isEqualToString:@"1"]) {
+        NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+        if ([post_type isEqualToString:@"1"]) {
+            if (![[dic objectForKey:@"title"] isEqual:[NSNull null]]) {
+                NSString *title = [[dic objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"(null)" withString:@""];
+                //NSSet* badWords = [NSSet setWithObjects:@"(null))", nil];
+                first_name = title;
+                //first_name = [dic objectForKey:@"title"];
+            }
+            
             if (![[dic objectForKey:API_RES_KEY_USR_NCK_NM] isEqual:[NSNull null]]) {
                 first_name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
             }
@@ -191,7 +222,7 @@
 
         //profile
 
-        if ([post_tyoe isEqualToString:@"1"]) {
+        if ([post_type isEqualToString:@"1"]) {
             if ([[dic objectForKey:API_RES_KEY_USR_PROFILE] isEqual:[NSNull null]]) {
                 cell.ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
             } else {
@@ -221,7 +252,8 @@
             NSString *temp = [NSString stringWithFormat:@"%ld", duration * 15];
             cell.lblDistance.text = [temp stringByAppendingString:@" Mins"];
         } else if ([sort_index isEqualToString:@"start_time"]){
-            NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
+            NSString *temp = [self startTime:startTime];
+            //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
             cell.lblDistance.text = temp;
         }
 
@@ -437,8 +469,75 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
-#pragma mark - Network
+
 -(void)ReqWorkoutList{
+    
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
+    
+    NSDictionary *params = @{
+                             API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
+                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
+                             API_REQ_KEY_SORT_TYPE          :   sort_index,
+                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
+                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
+                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
+                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_IS_MAP             :   @"0",
+                             API_REQ_KEY_PAGE_NUM           :   [NSString stringWithFormat:@"%ld", (long)nPage],
+                             };
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
+        [SharedAppDelegate closeLoading];
+        
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+            
+            if( nPage == 1 )
+            {
+                [_arrSportList removeAllObjects];
+            }
+            
+            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            count_per_page = [[responseObject objectForKey:API_RES_KEY_COUNT_PER_PAGE] intValue];
+            if (count_per_page > arr.count) {
+                isMore = YES;
+            } else {
+                isMore = NO;
+            }
+            [_arrSportList addObjectsFromArray:arr];
+            
+            [_tvSportList reloadData];
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+            
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+        }  else if(res_code == RESULT_ERROR_PARAMETER){
+            [Commons showToast:@"The request parameters are incorrect."];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
+        [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+#pragma mark - Network
+-(void)ReqOldWorkoutList{
     
     [SharedAppDelegate showLoading];
     

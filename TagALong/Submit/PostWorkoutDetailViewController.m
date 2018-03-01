@@ -28,6 +28,7 @@
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    CLLocation *userLocation;
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
@@ -85,12 +86,9 @@
     
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
-
 
 #pragma mark - UIPickerViewDelegate / DataSource
 
@@ -99,7 +97,7 @@
 //    startTime = [NSString stringWithFormat:@"%02ld:%02ld", (row * 30) / 60, (row * 30) % 60];
     if (nPicType == 1) {
         startTime = arrStartTime[row];
-        startTimeindex = startindex + row ;
+        startTimeindex = startindex + row;
     } else {
         duration = arrDuration[row];
         durationindex = row + 1;
@@ -323,8 +321,9 @@
 
 - (IBAction)onClickStartTimeConfirm:(id)sender {
     if ([startTime isEqualToString:@""]) {
-        startTime = @"8:00";
-        startTimeindex= 0;
+        startTime = @"8:00 am";
+        startTimeindex = startindex + [_picStartTime selectedRowInComponent:0];
+        //startTimeindex= 0;
     }
 
     [_btnStartTime setTitle:startTime forState:UIControlStateNormal];
@@ -342,13 +341,6 @@
     [self downkeyboard];
     nPicType = 1;
     [_vwStartTime setHidden:NO];
-    
-    
-    //현재 시간 얻기
-//    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute  fromDate:[NSDate date]];
-//    
-//    NSInteger hour = [components hour];
-//    NSInteger min = [components minute];
     
     [arrStartTime removeAllObjects];
     
@@ -370,7 +362,7 @@
             }
         }
     }
-    startindex = 2;
+    startindex = index;
     [_picStartTime reloadAllComponents];
     [_picStartTime selectRow:3 inComponent:0 animated:YES];
 }
@@ -386,7 +378,7 @@
     
     [arrDuration removeAllObjects];
     
-    for (NSInteger i = 1; i < (25 - startTimeindex); i++) {
+    for (NSInteger i = 1; i < 13; i++) {
         NSString *temp = @"";
         if ((i * 15) / 60 == 0) {
             temp = [NSString stringWithFormat:@"%0ld min", (i  * 15) % 60];
@@ -468,9 +460,17 @@
         title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
     }
     
-    CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
-    double latitude = code.latitude;
-    double longitude = code.longitude;
+    double latitude;
+    double longitude;
+    
+    if (userLocation != nil) {
+        latitude = userLocation.coordinate.latitude;
+        longitude = userLocation.coordinate.longitude;
+    } else {
+        CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
+        latitude = code.latitude;
+        longitude = code.longitude;
+    }
     
     NSString *sport_uid = self.sport_uid;
     NSString *categories = self.categories;
@@ -557,6 +557,8 @@
                 NSString *address = [NSString stringWithFormat:@"%@ %@\n%@\n",
                                      placemark.subThoroughfare, placemark.thoroughfare, placemark.locality];
                 self.tfLocation.text = address;
+                userLocation = currentLocation;
+                
                 [SharedAppDelegate closeLoading];
 
             } else {

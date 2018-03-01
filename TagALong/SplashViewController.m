@@ -93,7 +93,10 @@
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"OK"
                                 style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction * action) {}];
+                                handler:^(UIAlertAction * action) {
+                                    
+                                    [self goLogin];
+                                }];
     
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
