@@ -121,7 +121,8 @@
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self changeSort:@"distance"];
     } else {
-        [self ReqExportWorkoutList];
+        [self ReqWorkoutList];
+        //[self ReqExportWorkoutList];
     }
 }
 
@@ -266,7 +267,7 @@
         ExportSportsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         NSDictionary *dic = _arrSportList[indexPath.row];
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
         NSInteger startTime = 0;
         NSString *first_name = @"";
@@ -276,8 +277,8 @@
             startTime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
         }
         
-        NSString *post_tyoe = [dic objectForKey:API_RES_KEY_POST_TYPE];
-        if ([post_tyoe isEqualToString:@"1"]) {
+        NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+        if ([post_type isEqualToString:@"1"]) {
             if (![[dic objectForKey:API_RES_KEY_USR_NCK_NM] isEqual:[NSNull null]]) {
                 first_name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
             }
@@ -332,7 +333,8 @@
         cell.ivSport.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         cell.lblName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];   
       
-        NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
+        //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
+         NSString *temp = [self startTime:startTime];
         cell.lblDistance.text = temp;
     
         return cell;
@@ -406,7 +408,8 @@
             nPage = 1;
             [self ReqWorkoutList];
         } else {
-            [self ReqExportWorkoutList];
+            [self ReqWorkoutList];
+            //[self ReqExportWorkoutList];
         }
     }
 }
@@ -439,7 +442,8 @@
         nPage = 1;
         [self ReqWorkoutList];
     } else {
-        [self ReqExportWorkoutList];
+        [self ReqWorkoutList];
+        //[self ReqExportWorkoutList];
     }
     
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.3];
@@ -600,7 +604,7 @@
     }];
 }
 
--(void)ReqExportWorkoutList{
+-(void)ReqOldExportWorkoutList{
     
     [SharedAppDelegate showLoading];
     

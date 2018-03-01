@@ -175,7 +175,8 @@
         }
         [self setMyPosSetting];
     } else {
-        [self ReqExportWorkoutList];
+        [self ReqWorkoutList];
+        //[self ReqExportWorkoutList];
     }
 }
 
@@ -208,11 +209,12 @@
     _lblDate.text = date2;
     searchdate = date;
     
-    if ([Global.g_user.user_login isEqualToString:@"1"]) {
-        [self ReqWorkoutList];
-    } else {
-        [self ReqExportWorkoutList];
-    }
+    [self ReqWorkoutList];
+//    if ([Global.g_user.user_login isEqualToString:@"1"]) {
+//        [self ReqWorkoutList];
+//    } else {
+//        [self ReqExportWorkoutList];
+//    }
 }
 
 #pragma mark - UITapGestureRecognizerDelegate
@@ -588,17 +590,21 @@
 }
 
 #pragma mark - Network
+
 -(void)ReqWorkoutList{
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LIST_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
                              API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
                              API_REQ_KEY_SORT_TYPE          :   @"distance",
@@ -610,12 +616,9 @@
                              API_REQ_KEY_TARGET_DATE        :   searchdate,
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -649,6 +652,68 @@
         [SharedAppDelegate closeLoading];
     }];
 }
+
+//-(void)ReqWorkoutList{
+//
+//    [SharedAppDelegate showLoading];
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//
+//    NSDictionary *params = @{
+//                             API_RES_KEY_TYPE               :   API_TYPE_LIST_WORKOUT,
+//                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
+//                             API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
+//                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
+//                             API_REQ_KEY_SORT_TYPE          :   @"distance",
+//                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
+//                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
+//                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
+//                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+//                             API_REQ_KEY_IS_MAP             :   @"1",
+//                             API_REQ_KEY_TARGET_DATE        :   searchdate,
+//                             };
+//
+//    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+//        NSLog(@"JSON: %@", respObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
+//        [SharedAppDelegate closeLoading];
+//
+//        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+//        if (res_code == RESULT_CODE_SUCCESS) {
+//
+//            if (_arrSportList.count > 0) {
+//                [_arrSportList removeAllObjects];
+//
+//                NSInteger toRemoveCount = _mvMap.annotations.count;
+//                NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
+//                for (id annotation in _mvMap.annotations)
+//                    if (annotation != _mvMap.userLocation)
+//                        [toRemove addObject:annotation];
+//                [_mvMap removeAnnotations:toRemove];
+//                [_mvMap reloadInputViews];
+//            }
+//
+//            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+//            [_arrSportList addObjectsFromArray:arr];
+//
+//            [self OhterPlayPosSet];
+//        }  else if(res_code == RESULT_ERROR_PASSWORD){
+//            [Commons showToast:@"The password is incorrect."];
+//
+//        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+//            [Commons showToast:@"User does not exist."];
+//
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"error: %@", error);
+//        [SharedAppDelegate closeLoading];
+//    }];
+//}
 
 -(void)ReqExportWorkoutList{
     
