@@ -88,41 +88,12 @@
     return YES;
 }
 
--(NSString *)startTime:(NSInteger)startTime {
-    
-    NSString *temp = @"";
-    
-    if (startTime >= 48) {
-        NSInteger hours = ((startTime - 48) * 15) / 60;
-        NSInteger mins = ((startTime - 48) * 15) % 60;
-        if (hours == 0) hours = 12;
-        temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
-        return temp;
-    } else {
-        NSInteger hours = (startTime * 15) / 60;
-        NSInteger mins = (startTime * 15) % 60;
-        if (hours == 0) hours = 12;
-        temp = [NSString stringWithFormat:@"%0ld:%02ld am", hours, mins];
-        return temp;
-//        if (startTime == 20 || startTime == 24 || startTime == 28 || startTime >= 32) {
-//            temp = [NSString stringWithFormat:@"%0ld:%02ld am", (startTime * 15) / 60, (startTime * 15) % 60];
-//            return temp;
-//        }
-    }
-    return @"";
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self changeSort:@"distance"];
     } else {
-        [self ReqWorkoutList];
-        //[self ReqExportWorkoutList];
+        //[self ReqWorkoutList];
+        [self ReqExportWorkoutList];
     }
 }
 
@@ -143,8 +114,8 @@
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
         NSString *distance = @"";
-        NSInteger startTime = 0;
-        NSInteger duration = 0;
+        NSString *startTime = @"";
+        NSString *duration = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";
 
@@ -153,12 +124,12 @@
         }
 
         if (![[dic objectForKey:API_RES_KEY_START_TIME] isEqual:[NSNull null]]) {
-            startTime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
+            startTime = [dic objectForKey:API_RES_KEY_START_TIME];
         }
 
 
         if (![[dic objectForKey:API_RES_KEY_DURATION] isEqual:[NSNull null]]) {
-            duration = [[dic objectForKey:API_RES_KEY_DURATION] intValue];
+            duration = [dic objectForKey:API_RES_KEY_DURATION];
         }
 
         NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
@@ -250,12 +221,13 @@
             }
             
         } else if ([sort_index isEqualToString:@"duration"]){
-            NSString *temp = [NSString stringWithFormat:@"%ld", duration * 15];
-            cell.lblDistance.text = [temp stringByAppendingString:@" Mins"];
+//            NSString *temp = [NSString stringWithFormat:@"%ld", duration * 15];
+//            cell.lblDistance.text = [temp stringByAppendingString:@" Mins"];
+            cell.lblDistance.text = duration;
         } else if ([sort_index isEqualToString:@"start_time"]){
-            NSString *temp = [self startTime:startTime];
+            //NSString *temp = [self startTime:startTime];
             //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
-            cell.lblDistance.text = temp;
+            cell.lblDistance.text = startTime;
         }
 
         [cell.bnProfile addTarget:self action:@selector(onClickUserProfile:) forControlEvents:UIControlEventTouchUpInside];
@@ -269,12 +241,12 @@
         NSDictionary *dic = _arrSportList[indexPath.row];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
-        NSInteger startTime = 0;
+        NSString* startTime = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";
         
         if (![[dic objectForKey:API_RES_KEY_START_TIME] isEqual:[NSNull null]]) {
-            startTime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
+            startTime = [dic objectForKey:API_RES_KEY_START_TIME];
         }
         
         NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
@@ -334,8 +306,8 @@
         cell.lblName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];   
       
         //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
-         NSString *temp = [self startTime:startTime];
-        cell.lblDistance.text = temp;
+         //NSString *temp = [self startTime:startTime];
+        cell.lblDistance.text = startTime;
     
         return cell;
     }
@@ -370,13 +342,22 @@
 //    }
     NSDictionary *dic = _arrSportList[btn.tag];
     
-    NSString *post_type = [dic objectForKey:API_RES_KEY_POST_TYPE];
-    NSString *title = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+    NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+    
     if ([post_type isEqualToString:@"2"]) {
         NSString *export_uid = [dic objectForKey:API_REQ_KEY_EXPERT_UID];
+        NSString *name = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+        NSString *lastname = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", name, lastname];
+         //NSString *title = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+        
         [self addOtherUserProfile:export_uid type:post_type title:title];
     } else {
         NSString *usr_uid = [dic objectForKey:API_REQ_KEY_USER_UID];
+        NSString *name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
+        NSString *lastname = [dic objectForKey:API_RES_KEY_USER_LAST_NAME];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", name, lastname];
+       
         [self addOtherUserProfile:usr_uid type:post_type title:title];
     }
 }
@@ -408,8 +389,8 @@
             nPage = 1;
             [self ReqWorkoutList];
         } else {
-            [self ReqWorkoutList];
-            //[self ReqExportWorkoutList];
+            //[self ReqWorkoutList];
+            [self ReqExportWorkoutList];
         }
     }
 }
@@ -442,8 +423,8 @@
         nPage = 1;
         [self ReqWorkoutList];
     } else {
-        [self ReqWorkoutList];
-        //[self ReqExportWorkoutList];
+        //[self ReqWorkoutList];
+        [self ReqExportWorkoutList];
     }
     
     [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil afterDelay:0.3];
@@ -541,88 +522,27 @@
 }
 
 #pragma mark - Network
--(void)ReqOldWorkoutList{
-    
-    [SharedAppDelegate showLoading];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LIST_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
-                             API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
-                             API_REQ_KEY_SORT_TYPE          :   sort_index,
-                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
-                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
-                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
-                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
-                             API_REQ_KEY_IS_MAP             :   @"0",
-                             API_REQ_KEY_PAGE_NUM           :   [NSString stringWithFormat:@"%ld", (long)nPage],
-                             };
-    
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
-        [SharedAppDelegate closeLoading];
-        
-        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
-        if (res_code == RESULT_CODE_SUCCESS) {
-            
-            if( nPage == 1 )
-            {
-                [_arrSportList removeAllObjects];
-            }
-            
-            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
-            count_per_page = [[responseObject objectForKey:API_RES_KEY_COUNT_PER_PAGE] intValue];
-            if (count_per_page > arr.count) {
-                isMore = YES;
-            } else {
-                isMore = NO;
-            }
-            [_arrSportList addObjectsFromArray:arr];
-            
-            [_tvSportList reloadData];
-        }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
-            
-        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
-            [Commons showToast:@"User does not exist."];
-        }  else if(res_code == RESULT_ERROR_PARAMETER){
-            [Commons showToast:@"The request parameters are incorrect."];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error: %@", error);
-        [SharedAppDelegate closeLoading];
-        [Commons showToast:@"Failed to communicate with the server"];
-    }];
-}
 
--(void)ReqOldExportWorkoutList{
+
+-(void)ReqExportWorkoutList{
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPORT_LIST_WORKOUT];
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPORT_LIST_WORKOUT,
-                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
+                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid]
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];

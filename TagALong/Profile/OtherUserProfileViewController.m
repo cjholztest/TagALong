@@ -181,38 +181,37 @@
 }
 
 #pragma mark - Network
+
 -(void)ReqExportWorkoutList:(NSString*)date{
     
     NSString *_uid = self._id;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url;
     
     NSDictionary *params = [[NSDictionary alloc] init];
     if ([self.type isEqualToString:@"1"]) {
-        params = @{
-                                 API_RES_KEY_TYPE               :   API_TYPE_USER_OTHER_GET_PROFILE,
-                                 API_REQ_KEY_USER_UID           :   _uid,
-                                 API_REQ_KEY_TARGET_DATE        :   date,
-                                 };
+        url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_OTHER_GET_PROFILE];
+        params = @{ API_REQ_KEY_USER_UID: _uid,
+                    API_REQ_KEY_TARGET_DATE: date };
         
     } else {
-        params = @{
-                                 API_RES_KEY_TYPE               :   API_TYPE_EXPERT_GET_PROFILE,
-                                 API_REQ_KEY_EXPERT_UID         :   _uid,
-                                 API_REQ_KEY_TARGET_DATE        :   date,
-                                 };
+        url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPERT_GET_PROFILE];
+        params = @{ API_REQ_KEY_EXPERT_UID: _uid,
+                    API_REQ_KEY_TARGET_DATE: date };
     }
-    
-    
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -250,6 +249,77 @@
         [Commons showToast:@"Failed to communicate with the server"];
     }];
 }
+
+
+//-(void)ReqExportWorkoutList:(NSString*)date{
+//
+//    NSString *_uid = self._id;
+//    [SharedAppDelegate showLoading];
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//
+//    NSDictionary *params = [[NSDictionary alloc] init];
+//    if ([self.type isEqualToString:@"1"]) {
+//        params = @{
+//                                 API_RES_KEY_TYPE               :   API_TYPE_USER_OTHER_GET_PROFILE,
+//                                 API_REQ_KEY_USER_UID           :   _uid,
+//                                 API_REQ_KEY_TARGET_DATE        :   date,
+//                                 };
+//
+//    } else {
+//        params = @{
+//                                 API_RES_KEY_TYPE               :   API_TYPE_EXPERT_GET_PROFILE,
+//                                 API_REQ_KEY_EXPERT_UID         :   _uid,
+//                                 API_REQ_KEY_TARGET_DATE        :   date,
+//                                 };
+//    }
+//
+//
+//    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+//        NSLog(@"JSON: %@", respObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
+//        [SharedAppDelegate closeLoading];
+//
+//        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+//        if (res_code == RESULT_CODE_SUCCESS) {
+//
+//            if ([self.type isEqualToString:@"1"]) {
+//                [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
+//            } else {
+//                [self setExportUserInfo:[responseObject objectForKey:API_RES_KEY_EXPORT_INFO]];
+//            }
+//
+//            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+//            if (arr.count > 0) {
+//                [_vwNoData setHidden:YES];
+//                [_arrWorkout removeAllObjects];
+//            } else {
+//                [_vwNoData setHidden:NO];
+//            }
+//            [_arrWorkout addObjectsFromArray:arr];
+//
+//            [_tvSchedule reloadData];
+//            [_tvSchedule setContentOffset:CGPointZero animated:YES];
+//
+//        }  else if(res_code == RESULT_ERROR_PASSWORD){
+//            [Commons showToast:@"The password is incorrect."];
+//
+//        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+//            [Commons showToast:@"User does not exist."];
+//        }  else if(res_code == RESULT_ERROR_PARAMETER){
+//            [Commons showToast:@"The request parameters are incorrect."];
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"error: %@", error);
+//        [SharedAppDelegate closeLoading];
+//        [Commons showToast:@"Failed to communicate with the server"];
+//    }];
+//}
 
 - (IBAction)previousClicked:(id)sender {
     

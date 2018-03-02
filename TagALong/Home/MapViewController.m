@@ -271,7 +271,7 @@
         pinView.canShowCallout = NO;
 //        pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];    //as suggested by Squatch
         
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         if ( [level isEqual:[NSNull null]] )  { //individual
             pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"1"]) { //gym
@@ -370,7 +370,7 @@
         int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
         ptAnno.title = [NSString stringWithFormat:@"%ld", i ];
         
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         if ( [level isEqual:[NSNull null]] )  { //individual
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportImg[sport_uid - 1]]];
         } else if ([level isEqualToString:@"1"]) { //gym

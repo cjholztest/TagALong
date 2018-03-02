@@ -460,6 +460,8 @@
         title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
     }
     
+    content = _tvContent.text;
+    
     double latitude;
     double longitude;
     
@@ -472,38 +474,52 @@
         longitude = code.longitude;
     }
     
+    NSNumber *price = [NSNumber numberWithInteger:0];
+    if (amount != nil && ![amount  isEqual: @""]) {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        price = [formatter numberFromString:amount];
+    } else {
+        price = [NSNumber numberWithInteger:0];
+    }
+    
     NSString *sport_uid = self.sport_uid;
     NSString *categories = self.categories;
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_REGISTER_WORKOUT];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_REGISTER_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   _uid,
                              API_REQ_KEY_LOGIN_TYPE         :   Global.g_user.user_login,
                              API_REQ_KEY_SPORT_UID          :   sport_uid,
                              API_REQ_KEY_CATEGORIES         :   categories,
                              API_REQ_KEY_TITLE              :   title,
                              API_REQ_KEY_WORKOUT_DATE       :   date,
-                             API_REQ_KEY_START_TIME         :   [NSString stringWithFormat:@"%ld", (long)startTimeindex],
-                             API_REQ_KEY_DURATION           :   [NSString stringWithFormat:@"%ld", (long)durationindex],
-                             API_REQ_KEY_AMOUNT             :   amount,
+                             API_REQ_KEY_START_TIME         :   startTime,
+                             API_REQ_KEY_DURATION           :   duration,
+                             //API_REQ_KEY_START_TIME         :   [NSString stringWithFormat:@"%ld", (long)startTimeindex],
+                             //API_REQ_KEY_DURATION           :   [NSString stringWithFormat:@"%ld", (long)durationindex],
+                             API_REQ_KEY_AMOUNT             :   price,
                              API_REQ_KEY_ADDITION           :   content,
                              API_REQ_KEY_USER_LOCATION      :   location,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
                              API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
