@@ -254,42 +254,31 @@
             
             for (int i = 0; i < arrData.count; i++) {
                 NSDictionary *dic = arrData[i];
-                NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
-                NSInteger duration = [[dic objectForKey:API_REQ_KEY_DURATION] intValue];
+                NSString *startTime = [dic objectForKey:API_REQ_KEY_START_TIME];
+                //NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
+                NSString *duration = [dic objectForKey:API_REQ_KEY_DURATION];
                 
-                for (int k = 0; k < duration; k++) {
-                    //NSMutableDictionary *dic_workout = [_arrWorkout[starttime + k] mutableCopy];
-                    NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
-                    
-                    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-                    NSString *star_mark = [dic objectForKey:API_RES_KEY_STAR_MARK];
-                    NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
-                    NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
-                    
-                    [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
-                    //                    [dic_workout setObject:star_mark forKey:API_RES_KEY_START_TIME];
-                    if (k == 0) {
-                        [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"1" forKey:@"star_mark"];
-                        [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
-                    } else {
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"0" forKey:@"star_mark"];
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_TITLE];
-                    }
-                    
-                    if ((starttime * 15) / 60 > 12) {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld pm", ((starttime + k) * 15 ) / 60 - 12, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    } else {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld am", ((starttime + k) * 15 ) / 60, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    }
-                    
-                    [dic_workout setObject:@"1" forKey:@"workout"];
-                    
-                    //                    [_arrWorkout removeObjectAtIndex:starttime + k];
-                    //                    [_arrWorkout insertObject:dic_workout atIndex:starttime + k];
-                    [_arrWorkout addObject:dic_workout];
-                }
+                NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
+                
+                NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+                //NSString *star_mark = [[dic objectForKey:API_RES_KEY_STAR_MARK] stringValue];
+                NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+                NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+                
+                [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
+                
+                //[dic_workout setObject:@"1" forKey:API_RES_KEY_START_TIME];
+                
+                [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
+                [dic_workout setObject:@"1" forKey:@"star_mark"];
+                [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
+                [dic_workout setObject:startTime forKey:API_RES_KEY_START_TIME];
+                [dic_workout setObject:duration forKey:API_REQ_KEY_DURATION];
+                
+                [dic_workout setObject:@"1" forKey:@"workout"];
+                
+                [_arrWorkout addObject:dic_workout];
+                
             }
             
             if (arrData.count > 0) {

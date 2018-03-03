@@ -72,14 +72,10 @@
     OtherUserProfilePlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSDictionary *dic = _arrWorkout[indexPath.row];
-    NSInteger starttime = 0;
     
-    starttime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
-    if ((starttime * 15) / 60 > 12) {
-        cell.lblTime.text = [NSString stringWithFormat:@"%02ld:%02ld pm", (starttime * 15) / 60 - 12 , (starttime * 15) % 60];
-    } else {
-        cell.lblTime.text = [NSString stringWithFormat:@"%02ld:%02ld am", (starttime * 15) / 60 , (starttime * 15) % 60];
-    }
+    NSString *starttime = [dic objectForKey:API_RES_KEY_START_TIME];
+    
+    cell.lblTime.text = starttime;
     
     cell.lblTitle.text = [dic objectForKey:API_RES_KEY_TITLE];
     [cell.btnBookNow addTarget:self action:@selector(onClickBookNow:) forControlEvents:UIControlEventTouchUpInside];
@@ -220,7 +216,7 @@
             if ([self.type isEqualToString:@"1"]) {
                 [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
             } else {
-                [self setExportUserInfo:[responseObject objectForKey:API_RES_KEY_EXPORT_INFO]];
+                [self setExportUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
             }
             
             NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];

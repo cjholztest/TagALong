@@ -173,10 +173,12 @@
             [Preference setString:PREFCONST_LONGTITUDE value:Global.g_user.user_longitude];
 
         }
-        [self setMyPosSetting];
+        if (@available(iOS 11.0, *)) {
+            [self setMyPosSetting];
+        }
     } else {
-        [self ReqWorkoutList];
-        //[self ReqExportWorkoutList];
+        //[self ReqWorkoutList];
+        [self ReqExportWorkoutList];
     }
 }
 
@@ -186,12 +188,13 @@
     MKPointAnnotation *ptAnno = [[MKPointAnnotation alloc] init];
     ptAnno.coordinate = tapPoint;
     ptAnno.title = @"-1";
-
+    
     UIImage *img = [UIImage imageNamed:@"ic_me.png"];
+    
     [[_mvMap viewForAnnotation:ptAnno] setImage:img];
-    
+    [_mvMap viewForAnnotation:ptAnno].userInteractionEnabled = NO;
+    [_mvMap viewForAnnotation:ptAnno].enabled = NO;
     [_mvMap addAnnotation:ptAnno];
-    
 }
 
 //fiterview delegate
@@ -209,12 +212,12 @@
     _lblDate.text = date2;
     searchdate = date;
     
-    [self ReqWorkoutList];
-//    if ([Global.g_user.user_login isEqualToString:@"1"]) {
-//        [self ReqWorkoutList];
-//    } else {
-//        [self ReqExportWorkoutList];
-//    }
+    //[self ReqWorkoutList];
+    if ([Global.g_user.user_login isEqualToString:@"1"]) {
+        [self ReqWorkoutList];
+    } else {
+        [self ReqExportWorkoutList];
+    }
 }
 
 #pragma mark - UITapGestureRecognizerDelegate
@@ -252,8 +255,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 
     MKAnnotationView *pinView = nil;
-    if(annotation != mapView.userLocation)
-    {
+    if(annotation != mapView.userLocation) {
         static NSString *defaultPinID = @"com.invasivecode.pin";
         pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
         if ( pinView == nil )
@@ -261,7 +263,7 @@
                        initWithAnnotation:annotation reuseIdentifier:defaultPinID];
 
         
-        int index = [annotation.title intValue];
+        int index = [[annotation title] intValue];
         if (index < 0){
             pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
             return pinView;
@@ -285,29 +287,33 @@
         pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
     } else {
-//        static NSString *defaultPinID = @"com.invasivecode1.pin";
-//        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-//        if ( pinView == nil )
-//            pinView = [[MKAnnotationView alloc]
-//                       initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-//        
-//        pinView.canShowCallout = YES;
-//        pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
-
+        if (@available(iOS 11.0, *)) {} else {
+            if ([Global.g_user.user_login isEqualToString:@"1"]) {
+                static NSString *defaultPinID = @"com.invasivecode1.pin";
+                pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+                if ( pinView == nil )
+                    pinView = [[MKAnnotationView alloc]
+                               initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+                
+                pinView.canShowCallout = YES;
+                pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
+                pinView.enabled = NO;
+                pinView.userInteractionEnabled = NO;
+            }
+        }
     }
     return pinView;
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
      [mapView deselectAnnotation:view.annotation animated:YES];
     
-    if([view.annotation isKindOfClass:[MKUserLocation class]] )
-    {
+    if([view.annotation isKindOfClass:[MKUserLocation class]]) {
         NSString *address_uid = [Preference getString:PREFCONST_ADDRESS_UID default:nil];
         if ([Global.g_user.user_login isEqualToString:@"1"] ) {
 
             double lat = view.annotation.coordinate.latitude;
             double lng = view.annotation.coordinate.longitude;
-            
+
             //현재 얻은 위치와 유저위치가 같으면 리턴
             double curlat = [Global.g_user.user_latitude doubleValue];
             double curlng = [Global.g_user.user_longitude doubleValue];
@@ -315,21 +321,27 @@
             if ([address_uid isEqualToString:@""]) {
                 [self UpdateMePoss:lat longtigude:lng];
             } else {
-                
+
                 if ( fabs(lat - curlat) < 0.00000001 && fabs(lng - curlng) < 0.00000001) {
-                    
+
                 } else {
                     [self showChangeDig:lat longtigude:lng];
                 }
-            
+
             }
         }
         return;
     }
     
     int index = view.annotation.title.intValue;
-    if (index < 0)
-        return;
+    if (index < 0) {
+        if (@available(iOS 11.0, *)) {
+            index = view.clusterAnnotationView.annotation.title.intValue;
+        } else {
+            return;
+        }
+    }
+        //return;
     
     NSDictionary *dic = _arrSportList[index];
 //    if ([Global.g_user.user_login isEqualToString:@"1"]) {
@@ -387,7 +399,7 @@
 }
 
 -(void)showPlayerInfo:(NSDictionary *)dic{
-    NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
+    NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
     NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
     NSString *title = @"";
     NSString *first_name = @"";
@@ -403,7 +415,7 @@
         title = [dic objectForKey:API_RES_KEY_TITLE];
     }
     
-    post_type = [dic objectForKey:API_RES_KEY_POST_TYPE];
+    post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
     if ([post_type isEqualToString:@"1"]) {
         if (![[dic objectForKey:API_RES_KEY_USR_NCK_NM] isEqual:[NSNull null]]) {
             first_name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
@@ -523,7 +535,9 @@
     [_mvMap reloadInputViews];
     
     //add
-    [self setMyPosSetting];
+    if (@available(iOS 11.0, *)) {
+        [self setMyPosSetting];
+    }
     [self OhterPlayPosSet];
 
 }
@@ -720,21 +734,22 @@
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPORT_LIST_WORKOUT];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPORT_LIST_WORKOUT,
                              API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
                              API_REQ_KEY_TARGET_DATE        :   searchdate,
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -821,7 +836,9 @@
             [_mvMap reloadInputViews];
 
             //add
-            [self setMyPosSetting];
+            if (@available(iOS 11.0, *)) {
+                [self setMyPosSetting];
+            }
             [self OhterPlayPosSet];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
