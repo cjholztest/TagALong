@@ -16,6 +16,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BookWorkoutViewController.h"
 #import "FSCalendar.h"
+#import <Photos/Photos.h>
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>{
     NSString *file_url;
@@ -285,8 +286,7 @@ static const NSInteger kMaxImageCnt = 1;
          //         }
          
          
-         if( buttonIndex == 0 )
-         {
+         if( buttonIndex == 0 ) {
              UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
              imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
              imagePickerController.delegate = self;
@@ -303,52 +303,13 @@ static const NSInteger kMaxImageCnt = 1;
                  [self presentViewController:imagePickerController animated:YES completion:nil];
              }
          }
-         else if( buttonIndex == 1 )
-         {
-             self.imagePicker = [[BSImagePickerController alloc] init];
-             self.imagePicker.maximumNumberOfImages = kMaxImageCnt - self.arM_Photo.count;
-             
-             [self presentImagePickerController:self.imagePicker
-                                       animated:YES
-                                     completion:nil
-                                         toggle:^(ALAsset *asset, BOOL select) {
-                                             if(select)
-                                             {
-                                                 NSLog(@"Image selected");
-                                             }
-                                             else
-                                             {
-                                                 NSLog(@"Image deselected");
-                                             }
-                                         }
-                                         cancel:^(NSArray *assets) {
-                                             NSLog(@"User canceled...!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                         }
-                                         finish:^(NSArray *assets) {
-                                             NSLog(@"User finished :)!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                             
-                                             //                                             NSMutableArray *arrData = [NSMutableArray array];
-                                             for( NSInteger i = 0; i < assets.count; i++ )
-                                             {
-                                                 ALAsset *asset = assets[i];
-                                                 
-                                                 ALAssetRepresentation *rep = [asset defaultRepresentation];
-                                                 CGImageRef iref = [rep fullScreenImage];
-                                                 if (iref)
-                                                 {
-                                                     UIImage *image = [UIImage imageWithCGImage:iref];
-                                                     UIImage *compressimage = [self compressForUpload:image scale:0.5];
-                                                     imgData = UIImageJPEGRepresentation(image, 0.5);
-                                                     [self.arM_Photo addObject:imgData];
-                                                     
-//                                                     _ivProfile.image = [UIImage imageWithData:imageData];
-                                                     [self uploadImage:image scale:0.5];
-                                                 }
-                                             }
-                                             
-                                         }];
+         else if( buttonIndex == 1 ) {
+             UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+             imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+             imagePickerController.delegate = self;
+             imagePickerController.allowsEditing = YES;
+             imagePickerController.mediaTypes =  [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+             [self presentViewController:imagePickerController animated:YES completion:nil];
          }
      }];
 
@@ -358,8 +319,7 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *mediaType = [info valueForKey:UIImagePickerControllerMediaType];
-    if([mediaType isEqualToString:@"public.movie"])
-    {
+    if([mediaType isEqualToString:@"public.movie"]) {
         self.videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
         
         AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.videoUrl options:nil];
@@ -387,7 +347,7 @@ static const NSInteger kMaxImageCnt = 1;
         UIImage* outputImage = [info objectForKey:UIImagePickerControllerEditedImage] ? [info objectForKey:UIImagePickerControllerEditedImage] : [info objectForKey:UIImagePickerControllerOriginalImage];
         
         //UIImage *resizeImage = [Util imageWithImage:outputImage convertToWidth:self.ivImage.frame.size.width];
-        UIImage *compressimage = [self compressForUpload:outputImage scale:0.5];
+        //UIImage *compressimage = [self compressForUpload:outputImage scale:0.5];
         imgData = UIImageJPEGRepresentation(outputImage, 0.5);
         
 //        _ivProfile.image = [UIImage imageWithData:imageData];

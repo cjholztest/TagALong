@@ -25,8 +25,8 @@
     User1ProfileViewController *vcUser1Profile;
     ExpertUserProfileViewController *vcExpertUserProfile;
     OtherUserProfileViewController *vcOtherProfile;
-    NSInteger nCurPageIdx;
-    NSUInteger nCurButtonIdx;
+    //NSInteger nCurPageIdx;
+
     BOOL bOtherPage;  //OtherProfilePage가 열렸는지 판정하는 변수
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
@@ -63,8 +63,8 @@
     [self setDefaulttitle];
     [self addAlarmBarButton];
     bOtherPage = false;
-    nCurPageIdx = PAGE_MENU_MAP;
-    nCurButtonIdx = BUTTON_SEARDCH;
+    _nCurPageIdx = PAGE_MENU_MAP;
+    _nCurButtonIdx = BUTTON_SEARDCH;
     
     if ([Global.g_user.user_login isEqualToString:@"2"]) {
         [self addLogoutButton];
@@ -202,8 +202,8 @@
     [self addAlarmBarButton];
     [_ivMapLine setHidden:YES];
     [_ivListLine setHidden:YES];
-    nCurButtonIdx = BUTTON_SEARDCH;
-    if (nCurPageIdx == PAGE_MENU_MAP) {
+    //_nCurButtonIdx = BUTTON_SEARDCH;
+    if (_nCurPageIdx == PAGE_MENU_MAP) {
     
         [_ivMapLine setHidden:NO];
         _lblMap.textColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
@@ -216,7 +216,7 @@
             [self addChildViewController:vcMap];
         }
         
-    } else if (nCurPageIdx == PAGE_MENU_LIST) {
+    } else if (_nCurPageIdx == PAGE_MENU_LIST) {
 
         [_ivListLine setHidden:NO];
         _lblList.textColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
@@ -266,13 +266,13 @@
     [_lblSearch setAlpha:0.5];
     [_lblSubmit setAlpha:0.5];
     
-    if (nCurButtonIdx == BUTTON_PROFILE) {
+    if (_nCurButtonIdx == BUTTON_PROFILE) {
         [_ivProfile setAlpha:1];
         [_lblProfile setAlpha:1];
-    } else if (nCurButtonIdx == BUTTON_SEARDCH) {
+    } else if (_nCurButtonIdx == BUTTON_SEARDCH) {
         [_ivSearch setAlpha:1];
         [_lblSearch setAlpha:1];
-    } else if (nCurButtonIdx == BUTTON_SUBMIT) {
+    } else if (_nCurButtonIdx == BUTTON_SUBMIT) {
         [_ivSubmit setAlpha:1];
         [_lblSubmit setAlpha:1];
     }
@@ -384,12 +384,12 @@
 
 - (IBAction)onClickMap:(id)sender {
     [self removeMainPages];
-    nCurPageIdx = PAGE_MENU_MAP;
+    _nCurPageIdx = PAGE_MENU_MAP;
     [self setPage];
 }
 - (IBAction)onClickList:(id)sender {
     [self removeMainPages];
-    nCurPageIdx = PAGE_MENU_LIST;
+    _nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
  
 }
@@ -397,18 +397,12 @@
 //bottom
 - (IBAction)onClickProfile:(id)sender {
     bOtherPage = false;
-    nCurButtonIdx = BUTTON_PROFILE;
+    _nCurButtonIdx = BUTTON_PROFILE;
     [self changeBottomButton];
-    
+    self.navigationItem.title = @"Profile";
     [self removeviewsFromMain];
     
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
-//        if (vcUserProfile == nil) {
-//            vcUserProfile = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
-//    
-//            vcUserProfile.view.frame = CGRectMake(0, 0, _vwContent.bounds.size.width, _vwContent.bounds.size.height);
-//            [_vwContent addSubview:vcUserProfile.view];
-//            [self addChildViewController:vcUserProfile];
         if (vcUser1Profile == nil) {
             vcUser1Profile = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"User1ProfileViewController"];
             vcUser1Profile.user_id = [NSString stringWithFormat:@"%d", Global.g_user.user_uid];
@@ -433,11 +427,12 @@
     [self removeviewsFromMain];
     [self removeMainPages];
 
+    self.navigationItem.title = @"Explore Workouts";
     [self addAlarmBarButton];
-    nCurPageIdx = PAGE_MENU_LIST;
+    _nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
     
-    nCurButtonIdx = BUTTON_SEARDCH;
+    _nCurButtonIdx = BUTTON_SEARDCH;
     [self changeBottomButton];
     
     [self setDefaulttitle];

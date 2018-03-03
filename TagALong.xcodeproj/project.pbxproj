@@ -1538,7 +1538,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyad.tagalong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a93cd768-16c2-4ce9-b193-22b5c4ca5f91";
+				PROVISIONING_PROFILE = "330b1b99-f0fd-4316-812d-a77fa7085887";
 				PROVISIONING_PROFILE_SPECIFIER = taganlong_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

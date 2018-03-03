@@ -269,7 +269,8 @@
             return pinView;
         }
         NSDictionary *dic = _arrSportList[index];
-        int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
         pinView.canShowCallout = NO;
 //        pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];    //as suggested by Squatch
         
@@ -379,7 +380,9 @@
         CLLocationCoordinate2D tapPoint = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
         MKPointAnnotation *ptAnno = [[MKPointAnnotation alloc] init];
         ptAnno.coordinate = tapPoint;
-        int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
+        //int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
         ptAnno.title = [NSString stringWithFormat:@"%ld", i ];
         
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
@@ -400,7 +403,7 @@
 
 -(void)showPlayerInfo:(NSDictionary *)dic{
     NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
-    NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+    //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
     NSString *title = @"";
     NSString *first_name = @"";
     NSString *last_name = @"";
@@ -408,6 +411,9 @@
     NSString *amount = @"";
     NSString *location = @"";
     NSString *post_type = @"";
+    
+    NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+    int sport_uid = [sports.firstObject intValue];
     
     workout_uid = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
     

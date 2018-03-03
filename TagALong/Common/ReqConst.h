@@ -84,7 +84,7 @@
 #define API_RES_KEY_EXPERT_COMMUNICATION        @"communication"
 #define API_RES_KEY_EXPERT_CONTENT              @"content"
 #define API_RES_KEY_SPORT_LIST                  @"sport_list"
-#define API_RES_KEY_SPORT_UID                   @"sport_uid"
+#define API_RES_KEY_SPORT_UID                   @"sport_uids"
 #define API_RES_KEY_SPORT_NAME                  @"sport_name"
 #define API_RES_KEY_ADDRESS_LIST                @"address_list"
 #define API_RES_KEY_TITLE                       @"title"

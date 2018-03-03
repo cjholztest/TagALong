@@ -112,7 +112,9 @@
 
         NSDictionary *dic = _arrSportList[indexPath.row];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
-        NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
         NSString *distance = @"";
         NSString *startTime = @"";
         NSString *duration = @"";
@@ -240,7 +242,9 @@
         
         NSDictionary *dic = _arrSportList[indexPath.row];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
-        NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
         NSString* startTime = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";

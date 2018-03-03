@@ -37,6 +37,12 @@
     [self initUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self addEditInfoBarButton];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -148,7 +154,7 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    [self addEditInfoBarButton];
+   
     
     [self ReqGetExportUserProfile:today];
 }
@@ -173,7 +179,7 @@
     
     phone = [dicInfo objectForKey:API_RES_KEY_EXPpRT_PHONE];
     location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
-    level = [dicInfo objectForKey:API_RES_KEY_LEVEL];
+    level = [[dicInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
@@ -242,7 +248,7 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_EXPORT_INFO]];
+            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
             
             NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
             

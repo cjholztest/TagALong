@@ -39,8 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
-    arrCateNM = [NSArray arrayWithObjects: @"Cardio", @"Flexibility", @"Strength", @"High intensity", @"Balance", @"Weights", @"Interval/Circuit", @"Conditioning", nil];
+    arrSportNM = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    arrCateNM = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
 
     _ivProfile.layer.cornerRadius = _ivProfile.frame.size.width / 2;
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
@@ -127,7 +127,9 @@
     //workout info
     _lblTitle.text = [workInfo objectForKey:API_RES_KEY_TITLE];
     
-    NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+    //NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+    NSArray *sports = [[NSArray alloc] initWithObjects:[workInfo objectForKey:API_RES_KEY_SPORT_UID], nil];
+    int sport_uid = [sports.firstObject intValue];
     _lblWorkType.text = arrSportNM[sport_uid - 1];
     
     _lblLocation.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];
