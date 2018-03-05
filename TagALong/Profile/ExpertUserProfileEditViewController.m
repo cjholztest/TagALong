@@ -344,16 +344,16 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *params  = @{
-                              API_REQ_KEY_TYPE             :   API_TYPE_FILE_UPLOAD,
-                              };
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_FILE_UPLOAD];
     
     NSData *fileData = image? UIImageJPEGRepresentation(image, scale):nil;
    
-    [manager POST:SERVER_URL parameters:params  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:url parameters:nil  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if(fileData){
             [formData appendPartWithFileData:fileData
                                         name:API_REQ_KEY_UPFILE
@@ -361,13 +361,10 @@ static const NSInteger kMaxImageCnt = 1;
                                     mimeType:@"multipart/form-data"];
         }
     }
-     progress: nil success:^(NSURLSessionTask *task, id respObject) {
+     progress: nil success:^(NSURLSessionTask *task, id responseObject) {
           
-         NSLog(@"JSON: %@", respObject);
-         NSError* error;
-         NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                        options:kNilOptions
-                                                                          error:&error];
+         NSLog(@"JSON: %@", responseObject);
+
          [SharedAppDelegate closeLoading];
          
          int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -422,7 +419,7 @@ static const NSInteger kMaxImageCnt = 1;
                              API_REQ_KEY_USER_LOCATION      :    location ?: self.nickname,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
                              API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_USER_PROFILE_IMG   :   file_name
+                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url
                              };
 
     [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {

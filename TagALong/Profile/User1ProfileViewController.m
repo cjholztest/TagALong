@@ -550,16 +550,17 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    NSDictionary *params  = @{
-                              API_REQ_KEY_TYPE             :   API_TYPE_FILE_UPLOAD,
-                              };
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_FILE_UPLOAD];
     
     NSData *fileData = image? UIImageJPEGRepresentation(image, scale):nil;
     
-    [manager POST:SERVER_URL parameters:params  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:url parameters:nil  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if(fileData){
             [formData appendPartWithFileData:fileData
                                         name:API_REQ_KEY_UPFILE
@@ -567,13 +568,13 @@ static const NSInteger kMaxImageCnt = 1;
                                     mimeType:@"multipart/form-data"];
         }
     }
-         progress: nil success:^(NSURLSessionTask *task, id respObject) {
+         progress: nil success:^(NSURLSessionTask *task, id responseObject) {
              
-             NSLog(@"JSON: %@", respObject);
-             NSError* error;
-             NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                            options:kNilOptions
-                                                                              error:&error];
+             NSLog(@"JSON: %@", responseObject);
+//             NSError* error;
+//             NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                            options:kNilOptions
+//                                                                              error:&error];
              [SharedAppDelegate closeLoading];
              
              int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -605,30 +606,30 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_PROFILE_UPDATE];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_USER_PROFILE_UPDATE,
-                             API_REQ_KEY_USER_UID           :   self.user_id,
-                             API_RES_KEY_USR_NCK_NM         :   nickname,
-                             API_RES_KEY_USER_LAST_NAME     :   nickname,
-                             API_RES_KEY_USR_PHONE          :    phone,
-                             API_REQ_KEY_USER_PROFILE_IMG   :   file_name
+                             //API_RES_KEY_USR_NCK_NM         :   nickname,
+                             //API_RES_KEY_USER_LAST_NAME     :   nickname,
+                             API_RES_KEY_USR_PHONE          :   phone,
+                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             _ivProfile.image = [UIImage imageWithData:imgData];
-            [Commons showToast:@"Your profile has changed"];
+            [Commons showToast:@"Your profile was changed"];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
             
