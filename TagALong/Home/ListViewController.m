@@ -49,7 +49,7 @@
     _level_filter = @"";
     _sport_filter = @"";
     _cate_filter = @"";
-    _distance_limit = @"";
+    _distance_limit = @"2";
     
     nPage = 1;
     isLoding = NO;

@@ -60,6 +60,7 @@
 #define API_REQ_KEY_IS_MAP                      @"is_map"
 #define API_REQ_KEY_PAGE_NUM                    @"page_num"
 #define API_REQ_KEY_ADDRESS_UID                 @"address_uid"
+#define API_REQ_KEY_FREQUENCY                   @"repeat_type"
 
 /**
  * API RESULT KEY

@@ -18,7 +18,7 @@
     NSString *duration;
     NSString *content;
     NSString *amount;
-    NSInteger nPicType; // 1:starttime, 2:duration
+    NSInteger nPicType; // 1:starttime, 2:duration, 3:frequency
     NSInteger startindex; //time picer start idnex
     NSInteger startTimeindex;
     NSInteger durationindex;
@@ -29,6 +29,9 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
     CLLocation *userLocation;
+    
+    NSArray *frequencies;
+    NSInteger frequencyIndex;
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
@@ -54,6 +57,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvBottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcbnBottomHeight;
 
+@property (weak, nonatomic) IBOutlet UIView *vwFrequency;
+@property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
+@property (weak, nonatomic) IBOutlet UIPickerView *picFrequency;
 @end
 
 @implementation PostWorkoutDetailViewController
@@ -65,6 +71,9 @@
     [self initUI];
 //    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
     arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    
+    frequencies = [NSArray arrayWithObjects:@{@"title": @"None", @"id": @"0"}, @{@"title": @"Every day", @"id": @"1"}, @{@"title": @"Every week", @"id": @"7"}, nil];
+
     
     UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
     [self.tfLocation addGestureRecognizer:tapRecog];
@@ -98,9 +107,11 @@
     if (nPicType == 1) {
         startTime = arrStartTime[row];
         startTimeindex = startindex + row;
-    } else {
+    } else if (nPicType == 2) {
         duration = arrDuration[row];
         durationindex = row + 1;
+    } else {
+        frequencyIndex = row;
     }
 }
 
@@ -111,8 +122,10 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (nPicType == 1) {
         return arrStartTime.count;
+    } else if (nPicType == 2) {
+       return arrDuration.count;
     } else {
-        return arrDuration.count;
+        return frequencies.count;
     }
 }
 
@@ -139,7 +152,6 @@
     label.textColor = [UIColor colorWithRed:(0 / 255.f) green:(0/ 255.f) blue:(0/ 255.f) alpha:1.0];
     
     return label;
-    
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -147,8 +159,10 @@
     NSString *strTitle = nil;
     if (nPicType == 1) {
         strTitle = arrStartTime[row];
-    } else {
+    } else if (nPicType == 2) {
         strTitle = arrDuration[row];
+    } else {
+        strTitle = [frequencies[row] objectForKey:@"title"];
     }
     
     return strTitle;
@@ -202,6 +216,7 @@
     [_vwDate setHidden:YES];
     [_vwStartTime setHidden:YES];
     [_vwDuration setHidden:YES];
+    [_vwFrequency setHidden:YES];
     title = @"";
     location = @"";
     date = @"";
@@ -211,6 +226,7 @@
     amount = @"";
     startTimeindex = 0;
     durationindex = 0;
+    frequencyIndex = 0;
     
     arrStartTime = [[NSMutableArray alloc] init];
     arrDuration = [[NSMutableArray alloc] init];
@@ -218,6 +234,7 @@
     _btnDate.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnStartTime.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnDuration.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _btnFrequency.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -367,6 +384,27 @@
     [_picStartTime selectRow:3 inComponent:0 animated:YES];
 }
 
+- (IBAction)onClickFrequency:(id)sender {
+    [self downkeyboard];
+    
+    if ([duration isEqualToString:@""]) {
+        [Commons showToast:@"Please select the duration first"];
+        return;
+    }
+    
+    nPicType = 3;
+    
+    [_vwFrequency setHidden:NO];
+    [_picFrequency reloadAllComponents];
+}
+
+- (IBAction)onClickFrequencyConfirm:(id)sender {
+    [_vwFrequency setHidden:YES];
+    
+    NSString *title = [frequencies[frequencyIndex] objectForKey:@"title"];
+    [_btnFrequency setTitle:title forState:UIControlStateNormal];
+}
+
 - (IBAction)onClickDuration:(id)sender {
     [self downkeyboard];
     if ([startTime isEqualToString:@""]) {
@@ -485,6 +523,7 @@
     
     NSString *sport_uid = self.sport_uid;
     NSString *categories = self.categories;
+    NSString *freqIndex = [frequencies[frequencyIndex] objectForKey:@"id"];
     
     [SharedAppDelegate showLoading];
     
@@ -505,6 +544,7 @@
                              API_REQ_KEY_WORKOUT_DATE       :   date,
                              API_REQ_KEY_START_TIME         :   startTime,
                              API_REQ_KEY_DURATION           :   duration,
+                             API_REQ_KEY_FREQUENCY          :   freqIndex,
                              //API_REQ_KEY_START_TIME         :   [NSString stringWithFormat:@"%ld", (long)startTimeindex],
                              //API_REQ_KEY_DURATION           :   [NSString stringWithFormat:@"%ld", (long)durationindex],
                              API_REQ_KEY_AMOUNT             :   price,
@@ -526,12 +566,6 @@
         if (res_code == RESULT_CODE_SUCCESS) {
             
             [self showSuccessAlert];
-            
-            //[Commons showToast:@"Register workout success!"];
-            
-            //[self.navigationController popViewControllerAnimated:NO];
-            //[self.delegate dismiss];
-            //[[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:[responseObject objectForKey:API_RES_KEY_MSG]];

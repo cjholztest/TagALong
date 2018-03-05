@@ -3344,7 +3344,7 @@ Terms of Use and Privacy Policy</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTn-gr-2LQ" userLabel="Main View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TXn-8M-1Zc">
                                                 <rect key="frame" x="12" y="0.0" width="350" height="350"/>
@@ -3354,7 +3354,7 @@ Terms of Use and Privacy Policy</string>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_workout" translatesAutoresizingMaskIntoConstraints="NO" id="0gZ-iX-dvI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                                             </imageView>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9Y-7P-aYQ" userLabel="Title View">
                                                 <rect key="frame" x="0.0" y="26" width="375" height="0.0"/>
@@ -3515,8 +3515,40 @@ Terms of Use and Privacy Policy</string>
                                                     <constraint firstItem="Ku2-qM-fNO" firstAttribute="top" secondItem="Wpw-d8-Fff" secondAttribute="top" id="kmo-m9-3fL"/>
                                                 </constraints>
                                             </view>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDJ-ga-146" userLabel="Amount View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-oS-yjl" userLabel="Frequency View">
                                                 <rect key="frame" x="0.0" y="270" width="375" height="51"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Frequency:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQg-q9-z9a">
+                                                        <rect key="frame" x="15" y="18" width="120" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="sLJ-Lx-mBr"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMa-9T-kwr">
+                                                        <rect key="frame" x="145" y="0.0" width="220" height="51"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onClickFrequency:" destination="7c3-RB-qaf" eventType="touchUpInside" id="B6r-5q-Ka6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="RQg-q9-z9a" firstAttribute="leading" secondItem="JNm-oS-yjl" secondAttribute="leading" constant="15" id="43x-1E-aOJ"/>
+                                                    <constraint firstItem="mMa-9T-kwr" firstAttribute="leading" secondItem="RQg-q9-z9a" secondAttribute="trailing" constant="10" id="IWz-ky-901"/>
+                                                    <constraint firstAttribute="height" constant="51" id="Mf6-hW-v5N"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mMa-9T-kwr" secondAttribute="trailing" constant="10" id="Oyg-7l-STM"/>
+                                                    <constraint firstItem="mMa-9T-kwr" firstAttribute="top" secondItem="JNm-oS-yjl" secondAttribute="top" id="Rgn-iZ-9xF"/>
+                                                    <constraint firstItem="RQg-q9-z9a" firstAttribute="centerY" secondItem="JNm-oS-yjl" secondAttribute="centerY" id="THS-Lh-m0i"/>
+                                                    <constraint firstAttribute="bottom" secondItem="mMa-9T-kwr" secondAttribute="bottom" id="mx5-nh-2vz"/>
+                                                </constraints>
+                                            </view>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDJ-ga-146" userLabel="Amount View">
+                                                <rect key="frame" x="0.0" y="331" width="375" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:  $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7e-6B-pQI">
                                                         <rect key="frame" x="15" y="18" width="120" height="16"/>
@@ -3544,7 +3576,7 @@ Terms of Use and Privacy Policy</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68T-sp-NQy" userLabel="Info View">
-                                                <rect key="frame" x="0.0" y="331" width="375" height="200"/>
+                                                <rect key="frame" x="0.0" y="392" width="375" height="200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-jg-GRW">
                                                         <rect key="frame" x="15" y="10" width="132" height="16"/>
@@ -3572,16 +3604,17 @@ Terms of Use and Privacy Policy</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="kDJ-ga-146" firstAttribute="top" secondItem="Wpw-d8-Fff" secondAttribute="bottom" constant="10" id="4Zq-xu-ESv"/>
                                             <constraint firstItem="Wpw-d8-Fff" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="62s-ci-udT"/>
                                             <constraint firstItem="kDJ-ga-146" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="6KI-9w-zRK"/>
                                             <constraint firstAttribute="trailing" secondItem="c9Y-7P-aYQ" secondAttribute="trailing" id="7kr-zW-vEN"/>
                                             <constraint firstAttribute="trailing" secondItem="0gZ-iX-dvI" secondAttribute="trailing" id="8Cj-ik-5dF"/>
                                             <constraint firstAttribute="trailing" secondItem="gdY-02-mUD" secondAttribute="trailing" id="8Tv-r9-xEc"/>
+                                            <constraint firstItem="JNm-oS-yjl" firstAttribute="top" secondItem="Wpw-d8-Fff" secondAttribute="bottom" constant="10" id="FKL-7f-mWQ"/>
                                             <constraint firstItem="TXn-8M-1Zc" firstAttribute="top" secondItem="UTn-gr-2LQ" secondAttribute="top" id="I06-E1-b3Z"/>
                                             <constraint firstItem="0gZ-iX-dvI" firstAttribute="top" secondItem="UTn-gr-2LQ" secondAttribute="top" id="LxA-mx-9m0"/>
                                             <constraint firstItem="Wpw-d8-Fff" firstAttribute="top" secondItem="gdY-02-mUD" secondAttribute="bottom" constant="10" id="MWw-tP-2S8"/>
                                             <constraint firstAttribute="trailing" secondItem="68T-sp-NQy" secondAttribute="trailing" id="QtM-uh-Ctw"/>
+                                            <constraint firstAttribute="trailing" secondItem="JNm-oS-yjl" secondAttribute="trailing" id="ROJ-kI-wwC"/>
                                             <constraint firstItem="0gZ-iX-dvI" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="Tsb-LJ-jsX"/>
                                             <constraint firstItem="tv8-ab-4X6" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="UJ9-TI-OV4"/>
                                             <constraint firstAttribute="trailing" secondItem="Wpw-d8-Fff" secondAttribute="trailing" id="VO8-4p-X5f"/>
@@ -3589,6 +3622,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="68T-sp-NQy" firstAttribute="top" secondItem="kDJ-ga-146" secondAttribute="bottom" constant="10" id="bh0-fy-TYO"/>
                                             <constraint firstItem="gdY-02-mUD" firstAttribute="top" secondItem="tv8-ab-4X6" secondAttribute="bottom" constant="10" id="bwB-uP-1gp"/>
                                             <constraint firstAttribute="trailing" secondItem="OXu-Yr-eHC" secondAttribute="trailing" id="dBv-Sh-0H7"/>
+                                            <constraint firstItem="kDJ-ga-146" firstAttribute="top" secondItem="JNm-oS-yjl" secondAttribute="bottom" constant="10" id="dqS-sO-dRY"/>
                                             <constraint firstItem="OXu-Yr-eHC" firstAttribute="top" secondItem="c9Y-7P-aYQ" secondAttribute="bottom" id="f5T-3K-leS"/>
                                             <constraint firstAttribute="trailing" secondItem="tv8-ab-4X6" secondAttribute="trailing" id="f6Y-Db-9ep"/>
                                             <constraint firstItem="tv8-ab-4X6" firstAttribute="top" secondItem="OXu-Yr-eHC" secondAttribute="bottom" constant="10" id="fms-eb-UL0"/>
@@ -3597,6 +3631,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstAttribute="bottom" secondItem="0gZ-iX-dvI" secondAttribute="bottom" id="hLN-XN-PIw"/>
                                             <constraint firstItem="68T-sp-NQy" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="juE-QT-K1p"/>
                                             <constraint firstAttribute="trailing" secondItem="kDJ-ga-146" secondAttribute="trailing" id="nGW-ra-OQE"/>
+                                            <constraint firstItem="JNm-oS-yjl" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="s3i-rl-SJ4"/>
                                             <constraint firstItem="c9Y-7P-aYQ" firstAttribute="leading" secondItem="UTn-gr-2LQ" secondAttribute="leading" id="tpr-9m-W3a"/>
                                             <constraint firstItem="c9Y-7P-aYQ" firstAttribute="top" secondItem="UTn-gr-2LQ" secondAttribute="top" constant="26" id="vsP-RC-hQC"/>
                                             <constraint firstItem="TXn-8M-1Zc" firstAttribute="centerX" secondItem="UTn-gr-2LQ" secondAttribute="centerX" id="wFs-8o-q6W"/>
@@ -3790,10 +3825,68 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstAttribute="trailing" secondItem="aet-Kh-0Ds" secondAttribute="trailing" id="qlK-jd-CIP"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEi-y7-3sp" userLabel="Frequency View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPT-NV-8nR">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUn-3I-HeY">
+                                        <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZ2-KD-gFZ">
+                                                <rect key="frame" x="315" y="10" width="50" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="O3J-zX-mMQ"/>
+                                                    <constraint firstAttribute="height" constant="30" id="yw9-Ll-J0m"/>
+                                                </constraints>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickFrequencyConfirm:" destination="7c3-RB-qaf" eventType="touchUpInside" id="LMl-eR-Eag"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-we-2rn">
+                                                <rect key="frame" x="62.5" y="-8" width="250" height="216"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="LQl-4a-xGF"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="7c3-RB-qaf" id="Cm5-sC-3ox"/>
+                                                    <outlet property="delegate" destination="7c3-RB-qaf" id="694-ww-ZBJ"/>
+                                                </connections>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="JDy-we-2rn" secondAttribute="bottom" constant="-8" id="XZY-nC-i27"/>
+                                            <constraint firstAttribute="height" constant="200" id="k4e-Fj-T6T"/>
+                                            <constraint firstAttribute="trailing" secondItem="RZ2-KD-gFZ" secondAttribute="trailing" constant="10" id="lIR-cK-NJb"/>
+                                            <constraint firstItem="JDy-we-2rn" firstAttribute="centerX" secondItem="xUn-3I-HeY" secondAttribute="centerX" id="mjl-dN-81j"/>
+                                            <constraint firstItem="RZ2-KD-gFZ" firstAttribute="top" secondItem="xUn-3I-HeY" secondAttribute="top" constant="10" id="xo8-29-XAJ"/>
+                                            <constraint firstItem="JDy-we-2rn" firstAttribute="top" secondItem="xUn-3I-HeY" secondAttribute="top" constant="-8" id="zIE-uq-hJ9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="CPT-NV-8nR" firstAttribute="bottom" secondItem="xUn-3I-HeY" secondAttribute="top" id="JzV-W7-Smh"/>
+                                    <constraint firstItem="CPT-NV-8nR" firstAttribute="top" secondItem="XEi-y7-3sp" secondAttribute="top" id="Mai-fk-Ohg"/>
+                                    <constraint firstAttribute="bottom" secondItem="xUn-3I-HeY" secondAttribute="bottom" id="SFC-Cq-uJz"/>
+                                    <constraint firstItem="xUn-3I-HeY" firstAttribute="leading" secondItem="XEi-y7-3sp" secondAttribute="leading" id="eGz-rc-Y6s"/>
+                                    <constraint firstAttribute="trailing" secondItem="xUn-3I-HeY" secondAttribute="trailing" id="lgD-90-eGx"/>
+                                    <constraint firstAttribute="trailing" secondItem="CPT-NV-8nR" secondAttribute="trailing" id="oCH-jN-faj"/>
+                                    <constraint firstItem="CPT-NV-8nR" firstAttribute="leading" secondItem="XEi-y7-3sp" secondAttribute="leading" id="z30-ki-SW9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.14509803921568626" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mNg-XX-JbI" firstAttribute="centerY" secondItem="vrJ-5V-alv" secondAttribute="centerY" id="14r-Om-o0B"/>
+                            <constraint firstItem="XEi-y7-3sp" firstAttribute="height" secondItem="vrJ-5V-alv" secondAttribute="height" id="2bU-La-bFD"/>
+                            <constraint firstItem="XEi-y7-3sp" firstAttribute="centerY" secondItem="vrJ-5V-alv" secondAttribute="centerY" id="67C-Dl-LmW"/>
                             <constraint firstItem="nWp-nm-7Jd" firstAttribute="bottom" secondItem="JqV-SB-CeG" secondAttribute="top" id="IhC-aw-suj"/>
                             <constraint firstItem="mNg-XX-JbI" firstAttribute="centerX" secondItem="zT5-hR-P7i" secondAttribute="centerX" id="KLn-8Q-ixn"/>
                             <constraint firstItem="fWF-4y-g5N" firstAttribute="height" secondItem="vrJ-5V-alv" secondAttribute="height" id="KUH-I7-bsf"/>
@@ -3801,6 +3894,7 @@ Terms of Use and Privacy Policy</string>
                             <constraint firstItem="Hgd-4b-O0M" firstAttribute="centerX" secondItem="zT5-hR-P7i" secondAttribute="centerX" id="NJ9-ZF-hXq"/>
                             <constraint firstItem="fWF-4y-g5N" firstAttribute="centerX" secondItem="zT5-hR-P7i" secondAttribute="centerX" id="Ogc-uh-HXV"/>
                             <constraint firstItem="zT5-hR-P7i" firstAttribute="trailing" secondItem="JqV-SB-CeG" secondAttribute="trailing" id="Opc-9S-hlZ"/>
+                            <constraint firstItem="XEi-y7-3sp" firstAttribute="width" secondItem="vrJ-5V-alv" secondAttribute="width" id="Qvd-g6-YWN"/>
                             <constraint firstItem="nWp-nm-7Jd" firstAttribute="leading" secondItem="zT5-hR-P7i" secondAttribute="leading" id="TRA-BW-PZn"/>
                             <constraint firstItem="mNg-XX-JbI" firstAttribute="height" secondItem="vrJ-5V-alv" secondAttribute="height" id="WOe-QO-807"/>
                             <constraint firstItem="Hgd-4b-O0M" firstAttribute="width" secondItem="vrJ-5V-alv" secondAttribute="width" id="cQr-hJ-fhe"/>
@@ -3810,6 +3904,7 @@ Terms of Use and Privacy Policy</string>
                             <constraint firstItem="Hgd-4b-O0M" firstAttribute="centerY" secondItem="vrJ-5V-alv" secondAttribute="centerY" id="kXh-gD-JUn"/>
                             <constraint firstItem="Hgd-4b-O0M" firstAttribute="height" secondItem="vrJ-5V-alv" secondAttribute="height" id="mIO-GY-IKX"/>
                             <constraint firstItem="zT5-hR-P7i" firstAttribute="trailing" secondItem="nWp-nm-7Jd" secondAttribute="trailing" id="nVi-wK-YGE"/>
+                            <constraint firstItem="XEi-y7-3sp" firstAttribute="centerX" secondItem="zT5-hR-P7i" secondAttribute="centerX" id="tHG-sN-Rc0"/>
                             <constraint firstItem="zT5-hR-P7i" firstAttribute="bottom" secondItem="JqV-SB-CeG" secondAttribute="bottom" id="vBA-Lr-5wn"/>
                             <constraint firstItem="fWF-4y-g5N" firstAttribute="width" secondItem="vrJ-5V-alv" secondAttribute="width" id="yjK-ur-c8x"/>
                         </constraints>
@@ -3827,12 +3922,14 @@ Terms of Use and Privacy Policy</string>
                     <connections>
                         <outlet property="btnDate" destination="WFe-NC-cDE" id="Dzc-x3-KGG"/>
                         <outlet property="btnDuration" destination="Ku2-qM-fNO" id="ikV-BN-3PE"/>
+                        <outlet property="btnFrequency" destination="mMa-9T-kwr" id="GMt-Tw-jiz"/>
                         <outlet property="btnStartTime" destination="3fm-EV-mPb" id="Nt7-JC-7IL"/>
                         <outlet property="lcbnBottomHeight" destination="h53-cy-C3T" id="Kl5-zN-x9u"/>
                         <outlet property="lcvwAmountBottom" destination="bh0-fy-TYO" id="ZmW-fA-pV7"/>
                         <outlet property="lcvwAmountHeight" destination="SNo-tc-COV" id="vQD-eE-X7I"/>
                         <outlet property="picDate" destination="zlC-sJ-4XT" id="2Mw-7K-djO"/>
                         <outlet property="picDuration" destination="NLj-hc-HfE" id="Kjh-4m-J3H"/>
+                        <outlet property="picFrequency" destination="JDy-we-2rn" id="4xH-Lt-anG"/>
                         <outlet property="picStartTime" destination="Trh-if-yGm" id="9mi-su-8WW"/>
                         <outlet property="tfAmount" destination="Asf-jU-RzD" id="rMe-Me-vCY"/>
                         <outlet property="tfLocation" destination="5K1-dD-l3G" id="eqr-F0-7Pv"/>
@@ -3841,6 +3938,7 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="vwBlueBG" destination="0gZ-iX-dvI" id="A3c-jL-OLT"/>
                         <outlet property="vwDate" destination="Hgd-4b-O0M" id="DG2-lj-KZC"/>
                         <outlet property="vwDuration" destination="mNg-XX-JbI" id="xYu-K2-hit"/>
+                        <outlet property="vwFrequency" destination="XEi-y7-3sp" id="9VF-hx-ahY"/>
                         <outlet property="vwStartTime" destination="fWF-4y-g5N" id="VeA-E3-h9o"/>
                     </connections>
                 </viewController>
