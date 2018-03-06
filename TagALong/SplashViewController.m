@@ -42,8 +42,13 @@
         NSString *email = [Preference getString:PREFCONST_LOGIN_EMAIL default:nil];
         NSString *pass = [Preference getString:PREFCONST_LOGIN_PWD default:nil];
 
-        if (![email isEqualToString:@""]  && ![pass isEqualToString:@""]) {
-            [self ReqLogin:email pass:pass];
+        
+        if (email != nil && pass != nil) {
+            if (![email isEqualToString:@""] && ![pass isEqualToString:@""] ) {
+                [self ReqLogin:email pass:pass];
+            } else {
+                [self goLogin];
+            }
         } else {
             [self goLogin];
         }
@@ -132,6 +137,7 @@
         if (res_code == RESULT_CODE_SUCCESS) {
             
             [Commons parseAndSaveUserInfo:responseObject pwd: pass];
+            
             [self goHome];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [self showAlert:@"The password is incorrects"];
@@ -176,6 +182,7 @@
         if (res_code == RESULT_CODE_SUCCESS) {
             
             [Commons parseAndSaveExpertUserInfo:responseObject pwd:pass1];
+            
             [self goExpertHome];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [self showAlert:@"The password is incorrects"];

@@ -479,6 +479,23 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(NSString *)generateWorkoutTitle {
+    NSMutableString *tempTitle = [NSMutableString new];
+    
+    NSString * newString = [_sport_uid stringByReplacingOccurrencesOfString:@"," withString:@""];
+ 
+    for (int i = 0; i < newString.length; i++) {
+        char value = [newString characterAtIndex:i];
+        
+        NSString *workoutName = arrSportNM[[[NSString stringWithFormat:@"%c", value] intValue] - 1];
+        
+        [tempTitle appendString:workoutName];
+        [tempTitle appendString:@", "];
+    }
+    
+    return [tempTitle substringToIndex:tempTitle.length - 2];
+}
+
 #pragma mark - Network
 -(void)ReqReqWorkout{
     
@@ -491,11 +508,12 @@
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         _uid = [NSString stringWithFormat:@"%d", Global.g_user.user_uid];
         index = [_sport_uid intValue];
-        title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_user.user_nck, Global.g_user.user_last_nm];
+        
+        title = [NSString stringWithFormat:@"%@ with %@ %@", [self generateWorkoutTitle], Global.g_user.user_nck, Global.g_user.user_last_nm];
     } else {
         _uid = [NSString stringWithFormat:@"%d", Global.g_expert.export_uid];
         index = [_sport_uid intValue];
-        title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
+        title = [NSString stringWithFormat:@"%@ with %@ %@", [self generateWorkoutTitle], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
     }
     
     content = _tvContent.text;

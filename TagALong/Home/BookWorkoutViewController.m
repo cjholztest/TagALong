@@ -124,9 +124,12 @@
         _lblLevel.textColor = [UIColor whiteColor];
     }
     
+    _lblTitle.lineBreakMode = NSLineBreakByWordWrapping;
+    _lblTitle.numberOfLines = 0;
+    
     //workout info
     _lblTitle.text = [workInfo objectForKey:API_RES_KEY_TITLE];
-    
+
     //NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
     NSArray *sports = [[NSArray alloc] initWithObjects:[workInfo objectForKey:API_RES_KEY_SPORT_UID], nil];
     int sport_uid = [sports.firstObject intValue];
@@ -152,7 +155,7 @@
         category = [NSString stringWithFormat:@"%@%@, ", category, arrCateNM[index - 1]];
     }
     _lblSport.text = [category stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
-    
+    //_lblSport.text = @"asdjfjdskljfklajsafkldasjflksdnvsjdnfavlskdjflaksvdjfklvsd;jflaksvdfnjl;kdvjflsdknvkj";
     //date
     NSString *nsdate = [workInfo objectForKey:API_RES_KEY_WORKOUT_DATE] ;
     NSDateFormatter *dateConvertor = [[NSDateFormatter alloc] init];

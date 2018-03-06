@@ -67,6 +67,9 @@ typedef enum PickerType {
     }
     
     formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    
     arrLevelIndex = [NSArray arrayWithObjects:@"2", @"3", @"1", @"0", nil];
     arrTraining = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
     arrWorkout = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"Balance", @"Interval", @"High Intensity", @"Weights", nil];
@@ -82,8 +85,13 @@ typedef enum PickerType {
     _workoutTypeCollectionHeight.constant = 35 * arrTraining.count/2 + 10 * arrTraining.count/2;
     _focusOnCollectionHeight.constant = 35 * arrWorkout.count/2 + 10 * arrWorkout.count/2;
     
-    _fromLabel.text = _startDate;
-    _toLabel.text = _endDate;
+    if (self.startDate != 0) {
+        _fromLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:_startDate]];
+    }
+    
+    if (self.endDate != 0) {
+        _toLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:_endDate]];
+    }
 }
 
 -(void)configureDatePicker {
@@ -118,17 +126,14 @@ typedef enum PickerType {
     [UIView animateWithDuration:0.25 animations:^{
         [_datePickerView setHidden:YES];
     }];
-
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
     
     NSString *dateString = [formatter stringFromDate:_datePicker.date];
     
     if (pickerType == from) {
-        _startDate = dateString;
+        _startDate = [self.datePicker.date timeIntervalSince1970];
         self.fromLabel.text = dateString;
     } else {
-        _endDate = dateString;
+        _endDate = [self.datePicker.date timeIntervalSince1970];;
         self.toLabel .text = dateString;
     }
 }
@@ -303,8 +308,8 @@ typedef enum PickerType {
     [_clTraining reloadData];
     self.fromLabel.text = @"";
     self.toLabel.text = @"";
-    _startDate = @"";
-    _endDate = @"";
+    _startDate = 0;
+    _endDate = 0;
 }
 
 

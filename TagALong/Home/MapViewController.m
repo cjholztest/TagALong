@@ -198,7 +198,7 @@
 }
 
 //fiterview delegate
--(void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance startDate:(NSString *)startDate endDate:(NSString *)endDate {
+-(void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance startDate:(NSTimeInterval)startDate endDate:(NSTimeInterval)endDate {
     _level_filter = level;
     _sport_filter = sport;
     _cate_filter = cat;
@@ -628,6 +628,9 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
     
+    NSNumber *start = [NSNumber numberWithDouble:self.startDate];
+    NSNumber *end = [NSNumber numberWithDouble:self.endDate];
+    
     NSDictionary *params = @{
                              API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
@@ -638,8 +641,8 @@
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
                              API_REQ_KEY_IS_MAP             :   @"1",
                              //API_REQ_KEY_TARGET_DATE        :   searchdate,
-                             API_REQ_KEY_START_DATE         :   _startDate ?: @"",
-                             API_REQ_KEY_END_DATE           :   _endDate?: @"",
+                             API_REQ_KEY_START_DATE         :   start ?: 0,
+                             API_REQ_KEY_END_DATE           :   end ?: 0,
                              };
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {

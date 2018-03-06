@@ -10,7 +10,7 @@
 
 @protocol FilterViewControllerDelegate <NSObject>
 
-- (void)setFilter:(NSString*)level sport:(NSString*)sport cat:(NSString*)cat distance:(NSString*)distance startDate:(NSString *)startDate endDate:(NSString *)endDate;
+- (void)setFilter:(NSString*)level sport:(NSString*)sport cat:(NSString*)cat distance:(NSString*)distance startDate:(NSTimeInterval)startDate endDate:(NSTimeInterval)endDate;
 
 @end
 
@@ -20,8 +20,10 @@
 @property (nonatomic, strong) NSString *sport_filter;
 @property (nonatomic, strong) NSString *cate_filter;
 @property (nonatomic, strong) NSString *distance_limit;
-@property (nonatomic, strong) NSString *startDate;
-@property (nonatomic, strong) NSString *endDate;
+
+@property (nonatomic) NSTimeInterval startDate;
+@property (nonatomic) NSTimeInterval endDate;
+
 @property (strong, nonatomic) id<FilterViewControllerDelegate> delegate;
 @end
 
