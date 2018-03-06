@@ -60,7 +60,9 @@
 #define API_REQ_KEY_IS_MAP                      @"is_map"
 #define API_REQ_KEY_PAGE_NUM                    @"page_num"
 #define API_REQ_KEY_ADDRESS_UID                 @"address_uid"
-#define API_REQ_KEY_FREQUENCY                   @"repeat_type"
+#define API_REQ_KEY_FREQUENCY                   @"workout_repeat"
+#define API_REQ_KEY_START_DATE                  @"start_time"
+#define API_REQ_KEY_END_DATE                    @"end_time"
 
 /**
  * API RESULT KEY

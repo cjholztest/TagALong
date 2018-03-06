@@ -545,8 +545,6 @@
                              API_REQ_KEY_START_TIME         :   startTime,
                              API_REQ_KEY_DURATION           :   duration,
                              API_REQ_KEY_FREQUENCY          :   freqIndex,
-                             //API_REQ_KEY_START_TIME         :   [NSString stringWithFormat:@"%ld", (long)startTimeindex],
-                             //API_REQ_KEY_DURATION           :   [NSString stringWithFormat:@"%ld", (long)durationindex],
                              API_REQ_KEY_AMOUNT             :   price,
                              API_REQ_KEY_ADDITION           :   content,
                              API_REQ_KEY_USER_LOCATION      :   location,

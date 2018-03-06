@@ -380,14 +380,17 @@
 }
 
 //fiterview delegate
-- (void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance{
+-(void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance startDate:(NSString *)startDate endDate:(NSString *)endDate {
     _level_filter = level;
     _sport_filter = sport;
     _cate_filter = cat;
     _distance_limit = distance;
+    _startDate = startDate;
+    _endDate = endDate;
     
     [self ReqWorkoutList];
 }
+
 
 - (void)pageRefresh:(NSNotification *) notification {
     
@@ -458,11 +461,13 @@
     vc.sport_filter = _sport_filter;
     vc.cate_filter = _cate_filter;
     vc.distance_limit = _distance_limit;
+    vc.startDate = _startDate;
+    vc.endDate = _endDate;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
 
--(void)ReqWorkoutList{
+-(void)ReqWorkoutList {
     
     [SharedAppDelegate showLoading];
     
@@ -475,6 +480,9 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
     
+    //NSNumber *startDate = [NSNumber numberWithLong:_startDate];
+    //NSNumber *endDate = [NSNumber numberWithLong:_endDate];
+    
     NSDictionary *params = @{
                              API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
@@ -483,6 +491,8 @@
                              API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
                              API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_START_DATE         :   _startDate ?: @"",
+                             API_REQ_KEY_END_DATE           :   _endDate ?: @"",
                              API_REQ_KEY_IS_MAP             :   @"0",
                              API_REQ_KEY_PAGE_NUM           :   [NSString stringWithFormat:@"%ld", (long)nPage],
                              };

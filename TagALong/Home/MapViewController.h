@@ -18,5 +18,8 @@
 @property (nonatomic, strong) NSString *cate_filter;
 @property (nonatomic, strong) NSString *distance_limit;
 
+@property (nonatomic, strong) NSString *startDate;
+@property (nonatomic, strong) NSString *endDate;
+
 @end
 

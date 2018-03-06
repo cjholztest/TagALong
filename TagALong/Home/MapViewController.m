@@ -64,15 +64,15 @@
     _cate_filter = @"";
     _distance_limit = @"";
     
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    searchdate = [dateFormatter stringFromDate:[NSDate date]];
-    
-    NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
-    [formatter1 setFormatterBehavior:NSDateFormatterBehavior10_4];
-    formatter1.dateStyle = kCFDateFormatterLongStyle;
-    formatter1.timeStyle = NSDateFormatterNoStyle;
-    _lblDate.text = [formatter1 stringFromDate:[NSDate date]];
+//    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    searchdate = [dateFormatter stringFromDate:[NSDate date]];
+//
+//    NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
+//    [formatter1 setFormatterBehavior:NSDateFormatterBehavior10_4];
+//    formatter1.dateStyle = kCFDateFormatterLongStyle;
+//    formatter1.timeStyle = NSDateFormatterNoStyle;
+//    _lblDate.text = [formatter1 stringFromDate:[NSDate date]];
     
     arrSportImg = [NSArray arrayWithObjects: @"icon_running_white.png", @"icon_bike_white.png", @"icon_yoga_white.png", @"icon_pilates_white.png",@"icon_crossfit_white.png", @"icon_arts_white.png",  @"icon_dance_white.png", @"icon_combo_white.png", @"icon_youth_white.png",@"icon_other_white.png", nil];
     
@@ -198,11 +198,13 @@
 }
 
 //fiterview delegate
-- (void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance{
+-(void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance startDate:(NSString *)startDate endDate:(NSString *)endDate {
     _level_filter = level;
     _sport_filter = sport;
     _cate_filter = cat;
     _distance_limit = distance;
+    _startDate = startDate;
+    _endDate = endDate;
     
     [self ReqWorkoutList];
 }
@@ -593,6 +595,8 @@
     vc.sport_filter = _sport_filter;
     vc.cate_filter = _cate_filter;
     vc.distance_limit = _distance_limit;
+    vc.startDate = _startDate;
+    vc.endDate = _endDate;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
@@ -633,7 +637,9 @@
                              API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
                              API_REQ_KEY_IS_MAP             :   @"1",
-                             API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             //API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             API_REQ_KEY_START_DATE         :   _startDate ?: @"",
+                             API_REQ_KEY_END_DATE           :   _endDate?: @"",
                              };
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -750,7 +756,7 @@
     
     NSDictionary *params = @{
                              API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
-                             API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             //API_REQ_KEY_TARGET_DATE        :   searchdate,
                              };
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
