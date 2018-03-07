@@ -20,5 +20,4 @@
 
 @property(nonatomic, retain) NSString *access_token;
 
-
 @end

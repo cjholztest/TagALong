@@ -113,17 +113,17 @@
     locationMng.delegate = self;
     locationMng.distanceFilter = kCLDistanceFilterNone;
     locationMng.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    
-    NSUInteger code = [CLLocationManager authorizationStatus];
-    if (code == kCLAuthorizationStatusNotDetermined && ([locationMng respondsToSelector:@selector(requestAlwaysAuthorization)] || [locationMng respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
-        if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"]) {
-            [locationMng requestAlwaysAuthorization];
-        } else if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"]) {
-            [locationMng requestWhenInUseAuthorization];
-        } else {
-            NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
-        }
-    }
+    [locationMng requestWhenInUseAuthorization];
+//    NSUInteger code = [CLLocationManager authorizationStatus];
+//    if (code == kCLAuthorizationStatusNotDetermined && ([locationMng respondsToSelector:@selector(requestAlwaysAuthorization)] || [locationMng respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
+//        if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"]) {
+//            [locationMng requestAlwaysAuthorization];
+//        } else if ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"]) {
+//            [locationMng requestWhenInUseAuthorization];
+//        } else {
+//            NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
+//        }
+//    }
     [locationMng startUpdatingLocation];
     
     UITapGestureRecognizer *tapRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestureMap:)];
@@ -530,6 +530,8 @@
     Global.g_user.user_latitude = [NSString stringWithFormat:@"%f", lat];
     Global.g_user.user_longitude = [NSString stringWithFormat:@"%f", lnd];
     
+    [_mvMap setCenterCoordinate:tapPoint];
+    
     [Preference setString:PREFCONST_LATITUDE value:Global.g_user.user_latitude];
     [Preference setString:PREFCONST_LONGTITUDE value:Global.g_user.user_longitude];
     
@@ -867,7 +869,17 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
     }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    //CLLocation *currentLocation = newLocation;
     
+    if (![[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude] isEqualToString: Global.g_user.user_longitude ] && ![[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude] isEqualToString: Global.g_user.user_latitude]) {
+        Global.g_user.user_latitude = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
+        Global.g_user.user_longitude = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
+
+        [self UpdateMePoss:newLocation.coordinate.latitude longtigude:newLocation.coordinate.longitude];
+    }
     
 }
 

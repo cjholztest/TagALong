@@ -82,12 +82,12 @@
 
 -(BOOL)CheckValidForRegister{
     
-    if (_tfFirstName.text.length == 0) {
+    if ([_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input first name!"];
         return NO;
     }
     
-    if (_tfLastName.text.length == 0) {
+    if ([_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input last name!"];
         return NO;
     }
@@ -102,22 +102,22 @@
         return NO;
     }
     
-    if (_tfCity.text.length == 0) {
+    if ([_tfCity.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input city!"];
         return NO;
     }
     
-    if (_tfPhoneNum.text.length == 0) {
+    if ([_tfPhoneNum.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input phone num!"];
         return NO;
     }
     
-    if (_tfPassword.text.length == 0) {
+    if ([_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input password"];
         return NO;
     }
     
-    if (_tfPassword.text.length < 5) {
+    if ([_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
         [Commons showToast:@"The password must be at least 5 symbols length"];
         return NO;
     }
@@ -173,12 +173,12 @@
 #pragma mark - Network
 -(void)ReqRegister{
         
-        NSString *_email = _tfEmail.text;
-        NSString *_nickname = _tfFirstName.text;
-        NSString *_lastname = _tfLastName.text;
-        NSString *_city     = _tfCity.text;
-        NSString *_phone    = _tfPhoneNum.text;
-        NSString *_pwd      = _tfPassword.text;
+        NSString *_email = [_tfEmail.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_nickname = [_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_lastname = [_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_city     = [_tfCity.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_phone    = [_tfPhoneNum.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_pwd      = [_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
         
         latitude = self.locationManager.location.coordinate.latitude;
         longitude = self.locationManager.location.coordinate.longitude;

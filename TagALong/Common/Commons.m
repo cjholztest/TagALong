@@ -16,7 +16,6 @@
 
 @implementation Commons
 
-
 + (NSString *)identifierForAdvertising
 {
     if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled])
@@ -266,4 +265,5 @@
     center.longitude = longitude;
     return center;
 }
+
 @end

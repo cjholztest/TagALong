@@ -41,7 +41,7 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-
+    
     _lblMsg.layer.shadowRadius = 3.0;
     _lblMsg.layer.shadowOpacity = 0.5;
     _lblMsg.layer.masksToBounds = NO;
@@ -55,7 +55,7 @@
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
     [self.view addGestureRecognizer:singleFingerTap];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -67,10 +67,18 @@
     [self.navigationController.navigationBar setBarTintColor: UIColor.clearColor];
     [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    
+    self.tfEmail.text = @"";
+    self.tfPassword.text = @"";
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self hideKeyboard];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
@@ -79,10 +87,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)hideKeyboard {
+    [self.tfEmail resignFirstResponder];
+    [self.tfPassword resignFirstResponder];
+}
+
 #pragma mark - user defined functions
 -(void)Background:(UITapGestureRecognizer *)recognizer{
-    [_tfEmail resignFirstResponder];
-    [_tfPassword resignFirstResponder];
+    [self hideKeyboard];
 }
 
 -(BOOL)CheckValidForLogin{
@@ -110,7 +122,6 @@
     return YES;
 }
 
-
 -(void)goStartedPage{
     StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
     [self.navigationController pushViewController:vc animated:YES];
@@ -121,7 +132,7 @@
     
     [_tfEmail resignFirstResponder];
     [_tfPassword resignFirstResponder];
-
+    
     if ([self CheckValidForLogin]) {
         [self ReqLogin];
         //[self ReqOldLogin];
@@ -129,18 +140,21 @@
 }
 
 - (IBAction)onClickSignUp:(id)sender {
+    [self.view setUserInteractionEnabled:NO];
+    
     SignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)onClickPassForget:(id)sender {
+    
     PassForgetViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PassForgetViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)onClickexpertLogin:(id)sender {
     Global.g_user.user_login = @"2";
-
+    
     ExpertLoginViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpertLoginViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -173,7 +187,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"login"];
     //NSString *url = [NSString stringWithFormat:SERVER_URL, @"login"];
     

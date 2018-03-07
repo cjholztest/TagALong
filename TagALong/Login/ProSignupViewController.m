@@ -48,7 +48,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:singleFingerTap];
     
     [self ReqGetSportList];
@@ -141,7 +141,7 @@
 }
 
 #pragma mark - user defined functions
--(void)Background:(UITapGestureRecognizer *)recognizer{
+-(void)hideKeyboard {
     [_tfFirstName resignFirstResponder];
     [_tfLastName resignFirstResponder];
     [_tfEmail resignFirstResponder];
@@ -153,12 +153,12 @@
 
 -(BOOL)CheckValidForRegister{
     
-    if (_tfFirstName.text.length == 0) {
+    if ([_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input first name!"];
         return NO;
     }
     
-    if (_tfLastName.text.length == 0) {
+    if ([_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input last name!"];
         return NO;
     }
@@ -173,17 +173,17 @@
         return NO;
     }
     
-    if (_tfPhone.text.length == 0) {
+    if ([_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input phone num!"];
         return NO;
     }
     
-    if (_tfPass.text.length == 0) {
+    if ([_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input password"];
         return NO;
     }
     
-    if (_tfPass.text.length < 5) {
+    if ([_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
         [Commons showToast:@"The password must be at least 5 symbols length"];
         //[self showAlert:@"The password must be at least 5 symbols length"];
         return NO;
@@ -207,7 +207,7 @@
 }
 
 - (IBAction)onClickSport:(id)sender {
-    
+    [self hideKeyboard];
     [_vwSportSelect setHidden:NO];
 }
 
@@ -288,14 +288,14 @@
 #pragma mark - Network
 -(void)ReqExpertRegister{
         
-        NSString *_email = _tfEmail.text;
-        NSString *_name = _tfFirstName.text;
-        NSString *_lastname = _tfLastName.text;
-        NSString *_phone    = _tfPhone.text;
-        NSString *_pwd      = _tfPass.text;
+        NSString *_email = [_tfEmail.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_name = [_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_lastname = [_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_phone    = [_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_pwd      = [_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
         NSString *_sport     = [NSString stringWithFormat:@"%ld", (long)nSelSportID];
-        NSString *_communication     = _tfCommunication.text;
-        NSString *_info     = _tfInfo.text;
+        NSString *_communication     = [_tfCommunication.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_info     = [_tfInfo.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
         
         [SharedAppDelegate showLoading];
         

@@ -367,11 +367,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cc-5A-yiv">
-                                <rect key="frame" x="7" y="64" width="71" height="44"/>
+                                <rect key="frame" x="12" y="64" width="57" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="sK8-EQ-JYW"/>
                                 </constraints>
-                                <state key="normal" image="logout"/>
+                                <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="onClickBack:" destination="SGm-By-CoP" eventType="touchUpInside" id="7X1-BV-xCB"/>
                                 </connections>
@@ -388,7 +388,7 @@
                             <constraint firstItem="xim-5Q-MsP" firstAttribute="top" secondItem="xk0-ou-0cN" secondAttribute="top" id="Lsq-Qz-p23"/>
                             <constraint firstItem="xim-5Q-MsP" firstAttribute="centerX" secondItem="6wn-Hb-Tz3" secondAttribute="centerX" id="PQz-vt-p8H"/>
                             <constraint firstItem="qAB-b4-WUP" firstAttribute="centerX" secondItem="6wn-Hb-Tz3" secondAttribute="centerX" id="TfG-77-sp0"/>
-                            <constraint firstItem="5cc-5A-yiv" firstAttribute="leading" secondItem="6wn-Hb-Tz3" secondAttribute="leading" constant="7" id="YLT-6M-12R"/>
+                            <constraint firstItem="5cc-5A-yiv" firstAttribute="leading" secondItem="6wn-Hb-Tz3" secondAttribute="leading" constant="12" id="YLT-6M-12R"/>
                             <constraint firstItem="9A1-Hf-07i" firstAttribute="top" secondItem="4Bp-qO-PTm" secondAttribute="bottom" id="b5m-WX-Se9"/>
                             <constraint firstItem="qAB-b4-WUP" firstAttribute="top" secondItem="6wn-Hb-Tz3" secondAttribute="top" constant="55" id="bay-aH-SZl"/>
                             <constraint firstItem="5cc-5A-yiv" firstAttribute="top" secondItem="6wn-Hb-Tz3" secondAttribute="top" id="lJ2-GI-qm1"/>
@@ -5039,7 +5039,7 @@ Terms of Use and Privacy Policy</string>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-hz-u0T">
                                         <rect key="frame" x="30" y="149" width="315" height="1"/>
@@ -6324,7 +6324,6 @@ within the next 24 hours.</string>
         <image name="ic_traner" width="48" height="100"/>
         <image name="ic_white_back" width="57" height="22"/>
         <image name="intro" width="781" height="1390"/>
-        <image name="logout" width="71" height="22"/>
         <image name="success" width="20" height="20"/>
         <image name="tag_a_long" width="534" height="145"/>
         <image name="tag_a_long1" width="534" height="145"/>

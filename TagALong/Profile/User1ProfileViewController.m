@@ -220,8 +220,8 @@ static const NSInteger kMaxImageCnt = 1;
     NSString *age = [dicInfo objectForKey:API_RES_KEY_USER_AGE];
     NSString *location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
     phone = [dicInfo objectForKey:API_RES_KEY_USR_PHONE];
-    _lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
-    
+    //_lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
+    _lblAge.text = location;
     _lblLevel.text = @"INDIVIDUAL";
     
     if ([[dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {

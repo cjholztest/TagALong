@@ -22,4 +22,5 @@ use_frameworks!
   pod 'AFNetworking', '~>3.1.0'
   pod 'SVProgressHUD', '~>2.0.3'
   pod 'FSCalendar'
+  pod 'DZNEmptyDataSet'
 end

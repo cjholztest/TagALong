@@ -89,7 +89,7 @@
 }
 
 -(void)addLogoutButton {
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logout"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickBack:)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action: @selector(onClickBack:)];
     self.navigationItem.leftBarButtonItem = editButton;
 }
 

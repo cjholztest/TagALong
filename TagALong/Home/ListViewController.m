@@ -14,8 +14,9 @@
 #import "ExportSportsListTableViewCell.h"
 #import "FilterViewController.h"
 #import "User1ProfileViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate>{
+@interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>{
     OtherUserProfileViewController *vcOtherProfile;
     NSArray *arrSportNM;
     NSArray *arrLevel;
@@ -68,6 +69,9 @@
         _lcBottombarHeight.constant = 0;
         [_vwFilter setHidden:YES];
     }
+    
+    self.tvSportList.emptyDataSetSource = self;
+    self.tvSportList.emptyDataSetDelegate = self;
     
     [self.tvSportList registerNib:[UINib nibWithNibName:@"SportsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"SportsListTableViewCell"];
     [self.tvSportList registerNib:[UINib nibWithNibName:@"ExportSportsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"ExportSportsListTableViewCell"];
@@ -601,5 +605,20 @@
             }
         }
     }
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"No workouts found";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
+{
+    return YES;
 }
 @end

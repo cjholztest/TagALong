@@ -17,10 +17,8 @@ static Globals * sharedInstance = nil;
     if(!sharedInstance) {
         sharedInstance = [[super allocWithZone:NULL] init];
     }
-    
-    //sharedInstance.g_token = @"P";
+
     return sharedInstance;
 }
-
 
 @end
