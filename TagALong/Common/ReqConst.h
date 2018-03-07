@@ -63,6 +63,8 @@
 #define API_REQ_KEY_FREQUENCY                   @"workout_repeat"
 #define API_REQ_KEY_START_DATE                  @"start_time"
 #define API_REQ_KEY_END_DATE                    @"end_time"
+#define API_REQ_KEY_RESTORE_CODE                @"restore_code"
+#define API_REQ_KEY_NEW_PASSWORD                @"password"
 
 /**
  * API RESULT KEY
@@ -131,7 +133,7 @@
 #define API_TYPE_REGISTER                   @"register"
 #define API_TYPE_EXPoRT_REGISTER            @"export_register"
 #define API_TYPE_LOGIN                      @"login"
-#define API_TYPE_FIND_PASSWORD              @"find_password"
+#define API_TYPE_RESTORE_CODE               @"restore_code_user"
 #define API_TYPE_REG_ADDRESS                @"reg_address"
 #define API_TYPE_GET_SPORT                  @"get_sport"
 #define API_TYPE_GET_ADDRESS                @"get_address"
@@ -148,6 +150,7 @@
 #define API_TYPE_FILE_UPLOAD                @"file_upload"
 #define API_TYPE_USER_PROFILE_UPDATE        @"user_update_profile"
 #define API_TYPE_UPDATE_ADDRESS             @"update_address"
+#define API_TYPE_SET_PASSWORD             @"set_password"
 
 /**
  * API RESULT CODE
@@ -168,6 +171,7 @@
 #define RESULT_ERROR_FILE_UPLOAD            12
 #define RESULT_ERROR_ALREADY_BOOKED         13
 #define RESULT_ERROR_WORKOUT_NOT_EXISTS     14
+#define RESULT_ERROR_CODE_EXPIRED           15
 
 /**
  * ERROR MESSAGE
