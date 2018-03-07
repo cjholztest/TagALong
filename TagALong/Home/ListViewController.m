@@ -49,7 +49,7 @@
     _level_filter = @"";
     _sport_filter = @"";
     _cate_filter = @"";
-    _distance_limit = @"2";
+    _distance_limit = @"";
     
     nPage = 1;
     isLoding = NO;
@@ -90,7 +90,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
-        [self changeSort:@"distance"];
+        [self changeSort:sort_index];
     } else {
         //[self ReqWorkoutList];
         [self ReqExportWorkoutList];

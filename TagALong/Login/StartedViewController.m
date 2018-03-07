@@ -153,7 +153,7 @@
     
     UINavigationController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NavLogin"];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you shure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Logout" message:@"Are you sure you want to logout?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"Yes"
