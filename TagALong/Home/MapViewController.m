@@ -90,6 +90,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self addFilterBarButton];
     [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setTranslucent: YES];
     [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
@@ -133,27 +134,21 @@
     Global.g_user.user_longitude = [Preference getString:PREFCONST_LONGTITUDE default:nil];
 
     if (Global.g_user.user_latitude == nil) {
-        Global.g_user.user_latitude = @"34";
+        Global.g_user.user_latitude = @"38";
     }
     
     if (Global.g_user.user_longitude == nil) {
-        Global.g_user.user_longitude = @"-118";
+        Global.g_user.user_longitude = @"-101";
     }
     
-    noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude doubleValue]);
+    noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude  doubleValue]);
     [_mvMap setCenterCoordinate:noLocation];
-    
-//    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(noLocation, 500, 500);
-//    MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:viewRegion];
-//    [_mvMap setRegion:adjustedRegion animated:YES];
+
     _mvMap.showsUserLocation = YES;
     
-//    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(<LATITUDE>, <LONGITUDE>);
     MKCoordinateRegion region;
-    // <LATITUDE> and <LONGITUDE> for Cupertino, CA.
     
-    region = MKCoordinateRegionMake(noLocation, MKCoordinateSpanMake(0.05, 0.05));
-    // 0.5 is spanning value for region, make change if you feel to adjust bit more
+    region = MKCoordinateRegionMake(noLocation, MKCoordinateSpanMake(7, 7));
     
     MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:region];
     [_mvMap setRegion:adjustedRegion animated:YES];
@@ -180,6 +175,12 @@
         //[self ReqWorkoutList];
         [self ReqExportWorkoutList];
     }
+}
+
+-(void)addFilterBarButton {
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filter"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickFilter:)];
+    
+    self.vcParent.navigationItem.rightBarButtonItem = filterButton;
 }
 
 -(void)setMyPosSetting{

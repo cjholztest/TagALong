@@ -93,11 +93,22 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self addFilterBarButton];
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self changeSort:sort_index];
     } else {
         //[self ReqWorkoutList];
         [self ReqExportWorkoutList];
+    }
+}
+
+-(void)addFilterBarButton {
+    if ([Global.g_user.user_login isEqualToString:@"1"]) {
+        UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filter"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickfilter:)];
+        
+        self.vcParent.navigationItem.rightBarButtonItem = filterButton;
+    } else {
+        self.vcParent.navigationItem.rightBarButtonItem = nil;
     }
 }
 

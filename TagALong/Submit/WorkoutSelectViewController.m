@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *svContent;
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutlet UIImageView *vwBlueBG;
+@property (strong, nonatomic) IBOutlet UIView *backArrowView;
 
 @end
 
@@ -77,6 +78,10 @@
             [self addChildViewController:vcTypeWrokout];
             [SharedAppDelegate closeLoading];
         }
+        //[];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.backArrowView setAlpha:0.5];
+        }];
         
     } else if (nCurPageIdx == PAGE_MENU_AREA) {
         //_lblTitle.text = @"Focus Area of the Workout";
@@ -90,6 +95,9 @@
             [self addChildViewController:vcAreaWorkout];
             [SharedAppDelegate closeLoading];
         }
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.backArrowView setAlpha:1];
+        }];
     }
 }
 

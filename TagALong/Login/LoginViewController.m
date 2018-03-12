@@ -140,7 +140,6 @@
 }
 
 - (IBAction)onClickSignUp:(id)sender {
-    [self.view setUserInteractionEnabled:NO];
     
     SignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupViewController"];
     [self.navigationController pushViewController:vc animated:YES];

@@ -15,6 +15,8 @@
     double longitude;
     NSString *SelSportNM;
     NSInteger nSelSportID;
+    UITextField *activeField;
+    UITextView *activeTextView;
 }
 @property (nonatomic, strong) NSMutableArray *arrSport;
 @property (strong, nonatomic) IBOutlet UITextField *tfFirstName;
@@ -31,6 +33,8 @@
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvbottomHeight;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @implementation ProSignupViewController
@@ -38,7 +42,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     [_vwSportSelect setHidden:YES];
     _arrSport = [[NSMutableArray alloc] init];
     
@@ -52,9 +55,9 @@
     [self.view addGestureRecognizer:singleFingerTap];
     
     [self ReqGetSportList];
-    
+    [self setupTextFieldsDelegate];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
+                                             selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification
                                                object:nil];
     
@@ -89,37 +92,62 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setupTextFieldsDelegate {
+    self.tfPass.delegate = self;
+    self.tfEmail.delegate = self;
+    self.tfPhone.delegate = self;
+    self.tfLastName.delegate = self;
+    self.tfFirstName.delegate = self;
+    self.tfCommunication.delegate = self;
+    self.tfInfo.delegate = self;
 }
 
-- (void)keyboardDidShow: (NSNotification *) notif{
-    // Do something here
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     
-    NSDictionary* keyboardInfo = [notif userInfo];
-    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
-    
-    if (keyboardFrameBeginRect.size.height > 0) {
-        _lcsvbottomHeight.constant = keyboardFrameBeginRect.size.height;
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             [self.view layoutIfNeeded];
-                         }];
-        
+    if (activeField != nil) {
+        self.scrollView.contentInset = contentInsets;
+        self.scrollView.scrollIndicatorInsets = contentInsets;
+    } else if (activeTextView != nil) {
+        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + kbSize.height);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
     }
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    activeField = nil;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    activeTextView = textView;
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    activeTextView = nil;
+}
+
 - (void)keyboardDidHide: (NSNotification *) notif{
-    _lcsvbottomHeight.constant = 0;
-    [self.view layoutIfNeeded];
-    
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     }];
+    self.scrollView.contentInset = UIEdgeInsetsZero;
+    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
+    [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height) animated:YES];
 }
 
 //signup result delegate
@@ -173,8 +201,13 @@
         return NO;
     }
     
+    if (![Commons checkPassword:[_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]]) {
+        [Commons showToast:@"The phone number should be in format +XXXXXXXXXXX"];
+        return NO;
+    }
+    
     if ([_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
-        [Commons showToast:@"Input phone num!"];
+        [Commons showToast:@"Input phone number!"];
         return NO;
     }
     
@@ -196,6 +229,7 @@
 #pragma mark - click events
 - (IBAction)onClickSubmit:(id)sender {
     
+    [self hideKeyboard];
     if ([self CheckValidForRegister]) {
         [self ReqExpertRegister];
     }
@@ -273,13 +307,17 @@
     return strTitle;
 }
 
--(void)showAlert:(NSString *)message {
+-(void)showAlert:(NSString *)message needToClose:(BOOL)needToClose {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"OK"
                                 style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction * action) {}];
+                                handler:^(UIAlertAction * action) {
+                                    if (needToClose) {
+                                        [self.navigationController popViewControllerAnimated:YES];
+                                    }
+                                }];
     
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
@@ -332,19 +370,21 @@
                 [self showSuccessAlert];
                 
             } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
-                [self showAlert:@"This email is in use"];
+                [self showAlert:@"This email is in use" needToClose:NO];
                 //[Commons showToast:@"This email is in use."];
             } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
-                [self showAlert:@"This phone number is in use"];
+                [self showAlert:@"This phone number is in use" needToClose:NO];
                 //[Commons showToast:@"This Phone has been duplicated"];
             } else if (res_code == RESULT_ERROR_NICKNAME_DUPLICATE){
-                [self showAlert:@"This nickname is in use"];
+                [self showAlert:@"This nickname is in use" needToClose:NO];
                 //[Commons showToast:@"This nickname has been duplicated"];
+            } else if (res_code == RESULT_ERROR_PARAMETER) {
+                [self showAlert:@"Please input personal info in correct format" needToClose:NO];
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error: %@", error);
             [SharedAppDelegate closeLoading];
-            [self showAlert:@"Failed to communicate with the server"];
+            [self showAlert:@"Failed to communicate with the server" needToClose:NO];
         }];
 }
 
@@ -375,6 +415,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
+        [self showAlert:@"Failed to communicate with the server" needToClose:YES];
     }];
 }
 @end

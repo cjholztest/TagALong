@@ -61,7 +61,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self setDefaulttitle];
-    [self addAlarmBarButton];
+    //[self addAlarmBarButton];
     bOtherPage = false;
     _nCurPageIdx = PAGE_MENU_MAP;
     _nCurButtonIdx = BUTTON_SEARDCH;
@@ -199,7 +199,7 @@
 
     _lblMap.textColor = [UIColor whiteColor];
     _lblList.textColor = [UIColor whiteColor];
-    [self addAlarmBarButton];
+    //[self addAlarmBarButton];
     [_ivMapLine setHidden:YES];
     [_ivListLine setHidden:YES];
     //_nCurButtonIdx = BUTTON_SEARDCH;
@@ -428,7 +428,7 @@
     [self removeMainPages];
 
     self.navigationItem.title = @"Explore Workouts";
-    [self addAlarmBarButton];
+    //[self addAlarmBarButton];
     _nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
     
@@ -448,10 +448,10 @@
 
 }
 
--(void)addAlarmBarButton {
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_alarm_normal"] style:UIBarButtonItemStylePlain target:self action: nil];
-    [editButton setEnabled:NO];
-    self.navigationItem.rightBarButtonItem = editButton;
-}
+//-(void)addAlarmBarButton {
+//    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filter"] style:UIBarButtonItemStylePlain target:self action: nil];
+//
+//    self.navigationItem.rightBarButtonItem = editButton;
+//}
 
 @end

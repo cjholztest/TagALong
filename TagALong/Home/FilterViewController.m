@@ -15,7 +15,7 @@ typedef enum PickerType {
 } PickerType;
 
 @interface FilterViewController ()<UIScrollViewDelegate>{
-
+    
     NSArray *arrLevel;
     NSArray *arrLevelIndex;
     NSArray *arrTraining;
@@ -25,7 +25,7 @@ typedef enum PickerType {
     NSInteger arrLevelSel[4];
     NSInteger arrTrainingSel[10];
     NSInteger arrWorkoutSel[18];
-
+    
     NSInteger ncurDisSel;
     NSString *strDistance;
     
@@ -141,7 +141,7 @@ typedef enum PickerType {
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-
+    
     if (collectionView == _clLevel) {
         return arrLevel.count;
     } else if (collectionView == _clTraining){
@@ -208,7 +208,7 @@ typedef enum PickerType {
         } else {
             arrTrainingSel[indexPath.row] = 1;
         }
-
+        
         [_clTraining reloadData];
     } else if (collectionView == _clWorkout){
         if (arrWorkoutSel[indexPath.row] == 1) {
@@ -224,7 +224,7 @@ typedef enum PickerType {
 
 -(void)initData{
     [self clearData];
-  
+    
     NSArray *arr1 = [self.level_filter componentsSeparatedByString:@","];
     for (int i = 0; i < arr1.count; i++) {
         NSString *temp = [arr1 objectAtIndex:i];
@@ -235,7 +235,7 @@ typedef enum PickerType {
             }
         }
     }
-
+    
     NSArray *arr2 = [self.sport_filter componentsSeparatedByString:@","];
     for (int i = 0; i < arr2.count; i++) {
         NSInteger training_index = [[arr2 objectAtIndex:i] intValue];
@@ -259,12 +259,12 @@ typedef enum PickerType {
             strDistance = self.distance_limit;
         }
     }
-
+    
     _lbldis1.textColor = [UIColor blackColor];
     _lbldis2.textColor = [UIColor blackColor];
     _lbldis3.textColor = [UIColor blackColor];
     _lbldis4.textColor = [UIColor blackColor];
-    _lbldis5.textColor = [UIColor blackColor];
+    
     if (ncurDisSel == 0) {
         _lbldis1.textColor = [UIColor blueColor];
     } else if (ncurDisSel == 1) {
@@ -273,8 +273,6 @@ typedef enum PickerType {
         _lbldis3.textColor = [UIColor blueColor];
     } else if (ncurDisSel == 3) {
         _lbldis4.textColor = [UIColor blueColor];
-    } else if (ncurDisSel == 4) {
-        _lbldis5.textColor = [UIColor blueColor];
     }
 }
 
@@ -301,7 +299,7 @@ typedef enum PickerType {
 
 #pragma mark - click events
 - (IBAction)onClickReset:(id)sender {
-
+    
     [self clearData];
     [_clLevel reloadData];
     [_clWorkout reloadData];
@@ -324,28 +322,47 @@ typedef enum PickerType {
     _lbldis2.textColor = [UIColor blackColor];
     _lbldis3.textColor = [UIColor blackColor];
     _lbldis4.textColor = [UIColor blackColor];
-    _lbldis5.textColor = [UIColor blackColor];
+    
     switch (selindex) {
         case 1:
-            strDistance = arrDistance[0];
-            _lbldis1.textColor = [UIColor blueColor];
+            if (ncurDisSel != selindex) {
+                ncurDisSel = selindex;
+                strDistance = arrDistance[0];
+                _lbldis1.textColor = [UIColor blueColor];
+            } else {
+                strDistance = @"";
+                _lbldis1.textColor = [UIColor blackColor];
+            }
             break;
         case 2:
-            strDistance = arrDistance[1];
-            _lbldis2.textColor = [UIColor blueColor];
+            if (ncurDisSel != selindex) {
+                ncurDisSel = selindex;
+                strDistance = arrDistance[1];
+                _lbldis2.textColor = [UIColor blueColor];
+            } else {
+                strDistance = @"";
+                _lbldis2.textColor = [UIColor blackColor];
+            }
             break;
         case 3:
-
-            strDistance = arrDistance[2];
-            _lbldis3.textColor = [UIColor blueColor];
+            if (ncurDisSel != selindex) {
+                ncurDisSel = selindex;
+                strDistance = arrDistance[2];
+                _lbldis3.textColor = [UIColor blueColor];
+            } else {
+                strDistance = @"";
+                _lbldis3.textColor = [UIColor blackColor];
+            }
             break;
         case 4:
-            strDistance = arrDistance[3];
-            _lbldis4.textColor = [UIColor blueColor];
-            break;
-        case 5:
-            strDistance = arrDistance[4];
-            _lbldis5.textColor = [UIColor blueColor];
+            if (ncurDisSel != selindex) {
+                ncurDisSel = selindex;
+                strDistance = arrDistance[3];
+                _lbldis4.textColor = [UIColor blueColor];
+            } else {
+                strDistance = @"";
+                _lbldis3.textColor = [UIColor blackColor];
+            }
             break;
         default:
             break;
@@ -365,8 +382,8 @@ typedef enum PickerType {
         }
     }
     strlevel = [strlevel stringByTrimmingCharactersInSet:
-                               [NSCharacterSet characterSetWithCharactersInString:@","]];
-
+                [NSCharacterSet characterSetWithCharactersInString:@","]];
+    
     for (int i = 0; i < arrTraining.count; i++) {
         if (arrTrainingSel[i] == 1) {
             strsport = [NSString stringWithFormat:@"%@,%d", strsport, (i + 1)];
@@ -379,13 +396,13 @@ typedef enum PickerType {
         if (arrWorkoutSel[i] == 1) {
             strcat = [NSString stringWithFormat:@"%@,%d", strcat, (i + 1)];
         }
-
+        
     }
     strcat = [strcat stringByTrimmingCharactersInSet:
-                [NSCharacterSet characterSetWithCharactersInString:@","]];
-
+              [NSCharacterSet characterSetWithCharactersInString:@","]];
+    
     [self.delegate setFilter:strlevel sport:strsport cat:strcat distance:strDistance startDate:_startDate endDate:_endDate];
-
+    
     [self.navigationController popViewControllerAnimated:NO];
 }
 

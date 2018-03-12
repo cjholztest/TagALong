@@ -95,7 +95,7 @@
     if (![[profileInfo objectForKey:API_RES_KEY_USER_LOCATION] isEqualToString:@""]) {
         _lblAddress.text = [profileInfo objectForKey:API_RES_KEY_USER_LOCATION];
     } else {
-        _lblAddress.text = [workInfo objectForKey:API_RES_KEY_TITLE];
+        _lblAddress.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     }
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
@@ -155,7 +155,7 @@
         category = [NSString stringWithFormat:@"%@%@, ", category, arrCateNM[index - 1]];
     }
     _lblSport.text = [category stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
-    //_lblSport.text = @"asdjfjdskljfklajsafkldasjflksdnvsjdnfavlskdjflaksvdjfklvsd;jflaksvdfnjl;kdvjflsdknvkj";
+    //_lblSport.text = @"asdjfjdskljfklajsafkldasjflksdnvsjdnfavlskdjflaksvdjfklvsd;jflaksvdfnjl;kdvjflsdknvkjsdfsdafasdfasdfdsfsdafdsafdsafasdfdsafadsfdsafasdfsdf";
     //date
     NSString *nsdate = [workInfo objectForKey:API_RES_KEY_WORKOUT_DATE] ;
     NSDateFormatter *dateConvertor = [[NSDateFormatter alloc] init];

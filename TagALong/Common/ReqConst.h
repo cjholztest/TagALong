@@ -150,7 +150,7 @@
 #define API_TYPE_FILE_UPLOAD                @"file_upload"
 #define API_TYPE_USER_PROFILE_UPDATE        @"user_update_profile"
 #define API_TYPE_UPDATE_ADDRESS             @"update_address"
-#define API_TYPE_SET_PASSWORD             @"set_password"
+#define API_TYPE_SET_PASSWORD               @"set_password"
 
 /**
  * API RESULT CODE

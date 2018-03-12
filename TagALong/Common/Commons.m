@@ -228,6 +228,14 @@
     return isValidEmail;
 }
 
++ (BOOL)checkPassword:(NSString *)password {
+    NSString *passwordRegex = @"^((\\+)|(00))[0-9]{6,14}$";
+    NSPredicate *passwordCheck = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", passwordRegex];
+    
+    BOOL isValidPassword = [passwordCheck evaluateWithObject:password];
+    
+    return isValidPassword;
+}
 
 + (void)showToast:(NSString*)msg{
     MDToast *toast = [[MDToast alloc] init];

@@ -191,7 +191,6 @@
         [SharedAppDelegate closeLoading];
         [self showAlert:@"Failed to communicate with the server"];
     }];
-    
 }
 
 

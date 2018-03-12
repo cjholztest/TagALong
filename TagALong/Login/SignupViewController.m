@@ -36,7 +36,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:singleFingerTap];
     
 }
@@ -71,7 +71,7 @@
 }
 
 #pragma mark - user defined functions
--(void)Background:(UITapGestureRecognizer *)recognizer{
+-(void)hideKeyboard {
     [_tfFirstName resignFirstResponder];
     [_tfLastName resignFirstResponder];
     [_tfEmail resignFirstResponder];
@@ -108,7 +108,7 @@
     }
     
     if ([_tfPhoneNum.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
-        [Commons showToast:@"Input phone num!"];
+        [Commons showToast:@"Input phone number!"];
         return NO;
     }
     
@@ -130,9 +130,7 @@
 //submit
 - (IBAction)onClickSubmit:(id)sender {
     
-    //    SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
-    //    vc.delegate = self;
-    //    [self.navigationController pushViewController:vc animated:YES];
+    [self hideKeyboard];
     if ([self CheckValidForRegister]) {
         [self ReqRegister];
     }
@@ -172,7 +170,7 @@
 
 #pragma mark - Network
 -(void)ReqRegister{
-        
+    
         NSString *_email = [_tfEmail.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
         NSString *_nickname = [_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
         NSString *_lastname = [_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];

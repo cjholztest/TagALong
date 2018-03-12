@@ -622,6 +622,7 @@
                 
                 NSString *address = [NSString stringWithFormat:@"%@ %@\n%@\n",
                                      placemark.subThoroughfare, placemark.thoroughfare, placemark.locality];
+                location = address;
                 self.tfLocation.text = address;
                 userLocation = currentLocation;
                 

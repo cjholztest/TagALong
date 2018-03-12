@@ -23,5 +23,6 @@
 + (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address;
 + (void) clearUserInfo ;
 + (void)showOneBtnDlg:(NSString*)msg id:(id)parent;
++ (BOOL)checkPassword:(NSString *)password;
 
 @end
