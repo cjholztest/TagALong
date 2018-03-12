@@ -14,8 +14,9 @@
 #import "ExportSportsListTableViewCell.h"
 #import "FilterViewController.h"
 #import "User1ProfileViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate>{
+@interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>{
     OtherUserProfileViewController *vcOtherProfile;
     NSArray *arrSportNM;
     NSArray *arrLevel;
@@ -69,6 +70,9 @@
         [_vwFilter setHidden:YES];
     }
     
+    self.tvSportList.emptyDataSetSource = self;
+    self.tvSportList.emptyDataSetDelegate = self;
+    
     [self.tvSportList registerNib:[UINib nibWithNibName:@"SportsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"SportsListTableViewCell"];
     [self.tvSportList registerNib:[UINib nibWithNibName:@"ExportSportsListTableViewCell" bundle:nil] forCellReuseIdentifier:@"ExportSportsListTableViewCell"];
     
@@ -88,15 +92,11 @@
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
-        [self changeSort:@"distance"];
+        [self changeSort:sort_index];
     } else {
+        //[self ReqWorkoutList];
         [self ReqExportWorkoutList];
     }
 }
@@ -115,11 +115,13 @@
         SportsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
         NSDictionary *dic = _arrSportList[indexPath.row];
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
-        NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+        //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
         NSString *distance = @"";
-        NSInteger startTime = 0;
-        NSInteger duration = 0;
+        NSString *startTime = @"";
+        NSString *duration = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";
 
@@ -128,16 +130,23 @@
         }
 
         if (![[dic objectForKey:API_RES_KEY_START_TIME] isEqual:[NSNull null]]) {
-            startTime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
+            startTime = [dic objectForKey:API_RES_KEY_START_TIME];
         }
 
 
         if (![[dic objectForKey:API_RES_KEY_DURATION] isEqual:[NSNull null]]) {
-            duration = [[dic objectForKey:API_RES_KEY_DURATION] intValue];
+            duration = [dic objectForKey:API_RES_KEY_DURATION];
         }
 
-        NSString *post_tyoe = [dic objectForKey:API_RES_KEY_POST_TYPE];
-        if ([post_tyoe isEqualToString:@"1"]) {
+        NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+        if ([post_type isEqualToString:@"1"]) {
+            if (![[dic objectForKey:@"title"] isEqual:[NSNull null]]) {
+                NSString *title = [[dic objectForKey:@"title"] stringByReplacingOccurrencesOfString:@"(null)" withString:@""];
+                //NSSet* badWords = [NSSet setWithObjects:@"(null))", nil];
+                first_name = title;
+                //first_name = [dic objectForKey:@"title"];
+            }
+            
             if (![[dic objectForKey:API_RES_KEY_USR_NCK_NM] isEqual:[NSNull null]]) {
                 first_name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
             }
@@ -191,7 +200,7 @@
 
         //profile
 
-        if ([post_tyoe isEqualToString:@"1"]) {
+        if ([post_type isEqualToString:@"1"]) {
             if ([[dic objectForKey:API_RES_KEY_USR_PROFILE] isEqual:[NSNull null]]) {
                 cell.ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
             } else {
@@ -218,11 +227,13 @@
             }
             
         } else if ([sort_index isEqualToString:@"duration"]){
-            NSString *temp = [NSString stringWithFormat:@"%ld", duration * 15];
-            cell.lblDistance.text = [temp stringByAppendingString:@" Mins"];
+//            NSString *temp = [NSString stringWithFormat:@"%ld", duration * 15];
+//            cell.lblDistance.text = [temp stringByAppendingString:@" Mins"];
+            cell.lblDistance.text = duration;
         } else if ([sort_index isEqualToString:@"start_time"]){
-            NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
-            cell.lblDistance.text = temp;
+            //NSString *temp = [self startTime:startTime];
+            //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
+            cell.lblDistance.text = startTime;
         }
 
         [cell.bnProfile addTarget:self action:@selector(onClickUserProfile:) forControlEvents:UIControlEventTouchUpInside];
@@ -234,18 +245,20 @@
         ExportSportsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         NSDictionary *dic = _arrSportList[indexPath.row];
-        NSString *level = [dic objectForKey:API_RES_KEY_LEVEL];
-        NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
-        NSInteger startTime = 0;
+        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+        //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+        NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+        int sport_uid = [sports.firstObject intValue];
+        NSString* startTime = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";
         
         if (![[dic objectForKey:API_RES_KEY_START_TIME] isEqual:[NSNull null]]) {
-            startTime = [[dic objectForKey:API_RES_KEY_START_TIME] intValue];
+            startTime = [dic objectForKey:API_RES_KEY_START_TIME];
         }
         
-        NSString *post_tyoe = [dic objectForKey:API_RES_KEY_POST_TYPE];
-        if ([post_tyoe isEqualToString:@"1"]) {
+        NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+        if ([post_type isEqualToString:@"1"]) {
             if (![[dic objectForKey:API_RES_KEY_USR_NCK_NM] isEqual:[NSNull null]]) {
                 first_name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
             }
@@ -300,8 +313,9 @@
         cell.ivSport.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         cell.lblName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];   
       
-        NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
-        cell.lblDistance.text = temp;
+        //NSString *temp = [NSString stringWithFormat:@"%02ld:%02ld", (startTime * 15 ) / 60, (startTime * 15 ) % 60];
+         //NSString *temp = [self startTime:startTime];
+        cell.lblDistance.text = startTime;
     
         return cell;
     }
@@ -322,6 +336,9 @@
     NSDictionary *dic = _arrSportList[indexPath.row];
     BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
     vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+    if (Global.g_user.user_uid  == [[dic objectForKey:API_RES_KEY_USER_UID] intValue] || Global.g_expert.export_uid == [[dic objectForKey:API_RES_KEY_EXPERT_UID] intValue]) {
+        vc.bProfile = YES;
+    }
     [self.vcParent.navigationController pushViewController:vc animated:YES];
 }
 
@@ -336,13 +353,22 @@
 //    }
     NSDictionary *dic = _arrSportList[btn.tag];
     
-    NSString *post_type = [dic objectForKey:API_RES_KEY_POST_TYPE];
-    NSString *title = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+    NSString *post_type = [[dic objectForKey:API_RES_KEY_POST_TYPE] stringValue];
+    
     if ([post_type isEqualToString:@"2"]) {
         NSString *export_uid = [dic objectForKey:API_REQ_KEY_EXPERT_UID];
+        NSString *name = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+        NSString *lastname = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", name, lastname];
+         //NSString *title = [dic objectForKey:API_RES_KEY_EXPORT_NCK_NM];
+        
         [self addOtherUserProfile:export_uid type:post_type title:title];
     } else {
         NSString *usr_uid = [dic objectForKey:API_REQ_KEY_USER_UID];
+        NSString *name = [dic objectForKey:API_RES_KEY_USR_NCK_NM];
+        NSString *lastname = [dic objectForKey:API_RES_KEY_USER_LAST_NAME];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", name, lastname];
+       
         [self addOtherUserProfile:usr_uid type:post_type title:title];
     }
 }
@@ -358,14 +384,17 @@
 }
 
 //fiterview delegate
-- (void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance{
+-(void) setFilter:(NSString *)level sport:(NSString *)sport cat:(NSString *)cat distance:(NSString *)distance startDate:(NSTimeInterval)startDate endDate:(NSTimeInterval)endDate {
     _level_filter = level;
     _sport_filter = sport;
     _cate_filter = cat;
     _distance_limit = distance;
+    _startDate = startDate;
+    _endDate = endDate;
     
     [self ReqWorkoutList];
 }
+
 
 - (void)pageRefresh:(NSNotification *) notification {
     
@@ -374,6 +403,7 @@
             nPage = 1;
             [self ReqWorkoutList];
         } else {
+            //[self ReqWorkoutList];
             [self ReqExportWorkoutList];
         }
     }
@@ -407,6 +437,7 @@
         nPage = 1;
         [self ReqWorkoutList];
     } else {
+        //[self ReqWorkoutList];
         [self ReqExportWorkoutList];
     }
     
@@ -434,21 +465,28 @@
     vc.sport_filter = _sport_filter;
     vc.cate_filter = _cate_filter;
     vc.distance_limit = _distance_limit;
+    vc.startDate = _startDate;
+    vc.endDate = _endDate;
     [self.navigationController pushViewController:vc animated:YES];
-
 }
-#pragma mark - Network
--(void)ReqWorkoutList{
+
+-(void)ReqWorkoutList {
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
+    
+    NSNumber *startDate = [NSNumber numberWithLong:_startDate];
+    NSNumber *endDate = [NSNumber numberWithLong:_endDate];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LIST_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
                              API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude,
                              API_REQ_KEY_SORT_TYPE          :   sort_index,
@@ -456,16 +494,18 @@
                              API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
                              API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_START_DATE         :   startDate ?: 0,
+                             API_REQ_KEY_END_DATE           :   endDate ?: 0,
                              API_REQ_KEY_IS_MAP             :   @"0",
                              API_REQ_KEY_PAGE_NUM           :   [NSString stringWithFormat:@"%ld", (long)nPage],
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -501,25 +541,28 @@
     }];
 }
 
+#pragma mark - Network
+
+
 -(void)ReqExportWorkoutList{
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPORT_LIST_WORKOUT];
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPORT_LIST_WORKOUT,
-                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
+                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid]
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -562,5 +605,20 @@
             }
         }
     }
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"No workouts found";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
+{
+    return YES;
 }
 @end

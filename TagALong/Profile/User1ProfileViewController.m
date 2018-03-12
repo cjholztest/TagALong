@@ -16,6 +16,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "BookWorkoutViewController.h"
 #import "FSCalendar.h"
+#import <Photos/Photos.h>
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>{
     NSString *file_url;
@@ -77,6 +78,7 @@ static const NSInteger kMaxImageCnt = 1;
     
     NSString *seldate = [formatter stringFromDate:self.calendarView.selectedDate];
     [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
+    //[self ReqOldGetUserProfile:seldate];
     [self ReqGetUserProfile:seldate];
 }
 
@@ -167,10 +169,28 @@ static const NSInteger kMaxImageCnt = 1;
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
 
+    //[self ReqOldGetUserProfile:today];
     [self ReqGetUserProfile:today];
 }
 
 - (void)initData{
+    
+    for (NSInteger i = 0; i < 96; i++) {
+        NSString *temp = @"";
+        if (i >= 48) {
+            NSInteger hours = ((i - 48) * 15) / 60;
+            NSInteger mins = ((i - 48) * 15) % 60;
+            if (hours == 0) hours = 12;
+            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
+            
+        } else {
+            if (i == 20 || i == 24 || i == 28 || i >= 32) {
+                temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
+                
+            }
+        }
+    }
+    
     for (int i = 0; i < 96 ; i++) {
         NSMutableDictionary *dics = [NSMutableDictionary dictionary];
         [dics setObject:@"" forKey:@"workout_uid"];
@@ -200,8 +220,8 @@ static const NSInteger kMaxImageCnt = 1;
     NSString *age = [dicInfo objectForKey:API_RES_KEY_USER_AGE];
     NSString *location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
     phone = [dicInfo objectForKey:API_RES_KEY_USR_PHONE];
-    _lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
-    
+    //_lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
+    _lblAge.text = location;
     _lblLevel.text = @"INDIVIDUAL";
     
     if ([[dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
@@ -266,8 +286,7 @@ static const NSInteger kMaxImageCnt = 1;
          //         }
          
          
-         if( buttonIndex == 0 )
-         {
+         if( buttonIndex == 0 ) {
              UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
              imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
              imagePickerController.delegate = self;
@@ -284,52 +303,13 @@ static const NSInteger kMaxImageCnt = 1;
                  [self presentViewController:imagePickerController animated:YES completion:nil];
              }
          }
-         else if( buttonIndex == 1 )
-         {
-             self.imagePicker = [[BSImagePickerController alloc] init];
-             self.imagePicker.maximumNumberOfImages = kMaxImageCnt - self.arM_Photo.count;
-             
-             [self presentImagePickerController:self.imagePicker
-                                       animated:YES
-                                     completion:nil
-                                         toggle:^(ALAsset *asset, BOOL select) {
-                                             if(select)
-                                             {
-                                                 NSLog(@"Image selected");
-                                             }
-                                             else
-                                             {
-                                                 NSLog(@"Image deselected");
-                                             }
-                                         }
-                                         cancel:^(NSArray *assets) {
-                                             NSLog(@"User canceled...!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                         }
-                                         finish:^(NSArray *assets) {
-                                             NSLog(@"User finished :)!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                             
-                                             //                                             NSMutableArray *arrData = [NSMutableArray array];
-                                             for( NSInteger i = 0; i < assets.count; i++ )
-                                             {
-                                                 ALAsset *asset = assets[i];
-                                                 
-                                                 ALAssetRepresentation *rep = [asset defaultRepresentation];
-                                                 CGImageRef iref = [rep fullScreenImage];
-                                                 if (iref)
-                                                 {
-                                                     UIImage *image = [UIImage imageWithCGImage:iref];
-                                                     UIImage *compressimage = [self compressForUpload:image scale:0.5];
-                                                     imgData = UIImageJPEGRepresentation(image, 0.5);
-                                                     [self.arM_Photo addObject:imgData];
-                                                     
-//                                                     _ivProfile.image = [UIImage imageWithData:imageData];
-                                                     [self uploadImage:image scale:0.5];
-                                                 }
-                                             }
-                                             
-                                         }];
+         else if( buttonIndex == 1 ) {
+             UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+             imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+             imagePickerController.delegate = self;
+             imagePickerController.allowsEditing = YES;
+             imagePickerController.mediaTypes =  [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+             [self presentViewController:imagePickerController animated:YES completion:nil];
          }
      }];
 
@@ -339,8 +319,7 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *mediaType = [info valueForKey:UIImagePickerControllerMediaType];
-    if([mediaType isEqualToString:@"public.movie"])
-    {
+    if([mediaType isEqualToString:@"public.movie"]) {
         self.videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
         
         AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.videoUrl options:nil];
@@ -368,7 +347,7 @@ static const NSInteger kMaxImageCnt = 1;
         UIImage* outputImage = [info objectForKey:UIImagePickerControllerEditedImage] ? [info objectForKey:UIImagePickerControllerEditedImage] : [info objectForKey:UIImagePickerControllerOriginalImage];
         
         //UIImage *resizeImage = [Util imageWithImage:outputImage convertToWidth:self.ivImage.frame.size.width];
-        UIImage *compressimage = [self compressForUpload:outputImage scale:0.5];
+        //UIImage *compressimage = [self compressForUpload:outputImage scale:0.5];
         imgData = UIImageJPEGRepresentation(outputImage, 0.5);
         
 //        _ivProfile.image = [UIImage imageWithData:imageData];
@@ -379,26 +358,26 @@ static const NSInteger kMaxImageCnt = 1;
 }
 
 #pragma mark - Network
+
 -(void)ReqGetUserProfile:(NSString*)date{
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_USER_GET_PROFILE,
-                             API_REQ_KEY_USER_UID           :   self.user_id,
-                             API_REQ_KEY_TARGET_DATE        :   date,
-                             };
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_GET_PROFILE];
+    
+    NSDictionary *params = @{ API_REQ_KEY_TARGET_DATE: date,};
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -412,46 +391,35 @@ static const NSInteger kMaxImageCnt = 1;
                 [_arrWorkout removeAllObjects];
             }
             
-//            [self initData];
+            //            [self initData];
             
             for (int i = 0; i < arrData.count; i++) {
                 NSDictionary *dic = arrData[i];
-                NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
-                NSInteger duration = [[dic objectForKey:API_REQ_KEY_DURATION] intValue];
-                
-                for (int k = 0; k < duration; k++) {
-                    //NSMutableDictionary *dic_workout = [_arrWorkout[starttime + k] mutableCopy];
-                    NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
-                    
-                    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-                    NSString *star_mark = [dic objectForKey:API_RES_KEY_STAR_MARK];
-                    NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
-                    NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
-                    
-                    [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
-                    [dic_workout setObject:star_mark forKey:API_RES_KEY_START_TIME];
-                    if (k == 0) {
-                        [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"1" forKey:@"star_mark"];
-                        [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
-                    } else {
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"0" forKey:@"star_mark"];
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_TITLE];
-                    }
-                    
-                    if ((starttime * 15) / 60 > 12) {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld pm", ((starttime + k) * 15 ) / 60 - 12, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    } else {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld am", ((starttime + k) * 15 ) / 60, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    }
+                NSString *startTime = [dic objectForKey:API_REQ_KEY_START_TIME];
+                //NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
+                NSString *duration = [dic objectForKey:API_REQ_KEY_DURATION];
 
-                    [dic_workout setObject:@"1" forKey:@"workout"];
-                    
-//                    [_arrWorkout removeObjectAtIndex:starttime + k];
-//                    [_arrWorkout insertObject:dic_workout atIndex:starttime + k];
-                    [_arrWorkout addObject:dic_workout];
-                }
+                NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
+
+                NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+                //NSString *star_mark = [[dic objectForKey:API_RES_KEY_STAR_MARK] stringValue];
+                NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+                NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+
+                [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
+            
+                //[dic_workout setObject:@"1" forKey:API_RES_KEY_START_TIME];
+
+                [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
+                [dic_workout setObject:@"1" forKey:@"star_mark"];
+                [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
+                [dic_workout setObject:startTime forKey:API_RES_KEY_START_TIME];
+                [dic_workout setObject:duration forKey:API_REQ_KEY_DURATION];
+
+                [dic_workout setObject:@"1" forKey:@"workout"];
+
+                [_arrWorkout addObject:dic_workout];
+           
             }
             
             if (arrData.count > 0) {
@@ -477,6 +445,104 @@ static const NSInteger kMaxImageCnt = 1;
     }];
 }
 
+-(void)ReqOldGetUserProfile:(NSString*)date{
+
+    [SharedAppDelegate showLoading];
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+    NSDictionary *params = @{
+                             API_RES_KEY_TYPE               :   API_TYPE_USER_GET_PROFILE,
+                             API_REQ_KEY_USER_UID           :   self.user_id,
+                             API_REQ_KEY_TARGET_DATE        :   date,
+                             };
+
+    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+        NSLog(@"JSON: %@", respObject);
+        NSError* error;
+        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+                                                                       options:kNilOptions
+                                                                         error:&error];
+        [SharedAppDelegate closeLoading];
+
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+
+            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
+
+            NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+
+            if (_arrWorkout.count > 0) {
+                [_arrWorkout removeAllObjects];
+            }
+
+//            [self initData];
+
+            for (int i = 0; i < arrData.count; i++) {
+                NSDictionary *dic = arrData[i];
+                NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
+                NSInteger duration = [[dic objectForKey:API_REQ_KEY_DURATION] intValue];
+
+                for (int k = 0; k < duration; k++) {
+                    //NSMutableDictionary *dic_workout = [_arrWorkout[starttime + k] mutableCopy];
+                    NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
+
+                    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+                    NSString *star_mark = [dic objectForKey:API_RES_KEY_STAR_MARK];
+                    NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+                    NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+
+                    [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
+                    [dic_workout setObject:star_mark forKey:API_RES_KEY_START_TIME];
+                    if (k == 0) {
+                        [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
+                        [dic_workout setObject:@"1" forKey:@"star_mark"];
+                        [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
+                    } else {
+                        [dic_workout setObject:@"" forKey:API_RES_KEY_USER_LOCATION];
+                        [dic_workout setObject:@"0" forKey:@"star_mark"];
+                        [dic_workout setObject:@"" forKey:API_RES_KEY_TITLE];
+                    }
+
+                    if ((starttime * 15) / 60 > 12) {
+                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld pm", ((starttime + k) * 15 ) / 60 - 12, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
+                    } else {
+                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld am", ((starttime + k) * 15 ) / 60, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
+                    }
+
+                    [dic_workout setObject:@"1" forKey:@"workout"];
+
+//                    [_arrWorkout removeObjectAtIndex:starttime + k];
+//                    [_arrWorkout insertObject:dic_workout atIndex:starttime + k];
+                    [_arrWorkout addObject:dic_workout];
+                }
+            }
+
+            if (arrData.count > 0) {
+                [_vwNoData setHidden:YES];
+            } else {
+                [_vwNoData setHidden:NO];
+            }
+
+            [_tvSchedule reloadData];
+
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+        }  else if(res_code == RESULT_ERROR_PARAMETER){
+            [Commons showToast:@"The request parameters are incorrect."];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
+        [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
 - (void)uploadImage:(UIImage*)image scale:(float)scale {
     if (image == nil)
         return;
@@ -484,16 +550,17 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    NSDictionary *params  = @{
-                              API_REQ_KEY_TYPE             :   API_TYPE_FILE_UPLOAD,
-                              };
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_FILE_UPLOAD];
     
     NSData *fileData = image? UIImageJPEGRepresentation(image, scale):nil;
     
-    [manager POST:SERVER_URL parameters:params  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:url parameters:nil  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if(fileData){
             [formData appendPartWithFileData:fileData
                                         name:API_REQ_KEY_UPFILE
@@ -501,13 +568,13 @@ static const NSInteger kMaxImageCnt = 1;
                                     mimeType:@"multipart/form-data"];
         }
     }
-         progress: nil success:^(NSURLSessionTask *task, id respObject) {
+         progress: nil success:^(NSURLSessionTask *task, id responseObject) {
              
-             NSLog(@"JSON: %@", respObject);
-             NSError* error;
-             NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                            options:kNilOptions
-                                                                              error:&error];
+             NSLog(@"JSON: %@", responseObject);
+//             NSError* error;
+//             NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                            options:kNilOptions
+//                                                                              error:&error];
              [SharedAppDelegate closeLoading];
              
              int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -539,30 +606,30 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_PROFILE_UPDATE];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_USER_PROFILE_UPDATE,
-                             API_REQ_KEY_USER_UID           :   self.user_id,
-                             API_RES_KEY_USR_NCK_NM         :   nickname,
-                             API_RES_KEY_USER_LAST_NAME     :   nickname,
-                             API_RES_KEY_USR_PHONE          :    phone,
-                             API_REQ_KEY_USER_PROFILE_IMG   :   file_name
+                             //API_RES_KEY_USR_NCK_NM         :   nickname,
+                             //API_RES_KEY_USER_LAST_NAME     :   nickname,
+                             API_RES_KEY_USR_PHONE          :   phone,
+                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             _ivProfile.image = [UIImage imageWithData:imgData];
-            [Commons showToast:@"Your profile has changed"];
+            [Commons showToast:@"Your profile was changed"];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
             
@@ -589,6 +656,7 @@ static const NSInteger kMaxImageCnt = 1;
     
     NSString *seldate = [formatter stringFromDate:date];
     [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
+    //[self ReqOldGetUserProfile:seldate];
     [self ReqGetUserProfile:seldate];
 }
 

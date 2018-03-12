@@ -48,7 +48,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
     UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:singleFingerTap];
     
     [self ReqGetSportList];
@@ -62,7 +62,7 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -141,7 +141,7 @@
 }
 
 #pragma mark - user defined functions
--(void)Background:(UITapGestureRecognizer *)recognizer{
+-(void)hideKeyboard {
     [_tfFirstName resignFirstResponder];
     [_tfLastName resignFirstResponder];
     [_tfEmail resignFirstResponder];
@@ -153,16 +153,16 @@
 
 -(BOOL)CheckValidForRegister{
     
-    if (_tfFirstName.text.length == 0) {
+    if ([_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input first name!"];
         return NO;
     }
-
-    if (_tfLastName.text.length == 0) {
+    
+    if ([_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input last name!"];
         return NO;
     }
-
+    
     if (_tfEmail.text.length == 0) {
         [Commons showToast:@"Input email!"];
         return NO;
@@ -172,18 +172,23 @@
         [Commons showToast:@"Please enter in email format."];
         return NO;
     }
-
-    if (_tfPhone.text.length == 0) {
+    
+    if ([_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input phone num!"];
         return NO;
     }
     
-    if (_tfPass.text.length == 0) {
+    if ([_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input password"];
         return NO;
     }
     
-   
+    if ([_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
+        [Commons showToast:@"The password must be at least 5 symbols length"];
+        //[self showAlert:@"The password must be at least 5 symbols length"];
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -194,7 +199,7 @@
     if ([self CheckValidForRegister]) {
         [self ReqExpertRegister];
     }
-  
+    
 }
 
 - (IBAction)onClickback:(id)sender {
@@ -202,12 +207,16 @@
 }
 
 - (IBAction)onClickSport:(id)sender {
-    
+    [self hideKeyboard];
     [_vwSportSelect setHidden:NO];
 }
 
 - (IBAction)onclickSportSelconfirm:(id)sender {
     [_vwSportSelect setHidden:YES];
+    if (SelSportNM == nil) {
+        NSDictionary *dic = _arrSport[0];
+        SelSportNM = [dic objectForKey:API_RES_KEY_SPORT_NAME];
+    }
     [_bnsport setTitle:SelSportNM forState:UIControlStateNormal];
 }
 
@@ -264,91 +273,96 @@
     return strTitle;
 }
 
+-(void)showAlert:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Network
 -(void)ReqExpertRegister{
-    NSString *_email = _tfEmail.text;
-    NSString *_name = _tfFirstName.text;
-    NSString *_lastname = _tfLastName.text;
-    NSString *_phone    = _tfPhone.text;
-    NSString *_pwd      = _tfPass.text;
-    NSString *_sport     = [NSString stringWithFormat:@"%ld", (long)nSelSportID];
-    NSString *_communication     = _tfCommunication.text;
-    NSString *_info     = _tfInfo.text;
-    
-    latitude = self.locationManager.location.coordinate.latitude;
-    longitude = self.locationManager.location.coordinate.longitude;
-    
-    //    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
-    
-    [SharedAppDelegate showLoading];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPoRT_REGISTER,
-                             API_REQ_KEY_USER_NICKNAME      :   _name,
-                             API_REQ_KEY_USER_LAST_NAME     :   _lastname,
-                             API_REQ_KEY_USER_EMAIL         :   _email,
-                             API_REQ_KEY_USER_PHONE         :   _phone,
-                             API_REQ_KEY_USER_PWD           :   _pwd,
-                             API_REQ_KEY_COMMUNICATION      :   _communication,
-                             API_REQ_KEY_SPORT_UID          :   _sport,
-                             API_REQ_KEY_CONTENT            :   _info,
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude]
-                             };
-    
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
-        [SharedAppDelegate closeLoading];
         
-        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
-        if (res_code == RESULT_CODE_SUCCESS) {
+        NSString *_email = [_tfEmail.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_name = [_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_lastname = [_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_phone    = [_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_pwd      = [_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_sport     = [NSString stringWithFormat:@"%ld", (long)nSelSportID];
+        NSString *_communication     = [_tfCommunication.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_info     = [_tfInfo.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        
+        [SharedAppDelegate showLoading];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"export_register"];
+        
+        NSDictionary *params = @{
+                                 API_REQ_KEY_USER_NICKNAME      :   _name,
+                                 API_REQ_KEY_USER_LAST_NAME     :   _lastname,
+                                 API_REQ_KEY_USER_EMAIL         :   _email,
+                                 API_REQ_KEY_USER_PHONE         :   _phone,
+                                 API_REQ_KEY_USER_PWD           :   _pwd,
+                                 API_REQ_KEY_COMMUNICATION      :   _communication,
+                                 API_REQ_KEY_SPORT_UID          :   _sport,
+                                 API_REQ_KEY_CONTENT            :   _info,
+                                 };
+        
+        [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+            NSLog(@"JSON: %@", respObject);
             
-            [self showSuccessAlert];
-//            SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
-//            vc.delegate = self;
-//            [self.navigationController pushViewController:vc animated:YES];
+            [SharedAppDelegate closeLoading];
             
-        } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
-            [Commons showToast:@"This Phone has been duplicated"];
-        } else if (res_code == RESULT_ERROR_NICKNAME_DUPLICATE){
-            [Commons showToast:@"This nickname has been duplicated"];
-        } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
-            [Commons showToast:@"This email has been duplicated"];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error: %@", error);
-        [SharedAppDelegate closeLoading];
-    }];
-
+            int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+            if (res_code == RESULT_CODE_SUCCESS) {
+                
+                //            [Commons showToast:@"Congratulations on your joining."];
+                //            [self.navigationController popViewControllerAnimated:NO];
+                
+                [self showSuccessAlert];
+                
+            } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
+                [self showAlert:@"This email is in use"];
+                //[Commons showToast:@"This email is in use."];
+            } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
+                [self showAlert:@"This phone number is in use"];
+                //[Commons showToast:@"This Phone has been duplicated"];
+            } else if (res_code == RESULT_ERROR_NICKNAME_DUPLICATE){
+                [self showAlert:@"This nickname is in use"];
+                //[Commons showToast:@"This nickname has been duplicated"];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            [SharedAppDelegate closeLoading];
+            [self showAlert:@"Failed to communicate with the server"];
+        }];
 }
 
 -(void)ReqGetSportList{
-
+    
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_GET_SPORT
-                             };
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_GET_SPORT];
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
-        
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
         NSLog(@"sdfasdf: %@", responseObject);
         [SharedAppDelegate closeLoading];
         
@@ -362,6 +376,5 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
     }];
-    
 }
 @end

@@ -18,7 +18,7 @@
     NSString *duration;
     NSString *content;
     NSString *amount;
-    NSInteger nPicType; // 1:starttime, 2:duration
+    NSInteger nPicType; // 1:starttime, 2:duration, 3:frequency
     NSInteger startindex; //time picer start idnex
     NSInteger startTimeindex;
     NSInteger durationindex;
@@ -28,6 +28,10 @@
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    CLLocation *userLocation;
+    
+    NSArray *frequencies;
+    NSInteger frequencyIndex;
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
@@ -53,6 +57,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvBottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcbnBottomHeight;
 
+@property (weak, nonatomic) IBOutlet UIView *vwFrequency;
+@property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
+@property (weak, nonatomic) IBOutlet UIPickerView *picFrequency;
 @end
 
 @implementation PostWorkoutDetailViewController
@@ -64,6 +71,9 @@
     [self initUI];
 //    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
     arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    
+    frequencies = [NSArray arrayWithObjects:@{@"title": @"None", @"id": @"0"}, @{@"title": @"Every day", @"id": @"1"}, @{@"title": @"Every week", @"id": @"7"}, nil];
+
     
     UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
     [self.tfLocation addGestureRecognizer:tapRecog];
@@ -85,12 +95,9 @@
     
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
-
 
 #pragma mark - UIPickerViewDelegate / DataSource
 
@@ -99,10 +106,12 @@
 //    startTime = [NSString stringWithFormat:@"%02ld:%02ld", (row * 30) / 60, (row * 30) % 60];
     if (nPicType == 1) {
         startTime = arrStartTime[row];
-        startTimeindex = startindex + row ;
-    } else {
+        startTimeindex = startindex + row;
+    } else if (nPicType == 2) {
         duration = arrDuration[row];
         durationindex = row + 1;
+    } else {
+        frequencyIndex = row;
     }
 }
 
@@ -113,8 +122,10 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (nPicType == 1) {
         return arrStartTime.count;
+    } else if (nPicType == 2) {
+       return arrDuration.count;
     } else {
-        return arrDuration.count;
+        return frequencies.count;
     }
 }
 
@@ -141,7 +152,6 @@
     label.textColor = [UIColor colorWithRed:(0 / 255.f) green:(0/ 255.f) blue:(0/ 255.f) alpha:1.0];
     
     return label;
-    
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -149,8 +159,10 @@
     NSString *strTitle = nil;
     if (nPicType == 1) {
         strTitle = arrStartTime[row];
-    } else {
+    } else if (nPicType == 2) {
         strTitle = arrDuration[row];
+    } else {
+        strTitle = [frequencies[row] objectForKey:@"title"];
     }
     
     return strTitle;
@@ -204,6 +216,7 @@
     [_vwDate setHidden:YES];
     [_vwStartTime setHidden:YES];
     [_vwDuration setHidden:YES];
+    [_vwFrequency setHidden:YES];
     title = @"";
     location = @"";
     date = @"";
@@ -213,6 +226,7 @@
     amount = @"";
     startTimeindex = 0;
     durationindex = 0;
+    frequencyIndex = 0;
     
     arrStartTime = [[NSMutableArray alloc] init];
     arrDuration = [[NSMutableArray alloc] init];
@@ -220,6 +234,7 @@
     _btnDate.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnStartTime.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnDuration.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _btnFrequency.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -323,8 +338,9 @@
 
 - (IBAction)onClickStartTimeConfirm:(id)sender {
     if ([startTime isEqualToString:@""]) {
-        startTime = @"00:00";
-        startTimeindex= 0;
+        startTime = @"8:00 am";
+        startTimeindex = startindex + [_picStartTime selectedRowInComponent:0];
+        //startTimeindex= 0;
     }
 
     [_btnStartTime setTitle:startTime forState:UIControlStateNormal];
@@ -343,13 +359,6 @@
     nPicType = 1;
     [_vwStartTime setHidden:NO];
     
-    
-    //현재 시간 얻기
-//    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute  fromDate:[NSDate date]];
-//    
-//    NSInteger hour = [components hour];
-//    NSInteger min = [components minute];
-    
     [arrStartTime removeAllObjects];
     
     //현재 시간을 가지고 조합
@@ -358,17 +367,42 @@
     for (NSInteger i = index; i < 96; i++) {
         NSString *temp = @"";
         if (i >= 48) {
-            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", ((i - 48) * 15) / 60 , ((i - 48) * 15) % 60];
+            NSInteger hours = ((i - 48) * 15) / 60;
+            NSInteger mins = ((i - 48) * 15) % 60;
+            if (hours == 0) hours = 12;
+            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
             [arrStartTime addObject:temp];
         } else {
-            if (i >= 32) {
+            if (i == 20 || i == 24 || i == 28 || i >= 32) {
                 temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
                 [arrStartTime addObject:temp];
             }
         }
     }
-    startindex = 2;
+    startindex = index;
     [_picStartTime reloadAllComponents];
+    [_picStartTime selectRow:3 inComponent:0 animated:YES];
+}
+
+- (IBAction)onClickFrequency:(id)sender {
+    [self downkeyboard];
+    
+    if ([duration isEqualToString:@""]) {
+        [Commons showToast:@"Please select the duration first"];
+        return;
+    }
+    
+    nPicType = 3;
+    
+    [_vwFrequency setHidden:NO];
+    [_picFrequency reloadAllComponents];
+}
+
+- (IBAction)onClickFrequencyConfirm:(id)sender {
+    [_vwFrequency setHidden:YES];
+    
+    NSString *title = [frequencies[frequencyIndex] objectForKey:@"title"];
+    [_btnFrequency setTitle:title forState:UIControlStateNormal];
 }
 
 - (IBAction)onClickDuration:(id)sender {
@@ -382,7 +416,7 @@
     
     [arrDuration removeAllObjects];
     
-    for (NSInteger i = 1; i < (25 - startTimeindex); i++) {
+    for (NSInteger i = 1; i < 13; i++) {
         NSString *temp = @"";
         if ((i * 15) / 60 == 0) {
             temp = [NSString stringWithFormat:@"%0ld min", (i  * 15) % 60];
@@ -399,7 +433,7 @@
     [_vwDuration setHidden:YES];
     
     if ([duration isEqualToString:@""]) {
-        duration = @"00:00";
+        duration = @"15 min";
         durationindex= 0;
     }
 
@@ -407,7 +441,7 @@
 }
 
 - (void)showLoctionPopup {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"TagALong" message:@"Do you want to use your current location or to input it manually?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:@"Do you want to use your current location or to input it manually?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *locationAction = [UIAlertAction actionWithTitle:@"Current" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [SharedAppDelegate showLoading];
@@ -445,6 +479,23 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(NSString *)generateWorkoutTitle {
+    NSMutableString *tempTitle = [NSMutableString new];
+    
+    NSString * newString = [_sport_uid stringByReplacingOccurrencesOfString:@"," withString:@""];
+ 
+    for (int i = 0; i < newString.length; i++) {
+        char value = [newString characterAtIndex:i];
+        
+        NSString *workoutName = arrSportNM[[[NSString stringWithFormat:@"%c", value] intValue] - 1];
+        
+        [tempTitle appendString:workoutName];
+        [tempTitle appendString:@", "];
+    }
+    
+    return [tempTitle substringToIndex:tempTitle.length - 2];
+}
+
 #pragma mark - Network
 -(void)ReqReqWorkout{
     
@@ -457,61 +508,80 @@
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         _uid = [NSString stringWithFormat:@"%d", Global.g_user.user_uid];
         index = [_sport_uid intValue];
-        title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_user.user_nck, Global.g_user.user_last_nm];
+        
+        title = [NSString stringWithFormat:@"%@ with %@ %@", [self generateWorkoutTitle], Global.g_user.user_nck, Global.g_user.user_last_nm];
     } else {
         _uid = [NSString stringWithFormat:@"%d", Global.g_expert.export_uid];
         index = [_sport_uid intValue];
-        title = [NSString stringWithFormat:@"%@ with %@ %@", arrSportNM[index - 1], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
+        title = [NSString stringWithFormat:@"%@ with %@ %@", [self generateWorkoutTitle], Global.g_expert.export_nck, Global.g_expert.export_last_nm];
     }
     
-    CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
-    double latitude = code.latitude;
-    double longitude = code.longitude;
+    content = _tvContent.text;
+    
+    double latitude;
+    double longitude;
+    
+    if (userLocation != nil) {
+        latitude = userLocation.coordinate.latitude;
+        longitude = userLocation.coordinate.longitude;
+    } else {
+        CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
+        latitude = code.latitude;
+        longitude = code.longitude;
+    }
+    
+    NSNumber *price = [NSNumber numberWithInteger:0];
+    if (amount != nil && ![amount  isEqual: @""]) {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        price = [formatter numberFromString:amount];
+    } else {
+        price = [NSNumber numberWithInteger:0];
+    }
     
     NSString *sport_uid = self.sport_uid;
     NSString *categories = self.categories;
+    NSString *freqIndex = [frequencies[frequencyIndex] objectForKey:@"id"];
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_REGISTER_WORKOUT];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_REGISTER_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   _uid,
                              API_REQ_KEY_LOGIN_TYPE         :   Global.g_user.user_login,
                              API_REQ_KEY_SPORT_UID          :   sport_uid,
                              API_REQ_KEY_CATEGORIES         :   categories,
                              API_REQ_KEY_TITLE              :   title,
                              API_REQ_KEY_WORKOUT_DATE       :   date,
-                             API_REQ_KEY_START_TIME         :   [NSString stringWithFormat:@"%ld", (long)startTimeindex],
-                             API_REQ_KEY_DURATION           :   [NSString stringWithFormat:@"%ld", (long)durationindex],
-                             API_REQ_KEY_AMOUNT             :   amount,
+                             API_REQ_KEY_START_TIME         :   startTime,
+                             API_REQ_KEY_DURATION           :   duration,
+                             API_REQ_KEY_FREQUENCY          :   freqIndex,
+                             API_REQ_KEY_AMOUNT             :   price,
                              API_REQ_KEY_ADDITION           :   content,
                              API_REQ_KEY_USER_LOCATION      :   location,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
                              API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
             [self showSuccessAlert];
-            
-            //[Commons showToast:@"Register workout success!"];
-            
-            //[self.navigationController popViewControllerAnimated:NO];
-            //[self.delegate dismiss];
-            //[[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:[responseObject objectForKey:API_RES_KEY_MSG]];
@@ -553,6 +623,8 @@
                 NSString *address = [NSString stringWithFormat:@"%@ %@\n%@\n",
                                      placemark.subThoroughfare, placemark.thoroughfare, placemark.locality];
                 self.tfLocation.text = address;
+                userLocation = currentLocation;
+                
                 [SharedAppDelegate closeLoading];
 
             } else {

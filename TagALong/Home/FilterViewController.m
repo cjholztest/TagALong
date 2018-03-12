@@ -9,6 +9,11 @@
 #import "FilterViewController.h"
 #import "FilterCollectionViewCell.h"
 
+typedef enum PickerType {
+    from,
+    to
+} PickerType;
+
 @interface FilterViewController ()<UIScrollViewDelegate>{
 
     NSArray *arrLevel;
@@ -23,6 +28,11 @@
 
     NSInteger ncurDisSel;
     NSString *strDistance;
+    
+    NSInteger datePickerType; //1: From, 2: To
+    PickerType pickerType;
+    
+    NSDateFormatter *formatter;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *clLevel;
@@ -36,6 +46,11 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *workoutTypeCollectionHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *focusOnCollectionHeight;
+
+@property (weak, nonatomic) IBOutlet UIView *datePickerView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *fromLabel;
+@property (weak, nonatomic) IBOutlet UILabel *toLabel;
 
 @end
 
@@ -51,6 +66,9 @@
         arrLevel = [NSArray arrayWithObjects:@"Pro", @"Trainer", @"Classes", @"Individual", nil];
     }
     
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
     
     arrLevelIndex = [NSArray arrayWithObjects:@"2", @"3", @"1", @"0", nil];
     arrTraining = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
@@ -66,6 +84,18 @@
     
     _workoutTypeCollectionHeight.constant = 35 * arrTraining.count/2 + 10 * arrTraining.count/2;
     _focusOnCollectionHeight.constant = 35 * arrWorkout.count/2 + 10 * arrWorkout.count/2;
+    
+    if (self.startDate != 0) {
+        _fromLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:_startDate]];
+    }
+    
+    if (self.endDate != 0) {
+        _toLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:_endDate]];
+    }
+}
+
+-(void)configureDatePicker {
+    _datePicker.minimumDate = [NSDate date];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -76,6 +106,36 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)fromButtonTapped:(id)sender {
+    pickerType = from;
+    [UIView animateWithDuration:0.25 animations:^{
+        [_datePickerView setHidden:NO];
+    }];
+}
+
+- (IBAction)toButtonTapped:(id)sender {
+    pickerType = to;
+    [UIView animateWithDuration:0.25 animations:^{
+        [_datePickerView setHidden:NO];
+    }];
+}
+
+- (IBAction)onClickDateConfirm:(id)sender {
+    [UIView animateWithDuration:0.25 animations:^{
+        [_datePickerView setHidden:YES];
+    }];
+    
+    NSString *dateString = [formatter stringFromDate:_datePicker.date];
+    
+    if (pickerType == from) {
+        _startDate = [self.datePicker.date timeIntervalSince1970];
+        self.fromLabel.text = dateString;
+    } else {
+        _endDate = [self.datePicker.date timeIntervalSince1970];;
+        self.toLabel .text = dateString;
+    }
 }
 
 #pragma mark - UICollectionViewDataSource and UICollectionViewDelegate
@@ -246,6 +306,10 @@
     [_clLevel reloadData];
     [_clWorkout reloadData];
     [_clTraining reloadData];
+    self.fromLabel.text = @"";
+    self.toLabel.text = @"";
+    _startDate = 0;
+    _endDate = 0;
 }
 
 
@@ -320,9 +384,8 @@
     strcat = [strcat stringByTrimmingCharactersInSet:
                 [NSCharacterSet characterSetWithCharactersInString:@","]];
 
-    [self.delegate setFilter:strlevel sport:strsport cat:strcat distance:strDistance];
+    [self.delegate setFilter:strlevel sport:strsport cat:strcat distance:strDistance startDate:_startDate endDate:_endDate];
 
-    
     [self.navigationController popViewControllerAnimated:NO];
 }
 

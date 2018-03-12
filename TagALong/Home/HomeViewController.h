@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define PAGE_MENU_PROFILE       0
 #define PAGE_MENU_MAP           1
 #define PAGE_MENU_LIST          2
 
@@ -15,6 +16,7 @@
 #define BUTTON_SUBMIT           30
 @interface HomeViewController : UIViewController
 
-
+@property (nonatomic) NSInteger nCurPageIdx;
+@property (nonatomic) NSInteger nCurButtonIdx;
 @end
 

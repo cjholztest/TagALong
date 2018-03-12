@@ -37,6 +37,12 @@
     [self initUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self addEditInfoBarButton];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -148,7 +154,8 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy-MM-dd"];
     NSString *today = [dateformat stringFromDate:curdate];
-    [self addEditInfoBarButton];
+   
+    
     [self ReqGetExportUserProfile:today];
 }
 
@@ -172,7 +179,7 @@
     
     phone = [dicInfo objectForKey:API_RES_KEY_EXPpRT_PHONE];
     location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
-    level = [dicInfo objectForKey:API_RES_KEY_LEVEL];
+    level = [[dicInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
@@ -212,32 +219,36 @@
 }
 
 #pragma mark - Network
+
 -(void)ReqGetExportUserProfile:(NSString*)date{
     
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPERT_GET_PROFILE,
-                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
-                             API_REQ_KEY_TARGET_DATE        :   date,
-                             };
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPERT_GET_PROFILE];
+    
+    NSDictionary *params = @{ API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
+                             API_REQ_KEY_TARGET_DATE: date };
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_EXPORT_INFO]];
+            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
             
             NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
             
@@ -245,46 +256,35 @@
                 [_arrWorkout removeAllObjects];
             }
             
-//            [self initData];
+            //            [self initData];
             
             for (int i = 0; i < arrData.count; i++) {
                 NSDictionary *dic = arrData[i];
-                NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
-                NSInteger duration = [[dic objectForKey:API_REQ_KEY_DURATION] intValue];
+                NSString *startTime = [dic objectForKey:API_REQ_KEY_START_TIME];
+                //NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
+                NSString *duration = [dic objectForKey:API_REQ_KEY_DURATION];
                 
-                for (int k = 0; k < duration; k++) {
-                    //NSMutableDictionary *dic_workout = [_arrWorkout[starttime + k] mutableCopy];
-                    NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
-                    
-                    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-                    NSString *star_mark = [dic objectForKey:API_RES_KEY_STAR_MARK];
-                    NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
-                    NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
-                    
-                    [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
-//                    [dic_workout setObject:star_mark forKey:API_RES_KEY_START_TIME];
-                    if (k == 0) {
-                        [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"1" forKey:@"star_mark"];
-                        [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
-                    } else {
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_USER_LOCATION];
-                        [dic_workout setObject:@"0" forKey:@"star_mark"];
-                        [dic_workout setObject:@"" forKey:API_RES_KEY_TITLE];
-                    }
-                    
-                    if ((starttime * 15) / 60 > 12) {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld pm", ((starttime + k) * 15 ) / 60 - 12, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    } else {
-                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld am", ((starttime + k) * 15 ) / 60, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
-                    }
-
-                    [dic_workout setObject:@"1" forKey:@"workout"];
-                    
-//                    [_arrWorkout removeObjectAtIndex:starttime + k];
-//                    [_arrWorkout insertObject:dic_workout atIndex:starttime + k];
-                    [_arrWorkout addObject:dic_workout];
-                }
+                NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
+                
+                NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+                //NSString *star_mark = [[dic objectForKey:API_RES_KEY_STAR_MARK] stringValue];
+                NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+                NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+                
+                [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
+                
+                //[dic_workout setObject:@"1" forKey:API_RES_KEY_START_TIME];
+                
+                [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
+                [dic_workout setObject:@"1" forKey:@"star_mark"];
+                [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
+                [dic_workout setObject:startTime forKey:API_RES_KEY_START_TIME];
+                [dic_workout setObject:duration forKey:API_REQ_KEY_DURATION];
+                
+                [dic_workout setObject:@"1" forKey:@"workout"];
+                
+                [_arrWorkout addObject:dic_workout];
+                
             }
             
             if (arrData.count > 0) {
@@ -309,5 +309,103 @@
         [Commons showToast:@"Failed to communicate with the server"];
     }];
 }
+
+//-(void)ReqGetExportUserProfile:(NSString*)date{
+//
+//    [SharedAppDelegate showLoading];
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//
+//    NSDictionary *params = @{
+//                             API_RES_KEY_TYPE               :   API_TYPE_EXPERT_GET_PROFILE,
+//                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
+//                             API_REQ_KEY_TARGET_DATE        :   date,
+//                             };
+//
+//    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+//        NSLog(@"JSON: %@", respObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
+//        [SharedAppDelegate closeLoading];
+//
+//        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+//        if (res_code == RESULT_CODE_SUCCESS) {
+//
+//            [self setUserInfo:[responseObject objectForKey:API_RES_KEY_EXPORT_INFO]];
+//
+//            NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+//
+//            if (_arrWorkout.count > 0) {
+//                [_arrWorkout removeAllObjects];
+//            }
+//
+////            [self initData];
+//
+//            for (int i = 0; i < arrData.count; i++) {
+//                NSDictionary *dic = arrData[i];
+//                NSInteger starttime = [[dic objectForKey:API_REQ_KEY_START_TIME] intValue];
+//                NSInteger duration = [[dic objectForKey:API_REQ_KEY_DURATION] intValue];
+//
+//                for (int k = 0; k < duration; k++) {
+//                    //NSMutableDictionary *dic_workout = [_arrWorkout[starttime + k] mutableCopy];
+//                    NSMutableDictionary *dic_workout = [[NSMutableDictionary alloc] init];
+//
+//                    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+//                    NSString *star_mark = [dic objectForKey:API_RES_KEY_STAR_MARK];
+//                    NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+//                    NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+//
+//                    [dic_workout setObject:workout_id forKey:API_RES_KEY_WORKOUT_UID];
+////                    [dic_workout setObject:star_mark forKey:API_RES_KEY_START_TIME];
+//                    if (k == 0) {
+//                        [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
+//                        [dic_workout setObject:@"1" forKey:@"star_mark"];
+//                        [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
+//                    } else {
+//                        [dic_workout setObject:@"" forKey:API_RES_KEY_USER_LOCATION];
+//                        [dic_workout setObject:@"0" forKey:@"star_mark"];
+//                        [dic_workout setObject:@"" forKey:API_RES_KEY_TITLE];
+//                    }
+//
+//                    if ((starttime * 15) / 60 > 12) {
+//                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld pm", ((starttime + k) * 15 ) / 60 - 12, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
+//                    } else {
+//                        [dic_workout setObject:[NSString stringWithFormat:@"%02ld:%02ld am", ((starttime + k) * 15 ) / 60, ((starttime + k) * 15 ) % 60] forKey:API_RES_KEY_START_TIME];
+//                    }
+//
+//                    [dic_workout setObject:@"1" forKey:@"workout"];
+//
+////                    [_arrWorkout removeObjectAtIndex:starttime + k];
+////                    [_arrWorkout insertObject:dic_workout atIndex:starttime + k];
+//                    [_arrWorkout addObject:dic_workout];
+//                }
+//            }
+//
+//            if (arrData.count > 0) {
+//                [_vwNoData setHidden:YES];
+//            } else {
+//                [_vwNoData setHidden:NO];
+//            }
+//
+//            [_tvSchedule reloadData];
+//
+//        }  else if(res_code == RESULT_ERROR_PASSWORD){
+//            [Commons showToast:@"The password is incorrect."];
+//
+//        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+//            [Commons showToast:@"User does not exist."];
+//        }  else if(res_code == RESULT_ERROR_PARAMETER){
+//            [Commons showToast:@"The request parameters are incorrect."];
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"error: %@", error);
+//        [SharedAppDelegate closeLoading];
+//        [Commons showToast:@"Failed to communicate with the server"];
+//    }];
+//}
 
 @end

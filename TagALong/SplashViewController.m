@@ -42,8 +42,13 @@
         NSString *email = [Preference getString:PREFCONST_LOGIN_EMAIL default:nil];
         NSString *pass = [Preference getString:PREFCONST_LOGIN_PWD default:nil];
 
+        
         if (email != nil && pass != nil) {
-            [self ReqLogin:email pass:pass];
+            if (![email isEqualToString:@""] && ![pass isEqualToString:@""] ) {
+                [self ReqLogin:email pass:pass];
+            } else {
+                [self goLogin];
+            }
         } else {
             [self goLogin];
         }
@@ -87,53 +92,62 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+-(void)showAlert:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    
+                                    [self goLogin];
+                                }];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - Network
 -(void)ReqLogin:(NSString *)email pass:(NSString*)pass{
     
-    latitude = self.locationManager.location.coordinate.latitude;
-    longitude = self.locationManager.location.coordinate.longitude;
-    
-    //    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
-    
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"login"];
+    //NSString *url = [NSString stringWithFormat:SERVER_URL, @"login"];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LOGIN,
                              API_REQ_KEY_USER_EMAIL         :   email,
                              API_REQ_KEY_USER_PWD           :   pass,
                              API_REQ_KEY_LOGIN_TYPE         :   @"1",
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_TOKEN              :   Global.g_token,
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-            [Commons parseAndSaveUserInfo:responseObject pwd:pass];
+            [Commons parseAndSaveUserInfo:responseObject pwd: pass];
+            
             [self goHome];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
-        
+            [self showAlert:@"The password is incorrect"];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
-            [Commons showToast:@"User does not exist."];
+            [self showAlert:@"User does not exist"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
+        [self showAlert:@"Failed to communicate with the server"];
     }];
 }
 
@@ -141,48 +155,44 @@
 #pragma mark - Network
 -(void)ReqExpertLogin:(NSString *)email1 pass:(NSString*)pass1{
     
-    latitude = self.locationManager.location.coordinate.latitude;
-    longitude = self.locationManager.location.coordinate.longitude;
-    
-    //    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
-    
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"login"];
+    //NSString *url = [NSString stringWithFormat:SERVER_URL, @"login"];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_LOGIN,
                              API_REQ_KEY_USER_EMAIL         :   email1,
                              API_REQ_KEY_USER_PWD           :   pass1,
-                             API_REQ_KEY_LOGIN_TYPE         :   @"2",//expert
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_TOKEN              :   Global.g_token,
+                             API_REQ_KEY_LOGIN_TYPE         :   @"2",
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
-
+            
             [Commons parseAndSaveExpertUserInfo:responseObject pwd:pass1];
+            
             [self goExpertHome];
-        } else if(res_code == RESULT_ERROR_USER_NO_EXIST){
-            [Commons showToast:@"User does not exist."];
-        } else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [self showAlert:@"The password is incorrect"];
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [self showAlert:@"User does not exist"];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
+        [self showAlert:@"Failed to communicate with the server"];
     }];
 }
 

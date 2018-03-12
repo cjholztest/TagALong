@@ -34,11 +34,11 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
- 
+    
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Background:)];
     [self.view addGestureRecognizer:singleFingerTap];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -82,12 +82,12 @@
 
 -(BOOL)CheckValidForRegister{
     
-    if (_tfFirstName.text.length == 0) {
+    if ([_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input first name!"];
         return NO;
     }
-
-    if (_tfLastName.text.length == 0) {
+    
+    if ([_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input last name!"];
         return NO;
     }
@@ -96,27 +96,32 @@
         [Commons showToast:@"Input email!"];
         return NO;
     }
-
+    
     if (![Commons checkEmail:_tfEmail.text]) {
         [Commons showToast:@"Please enter in email format."];
         return NO;
     }
     
-    if (_tfCity.text.length == 0) {
+    if ([_tfCity.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input city!"];
         return NO;
     }
     
-    if (_tfPhoneNum.text.length == 0) {
+    if ([_tfPhoneNum.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input phone num!"];
         return NO;
     }
     
-    if (_tfPassword.text.length == 0) {
+    if ([_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         [Commons showToast:@"Input password"];
         return NO;
     }
-
+    
+    if ([_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
+        [Commons showToast:@"The password must be at least 5 symbols length"];
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -124,14 +129,14 @@
 #pragma mark - click events
 //submit
 - (IBAction)onClickSubmit:(id)sender {
-
-//    SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
-//    vc.delegate = self;
-//    [self.navigationController pushViewController:vc animated:YES];
+    
+    //    SignupResultViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupResultViewController"];
+    //    vc.delegate = self;
+    //    [self.navigationController pushViewController:vc animated:YES];
     if ([self CheckValidForRegister]) {
         [self ReqRegister];
     }
-
+    
 }
 
 //go back
@@ -152,66 +157,84 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(void)showAlert:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 #pragma mark - Network
 -(void)ReqRegister{
-    NSString *_email = _tfEmail.text;
-    NSString *_nickname = _tfFirstName.text;
-    NSString *_lastname = _tfLastName.text;
-    NSString *_city     = _tfCity.text;
-    NSString *_phone    = _tfPhoneNum.text;
-    NSString *_pwd      = _tfPassword.text;
-    
-    latitude = self.locationManager.location.coordinate.latitude;
-    longitude = self.locationManager.location.coordinate.longitude;
-    
-//    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
-    
-    [SharedAppDelegate showLoading];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
-    NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_REGISTER,
-                             API_REQ_KEY_USER_NICKNAME      :   _nickname,
-                             API_REQ_KEY_USER_LAST_NAME     :   _lastname,
-                             API_REQ_KEY_USER_EMAIL         :   _email,
-                             API_REQ_KEY_USER_CITY          :   _city,
-                             API_REQ_KEY_USER_PHONE         :   _phone,
-                             API_REQ_KEY_USER_PWD           :   _pwd,
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude]
-                             };
-    
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
-        [SharedAppDelegate closeLoading];
         
-        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
-        if (res_code == RESULT_CODE_SUCCESS) {
+        NSString *_email = [_tfEmail.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_nickname = [_tfFirstName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_lastname = [_tfLastName.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_city     = [_tfCity.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_phone    = [_tfPhoneNum.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        NSString *_pwd      = [_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+        
+        latitude = self.locationManager.location.coordinate.latitude;
+        longitude = self.locationManager.location.coordinate.longitude;
+        
+        //    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, API_TYPE_REGISTER];
+        
+        [SharedAppDelegate showLoading];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"register"];
+        
+        NSDictionary *params = @{
+                                 API_REQ_KEY_USER_NICKNAME      :   _nickname,
+                                 API_REQ_KEY_USER_LAST_NAME     :   _lastname,
+                                 API_REQ_KEY_USER_EMAIL         :   _email,
+                                 API_REQ_KEY_USER_CITY          :   _city,
+                                 API_REQ_KEY_USER_PHONE         :   _phone,
+                                 API_REQ_KEY_USER_PWD           :   _pwd,
+                                 };
+        
+        [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+            NSLog(@"JSON: %@", respObject);
+            //NSError* error;
+            //        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+            //                                                                       options:kNilOptions
+            //                                                                         error:&error];
+            [SharedAppDelegate closeLoading];
             
-//            [Commons showToast:@"Congratulations on your joining."];
-//            [self.navigationController popViewControllerAnimated:NO];
-            
-            [self showSuccessAlert];
-            
-        } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
-            [Commons showToast:@"This email is in use."];
-        } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
-            [Commons showToast:@"This Phone has been duplicated"];
-        } else if (res_code == RESULT_ERROR_NICKNAME_DUPLICATE){
-            [Commons showToast:@"This nickname has been duplicated"];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error: %@", error);
-        [SharedAppDelegate closeLoading];
-    }];
+            int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+            if (res_code == RESULT_CODE_SUCCESS) {
+                
+                //            [Commons showToast:@"Congratulations on your joining."];
+                //            [self.navigationController popViewControllerAnimated:NO];
+                
+                [self showSuccessAlert];
+                
+            } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
+                [self showAlert:@"This email is in use"];
+                //[Commons showToast:@"This email is in use."];
+            } else if (res_code == RESULT_ERROR_PHONE_NUM_DUPLICATE){
+                [self showAlert:@"This phone number is in use"];
+                //[Commons showToast:@"This Phone has been duplicated"];
+            } else if (res_code == RESULT_ERROR_NICKNAME_DUPLICATE){
+                [self showAlert:@"This nickname is in use"];
+                //[Commons showToast:@"This nickname has been duplicated"];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            [SharedAppDelegate closeLoading];
+            [self showAlert:@"Failed to communicate with the server"];
+        }];
 }
 
 @end

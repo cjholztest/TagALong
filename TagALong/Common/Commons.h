@@ -11,6 +11,7 @@
 
 @interface Commons : NSObject
 
+
 + (void)parseAndSaveUserInfo:(NSDictionary*)jResult pwd:(NSString*)strPwd;
 + (void)parseAndSaveExpertUserInfo:(NSDictionary*)jResult pwd:(NSString*)strPwd;
 + (BOOL)checkEmail:(NSString *)email ;
@@ -22,4 +23,5 @@
 + (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address;
 + (void) clearUserInfo ;
 + (void)showOneBtnDlg:(NSString*)msg id:(id)parent;
+
 @end

@@ -39,8 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
-    arrCateNM = [NSArray arrayWithObjects: @"Cardio", @"Flexibility", @"Strength", @"High intensity", @"Balance", @"Weights", @"Interval/Circuit", @"Conditioning", nil];
+    arrSportNM = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    arrCateNM = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
 
     _ivProfile.layer.cornerRadius = _ivProfile.frame.size.width / 2;
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
@@ -92,7 +92,11 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     //_lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
-    _lblAddress.text = [profileInfo objectForKey:API_RES_KEY_USER_LOCATION];
+    if (![[profileInfo objectForKey:API_RES_KEY_USER_LOCATION] isEqualToString:@""]) {
+        _lblAddress.text = [profileInfo objectForKey:API_RES_KEY_USER_LOCATION];
+    } else {
+        _lblAddress.text = [workInfo objectForKey:API_RES_KEY_TITLE];
+    }
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
@@ -100,7 +104,7 @@
         NSString *url = [profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG];
         [_ivProfile sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
     }
-    NSString *level = [profileInfo objectForKey:API_RES_KEY_LEVEL];
+    NSString *level = [[profileInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
     if ( [level isEqualToString:@"0"] )  { //individual
         _vwLevelBG.backgroundColor = [UIColor whiteColor];
         _lblLevel.text = @"INDIVIDUAL";
@@ -120,33 +124,24 @@
         _lblLevel.textColor = [UIColor whiteColor];
     }
     
+    _lblTitle.lineBreakMode = NSLineBreakByWordWrapping;
+    _lblTitle.numberOfLines = 0;
+    
     //workout info
     _lblTitle.text = [workInfo objectForKey:API_RES_KEY_TITLE];
-    
-    NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+
+    //NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
+    NSArray *sports = [[NSArray alloc] initWithObjects:[workInfo objectForKey:API_RES_KEY_SPORT_UID], nil];
+    int sport_uid = [sports.firstObject intValue];
     _lblWorkType.text = arrSportNM[sport_uid - 1];
     
     _lblLocation.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];
-    NSInteger duration = [[workInfo objectForKey:API_REQ_KEY_DURATION] integerValue];
-    _lblDuration.text = [NSString stringWithFormat:@"%ld Mins", (duration - 1) * 15];
+    NSString *duration = [workInfo objectForKey:API_REQ_KEY_DURATION];
+    _lblDuration.text = duration;
     
-    NSInteger time = [[workInfo objectForKey:API_RES_KEY_START_TIME] integerValue];
-//    if (time % 4 == 0) {
-//        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02d" ,time / 4, 0];
-//    } else if (time % 4 == 1) {
-//        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02d" ,time / 4, 15];
-//    } else if (time % 4 == 2) {
-//        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02d" ,time / 4, 30];
-//    } else {
-//        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02d" ,time / 4, 45];
-//    }
-//    
-    if ((time * 15) / 60 > 12) {
-        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02ld pm", (time * 15) / 60 - 12 , (time * 15) % 60];
-    } else {
-        _lblStartTime.text = [NSString stringWithFormat:@"%02ld:%02ld am", (time * 15) / 60 , (time * 15) % 60];
-    }
+    NSString *time = [workInfo objectForKey:API_RES_KEY_START_TIME];
 
+    _lblStartTime.text = time;
     
     amount = [[workInfo objectForKey:API_RES_KEY_AMOUNT] intValue];
     _lblPrice.text = [NSString stringWithFormat:@"$%@", [NSString stringWithFormat:@"%ld", (long)amount]];;
@@ -160,7 +155,7 @@
         category = [NSString stringWithFormat:@"%@%@, ", category, arrCateNM[index - 1]];
     }
     _lblSport.text = [category stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
-    
+    //_lblSport.text = @"asdjfjdskljfklajsafkldasjflksdnvsjdnfavlskdjflaksvdjfklvsd;jflaksvdfnjl;kdvjflsdknvkj";
     //date
     NSString *nsdate = [workInfo objectForKey:API_RES_KEY_WORKOUT_DATE] ;
     NSDateFormatter *dateConvertor = [[NSDateFormatter alloc] init];
@@ -169,20 +164,12 @@
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     dateformat.dateStyle = kCFDateFormatterFullStyle;
     dateformat.timeStyle = NSDateFormatterNoStyle;
-//    dateformat.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSString *result = [dateformat stringFromDate:[dateConvertor dateFromString:nsdate]];
     _lblDate.text = result;
     
     [UIView animateWithDuration:0.25 animations:^{
         self.bigArrowIcon.alpha = 1;
     }];
-//    [dateFormat setDateFormat:@"yyyyMMdd"];
-//    NSDate *date = [dateFormat dateFromString:dateStr];
-//    
-//    // Convert date object to desired output format
-//    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
-//    dateStr = [dateFormat stringFromDate:date];
-//    [dateFormat release];
 }
 
 #pragma mark - click events
@@ -208,21 +195,21 @@
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"detail_workout"];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_DETAIL_WORKOUT,
-                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
-                             API_REQ_KEY_WORKOUT_UID        :   self.workout_id,
+                             API_REQ_KEY_WORKOUT_UID: self.workout_id,
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -250,22 +237,25 @@
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USR_BOOKING];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_USR_BOOKING,
-                             API_REQ_KEY_USER_UID           :   [NSString stringWithFormat:@"%d", Global.g_user.user_uid],
-                             API_REQ_KEY_WORKOUT_UID        :   self.workout_id,
+                             API_REQ_KEY_WORKOUT_UID        :   [NSString stringWithFormat:@"%@", self.workout_id],
                              API_REQ_KEY_AMOUNT             :   [NSString stringWithFormat:@"%ld", (long)amount],
                              };
     
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+//        NSError* error;
+//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
+//                                                                       options:kNilOptions
+//                                                                         error:&error];
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];

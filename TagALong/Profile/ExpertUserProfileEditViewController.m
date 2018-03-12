@@ -16,6 +16,7 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import "BookWorkoutViewController.h"
+#import "HomeViewController.h"
 
 #define LEVEL_GYM       1
 #define LEVEL_PRO       2
@@ -63,7 +64,7 @@ static const NSInteger kMaxImageCnt = 1;
     [self setLevel];
     _lblArea.text = location;
     _lblPhone.text = phone;
-    self.navigationItem.title = nickname;
+    self.navigationItem.title = self.nickname;
     _lblTitle.text = nickname;
     
     //
@@ -232,7 +233,7 @@ static const NSInteger kMaxImageCnt = 1;
     }
     else
     {
-        NSMutableArray *arrData = [NSMutableArray array];
+        //NSMutableArray *arrData = [NSMutableArray array];
         UIImage* outputImage = [info objectForKey:UIImagePickerControllerEditedImage] ? [info objectForKey:UIImagePickerControllerEditedImage] : [info objectForKey:UIImagePickerControllerOriginalImage];
         
         //UIImage *resizeImage = [Util imageWithImage:outputImage convertToWidth:self.ivImage.frame.size.width];
@@ -249,6 +250,9 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - click events
 - (IBAction)onClickBack:(id)sender {
+    HomeViewController *home = (HomeViewController *)_vcParent;
+    home.nCurPageIdx = PAGE_MENU_PROFILE;
+    home.nCurButtonIdx = BUTTON_PROFILE;
     [self.navigationController popViewControllerAnimated: YES];
 }
 
@@ -321,51 +325,13 @@ static const NSInteger kMaxImageCnt = 1;
                  [self presentViewController:imagePickerController animated:YES completion:nil];
              }
          }
-         else if( buttonIndex == 1 )
-         {
-             self.imagePicker = [[BSImagePickerController alloc] init];
-//             self.imagePicker.maximumNumberOfImages = kMaxImageCnt - self.arM_Photo.count;
-             
-             [self presentImagePickerController:self.imagePicker
-                                       animated:YES
-                                     completion:nil
-                                         toggle:^(ALAsset *asset, BOOL select) {
-                                             if(select)
-                                             {
-                                                 NSLog(@"Image selected");
-                                             }
-                                             else
-                                             {
-                                                 NSLog(@"Image deselected");
-                                             }
-                                         }
-                                         cancel:^(NSArray *assets) {
-                                             NSLog(@"User canceled...!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                         }
-                                         finish:^(NSArray *assets) {
-                                             NSLog(@"User finished :)!");
-                                             [self.imagePicker dismissViewControllerAnimated:YES completion:nil];
-                                             
-                                             NSMutableArray *arrData = [NSMutableArray array];
-                                             for( NSInteger i = 0; i < assets.count; i++ )
-                                             {
-                                                 ALAsset *asset = assets[i];
-                                                 
-                                                 ALAssetRepresentation *rep = [asset defaultRepresentation];
-                                                 CGImageRef iref = [rep fullScreenImage];
-                                                 if (iref)
-                                                 {
-                                                     NSData *imgData;
-                                                     UIImage *image = [UIImage imageWithCGImage:iref];
-                                                     UIImage *compressimage = [self compressForUpload:image scale:0.5];
-                                                     imgData = UIImageJPEGRepresentation(compressimage, 0.5);
-                                                     
-                                                     [self uploadImage:image scale:0.5];
-                                                 }
-                                             }
-                                             
-                                         }];
+         else if( buttonIndex == 1 ){
+             UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+             imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+             imagePickerController.delegate = self;
+             imagePickerController.allowsEditing = YES;
+             imagePickerController.mediaTypes =  [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+             [self presentViewController:imagePickerController animated:YES completion:nil];
          }
      }];
 }
@@ -378,16 +344,16 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    NSDictionary *params  = @{
-                              API_REQ_KEY_TYPE             :   API_TYPE_FILE_UPLOAD,
-                              };
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_FILE_UPLOAD];
     
     NSData *fileData = image? UIImageJPEGRepresentation(image, scale):nil;
    
-    [manager POST:SERVER_URL parameters:params  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:url parameters:nil  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if(fileData){
             [formData appendPartWithFileData:fileData
                                         name:API_REQ_KEY_UPFILE
@@ -395,13 +361,10 @@ static const NSInteger kMaxImageCnt = 1;
                                     mimeType:@"multipart/form-data"];
         }
     }
-     progress: nil success:^(NSURLSessionTask *task, id respObject) {
+     progress: nil success:^(NSURLSessionTask *task, id responseObject) {
           
-         NSLog(@"JSON: %@", respObject);
-         NSError* error;
-         NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                        options:kNilOptions
-                                                                          error:&error];
+         NSLog(@"JSON: %@", responseObject);
+
          [SharedAppDelegate closeLoading];
          
          int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -440,28 +403,28 @@ static const NSInteger kMaxImageCnt = 1;
     [SharedAppDelegate showLoading];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPERT_UPDATE_PROFILE];
     
     NSDictionary *params = @{
-                             API_RES_KEY_TYPE               :   API_TYPE_EXPERT_UPDATE_PROFILE,
-                             API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
-                             API_REQ_KEY_EXPORT_NCK_NM      :   nickname,
-                             API_RES_KEY_EXPORT_LAST_NAME   :   nickname,
+                             //API_REQ_KEY_EXPORT_NCK_NM      :   nickname ?: self.nickname,
+                             //API_RES_KEY_EXPORT_LAST_NAME   :   nickname ?: self.nickname,
                              API_REQ_KEY_EXPERT_PHONE       :    phone,
                              API_REQ_KEY_LEVEL              :    [NSString stringWithFormat:@"%ld", (long)nCurSelLevel],
-                             API_REQ_KEY_USER_LOCATION      :    location,
+                             API_REQ_KEY_USER_LOCATION      :    location ?: self.nickname,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
                              API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_USER_PROFILE_IMG   :   file_name
+                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url
                              };
-    
-    [manager POST:SERVER_URL parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        NSError* error;
-        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-                                                                       options:kNilOptions
-                                                                         error:&error];
+
+    [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -476,7 +439,7 @@ static const NSInteger kMaxImageCnt = 1;
             
             [self.delegate setEditDate:dic_contents];
             
-            [self.navigationController popViewControllerAnimated:NO];
+            [self.navigationController popViewControllerAnimated: YES];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
