@@ -419,7 +419,7 @@
     for (NSInteger i = 1; i < 13; i++) {
         NSString *temp = @"";
         if ((i * 15) / 60 == 0) {
-            temp = [NSString stringWithFormat:@"%0ld min", (i  * 15) % 60];
+            temp = [NSString stringWithFormat:@"%0ldmin", (i  * 15) % 60];
         } else if ((i  * 15) % 60 == 0) {
             temp = [NSString stringWithFormat:@"%0ldh", (i * 15) / 60];
         } else {
@@ -433,7 +433,7 @@
     [_vwDuration setHidden:YES];
     
     if ([duration isEqualToString:@""]) {
-        duration = @"15 min";
+        duration = @"15min";
         durationindex= 0;
     }
 
