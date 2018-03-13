@@ -5307,7 +5307,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="xLk-FS-JZY" firstAttribute="leading" secondItem="0ZL-Vy-JPx" secondAttribute="leading" constant="15" id="syr-3W-pNg"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLL-1N-hjr" userLabel="Phone View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLL-1N-hjr" userLabel="Password View">
                                         <rect key="frame" x="0.0" y="332" width="375" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-AY-60j">
@@ -5332,6 +5332,31 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstAttribute="trailing" secondItem="CKr-nj-iOE" secondAttribute="trailing" constant="10" id="yHI-ES-FdO"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBw-9c-p2O" userLabel="Confirm Password View">
+                                        <rect key="frame" x="0.0" y="394" width="375" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsX-8Z-Lsn">
+                                                <rect key="frame" x="15" y="10" width="146.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZSX-v3-AXK" userLabel="Tf Confirm Password">
+                                                <rect key="frame" x="171.5" y="0.0" width="193.5" height="40"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="qsX-8Z-Lsn" firstAttribute="leading" secondItem="jBw-9c-p2O" secondAttribute="leading" constant="15" id="5Bd-Mx-Mik"/>
+                                            <constraint firstItem="ZSX-v3-AXK" firstAttribute="top" secondItem="jBw-9c-p2O" secondAttribute="top" id="DAW-49-qLv"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZSX-v3-AXK" secondAttribute="trailing" constant="10" id="MMo-cz-aSH"/>
+                                            <constraint firstAttribute="height" constant="40" id="P1X-1f-8ZP"/>
+                                            <constraint firstItem="qsX-8Z-Lsn" firstAttribute="centerY" secondItem="jBw-9c-p2O" secondAttribute="centerY" id="X97-HQ-Qo6"/>
+                                            <constraint firstItem="ZSX-v3-AXK" firstAttribute="leading" secondItem="qsX-8Z-Lsn" secondAttribute="trailing" constant="10" id="eVd-8U-Bu9"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZSX-v3-AXK" secondAttribute="bottom" id="vP2-wR-EnO"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-p0-RtV">
                                         <rect key="frame" x="0.0" y="543" width="375" height="60"/>
                                         <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5350,13 +5375,16 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="0ZL-Vy-JPx" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="2Ew-cO-fPA"/>
                                     <constraint firstAttribute="trailing" secondItem="0ZL-Vy-JPx" secondAttribute="trailing" id="3Ea-xd-wfI"/>
                                     <constraint firstAttribute="trailing" secondItem="3hz-XK-miw" secondAttribute="trailing" id="8Nq-RO-eMF"/>
+                                    <constraint firstItem="jBw-9c-p2O" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="8mP-87-wc0"/>
                                     <constraint firstAttribute="trailing" secondItem="ywA-p0-RtV" secondAttribute="trailing" id="8sB-mm-Sm5"/>
                                     <constraint firstItem="Kls-OJ-7hB" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="CcK-uZ-KsY"/>
                                     <constraint firstItem="0ZL-Vy-JPx" firstAttribute="top" secondItem="3hz-XK-miw" secondAttribute="bottom" constant="22" id="GJd-52-NLr"/>
                                     <constraint firstItem="Agj-aV-B7t" firstAttribute="top" secondItem="Kls-OJ-7hB" secondAttribute="bottom" constant="22" id="I3e-Qn-tRQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jBw-9c-p2O" secondAttribute="trailing" id="Jcs-xc-gVc"/>
                                     <constraint firstItem="OlO-Am-Hmj" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="OAr-gz-W5A"/>
                                     <constraint firstItem="Kls-OJ-7hB" firstAttribute="top" secondItem="OlO-Am-Hmj" secondAttribute="bottom" constant="22" id="QqD-UJ-mRb"/>
                                     <constraint firstItem="3hz-XK-miw" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="QuV-Fi-GoD"/>
+                                    <constraint firstItem="jBw-9c-p2O" firstAttribute="top" secondItem="uLL-1N-hjr" secondAttribute="bottom" constant="22" id="ThS-tH-zs4"/>
                                     <constraint firstAttribute="trailing" secondItem="Agj-aV-B7t" secondAttribute="trailing" id="WrR-A4-6aK"/>
                                     <constraint firstAttribute="bottom" secondItem="ywA-p0-RtV" secondAttribute="bottom" id="XOF-X8-4vf"/>
                                     <constraint firstItem="wpq-nL-M9Q" firstAttribute="top" secondItem="7E1-Wb-4MC" secondAttribute="top" id="Zbo-kg-Dzm"/>
@@ -5386,6 +5414,7 @@ Terms of Use and Privacy Policy</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tfCity" destination="12S-ev-m80" id="j3m-FP-foG"/>
+                        <outlet property="tfConfirmPassword" destination="ZSX-v3-AXK" id="fEL-rx-zHh"/>
                         <outlet property="tfEmail" destination="7cU-qe-QgC" id="Jj0-Ht-Snp"/>
                         <outlet property="tfFirstName" destination="INe-d1-4IA" id="xFH-kK-9uo"/>
                         <outlet property="tfLastName" destination="O9P-Pe-yXs" id="7mL-9E-Fd8"/>

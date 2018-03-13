@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *tfCity;
 @property (strong, nonatomic) IBOutlet UITextField *tfPhoneNum;
 @property (strong, nonatomic) IBOutlet UITextField *tfPassword;
+@property (weak, nonatomic) IBOutlet UITextField *tfConfirmPassword;
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
@@ -120,6 +121,21 @@
     if ([_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
         [Commons showToast:@"The password must be at least 5 symbols length"];
         return NO;
+    }
+    
+    if ([_tfConfirmPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        [Commons showToast:@"Input confirm password"];
+        return NO;
+    }
+    
+    NSString *password = [_tfPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+    NSString *confirmPassword = [_tfConfirmPassword.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+
+    if (password.length != 0 && confirmPassword != 0) {
+        if (![password isEqualToString:confirmPassword]) {
+            [Commons showToast:@"Confirm password doesn't match the password"];
+            return NO;
+        }
     }
     
     return YES;
