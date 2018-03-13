@@ -140,18 +140,9 @@
     if (Global.g_user.user_longitude == nil) {
         Global.g_user.user_longitude = @"-101";
     }
-    
-    noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude  doubleValue]);
-    [_mvMap setCenterCoordinate:noLocation];
-
     _mvMap.showsUserLocation = YES;
-    
-    MKCoordinateRegion region;
-    
-    region = MKCoordinateRegionMake(noLocation, MKCoordinateSpanMake(7, 7));
-    
-    MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:region];
-    [_mvMap setRegion:adjustedRegion animated:YES];
+    MKCoordinateSpan span = [self spanByStatus:[CLLocationManager authorizationStatus]];
+    [self updateNoLocationMapAppearanceByState:span];
     
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self ReqWorkoutList];
@@ -223,6 +214,19 @@
     }
 }
 
+- (void)updateNoLocationMapAppearanceByState:(MKCoordinateSpan)span {
+    noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude  doubleValue]);
+    [_mvMap setCenterCoordinate:noLocation];
+    MKCoordinateRegion region;
+    region = MKCoordinateRegionMake(noLocation, span);
+    MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:region];
+    [_mvMap setRegion:adjustedRegion animated:YES];
+}
+
+- (MKCoordinateSpan)spanByStatus:(CLAuthorizationStatus)status {
+    return status == kCLAuthorizationStatusDenied ? MKCoordinateSpanMake(150, 150) : MKCoordinateSpanMake(3, 3);
+}
+
 #pragma mark - UITapGestureRecognizerDelegate
 
 - (IBAction)handleGestureMap:(UITapGestureRecognizer *)recognizer {
@@ -253,6 +257,11 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     curLocation = [[CLLocation alloc] initWithLatitude:_mvMap.centerCoordinate.latitude
                                              longitude:_mvMap.centerCoordinate.longitude];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    MKCoordinateSpan span = [self spanByStatus:status];
+    [self updateNoLocationMapAppearanceByState:span];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
