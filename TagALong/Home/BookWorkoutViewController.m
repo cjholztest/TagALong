@@ -92,11 +92,7 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     //_lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
-    if (![[profileInfo objectForKey:API_RES_KEY_USER_LOCATION] isEqualToString:@""]) {
-        _lblAddress.text = [profileInfo objectForKey:API_RES_KEY_USER_LOCATION];
-    } else {
-        _lblAddress.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
-    }
+    _lblAddress.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
