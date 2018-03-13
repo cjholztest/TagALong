@@ -5315,21 +5315,32 @@ Terms of Use and Privacy Policy</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKr-nj-iOE">
-                                                <rect key="frame" x="107" y="0.0" width="258" height="40"/>
+                                                <rect key="frame" x="107" y="0.0" width="218" height="40"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXK-8V-BY7">
+                                                <rect key="frame" x="335" y="0.0" width="40" height="40"/>
+                                                <state key="normal" image="show_password"/>
+                                                <connections>
+                                                    <action selector="showPasswordAction:" destination="FNI-wR-0h8" eventType="touchUpInside" id="7l1-eP-xcO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="CKr-nj-iOE" secondAttribute="bottom" id="6tJ-uE-psd"/>
                                             <constraint firstItem="CKr-nj-iOE" firstAttribute="top" secondItem="uLL-1N-hjr" secondAttribute="top" id="7dR-w5-ybt"/>
+                                            <constraint firstAttribute="bottom" secondItem="iXK-8V-BY7" secondAttribute="bottom" id="C4Q-G5-f1J"/>
+                                            <constraint firstItem="iXK-8V-BY7" firstAttribute="leading" secondItem="CKr-nj-iOE" secondAttribute="trailing" constant="10" id="GQ7-n8-gaZ"/>
                                             <constraint firstItem="DJt-AY-60j" firstAttribute="leading" secondItem="uLL-1N-hjr" secondAttribute="leading" constant="15" id="Hlx-My-Q5j"/>
+                                            <constraint firstItem="iXK-8V-BY7" firstAttribute="top" secondItem="uLL-1N-hjr" secondAttribute="top" id="OPo-8t-oJy"/>
                                             <constraint firstAttribute="height" constant="40" id="WCZ-Ht-h0n"/>
                                             <constraint firstItem="CKr-nj-iOE" firstAttribute="leading" secondItem="DJt-AY-60j" secondAttribute="trailing" constant="10" id="ddS-9p-RMf"/>
                                             <constraint firstItem="DJt-AY-60j" firstAttribute="centerY" secondItem="uLL-1N-hjr" secondAttribute="centerY" id="njD-E0-Z7L"/>
-                                            <constraint firstAttribute="trailing" secondItem="CKr-nj-iOE" secondAttribute="trailing" constant="10" id="yHI-ES-FdO"/>
+                                            <constraint firstItem="iXK-8V-BY7" firstAttribute="width" secondItem="uLL-1N-hjr" secondAttribute="height" id="yLw-Gl-ZeU"/>
+                                            <constraint firstAttribute="trailing" secondItem="iXK-8V-BY7" secondAttribute="trailing" id="yeq-xB-Wuc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBw-9c-p2O" userLabel="Confirm Password View">
@@ -5340,20 +5351,31 @@ Terms of Use and Privacy Policy</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZSX-v3-AXK" userLabel="Tf Confirm Password">
-                                                <rect key="frame" x="171.5" y="0.0" width="193.5" height="40"/>
+                                                <rect key="frame" x="171.5" y="0.0" width="153.5" height="40"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-nM-2sY">
+                                                <rect key="frame" x="335" y="0.0" width="40" height="40"/>
+                                                <state key="normal" image="show_password"/>
+                                                <connections>
+                                                    <action selector="showPasswordAction:" destination="FNI-wR-0h8" eventType="touchUpInside" id="e0A-v8-jUH"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="qsX-8Z-Lsn" firstAttribute="leading" secondItem="jBw-9c-p2O" secondAttribute="leading" constant="15" id="5Bd-Mx-Mik"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Sr-nM-2sY" secondAttribute="bottom" id="72o-Y3-5SQ"/>
                                             <constraint firstItem="ZSX-v3-AXK" firstAttribute="top" secondItem="jBw-9c-p2O" secondAttribute="top" id="DAW-49-qLv"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZSX-v3-AXK" secondAttribute="trailing" constant="10" id="MMo-cz-aSH"/>
                                             <constraint firstAttribute="height" constant="40" id="P1X-1f-8ZP"/>
                                             <constraint firstItem="qsX-8Z-Lsn" firstAttribute="centerY" secondItem="jBw-9c-p2O" secondAttribute="centerY" id="X97-HQ-Qo6"/>
+                                            <constraint firstItem="6Sr-nM-2sY" firstAttribute="top" secondItem="jBw-9c-p2O" secondAttribute="top" id="YZH-9h-A1k"/>
                                             <constraint firstItem="ZSX-v3-AXK" firstAttribute="leading" secondItem="qsX-8Z-Lsn" secondAttribute="trailing" constant="10" id="eVd-8U-Bu9"/>
+                                            <constraint firstAttribute="trailing" secondItem="6Sr-nM-2sY" secondAttribute="trailing" id="gg0-q4-9eQ"/>
+                                            <constraint firstItem="6Sr-nM-2sY" firstAttribute="width" secondItem="jBw-9c-p2O" secondAttribute="height" id="nmA-ir-RJA"/>
+                                            <constraint firstItem="6Sr-nM-2sY" firstAttribute="leading" secondItem="ZSX-v3-AXK" secondAttribute="trailing" constant="10" id="qlY-Yo-ygm"/>
                                             <constraint firstAttribute="bottom" secondItem="ZSX-v3-AXK" secondAttribute="bottom" id="vP2-wR-EnO"/>
                                         </constraints>
                                     </view>
@@ -6373,6 +6395,7 @@ within the next 24 hours.</string>
         <image name="ic_traner" width="48" height="100"/>
         <image name="ic_white_back" width="57" height="22"/>
         <image name="intro" width="781" height="1390"/>
+        <image name="show_password" width="20" height="20"/>
         <image name="success" width="20" height="20"/>
         <image name="tag_a_long" width="534" height="145"/>
         <image name="tag_a_long1" width="534" height="145"/>

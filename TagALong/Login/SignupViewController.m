@@ -153,6 +153,16 @@
     
 }
 
+- (IBAction)showPasswordAction:(UIButton *)sender {
+    UITextField *passTextField = sender.tag == 0 ? self.tfPassword : self.tfConfirmPassword;
+    [passTextField setSecureTextEntry:!passTextField.secureTextEntry];
+    NSString *imageName = passTextField.secureTextEntry ? @"show_password" : @"hide_password";
+    UIImage *image = [UIImage imageNamed:imageName];
+    [sender setImage:image forState:UIControlStateNormal];
+    [sender setImage:image forState:UIControlStateSelected];
+    [sender setImage:image forState:UIControlStateHighlighted];
+}
+
 //go back
 - (IBAction)onClickBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
