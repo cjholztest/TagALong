@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *tfPhoneNum;
 @property (strong, nonatomic) IBOutlet UITextField *tfPassword;
 @property (weak, nonatomic) IBOutlet UITextField *tfConfirmPassword;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
@@ -55,6 +56,21 @@
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -259,6 +275,28 @@
             [SharedAppDelegate closeLoading];
             [self showAlert:@"Failed to communicate with the server"];
         }];
+}
+
+#pragma mark - Keyboar Notifications
+
+- (void)keyboardDidShow:(NSNotification*)notification {
+    NSDictionary *keyboardInfo = [notification userInfo];
+    NSValue *keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        UIEdgeInsets insets = self.scrollView.contentInset;
+        insets.bottom = keyboardFrameBeginRect.size.height;
+        self.scrollView.contentInset = insets;
+    }];
+}
+
+- (void)keyboardDidHide:(NSNotification*)notification {
+    [UIView animateWithDuration:0.3 animations:^{
+        UIEdgeInsets insets = self.scrollView.contentInset;
+        insets.bottom = 0.0f;
+        self.scrollView.contentInset = insets;
+    }];
 }
 
 @end
