@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btnWorkout;
 @property (weak, nonatomic) IBOutlet UIImageView *bigArrowIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 
 @end
 
@@ -38,6 +40,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITapGestureRecognizer *phoneTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneNumberDidTap)];
+    [self.lblPhoneNum addGestureRecognizer:phoneTap];
+    [self.lblPhoneNum setUserInteractionEnabled:YES];
+    
     // Do any additional setup after loading the view, typically from a nib.
     arrSportNM = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
     arrCateNM = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
@@ -94,6 +101,9 @@
     //_lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     _lblAddress.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
+    self.locationImageView.alpha = _lblAddress.text.length > 0 ? 1.0f : 0.0f;
+    self.phoneNumberImageView.alpha = _lblPhoneNum.text.length > 0 ? 1.0f : 0.0f;
+    
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
     } else {
@@ -181,6 +191,21 @@
 
 - (IBAction)onClickCancel:(id)sender {
     [self.navigationController popViewControllerAnimated: YES];
+}
+
+- (void)phoneNumberDidTap {
+    [self.lblPhoneNum setUserInteractionEnabled:NO];
+    [self performSelector:@selector(enablePhoneLabel) withObject:nil afterDelay:3.0];
+    if (self.lblPhoneNum.text.length > 0) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", self.lblPhoneNum.text]];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+}
+
+- (void)enablePhoneLabel {
+    [self.lblPhoneNum setUserInteractionEnabled:YES];
 }
 
 #pragma mark - Network

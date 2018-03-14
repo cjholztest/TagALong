@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblPhone;
 @property (strong, nonatomic) IBOutlet UIView *vwNoData;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @end
 
 @implementation ExpertUserProfileViewController
@@ -183,6 +185,8 @@
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
+    self.locationImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
+    self.phoneNumberImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";

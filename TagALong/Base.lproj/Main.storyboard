@@ -2492,14 +2492,28 @@ someone wants to Tag-A-Long</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Npn-qZ-9Nm" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="CCn-3V-KNj">
+                                                <rect key="frame" x="166" y="-1" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="BoD-NU-EKR"/>
+                                                    <constraint firstAttribute="width" constant="18" id="XKw-sd-AD8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="EvO-p4-1KE">
+                                                <rect key="frame" x="166" y="59.5" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="JqO-5d-36s"/>
+                                                    <constraint firstAttribute="width" constant="18" id="hc4-K6-dMD"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1g-bv-FAN">
-                                                <rect key="frame" x="166" y="8" width="199" height="0.0"/>
+                                                <rect key="frame" x="194" y="8" width="171" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBM-mR-bSZ">
-                                                <rect key="frame" x="166" y="59" width="0.0" height="19"/>
+                                                <rect key="frame" x="194" y="59" width="0.0" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="8gN-28-cHi"/>
                                                 </constraints>
@@ -2511,8 +2525,12 @@ someone wants to Tag-A-Long</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Z1g-bv-FAN" secondAttribute="trailing" constant="10" id="0vl-ov-Ndg"/>
+                                            <constraint firstItem="QBM-mR-bSZ" firstAttribute="leading" secondItem="EvO-p4-1KE" secondAttribute="trailing" constant="10" id="19I-ei-NPV"/>
+                                            <constraint firstItem="Z1g-bv-FAN" firstAttribute="leading" secondItem="CCn-3V-KNj" secondAttribute="trailing" constant="10" id="Ao7-gc-vOI"/>
                                             <constraint firstAttribute="bottom" secondItem="QBM-mR-bSZ" secondAttribute="bottom" constant="8" id="e1h-SX-85B"/>
+                                            <constraint firstItem="CCn-3V-KNj" firstAttribute="centerY" secondItem="Z1g-bv-FAN" secondAttribute="centerY" id="nNX-OU-OR3"/>
                                             <constraint firstItem="Z1g-bv-FAN" firstAttribute="top" secondItem="Npn-qZ-9Nm" secondAttribute="top" constant="8" id="rBE-7r-ixp"/>
+                                            <constraint firstItem="EvO-p4-1KE" firstAttribute="centerY" secondItem="QBM-mR-bSZ" secondAttribute="centerY" id="uDP-YL-D7r"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsQ-Zp-kA2" userLabel="View2">
@@ -2723,7 +2741,6 @@ someone wants to Tag-A-Long</string>
                                     <constraint firstItem="YDL-mz-6W8" firstAttribute="width" secondItem="cV2-0x-07W" secondAttribute="width" multiplier="1:1.25" id="ACA-dp-foP"/>
                                     <constraint firstItem="pN9-PQ-pDv" firstAttribute="leading" secondItem="cV2-0x-07W" secondAttribute="leading" constant="15" id="AkK-L7-Dhu"/>
                                     <constraint firstItem="TsQ-Zp-kA2" firstAttribute="height" secondItem="cV2-0x-07W" secondAttribute="height" multiplier="1:10" id="Bcf-Jn-KJS"/>
-                                    <constraint firstItem="QBM-mR-bSZ" firstAttribute="leading" secondItem="ryF-aW-DV7" secondAttribute="trailing" constant="10" id="GYj-4X-xSb"/>
                                     <constraint firstItem="Rgm-lM-83R" firstAttribute="centerX" secondItem="cV2-0x-07W" secondAttribute="centerX" id="HeU-MK-UZ2"/>
                                     <constraint firstItem="pN9-PQ-pDv" firstAttribute="top" secondItem="TsQ-Zp-kA2" secondAttribute="bottom" constant="16" id="IOk-o9-ZDJ"/>
                                     <constraint firstItem="TsQ-Zp-kA2" firstAttribute="top" secondItem="Npn-qZ-9Nm" secondAttribute="bottom" id="JOK-ZY-of8"/>
@@ -2732,18 +2749,19 @@ someone wants to Tag-A-Long</string>
                                     <constraint firstAttribute="trailing" secondItem="TPa-k5-z8U" secondAttribute="trailing" id="NOd-zU-Eja"/>
                                     <constraint firstAttribute="trailing" secondItem="pN9-PQ-pDv" secondAttribute="trailing" constant="15" id="Ruo-hL-s0t"/>
                                     <constraint firstItem="TPa-k5-z8U" firstAttribute="leading" secondItem="cV2-0x-07W" secondAttribute="leading" id="UaL-hc-TrP"/>
+                                    <constraint firstItem="CCn-3V-KNj" firstAttribute="leading" secondItem="ryF-aW-DV7" secondAttribute="trailing" constant="10" id="WjU-7S-c5s"/>
                                     <constraint firstAttribute="trailing" secondItem="TsQ-Zp-kA2" secondAttribute="trailing" id="XgD-yz-rzY"/>
                                     <constraint firstItem="Rgm-lM-83R" firstAttribute="top" secondItem="cV2-0x-07W" secondAttribute="top" id="c6a-aC-SjO"/>
                                     <constraint firstAttribute="trailing" secondItem="Npn-qZ-9Nm" secondAttribute="trailing" id="dze-Oe-Tlm"/>
                                     <constraint firstItem="jKA-yn-S52" firstAttribute="leading" secondItem="ryF-aW-DV7" secondAttribute="trailing" constant="5" id="evF-9U-Ukm"/>
                                     <constraint firstAttribute="bottom" secondItem="TPa-k5-z8U" secondAttribute="bottom" id="hwg-zB-798"/>
                                     <constraint firstItem="TsQ-Zp-kA2" firstAttribute="leading" secondItem="cV2-0x-07W" secondAttribute="leading" id="iHB-Oi-KqF"/>
-                                    <constraint firstItem="Z1g-bv-FAN" firstAttribute="leading" secondItem="ryF-aW-DV7" secondAttribute="trailing" constant="10" id="n03-oq-e0Z"/>
                                     <constraint firstItem="ryF-aW-DV7" firstAttribute="height" secondItem="cV2-0x-07W" secondAttribute="height" multiplier="1:4.5" id="pcu-fL-eAS"/>
                                     <constraint firstItem="TPa-k5-z8U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pN9-PQ-pDv" secondAttribute="bottom" constant="24" id="ptb-a7-FCM"/>
                                     <constraint firstItem="YDL-mz-6W8" firstAttribute="centerX" secondItem="cV2-0x-07W" secondAttribute="centerX" id="qUY-DU-eyW"/>
                                     <constraint firstItem="YDL-mz-6W8" firstAttribute="height" secondItem="cV2-0x-07W" secondAttribute="height" multiplier="1:2" id="rNq-kQ-HMd"/>
                                     <constraint firstItem="ryF-aW-DV7" firstAttribute="leading" secondItem="cV2-0x-07W" secondAttribute="leading" constant="22" id="sBq-dD-ESq"/>
+                                    <constraint firstItem="EvO-p4-1KE" firstAttribute="leading" secondItem="ryF-aW-DV7" secondAttribute="trailing" constant="10" id="tzs-EK-V58"/>
                                     <constraint firstItem="Npn-qZ-9Nm" firstAttribute="height" secondItem="cV2-0x-07W" secondAttribute="height" multiplier="1:7" id="z2K-xR-hn3"/>
                                 </constraints>
                             </view>
@@ -2782,6 +2800,8 @@ someone wants to Tag-A-Long</string>
                         <outlet property="lblSport" destination="pXv-h4-PX6" id="Z3S-87-klu"/>
                         <outlet property="lblStartTime" destination="V5p-Wn-Fl0" id="hqv-bx-Xil"/>
                         <outlet property="lblTitle" destination="jUd-oU-YlC" id="PLG-f3-Otw"/>
+                        <outlet property="locationImageView" destination="CCn-3V-KNj" id="sm6-hT-qTC"/>
+                        <outlet property="phoneNumberImageView" destination="EvO-p4-1KE" id="YMr-jt-7ms"/>
                         <outlet property="vwLevelBG" destination="TsQ-Zp-kA2" id="WmC-63-QZx"/>
                     </connections>
                 </viewController>
@@ -4201,8 +4221,22 @@ Terms of Use and Privacy Policy</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn0-Hq-cKT" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-Uq-My7">
+                                                <rect key="frame" x="151" y="32" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="FHM-iI-MDu"/>
+                                                    <constraint firstAttribute="width" constant="18" id="aBc-nh-rzH"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-Qi-ONI">
+                                                <rect key="frame" x="151" y="63" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="9AX-53-fPm"/>
+                                                    <constraint firstAttribute="height" constant="18" id="y05-VD-Ku5"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98j-9t-DGZ">
-                                                <rect key="frame" x="144" y="20" width="226" height="42"/>
+                                                <rect key="frame" x="179" y="20" width="191" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="tWg-8c-okh"/>
                                                 </constraints>
@@ -4211,7 +4245,7 @@ Terms of Use and Privacy Policy</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzF-GF-HgJ">
-                                                <rect key="frame" x="144" y="62" width="0.0" height="20"/>
+                                                <rect key="frame" x="179" y="62" width="0.0" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Z9q-1C-z60"/>
                                                 </constraints>
@@ -4224,8 +4258,11 @@ Terms of Use and Privacy Policy</string>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="98j-9t-DGZ" secondAttribute="trailing" constant="5" id="1cV-12-C4B"/>
                                             <constraint firstItem="QzF-GF-HgJ" firstAttribute="leading" secondItem="98j-9t-DGZ" secondAttribute="leading" id="CcH-MQ-dh9"/>
+                                            <constraint firstItem="ANK-Uq-My7" firstAttribute="centerY" secondItem="98j-9t-DGZ" secondAttribute="centerY" id="Gl3-e6-LSi"/>
                                             <constraint firstItem="98j-9t-DGZ" firstAttribute="top" secondItem="vn0-Hq-cKT" secondAttribute="top" constant="20" id="TXw-Sa-32H"/>
+                                            <constraint firstItem="PZ1-Qi-ONI" firstAttribute="centerY" secondItem="QzF-GF-HgJ" secondAttribute="centerY" id="hge-jb-sHi"/>
                                             <constraint firstAttribute="bottom" secondItem="QzF-GF-HgJ" secondAttribute="bottom" constant="20" id="lyX-yG-STg"/>
+                                            <constraint firstItem="98j-9t-DGZ" firstAttribute="leading" secondItem="ANK-Uq-My7" secondAttribute="trailing" constant="10" id="wti-nu-7sW"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="2DR-Xf-Zj2">
@@ -4240,7 +4277,6 @@ Terms of Use and Privacy Policy</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="98j-9t-DGZ" firstAttribute="leading" secondItem="2DR-Xf-Zj2" secondAttribute="trailing" constant="3" id="1Kg-Vx-y3Z"/>
                                     <constraint firstItem="aPK-eO-3pH" firstAttribute="top" secondItem="jAW-po-eT7" secondAttribute="top" id="3ma-eD-2MD"/>
                                     <constraint firstAttribute="trailing" secondItem="rDv-O9-rfl" secondAttribute="trailing" id="51f-g1-TCZ"/>
                                     <constraint firstItem="rDv-O9-rfl" firstAttribute="leading" secondItem="jAW-po-eT7" secondAttribute="leading" id="7CU-3m-mFN"/>
@@ -4252,6 +4288,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstAttribute="trailing" secondItem="aPK-eO-3pH" secondAttribute="trailing" id="LdH-em-CHd"/>
                                     <constraint firstItem="vn0-Hq-cKT" firstAttribute="bottom" secondItem="Kkf-uj-cGj" secondAttribute="top" id="b8R-Vj-7Oc"/>
                                     <constraint firstItem="vn0-Hq-cKT" firstAttribute="top" secondItem="jAW-po-eT7" secondAttribute="top" id="bjP-AX-KsH"/>
+                                    <constraint firstItem="ANK-Uq-My7" firstAttribute="leading" secondItem="2DR-Xf-Zj2" secondAttribute="trailing" constant="10" id="btb-Uw-ao6"/>
                                     <constraint firstAttribute="trailing" secondItem="Kkf-uj-cGj" secondAttribute="trailing" id="eS3-6v-I6p"/>
                                     <constraint firstAttribute="height" constant="200" id="jDJ-mB-lBh"/>
                                     <constraint firstItem="iYS-VE-TSv" firstAttribute="height" secondItem="jAW-po-eT7" secondAttribute="height" id="kCW-uu-lBw"/>
@@ -4260,6 +4297,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="aPK-eO-3pH" firstAttribute="leading" secondItem="jAW-po-eT7" secondAttribute="leading" id="qFR-mi-wI0"/>
                                     <constraint firstItem="2DR-Xf-Zj2" firstAttribute="width" secondItem="jAW-po-eT7" secondAttribute="width" multiplier="1:3" id="r6g-fp-fNo"/>
                                     <constraint firstItem="Kkf-uj-cGj" firstAttribute="bottom" secondItem="rDv-O9-rfl" secondAttribute="top" id="sDy-Ha-tJf"/>
+                                    <constraint firstItem="PZ1-Qi-ONI" firstAttribute="leading" secondItem="2DR-Xf-Zj2" secondAttribute="trailing" constant="10" id="vXx-Ag-u7V"/>
                                     <constraint firstItem="iYS-VE-TSv" firstAttribute="centerX" secondItem="jAW-po-eT7" secondAttribute="centerX" id="vpB-hS-VLS"/>
                                     <constraint firstItem="Kkf-uj-cGj" firstAttribute="leading" secondItem="jAW-po-eT7" secondAttribute="leading" id="vqq-ea-LfM"/>
                                     <constraint firstItem="iYS-VE-TSv" firstAttribute="width" secondItem="jAW-po-eT7" secondAttribute="width" id="ySj-zd-kmT"/>
@@ -4323,13 +4361,15 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="lblAddress" destination="98j-9t-DGZ" id="aHF-ag-LYO"/>
                         <outlet property="lblLevel" destination="z9c-iP-tbB" id="DOM-VF-OIL"/>
                         <outlet property="lblPhone" destination="QzF-GF-HgJ" id="K4y-9L-k7u"/>
+                        <outlet property="locationImageView" destination="ANK-Uq-My7" id="Hu8-Z5-KbZ"/>
+                        <outlet property="phoneNumberImageView" destination="PZ1-Qi-ONI" id="gKu-MJ-W0r"/>
                         <outlet property="tvSchedule" destination="AlQ-1U-lB5" id="ABc-z6-VuB"/>
                         <outlet property="vwNoData" destination="WrS-nc-i2J" id="GsV-25-8wP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTb-i5-OmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4089" y="1406"/>
+            <point key="canvasLocation" x="4088.8000000000002" y="1405.5472263868066"/>
         </scene>
         <!--Expert User Profile Edit View Controller-->
         <scene sceneID="HKU-6T-Vza">
@@ -4400,8 +4440,15 @@ Terms of Use and Privacy Policy</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OY4-q0-liQ" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="FFO-AT-It7">
+                                                <rect key="frame" x="151" y="22" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="1fl-dM-e1h"/>
+                                                    <constraint firstAttribute="width" constant="18" id="yS2-0M-PgT"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Una-yS-AjX">
-                                                <rect key="frame" x="144" y="20" width="196" height="23"/>
+                                                <rect key="frame" x="179" y="20" width="161" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="sTy-ih-TgF"/>
                                                 </constraints>
@@ -4427,7 +4474,7 @@ Terms of Use and Privacy Policy</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-3e-aZH">
-                                                <rect key="frame" x="144" y="53" width="196" height="23"/>
+                                                <rect key="frame" x="179" y="53" width="161" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="Efb-6H-UJj"/>
                                                 </constraints>
@@ -4435,6 +4482,13 @@ Terms of Use and Privacy Policy</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="tbp-VN-44y">
+                                                <rect key="frame" x="151" y="55.5" width="18" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="ZeX-WZ-eKI"/>
+                                                    <constraint firstAttribute="height" constant="18" id="twJ-gX-7aV"/>
+                                                </constraints>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHy-iB-1n0">
                                                 <rect key="frame" x="340" y="55" width="30" height="20"/>
                                                 <constraints>
@@ -4462,11 +4516,14 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="dHy-iB-1n0" firstAttribute="leading" secondItem="sW0-3e-aZH" secondAttribute="trailing" id="O99-tU-4ce"/>
                                             <constraint firstItem="jth-bO-kEZ" firstAttribute="centerX" secondItem="dHy-iB-1n0" secondAttribute="centerX" id="PBc-SG-vP3"/>
                                             <constraint firstItem="A5E-oe-i1M" firstAttribute="centerY" secondItem="exm-U8-fYt" secondAttribute="centerY" id="Q8Y-d8-2IY"/>
+                                            <constraint firstItem="tbp-VN-44y" firstAttribute="centerY" secondItem="sW0-3e-aZH" secondAttribute="centerY" id="V7Y-v4-5rJ"/>
+                                            <constraint firstItem="Una-yS-AjX" firstAttribute="leading" secondItem="FFO-AT-It7" secondAttribute="trailing" constant="10" id="WYE-bj-uYu"/>
                                             <constraint firstAttribute="trailing" secondItem="Una-yS-AjX" secondAttribute="trailing" constant="35" id="bsK-tR-yVQ"/>
                                             <constraint firstItem="dHy-iB-1n0" firstAttribute="centerY" secondItem="sW0-3e-aZH" secondAttribute="centerY" id="hBQ-zO-CNR"/>
                                             <constraint firstItem="exm-U8-fYt" firstAttribute="centerY" secondItem="Una-yS-AjX" secondAttribute="centerY" id="hq6-Ku-caB"/>
                                             <constraint firstItem="jth-bO-kEZ" firstAttribute="centerY" secondItem="dHy-iB-1n0" secondAttribute="centerY" id="j81-Th-qSj"/>
                                             <constraint firstItem="sW0-3e-aZH" firstAttribute="leading" secondItem="Una-yS-AjX" secondAttribute="leading" id="jVf-ri-Umg"/>
+                                            <constraint firstItem="FFO-AT-It7" firstAttribute="centerY" secondItem="Una-yS-AjX" secondAttribute="centerY" id="vTK-6F-lrj"/>
                                             <constraint firstItem="sW0-3e-aZH" firstAttribute="top" secondItem="Una-yS-AjX" secondAttribute="bottom" constant="10" id="ve5-9q-tkK"/>
                                         </constraints>
                                     </view>
@@ -4500,7 +4557,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="yDd-Gi-Ygp" firstAttribute="leading" secondItem="Ysv-Yv-Ugn" secondAttribute="trailing" id="dL9-lr-hZa"/>
                                     <constraint firstItem="OY4-q0-liQ" firstAttribute="top" secondItem="Ofu-Km-TIo" secondAttribute="top" id="eVs-B1-rdJ"/>
                                     <constraint firstItem="9E4-o3-PTu" firstAttribute="width" secondItem="Ysv-Yv-Ugn" secondAttribute="width" id="hGi-M6-B6y"/>
-                                    <constraint firstItem="Una-yS-AjX" firstAttribute="leading" secondItem="Ysv-Yv-Ugn" secondAttribute="trailing" constant="3" id="kdc-Nh-NsB"/>
+                                    <constraint firstItem="FFO-AT-It7" firstAttribute="leading" secondItem="Ysv-Yv-Ugn" secondAttribute="trailing" constant="10" id="klw-WF-qUd"/>
                                     <constraint firstAttribute="bottom" secondItem="7XZ-3c-WbV" secondAttribute="bottom" id="lN9-5q-cIH"/>
                                     <constraint firstItem="Ysv-Yv-Ugn" firstAttribute="width" secondItem="Ofu-Km-TIo" secondAttribute="width" multiplier="1:3" id="ljz-6g-LrU"/>
                                     <constraint firstItem="S6S-IB-UBe" firstAttribute="top" secondItem="Ofu-Km-TIo" secondAttribute="top" id="pka-iw-P5q"/>
@@ -4509,6 +4566,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstAttribute="trailing" secondItem="OY4-q0-liQ" secondAttribute="trailing" id="t0q-jv-kl2"/>
                                     <constraint firstAttribute="trailing" secondItem="7XZ-3c-WbV" secondAttribute="trailing" id="um1-f7-MyJ"/>
                                     <constraint firstItem="S6S-IB-UBe" firstAttribute="leading" secondItem="Ofu-Km-TIo" secondAttribute="leading" id="vgf-Pi-Led"/>
+                                    <constraint firstItem="tbp-VN-44y" firstAttribute="leading" secondItem="Ysv-Yv-Ugn" secondAttribute="trailing" constant="10" id="z3B-dE-6SS"/>
                                     <constraint firstItem="9E4-o3-PTu" firstAttribute="centerX" secondItem="Ysv-Yv-Ugn" secondAttribute="centerX" id="zI6-Fm-21h"/>
                                 </constraints>
                             </view>
@@ -4688,6 +4746,8 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="lbLevel" destination="3qV-k2-XgX" id="hQr-Ga-Ykq"/>
                         <outlet property="lblArea" destination="Una-yS-AjX" id="32V-42-qMk"/>
                         <outlet property="lblPhone" destination="sW0-3e-aZH" id="37a-kF-8bh"/>
+                        <outlet property="locationImageView" destination="FFO-AT-It7" id="naX-dN-jSQ"/>
+                        <outlet property="phoneNumberImageView" destination="tbp-VN-44y" id="xYr-zw-Ixg"/>
                         <outlet property="tvSchedule" destination="UEc-7e-MKO" id="KhK-ni-tHk"/>
                         <outlet property="vwGYM" destination="NQt-xS-Ly7" id="TI4-Lz-Ju6"/>
                         <outlet property="vwPRO" destination="H8G-3D-o1S" id="MhE-Qa-Hon"/>
@@ -6395,6 +6455,8 @@ within the next 24 hours.</string>
         <image name="ic_traner" width="48" height="100"/>
         <image name="ic_white_back" width="57" height="22"/>
         <image name="intro" width="781" height="1390"/>
+        <image name="location_pin_white" width="50" height="50"/>
+        <image name="phone_icon_white" width="50" height="50"/>
         <image name="show_password" width="20" height="20"/>
         <image name="success" width="20" height="20"/>
         <image name="tag_a_long" width="534" height="145"/>

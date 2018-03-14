@@ -46,6 +46,8 @@ static const NSInteger kMaxImageCnt = 1;
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, strong) BSImagePickerController *imagePicker;
 @property (nonatomic, strong) NSString *ProfileUrl;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @end
 
 @implementation ExpertUserProfileEditViewController
