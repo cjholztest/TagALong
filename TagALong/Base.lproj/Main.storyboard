@@ -238,7 +238,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="jaF-Nx-cor"/>
                     <connections>
+                        <outlet property="expertLoginButton" destination="6tY-nP-v9t" id="VRQ-Tq-vFI"/>
+                        <outlet property="forgetPasswordButton" destination="hfv-eF-HB9" id="zot-oc-GIT"/>
                         <outlet property="lblMsg" destination="u5j-Uq-3w1" id="D7U-hN-ruk"/>
+                        <outlet property="loginButton" destination="ysF-wk-ic8" id="7Zt-Iw-KBg"/>
+                        <outlet property="signUpButton" destination="lzS-l5-1KS" id="Dke-i1-8Iq"/>
                         <outlet property="tfEmail" destination="euy-qa-XWk" id="im1-Pv-BqR"/>
                         <outlet property="tfPassword" destination="OIr-5b-yY6" id="RXJ-w9-tRB"/>
                     </connections>
@@ -929,6 +933,11 @@ someone wants to Tag-A-Long</string>
                     </view>
                     <navigationItem key="navigationItem" id="2qD-X7-MA5"/>
                     <connections>
+                        <outlet property="backButton" destination="ev1-cc-oJ9" id="kS9-xM-gnf"/>
+                        <outlet property="forgetPasswordButton" destination="kAo-pr-gb7" id="kiB-Od-9zW"/>
+                        <outlet property="loginButton" destination="k36-QO-ZUp" id="BXt-Rj-StU"/>
+                        <outlet property="logoButton" destination="zYR-V3-FDd" id="dRm-NK-Y5e"/>
+                        <outlet property="signUpButton" destination="Y97-I5-BO3" id="odK-eV-O9H"/>
                         <outlet property="tfEmail" destination="g2k-vS-JWy" id="NeC-hP-Yxp"/>
                         <outlet property="tfPassword" destination="n2q-Bc-5s0" id="C2i-rh-SE8"/>
                     </connections>

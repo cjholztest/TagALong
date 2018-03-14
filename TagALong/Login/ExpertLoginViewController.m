@@ -19,6 +19,11 @@
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfEmail;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
+@property (weak, nonatomic) IBOutlet UIButton *logoButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
 
@@ -26,6 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSArray *buttons = @[self.logoButton, self.loginButton, self.signUpButton, self.forgetPasswordButton, self.backButton];
+    for (UIButton *button in buttons) {
+        [button setExclusiveTouch:YES];
+    }
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     self.locationManager = [[CLLocationManager alloc] init];
