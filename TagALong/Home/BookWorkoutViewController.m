@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bigArrowIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
+@property (weak, nonatomic) IBOutlet UIView *additionalNoteView;
+@property (weak, nonatomic) IBOutlet UILabel *additionalNotesLabel;
 
 @end
 
@@ -101,8 +103,11 @@
     //_lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     _lblAddress.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];
     _lblPhoneNum.text = [profileInfo objectForKey:API_RES_KEY_PHONE_NUM];
+    self.additionalNotesLabel.text = [workInfo objectForKey:API_REQ_KEY_ADDITION];
+    
     self.locationImageView.alpha = _lblAddress.text.length > 0 ? 1.0f : 0.0f;
     self.phoneNumberImageView.alpha = _lblPhoneNum.text.length > 0 ? 1.0f : 0.0f;
+    [self.additionalNoteView setHidden:(self.additionalNotesLabel.text.length > 0) ? NO : YES];
     
     if ([[profileInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];

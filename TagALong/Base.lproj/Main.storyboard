@@ -2642,16 +2642,16 @@ someone wants to Tag-A-Long</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-s3-i7L" userLabel="Time View">
-                                                                        <rect key="frame" x="0.0" y="122.5" width="345" height="122.5"/>
+                                                                        <rect key="frame" x="0.0" y="122.5" width="345" height="32"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-7t-2uh">
-                                                                                <rect key="frame" x="15" y="0.0" width="144.5" height="122.5"/>
+                                                                                <rect key="frame" x="15" y="0.0" width="144.5" height="32"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V5p-Wn-Fl0">
-                                                                                <rect key="frame" x="169.5" y="0.0" width="160.5" height="122.5"/>
+                                                                                <rect key="frame" x="169.5" y="0.0" width="160.5" height="32"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="highlightedColor"/>
@@ -2666,7 +2666,37 @@ someone wants to Tag-A-Long</string>
                                                                             <constraint firstItem="gEX-7t-2uh" firstAttribute="leading" secondItem="aMi-s3-i7L" secondAttribute="leading" constant="15" id="ck6-bF-07v"/>
                                                                             <constraint firstItem="V5p-Wn-Fl0" firstAttribute="leading" secondItem="gEX-7t-2uh" secondAttribute="trailing" constant="10" id="fcW-JB-AOE"/>
                                                                             <constraint firstAttribute="trailing" secondItem="V5p-Wn-Fl0" secondAttribute="trailing" constant="15" id="iiS-l1-yts"/>
+                                                                            <constraint firstAttribute="height" constant="32" id="r34-GA-Cfc"/>
                                                                             <constraint firstItem="gEX-7t-2uh" firstAttribute="top" secondItem="aMi-s3-i7L" secondAttribute="top" id="vy0-2k-7HV"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCb-0W-lDy" userLabel="Additional Notes View">
+                                                                        <rect key="frame" x="0.0" y="154.5" width="345" height="110.5"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="xLT-7E-ExZ">
+                                                                                <rect key="frame" x="15" y="0.0" width="144.5" height="110.5"/>
+                                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cYN-Rm-efd">
+                                                                                <rect key="frame" x="169.5" y="0.0" width="160.5" height="110.5"/>
+                                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="xLT-7E-ExZ" firstAttribute="top" secondItem="vCb-0W-lDy" secondAttribute="top" id="ChK-yc-yZs"/>
+                                                                            <constraint firstItem="cYN-Rm-efd" firstAttribute="top" secondItem="vCb-0W-lDy" secondAttribute="top" id="DCx-Ji-FvU"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="cYN-Rm-efd" secondAttribute="bottom" id="J6o-3E-AIJ"/>
+                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="Jt0-td-G8M"/>
+                                                                            <constraint firstItem="cYN-Rm-efd" firstAttribute="width" secondItem="xLT-7E-ExZ" secondAttribute="width" multiplier="1:0.9" id="L26-cx-w44"/>
+                                                                            <constraint firstItem="cYN-Rm-efd" firstAttribute="leading" secondItem="xLT-7E-ExZ" secondAttribute="trailing" constant="10" id="ZlO-mF-gwJ"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="cYN-Rm-efd" secondAttribute="trailing" constant="15" id="oIx-6P-dAz"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="xLT-7E-ExZ" secondAttribute="bottom" id="xKP-mt-gJQ"/>
+                                                                            <constraint firstItem="xLT-7E-ExZ" firstAttribute="leading" secondItem="vCb-0W-lDy" secondAttribute="leading" constant="15" id="zJW-d5-p8Z"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -2675,12 +2705,14 @@ someone wants to Tag-A-Long</string>
                                                                     <constraint firstItem="aMi-s3-i7L" firstAttribute="leading" secondItem="saV-wn-ndd" secondAttribute="leading" id="0XD-Fh-Qz5"/>
                                                                     <constraint firstItem="6so-fa-sHi" firstAttribute="height" secondItem="saV-wn-ndd" secondAttribute="height" multiplier="1:2" id="KJb-XC-jBX"/>
                                                                     <constraint firstItem="6so-fa-sHi" firstAttribute="top" secondItem="saV-wn-ndd" secondAttribute="top" id="SbB-Q8-cM3"/>
-                                                                    <constraint firstItem="aMi-s3-i7L" firstAttribute="height" secondItem="6so-fa-sHi" secondAttribute="height" id="Uks-WC-i3v"/>
                                                                     <constraint firstAttribute="trailing" secondItem="6so-fa-sHi" secondAttribute="trailing" id="dH6-8Y-TSK"/>
+                                                                    <constraint firstItem="vCb-0W-lDy" firstAttribute="width" secondItem="aMi-s3-i7L" secondAttribute="width" id="fEP-Uf-rOy"/>
                                                                     <constraint firstItem="6so-fa-sHi" firstAttribute="leading" secondItem="saV-wn-ndd" secondAttribute="leading" id="fX3-gU-KTC"/>
                                                                     <constraint firstItem="aMi-s3-i7L" firstAttribute="top" secondItem="6so-fa-sHi" secondAttribute="bottom" id="ftU-gt-hm7"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="aMi-s3-i7L" secondAttribute="bottom" id="oHb-d1-m1t"/>
                                                                     <constraint firstAttribute="trailing" secondItem="aMi-s3-i7L" secondAttribute="trailing" id="pPO-K8-kuF"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="vCb-0W-lDy" secondAttribute="bottom" constant="-20" id="w7j-RL-3mQ"/>
+                                                                    <constraint firstItem="vCb-0W-lDy" firstAttribute="centerX" secondItem="aMi-s3-i7L" secondAttribute="centerX" id="wdb-s9-GXz"/>
+                                                                    <constraint firstItem="vCb-0W-lDy" firstAttribute="top" secondItem="aMi-s3-i7L" secondAttribute="bottom" id="xN7-Dz-IFO"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -2797,6 +2829,8 @@ someone wants to Tag-A-Long</string>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="additionalNoteView" destination="vCb-0W-lDy" id="woN-2d-3ue"/>
+                        <outlet property="additionalNotesLabel" destination="cYN-Rm-efd" id="SkX-cc-sau"/>
                         <outlet property="bigArrowIcon" destination="YDL-mz-6W8" id="d1j-7Q-qLg"/>
                         <outlet property="btnWorkout" destination="TPa-k5-z8U" id="Jz8-eC-Yo7"/>
                         <outlet property="ivProfile" destination="ryF-aW-DV7" id="MAJ-xc-4Us"/>
