@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
+		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
+		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
 		3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD1E1F6234360037DCE5 /* HomeViewController.m */; };
 		3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD211F62362D0037DCE5 /* ExpertLoginViewController.m */; };
 		3205FD271F6249930037DCE5 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD241F6249930037DCE5 /* ListViewController.m */; };
@@ -148,6 +151,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A47ECAD205A823A00A0AA67 /* MapClusterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterController.h; sourceTree = "<group>"; };
+		1A47ECAE205A823A00A0AA67 /* MapClusterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterController.m; sourceTree = "<group>"; };
+		1A47ECB0205AB12B00A0AA67 /* ClusterAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
+		1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
+		1A47ECB3205AC92B00A0AA67 /* MapClusterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterListViewController.h; sourceTree = "<group>"; };
+		1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterListViewController.m; sourceTree = "<group>"; };
 		28E83BA6AE58986F884F01FB /* Pods-TagALongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3205FD1D1F6234360037DCE5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Home/HomeViewController.h; sourceTree = "<group>"; };
 		3205FD1E1F6234360037DCE5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Home/HomeViewController.m; sourceTree = "<group>"; };
@@ -698,6 +707,10 @@
 				323615661F7A3B51007D4DF3 /* MDToast.m */,
 				323615671F7A3B51007D4DF3 /* UIView+MDExtension.h */,
 				323615681F7A3B51007D4DF3 /* UIView+MDExtension.m */,
+				1A47ECAD205A823A00A0AA67 /* MapClusterController.h */,
+				1A47ECAE205A823A00A0AA67 /* MapClusterController.m */,
+				1A47ECB0205AB12B00A0AA67 /* ClusterAnnotationView.h */,
+				1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -819,19 +832,21 @@
 		32FAA0BD1F614B4600CD4395 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3205FD1D1F6234360037DCE5 /* HomeViewController.h */,
-				3205FD1E1F6234360037DCE5 /* HomeViewController.m */,
-				3205FD251F6249930037DCE5 /* MapViewController.h */,
-				3205FD261F6249930037DCE5 /* MapViewController.m */,
-				3205FD231F6249930037DCE5 /* ListViewController.h */,
-				3205FD241F6249930037DCE5 /* ListViewController.m */,
-				3205FD291F629B9B0037DCE5 /* FilterViewController.h */,
-				3205FD2A1F629B9B0037DCE5 /* FilterViewController.m */,
 				3205FD731F6551190037DCE5 /* BookWorkoutViewController.h */,
 				3205FD741F6551190037DCE5 /* BookWorkoutViewController.m */,
+				3205FD291F629B9B0037DCE5 /* FilterViewController.h */,
+				3205FD2A1F629B9B0037DCE5 /* FilterViewController.m */,
+				3205FD1D1F6234360037DCE5 /* HomeViewController.h */,
+				3205FD1E1F6234360037DCE5 /* HomeViewController.m */,
+				3205FD2C1F62C1990037DCE5 /* item */,
+				3205FD231F6249930037DCE5 /* ListViewController.h */,
+				3205FD241F6249930037DCE5 /* ListViewController.m */,
+				1A47ECB3205AC92B00A0AA67 /* MapClusterListViewController.h */,
+				1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */,
+				3205FD251F6249930037DCE5 /* MapViewController.h */,
+				3205FD261F6249930037DCE5 /* MapViewController.m */,
 				32E9438D1F681F64006111B7 /* PaymentViewController.h */,
 				32E9438E1F681F64006111B7 /* PaymentViewController.m */,
-				3205FD2C1F62C1990037DCE5 /* item */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1223,6 +1238,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CCHMapClusterController/CCHMapClusterController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JElasticPullToRefresh/JElasticPullToRefresh.framework",
@@ -1231,6 +1247,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CCHMapClusterController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JElasticPullToRefresh.framework",
@@ -1338,10 +1355,12 @@
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
 				323016471F7A48FC0001BCB4 /* BSTableController+BSItemsModel.m in Sources */,
+				1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */,
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
 				3B0C4CFF1F887393002CEADA /* UIImage+MultiFormat.m in Sources */,
 				3232FFA81F79E23200A0F55D /* AddressViewController.m in Sources */,
 				3B0C4D011F887393002CEADA /* UIImageView+HighlightedWebCache.m in Sources */,
+				1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */,
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,
@@ -1351,6 +1370,7 @@
 				3273EA5E1F74EF0600DADA58 /* EditDialogViewController.m in Sources */,
 				3205FD751F6551190037DCE5 /* BookWorkoutViewController.m in Sources */,
 				323016541F7A48FC0001BCB4 /* BSSpeechBubbleView.m in Sources */,
+				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,

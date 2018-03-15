@@ -15,8 +15,13 @@
 #import <MapKit/MKPointAnnotation.h>
 #import "FilterViewController.h"
 #import "DateSelectDialog.h"
+#import <CCHMapClusterController/CCHMapClusterController.h>
+#import <CCHMapClusterController/CCHMapClusterControllerDelegate.h>
+#import <CCHMapClusterController/CCHMapClusterAnnotation.h>
+#import "ClusterAnnotationView.h"
+#import "MapClusterListViewController.h"
 
-@interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate>{
+@interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate, CCHMapClusterControllerDelegate>{
     
     MKCoordinateSpan m_span;
     CLLocationManager *locationMng;
@@ -46,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIView *vwSportBG;
 @property (strong, nonatomic) IBOutlet UILabel *lblDate;
 @property (strong, nonatomic) IBOutlet UIView *vwFilter;
+@property (nonatomic, strong) CCHMapClusterController *mapClusterController;
 
 @end
 
@@ -84,7 +90,9 @@
 
     _arrSportList = [[NSMutableArray alloc]  init];
     [self initControl];
-
+    
+    self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mvMap];
+    self.mapClusterController.delegate = self;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -267,6 +275,8 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 
     MKAnnotationView *pinView = nil;
+    NSString *uniqueImageName = nil;
+    
     if(annotation != mapView.userLocation) {
         static NSString *defaultPinID = @"com.invasivecode.pin";
         pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
@@ -274,31 +284,69 @@
             pinView = [[MKAnnotationView alloc]
                        initWithAnnotation:annotation reuseIdentifier:defaultPinID];
 
-        
         int index = [[annotation title] intValue];
         if (index < 0){
+            uniqueImageName = @"ic_me.png";
             pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
             return pinView;
         }
+        
+
         NSDictionary *dic = _arrSportList[index];
+        
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
         pinView.canShowCallout = NO;
-//        pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];    //as suggested by Squatch
+        pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];    //as suggested by Squatch
         
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         if ( [level isEqual:[NSNull null]] )  { //individual
+            uniqueImageName = arrSportImg[sport_uid - 1];
             pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"1"]) { //gym
+            uniqueImageName = arrSportBlueImg[sport_uid - 1];
             pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"2"]) { //pro
+            uniqueImageName = arrSportYellowImg[sport_uid - 1];
             pinView.image = [UIImage imageNamed:arrSportYellowImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"3"]) { //trainer
+            uniqueImageName = arrSportBlueImg[sport_uid - 1];
             pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
         }
         
-        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+//        if ( [level isEqual:[NSNull null]] )  { //individual
+//            pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
+//        } else if ([level isEqualToString:@"1"]) { //gym
+//            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
+//        } else if ([level isEqualToString:@"2"]) { //pro
+//            pinView.image = [UIImage imageNamed:arrSportYellowImg[sport_uid - 1]];
+//        } else if ([level isEqualToString:@"3"]) { //trainer
+//            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
+//        }
+//        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
+        if ([annotation isKindOfClass:CCHMapClusterAnnotation.class]) {
+            static NSString *identifier = @"clusterAnnotation";
+            
+            ClusterAnnotationView *clusterAnnotationView = (ClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+            if (clusterAnnotationView) {
+                clusterAnnotationView.annotation = annotation;
+            } else {
+                clusterAnnotationView = [[ClusterAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+                clusterAnnotationView.canShowCallout = YES;
+            }
+            clusterAnnotationView.uniqueImageName = uniqueImageName;
+            clusterAnnotationView.clusterImageName = @"icon_cluster_white";
+            
+            CCHMapClusterAnnotation *clusterAnnotation = (CCHMapClusterAnnotation *)annotation;
+            clusterAnnotationView.count = clusterAnnotation.annotations.count;
+            clusterAnnotationView.blue = NO;
+            clusterAnnotationView.uniqueLocation = clusterAnnotation.isUniqueLocation;
+            pinView = clusterAnnotationView;
+        }
+        pinView.canShowCallout = NO;
+        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     } else {
         if (@available(iOS 11.0, *)) {} else {
             if ([Global.g_user.user_login isEqualToString:@"1"]) {
@@ -307,7 +355,7 @@
                 if ( pinView == nil )
                     pinView = [[MKAnnotationView alloc]
                                initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-                
+
                 pinView.canShowCallout = YES;
                 pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
                 pinView.enabled = NO;
@@ -319,6 +367,21 @@
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
      [mapView deselectAnnotation:view.annotation animated:YES];
+    
+    if ([view.annotation isKindOfClass:CCHMapClusterAnnotation.class]) {
+        CCHMapClusterAnnotation *clusterAnnotation = (CCHMapClusterAnnotation*)view.annotation;
+        if (clusterAnnotation.annotations.allObjects.count > 1) {
+            NSLog(@"---> Cluster with group did tap...");
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            NSArray *sportList = [self filteredWorkoutsByClusterAnnotation:clusterAnnotation.annotations.allObjects];
+            
+            MapClusterListViewController *vc = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(MapClusterListViewController.class)];
+            vc.arrSportList = sportList;
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+    }
     
     if([view.annotation isKindOfClass:[MKUserLocation class]]) {
         NSString *address_uid = [Preference getString:PREFCONST_ADDRESS_UID default:nil];
@@ -375,6 +438,21 @@
 //    ulv.hidden = YES;
 //}
 
+#pragma mark - CCHMapClusterControllerDelegate
+
+- (void)mapClusterController:(CCHMapClusterController *)mapClusterController willReuseMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation {
+    ClusterAnnotationView *clusterAnnotationView = (ClusterAnnotationView *)[self.mvMap viewForAnnotation:mapClusterAnnotation];
+    clusterAnnotationView.count = mapClusterAnnotation.annotations.count;
+    clusterAnnotationView.uniqueLocation = mapClusterAnnotation.isUniqueLocation;
+}
+
+- (NSString *)mapClusterController:(CCHMapClusterController *)mapClusterController titleForMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation
+{
+    NSUInteger numAnnotations = mapClusterAnnotation.annotations.count;
+    NSString *unit = numAnnotations > 1 ? @"annotations" : @"annotation";
+    return [NSString stringWithFormat:@"%tu %@", numAnnotations, unit];
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 //-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -384,6 +462,13 @@
 
 #pragma mark - user defined functions
 -(void)OhterPlayPosSet{
+    // Remove all current items from the map
+    [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
+    for (id<MKOverlay> overlay in self.mvMap.overlays) {
+        [self.mvMap removeOverlay:overlay];
+    }
+    
+    NSMutableArray *annotations = [NSMutableArray new];
     for (long i = _arrSportList.count - 1; i >= 0 ; i--) {
         NSDictionary *dic = _arrSportList[i];
         
@@ -408,8 +493,13 @@
         } else if ([level isEqualToString:@"3"]) { //trainer
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportBlueImg[sport_uid - 1]]];
         }
-        
-        [_mvMap addAnnotation:ptAnno];
+        if (ptAnno) {
+            [annotations addObject:ptAnno];
+        }
+//        [_mvMap addAnnotation:ptAnno];
+    }
+    if (annotations.count > 0) {
+        [self.mapClusterController addAnnotations:annotations withCompletionHandler:NULL];
     }
 }
 
@@ -893,5 +983,29 @@
     
 }
 
+#pragma mark - Help Methods
+
+- (NSArray*)filteredWorkoutsByClusterAnnotation:(NSArray*)clusterAnnotations {
+    NSMutableArray *filteredArray = [NSMutableArray array];
+    NSMutableArray *annotations = [NSMutableArray arrayWithArray:clusterAnnotations];
+    for (NSInteger i = 0; i < _arrSportList.count; i++) {
+        if (annotations.count == 0) {
+            break;
+        }
+        NSDictionary *workoutDict = _arrSportList[i];
+        NSString *workoutLatitude = [workoutDict objectForKey:API_RES_KEY_LATITUDE];
+        NSString *workoutLongitude = [workoutDict objectForKey:API_RES_KEY_LONGITUDE];
+        CLLocationCoordinate2D workoutCoordinate = CLLocationCoordinate2DMake([workoutLatitude doubleValue], [workoutLongitude doubleValue]);
+        for (NSInteger j = 0; j < annotations.count; j++) {
+            MKPointAnnotation *pointAnnotatoin = annotations[j];
+            if (pointAnnotatoin.coordinate.latitude == workoutCoordinate.latitude && pointAnnotatoin.coordinate.longitude == workoutCoordinate.longitude) {
+                [filteredArray addObject:[workoutDict mutableCopy]];
+                [annotations removeObjectAtIndex:j];
+                break;
+            }
+        }
+    }
+    return filteredArray;
+}
 
 @end

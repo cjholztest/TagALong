@@ -23,4 +23,5 @@ use_frameworks!
   pod 'SVProgressHUD', '~>2.0.3'
   pod 'FSCalendar'
   pod 'DZNEmptyDataSet'
+  pod 'CCHMapClusterController', '~>1.7.0'
 end

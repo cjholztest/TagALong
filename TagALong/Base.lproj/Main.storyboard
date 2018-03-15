@@ -5577,6 +5577,40 @@ Terms of Use and Privacy Policy</string>
             </objects>
             <point key="canvasLocation" x="4492" y="24.7376311844078"/>
         </scene>
+        <!--Map Cluster List View Controller-->
+        <scene sceneID="Dqa-Ab-j3x">
+            <objects>
+                <viewController storyboardIdentifier="MapClusterListViewController" automaticallyAdjustsScrollViewInsets="NO" id="ZId-b8-WCP" customClass="MapClusterListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YwI-6a-if4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RIO-Yx-jsn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZId-b8-WCP" id="OO5-xO-VGb"/>
+                                    <outlet property="delegate" destination="ZId-b8-WCP" id="o5f-y7-ba2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RIO-Yx-jsn" firstAttribute="top" secondItem="KzD-tH-9Pb" secondAttribute="top" id="CIg-IX-TrS"/>
+                            <constraint firstItem="KzD-tH-9Pb" firstAttribute="bottom" secondItem="RIO-Yx-jsn" secondAttribute="bottom" id="Uqt-cC-ulP"/>
+                            <constraint firstItem="RIO-Yx-jsn" firstAttribute="leading" secondItem="KzD-tH-9Pb" secondAttribute="leading" id="gky-Cr-A4B"/>
+                            <constraint firstItem="KzD-tH-9Pb" firstAttribute="trailing" secondItem="RIO-Yx-jsn" secondAttribute="trailing" id="yTr-0b-hjh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KzD-tH-9Pb"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="RIO-Yx-jsn" id="xKQ-k9-4Ge"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOX-8G-3sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4089" y="730"/>
+        </scene>
         <!--Pro Signup  View Controller-->
         <scene sceneID="ZDu-e3-u0N">
             <objects>

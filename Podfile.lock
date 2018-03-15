@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CCHMapClusterController (1.7.0)
   - DZNEmptyDataSet (1.8.1)
   - FSCalendar (2.7.9)
   - JElasticPullToRefresh (1.0.3)
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - CCHMapClusterController (~> 1.7.0)
   - DZNEmptyDataSet
   - FSCalendar
   - JElasticPullToRefresh (~> 1.0.3)
@@ -28,11 +30,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CCHMapClusterController: d8cd12cd5682ec6cd76d911ac7198f981b6cc1b8
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   JElasticPullToRefresh: 63b15bfbb96ea476dce3df9460509d59473b1e94
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: 4653f6f686a54f440334b2e514924d35c0079edd
+PODFILE CHECKSUM: 7d1de7a9da28158aac80a29053852ec5a1e42bc8
 
 COCOAPODS: 1.4.0
