@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
+#import <Stripe/Stripe.h>
 
 @interface AppDelegate ()
 
@@ -17,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:@"pk_test_VKdmHHXsKzJ8L7VQecG4HcSh"];
     
     //Global.g_token = [[NSUserDefaults standardUserDefaults] stringForKey:PREFCONST_TOKEN];
     return YES;

@@ -18,6 +18,7 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - FSCalendar (2.7.9)
   - JElasticPullToRefresh (1.0.3)
+  - Stripe (11.4.0)
   - SVProgressHUD (2.0.4)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FSCalendar
   - JElasticPullToRefresh (~> 1.0.3)
+  - Stripe (~> 11.4.0)
   - SVProgressHUD (~> 2.0.3)
 
 SPEC CHECKSUMS:
@@ -34,8 +36,9 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   JElasticPullToRefresh: 63b15bfbb96ea476dce3df9460509d59473b1e94
+  Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: 7d1de7a9da28158aac80a29053852ec5a1e42bc8
+PODFILE CHECKSUM: 5fec6b02ef626609d459d66e698144d5a3a811fe
 
 COCOAPODS: 1.4.0

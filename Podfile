@@ -24,4 +24,5 @@ use_frameworks!
   pod 'FSCalendar'
   pod 'DZNEmptyDataSet'
   pod 'CCHMapClusterController', '~>1.7.0'
+  pod 'Stripe', '~>11.4.0'
 end
