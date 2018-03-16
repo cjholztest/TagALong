@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */; };
+		1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */; };
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
@@ -151,6 +153,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A2C0206205C31BD001887FA /* ListOfWorkoutVisitorsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOfWorkoutVisitorsViewController.h; sourceTree = "<group>"; };
+		1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOfWorkoutVisitorsViewController.m; sourceTree = "<group>"; };
+		1A2C0209205C359C001887FA /* WorkoutVisitorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutVisitorTableViewCell.h; sourceTree = "<group>"; };
+		1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutVisitorTableViewCell.m; sourceTree = "<group>"; };
 		1A47ECAD205A823A00A0AA67 /* MapClusterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterController.h; sourceTree = "<group>"; };
 		1A47ECAE205A823A00A0AA67 /* MapClusterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterController.m; sourceTree = "<group>"; };
 		1A47ECB0205AB12B00A0AA67 /* ClusterAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
@@ -442,6 +448,8 @@
 				32C2DBA21F695F77001B6822 /* SportsListTableViewCell.h */,
 				32C2DBA31F695F77001B6822 /* SportsListTableViewCell.m */,
 				32C2DBA41F695F77001B6822 /* SportsListTableViewCell.xib */,
+				1A2C0209205C359C001887FA /* WorkoutVisitorTableViewCell.h */,
+				1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */,
 			);
 			name = item;
 			sourceTree = "<group>";
@@ -847,6 +855,8 @@
 				3205FD261F6249930037DCE5 /* MapViewController.m */,
 				32E9438D1F681F64006111B7 /* PaymentViewController.h */,
 				32E9438E1F681F64006111B7 /* PaymentViewController.m */,
+				1A2C0206205C31BD001887FA /* ListOfWorkoutVisitorsViewController.h */,
+				1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1308,6 +1318,7 @@
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
+				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
@@ -1375,6 +1386,7 @@
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
+				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
