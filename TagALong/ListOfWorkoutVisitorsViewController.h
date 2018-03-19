@@ -10,4 +10,6 @@
 
 @interface ListOfWorkoutVisitorsViewController : UIViewController
 
+@property (nonatomic, strong) NSString *workoutID;
+
 @end
