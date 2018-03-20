@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Credit Card List View Controller-->
+        <scene sceneID="784-ZH-06R">
+            <objects>
+                <viewController storyboardIdentifier="CreditCardListViewController" automaticallyAdjustsScrollViewInsets="NO" id="Pyq-vM-PA8" customClass="CreditCardListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mj9-ch-O4u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbL-Co-j6k" customClass="CreditCardListView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="URZ-kF-xIH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreditCardTableViewCellIdentifier" id="uMl-qa-KkP" customClass="CreditCardTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uMl-qa-KkP" id="O3V-g2-15c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Pyq-vM-PA8" id="jJE-ka-YSC"/>
+                                            <outlet property="delegate" destination="Pyq-vM-PA8" id="Auv-bG-ENb"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5m-7R-wMb">
+                                        <rect key="frame" x="0.0" y="587" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="bYR-Ft-fMb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="ADD CREDIT CARD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addCreditCardButtonAction:" destination="ZbL-Co-j6k" eventType="touchUpInside" id="GxV-o4-SQM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="URZ-kF-xIH" secondAttribute="trailing" id="FSo-MX-SqG"/>
+                                    <constraint firstItem="q5m-7R-wMb" firstAttribute="top" secondItem="URZ-kF-xIH" secondAttribute="bottom" id="K0H-mX-bT9"/>
+                                    <constraint firstItem="URZ-kF-xIH" firstAttribute="leading" secondItem="ZbL-Co-j6k" secondAttribute="leading" id="KPi-KM-LDZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="q5m-7R-wMb" secondAttribute="trailing" id="chx-0M-QSa"/>
+                                    <constraint firstItem="URZ-kF-xIH" firstAttribute="top" secondItem="ZbL-Co-j6k" secondAttribute="top" id="e1n-o7-OQ2"/>
+                                    <constraint firstItem="q5m-7R-wMb" firstAttribute="leading" secondItem="ZbL-Co-j6k" secondAttribute="leading" id="f3N-au-bIQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="q5m-7R-wMb" secondAttribute="bottom" id="wdO-Lv-AVS"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="addCreditCardButton" destination="q5m-7R-wMb" id="pkZ-bw-hqI"/>
+                                    <outlet property="tebleView" destination="URZ-kF-xIH" id="JrB-9d-obJ"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZbL-Co-j6k" firstAttribute="leading" secondItem="cc3-cV-8BL" secondAttribute="leading" id="BZN-Th-23Y"/>
+                            <constraint firstItem="cc3-cV-8BL" firstAttribute="bottom" secondItem="ZbL-Co-j6k" secondAttribute="bottom" id="XNr-7j-KhH"/>
+                            <constraint firstItem="cc3-cV-8BL" firstAttribute="trailing" secondItem="ZbL-Co-j6k" secondAttribute="trailing" id="fpu-xY-bM1"/>
+                            <constraint firstItem="ZbL-Co-j6k" firstAttribute="top" secondItem="cc3-cV-8BL" secondAttribute="top" id="oqJ-KD-quJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cc3-cV-8BL"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="ZbL-Co-j6k" id="HEF-zk-pgR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MkY-g5-Sd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-118" y="119"/>
+        </scene>
+        <!--Add Credit Card View Controller-->
+        <scene sceneID="mXL-BE-zaU">
+            <objects>
+                <viewController storyboardIdentifier="AddCreditCardViewController" automaticallyAdjustsScrollViewInsets="NO" id="iRt-9L-pIA" customClass="AddCreditCardViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XmU-i8-3Wh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j7-Dg-Efl" customClass="AddCreditCardView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwf-l5-WcT" userLabel="PaymentCardContainer">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="bv8-AU-8JK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vwf-l5-WcT" firstAttribute="top" secondItem="3j7-Dg-Efl" secondAttribute="top" constant="20" id="CBK-fZ-oMO"/>
+                                    <constraint firstItem="vwf-l5-WcT" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="WzU-49-Pg8"/>
+                                    <constraint firstAttribute="trailing" secondItem="vwf-l5-WcT" secondAttribute="trailing" id="dsd-mG-g0u"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="paymentCardContainerView" destination="vwf-l5-WcT" id="FnB-Wn-xrf"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ef7-CR-dQ6" firstAttribute="bottom" secondItem="3j7-Dg-Efl" secondAttribute="bottom" id="MZW-tm-S17"/>
+                            <constraint firstItem="3j7-Dg-Efl" firstAttribute="top" secondItem="ef7-CR-dQ6" secondAttribute="top" id="UkO-D3-VJG"/>
+                            <constraint firstItem="3j7-Dg-Efl" firstAttribute="leading" secondItem="ef7-CR-dQ6" secondAttribute="leading" id="WXU-3U-jzY"/>
+                            <constraint firstItem="ef7-CR-dQ6" firstAttribute="trailing" secondItem="3j7-Dg-Efl" secondAttribute="trailing" id="kM4-9V-gN1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ef7-CR-dQ6"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="3j7-Dg-Efl" id="Kbz-nT-BNs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPm-or-nPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="118"/>
+        </scene>
+    </scenes>
+</document>

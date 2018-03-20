@@ -1,0 +1,15 @@
+//
+//  PaymentServer.h
+//  TagALong
+//
+//  Created by Nikita Vintonovich on 3/20/18.
+//  Copyright © 2018 PJH. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface PaymentServer : NSObject
+
++ (PaymentServer*)shared;
+
+@end

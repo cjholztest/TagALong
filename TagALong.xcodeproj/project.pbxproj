@@ -7,9 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27613D20612E8000C9D703 /* Payment.storyboard */; };
+		1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27614020612EB600C9D703 /* CreditCardListViewController.m */; };
+		1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27614320612ED100C9D703 /* AddCreditCardViewController.m */; };
+		1A276154206131D800C9D703 /* AddCreditCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276153206131D800C9D703 /* AddCreditCardModel.m */; };
+		1A276157206131E600C9D703 /* AddCreditCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276156206131E600C9D703 /* AddCreditCardView.m */; };
+		1A27615B206132A700C9D703 /* CreditCardListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27615A206132A700C9D703 /* CreditCardListModel.m */; };
+		1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27615D206132B700C9D703 /* CreditCardListView.m */; };
+		1A276163206133D100C9D703 /* CreditCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276162206133D100C9D703 /* CreditCardTableViewCell.m */; };
+		1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */; };
+		1A27616920616D0400C9D703 /* PaymentServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27616820616D0400C9D703 /* PaymentServer.m */; };
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
+		1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA35205FF85500675150 /* PaymentClient.m */; };
+		1ACFEA392060094500675150 /* CardPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA382060094500675150 /* CardPaymentViewController.m */; };
 		3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD1E1F6234360037DCE5 /* HomeViewController.m */; };
 		3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD211F62362D0037DCE5 /* ExpertLoginViewController.m */; };
 		3205FD271F6249930037DCE5 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD241F6249930037DCE5 /* ListViewController.m */; };
@@ -151,12 +163,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A27613D20612E8000C9D703 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		1A27613F20612EB600C9D703 /* CreditCardListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardListViewController.h; sourceTree = "<group>"; };
+		1A27614020612EB600C9D703 /* CreditCardListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardListViewController.m; sourceTree = "<group>"; };
+		1A27614220612ED100C9D703 /* AddCreditCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardViewController.h; sourceTree = "<group>"; };
+		1A27614320612ED100C9D703 /* AddCreditCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCreditCardViewController.m; sourceTree = "<group>"; };
+		1A276152206131D800C9D703 /* AddCreditCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardModel.h; sourceTree = "<group>"; };
+		1A276153206131D800C9D703 /* AddCreditCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCreditCardModel.m; sourceTree = "<group>"; };
+		1A276155206131E600C9D703 /* AddCreditCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardView.h; sourceTree = "<group>"; };
+		1A276156206131E600C9D703 /* AddCreditCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCreditCardView.m; sourceTree = "<group>"; };
+		1A2761582061320200C9D703 /* AddCreditCardProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardProtocols.h; sourceTree = "<group>"; };
+		1A276159206132A700C9D703 /* CreditCardListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardListModel.h; sourceTree = "<group>"; };
+		1A27615A206132A700C9D703 /* CreditCardListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardListModel.m; sourceTree = "<group>"; };
+		1A27615C206132B700C9D703 /* CreditCardListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardListView.h; sourceTree = "<group>"; };
+		1A27615D206132B700C9D703 /* CreditCardListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardListView.m; sourceTree = "<group>"; };
+		1A27615F206132C900C9D703 /* CreditCardListProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardListProtocols.h; sourceTree = "<group>"; };
+		1A276161206133D100C9D703 /* CreditCardTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardTableViewCell.h; sourceTree = "<group>"; };
+		1A276162206133D100C9D703 /* CreditCardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardTableViewCell.m; sourceTree = "<group>"; };
+		1A276164206133E500C9D703 /* CreditCardTableViewCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardTableViewCellViewModel.h; sourceTree = "<group>"; };
+		1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardTableViewCellViewModel.m; sourceTree = "<group>"; };
+		1A27616720616D0400C9D703 /* PaymentServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentServer.h; sourceTree = "<group>"; };
+		1A27616820616D0400C9D703 /* PaymentServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentServer.m; sourceTree = "<group>"; };
 		1A47ECAD205A823A00A0AA67 /* MapClusterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterController.h; sourceTree = "<group>"; };
 		1A47ECAE205A823A00A0AA67 /* MapClusterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterController.m; sourceTree = "<group>"; };
 		1A47ECB0205AB12B00A0AA67 /* ClusterAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
 		1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
 		1A47ECB3205AC92B00A0AA67 /* MapClusterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterListViewController.h; sourceTree = "<group>"; };
 		1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterListViewController.m; sourceTree = "<group>"; };
+		1ACFEA34205FF85500675150 /* PaymentClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentClient.h; sourceTree = "<group>"; };
+		1ACFEA35205FF85500675150 /* PaymentClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentClient.m; sourceTree = "<group>"; };
+		1ACFEA372060094500675150 /* CardPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardPaymentViewController.h; sourceTree = "<group>"; };
+		1ACFEA382060094500675150 /* CardPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardPaymentViewController.m; sourceTree = "<group>"; };
 		28E83BA6AE58986F884F01FB /* Pods-TagALongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3205FD1D1F6234360037DCE5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Home/HomeViewController.h; sourceTree = "<group>"; };
 		3205FD1E1F6234360037DCE5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Home/HomeViewController.m; sourceTree = "<group>"; };
@@ -430,6 +467,158 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A2761452061314B00C9D703 /* PaymentClient */ = {
+			isa = PBXGroup;
+			children = (
+				1ACFEA34205FF85500675150 /* PaymentClient.h */,
+				1ACFEA35205FF85500675150 /* PaymentClient.m */,
+				1A27616720616D0400C9D703 /* PaymentServer.h */,
+				1A27616820616D0400C9D703 /* PaymentServer.m */,
+			);
+			path = PaymentClient;
+			sourceTree = "<group>";
+		};
+		1A2761462061314B00C9D703 /* AddCreditCardModule */ = {
+			isa = PBXGroup;
+			children = (
+				1A2761472061314B00C9D703 /* MVC */,
+				1A27614B2061314B00C9D703 /* Protocols */,
+			);
+			path = AddCreditCardModule;
+			sourceTree = "<group>";
+		};
+		1A2761472061314B00C9D703 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				1A2761482061314B00C9D703 /* Controller */,
+				1A2761492061314B00C9D703 /* Model */,
+				1A27614A2061314B00C9D703 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		1A2761482061314B00C9D703 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A27614220612ED100C9D703 /* AddCreditCardViewController.h */,
+				1A27614320612ED100C9D703 /* AddCreditCardViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1A2761492061314B00C9D703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A276152206131D800C9D703 /* AddCreditCardModel.h */,
+				1A276153206131D800C9D703 /* AddCreditCardModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A27614A2061314B00C9D703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A276155206131E600C9D703 /* AddCreditCardView.h */,
+				1A276156206131E600C9D703 /* AddCreditCardView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A27614B2061314B00C9D703 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1A2761582061320200C9D703 /* AddCreditCardProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1A27614C2061314B00C9D703 /* CreditCardListModule */ = {
+			isa = PBXGroup;
+			children = (
+				1A27614D2061314B00C9D703 /* MVC */,
+				1A2761512061314B00C9D703 /* Protocols */,
+			);
+			path = CreditCardListModule;
+			sourceTree = "<group>";
+		};
+		1A27614D2061314B00C9D703 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				1A27614E2061314B00C9D703 /* Controller */,
+				1A27614F2061314B00C9D703 /* Model */,
+				1A2761502061314B00C9D703 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		1A27614E2061314B00C9D703 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A27613F20612EB600C9D703 /* CreditCardListViewController.h */,
+				1A27614020612EB600C9D703 /* CreditCardListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1A27614F2061314B00C9D703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A276159206132A700C9D703 /* CreditCardListModel.h */,
+				1A27615A206132A700C9D703 /* CreditCardListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A2761502061314B00C9D703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A2761602061337300C9D703 /* Cell */,
+				1A27615C206132B700C9D703 /* CreditCardListView.h */,
+				1A27615D206132B700C9D703 /* CreditCardListView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A2761512061314B00C9D703 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1A27615F206132C900C9D703 /* CreditCardListProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1A2761602061337300C9D703 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A276161206133D100C9D703 /* CreditCardTableViewCell.h */,
+				1A276162206133D100C9D703 /* CreditCardTableViewCell.m */,
+				1A276164206133E500C9D703 /* CreditCardTableViewCellViewModel.h */,
+				1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1ACFEA32205FF80800675150 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1ACFEA33205FF80800675150 /* Payments */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1ACFEA33205FF80800675150 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				1A2761462061314B00C9D703 /* AddCreditCardModule */,
+				1A27614C2061314B00C9D703 /* CreditCardListModule */,
+				1A2761452061314B00C9D703 /* PaymentClient */,
+				1ACFEA372060094500675150 /* CardPaymentViewController.h */,
+				1ACFEA382060094500675150 /* CardPaymentViewController.m */,
+				1A27613D20612E8000C9D703 /* Payment.storyboard */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
 		3205FD2C1F62C1990037DCE5 /* item */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,16 +983,17 @@
 		32FAA0851F6144D500CD4395 /* TagALong */ = {
 			isa = PBXGroup;
 			children = (
-				32FAA0BE1F614B5D00CD4395 /* Assets */,
 				32FAA0BC1F614B3F00CD4395 /* App */,
-				32FAA0BF1F614E3700CD4395 /* Login */,
+				32FAA0BE1F614B5D00CD4395 /* Assets */,
+				3205FD531F6313350037DCE5 /* Classes */,
+				3256F2701F73941700D0874E /* Common */,
+				3273EA5A1F74EF0600DADA58 /* Dialog */,
 				32FAA0BD1F614B4600CD4395 /* Home */,
+				32FAA0BF1F614E3700CD4395 /* Login */,
 				3B79BCB71F83B1FA00BD869D /* Model */,
 				3205FD371F630EA90037DCE5 /* Profile */,
+				1ACFEA32205FF80800675150 /* Services */,
 				32C2DBC01F69C794001B6822 /* Submit */,
-				3205FD531F6313350037DCE5 /* Classes */,
-				3273EA5A1F74EF0600DADA58 /* Dialog */,
-				3256F2701F73941700D0874E /* Common */,
 				32FAA0861F6144D500CD4395 /* Supporting Files */,
 			);
 			path = TagALong;
@@ -1096,6 +1286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
+				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
@@ -1301,6 +1492,7 @@
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
+				1ACFEA392060094500675150 /* CardPaymentViewController.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
 				323016461F7A48FC0001BCB4 /* BSPreviewController+UICollectionView.m in Sources */,
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
@@ -1317,6 +1509,7 @@
 				3205FD271F6249930037DCE5 /* ListViewController.m in Sources */,
 				32C2DBCE1F6AD0B1001B6822 /* AreaWorkoutViewController.m in Sources */,
 				3230164D1F7A48FC0001BCB4 /* BSAssetModel.m in Sources */,
+				1A276157206131E600C9D703 /* AddCreditCardView.m in Sources */,
 				323016481F7A48FC0001BCB4 /* BSTableController+UITableView.m in Sources */,
 				3B0C4CF51F887393002CEADA /* NSData+ImageContentType.m in Sources */,
 				32C2DBD41F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.m in Sources */,
@@ -1326,10 +1519,12 @@
 				3256F26E1F73689100D0874E /* UserProfilePlanTableViewCell.m in Sources */,
 				32C2DBC91F6A14B1001B6822 /* WorkoutSelectViewController.m in Sources */,
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
+				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				323016591F7A4A250001BCB4 /* OHActionSheet.m in Sources */,
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
 				3B0C4CF81F887393002CEADA /* SDWebImageDecoder.m in Sources */,
+				1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */,
 				3230164A1F7A48FC0001BCB4 /* BSAlbumTableViewCellFactory.m in Sources */,
 				3B0C4D001F887393002CEADA /* UIImage+WebP.m in Sources */,
 				3205FD611F6313350037DCE5 /* DAYComponentView.m in Sources */,
@@ -1348,6 +1543,7 @@
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
+				1A27616920616D0400C9D703 /* PaymentServer.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
@@ -1356,9 +1552,11 @@
 				323016521F7A48FC0001BCB4 /* BSNumberedSelectionView.m in Sources */,
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
+				1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */,
 				323016471F7A48FC0001BCB4 /* BSTableController+BSItemsModel.m in Sources */,
 				1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */,
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
+				1A276154206131D800C9D703 /* AddCreditCardModel.m in Sources */,
 				3B0C4CFF1F887393002CEADA /* UIImage+MultiFormat.m in Sources */,
 				3232FFA81F79E23200A0F55D /* AddressViewController.m in Sources */,
 				3B0C4D011F887393002CEADA /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1371,6 +1569,7 @@
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
 				3273EA5E1F74EF0600DADA58 /* EditDialogViewController.m in Sources */,
 				3205FD751F6551190037DCE5 /* BookWorkoutViewController.m in Sources */,
+				1A276163206133D100C9D703 /* CreditCardTableViewCell.m in Sources */,
 				323016541F7A48FC0001BCB4 /* BSSpeechBubbleView.m in Sources */,
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
@@ -1379,6 +1578,7 @@
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
+				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
@@ -1389,6 +1589,7 @@
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
 				323016561F7A48FC0001BCB4 /* BSVideoCell.m in Sources */,
 				3230163A1F7A48FC0001BCB4 /* BSCollectionController.m in Sources */,
+				1A27615B206132A700C9D703 /* CreditCardListModel.m in Sources */,
 				32E9438F1F681F64006111B7 /* PaymentViewController.m in Sources */,
 				32FAA0BB1F61454300CD4395 /* SplashViewController.m in Sources */,
 				3230164B1F7A48FC0001BCB4 /* BSPhotoCollectionViewCellFactory.m in Sources */,
@@ -1397,6 +1598,7 @@
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,
 				323016531F7A48FC0001BCB4 /* BSPhotoCell.m in Sources */,
 				3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */,
+				1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */,
 				3B79BCCF1F861CF600BD869D /* SelectWorkoutTableViewCell.m in Sources */,
 				3205FD601F6313350037DCE5 /* DAYCalendarView.m in Sources */,
 				323016381F7A48FC0001BCB4 /* BSShrinkAnimator.m in Sources */,

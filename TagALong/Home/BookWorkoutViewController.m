@@ -8,6 +8,9 @@
 
 #import "BookWorkoutViewController.h"
 #import "PaymentViewController.h"
+#import "PaymentClient.h"
+#import "CardPaymentViewController.h"
+#import "CreditCardListViewController.h"
 
 @interface BookWorkoutViewController ()<PaymentViewControllerDelegate>{
     NSArray *arrSportNM;
@@ -186,7 +189,20 @@
 #pragma mark - click events
 
 - (IBAction)onClickWorkout:(id)sender {
-    [self ReqBookNoew];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
+    [self.navigationController pushViewController:creditCardListVC animated:YES];
+    
+//    [self ReqBookNoew]; temp commented
+    
+//    [[PaymentClient shared] createCustomerKeyWithApiVersion:@"2015-10-12" completion:^(id object) {
+//
+//        NSLog(@"%@", object);
+//        CardPaymentViewController *cardVC = [CardPaymentViewController new];
+//        [self.navigationController pushViewController:cardVC animated:YES];
+//    }];
+    
 //    if ([self.where isEqualToString:@"profile"]) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExportProfile" object:nil];
 //    }
