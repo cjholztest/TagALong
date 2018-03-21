@@ -10,6 +10,8 @@
 
 @interface CreditCardTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *cardNumberLabel;
+
 - (void)updateWithModel:(id)model;
 
 @end

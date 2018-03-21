@@ -10,4 +10,12 @@
 
 @interface CreditCardTableViewCellViewModel : NSObject
 
+@property (nonatomic, strong) NSString *cardID;
+
+@property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, assign) NSInteger cardType;
+@property (nonatomic, strong) UIImage *cardImage;
+@property (nonatomic, strong) NSString *lastNumbers;
+@property (nonatomic, strong) NSString *brandTitle;
+
 @end

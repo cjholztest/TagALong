@@ -11,9 +11,11 @@
 @protocol CreditCardListModelInput <NSObject>
 
 - (void)loadCardList;
+- (void)cardSetSelected:(BOOL)isSelected atIndexPath:(NSIndexPath*)indexPath;
 
 - (NSInteger)cardsCount;
 - (id)cardViewModelAtIndex:(NSInteger)index;
+- (NSIndexPath*)selectedIndexPath;
 
 @end
 

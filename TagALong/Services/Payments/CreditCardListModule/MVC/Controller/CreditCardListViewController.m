@@ -70,10 +70,27 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
     return cell;
 }
 
+- (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    static NSString *footerIdentifier = @"CardListFooterIdentifier";
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerIdentifier];
+    if (!view) {
+        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:footerIdentifier];
+    }
+    return view.contentView;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSIndexPath *previousIndexPath = [self.model selectedIndexPath];
+    if (previousIndexPath) {
+        CreditCardTableViewCell *previousCell = [tableView cellForRowAtIndexPath:previousIndexPath];
+        [self.model cardSetSelected:NO atIndexPath:previousIndexPath];
+        [previousCell updateWithModel:[self.model cardViewModelAtIndex:previousIndexPath.row]];
+    }
+    [self.model cardSetSelected:YES atIndexPath:indexPath];
+    CreditCardTableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
+    [currentCell updateWithModel:[self.model cardViewModelAtIndex:indexPath.row]];
 }
 
 @end

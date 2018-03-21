@@ -46,7 +46,9 @@
 
 #pragma mark - STPPaymentCardTextFieldDelegate
 
-
+- (void)paymentCardTextFieldDidChange:(STPPaymentCardTextField *)textField {
+    [self.contentView updateAppearanceWithState:[textField isValid]];
+}
 
 #pragma mark - AddCreditCardModelOutput
 

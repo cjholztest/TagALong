@@ -13,9 +13,12 @@
 
 @interface AddCreditCardView : UIView <AddCreditCardUserInterfaceOutput>
 
+@property (nonatomic, weak) IBOutlet UIButton *addNewCard;
 @property (nonatomic, weak) IBOutlet UIView *paymentCardContainerView;
 @property (nonatomic, strong) STPPaymentCardTextField *paymentCardTextField;
 
 @property (nonatomic, weak) id <AddCreditCardUserInterfaceInput> eventHandler;
+
+- (void)updateAppearanceWithState:(BOOL)isActive;
 
 @end

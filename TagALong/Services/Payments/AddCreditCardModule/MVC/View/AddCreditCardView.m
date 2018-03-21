@@ -15,6 +15,7 @@
     if (!_paymentCardTextField) {
         _paymentCardTextField = [STPPaymentCardTextField new];
         [_paymentCardTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+        _paymentCardTextField.backgroundColor = [UIColor whiteColor];
         [self.paymentCardContainerView addSubview:_paymentCardTextField];
         NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:_paymentCardTextField
                                                                 attribute:NSLayoutAttributeLeading
@@ -47,6 +48,17 @@
         [self.paymentCardContainerView addConstraints:@[leading, top, trailing, bottom]];
     }
     return _paymentCardTextField;
+}
+
+- (IBAction)addCardAction:(id)sender {
+    
+}
+
+- (void)updateAppearanceWithState:(BOOL)isActive {
+    if (self.addNewCard.isUserInteractionEnabled != isActive) {
+        [self.addNewCard setUserInteractionEnabled:isActive];
+        self.addNewCard.alpha = isActive ? 1.0f : 0.5f;
+    }
 }
 
 @end

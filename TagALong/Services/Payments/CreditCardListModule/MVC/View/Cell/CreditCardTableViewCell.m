@@ -19,6 +19,8 @@
 
 - (void)updateWithModel:(id)model {
     self.model = model;
+    self.cardNumberLabel.text = self.model.lastNumbers;
+    self.accessoryType = self.model.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 }
 
 @end

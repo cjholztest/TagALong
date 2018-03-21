@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,17 +27,35 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbL-Co-j6k" customClass="CreditCardListView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="URZ-kF-xIH">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" estimatedRowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="URZ-kF-xIH">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreditCardTableViewCellIdentifier" id="uMl-qa-KkP" customClass="CreditCardTableViewCell">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="CreditCardTableViewCellIdentifier" id="uMl-qa-KkP" customClass="CreditCardTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uMl-qa-KkP" id="O3V-g2-15c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="336" height="56.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brg-hJ-tkn">
+                                                            <rect key="frame" x="30" y="28.5" width="283" height="0.0"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="brg-hJ-tkn" firstAttribute="leading" secondItem="O3V-g2-15c" secondAttribute="leadingMargin" constant="15" id="RpF-U8-oaJ"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="brg-hJ-tkn" secondAttribute="trailing" constant="15" id="UVy-iW-Yew"/>
+                                                        <constraint firstItem="brg-hJ-tkn" firstAttribute="centerY" secondItem="O3V-g2-15c" secondAttribute="centerY" id="qdI-vz-ohO"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="cardNumberLabel" destination="brg-hJ-tkn" id="K0k-ur-qiF"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -105,19 +124,37 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwf-l5-WcT" userLabel="PaymentCardContainer">
                                         <rect key="frame" x="0.0" y="20" width="375" height="100"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="bv8-AU-8JK"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-8x-OCp">
+                                        <rect key="frame" x="0.0" y="135" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="OXx-o4-6LF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="ADD CARD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addCardAction:" destination="3j7-Dg-Efl" eventType="touchUpInside" id="wlB-zQ-35f"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="O9m-8x-OCp" secondAttribute="trailing" id="0Vm-aW-0Qc"/>
                                     <constraint firstItem="vwf-l5-WcT" firstAttribute="top" secondItem="3j7-Dg-Efl" secondAttribute="top" constant="20" id="CBK-fZ-oMO"/>
+                                    <constraint firstItem="O9m-8x-OCp" firstAttribute="top" secondItem="vwf-l5-WcT" secondAttribute="bottom" constant="15" id="HGR-2H-eEb"/>
                                     <constraint firstItem="vwf-l5-WcT" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="WzU-49-Pg8"/>
+                                    <constraint firstItem="O9m-8x-OCp" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="Yre-2S-p11"/>
                                     <constraint firstAttribute="trailing" secondItem="vwf-l5-WcT" secondAttribute="trailing" id="dsd-mG-g0u"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="addNewCard" destination="O9m-8x-OCp" id="6mv-AD-Keu"/>
                                     <outlet property="paymentCardContainerView" destination="vwf-l5-WcT" id="FnB-Wn-xrf"/>
                                 </connections>
                             </view>
