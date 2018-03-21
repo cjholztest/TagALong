@@ -201,13 +201,13 @@
         return NO;
     }
     
-    if (![Commons checkPassword:[_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]]) {
-        [Commons showToast:@"The phone number should be in format +XXXXXXXXXXX"];
+    if ([_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        [Commons showToast:@"Input phone number!"];
         return NO;
     }
     
-    if ([_tfPhone.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
-        [Commons showToast:@"Input phone number!"];
+    if (![Commons checkPhoneNumber:_tfPhone.text]) {
+        [Commons showToast:@"The phone number should be in format +XXXXXXXXXXXX"];
         return NO;
     }
     
@@ -218,10 +218,8 @@
     
     if ([_tfPass.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
         [Commons showToast:@"The password must be at least 5 symbols length"];
-        //[self showAlert:@"The password must be at least 5 symbols length"];
         return NO;
     }
-    
     return YES;
 }
 
