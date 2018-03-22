@@ -17,6 +17,7 @@
 #include <arpa/inet.h>
 #import "BookWorkoutViewController.h"
 #import "HomeViewController.h"
+#import "AddCreditCardViewController.h"
 
 #define LEVEL_GYM       1
 #define LEVEL_PRO       2
@@ -48,6 +49,8 @@ static const NSInteger kMaxImageCnt = 1;
 @property (nonatomic, strong) NSString *ProfileUrl;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
+
 @end
 
 @implementation ExpertUserProfileEditViewController
@@ -76,9 +79,11 @@ static const NSInteger kMaxImageCnt = 1;
 
 }
 
--(void)viewDidLayoutSubviews {
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.height / 2;
+    if (self.ivProfile.layer.cornerRadius != self.profileIconImageViewRatioConstraint.constant / 2.0) {
+        self.ivProfile.layer.cornerRadius = self.profileIconImageViewRatioConstraint.constant / 2.0;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -287,6 +292,12 @@ static const NSInteger kMaxImageCnt = 1;
 //전화번호 편집
 - (IBAction)onClickPhoneEdit:(id)sender {
     [self showEditDialog:@"phone" msg:_lblPhone.text];
+}
+
+- (IBAction)onClickCreditCardEdit:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
 }
 
 //////////

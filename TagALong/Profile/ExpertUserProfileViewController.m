@@ -24,10 +24,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblLevel;
 @property (strong, nonatomic) IBOutlet UILabel *lblAddress;
 @property (strong, nonatomic) IBOutlet UILabel *lblPhone;
+@property (weak, nonatomic) IBOutlet UILabel *lblCreditCard;
 @property (strong, nonatomic) IBOutlet UIView *vwNoData;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *creditCardImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
+
 @end
 
 @implementation ExpertUserProfileViewController
@@ -43,6 +47,13 @@
     [super viewWillAppear:animated];
     
     [self addEditInfoBarButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (self.ivProfile.layer.cornerRadius != self.profileIconImageViewRatioConstraint.constant / 2.0) {
+        self.ivProfile.layer.cornerRadius = self.profileIconImageViewRatioConstraint.constant / 2.0;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -187,6 +198,7 @@
     _lblAddress.text = location;
     self.locationImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
     self.phoneNumberImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
+    self.creditCardImageView.alpha = 1.0; // need to add logic to display
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";
