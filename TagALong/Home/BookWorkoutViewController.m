@@ -9,7 +9,6 @@
 #import "BookWorkoutViewController.h"
 #import "PaymentViewController.h"
 #import "PaymentClient.h"
-#import "CardPaymentViewController.h"
 #import "CreditCardListViewController.h"
 #import "ListOfWorkoutVisitorsViewController.h"
 

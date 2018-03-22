@@ -23,7 +23,6 @@
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
 		1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA35205FF85500675150 /* PaymentClient.m */; };
-		1ACFEA392060094500675150 /* CardPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA382060094500675150 /* CardPaymentViewController.m */; };
 		3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD1E1F6234360037DCE5 /* HomeViewController.m */; };
 		3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD211F62362D0037DCE5 /* ExpertLoginViewController.m */; };
 		3205FD271F6249930037DCE5 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD241F6249930037DCE5 /* ListViewController.m */; };
@@ -145,6 +144,9 @@
 		479B9577A4D0648BDBA90DD3 /* Pods_TagALongTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B531462AE7F0E98E3AA40469 /* Pods_TagALongTests.framework */; };
 		7EBBA34AA0804B5B2B78C6F1 /* Pods_TagALong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C03CE13F29C913A81DC6737 /* Pods_TagALong.framework */; };
 		9294761824335BF1B7B7EBDE /* Pods_TagALongUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926948CA9F02489A481BC080 /* Pods_TagALongUITests.framework */; };
+		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
+		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
+		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,8 +200,6 @@
 		1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterListViewController.m; sourceTree = "<group>"; };
 		1ACFEA34205FF85500675150 /* PaymentClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentClient.h; sourceTree = "<group>"; };
 		1ACFEA35205FF85500675150 /* PaymentClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentClient.m; sourceTree = "<group>"; };
-		1ACFEA372060094500675150 /* CardPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardPaymentViewController.h; sourceTree = "<group>"; };
-		1ACFEA382060094500675150 /* CardPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardPaymentViewController.m; sourceTree = "<group>"; };
 		28E83BA6AE58986F884F01FB /* Pods-TagALongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3205FD1D1F6234360037DCE5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Home/HomeViewController.h; sourceTree = "<group>"; };
 		3205FD1E1F6234360037DCE5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Home/HomeViewController.m; sourceTree = "<group>"; };
@@ -439,6 +439,12 @@
 		A4E608A8E754CFC8F06C2AAA /* Pods-TagALongTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongTests/Pods-TagALongTests.release.xcconfig"; sourceTree = "<group>"; };
 		B531462AE7F0E98E3AA40469 /* Pods_TagALongTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TagALongTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C474E94B6C3226DC5EA08EAF /* Pods-TagALongUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
+		CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Customer.m"; sourceTree = "<group>"; };
+		CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+CreditCard.h"; sourceTree = "<group>"; };
+		CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+CreditCard.m"; sourceTree = "<group>"; };
+		CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
+		CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		D0B345F07BCC0D68EA167641 /* Pods-TagALong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALong/Pods-TagALong.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +486,10 @@
 				1ACFEA35205FF85500675150 /* PaymentClient.m */,
 				1A27616720616D0400C9D703 /* PaymentServer.h */,
 				1A27616820616D0400C9D703 /* PaymentServer.m */,
+				CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */,
+				CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */,
+				CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */,
+				CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */,
 			);
 			path = PaymentClient;
 			sourceTree = "<group>";
@@ -618,9 +628,7 @@
 				1A2761462061314B00C9D703 /* AddCreditCardModule */,
 				1A27614C2061314B00C9D703 /* CreditCardListModule */,
 				1A2761452061314B00C9D703 /* PaymentClient */,
-				1ACFEA372060094500675150 /* CardPaymentViewController.h */,
-				1ACFEA382060094500675150 /* CardPaymentViewController.m */,
-				1A27613D20612E8000C9D703 /* Payment.storyboard */,
+				CEB289592063FB8900C8DD0E /* PaymentStoryboards */,
 			);
 			path = Payments;
 			sourceTree = "<group>";
@@ -664,6 +672,7 @@
 		3205FD531F6313350037DCE5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CEB289552063F90600C8DD0E /* ViewControllerCategories */,
 				3B01AF211F90950600BDF1AA /* ODRefreshControl */,
 				3B0C4CD21F887393002CEADA /* SDWebImage */,
 				3B79BCB31F83B17F00BD869D /* NSURLHelper */,
@@ -1179,6 +1188,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
+			isa = PBXGroup;
+			children = (
+				CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */,
+				CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */,
+			);
+			path = ViewControllerCategories;
+			sourceTree = "<group>";
+		};
+		CEB289592063FB8900C8DD0E /* PaymentStoryboards */ = {
+			isa = PBXGroup;
+			children = (
+				1A27613D20612E8000C9D703 /* Payment.storyboard */,
+			);
+			path = PaymentStoryboards;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1502,7 +1528,6 @@
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
-				1ACFEA392060094500675150 /* CardPaymentViewController.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
 				323016461F7A48FC0001BCB4 /* BSPreviewController+UICollectionView.m in Sources */,
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
@@ -1549,12 +1574,14 @@
 				323016441F7A48FC0001BCB4 /* BSPhotosController+PrivateMethods.m in Sources */,
 				3232FFB01F7A055E00A0F55D /* ProSignupViewController.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
+				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
 				321F1AC91F6AF85D00EA1F4C /* PostWorkoutDetailViewController.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
 				1A27616920616D0400C9D703 /* PaymentServer.m in Sources */,
+				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
@@ -1587,6 +1614,7 @@
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
+				CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */,
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,

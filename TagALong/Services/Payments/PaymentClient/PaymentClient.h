@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^PaymentCompletion)(id responseObject, NSError *error);
+
+extern NSString *const kBasePaymentURL;
+
 @interface PaymentClient : NSObject
 
-+ (PaymentClient*)shared;
-
-- (void)createCustomerKeyWithApiVersion:(NSString*)apiVersion completion:(void(^)(id object))completion;
-- (void)sendCardToken:(NSString*)token completion:(void(^)(id object))completion;
-
-- (void)listOfCrediCardsWithCompletion:(void(^)(id object, NSError *error))completion;
++ (AFHTTPSessionManager*)sessionManager;
 
 @end

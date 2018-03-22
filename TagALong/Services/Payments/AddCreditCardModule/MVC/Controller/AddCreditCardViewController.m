@@ -7,6 +7,7 @@
 //
 
 #import "AddCreditCardViewController.h"
+#import "UIViewController+Alert.h"
 #import "AddCreditCardModel.h"
 #import "AddCreditCardView.h"
 #import <Stripe/Stripe.h>
@@ -52,6 +53,18 @@
 
 #pragma mark - AddCreditCardModelOutput
 
+- (void)creditCardDidCreateWithError:(NSError*)error {
+    [SharedAppDelegate closeLoading];
+    if (error) {
+        [self showAlert:error.localizedDescription];
+    }
+}
+
 #pragma mark - AddCreditCardUserInterfaceInput
+
+- (void)addCreditCardDidTap {
+    [SharedAppDelegate showLoading];
+    [self.model createCreditCardWithCardParams:self.contentView.paymentCardTextField.cardParams];
+}
 
 @end

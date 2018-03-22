@@ -7,16 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Stripe/Stripe.h>
 
 @protocol AddCreditCardModelInput <NSObject>
+
+- (void)createCreditCardWithCardParams:(STPCardParams*)cardParams;
 
 @end
 
 @protocol AddCreditCardModelOutput <NSObject>
 
+- (void)creditCardDidCreateWithError:(NSError*)error;
+
 @end
 
 @protocol AddCreditCardUserInterfaceInput <NSObject>
+
+- (void)addCreditCardDidTap;
 
 @end
 
