@@ -11,6 +11,7 @@
 #import "PaymentClient.h"
 #import "CardPaymentViewController.h"
 #import "CreditCardListViewController.h"
+#import "ListOfWorkoutVisitorsViewController.h"
 
 @interface BookWorkoutViewController ()<PaymentViewControllerDelegate>{
     NSArray *arrSportNM;
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btnWorkout;
+@property (weak, nonatomic) IBOutlet UIButton *btnShowVisitors;
 @property (weak, nonatomic) IBOutlet UIImageView *bigArrowIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
@@ -63,6 +65,7 @@
         }
     } else {
         [_btnWorkout setHidden:YES];
+        [self.btnShowVisitors setHidden:NO];
     }
     [self ReqWorkoutInfo];    
 }
@@ -212,6 +215,13 @@
 
 - (IBAction)onClickCancel:(id)sender {
     [self.navigationController popViewControllerAnimated: YES];
+}
+
+- (IBAction)onClickShowVisitors:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ListOfWorkoutVisitorsViewController *visitorsVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([ListOfWorkoutVisitorsViewController class])];
+    visitorsVC.workoutID = self.workout_id;
+    [self.navigationController pushViewController:visitorsVC animated:YES];
 }
 
 - (void)phoneNumberDidTap {

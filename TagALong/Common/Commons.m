@@ -237,6 +237,13 @@
     return isValidPassword;
 }
 
++ (BOOL)checkPhoneNumber:(NSString *)phoneNumber {
+    NSString *phoneNumberRegex = @"[\\+]{0,1}[0-9]{6,14}$";
+    NSPredicate *phoneNumberTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneNumberRegex];
+    BOOL isPhoneNumberValid = [phoneNumberTest evaluateWithObject:phoneNumber];
+    return isPhoneNumberValid;
+}
+
 + (void)showToast:(NSString*)msg{
     MDToast *toast = [[MDToast alloc] init];
     toast.text = msg;

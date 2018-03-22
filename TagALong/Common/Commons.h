@@ -24,5 +24,6 @@
 + (void) clearUserInfo ;
 + (void)showOneBtnDlg:(NSString*)msg id:(id)parent;
 + (BOOL)checkPassword:(NSString *)password;
++ (BOOL)checkPhoneNumber:(NSString *)phoneNumber;
 
 @end

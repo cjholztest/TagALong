@@ -92,6 +92,9 @@
     [self initControl];
     
     self.mapClusterController = [[CCHMapClusterController alloc] initWithMapView:self.mvMap];
+    self.mapClusterController.maxZoomLevelForClustering = 16;
+    self.mapClusterController.marginFactor = 0.5;
+    self.mapClusterController.cellSize = 60;
     self.mapClusterController.delegate = self;
 }
 
@@ -278,53 +281,34 @@
     NSString *uniqueImageName = nil;
     
     if(annotation != mapView.userLocation) {
-        static NSString *defaultPinID = @"com.invasivecode.pin";
-        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-        if ( pinView == nil )
-            pinView = [[MKAnnotationView alloc]
-                       initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-
         int index = [[annotation title] intValue];
         if (index < 0){
+            static NSString *defaultPinID = @"com.invasivecode.pin";
+            pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+            if ( pinView == nil ) {
+                pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+            }
             uniqueImageName = @"ic_me.png";
-            pinView.image = [UIImage imageNamed:@"ic_me.png"];    //as suggested by Squatch
+            pinView.image = [UIImage imageNamed:uniqueImageName];    //as suggested by Squatch
             return pinView;
         }
         
-
         NSDictionary *dic = _arrSportList[index];
-        
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
-        pinView.canShowCallout = NO;
-        pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];    //as suggested by Squatch
         
+        uniqueImageName = arrSportImg[sport_uid - 1];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+        
         if ( [level isEqual:[NSNull null]] )  { //individual
             uniqueImageName = arrSportImg[sport_uid - 1];
-            pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"1"]) { //gym
             uniqueImageName = arrSportBlueImg[sport_uid - 1];
-            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"2"]) { //pro
             uniqueImageName = arrSportYellowImg[sport_uid - 1];
-            pinView.image = [UIImage imageNamed:arrSportYellowImg[sport_uid - 1]];
         } else if ([level isEqualToString:@"3"]) { //trainer
             uniqueImageName = arrSportBlueImg[sport_uid - 1];
-            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
         }
-        
-//        NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
-//        if ( [level isEqual:[NSNull null]] )  { //individual
-//            pinView.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
-//        } else if ([level isEqualToString:@"1"]) { //gym
-//            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
-//        } else if ([level isEqualToString:@"2"]) { //pro
-//            pinView.image = [UIImage imageNamed:arrSportYellowImg[sport_uid - 1]];
-//        } else if ([level isEqualToString:@"3"]) { //trainer
-//            pinView.image = [UIImage imageNamed:arrSportBlueImg[sport_uid - 1]];
-//        }
-//        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         
         if ([annotation isKindOfClass:CCHMapClusterAnnotation.class]) {
             static NSString *identifier = @"clusterAnnotation";
@@ -443,14 +427,26 @@
 - (void)mapClusterController:(CCHMapClusterController *)mapClusterController willReuseMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation {
     ClusterAnnotationView *clusterAnnotationView = (ClusterAnnotationView *)[self.mvMap viewForAnnotation:mapClusterAnnotation];
     clusterAnnotationView.count = mapClusterAnnotation.annotations.count;
-    clusterAnnotationView.uniqueLocation = mapClusterAnnotation.isUniqueLocation;
-}
-
-- (NSString *)mapClusterController:(CCHMapClusterController *)mapClusterController titleForMapClusterAnnotation:(CCHMapClusterAnnotation *)mapClusterAnnotation
-{
-    NSUInteger numAnnotations = mapClusterAnnotation.annotations.count;
-    NSString *unit = numAnnotations > 1 ? @"annotations" : @"annotation";
-    return [NSString stringWithFormat:@"%tu %@", numAnnotations, unit];
+    clusterAnnotationView.uniqueLocation = mapClusterAnnotation.annotations.count == 1;
+    
+    NSString *uniqueImageName = nil;
+    NSInteger index = [[mapClusterAnnotation title] intValue];
+    NSDictionary *dic = _arrSportList[index];
+    NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
+    int sport_uid = [sports.firstObject intValue];
+    uniqueImageName = arrSportImg[sport_uid - 1];
+    
+    NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+    if ( [level isEqual:[NSNull null]] )  { //individual
+        uniqueImageName = arrSportImg[sport_uid - 1];
+    } else if ([level isEqualToString:@"1"]) { //gym
+        uniqueImageName = arrSportBlueImg[sport_uid - 1];
+    } else if ([level isEqualToString:@"2"]) { //pro
+        uniqueImageName = arrSportYellowImg[sport_uid - 1];
+    } else if ([level isEqualToString:@"3"]) { //trainer
+        uniqueImageName = arrSportBlueImg[sport_uid - 1];
+    }
+    clusterAnnotationView.uniqueImageName = uniqueImageName;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -461,15 +457,11 @@
 //}
 
 #pragma mark - user defined functions
--(void)OhterPlayPosSet{
-    // Remove all current items from the map
-    [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
-    for (id<MKOverlay> overlay in self.mvMap.overlays) {
-        [self.mvMap removeOverlay:overlay];
-    }
+-(void)OhterPlayPosSet {
     
     NSMutableArray *annotations = [NSMutableArray new];
-    for (long i = _arrSportList.count - 1; i >= 0 ; i--) {
+    
+    for (long i = 0; i < _arrSportList.count; i++) {
         NSDictionary *dic = _arrSportList[i];
         
         NSString *latitude = [dic objectForKey:API_RES_KEY_LATITUDE] ;
@@ -480,7 +472,8 @@
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
         //int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
-        ptAnno.title = [NSString stringWithFormat:@"%ld", i ];
+
+        ptAnno.title = [NSString stringWithFormat:@"%ld", i];
         
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         if ( [level isEqual:[NSNull null]] )  { //individual
@@ -489,16 +482,19 @@
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportBlueImg[sport_uid - 1]]];
         } else if ([level isEqualToString:@"2"]) { //pro
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportYellowImg[sport_uid - 1]]];
-            
+
         } else if ([level isEqualToString:@"3"]) { //trainer
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportBlueImg[sport_uid - 1]]];
         }
         if (ptAnno) {
             [annotations addObject:ptAnno];
         }
-//        [_mvMap addAnnotation:ptAnno];
     }
     if (annotations.count > 0) {
+        [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
+        for (id<MKOverlay> overlay in self.mvMap.overlays) {
+            [self.mvMap removeOverlay:overlay];
+        }
         [self.mapClusterController addAnnotations:annotations withCompletionHandler:NULL];
     }
 }
@@ -757,14 +753,6 @@
             
             if (_arrSportList.count > 0) {
                 [_arrSportList removeAllObjects];
-                
-                NSInteger toRemoveCount = _mvMap.annotations.count;
-                NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
-                for (id annotation in _mvMap.annotations)
-                    if (annotation != _mvMap.userLocation)
-                        [toRemove addObject:annotation];
-                [_mvMap removeAnnotations:toRemove];
-                [_mvMap reloadInputViews];
             }
             
             NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
@@ -874,14 +862,6 @@
             
             if (_arrSportList.count > 0) {
                 [_arrSportList removeAllObjects];
-                
-                NSInteger toRemoveCount = _mvMap.annotations.count;
-                NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
-                for (id annotation in _mvMap.annotations)
-                    if (annotation != _mvMap.userLocation)
-                        [toRemove addObject:annotation];
-                [_mvMap removeAnnotations:toRemove];
-                [_mvMap reloadInputViews];
             }
             
             NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
@@ -942,15 +922,6 @@
 
             [Preference setString:PREFCONST_LATITUDE value:Global.g_user.user_latitude];
             [Preference setString:PREFCONST_LONGTITUDE value:Global.g_user.user_longitude];
-
-            //all delete
-            NSInteger toRemoveCount = _mvMap.annotations.count;
-            NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
-            for (id annotation in _mvMap.annotations)
-                if (annotation != _mvMap.userLocation)
-                    [toRemove addObject:annotation];
-            [_mvMap removeAnnotations:toRemove];
-            [_mvMap reloadInputViews];
 
             //add
             if (@available(iOS 11.0, *)) {
