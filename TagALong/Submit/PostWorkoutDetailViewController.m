@@ -9,6 +9,7 @@
 #import "PostWorkoutDetailViewController.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
+#import "ProfilePaymentDataViewController.h"
 
 @interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate>{
     NSString *title;
@@ -296,7 +297,10 @@
 }
 
 - (IBAction)onClickPostworkout:(id)sender {
-    [self ReqReqWorkout];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+//    [self ReqReqWorkout];
 }
 
 //날자선택 대화창에서 확인단추 클릭

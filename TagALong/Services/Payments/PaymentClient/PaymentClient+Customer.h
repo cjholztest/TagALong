@@ -11,5 +11,7 @@
 @interface PaymentClient (Customer)
 
 + (void)createCustomerKeyWithCompletion:(PaymentCompletion)paymentCompletion;
++ (void)registerExpertWithPaymentData:(NSDictionary*)params completion:(PaymentCompletion)paymentCompletion;
++ (void)expertPaymentDataWithCompletion:(PaymentCompletion)paymentCompletion;
 
 @end

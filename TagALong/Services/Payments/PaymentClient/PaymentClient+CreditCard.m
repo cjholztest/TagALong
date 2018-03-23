@@ -8,14 +8,16 @@
 
 #import "PaymentClient+CreditCard.h"
 
-static NSString *const kCreditCardURLPath = @"credit_card";
+static NSString *const kSimpleUserCreditCardURLPath = @"credit_card";
+static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
 
 @implementation PaymentClient (CreditCard)
 
-+ (void)sendCardToken:(NSString*)token completion:(PaymentCompletion)paymentCompletion {
++ (void)sendCardToken:(NSString*)token isExpertUser:(BOOL)isExpertUser completion:(PaymentCompletion)paymentCompletion {
     
     AFHTTPSessionManager *manager = [PaymentClient sessionManager];
-    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, kCreditCardURLPath];
+    NSString *creditCardUrlPath = isExpertUser ? kExpertUserCreditCardURLPath : kSimpleUserCreditCardURLPath;
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, creditCardUrlPath];
     NSDictionary *params = @{@"card_token" : token};
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -29,10 +31,11 @@ static NSString *const kCreditCardURLPath = @"credit_card";
     }];
 }
 
-+ (void)listOfCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion {
++ (void)listOfCrediCardsForUser:(BOOL)isExpertUser completion:(PaymentCompletion)paymentCompletion {
     
     AFHTTPSessionManager *manager = [PaymentClient sessionManager];
-    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, kCreditCardURLPath];
+    NSString *creditCardUrlPath = isExpertUser ? kExpertUserCreditCardURLPath : kSimpleUserCreditCardURLPath;
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, creditCardUrlPath];;
     
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (paymentCompletion) {

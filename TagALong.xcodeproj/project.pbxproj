@@ -16,7 +16,6 @@
 		1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27615D206132B700C9D703 /* CreditCardListView.m */; };
 		1A276163206133D100C9D703 /* CreditCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276162206133D100C9D703 /* CreditCardTableViewCell.m */; };
 		1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */; };
-		1A27616920616D0400C9D703 /* PaymentServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27616820616D0400C9D703 /* PaymentServer.m */; };
 		1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */; };
 		1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */; };
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
@@ -144,6 +143,9 @@
 		479B9577A4D0648BDBA90DD3 /* Pods_TagALongTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B531462AE7F0E98E3AA40469 /* Pods_TagALongTests.framework */; };
 		7EBBA34AA0804B5B2B78C6F1 /* Pods_TagALong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C03CE13F29C913A81DC6737 /* Pods_TagALong.framework */; };
 		9294761824335BF1B7B7EBDE /* Pods_TagALongUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926948CA9F02489A481BC080 /* Pods_TagALongUITests.framework */; };
+		CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFDA2064E97A00949AC2 /* ProfilePaymentDataViewController.m */; };
+		CE12DFDE2064E98C00949AC2 /* ProfilePaymentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFDD2064E98C00949AC2 /* ProfilePaymentDataModel.m */; };
+		CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
@@ -186,8 +188,6 @@
 		1A276162206133D100C9D703 /* CreditCardTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardTableViewCell.m; sourceTree = "<group>"; };
 		1A276164206133E500C9D703 /* CreditCardTableViewCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardTableViewCellViewModel.h; sourceTree = "<group>"; };
 		1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardTableViewCellViewModel.m; sourceTree = "<group>"; };
-		1A27616720616D0400C9D703 /* PaymentServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentServer.h; sourceTree = "<group>"; };
-		1A27616820616D0400C9D703 /* PaymentServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentServer.m; sourceTree = "<group>"; };
 		1A2C0206205C31BD001887FA /* ListOfWorkoutVisitorsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOfWorkoutVisitorsViewController.h; sourceTree = "<group>"; };
 		1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOfWorkoutVisitorsViewController.m; sourceTree = "<group>"; };
 		1A2C0209205C359C001887FA /* WorkoutVisitorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutVisitorTableViewCell.h; sourceTree = "<group>"; };
@@ -439,6 +439,14 @@
 		A4E608A8E754CFC8F06C2AAA /* Pods-TagALongTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongTests/Pods-TagALongTests.release.xcconfig"; sourceTree = "<group>"; };
 		B531462AE7F0E98E3AA40469 /* Pods_TagALongTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TagALongTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C474E94B6C3226DC5EA08EAF /* Pods-TagALongUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE12DFD92064E97A00949AC2 /* ProfilePaymentDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataViewController.h; sourceTree = "<group>"; };
+		CE12DFDA2064E97A00949AC2 /* ProfilePaymentDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentDataViewController.m; sourceTree = "<group>"; };
+		CE12DFDC2064E98C00949AC2 /* ProfilePaymentDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataModel.h; sourceTree = "<group>"; };
+		CE12DFDD2064E98C00949AC2 /* ProfilePaymentDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentDataModel.m; sourceTree = "<group>"; };
+		CE12DFDF2064E9A500949AC2 /* ProfilePaymentDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataView.h; sourceTree = "<group>"; };
+		CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentDataView.m; sourceTree = "<group>"; };
+		CE12DFE22064E9C000949AC2 /* ProfilePaymentDataProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataProtocols.h; sourceTree = "<group>"; };
+		CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentConstants.h; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
 		CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Customer.m"; sourceTree = "<group>"; };
 		CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+CreditCard.h"; sourceTree = "<group>"; };
@@ -484,8 +492,6 @@
 			children = (
 				1ACFEA34205FF85500675150 /* PaymentClient.h */,
 				1ACFEA35205FF85500675150 /* PaymentClient.m */,
-				1A27616720616D0400C9D703 /* PaymentServer.h */,
-				1A27616820616D0400C9D703 /* PaymentServer.m */,
 				CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */,
 				CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */,
 				CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */,
@@ -625,6 +631,7 @@
 		1ACFEA33205FF80800675150 /* Payments */ = {
 			isa = PBXGroup;
 			children = (
+				CE12DFD22064E94A00949AC2 /* ProfilePaymentDataModule */,
 				1A2761462061314B00C9D703 /* AddCreditCardModule */,
 				1A27614C2061314B00C9D703 /* CreditCardListModule */,
 				1A2761452061314B00C9D703 /* PaymentClient */,
@@ -1188,6 +1195,61 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE12DFD22064E94A00949AC2 /* ProfilePaymentDataModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFD32064E94A00949AC2 /* MVC */,
+				CE12DFD82064E94A00949AC2 /* Protocols */,
+			);
+			path = ProfilePaymentDataModule;
+			sourceTree = "<group>";
+		};
+		CE12DFD32064E94A00949AC2 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFD42064E94A00949AC2 /* Controller */,
+				CE12DFD52064E94A00949AC2 /* Model */,
+				CE12DFD62064E94A00949AC2 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE12DFD42064E94A00949AC2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFD92064E97A00949AC2 /* ProfilePaymentDataViewController.h */,
+				CE12DFDA2064E97A00949AC2 /* ProfilePaymentDataViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE12DFD52064E94A00949AC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFDC2064E98C00949AC2 /* ProfilePaymentDataModel.h */,
+				CE12DFDD2064E98C00949AC2 /* ProfilePaymentDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE12DFD62064E94A00949AC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFDF2064E9A500949AC2 /* ProfilePaymentDataView.h */,
+				CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE12DFD82064E94A00949AC2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE12DFE22064E9C000949AC2 /* ProfilePaymentDataProtocols.h */,
+				CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1559,6 +1621,7 @@
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				323016591F7A4A250001BCB4 /* OHActionSheet.m in Sources */,
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
+				CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */,
 				3B0C4CF81F887393002CEADA /* SDWebImageDecoder.m in Sources */,
 				1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */,
 				3230164A1F7A48FC0001BCB4 /* BSAlbumTableViewCellFactory.m in Sources */,
@@ -1579,8 +1642,8 @@
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
+				CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
-				1A27616920616D0400C9D703 /* PaymentServer.m in Sources */,
 				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
@@ -1617,6 +1680,7 @@
 				CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */,
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
+				CE12DFDE2064E98C00949AC2 /* ProfilePaymentDataModel.m in Sources */,
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,

@@ -10,7 +10,7 @@
 
 @interface PaymentClient (CreditCard)
 
-+ (void)sendCardToken:(NSString*)token completion:(PaymentCompletion)paymentCompletion;
-+ (void)listOfCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion;
++ (void)sendCardToken:(NSString*)token isExpertUser:(BOOL)isExpertUser completion:(PaymentCompletion)paymentCompletion;
++ (void)listOfCrediCardsForUser:(BOOL)isExpertUser completion:(PaymentCompletion)paymentCompletion;
 
 @end
