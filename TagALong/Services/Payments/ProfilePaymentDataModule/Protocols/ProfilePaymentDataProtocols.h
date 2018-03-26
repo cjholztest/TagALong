@@ -29,6 +29,13 @@
 
 @end
 
+@protocol ProfilePaymentDataFriendsControllerProtocol <NSObject>
+
+- (UIKeyboardType)keyboardTypeForFieldType:(NSInteger)fieldType;
+- (NSString*)placeholderFieldType:(NSInteger)fieldType;
+
+@end
+
 @protocol ProfilePaymentDataModuleDelegate <NSObject>
 
 @end

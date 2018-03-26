@@ -73,7 +73,7 @@
             [_tfEdit resignFirstResponder];
             [Commons showToast:@"Please enter a phone number."];
             return;
-        }
+        } else if
     }
     
     [self.delegate setContent:self.type msg:_tfEdit.text];

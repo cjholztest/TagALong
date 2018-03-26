@@ -14,6 +14,7 @@
 @property (nonatomic, weak) id <ProfilePaymentDataUserInterfaceInput> eventHandler;
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *lastNameTextField;

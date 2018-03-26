@@ -18,6 +18,9 @@
 		1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */; };
 		1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */; };
 		1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */; };
+		1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65B82065B17300D04E65 /* ProfilePaymentTableViewCell.m */; };
+		1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65BB2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m */; };
+		1A2D65BF2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65BE2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m */; };
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
@@ -192,6 +195,12 @@
 		1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOfWorkoutVisitorsViewController.m; sourceTree = "<group>"; };
 		1A2C0209205C359C001887FA /* WorkoutVisitorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutVisitorTableViewCell.h; sourceTree = "<group>"; };
 		1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutVisitorTableViewCell.m; sourceTree = "<group>"; };
+		1A2D65B72065B17300D04E65 /* ProfilePaymentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentTableViewCell.h; sourceTree = "<group>"; };
+		1A2D65B82065B17300D04E65 /* ProfilePaymentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentTableViewCell.m; sourceTree = "<group>"; };
+		1A2D65BA2065BD7800D04E65 /* ProfilePaymentDataFriendsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataFriendsController.h; sourceTree = "<group>"; };
+		1A2D65BB2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentDataFriendsController.m; sourceTree = "<group>"; };
+		1A2D65BD2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentTableViewCellViewModle.h; sourceTree = "<group>"; };
+		1A2D65BE2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentTableViewCellViewModle.m; sourceTree = "<group>"; };
 		1A47ECAD205A823A00A0AA67 /* MapClusterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterController.h; sourceTree = "<group>"; };
 		1A47ECAE205A823A00A0AA67 /* MapClusterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterController.m; sourceTree = "<group>"; };
 		1A47ECB0205AB12B00A0AA67 /* ClusterAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
@@ -618,6 +627,41 @@
 				1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A2D65B32065B14400D04E65 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A2D65B52065B14400D04E65 /* Cell */,
+				1A2D65B42065B14400D04E65 /* Footer */,
+				1A2D65B62065B14400D04E65 /* Header */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A2D65B42065B14400D04E65 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		1A2D65B52065B14400D04E65 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A2D65B72065B17300D04E65 /* ProfilePaymentTableViewCell.h */,
+				1A2D65B82065B17300D04E65 /* ProfilePaymentTableViewCell.m */,
+				1A2D65BD2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.h */,
+				1A2D65BE2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A2D65B62065B14400D04E65 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		1ACFEA32205FF80800675150 /* Services */ = {
@@ -1219,6 +1263,8 @@
 			children = (
 				CE12DFD92064E97A00949AC2 /* ProfilePaymentDataViewController.h */,
 				CE12DFDA2064E97A00949AC2 /* ProfilePaymentDataViewController.m */,
+				1A2D65BA2065BD7800D04E65 /* ProfilePaymentDataFriendsController.h */,
+				1A2D65BB2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1235,6 +1281,7 @@
 		CE12DFD62064E94A00949AC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1A2D65B32065B14400D04E65 /* Cell */,
 				CE12DFDF2064E9A500949AC2 /* ProfilePaymentDataView.h */,
 				CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */,
 			);
@@ -1620,6 +1667,7 @@
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				323016591F7A4A250001BCB4 /* OHActionSheet.m in Sources */,
+				1A2D65BF2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m in Sources */,
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
 				CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */,
 				3B0C4CF81F887393002CEADA /* SDWebImageDecoder.m in Sources */,
@@ -1634,6 +1682,7 @@
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
 				3232FFB71F7A313E00A0F55D /* SignupResultViewController.m in Sources */,
+				1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */,
 				323016441F7A48FC0001BCB4 /* BSPhotosController+PrivateMethods.m in Sources */,
 				3232FFB01F7A055E00A0F55D /* ProSignupViewController.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
@@ -1684,6 +1733,7 @@
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
+				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
 				3B1E2FDB1F95964200E636F4 /* OneBtnDlgViewController.m in Sources */,

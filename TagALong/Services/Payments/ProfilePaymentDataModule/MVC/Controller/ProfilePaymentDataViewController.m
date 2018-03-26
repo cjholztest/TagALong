@@ -10,11 +10,19 @@
 #import "ProfilePaymentDataModel.h"
 #import "ProfilePaymentDataView.h"
 #import "PaymentClient+Customer.h"
+#import "ProfilePaymentTableViewCell.h"
+#import "ProfilePaymentDataFriendsController.h"
 
-@interface ProfilePaymentDataViewController () <ProfilePaymentDataModelOutput, ProfilePaymentDataUserInterfaceInput, UITextFieldDelegate>
+static NSString *const kCellIdentifier = @"ProfilePaymentFieldCellIdentifier";
+static NSString *const kHeaderIentifier = @"ProfilePaymentRegisterHeaderIdentifier";
+static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFooterIdentifier";
+static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
+
+@interface ProfilePaymentDataViewController () <ProfilePaymentDataModelOutput, ProfilePaymentDataUserInterfaceInput, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet ProfilePaymentDataView *contentView;
 @property (nonatomic, strong) ProfilePaymentDataModel *model;
+@property (nonatomic, strong) ProfilePaymentDataFriendsController *friendsController;
 
 @end
 
@@ -23,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDependencies];
-    [self skipButtonDidTap];
+//    [self skipButtonDidTap];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -49,9 +57,12 @@
 }
 
 - (void)setupDependencies {
+    self.friendsController = [ProfilePaymentDataFriendsController new];
     self.model = [ProfilePaymentDataModel new];
     self.model.output = self;
     self.contentView.eventHandler = self;
+    self.contentView.tableView.dataSource = self;
+    self.contentView.tableView.delegate = self;
 }
 
 #pragma mark - ProfilePaymentDataUserInterfaceInput
@@ -86,6 +97,44 @@
 }
 
 - (void)sendData {
+    
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 8;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ProfilePaymentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfilePaymentFieldCellIdentifier"];
+    cell.textField.delegate = self;
+    cell.textField.placeholder = [self.friendsController placeholderFieldType:indexPath.row];
+    cell.textField.keyboardType = [self.friendsController keyboardTypeForFieldType:indexPath.row];
+    return cell;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHeaderIentifier];
+    return cell.contentView;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFooterIdentifier];
+    return cell.contentView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 80.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 60.0;
+}
+
+#pragma mark - UITableVieDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
