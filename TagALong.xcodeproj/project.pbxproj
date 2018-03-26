@@ -152,6 +152,9 @@
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
+		CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */; };
+		CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */; };
+		CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +465,12 @@
 		CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+CreditCard.m"; sourceTree = "<group>"; };
 		CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		CEF52F572068C9510014B2B4 /* ProfilePaymentCredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentCredentials.h; sourceTree = "<group>"; };
+		CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentCredentials.m; sourceTree = "<group>"; };
+		CEF52F5D206911D10014B2B4 /* ProfilePaymentRegistrationFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentRegistrationFooter.h; sourceTree = "<group>"; };
+		CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentRegistrationFooter.m; sourceTree = "<group>"; };
+		CEF52F60206911F80014B2B4 /* ProfilePaymentHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentHeader.h; sourceTree = "<group>"; };
+		CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentHeader.m; sourceTree = "<group>"; };
 		D0B345F07BCC0D68EA167641 /* Pods-TagALong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALong/Pods-TagALong.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -642,6 +651,8 @@
 		1A2D65B42065B14400D04E65 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
+				CEF52F5D206911D10014B2B4 /* ProfilePaymentRegistrationFooter.h */,
+				CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */,
 			);
 			path = Footer;
 			sourceTree = "<group>";
@@ -660,6 +671,8 @@
 		1A2D65B62065B14400D04E65 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				CEF52F60206911F80014B2B4 /* ProfilePaymentHeader.h */,
+				CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1274,6 +1287,8 @@
 			children = (
 				CE12DFDC2064E98C00949AC2 /* ProfilePaymentDataModel.h */,
 				CE12DFDD2064E98C00949AC2 /* ProfilePaymentDataModel.m */,
+				CEF52F572068C9510014B2B4 /* ProfilePaymentCredentials.h */,
+				CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1678,6 +1693,7 @@
 				3256F2771F7395A500D0874E /* Globals.m in Sources */,
 				3B0C4CFD1F887393002CEADA /* UIButton+WebCache.m in Sources */,
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
+				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
@@ -1714,6 +1730,7 @@
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,
+				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
@@ -1748,6 +1765,7 @@
 				32FAA0BB1F61454300CD4395 /* SplashViewController.m in Sources */,
 				3230164B1F7A48FC0001BCB4 /* BSPhotoCollectionViewCellFactory.m in Sources */,
 				323016371F7A48FC0001BCB4 /* BSExpandAnimator.m in Sources */,
+				CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */,
 				3B0C4CFC1F887393002CEADA /* SDWebImagePrefetcher.m in Sources */,
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,
 				323016531F7A48FC0001BCB4 /* BSPhotoCell.m in Sources */,

@@ -12,6 +12,9 @@
 @protocol AddCreditCardModelInput <NSObject>
 
 - (void)createCreditCardWithCardParams:(STPCardParams*)cardParams;
+- (void)passwordDidEnter:(NSString*)password;
+
+- (BOOL)isUserPasswordEntered;
 
 @end
 
@@ -32,5 +35,8 @@
 @end
 
 @protocol AddCreditCardModuleDelegate <NSObject>
+
+@optional
+- (void)creditCardDidAdd;
 
 @end

@@ -10,8 +10,9 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import "ProfilePaymentDataViewController.h"
+#import "PaymentClient+Customer.h"
 
-@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate>{
+@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
     NSString *title;
     NSString *location;
     NSString *date;
@@ -290,6 +291,14 @@
     return result;
 }
 
+- (void)showPaymentCredentialsRegistration {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    profilePaymentVC.modeType = ProfilPaymentModeTypePostWorkout;
+    profilePaymentVC.moduleDelegate = self;
+    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+}
+
 #pragma mark - click events
 
 - (IBAction)onClickBack:(id)sender {
@@ -297,9 +306,27 @@
 }
 
 - (IBAction)onClickPostworkout:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
-    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
-    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+    
+    [SharedAppDelegate showLoading];
+    __weak typeof(self)weakSelf = self;
+    
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        BOOL isDataExists = ([responseObject[@"exist"] boolValue] && [responseObject[@"payouts"] boolValue]);
+        if (isDataExists) {
+            
+        } else {
+            [weakSelf showPaymentCredentialsRegistration];
+        }
+    }];
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+//    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+//    profilePaymentVC.modeType = ProfilPaymentModeTypePostWorkout;
+//    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+    
+    //    profilePaymentVC.modeType = ProfilPaymentModeTypeRegistration;
+//    [self presentViewController:profilePaymentVC animated:YES completion:nil];
 //    [self ReqReqWorkout];
 }
 
@@ -637,6 +664,12 @@
             }
         }];
     }
+}
+
+#pragma mark - ProfilePaymentDataModuleDelegate
+
+- (void)paymentCredentialsDidSend {
+    
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "ProSignupViewController.h"
 #import "SignupResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ProfilePaymentDataViewController.h"
 
 @interface ProSignupViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, SignupResultViewControllerDelegate>{
     double latitude;
@@ -321,6 +322,13 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)showPaymentRegistration {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    profilePaymentVC.modeType = ProfilPaymentModeTypeRegistration;
+    
+}
+
 #pragma mark - Network
 -(void)ReqExpertRegister{
         
@@ -366,6 +374,7 @@
                 //            [self.navigationController popViewControllerAnimated:NO];
                 
                 [self showSuccessAlert];
+//                [self showPaymentRegistration];
                 
             } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
                 [self showAlert:@"This email is in use" needToClose:NO];

@@ -33,6 +33,9 @@
         _tfEdit.placeholder = @"Please enter area.";
     } else if ([self.type isEqualToString:@"phone"]) {
         _tfEdit.placeholder = @"Please enter a phone number.";
+    } else if ([self.type isEqualToString:@"password"]) {
+        [_tfEdit setSecureTextEntry:YES];
+        _tfEdit.placeholder = @"Please enter your password.";
     }
     
     UITapGestureRecognizer *singleFingerTap =
@@ -73,7 +76,10 @@
             [_tfEdit resignFirstResponder];
             [Commons showToast:@"Please enter a phone number."];
             return;
-        } else if
+        } else if ([self.type isEqualToString:@"password"]) {
+            [_tfEdit resignFirstResponder];
+            [Commons showToast:@"Please enter your password."];
+        }
     }
     
     [self.delegate setContent:self.type msg:_tfEdit.text];

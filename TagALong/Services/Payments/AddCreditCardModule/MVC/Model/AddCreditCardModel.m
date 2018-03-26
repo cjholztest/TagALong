@@ -12,9 +12,19 @@
 
 @interface AddCreditCardModel ()
 
+@property (nonatomic, strong) NSString *userPassword;
+
 @end
 
 @implementation AddCreditCardModel
+
+- (void)passwordDidEnter:(NSString*)password {
+    self.userPassword = password;
+}
+
+- (BOOL)isUserPasswordEntered {
+    return self.userPassword.length > 0;
+}
 
 - (void)createCreditCardWithCardParams:(STPCardParams*)cardParams {
     __weak typeof(self)weakSelf = self;

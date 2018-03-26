@@ -11,18 +11,23 @@
 #import "ProfilePaymentDataView.h"
 #import "PaymentClient+Customer.h"
 #import "ProfilePaymentTableViewCell.h"
+#import "ProfilePaymentHeader.h"
+#import "ProfilePaymentRegistrationFooter.h"
 #import "ProfilePaymentDataFriendsController.h"
+#import "EditDialogViewController.h"
+#import "UIViewController+Alert.h"
+#import "AddCreditCardViewController.h"
 
 static NSString *const kCellIdentifier = @"ProfilePaymentFieldCellIdentifier";
 static NSString *const kHeaderIentifier = @"ProfilePaymentRegisterHeaderIdentifier";
 static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFooterIdentifier";
-static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
 
-@interface ProfilePaymentDataViewController () <ProfilePaymentDataModelOutput, ProfilePaymentDataUserInterfaceInput, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ProfilePaymentDataViewController () <ProfilePaymentDataModelOutput, ProfilePaymentDataUserInterfaceInput, ProfilePaymentRegistrationFooterDelegate, EditDialogViewControllerDelegate, AddCreditCardModuleDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet ProfilePaymentDataView *contentView;
 @property (nonatomic, strong) ProfilePaymentDataModel *model;
 @property (nonatomic, strong) ProfilePaymentDataFriendsController *friendsController;
+@property (nonatomic, strong) UITextField *activeTextField;
 
 @end
 
@@ -30,8 +35,8 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Payout Credentials";
     [self setupDependencies];
-//    [self skipButtonDidTap];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -50,6 +55,7 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.activeTextField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,36 +63,86 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
 }
 
 - (void)setupDependencies {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideBirthdayPicker)];
+    [self.contentView.birthdayContainerView addGestureRecognizer:tap];
+    [self.contentView.birthdayPicker setMaximumDate:[NSDate date]];
+    self.contentView.tableView.backgroundView.backgroundColor = [UIColor clearColor];
+    self.contentView.tableView.backgroundColor = [UIColor clearColor];
+    
     self.friendsController = [ProfilePaymentDataFriendsController new];
     self.model = [ProfilePaymentDataModel new];
+    [self.model setupMode:self.modeType];
     self.model.output = self;
+    
     self.contentView.eventHandler = self;
     self.contentView.tableView.dataSource = self;
     self.contentView.tableView.delegate = self;
 }
 
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    [self presentViewController:addCreditCardVC animated:YES completion:nil];
+}
+
+#pragma mark - ProfilePaymentDataModelOutput
+
+- (void)credentalsDidCheckWithError:(NSString *)errorMessage {
+    [Commons showToast:errorMessage];
+}
+
+- (void)paymentCredentialsDidRegisterSuccess:(BOOL)isSuccessed {
+    [SharedAppDelegate closeLoading];
+    if (isSuccessed) {
+//        [self.moduleDelegate paymentCredentialsDidSend];
+        [self showAddCreditCard];
+    } else {
+        [self showAlert:@"Somethings was wrong! Please, try again or contact support."];
+    }
+}
+
 #pragma mark - ProfilePaymentDataUserInterfaceInput
 
-- (IBAction)sendbtn:(id)sender {
-//    [self skipButtonDidTap];
+- (void)birthdayPickerDoneButtonDidTap {
+    [self.model updateValue:self.contentView.birthdayPicker.date forType:ProfilePaymentFieldTypeBirthday];
+    [self.contentView upsateBirthdayPickerAppearanceWithVisibleState:NO];
+    if (self.activeTextField.tag == ProfilePaymentFieldTypeBirthday) {
+        self.activeTextField.text = [self.model enteredBirthdayDate];
+    }
 }
-- (void)skipButtonDidTap {
-    NSDictionary *birthday = @{@"day" : @(arc4random() % 28), @"month" : @((arc4random() % 10) + 1), @"year" : @(1994)};
-    NSDictionary *address = @{@"line1" : @"1234 Main Street", @"postal_code" : @(94111), @"city" : @"San Francisco", @"state" : @"CA"};
-    NSDictionary *legacy = @{@"dob" : birthday, @"address" : address, @"first_name" : @"zxcv", @"last_name" : @"Pro", @"ssn_last_4" : @"0000"};
-    NSDictionary *params = @{@"legal_entity" : legacy, @"password" : @"111111"};
-    
-    [PaymentClient registerExpertWithPaymentData:params completion:^(id responseObject, NSError *error) {
-        if (error) {
-            
-        } else {
-            
-        }
-    }];
+
+- (void)hideBirthdayPicker {
+    [self.contentView upsateBirthdayPickerAppearanceWithVisibleState:NO];
 }
 
 - (void)sendDataButtonDidTap {
+    if (self.presentedViewController) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - ProfilePaymentRegistrationFooterDelegate
+
+- (void)skipButtonDidTap {
+    NSLog(@"skipButtonDidTap");
     
+}
+
+- (void)sendCredentialsButtonDidTap {
+    [self.activeTextField resignFirstResponder];
+    NSLog(@"sendCredentialsButtonDidTap");
+    if ([self.model isEnteredCredentialsValid]) {
+        if (self.model.isPasswordContained) {
+            [SharedAppDelegate showLoading];
+            [self.model sendPaymentCredentials];
+        } else {
+            [self showEnterPasswordDialog];
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -96,32 +152,46 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
     return YES;
 }
 
-- (void)sendData {
-    
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeTextField = textField;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    ProfilePaymentFieldType fieldType = textField.tag;
+    if (fieldType != ProfilePaymentFieldTypeBirthday) {
+        [self.model updateValue:textField.text forType:fieldType];
+    }
+    return YES;
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return self.model.rowsCount;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProfilePaymentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfilePaymentFieldCellIdentifier"];
+    ProfilePaymentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     cell.textField.delegate = self;
+    cell.textField.tag = indexPath.row;
     cell.textField.placeholder = [self.friendsController placeholderFieldType:indexPath.row];
     cell.textField.keyboardType = [self.friendsController keyboardTypeForFieldType:indexPath.row];
+    [cell.textField setUserInteractionEnabled:(indexPath.row != ProfilePaymentFieldTypeBirthday)];
     return cell;
 }
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHeaderIentifier];
+    ProfilePaymentHeader *cell = [tableView dequeueReusableCellWithIdentifier:kHeaderIentifier];
+    NSString *title = [NSString stringWithFormat:@"You have to send your credential to have possibility to get the payouts.%@", self.model.isRegistrationMode ? @" You can send it later from your Profile or during creation new workout." : @""];
+    cell.titleLabel.text = title;
     return cell.contentView;
 }
 
 - (UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFooterIdentifier];
-    return cell.contentView;
+    ProfilePaymentRegistrationFooter *footer = [tableView dequeueReusableCellWithIdentifier:kFooterRegisterIdentifier];
+    [footer.skipButton setUserInteractionEnabled:self.model.isRegistrationMode];
+    footer.delegate = self;
+    return footer;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -129,14 +199,51 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 60.0;
+    return self.model.isRegistrationMode ? 121 : 60.0;
 }
 
 #pragma mark - UITableVieDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == ProfilePaymentFieldTypeBirthday) {
+        [self.contentView upsateBirthdayPickerAppearanceWithVisibleState:YES];
+        ProfilePaymentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        self.activeTextField = cell.textField;
+    }
+}
+
+#pragma mark - EditDialogViewControllerDelegate
+
+- (void)setContent:(NSString*)type msg:(NSString*)content {
+    if ([type isEqualToString:@"password"]) {
+        [self.model updateValue:content forType:ProfilePaymentFieldTypePassword];
+        if (self.model.isPasswordContained) {
+            [self.model sendPaymentCredentials];
+        }
+    }
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
     
 }
+
+#pragma mark - Password Alert
+
+- (void)showEnterPasswordDialog {
+    
+    EditDialogViewController *dlgDialog = [[EditDialogViewController alloc] initWithNibName:@"EditDialogViewController" bundle:nil];
+    dlgDialog.providesPresentationContextTransitionStyle = YES;
+    dlgDialog.definesPresentationContext = YES;
+    [dlgDialog setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    dlgDialog.delegate = self;
+    
+    dlgDialog.type = @"password";
+    dlgDialog.content = @"";
+    [self presentViewController:dlgDialog animated:NO completion:nil];
+}
+
 
 #pragma mark - Keyboar Notifications
 
@@ -146,17 +253,17 @@ static NSString *const kFooterIdentifier = @"ProfilePaymentFooterIdentifier";
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
     
     [UIView animateWithDuration:0.3 animations:^{
-        UIEdgeInsets insets = self.contentView.scrollView.contentInset;
+        UIEdgeInsets insets = self.contentView.tableView.contentInset;
         insets.bottom = keyboardFrameBeginRect.size.height;
-        self.contentView.scrollView.contentInset = insets;
+        self.contentView.tableView.contentInset = insets;
     }];
 }
 
 - (void)keyboardDidHide:(NSNotification*)notification {
     [UIView animateWithDuration:0.3 animations:^{
-        UIEdgeInsets insets = self.contentView.scrollView.contentInset;
+        UIEdgeInsets insets = self.contentView.tableView.contentInset;
         insets.bottom = 0.0f;
-        self.contentView.scrollView.contentInset = insets;
+        self.contentView.tableView.contentInset = insets;
     }];
 }
 

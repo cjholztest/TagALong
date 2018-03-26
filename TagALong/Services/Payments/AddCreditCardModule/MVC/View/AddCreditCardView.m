@@ -51,14 +51,14 @@
 }
 
 - (IBAction)addCardAction:(id)sender {
-    
+    [self.eventHandler addCreditCardDidTap];
 }
 
 - (void)updateAppearanceWithState:(BOOL)isActive {
-    if (self.addNewCard.isUserInteractionEnabled != isActive) {
+//    if (self.addNewCard.isUserInteractionEnabled != isActive) {
         [self.addNewCard setUserInteractionEnabled:isActive];
         self.addNewCard.alpha = isActive ? 1.0f : 0.5f;
-    }
+//    }
 }
 
 @end

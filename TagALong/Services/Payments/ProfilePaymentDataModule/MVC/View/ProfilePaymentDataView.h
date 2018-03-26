@@ -12,18 +12,11 @@
 @interface ProfilePaymentDataView : UIView <ProfilePaymentDataUserInterfaceOutput>
 
 @property (nonatomic, weak) id <ProfilePaymentDataUserInterfaceInput> eventHandler;
-
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIView *birthdayContainerView;
+@property (nonatomic, weak) IBOutlet UIView *birthdayMaskView;
+@property (nonatomic, weak) IBOutlet UIDatePicker *birthdayPicker;
 
-@property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
-@property (nonatomic, weak) IBOutlet UITextField *lastNameTextField;
-@property (nonatomic, weak) IBOutlet UITextField *birtdayTextField;
-@property (nonatomic, weak) IBOutlet UITextField *addressTextField;
-@property (nonatomic, weak) IBOutlet UITextField *postCodeTextField;
-@property (nonatomic, weak) IBOutlet UITextField *cityTextField;
-@property (nonatomic, weak) IBOutlet UITextField *stateTextField;
-@property (nonatomic, weak) IBOutlet UITextField *ssnLastTextField;
-@property (nonatomic, weak) IBOutlet UITextField *ssbFullTextField;
+- (void)upsateBirthdayPickerAppearanceWithVisibleState:(BOOL)isVisible;
 
 @end

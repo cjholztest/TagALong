@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ProfilePaymentDataProtocols.h"
+#import "ProfilePaymentConstants.h"
 
 @interface ProfilePaymentDataViewController : UIViewController
 
 @property (nonatomic, weak) id <ProfilePaymentDataModuleDelegate> moduleDelegate;
+@property (nonatomic, assign) ProfilePaymentModeType modeType;
 
 @end

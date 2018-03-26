@@ -17,12 +17,12 @@ typedef NS_ENUM(NSInteger, ProfilePaymentFieldType) {
     ProfilePaymentFieldTypeCity,
     ProfilePaymentFieldTypeState,
     ProfilePaymentFieldTypeSSNLast,
-    ProfilePaymentFieldTypeSSNFull,
+    ProfilePaymentFieldTypePassword
 };
 
 typedef NS_ENUM(NSInteger, ProfilePaymentModeType) {
     ProfilPaymentModeTypeRegistration,
-    ProfilPaymentModeTypeValidation,
+    ProfilPaymentModeTypePostWorkout,
 };
 
 typedef struct {
