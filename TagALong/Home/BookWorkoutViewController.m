@@ -418,9 +418,9 @@
                 [weakSelf showAlert:error.localizedDescription];
             } else {
                 if ([responseObject[@"status"] boolValue]) {
-                    [weakSelf ReqBookNoew];
+                    [weakSelf showSuccessAlert];
                 } else {
-                    [self showAlert:@"Failure payment process"];
+                    [weakSelf showAlert:@"Failure payment process"];
                 }
             }
         }];

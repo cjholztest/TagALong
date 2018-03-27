@@ -83,6 +83,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
     addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtModeTypeProfile;
     [self presentViewController:addCreditCardVC animated:YES completion:nil];
 }
 
