@@ -4200,6 +4200,7 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="picDuration" destination="NLj-hc-HfE" id="Kjh-4m-J3H"/>
                         <outlet property="picFrequency" destination="JDy-we-2rn" id="4xH-Lt-anG"/>
                         <outlet property="picStartTime" destination="Trh-if-yGm" id="9mi-su-8WW"/>
+                        <outlet property="postWorkoutButton" destination="JqV-SB-CeG" id="weK-Kh-xy0"/>
                         <outlet property="tfAmount" destination="Asf-jU-RzD" id="rMe-Me-vCY"/>
                         <outlet property="tfLocation" destination="5K1-dD-l3G" id="eqr-F0-7Pv"/>
                         <outlet property="tfTitle" destination="cS1-yu-kz5" id="iiS-hX-f4D"/>

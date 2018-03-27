@@ -32,8 +32,7 @@
         if (error) {
             [weakSelf.output creditCardDidCreateWithError:error];
         } else {
-            BOOL isExpert = [Global.g_user.user_login isEqualToString:@"2"];
-            [PaymentClient sendCardToken:token.tokenId isExpertUser:isExpert completion:^(id responseObject, NSError *error) {
+            [PaymentClient sendCardToken:token.tokenId password:self.userPassword completion:^(id responseObject, NSError *error) {
                 [weakSelf.output creditCardDidCreateWithError:error];
             }];
         }

@@ -83,7 +83,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
     addCreditCardVC.moduleDelegate = self;
-    [self presentViewController:addCreditCardVC animated:YES completion:nil];
+//    [self presentViewController:addCreditCardVC animated:YES completion:nil];
 }
 
 #pragma mark - ProfilePaymentDataModelOutput
@@ -96,7 +96,8 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     [SharedAppDelegate closeLoading];
     if (isSuccessed) {
 //        [self.moduleDelegate paymentCredentialsDidSend];
-        [self showAddCreditCard];
+//        [self showAddCreditCard];
+        [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self showAlert:@"Somethings was wrong! Please, try again or contact support."];
     }
@@ -129,7 +130,9 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
 
 - (void)skipButtonDidTap {
     NSLog(@"skipButtonDidTap");
-    
+    if ([self.moduleDelegate respondsToSelector:@selector(skipSendingPaymentCredentials)]) {
+        [self.moduleDelegate skipSendingPaymentCredentials];
+    }
 }
 
 - (void)sendCredentialsButtonDidTap {

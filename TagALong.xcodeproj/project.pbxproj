@@ -24,6 +24,7 @@
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
+		1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB78751206995400013F737 /* UIColor+AppColors.m */; };
 		1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA35205FF85500675150 /* PaymentClient.m */; };
 		3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD1E1F6234360037DCE5 /* HomeViewController.m */; };
 		3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD211F62362D0037DCE5 /* ExpertLoginViewController.m */; };
@@ -210,6 +211,8 @@
 		1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
 		1A47ECB3205AC92B00A0AA67 /* MapClusterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterListViewController.h; sourceTree = "<group>"; };
 		1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterListViewController.m; sourceTree = "<group>"; };
+		1AB78750206995400013F737 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		1AB78751206995400013F737 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		1ACFEA34205FF85500675150 /* PaymentClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentClient.h; sourceTree = "<group>"; };
 		1ACFEA35205FF85500675150 /* PaymentClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentClient.m; sourceTree = "<group>"; };
 		28E83BA6AE58986F884F01FB /* Pods-TagALongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALongUITests/Pods-TagALongUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 				3205FD551F6313350037DCE5 /* DAYCalendarView.m */,
 				3205FD561F6313350037DCE5 /* Daysquare.h */,
 				3205FD571F6313350037DCE5 /* Internal */,
+				1AB78750206995400013F737 /* UIColor+AppColors.h */,
+				1AB78751206995400013F737 /* UIColor+AppColors.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1703,6 +1708,7 @@
 				3232FFB01F7A055E00A0F55D /* ProSignupViewController.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
 				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
+				1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */,
 				321F1AC91F6AF85D00EA1F4C /* PostWorkoutDetailViewController.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,

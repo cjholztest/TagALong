@@ -129,7 +129,7 @@
                                             <constraint firstAttribute="height" constant="100" id="bv8-AU-8JK"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-8x-OCp">
+                                    <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-8x-OCp">
                                         <rect key="frame" x="0.0" y="135" width="375" height="60"/>
                                         <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -140,7 +140,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="addCardAction:" destination="3j7-Dg-Efl" eventType="touchUpInside" id="7Y4-50-zrM"/>
+                                            <action selector="addCardAction:" destination="3j7-Dg-Efl" eventType="touchUpInside" id="NCf-8k-gMA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -154,7 +154,7 @@
                                     <constraint firstAttribute="trailing" secondItem="vwf-l5-WcT" secondAttribute="trailing" id="dsd-mG-g0u"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="addNewCard" destination="O9m-8x-OCp" id="jhq-47-DGs"/>
+                                    <outlet property="addNewCard" destination="O9m-8x-OCp" id="7fq-9x-iaH"/>
                                     <outlet property="paymentCardContainerView" destination="vwf-l5-WcT" id="FnB-Wn-xrf"/>
                                 </connections>
                             </view>

@@ -10,9 +10,17 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import "ProfilePaymentDataViewController.h"
+#import "EditDialogViewController.h"
 #import "PaymentClient+Customer.h"
+#import "PaymentClient+CreditCard.h"
+#import "UIColor+AppColors.h"
+#import "AddCreditCardViewController.h"
 
-@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
+static const NSInteger kPostWorkoutDefaultTag = 234;
+static const NSInteger kPostWorkoutPaymentAccountTag = 254;
+static const NSInteger kPostWorkoutPaymentCreditTag = 274;
+
+@interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate, EditDialogViewControllerDelegate, AddCreditCardModuleDelegate>{
     NSString *title;
     NSString *location;
     NSString *date;
@@ -58,6 +66,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *picDuration;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvBottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcbnBottomHeight;
+@property (weak, nonatomic) IBOutlet UIButton *postWorkoutButton;
 
 @property (weak, nonatomic) IBOutlet UIView *vwFrequency;
 @property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
@@ -237,6 +246,8 @@
     _btnStartTime.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnDuration.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _btnFrequency.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    self.postWorkoutButton.tag = kPostWorkoutDefaultTag;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -299,6 +310,55 @@
     [self.navigationController pushViewController:profilePaymentVC animated:YES];
 }
 
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
+}
+
+- (void)updatePostWorkoutButtonAppearance {
+    NSInteger currentTag = self.postWorkoutButton.tag;
+    UIColor *color = [UIColor appColor];
+    NSString *title = @"POST WORKOUT";
+    switch (currentTag) {
+        case kPostWorkoutPaymentAccountTag:
+            color = [UIColor warningColor];
+            title = @"SEND CREDENTIALS";
+            break;
+        case kPostWorkoutPaymentCreditTag:
+            color = [UIColor warningColor];
+            title = @"ADD CREDIT CARD";
+            break;
+        default:
+            break;
+    }
+    [self.postWorkoutButton setTitle:title forState:UIControlStateNormal];
+    [self.postWorkoutButton setTitle:title forState:UIControlStateSelected];
+    [self.postWorkoutButton setTitle:title forState:UIControlStateHighlighted];
+}
+
+- (void)showEnterPasswordDialog {
+    
+    EditDialogViewController *dlgDialog = [[EditDialogViewController alloc] initWithNibName:@"EditDialogViewController" bundle:nil];
+    dlgDialog.providesPresentationContextTransitionStyle = YES;
+    dlgDialog.definesPresentationContext = YES;
+    [dlgDialog setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    dlgDialog.delegate = self;
+    
+    dlgDialog.type = @"password";
+    dlgDialog.content = @"";
+    [self presentViewController:dlgDialog animated:NO completion:nil];
+}
+
+#pragma mark - EditDialogViewControllerDelegate
+
+- (void)setContent:(NSString*)type msg:(NSString*)content {
+    if ([type isEqualToString:@"password"]) {
+        [self ReqReqWorkout];
+    }
+}
+
 #pragma mark - click events
 
 - (IBAction)onClickBack:(id)sender {
@@ -307,18 +367,38 @@
 
 - (IBAction)onClickPostworkout:(id)sender {
     
-    [SharedAppDelegate showLoading];
+//    [SharedAppDelegate showLoading];
     __weak typeof(self)weakSelf = self;
-    
-    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
-        [SharedAppDelegate closeLoading];
-        BOOL isDataExists = ([responseObject[@"exist"] boolValue] && [responseObject[@"payouts"] boolValue]);
-        if (isDataExists) {
-            
-        } else {
+    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+        if (isPaymentAccountExists && isCreditCradExists) {
+            [weakSelf showEnterPasswordDialog];
+        } else if (!isPaymentAccountExists && !isCreditCradExists) {
             [weakSelf showPaymentCredentialsRegistration];
+        } else if (isPaymentAccountExists && !isCreditCradExists) {
+            [weakSelf showAddCreditCard];
         }
     }];
+//
+//    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+//
+//        BOOL isDataExists = ([responseObject[@"exist"] boolValue] && [responseObject[@"payouts"] boolValue]);
+//        if (isDataExists) {
+//            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+//                [SharedAppDelegate closeLoading];
+//                NSArray *cards = responseObject;
+//                if (cards.count == 0) {
+//                    weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentCreditTag;
+//                } else {
+//                    weakSelf.postWorkoutButton.tag = kPostWorkoutDefaultTag;
+//                }
+//                [weakSelf updatePostWorkoutButtonAppearance];
+//            }];
+//        } else {
+//            [SharedAppDelegate closeLoading];
+//            weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentAccountTag;
+//            [weakSelf updatePostWorkoutButtonAppearance];
+//        }
+//    }];
     
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
 //    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
@@ -628,6 +708,41 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+- (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists, BOOL isCreditCradExists))completion {
+    [SharedAppDelegate showLoading];
+    __weak typeof(self)weakSelf = self;
+    __block BOOL isAccountExists = NO;
+    __block BOOL isCreditExists = NO;
+    
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        BOOL isDataExists = [responseObject[@"exist"] boolValue];
+        if (isDataExists) {
+            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+                [SharedAppDelegate closeLoading];
+                isAccountExists = YES;
+                NSArray *cards = responseObject;
+                if (cards.count == 0) {
+                    weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentCreditTag;
+                } else {
+                    isCreditExists = YES;
+                    weakSelf.postWorkoutButton.tag = kPostWorkoutDefaultTag;
+                }
+                [weakSelf updatePostWorkoutButtonAppearance];
+                if (completion) {
+                    completion(isAccountExists, isCreditExists);
+                }
+            }];
+        } else {
+            [SharedAppDelegate closeLoading];
+            weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentAccountTag;
+            [weakSelf updatePostWorkoutButtonAppearance];
+            if (completion) {
+                completion(isAccountExists, isCreditExists);
+            }
+        }
     }];
 }
 

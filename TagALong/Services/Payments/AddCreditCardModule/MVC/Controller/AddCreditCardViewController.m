@@ -92,11 +92,7 @@
 #pragma mark - AddCreditCardUserInterfaceInput
 
 - (void)addCreditCardDidTap {
-    if ([self.model isUserPasswordEntered]) {
-        [self addCreditCardDidTap];
-    } else {
-        [self showEnterPasswordDialog];
-    }
+    [self showEnterPasswordDialog];
 }
 
 #pragma mark - Private
