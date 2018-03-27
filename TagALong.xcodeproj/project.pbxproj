@@ -156,6 +156,7 @@
 		CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */; };
 		CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */; };
 		CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */; };
+		CEF8487D206A9E4A0011BFDB /* PaymentClient+Pay.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF8487C206A9E4A0011BFDB /* PaymentClient+Pay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -475,6 +476,8 @@
 		CEF52F60206911F80014B2B4 /* ProfilePaymentHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentHeader.h; sourceTree = "<group>"; };
 		CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentHeader.m; sourceTree = "<group>"; };
 		CEF8487A206A54440011BFDB /* AddCreditCardConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardConstants.h; sourceTree = "<group>"; };
+		CEF8487B206A9E490011BFDB /* PaymentClient+Pay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Pay.h"; sourceTree = "<group>"; };
+		CEF8487C206A9E4A0011BFDB /* PaymentClient+Pay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Pay.m"; sourceTree = "<group>"; };
 		D0B345F07BCC0D68EA167641 /* Pods-TagALong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALong/Pods-TagALong.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -518,6 +521,8 @@
 				CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */,
 				CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */,
 				CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */,
+				CEF8487B206A9E490011BFDB /* PaymentClient+Pay.h */,
+				CEF8487C206A9E4A0011BFDB /* PaymentClient+Pay.m */,
 			);
 			path = PaymentClient;
 			sourceTree = "<group>";
@@ -1703,6 +1708,7 @@
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
+				CEF8487D206A9E4A0011BFDB /* PaymentClient+Pay.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
 				3232FFB71F7A313E00A0F55D /* SignupResultViewController.m in Sources */,
 				1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */,

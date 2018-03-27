@@ -11,11 +11,18 @@
 #import "PaymentClient.h"
 #import "CreditCardListViewController.h"
 #import "ListOfWorkoutVisitorsViewController.h"
+#import "PaymentClient+Pay.h"
+#import "EditDialogViewController.h"
+#import "PaymentClient+CreditCard.h"
+#import "UIViewController+Alert.h"
+#import "AddCreditCardViewController.h"
 
-@interface BookWorkoutViewController ()<PaymentViewControllerDelegate>{
+@interface BookWorkoutViewController ()<PaymentViewControllerDelegate, EditDialogViewControllerDelegate, AddCreditCardModuleDelegate>{
     NSArray *arrSportNM;
     NSArray *arrCateNM;
     NSInteger amount;
+    NSString *enteredPassword;
+    NSString *creditCardID;
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblNickName;
 @property (weak, nonatomic) IBOutlet UIView *vwLevelBG;
@@ -192,9 +199,26 @@
 
 - (IBAction)onClickWorkout:(id)sender {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
-    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
-    [self.navigationController pushViewController:creditCardListVC animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+//    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
+//    [self.navigationController pushViewController:creditCardListVC animated:YES];
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        if (error) {
+            [weakSelf showAlert:error.localizedDescription];
+        } else {
+            NSArray *cardList = responseObject;
+            if (cardList.count > 0) {
+                NSDictionary *card = cardList.firstObject;
+                creditCardID = card[@"card_uid"];
+                [weakSelf showEnterPasswordDialog];
+            } else {
+                [weakSelf showAddCreditCard];
+            }
+        }
+    }];
     
 //    [self ReqBookNoew]; temp commented
     
@@ -353,6 +377,60 @@
                                 }];
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showEnterPasswordDialog {
+    
+    EditDialogViewController *dlgDialog = [[EditDialogViewController alloc] initWithNibName:@"EditDialogViewController" bundle:nil];
+    dlgDialog.providesPresentationContextTransitionStyle = YES;
+    dlgDialog.definesPresentationContext = YES;
+    [dlgDialog setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    dlgDialog.delegate = self;
+    
+    dlgDialog.type = @"password";
+    dlgDialog.content = @"";
+    [self presentViewController:dlgDialog animated:NO completion:nil];
+}
+
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtModeTypePostWorkout;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
+}
+
+#pragma mark - EditDialogViewControllerDelegate
+
+- (void)setContent:(NSString*)type msg:(NSString*)content {
+    if ([type isEqualToString:@"password"]) {
+        enteredPassword = content;
+        NSNumber *workoutID = (NSNumber*)self.workout_id;
+        NSDictionary *params = @{@"workout_uid" : [workoutID stringValue],
+                                 @"amount" : @(amount),
+                                 @"user_card_uid" : creditCardID,
+                                 @"password" : enteredPassword};
+        __weak typeof(self)weakSelf = self;
+        [SharedAppDelegate showLoading];
+        [PaymentClient payForWorkoutWithParams:params withCompletion:^(id responseObject, NSError *error) {
+            [SharedAppDelegate closeLoading];
+            if (error) {
+                [weakSelf showAlert:error.localizedDescription];
+            } else {
+                if ([responseObject[@"status"] boolValue]) {
+                    [weakSelf ReqBookNoew];
+                } else {
+                    [self showAlert:@"Failure payment process"];
+                }
+            }
+        }];
+    }
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

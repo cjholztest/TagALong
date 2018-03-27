@@ -42,6 +42,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     
     NSArray *frequencies;
     NSInteger frequencyIndex;
+    NSString *enteredPassword;
 }
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
@@ -334,6 +335,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (void)setContent:(NSString*)type msg:(NSString*)content {
     if ([type isEqualToString:@"password"]) {
+        enteredPassword = content;
         [self ReqReqWorkout];
     }
 }
@@ -658,6 +660,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
                              API_REQ_KEY_USER_LOCATION      :   location,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
                              API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
+                             API_REQ_KEY_NEW_PASSWORD       :   enteredPassword
                              };
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
