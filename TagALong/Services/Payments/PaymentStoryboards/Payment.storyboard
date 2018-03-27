@@ -129,8 +129,22 @@
                                             <constraint firstAttribute="height" constant="100" id="bv8-AU-8JK"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk7-UW-AUA" userLabel="SKIP">
+                                        <rect key="frame" x="0.0" y="135" width="375" height="60.5"/>
+                                        <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="lZu-aJ-bsu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="SKIP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipButtonAction:" destination="3j7-Dg-Efl" eventType="touchUpInside" id="Qaw-lf-7tg"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-8x-OCp">
-                                        <rect key="frame" x="0.0" y="135" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="196.5" width="375" height="60"/>
                                         <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="OXx-o4-6LF"/>
@@ -147,15 +161,20 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="O9m-8x-OCp" secondAttribute="trailing" id="0Vm-aW-0Qc"/>
+                                    <constraint firstItem="vk7-UW-AUA" firstAttribute="top" secondItem="vwf-l5-WcT" secondAttribute="bottom" constant="15" id="5vd-eT-iJb"/>
                                     <constraint firstItem="vwf-l5-WcT" firstAttribute="top" secondItem="3j7-Dg-Efl" secondAttribute="top" constant="20" id="CBK-fZ-oMO"/>
-                                    <constraint firstItem="O9m-8x-OCp" firstAttribute="top" secondItem="vwf-l5-WcT" secondAttribute="bottom" constant="15" id="HGR-2H-eEb"/>
+                                    <constraint firstItem="vk7-UW-AUA" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="Pvo-Xt-kFT"/>
                                     <constraint firstItem="vwf-l5-WcT" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="WzU-49-Pg8"/>
                                     <constraint firstItem="O9m-8x-OCp" firstAttribute="leading" secondItem="3j7-Dg-Efl" secondAttribute="leading" id="Yre-2S-p11"/>
                                     <constraint firstAttribute="trailing" secondItem="vwf-l5-WcT" secondAttribute="trailing" id="dsd-mG-g0u"/>
+                                    <constraint firstItem="O9m-8x-OCp" firstAttribute="top" secondItem="vk7-UW-AUA" secondAttribute="bottom" constant="1" id="f1v-Eb-lcy"/>
+                                    <constraint firstAttribute="trailing" secondItem="vk7-UW-AUA" secondAttribute="trailing" id="yur-Eg-u8m"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="addNewCard" destination="O9m-8x-OCp" id="7fq-9x-iaH"/>
                                     <outlet property="paymentCardContainerView" destination="vwf-l5-WcT" id="FnB-Wn-xrf"/>
+                                    <outlet property="skipButton" destination="vk7-UW-AUA" id="Yed-dd-n8Z"/>
+                                    <outlet property="skipButtonHeightConstraint" destination="lZu-aJ-bsu" id="aFU-tn-58x"/>
                                 </connections>
                             </view>
                         </subviews>

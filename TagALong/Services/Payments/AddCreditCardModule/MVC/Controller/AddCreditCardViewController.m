@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDependencies];
+    [self.contentView updateInterfaceByModeType:self.modeType];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,16 +84,27 @@
     if (error) {
         [self showAlert:error.localizedDescription];
     } else {
-        if ([self.moduleDelegate respondsToSelector:@selector(creditCardDidAdd)]) {
-            [self.moduleDelegate creditCardDidAdd];
-        }
+        __weak typeof(self)weakSelf = self;
+        [self showAlert:@"Credit Card was successfully added" withOkCompletion:^{
+            if ([weakSelf.moduleDelegate respondsToSelector:@selector(creditCardDidAdd)]) {
+                [weakSelf.moduleDelegate creditCardDidAdd];
+            }
+        }];
     }
 }
 
 #pragma mark - AddCreditCardUserInterfaceInput
 
 - (void)addCreditCardDidTap {
+    [self.contentView.paymentCardTextField resignFirstResponder];
     [self showEnterPasswordDialog];
+}
+
+- (void)skipDidTap {
+    if ([self.moduleDelegate respondsToSelector:@selector(skipAddCreditCard)]) {
+        [self.contentView.paymentCardTextField resignFirstResponder];
+        [self.moduleDelegate skipAddCreditCard];
+    }
 }
 
 #pragma mark - Private

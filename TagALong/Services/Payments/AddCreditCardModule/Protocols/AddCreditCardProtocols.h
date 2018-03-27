@@ -28,6 +28,9 @@
 
 - (void)addCreditCardDidTap;
 
+@optional
+- (void)skipDidTap;
+
 @end
 
 @protocol AddCreditCardUserInterfaceOutput <NSObject>
@@ -38,5 +41,6 @@
 
 @optional
 - (void)creditCardDidAdd;
+- (void)skipAddCreditCard;
 
 @end

@@ -11,6 +11,8 @@
 #import "UserProfilePlanTableViewCell.h"
 #import "ExpertUserProfileEditViewController.h"
 #import "BookWorkoutViewController.h"
+#import "PaymentClient+Customer.h"
+#import "PaymentClient+CreditCard.h"
 
 @interface ExpertUserProfileViewController ()<ExpertUserProfileEditViewControllerDelegate>{
     NSString *nickname ;
@@ -170,6 +172,17 @@
    
     
     [self ReqGetExportUserProfile:today];
+    
+    __weak typeof(self)weakSelf = self;
+    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+        weakSelf.creditCardImageView.alpha = 1.0;
+        weakSelf.lblCreditCard.alpha = 1.0;
+        NSString *statusTitle = nil;
+        if (isPaymentAccountExists && isPaymentAccountExists) {
+            statusTitle = @"Verified";
+        }
+//        else if (isPaymentAccountExists && )
+    }];
 }
 
 -(void)addEditInfoBarButton {
@@ -198,7 +211,7 @@
     _lblAddress.text = location;
     self.locationImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
     self.phoneNumberImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
-    self.creditCardImageView.alpha = 1.0; // need to add logic to display
+//    self.creditCardImageView.alpha = 1.0; // need to add logic to display
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";
@@ -323,6 +336,35 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+- (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists, BOOL isCreditCradExists))completion {
+    [SharedAppDelegate showLoading];
+    
+    __block BOOL isAccountExists = NO;
+    __block BOOL isCreditExists = NO;
+    
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        BOOL isDataExists = [responseObject[@"exist"] boolValue];
+        if (isDataExists) {
+            isAccountExists = YES;
+            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+                [SharedAppDelegate closeLoading];
+                NSArray *cards = responseObject;
+                if (cards.count != 0) {
+                    isCreditExists = YES;
+                }
+                if (completion) {
+                    completion(isAccountExists, isCreditExists);
+                }
+            }];
+        } else {
+            [SharedAppDelegate closeLoading];
+            if (completion) {
+                completion(isAccountExists, isCreditExists);
+            }
+        }
     }];
 }
 

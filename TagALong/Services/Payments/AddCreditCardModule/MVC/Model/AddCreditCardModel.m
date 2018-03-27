@@ -28,15 +28,19 @@
 
 - (void)createCreditCardWithCardParams:(STPCardParams*)cardParams {
     __weak typeof(self)weakSelf = self;
-    [[STPAPIClient sharedClient] createTokenWithCard:cardParams completion:^(STPToken * _Nullable token, NSError * _Nullable error) {
+    STPCardParams *cardparameters = cardParams;
+    cardparameters.currency = @"USD";
+    [[STPAPIClient sharedClient] createTokenWithCard:cardparameters completion:^(STPToken * _Nullable token, NSError * _Nullable error) {
         if (error) {
             [weakSelf.output creditCardDidCreateWithError:error];
         } else {
-            [PaymentClient sendCardToken:token.tokenId password:self.userPassword completion:^(id responseObject, NSError *error) {
+            [PaymentClient sendCardToken:token.tokenId password:weakSelf.userPassword completion:^(id responseObject, NSError *error) {
                 [weakSelf.output creditCardDidCreateWithError:error];
             }];
         }
     }];
 }
+
+
 
 @end

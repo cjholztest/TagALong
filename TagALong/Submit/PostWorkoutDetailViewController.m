@@ -317,27 +317,6 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     [self.navigationController pushViewController:addCreditCardVC animated:YES];
 }
 
-- (void)updatePostWorkoutButtonAppearance {
-    NSInteger currentTag = self.postWorkoutButton.tag;
-    UIColor *color = [UIColor appColor];
-    NSString *title = @"POST WORKOUT";
-    switch (currentTag) {
-        case kPostWorkoutPaymentAccountTag:
-            color = [UIColor warningColor];
-            title = @"SEND CREDENTIALS";
-            break;
-        case kPostWorkoutPaymentCreditTag:
-            color = [UIColor warningColor];
-            title = @"ADD CREDIT CARD";
-            break;
-        default:
-            break;
-    }
-    [self.postWorkoutButton setTitle:title forState:UIControlStateNormal];
-    [self.postWorkoutButton setTitle:title forState:UIControlStateSelected];
-    [self.postWorkoutButton setTitle:title forState:UIControlStateHighlighted];
-}
-
 - (void)showEnterPasswordDialog {
     
     EditDialogViewController *dlgDialog = [[EditDialogViewController alloc] initWithNibName:@"EditDialogViewController" bundle:nil];
@@ -713,32 +692,26 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists, BOOL isCreditCradExists))completion {
     [SharedAppDelegate showLoading];
-    __weak typeof(self)weakSelf = self;
+    
     __block BOOL isAccountExists = NO;
     __block BOOL isCreditExists = NO;
     
     [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
         BOOL isDataExists = [responseObject[@"exist"] boolValue];
         if (isDataExists) {
+            isAccountExists = YES;
             [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
                 [SharedAppDelegate closeLoading];
-                isAccountExists = YES;
                 NSArray *cards = responseObject;
-                if (cards.count == 0) {
-                    weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentCreditTag;
-                } else {
+                if (cards.count != 0) {
                     isCreditExists = YES;
-                    weakSelf.postWorkoutButton.tag = kPostWorkoutDefaultTag;
                 }
-                [weakSelf updatePostWorkoutButtonAppearance];
                 if (completion) {
                     completion(isAccountExists, isCreditExists);
                 }
             }];
         } else {
             [SharedAppDelegate closeLoading];
-            weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentAccountTag;
-            [weakSelf updatePostWorkoutButtonAppearance];
             if (completion) {
                 completion(isAccountExists, isCreditExists);
             }
@@ -784,7 +757,13 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 #pragma mark - ProfilePaymentDataModuleDelegate
 
 - (void)paymentCredentialsDidSend {
-    
+    [self.navigationController popToViewController:self animated:YES];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

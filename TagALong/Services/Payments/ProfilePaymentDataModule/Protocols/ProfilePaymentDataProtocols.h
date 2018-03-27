@@ -26,7 +26,7 @@
 @protocol ProfilePaymentDataModelOutput <NSObject>
 
 - (void)credentalsDidCheckWithError:(NSString*)errorMessage;
-- (void)paymentCredentialsDidRegisterSuccess:(BOOL)isSuccessed;
+- (void)paymentCredentialsDidRegisterSuccess:(BOOL)isSuccessed errorMessage:(NSString*)errorMessage;
 
 @end
 

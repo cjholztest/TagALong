@@ -27,8 +27,20 @@ static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
             paymentCompletion(responseObject, nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        NSString *errorMessage = dict[@"message"];
+        NSError *errorToDisplay = nil;
+        if (errorMessage) {
+            NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
+            [customDetails setValue:errorMessage forKey:NSLocalizedDescriptionKey];
+            errorToDisplay = [NSError errorWithDomain:@"local" code:200 userInfo:customDetails];
+        } else {
+            errorToDisplay = error;
+        }
         if (paymentCompletion) {
-            paymentCompletion(nil, error);
+            paymentCompletion(nil, errorToDisplay);
         }
     }];
 }
@@ -39,7 +51,7 @@ static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
     
     AFHTTPSessionManager *manager = [PaymentClient sessionManager];
     NSString *creditCardUrlPath = isExpertUser ? kExpertUserCreditCardURLPath : kSimpleUserCreditCardURLPath;
-    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, creditCardUrlPath];;
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, creditCardUrlPath];
     
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (paymentCompletion) {

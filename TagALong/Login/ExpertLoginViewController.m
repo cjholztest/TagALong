@@ -12,8 +12,11 @@
 #import "PassForgetViewController.h"
 #import "ProSignupViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ProfilePaymentDataViewController.h"
+#import "PaymentClient+Customer.h"
+#import "PaymentClient+CreditCard.h"
 
-@interface ExpertLoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate>{
+@interface ExpertLoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
     float latitude;
     float longitude;
 }
@@ -114,6 +117,30 @@
 
 }
 
+- (void)showPaymentRegistration {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    profilePaymentVC.modeType = ProfilPaymentModeTypeRegistration;
+    profilePaymentVC.moduleDelegate = self;
+    [self presentViewController:profilePaymentVC animated:YES completion:nil];
+}
+
+#pragma mark - ProfilePaymentDataModuleDelegate
+
+- (void)paymentCredentialsDidSend {
+    __weak typeof(self)weakSelf = self;
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [weakSelf goHome];
+    }];
+}
+
+- (void)skipSendingPaymentCredentials {
+    __weak typeof(self)weakSelf = self;
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [weakSelf goHome];
+    }];
+}
+
 #pragma mark - click events
 - (IBAction)onClickLogin:(id)sender {
     
@@ -178,7 +205,7 @@
                              API_REQ_KEY_LOGIN_TYPE         :   @"2",
                              };
     
-    
+    __weak typeof(self)weakSelf = self;
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
@@ -190,7 +217,15 @@
             _tfEmail.text = @"";
             _tfPassword.text   = @"";
             [Commons parseAndSaveExpertUserInfo:responseObject pwd:_pwd];
-            [self goHome];
+//            [self goHome];
+//            [self showPaymentRegistration];
+            [weakSelf checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists) {
+                if (isPaymentAccountExists) {
+                    [weakSelf goHome];
+                } else {
+                    [weakSelf showPaymentRegistration];
+                }
+            }];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [self showAlert:@"The password is incorrects"];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
@@ -203,5 +238,15 @@
     }];
 }
 
+- (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists))completion {
+    [SharedAppDelegate showLoading];
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        BOOL isAccountExists = [responseObject[@"exist"] boolValue];
+        if (completion) {
+            completion(isAccountExists);
+        }
+    }];
+}
 
 @end

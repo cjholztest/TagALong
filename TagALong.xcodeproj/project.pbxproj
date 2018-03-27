@@ -474,6 +474,7 @@
 		CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentRegistrationFooter.m; sourceTree = "<group>"; };
 		CEF52F60206911F80014B2B4 /* ProfilePaymentHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentHeader.h; sourceTree = "<group>"; };
 		CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentHeader.m; sourceTree = "<group>"; };
+		CEF8487A206A54440011BFDB /* AddCreditCardConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCreditCardConstants.h; sourceTree = "<group>"; };
 		D0B345F07BCC0D68EA167641 /* Pods-TagALong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagALong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagALong/Pods-TagALong.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -571,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2761582061320200C9D703 /* AddCreditCardProtocols.h */,
+				CEF8487A206A54440011BFDB /* AddCreditCardConstants.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

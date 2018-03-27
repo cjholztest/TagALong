@@ -11,5 +11,6 @@
 @interface UIViewController (Alert)
 
 - (void)showAlert:(NSString*)message;
+- (void)showAlert:(NSString*)message withOkCompletion:(void(^)(void))completion;
 
 @end

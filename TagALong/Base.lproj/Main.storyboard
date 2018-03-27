@@ -4586,7 +4586,7 @@ Terms of Use and Privacy Policy</string>
                                                     <constraint firstAttribute="height" constant="18" id="osN-z2-XeA"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="c57-gC-QLR">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="c57-gC-QLR">
                                                 <rect key="frame" x="151" y="94.5" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="H1E-kD-Y0o"/>
@@ -6679,6 +6679,7 @@ within the next 24 hours.</string>
         <image name="bg_profile_top1" width="778" height="570"/>
         <image name="bg_workout" width="781" height="1426"/>
         <image name="btn_bg" width="417" height="73"/>
+        <image name="credit_card" width="50" height="50"/>
         <image name="edit_white" width="20" height="25"/>
         <image name="home" width="780" height="1382"/>
         <image name="ic_alarm" width="38" height="41"/>

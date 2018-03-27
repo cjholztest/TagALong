@@ -39,8 +39,20 @@ NSString *const kApiVersion = @"2015-10-12";
             paymentCompletion(responseObject, nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        NSString *errorMessage = dict[@"error"][@"message"];
+        NSError *errorToDisplay = nil;
+        if (errorMessage) {
+            NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
+            [customDetails setValue:errorMessage forKey:NSLocalizedDescriptionKey];
+            errorToDisplay = [NSError errorWithDomain:@"local" code:200 userInfo:customDetails];
+        } else {
+            errorToDisplay = error;
+        }
         if (paymentCompletion) {
-            paymentCompletion(nil, error);
+            paymentCompletion(nil, errorToDisplay);
         }
     }];
 }

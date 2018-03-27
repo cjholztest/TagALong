@@ -83,7 +83,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
     addCreditCardVC.moduleDelegate = self;
-//    [self presentViewController:addCreditCardVC animated:YES completion:nil];
+    [self presentViewController:addCreditCardVC animated:YES completion:nil];
 }
 
 #pragma mark - ProfilePaymentDataModelOutput
@@ -92,14 +92,23 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     [Commons showToast:errorMessage];
 }
 
-- (void)paymentCredentialsDidRegisterSuccess:(BOOL)isSuccessed {
+- (void)paymentCredentialsDidRegisterSuccess:(BOOL)isSuccessed errorMessage:(NSString *)errorMessage {
     [SharedAppDelegate closeLoading];
     if (isSuccessed) {
-//        [self.moduleDelegate paymentCredentialsDidSend];
+        switch (self.modeType) {
+            case ProfilPaymentModeTypeRegistration:
+                [self showAddCreditCard];
+                break;
+            case ProfilPaymentModeTypePostWorkout:
+                [self.moduleDelegate paymentCredentialsDidSend];
+                break;
+            default:
+                break;
+        }
 //        [self showAddCreditCard];
-        [self.navigationController popViewControllerAnimated:YES];
+//        [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [self showAlert:@"Somethings was wrong! Please, try again or contact support."];
+        [self showAlert:errorMessage];
     }
 }
 
@@ -139,12 +148,12 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     [self.activeTextField resignFirstResponder];
     NSLog(@"sendCredentialsButtonDidTap");
     if ([self.model isEnteredCredentialsValid]) {
-        if (self.model.isPasswordContained) {
-            [SharedAppDelegate showLoading];
-            [self.model sendPaymentCredentials];
-        } else {
+//        if (self.model.isPasswordContained) {
+//            [SharedAppDelegate showLoading];
+//            [self.model sendPaymentCredentials];
+//        } else {
             [self showEnterPasswordDialog];
-        }
+//        }
     }
 }
 
@@ -209,6 +218,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == ProfilePaymentFieldTypeBirthday) {
+        [self.activeTextField resignFirstResponder];
         [self.contentView upsateBirthdayPickerAppearanceWithVisibleState:YES];
         ProfilePaymentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         self.activeTextField = cell.textField;
@@ -221,6 +231,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     if ([type isEqualToString:@"password"]) {
         [self.model updateValue:content forType:ProfilePaymentFieldTypePassword];
         if (self.model.isPasswordContained) {
+            [SharedAppDelegate showLoading];
             [self.model sendPaymentCredentials];
         }
     }
@@ -229,7 +240,17 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
 #pragma mark - AddCreditCardModuleDelegate
 
 - (void)creditCardDidAdd {
-    
+    __weak typeof(self)weakSelf = self;
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [weakSelf skipButtonDidTap];
+    }];
+}
+
+- (void)skipAddCreditCard {
+    __weak typeof(self)weakSelf = self;
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [weakSelf skipButtonDidTap];
+    }];
 }
 
 #pragma mark - Password Alert

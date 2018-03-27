@@ -54,11 +54,38 @@
     [self.eventHandler addCreditCardDidTap];
 }
 
+- (IBAction)skipButtonAction:(id)sender {
+    if ([self.eventHandler respondsToSelector:@selector(skipDidTap)]) {
+        [self.eventHandler skipDidTap];
+    }
+}
+
 - (void)updateAppearanceWithState:(BOOL)isActive {
-//    if (self.addNewCard.isUserInteractionEnabled != isActive) {
-        [self.addNewCard setUserInteractionEnabled:isActive];
-        self.addNewCard.alpha = isActive ? 1.0f : 0.5f;
-//    }
+    [self.addNewCard setUserInteractionEnabled:isActive];
+    self.addNewCard.alpha = isActive ? 1.0f : 0.5f;
+}
+
+- (void)updateInterfaceByModeType:(AddCreditCardtModeType)modeType {
+    switch (modeType) {
+        case AddCreditCardtModeTypeRegistration:
+            [self setSkipButtonVisible:YES];
+            break;
+        case AddCreditCardtModeTypePostWorkout:
+            break;
+        case AddCreditCardtModeTypeProfile:
+            break;
+        default:
+            [self setSkipButtonVisible:NO];
+            break;
+    }
+}
+
+#pragma mark - Private
+
+- (void)setSkipButtonVisible:(BOOL)isVisible {
+    self.skipButtonHeightConstraint.constant = isVisible ? kButtonHeight : 0.0f;
+    [self.skipButton setHidden:!isVisible];
+    [self.skipButton setUserInteractionEnabled:isVisible];
 }
 
 @end

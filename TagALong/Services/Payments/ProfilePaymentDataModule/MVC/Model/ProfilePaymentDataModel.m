@@ -95,7 +95,7 @@
 
     [PaymentClient registerExpertWithPaymentData:params completion:^(id responseObject, NSError *error) {
         BOOL isRegistrationSuccessed = [responseObject[@"status"] boolValue];
-        [self.output paymentCredentialsDidRegisterSuccess:isRegistrationSuccessed];
+        [self.output paymentCredentialsDidRegisterSuccess:isRegistrationSuccessed errorMessage:error.localizedDescription];
     }];
 }
 

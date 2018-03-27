@@ -49,6 +49,7 @@ static const NSInteger kMaxImageCnt = 1;
 @property (nonatomic, strong) NSString *ProfileUrl;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
+//@property (nonatomic, weak) IBOutlet UI
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
 
 @end

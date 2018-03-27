@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AddCreditCardProtocols.h"
+#import "AddCreditCardConstants.h"
 
 @interface AddCreditCardViewController : UIViewController
 
 @property (nonatomic, weak) id <AddCreditCardModuleDelegate> moduleDelegate;
+@property (nonatomic, assign) AddCreditCardtModeType modeType;
 
 @end
