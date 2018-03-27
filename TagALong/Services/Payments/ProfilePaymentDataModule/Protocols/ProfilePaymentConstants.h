@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, ProfilePaymentFieldType) {
 typedef NS_ENUM(NSInteger, ProfilePaymentModeType) {
     ProfilPaymentModeTypeRegistration,
     ProfilPaymentModeTypePostWorkout,
+    ProfilPaymentModeTypeProfile,
 };
 
 typedef struct {

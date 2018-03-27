@@ -71,8 +71,10 @@
             [self setSkipButtonVisible:YES];
             break;
         case AddCreditCardtModeTypePostWorkout:
+            [self setSkipButtonVisible:NO];
             break;
         case AddCreditCardtModeTypeProfile:
+            [self setSkipButtonVisible:NO];
             break;
         default:
             [self setSkipButtonVisible:NO];

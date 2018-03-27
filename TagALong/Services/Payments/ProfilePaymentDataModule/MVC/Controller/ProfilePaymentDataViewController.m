@@ -102,11 +102,12 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
             case ProfilPaymentModeTypePostWorkout:
                 [self.moduleDelegate paymentCredentialsDidSend];
                 break;
+            case ProfilPaymentModeTypeProfile:
+                [self.moduleDelegate paymentCredentialsDidSend];
+                break;
             default:
                 break;
         }
-//        [self showAddCreditCard];
-//        [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self showAlert:errorMessage];
     }
@@ -148,12 +149,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     [self.activeTextField resignFirstResponder];
     NSLog(@"sendCredentialsButtonDidTap");
     if ([self.model isEnteredCredentialsValid]) {
-//        if (self.model.isPasswordContained) {
-//            [SharedAppDelegate showLoading];
-//            [self.model sendPaymentCredentials];
-//        } else {
-            [self showEnterPasswordDialog];
-//        }
+        [self showEnterPasswordDialog];
     }
 }
 

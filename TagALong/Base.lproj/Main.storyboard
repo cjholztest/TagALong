@@ -4296,7 +4296,7 @@ Terms of Use and Privacy Policy</string>
                                                     <constraint firstAttribute="height" constant="18" id="y05-VD-Ku5"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
                                                 <rect key="frame" x="151" y="93" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="BDc-fx-oWd"/>
@@ -4868,6 +4868,7 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="ivProfile" destination="Ysv-Yv-Ugn" id="Fzi-ba-R5E"/>
                         <outlet property="lbLevel" destination="3qV-k2-XgX" id="hQr-Ga-Ykq"/>
                         <outlet property="lblArea" destination="Una-yS-AjX" id="32V-42-qMk"/>
+                        <outlet property="lblCreditCard" destination="6WN-yA-tGl" id="KHt-CS-9ic"/>
                         <outlet property="lblPhone" destination="sW0-3e-aZH" id="37a-kF-8bh"/>
                         <outlet property="locationImageView" destination="FFO-AT-It7" id="naX-dN-jSQ"/>
                         <outlet property="phoneNumberImageView" destination="tbp-VN-44y" id="xYr-zw-Ixg"/>

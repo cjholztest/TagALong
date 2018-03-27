@@ -175,13 +175,17 @@
     
     __weak typeof(self)weakSelf = self;
     [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
-        weakSelf.creditCardImageView.alpha = 1.0;
-        weakSelf.lblCreditCard.alpha = 1.0;
         NSString *statusTitle = nil;
-        if (isPaymentAccountExists && isPaymentAccountExists) {
-            statusTitle = @"Verified";
+        if (isPaymentAccountExists && !isCreditCradExists) {
+            statusTitle = @"no debit";
+        } else if (!isPaymentAccountExists) {
+            statusTitle = @"no credentials";
         }
-//        else if (isPaymentAccountExists && )
+        if (statusTitle.length > 0) {
+            weakSelf.lblCreditCard.text = statusTitle;
+        }
+        weakSelf.lblCreditCard.alpha = 1.0f;
+        weakSelf.creditCardImageView.alpha = 1.0f;
     }];
 }
 
@@ -209,9 +213,8 @@
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
-    self.locationImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
-    self.phoneNumberImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
-//    self.creditCardImageView.alpha = 1.0; // need to add logic to display
+    self.locationImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
+    self.phoneNumberImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";
@@ -244,6 +247,7 @@
     vc.nickname = nickname;
     vc.arrSchedule = _arrWorkout;
     vc.vcParent = self.vcParent;
+    vc.debitCard = self.lblCreditCard.text;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -344,16 +348,19 @@
     
     __block BOOL isAccountExists = NO;
     __block BOOL isCreditExists = NO;
+    __weak typeof(self)weakSelf = self;
     
     [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
         BOOL isDataExists = [responseObject[@"exist"] boolValue];
         if (isDataExists) {
-            isAccountExists = YES;
             [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
                 [SharedAppDelegate closeLoading];
+                isAccountExists = YES;
                 NSArray *cards = responseObject;
                 if (cards.count != 0) {
                     isCreditExists = YES;
+                    NSDictionary *card = cards.firstObject;
+                    weakSelf.lblCreditCard.text = [NSString stringWithFormat:@"●●●● %@", card[@"last4"]];
                 }
                 if (completion) {
                     completion(isAccountExists, isCreditExists);

@@ -8,7 +8,7 @@
 
 #import "CreditCardListModel.h"
 #import "CreditCardTableViewCellViewModel.h"
-#import "PaymentClient.h"
+#import "PaymentClient+CreditCard.h"
 
 @interface CreditCardListModel ()
 
@@ -30,19 +30,15 @@
 }
 
 - (void)loadCardList {
-    [self reloadCardListWithResponseCards:nil];
-    [self.output cardListDidLoad];
-    
-    // bellow code will need after backend changes
-//    __weak typeof(self)weakSelf = self;
-//    [[PaymentClient shared] listOfCrediCardsWithCompletion:^(id object, NSError *error) {
-//        if (error) {
-//
-//        } else {
-//
-//        }
-//        [weakSelf.output cardListDidLoad];
-//    }];
+    __weak typeof(self)weakSelf = self;
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        if (error) {
+            [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
+        } else {
+            [weakSelf reloadCardListWithResponseCards:responseObject];
+            [weakSelf.output cardListDidLoad];
+        }
+    }];
 }
 
 - (void)cardSetSelected:(BOOL)isSelected atIndexPath:(NSIndexPath *)indexPath {
@@ -61,12 +57,12 @@
 
 - (void)reloadCardListWithResponseCards:(NSArray*)respponseCards {
     // temp imitate respnse cards
-    NSArray *cardsLastNumbers = @[@"4242", @"4444"];
     NSMutableArray *viewModels = [NSMutableArray array];
-    for (NSInteger i = 0; i < cardsLastNumbers.count; i++) {
+    for (NSInteger i = 0; i < respponseCards.count; i++) {
+        NSDictionary *card = respponseCards[i];
         CreditCardTableViewCellViewModel *viewModel = [CreditCardTableViewCellViewModel new];
-        viewModel.lastNumbers = [NSString stringWithFormat:@"**** %@", cardsLastNumbers[i]];
-        viewModel.isSelected = NO;
+        viewModel.lastNumbers = [NSString stringWithFormat:@"●●●● %@", card[@"last4"]];
+        viewModel.isSelected = (i == 0);
         [viewModels addObject:viewModel];
     }
     if (viewModels.count > 0) {

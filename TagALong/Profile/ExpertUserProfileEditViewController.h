@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *level;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *nickname;
+@property (nonatomic, strong) NSString *debitCard;
 @property (nonatomic, strong) NSMutableArray *arrSchedule;
 @property (nonatomic, retain) UIViewController *vcParent;
 @end

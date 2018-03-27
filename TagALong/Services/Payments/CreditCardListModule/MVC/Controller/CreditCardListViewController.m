@@ -12,10 +12,11 @@
 #import "CreditCardListModel.h"
 #import "CreditCardListView.h"
 #import "AddCreditCardViewController.h"
+#import "UIViewController+Alert.h"
 
 static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier";
 
-@interface CreditCardListViewController () <UITableViewDataSource, UITableViewDelegate, CreditCardListModelOutput, CreditCardListUserInterfaceInput>
+@interface CreditCardListViewController () <UITableViewDataSource, UITableViewDelegate, CreditCardListModelOutput, CreditCardListUserInterfaceInput, AddCreditCardModuleDelegate>
 
 @property (nonatomic, strong) CreditCardListModel *model;
 @property (nonatomic, weak) IBOutlet CreditCardListView *contentView;
@@ -27,7 +28,7 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupDependencies];
-    [self.model loadCardList];
+    [self loadCreditCardList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,10 +43,21 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
     self.contentView.eventHandler = self;
 }
 
+- (void)loadCreditCardList {
+    [SharedAppDelegate showLoading];
+    [self.model loadCardList];
+}
+
 #pragma mark - CreditCardListModelOutput
 
 - (void)cardListDidLoad {
-    NSLog(@"cardListDidLoad");
+    [SharedAppDelegate closeLoading];
+    [self.contentView.tebleView reloadData];
+}
+
+- (void)cardListDidLoadWithError:(NSString *)errorMessage {
+    [SharedAppDelegate closeLoading];
+    [self showAlert:errorMessage];
 }
 
 #pragma mark - CreditCardListUserInterfaceInput
@@ -54,7 +66,16 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
     NSLog(@"addCreditCardDidTap");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditVC.moduleDelegate = self;
+    addCreditVC.modeType = AddCreditCardtModeTypeProfile;
     [self.navigationController pushViewController:addCreditVC animated:YES];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popToViewController:self animated:YES];
+    [self loadCreditCardList];
 }
 
 #pragma mark - UITableViewDataSource
@@ -82,6 +103,7 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    /* next code probably will need to debug selection credit cards:
     NSIndexPath *previousIndexPath = [self.model selectedIndexPath];
     if (previousIndexPath) {
         CreditCardTableViewCell *previousCell = [tableView cellForRowAtIndexPath:previousIndexPath];
@@ -91,6 +113,7 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
     [self.model cardSetSelected:YES atIndexPath:indexPath];
     CreditCardTableViewCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
     [currentCell updateWithModel:[self.model cardViewModelAtIndex:indexPath.row]];
+    */
 }
 
 @end

@@ -17,7 +17,11 @@
 #include <arpa/inet.h>
 #import "BookWorkoutViewController.h"
 #import "HomeViewController.h"
+#import "ProfilePaymentDataViewController.h"
 #import "AddCreditCardViewController.h"
+#import "CreditCardListViewController.h"
+#import "PaymentClient+Customer.h"
+#import "PaymentClient+CreditCard.h"
 
 #define LEVEL_GYM       1
 #define LEVEL_PRO       2
@@ -27,7 +31,7 @@
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define IS_IOS8_OR_ABOVE                            ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 static const NSInteger kMaxImageCnt = 1;
-@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate>{
+@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate, ProfilePaymentDataModuleDelegate, AddCreditCardModuleDelegate, CreditCardListModuleDelegate>{
     NSInteger nCurSelLevel;
     NSString *file_url;
     NSString *file_name;
@@ -49,7 +53,7 @@ static const NSInteger kMaxImageCnt = 1;
 @property (nonatomic, strong) NSString *ProfileUrl;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
-//@property (nonatomic, weak) IBOutlet UI
+@property (nonatomic, weak) IBOutlet UILabel *lblCreditCard;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
 
 @end
@@ -72,7 +76,7 @@ static const NSInteger kMaxImageCnt = 1;
     _lblPhone.text = phone;
     self.navigationItem.title = self.nickname;
     _lblTitle.text = nickname;
-    
+    self.lblCreditCard.text = self.debitCard;
     //
     [_ivProfile sd_setImageWithURL:[NSURL URLWithString:self.url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
 
@@ -296,10 +300,57 @@ static const NSInteger kMaxImageCnt = 1;
 }
 
 - (IBAction)onClickCreditCardEdit:(id)sender {
+    __weak typeof(self)weakSelf = self;
+    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+        if (isPaymentAccountExists && isCreditCradExists) {
+            [weakSelf showCreditCardList];
+        } else if (isPaymentAccountExists && !isCreditCradExists) {
+            [weakSelf showAddCreditCard];
+        } else if (!isPaymentAccountExists) {
+            [weakSelf showRegisterCredentials];
+        }
+    }];
+}
+
+- (void)showRegisterCredentials {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    profilePaymentVC.moduleDelegate = self;
+    profilePaymentVC.modeType = ProfilPaymentModeTypeProfile;
+    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+}
+
+- (void)showAddCreditCard {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtModeTypeProfile;
     [self.navigationController pushViewController:addCreditCardVC animated:YES];
 }
+
+- (void)showCreditCardList {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
+    creditCardListVC.moduleDelegate = self;
+    [self.navigationController pushViewController:creditCardListVC animated:YES];
+}
+
+
+#pragma mark - ProfilePaymentDataModuleDelegate
+
+- (void)paymentCredentialsDidSend {
+    [self.navigationController popToViewController:self animated:YES];
+    [self checkPaymentAccountCredentialsWithCompletion:nil];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popToViewController:self animated:YES];
+    [self checkPaymentAccountCredentialsWithCompletion:nil];
+}
+
+#pragma mark - CreditCardListModuleDelegate
 
 //////////
 
@@ -470,5 +521,38 @@ static const NSInteger kMaxImageCnt = 1;
     }];
 }
 
+- (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists, BOOL isCreditCradExists))completion {
+    [SharedAppDelegate showLoading];
+    
+    __block BOOL isAccountExists = NO;
+    __block BOOL isCreditExists = NO;
+    __weak typeof(self)weakSelf = self;
+    
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        BOOL isDataExists = [responseObject[@"exist"] boolValue];
+        if (isDataExists) {
+            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+                [SharedAppDelegate closeLoading];
+                isAccountExists = YES;
+                NSArray *cards = responseObject;
+                weakSelf.lblCreditCard.text = @"no debit";
+                if (cards.count != 0) {
+                    isCreditExists = YES;
+                    NSDictionary *card = cards.firstObject;
+                    weakSelf.lblCreditCard.text = [NSString stringWithFormat:@"●●●● %@", card[@"last4"]];
+                }
+                if (completion) {
+                    completion(isAccountExists, isCreditExists);
+                }
+            }];
+        } else {
+            [SharedAppDelegate closeLoading];
+            weakSelf.lblCreditCard.text = @"no credentials";
+            if (completion) {
+                completion(isAccountExists, isCreditExists);
+            }
+        }
+    }];
+}
 
 @end

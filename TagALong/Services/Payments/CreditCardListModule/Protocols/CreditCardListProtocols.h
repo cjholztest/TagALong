@@ -22,6 +22,7 @@
 @protocol CreditCardListModelOutput <NSObject>
 
 - (void)cardListDidLoad;
+- (void)cardListDidLoadWithError:(NSString*)errorMessage;
 
 @end
 
