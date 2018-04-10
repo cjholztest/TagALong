@@ -202,23 +202,31 @@
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
 //    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
 //    [self.navigationController pushViewController:creditCardListVC animated:YES];
-    __weak typeof(self)weakSelf = self;
-    [SharedAppDelegate showLoading];
-    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
-        [SharedAppDelegate closeLoading];
-        if (error) {
-            [weakSelf showAlert:error.localizedDescription];
-        } else {
-            NSArray *cardList = responseObject;
-            if (cardList.count > 0) {
-                NSDictionary *card = cardList.firstObject;
-                creditCardID = card[@"card_uid"];
-                [weakSelf showEnterPasswordDialog];
+    
+    if ((long)amount == 0.0f) {
+        [self ReqBookNoew];
+    } else {
+        
+        __weak typeof(self)weakSelf = self;
+        [SharedAppDelegate showLoading];
+        
+        [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+            [SharedAppDelegate closeLoading];
+            if (error) {
+                [weakSelf showAlert:error.localizedDescription];
             } else {
-                [weakSelf showAddCreditCard];
+                NSArray *cardList = responseObject;
+                if (cardList.count > 0) {
+                    NSDictionary *card = cardList.firstObject;
+                    creditCardID = card[@"card_uid"];
+                    //                [weakSelf showEnterPasswordDialog];
+                    [weakSelf bookPayWorkout];
+                } else {
+                    [weakSelf showAddCreditCard];
+                }
             }
-        }
-    }];
+        }];
+    }
     
 //    [self ReqBookNoew]; temp commented
     
@@ -336,9 +344,6 @@
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
         if (res_code == RESULT_CODE_SUCCESS) {
             
-//            PaymentViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PaymentViewController"];
-//            vc.delegate = self;
-//            [self.navigationController pushViewController:vc animated:YES];
             if ([self.where isEqualToString:@"profile"]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ExportProfile" object:nil];
             }
@@ -362,6 +367,30 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+- (void)bookPayWorkout {
+    
+    NSNumber *workoutID = (NSNumber*)self.workout_id;
+    NSDictionary *params = @{@"workout_uid" : [workoutID stringValue],
+                             @"amount" : @(amount),
+                             @"user_card_uid" : creditCardID};
+    
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    
+    [PaymentClient payForWorkoutWithParams:params withCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        if (error) {
+            [weakSelf showAlert:error.localizedDescription];
+        } else {
+            if ([responseObject[@"status"] boolValue]) {
+                [weakSelf showSuccessAlert];
+            } else {
+                [weakSelf showAlert:@"Failure payment process"];
+            }
+        }
     }];
 }
 

@@ -660,8 +660,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
                              API_REQ_KEY_ADDITION           :   content,
                              API_REQ_KEY_USER_LOCATION      :   location,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
-                             API_REQ_KEY_NEW_PASSWORD       :   enteredPassword
+                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude]
                              };
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
