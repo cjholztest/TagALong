@@ -281,4 +281,9 @@
     return center;
 }
 
++ (BOOL)isStringNumeric:(NSString*)string {
+    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    return [string rangeOfCharacterFromSet:notDigits].location == NSNotFound;
+}
+
 @end

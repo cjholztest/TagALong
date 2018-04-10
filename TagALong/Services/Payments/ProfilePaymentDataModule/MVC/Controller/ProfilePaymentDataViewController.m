@@ -173,6 +173,22 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    ProfilePaymentFieldType fieldType = textField.tag;
+    if (fieldType == ProfilePaymentFieldTypeSSNLast) {
+        
+        const NSInteger maxLength = 5;
+        
+        BOOL isPasteTextLess5 = string.length < maxLength;
+        BOOL isPasteTextNumeric = [Commons isStringNumeric:string];
+        BOOL isAllTextLess5 = (textField.text.length + string.length) < maxLength;
+        
+        BOOL isValid = isPasteTextNumeric && isPasteTextLess5 && isAllTextLess5;
+        return isValid;
+    }
+    return YES;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
