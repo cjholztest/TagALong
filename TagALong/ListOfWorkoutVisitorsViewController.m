@@ -12,6 +12,7 @@
 @interface ListOfWorkoutVisitorsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *noVisitorsLabel;
 @property (nonatomic, strong) NSArray *visitorsList;
 
 @end
@@ -79,11 +80,18 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"booked_users"];
     NSDictionary *params = @{ API_REQ_KEY_WORKOUT_UID: self.workoutID };
+    __weak typeof(self)weakSelf = self;
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
         [SharedAppDelegate closeLoading];
-        self.visitorsList = (NSArray*)responseObject;
-        [self.tableView reloadData];
+        weakSelf.visitorsList = (NSArray*)responseObject;
+        [weakSelf.tableView reloadData];
+        
+        BOOL isVisitorsListEmpty = weakSelf.visitorsList.count == 0 || !weakSelf.visitorsList;
+        [weakSelf.tableView setHidden:isVisitorsListEmpty];
+        [weakSelf.noVisitorsLabel setHidden:!isVisitorsListEmpty];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];

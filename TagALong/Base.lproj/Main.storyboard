@@ -5692,7 +5692,7 @@ Terms of Use and Privacy Policy</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="57" estimatedRowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x6M-lJ-yc9">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="57" estimatedRowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x6M-lJ-yc9">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5743,23 +5743,34 @@ Terms of Use and Privacy Policy</string>
                                     <outlet property="delegate" destination="jX9-g6-xRR" id="R1E-6U-XkO"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no any participants for this workout yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5k-vt-QTw">
+                                <rect key="frame" x="15" y="20" width="345" height="647"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="P5k-vt-QTw" firstAttribute="leading" secondItem="uR4-88-Lw9" secondAttribute="leading" constant="15" id="4Fu-U6-QGn"/>
                             <constraint firstItem="x6M-lJ-yc9" firstAttribute="leading" secondItem="uR4-88-Lw9" secondAttribute="leading" id="5VC-0G-ud5"/>
                             <constraint firstItem="uR4-88-Lw9" firstAttribute="bottom" secondItem="x6M-lJ-yc9" secondAttribute="bottom" id="Eya-AJ-qwh"/>
+                            <constraint firstItem="uR4-88-Lw9" firstAttribute="trailing" secondItem="P5k-vt-QTw" secondAttribute="trailing" constant="15" id="GrL-DR-nes"/>
+                            <constraint firstItem="P5k-vt-QTw" firstAttribute="top" secondItem="uR4-88-Lw9" secondAttribute="top" id="NIx-6o-4PM"/>
                             <constraint firstItem="x6M-lJ-yc9" firstAttribute="top" secondItem="uR4-88-Lw9" secondAttribute="top" id="V2N-KS-AsE"/>
                             <constraint firstItem="uR4-88-Lw9" firstAttribute="trailing" secondItem="x6M-lJ-yc9" secondAttribute="trailing" id="ffA-gh-av6"/>
+                            <constraint firstItem="uR4-88-Lw9" firstAttribute="bottom" secondItem="P5k-vt-QTw" secondAttribute="bottom" id="gZl-Bm-bpj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uR4-88-Lw9"/>
                     </view>
                     <connections>
+                        <outlet property="noVisitorsLabel" destination="P5k-vt-QTw" id="Hpx-vN-kEY"/>
                         <outlet property="tableView" destination="x6M-lJ-yc9" id="qqe-06-UfF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTK-sq-o2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4785" y="723"/>
+            <point key="canvasLocation" x="4784.8000000000002" y="722.78860569715152"/>
         </scene>
         <!--Pro Signup  View Controller-->
         <scene sceneID="ZDu-e3-u0N">
