@@ -315,6 +315,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
     addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = ProfilPaymentModeTypePostWorkout;
     [self.navigationController pushViewController:addCreditCardVC animated:YES];
 }
 
