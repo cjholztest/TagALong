@@ -30,7 +30,7 @@ static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
         NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         NSError *jsonError = nil;
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-        NSString *errorMessage = dict[@"message"];
+        NSString *errorMessage = dict[@"error"][@"message"];
         NSError *errorToDisplay = nil;
         if (errorMessage) {
             NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
