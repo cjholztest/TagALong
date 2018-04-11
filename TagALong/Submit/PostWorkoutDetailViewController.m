@@ -349,16 +349,20 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (IBAction)onClickPostworkout:(id)sender {
     
-    __weak typeof(self)weakSelf = self;
-    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
-        if (isPaymentAccountExists && isCreditCradExists) {
-            [weakSelf ReqReqWorkout];
-        } else if (!isPaymentAccountExists && !isCreditCradExists) {
-            [weakSelf showPaymentCredentialsRegistration];
-        } else if (isPaymentAccountExists && !isCreditCradExists) {
-            [weakSelf showAddCreditCard];
-        }
-    }];
+    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+        __weak typeof(self)weakSelf = self;
+        [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+            if (isPaymentAccountExists && isCreditCradExists) {
+                [weakSelf ReqReqWorkout];
+            } else if (!isPaymentAccountExists && !isCreditCradExists) {
+                [weakSelf showPaymentCredentialsRegistration];
+            } else if (isPaymentAccountExists && !isCreditCradExists) {
+                [weakSelf showAddCreditCard];
+            }
+        }];
+    } else {
+        [self ReqReqWorkout];
+    }
 }
 
 //날자선택 대화창에서 확인단추 클릭
@@ -652,8 +656,17 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
+        
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        
+        NSString *resultMessage = dict[@"error"][@"message"];
+        if (!resultMessage) {
+            resultMessage = error.localizedDescription ? error.localizedDescription : @"Failed to communicate with the server";
+        }
         [SharedAppDelegate closeLoading];
-        [Commons showToast:@"Failed to communicate with the server"];
+        [Commons showToast:resultMessage];
     }];
 }
 

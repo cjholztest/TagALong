@@ -114,7 +114,7 @@
     NSDictionary *dic = _arrWorkout[indexPath.row];
     BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
     vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-    vc.bProfile = true;
+    vc.bProfile = YES;
     [self.vcParent.navigationController pushViewController:vc animated:YES];
 
 }
