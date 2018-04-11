@@ -199,49 +199,19 @@
 
 - (IBAction)onClickWorkout:(id)sender {
     
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
-//    CreditCardListViewController *creditCardListVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(CreditCardListViewController.class)];
-//    [self.navigationController pushViewController:creditCardListVC animated:YES];
-    
     if ((long)amount == 0.0f) {
         [self ReqBookNoew];
     } else {
-        
         __weak typeof(self)weakSelf = self;
-        [SharedAppDelegate showLoading];
-        
-        [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
-            [SharedAppDelegate closeLoading];
-            if (error) {
-                [weakSelf showAlert:error.localizedDescription];
+        [self requestCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                creditCardID = cardID;
+                [weakSelf showConfirmBookPayWorkoutAlert];
             } else {
-                NSArray *cardList = responseObject;
-                if (cardList.count > 0) {
-                    NSDictionary *card = cardList.firstObject;
-                    creditCardID = card[@"card_uid"];
-                    //                [weakSelf showEnterPasswordDialog];
-                    [weakSelf bookPayWorkout];
-                } else {
-                    [weakSelf showAddCreditCard];
-                }
+                [weakSelf showAddCreditCard];
             }
         }];
     }
-    
-//    [self ReqBookNoew]; temp commented
-    
-//    [[PaymentClient shared] createCustomerKeyWithApiVersion:@"2015-10-12" completion:^(id object) {
-//
-//        NSLog(@"%@", object);
-//        CardPaymentViewController *cardVC = [CardPaymentViewController new];
-//        [self.navigationController pushViewController:cardVC animated:YES];
-//    }];
-    
-//    if ([self.where isEqualToString:@"profile"]) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"ExportProfile" object:nil];
-//    }
-//    [self.navigationController popViewControllerAnimated:NO];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
 }
 
 - (IBAction)onClickCancel:(id)sender {
@@ -370,6 +340,39 @@
     }];
 }
 
+- (void)requestCardInfoWithCompletion:(void(^)(NSString *cardID))completion {
+    
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        if (error) {
+            [weakSelf showAlert:error.localizedDescription];
+        } else {
+            NSArray *cardList = responseObject;
+            NSString *ccUIID = nil;
+            
+            if (cardList.count > 0) {
+                NSDictionary *card = cardList.firstObject;
+//                creditCardID = card[@"card_uid"];
+                ccUIID = card[@"card_uid"];
+                //                [weakSelf showEnterPasswordDialog];
+//                [weakSelf bookPayWorkout];
+            }
+            
+            if (completion) {
+                completion(ccUIID);
+            }
+            
+//            else {
+//                [weakSelf showAddCreditCard];
+//            }
+            
+        }
+    }];
+}
+
 - (void)bookPayWorkout {
     
     NSNumber *workoutID = (NSNumber*)self.workout_id;
@@ -405,6 +408,31 @@
                                     //            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
                                 }];
     [alert addAction:yesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showConfirmBookPayWorkoutAlert {
+    
+    CGFloat price = (CGFloat)amount;
+    
+    NSString *title = @"BOOK CONFIRMATION";
+    NSString *message = [NSString stringWithFormat:@"Your card will be charged $%.2f for booking a workout. Confirm withdrawal of funds?", price];
+    
+    __weak typeof(self)weakSelf = self;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [weakSelf bookPayWorkout];
+                                }];
+    UIAlertAction* canceButton = [UIAlertAction actionWithTitle:@"No"
+                                                          style:UIAlertActionStyleDestructive
+                                                        handler:nil];
+    
+    [alert addAction:yesButton];
+    [alert addAction:canceButton];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -460,6 +488,7 @@
 
 - (void)creditCardDidAdd {
     [self.navigationController popToViewController:self animated:YES];
+    [self onClickWorkout:nil];
 }
 
 @end
