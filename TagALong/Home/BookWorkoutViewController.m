@@ -272,6 +272,7 @@
             NSDictionary *profile_info = [responseObject objectForKey:API_RES_KEY_PROFILE_INFO];
             
             [self setData:workout_info profile:profile_info];
+            [self requestBookedUsers];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
             
@@ -279,6 +280,45 @@
             [Commons showToast:@"User does not exist."];
             
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
+    }];
+}
+
+- (void)requestBookedUsers {
+
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"booked_users"];
+    
+    NSDictionary *params = @{
+                             API_REQ_KEY_WORKOUT_UID: self.workout_id,
+                             };
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        [SharedAppDelegate closeLoading];
+        NSArray *bookedUsers = responseObject;
+        NSNumber *currentUserID = @(Global.g_user.user_uid);
+        
+        for (NSDictionary *dict in bookedUsers) {
+            NSNumber *bookedUserID = dict[@"user_uid"];
+            
+            if ([bookedUserID integerValue] == [currentUserID integerValue]) {
+                [weakSelf.btnWorkout setHidden:YES];
+                break;
+            }
+        }
+       
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
