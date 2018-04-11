@@ -349,47 +349,16 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (IBAction)onClickPostworkout:(id)sender {
     
-//    [SharedAppDelegate showLoading];
     __weak typeof(self)weakSelf = self;
     [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
         if (isPaymentAccountExists && isCreditCradExists) {
-            [weakSelf showEnterPasswordDialog];
+            [weakSelf ReqReqWorkout];
         } else if (!isPaymentAccountExists && !isCreditCradExists) {
             [weakSelf showPaymentCredentialsRegistration];
         } else if (isPaymentAccountExists && !isCreditCradExists) {
             [weakSelf showAddCreditCard];
         }
     }];
-//
-//    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
-//
-//        BOOL isDataExists = ([responseObject[@"exist"] boolValue] && [responseObject[@"payouts"] boolValue]);
-//        if (isDataExists) {
-//            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
-//                [SharedAppDelegate closeLoading];
-//                NSArray *cards = responseObject;
-//                if (cards.count == 0) {
-//                    weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentCreditTag;
-//                } else {
-//                    weakSelf.postWorkoutButton.tag = kPostWorkoutDefaultTag;
-//                }
-//                [weakSelf updatePostWorkoutButtonAppearance];
-//            }];
-//        } else {
-//            [SharedAppDelegate closeLoading];
-//            weakSelf.postWorkoutButton.tag = kPostWorkoutPaymentAccountTag;
-//            [weakSelf updatePostWorkoutButtonAppearance];
-//        }
-//    }];
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
-//    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
-//    profilePaymentVC.modeType = ProfilPaymentModeTypePostWorkout;
-//    [self.navigationController pushViewController:profilePaymentVC animated:YES];
-    
-    //    profilePaymentVC.modeType = ProfilPaymentModeTypeRegistration;
-//    [self presentViewController:profilePaymentVC animated:YES completion:nil];
-//    [self ReqReqWorkout];
 }
 
 //날자선택 대화창에서 확인단추 클릭
@@ -647,8 +616,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_REGISTER_WORKOUT];
     
-    NSDictionary *params = @{
-                             API_REQ_KEY_LOGIN_TYPE         :   Global.g_user.user_login,
+    NSDictionary *params = @{API_REQ_KEY_LOGIN_TYPE         :   Global.g_user.user_login,
                              API_REQ_KEY_SPORT_UID          :   sport_uid,
                              API_REQ_KEY_CATEGORIES         :   categories,
                              API_REQ_KEY_TITLE              :   title,
@@ -660,15 +628,11 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
                              API_REQ_KEY_ADDITION           :   content,
                              API_REQ_KEY_USER_LOCATION      :   location,
                              API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude]
-                             };
+                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude]};
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-//        NSError* error;
-//        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-//                                                                       options:kNilOptions
-//                                                                         error:&error];
+
         [SharedAppDelegate closeLoading];
         
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
@@ -761,12 +725,14 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (void)paymentCredentialsDidSend {
     [self.navigationController popToViewController:self animated:YES];
+    [self onClickPostworkout:nil];
 }
 
 #pragma mark - AddCreditCardModuleDelegate
 
 - (void)creditCardDidAdd {
     [self.navigationController popToViewController:self animated:YES];
+    [self onClickPostworkout:nil];
 }
 
 @end
