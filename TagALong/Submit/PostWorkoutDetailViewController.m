@@ -44,6 +44,8 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     NSInteger frequencyIndex;
     NSString *enteredPassword;
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnDate;
@@ -68,6 +70,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvBottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcbnBottomHeight;
 @property (weak, nonatomic) IBOutlet UIButton *postWorkoutButton;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 
 @property (weak, nonatomic) IBOutlet UIView *vwFrequency;
 @property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
@@ -188,26 +191,20 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
     
-    if (keyboardFrameBeginRect.size.height > 0) {
-        //_lcsvBottomHeight.constant = keyboardFrameBeginRect.size.height;
-        _lcbnBottomHeight.constant = keyboardFrameBeginRect.size.height;
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             [self.view layoutIfNeeded];
-                         }];
-        
-    }
+    UIEdgeInsets insets = self.scrollView.contentInset;
+    insets.bottom = keyboardFrameBeginRect.size.height;
+    self.scrollView.contentInset = insets;
+    
+    [self.scrollView scrollRectToVisible:self.infoView.frame animated:YES];
 }
 
 - (void)keyboardDidHide: (NSNotification *) notif{
-//    _lcsvBottomHeight.constant = 0;
-    _lcbnBottomHeight.constant = 0;
-    [self.view layoutIfNeeded];
     
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:0.3
                      animations:^{
-                         [self.view layoutIfNeeded];
+                         UIEdgeInsets insets = self.scrollView.contentInset;
+                         insets.bottom = 0.0f;
+                         self.scrollView.contentInset = insets;
                      }];
 }
 
@@ -249,6 +246,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     _btnFrequency.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     self.postWorkoutButton.tag = kPostWorkoutDefaultTag;
+    self.tvContent.delegate = self;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -330,6 +328,13 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     dlgDialog.type = @"password";
     dlgDialog.content = @"";
     [self presentViewController:dlgDialog animated:NO completion:nil];
+}
+
+#pragma mark - UITextView Delegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    CGRect rectToScroll = self.infoView.frame;
+    [self.scrollView scrollRectToVisible:rectToScroll animated:YES];
 }
 
 #pragma mark - EditDialogViewControllerDelegate
