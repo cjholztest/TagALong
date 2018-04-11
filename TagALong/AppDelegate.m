@@ -10,15 +10,21 @@
 #import "SVProgressHUD.h"
 #import <Stripe/Stripe.h>
 
+const NSString *kStripeAccountTestKey = @"pk_test_VKdmHHXsKzJ8L7VQecG4HcSh";
+const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:@"pk_test_VKdmHHXsKzJ8L7VQecG4HcSh"];
+    
+    BOOL isStripeTest = YES;
+    
+    NSString *key = [NSString stringWithFormat:@"%@", isStripeTest ? kStripeAccountTestKey : kStripeAccountLiveKey];
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:key];
     
     //Global.g_token = [[NSUserDefaults standardUserDefaults] stringForKey:PREFCONST_TOKEN];
     return YES;
