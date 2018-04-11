@@ -4273,21 +4273,21 @@ Terms of Use and Privacy Policy</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn0-Hq-cKT" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-Uq-My7">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-Uq-My7">
                                                 <rect key="frame" x="151" y="31" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="FHM-iI-MDu"/>
                                                     <constraint firstAttribute="width" constant="18" id="aBc-nh-rzH"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-Qi-ONI">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-Qi-ONI">
                                                 <rect key="frame" x="151" y="62" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="9AX-53-fPm"/>
                                                     <constraint firstAttribute="height" constant="18" id="y05-VD-Ku5"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
                                                 <rect key="frame" x="151" y="93" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="BDc-fx-oWd"/>
@@ -4309,7 +4309,7 @@ Terms of Use and Privacy Policy</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-bM-0iW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-bM-0iW">
                                                 <rect key="frame" x="179" y="82" width="191" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="JeR-iy-Fzg"/>
