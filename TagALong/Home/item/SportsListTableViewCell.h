@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivSport;
 @property (weak, nonatomic) IBOutlet UIImageView *ivProfile;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
+@property (weak, nonatomic) IBOutlet UILabel *lblDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblSportName;
 @property (strong, nonatomic) IBOutlet UIButton *bnProfile;

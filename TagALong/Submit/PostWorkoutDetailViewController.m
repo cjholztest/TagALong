@@ -19,6 +19,7 @@
 static const NSInteger kPostWorkoutDefaultTag = 234;
 static const NSInteger kPostWorkoutPaymentAccountTag = 254;
 static const NSInteger kPostWorkoutPaymentCreditTag = 274;
+static const NSInteger kAddtitonalInfoTextViewTag = 289;
 
 @interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate, EditDialogViewControllerDelegate, AddCreditCardModuleDelegate>{
     NSString *title;
@@ -44,6 +45,8 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     NSInteger frequencyIndex;
     NSString *enteredPassword;
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *tfTitle;
 @property (strong, nonatomic) IBOutlet UITextField *tfLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnDate;
@@ -68,10 +71,14 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvBottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcbnBottomHeight;
 @property (weak, nonatomic) IBOutlet UIButton *postWorkoutButton;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 
 @property (weak, nonatomic) IBOutlet UIView *vwFrequency;
 @property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
 @property (weak, nonatomic) IBOutlet UIPickerView *picFrequency;
+
+@property (strong, nonatomic) UITextView *activeTextView;
+
 @end
 
 @implementation PostWorkoutDetailViewController
@@ -188,26 +195,23 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
     
-    if (keyboardFrameBeginRect.size.height > 0) {
-        //_lcsvBottomHeight.constant = keyboardFrameBeginRect.size.height;
-        _lcbnBottomHeight.constant = keyboardFrameBeginRect.size.height;
-        [self.view layoutIfNeeded];
-        [UIView animateWithDuration:0.2
-                         animations:^{
-                             [self.view layoutIfNeeded];
-                         }];
-        
+    UIEdgeInsets insets = self.scrollView.contentInset;
+    insets.bottom = keyboardFrameBeginRect.size.height;
+    self.scrollView.contentInset = insets;
+    
+    if (self.activeTextView.tag == kAddtitonalInfoTextViewTag) {
+        CGRect infoViewFrame = self.infoView.frame;
+        [self.scrollView scrollRectToVisible:infoViewFrame animated:YES];
     }
 }
 
-- (void)keyboardDidHide: (NSNotification *) notif{
-//    _lcsvBottomHeight.constant = 0;
-    _lcbnBottomHeight.constant = 0;
-    [self.view layoutIfNeeded];
+- (void)keyboardDidHide: (NSNotification *) notif {
     
-    [UIView animateWithDuration:0.2
+    [UIView animateWithDuration:0.3
                      animations:^{
-                         [self.view layoutIfNeeded];
+                         UIEdgeInsets insets = self.scrollView.contentInset;
+                         insets.bottom = 0.0f;
+                         self.scrollView.contentInset = insets;
                      }];
 }
 
@@ -249,6 +253,8 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     _btnFrequency.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     self.postWorkoutButton.tag = kPostWorkoutDefaultTag;
+    self.tvContent.delegate = self;
+    self.tvContent.tag = kAddtitonalInfoTextViewTag;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -260,6 +266,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     [_tfLocation resignFirstResponder];
     [_tfTitle resignFirstResponder];
     [_tfAmount resignFirstResponder];
+    
 }
 
 -(BOOL)isEmptyValue{
@@ -332,6 +339,40 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     [self presentViewController:dlgDialog animated:NO completion:nil];
 }
 
+#pragma mark - UITextView Delegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    self.activeTextView = textView;
+    self.activeTextView.tag = kAddtitonalInfoTextViewTag;
+    
+    if (textView.tag == kAddtitonalInfoTextViewTag) {
+        CGRect rectToScroll = self.infoView.frame;
+        [self.scrollView scrollRectToVisible:rectToScroll animated:YES];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeTextView.tag = -1;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    const NSInteger maxCharactersCount = 120;
+    
+    if (textView.text.length + text.length > maxCharactersCount) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    self.activeTextView.tag = -1;
+    return YES;
+}
+
 #pragma mark - EditDialogViewControllerDelegate
 
 - (void)setContent:(NSString*)type msg:(NSString*)content {
@@ -349,16 +390,20 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 
 - (IBAction)onClickPostworkout:(id)sender {
     
-    __weak typeof(self)weakSelf = self;
-    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
-        if (isPaymentAccountExists && isCreditCradExists) {
-            [weakSelf ReqReqWorkout];
-        } else if (!isPaymentAccountExists && !isCreditCradExists) {
-            [weakSelf showPaymentCredentialsRegistration];
-        } else if (isPaymentAccountExists && !isCreditCradExists) {
-            [weakSelf showAddCreditCard];
-        }
-    }];
+    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+        __weak typeof(self)weakSelf = self;
+        [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+            if (isPaymentAccountExists && isCreditCradExists) {
+                [weakSelf ReqReqWorkout];
+            } else if (!isPaymentAccountExists && !isCreditCradExists) {
+                [weakSelf showPaymentCredentialsRegistration];
+            } else if (isPaymentAccountExists && !isCreditCradExists) {
+                [weakSelf showAddCreditCard];
+            }
+        }];
+    } else {
+        [self ReqReqWorkout];
+    }
 }
 
 //날자선택 대화창에서 확인단추 클릭
@@ -652,8 +697,17 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
+        
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        
+        NSString *resultMessage = dict[@"error"][@"message"];
+        if (!resultMessage) {
+            resultMessage = error.localizedDescription ? error.localizedDescription : @"Failed to communicate with the server";
+        }
         [SharedAppDelegate closeLoading];
-        [Commons showToast:@"Failed to communicate with the server"];
+        [Commons showToast:resultMessage];
     }];
 }
 

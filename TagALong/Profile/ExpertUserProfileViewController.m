@@ -114,7 +114,7 @@
     NSDictionary *dic = _arrWorkout[indexPath.row];
     BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
     vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-    vc.bProfile = true;
+    vc.bProfile = YES;
     [self.vcParent.navigationController pushViewController:vc animated:YES];
 
 }
@@ -184,8 +184,6 @@
         if (statusTitle.length > 0) {
             weakSelf.lblCreditCard.text = statusTitle;
         }
-        weakSelf.lblCreditCard.alpha = 1.0f;
-        weakSelf.creditCardImageView.alpha = 1.0f;
     }];
 }
 
@@ -213,8 +211,6 @@
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
-    self.locationImageView.alpha = location.length > 0 ? 1.0f : 0.0f;
-    self.phoneNumberImageView.alpha = phone.length > 0 ? 1.0f : 0.0f;
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";

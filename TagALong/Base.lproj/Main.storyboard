@@ -1866,16 +1866,16 @@ someone wants to Tag-A-Long</string>
                                                                 <rect key="frame" x="187" y="1" width="187" height="38"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-LU-8Um">
-                                                                        <rect key="frame" x="8" y="10.5" width="19.5" height="17"/>
+                                                                        <rect key="frame" x="8" y="10.5" width="25" height="17"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="19.5" id="A2b-qe-cEd"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="A2b-qe-cEd"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4C-U3-LXw">
-                                                                        <rect key="frame" x="35.5" y="19" width="143.5" height="0.0"/>
+                                                                        <rect key="frame" x="41" y="19" width="138" height="0.0"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -3595,7 +3595,7 @@ Terms of Use and Privacy Policy</string>
         <!--Post Workout Detail  View Controller-->
         <scene sceneID="tPi-3x-3UG">
             <objects>
-                <viewController storyboardIdentifier="PostWorkoutDetailViewController" id="7c3-RB-qaf" userLabel="Post Workout Detail  View Controller" customClass="PostWorkoutDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostWorkoutDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="7c3-RB-qaf" userLabel="Post Workout Detail  View Controller" customClass="PostWorkoutDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vrJ-5V-alv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4184,6 +4184,7 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="btnDuration" destination="Ku2-qM-fNO" id="ikV-BN-3PE"/>
                         <outlet property="btnFrequency" destination="mMa-9T-kwr" id="GMt-Tw-jiz"/>
                         <outlet property="btnStartTime" destination="3fm-EV-mPb" id="Nt7-JC-7IL"/>
+                        <outlet property="infoView" destination="68T-sp-NQy" id="TkF-ir-G3J"/>
                         <outlet property="lcbnBottomHeight" destination="h53-cy-C3T" id="Kl5-zN-x9u"/>
                         <outlet property="lcvwAmountBottom" destination="bh0-fy-TYO" id="ZmW-fA-pV7"/>
                         <outlet property="lcvwAmountHeight" destination="SNo-tc-COV" id="vQD-eE-X7I"/>
@@ -4192,6 +4193,7 @@ Terms of Use and Privacy Policy</string>
                         <outlet property="picFrequency" destination="JDy-we-2rn" id="4xH-Lt-anG"/>
                         <outlet property="picStartTime" destination="Trh-if-yGm" id="9mi-su-8WW"/>
                         <outlet property="postWorkoutButton" destination="JqV-SB-CeG" id="weK-Kh-xy0"/>
+                        <outlet property="scrollView" destination="nWp-nm-7Jd" id="Zdx-Xb-2Jw"/>
                         <outlet property="tfAmount" destination="Asf-jU-RzD" id="rMe-Me-vCY"/>
                         <outlet property="tfLocation" destination="5K1-dD-l3G" id="eqr-F0-7Pv"/>
                         <outlet property="tfTitle" destination="cS1-yu-kz5" id="iiS-hX-f4D"/>
@@ -4273,21 +4275,21 @@ Terms of Use and Privacy Policy</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn0-Hq-cKT" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-Uq-My7">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-Uq-My7">
                                                 <rect key="frame" x="151" y="31" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="FHM-iI-MDu"/>
                                                     <constraint firstAttribute="width" constant="18" id="aBc-nh-rzH"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-Qi-ONI">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-Qi-ONI">
                                                 <rect key="frame" x="151" y="62" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="9AX-53-fPm"/>
                                                     <constraint firstAttribute="height" constant="18" id="y05-VD-Ku5"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="zSa-S4-tTr">
                                                 <rect key="frame" x="151" y="93" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="BDc-fx-oWd"/>
@@ -4309,7 +4311,7 @@ Terms of Use and Privacy Policy</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-bM-0iW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-bM-0iW">
                                                 <rect key="frame" x="179" y="82" width="191" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="JeR-iy-Fzg"/>
@@ -4818,7 +4820,7 @@ Terms of Use and Privacy Policy</string>
                                     <constraint firstItem="1Xr-Uj-cPx" firstAttribute="leading" secondItem="wEr-6r-HQv" secondAttribute="leading" id="whO-li-bJM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UEc-7e-MKO">
+                            <tableView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UEc-7e-MKO">
                                 <rect key="frame" x="0.0" y="448" width="375" height="219"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>

@@ -175,8 +175,8 @@
                 last_name = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
             }
         }
-
-        if ( [level isEqual:[NSNull null]] )  { //individual
+        
+        if ( [level isEqual:[NSNull null]] || !level )  { //individual
             cell.vwBG.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
@@ -208,7 +208,8 @@
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
             cell.lblSportName.textColor = [UIColor whiteColor];
         }
-
+        cell.lblDate.text = [self workoutStringDateFromDateString:dic[@"workout_date"]];
+        cell.lblDate.textColor = cell.lblDistance.textColor;
         //profile
 
         if ([post_type isEqualToString:@"1"]) {
@@ -287,8 +288,9 @@
                 last_name = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
             }
         }
+
         
-        if ( [level isEqual:[NSNull null]] )  { //individual
+        if ( [level isEqual:[NSNull null]] || !level )  { //individual
             cell.vwBG.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
@@ -632,4 +634,40 @@
 {
     return YES;
 }
+
+#pragma mark - Help Methods
+
+- (NSString*)workoutStringDateFromDateString:(NSString*)dateString {
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *workoutDate = [dateFormatter dateFromString:dateString];
+    
+    NSDateComponents *workoutComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:workoutDate];
+    NSDateComponents *currentComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    
+    NSString *resultDateStr = nil;
+    
+    BOOL isSameYearAndMonth = ([workoutComponents month] == [currentComponents month]) && ([workoutComponents year] == [currentComponents year]);
+    
+    BOOL isToday = ([workoutComponents day] == [currentComponents day]) && isSameYearAndMonth;
+    BOOL isTomorrow = ([workoutComponents day] == ([currentComponents day] + 1)) && isSameYearAndMonth;
+    BOOL isYesterday = ([workoutComponents day] == ([currentComponents day] - 1)) && isSameYearAndMonth;
+    
+    if (isToday) {
+        resultDateStr = @"Today";
+    } else if (isTomorrow) {
+        resultDateStr = @"Tomorrow";
+    } else if (isYesterday) {
+        resultDateStr = @"Yesterday";
+    } else {
+        NSString *yearStr = ([workoutComponents year] == [currentComponents year]) ? @"" : @" yyyy";
+        [dateFormatter setDateFormat:[NSString stringWithFormat:@"dd MMM%@", yearStr]];
+        resultDateStr = [dateFormatter stringFromDate:workoutDate];
+    }
+    
+    return resultDateStr;
+}
+
 @end
