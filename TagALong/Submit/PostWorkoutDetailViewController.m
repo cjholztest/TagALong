@@ -355,6 +355,17 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
     self.activeTextView.tag = -1;
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    const NSInteger maxCharactersCount = 120;
+    
+    if (textView.text.length + text.length > maxCharactersCount) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - UITextField Delegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
