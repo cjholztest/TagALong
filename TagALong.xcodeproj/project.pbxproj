@@ -150,6 +150,8 @@
 		CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFDA2064E97A00949AC2 /* ProfilePaymentDataViewController.m */; };
 		CE12DFDE2064E98C00949AC2 /* ProfilePaymentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFDD2064E98C00949AC2 /* ProfilePaymentDataModel.m */; };
 		CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */; };
+		CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */; };
+		CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
@@ -463,6 +465,8 @@
 		CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentDataView.m; sourceTree = "<group>"; };
 		CE12DFE22064E9C000949AC2 /* ProfilePaymentDataProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataProtocols.h; sourceTree = "<group>"; };
 		CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentConstants.h; sourceTree = "<group>"; };
+		CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Privacy Policy.docx"; sourceTree = "<group>"; };
+		CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Terms.docx"; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
 		CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Customer.m"; sourceTree = "<group>"; };
 		CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+CreditCard.h"; sourceTree = "<group>"; };
@@ -1139,6 +1143,8 @@
 		32FAA0BE1F614B5D00CD4395 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */,
+				CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */,
 				32FAA08F1F6144D500CD4395 /* Main.storyboard */,
 				32FAA0921F6144D500CD4395 /* Assets.xcassets */,
 				32FAA0941F6144D500CD4395 /* LaunchScreen.storyboard */,
@@ -1463,6 +1469,7 @@
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
 				32C2DBD51F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.xib in Resources */,
+				CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */,
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
@@ -1471,6 +1478,7 @@
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
 				32FAA0911F6144D500CD4395 /* Main.storyboard in Resources */,
+				CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
