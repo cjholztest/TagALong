@@ -1866,16 +1866,16 @@ someone wants to Tag-A-Long</string>
                                                                 <rect key="frame" x="187" y="1" width="187" height="38"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-LU-8Um">
-                                                                        <rect key="frame" x="8" y="10.5" width="19.5" height="17"/>
+                                                                        <rect key="frame" x="8" y="10.5" width="25" height="17"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="19.5" id="A2b-qe-cEd"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="A2b-qe-cEd"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4C-U3-LXw">
-                                                                        <rect key="frame" x="35.5" y="19" width="143.5" height="0.0"/>
+                                                                        <rect key="frame" x="41" y="19" width="138" height="0.0"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
