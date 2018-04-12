@@ -19,6 +19,7 @@
 static const NSInteger kPostWorkoutDefaultTag = 234;
 static const NSInteger kPostWorkoutPaymentAccountTag = 254;
 static const NSInteger kPostWorkoutPaymentCreditTag = 274;
+static const NSInteger kAddtitonalInfoTextViewTag = 289;
 
 @interface PostWorkoutDetailViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate, EditDialogViewControllerDelegate, AddCreditCardModuleDelegate>{
     NSString *title;
@@ -75,6 +76,9 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 @property (weak, nonatomic) IBOutlet UIView *vwFrequency;
 @property (weak, nonatomic) IBOutlet UIButton *btnFrequency;
 @property (weak, nonatomic) IBOutlet UIPickerView *picFrequency;
+
+@property (strong, nonatomic) UITextView *activeTextView;
+
 @end
 
 @implementation PostWorkoutDetailViewController
@@ -195,10 +199,13 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     insets.bottom = keyboardFrameBeginRect.size.height;
     self.scrollView.contentInset = insets;
     
-    [self.scrollView scrollRectToVisible:self.infoView.frame animated:YES];
+    if (self.activeTextView.tag == kAddtitonalInfoTextViewTag) {
+        CGRect infoViewFrame = self.infoView.frame;
+        [self.scrollView scrollRectToVisible:infoViewFrame animated:YES];
+    }
 }
 
-- (void)keyboardDidHide: (NSNotification *) notif{
+- (void)keyboardDidHide: (NSNotification *) notif {
     
     [UIView animateWithDuration:0.3
                      animations:^{
@@ -247,6 +254,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     
     self.postWorkoutButton.tag = kPostWorkoutDefaultTag;
     self.tvContent.delegate = self;
+    self.tvContent.tag = kAddtitonalInfoTextViewTag;
 }
 
 -(void)Background:(UITapGestureRecognizer *)recognizer{
@@ -258,6 +266,7 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
     [_tfLocation resignFirstResponder];
     [_tfTitle resignFirstResponder];
     [_tfAmount resignFirstResponder];
+    
 }
 
 -(BOOL)isEmptyValue{
@@ -333,8 +342,24 @@ static const NSInteger kPostWorkoutPaymentCreditTag = 274;
 #pragma mark - UITextView Delegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    CGRect rectToScroll = self.infoView.frame;
-    [self.scrollView scrollRectToVisible:rectToScroll animated:YES];
+    self.activeTextView = textView;
+    self.activeTextView.tag = kAddtitonalInfoTextViewTag;
+    
+    if (textView.tag == kAddtitonalInfoTextViewTag) {
+        CGRect rectToScroll = self.infoView.frame;
+        [self.scrollView scrollRectToVisible:rectToScroll animated:YES];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeTextView.tag = -1;
+}
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    self.activeTextView.tag = -1;
+    return YES;
 }
 
 #pragma mark - EditDialogViewControllerDelegate

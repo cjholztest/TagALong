@@ -175,8 +175,8 @@
                 last_name = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
             }
         }
-
-        if ( [level isEqual:[NSNull null]] )  { //individual
+        
+        if ( [level isEqual:[NSNull null]] || !level )  { //individual
             cell.vwBG.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
@@ -287,8 +287,9 @@
                 last_name = [dic objectForKey:API_RES_KEY_EXPORT_LAST_NAME];
             }
         }
+
         
-        if ( [level isEqual:[NSNull null]] )  { //individual
+        if ( [level isEqual:[NSNull null]] || !level )  { //individual
             cell.vwBG.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];

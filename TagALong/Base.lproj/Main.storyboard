@@ -3595,7 +3595,7 @@ Terms of Use and Privacy Policy</string>
         <!--Post Workout Detail  View Controller-->
         <scene sceneID="tPi-3x-3UG">
             <objects>
-                <viewController storyboardIdentifier="PostWorkoutDetailViewController" id="7c3-RB-qaf" userLabel="Post Workout Detail  View Controller" customClass="PostWorkoutDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostWorkoutDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="7c3-RB-qaf" userLabel="Post Workout Detail  View Controller" customClass="PostWorkoutDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vrJ-5V-alv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
