@@ -5563,6 +5563,54 @@ Terms of Use and Privacy Policy</string>
                                                             <constraint firstAttribute="bottom" secondItem="ZSX-v3-AXK" secondAttribute="bottom" id="vP2-wR-EnO"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLo-uJ-ijX" userLabel="TermsView">
+                                                        <rect key="frame" x="0.0" y="456" width="375" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By submitting you agree to the:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-OE-Liz">
+                                                                <rect key="frame" x="15" y="0.0" width="345" height="22"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLU-p8-WA0">
+                                                                <rect key="frame" x="127" y="22" width="43" height="22"/>
+                                                                <state key="normal" title="Terms"/>
+                                                                <connections>
+                                                                    <action selector="onClickTerms:" destination="FNI-wR-0h8" eventType="touchUpInside" id="oN7-oV-N2G"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqO-9f-apU">
+                                                                <rect key="frame" x="172" y="22" width="30" height="22"/>
+                                                                <state key="normal" title="and">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-H7-VbW">
+                                                                <rect key="frame" x="204" y="22" width="50" height="22"/>
+                                                                <state key="normal" title="Privacy"/>
+                                                                <connections>
+                                                                    <action selector="onClickPrivacy:" destination="FNI-wR-0h8" eventType="touchUpInside" id="t79-mD-M6a"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="2I2-zA-Xbz"/>
+                                                            <constraint firstItem="7Yx-H7-VbW" firstAttribute="leading" secondItem="dqO-9f-apU" secondAttribute="trailing" constant="2" id="81w-vd-oFM"/>
+                                                            <constraint firstItem="xLU-p8-WA0" firstAttribute="top" secondItem="l4K-OE-Liz" secondAttribute="bottom" id="92V-Zg-J2A"/>
+                                                            <constraint firstItem="7Yx-H7-VbW" firstAttribute="height" secondItem="xLU-p8-WA0" secondAttribute="height" id="I6Q-nk-9Hc"/>
+                                                            <constraint firstItem="l4K-OE-Liz" firstAttribute="top" secondItem="MLo-uJ-ijX" secondAttribute="top" id="OnS-h1-jC8"/>
+                                                            <constraint firstItem="dqO-9f-apU" firstAttribute="top" secondItem="l4K-OE-Liz" secondAttribute="bottom" id="VJb-HP-oYC"/>
+                                                            <constraint firstItem="l4K-OE-Liz" firstAttribute="height" secondItem="MLo-uJ-ijX" secondAttribute="height" multiplier="0.5" id="f0B-TW-BGx"/>
+                                                            <constraint firstAttribute="trailing" secondItem="l4K-OE-Liz" secondAttribute="trailing" constant="15" id="hn4-es-dXd"/>
+                                                            <constraint firstItem="dqO-9f-apU" firstAttribute="height" secondItem="l4K-OE-Liz" secondAttribute="height" id="jrQ-48-g0A"/>
+                                                            <constraint firstItem="l4K-OE-Liz" firstAttribute="leading" secondItem="MLo-uJ-ijX" secondAttribute="leading" constant="15" id="kyt-27-MSf"/>
+                                                            <constraint firstItem="dqO-9f-apU" firstAttribute="leading" secondItem="xLU-p8-WA0" secondAttribute="trailing" constant="2" id="liJ-eq-Qig"/>
+                                                            <constraint firstItem="dqO-9f-apU" firstAttribute="centerX" secondItem="l4K-OE-Liz" secondAttribute="centerX" id="nJU-5r-uX9"/>
+                                                            <constraint firstItem="7Yx-H7-VbW" firstAttribute="centerY" secondItem="xLU-p8-WA0" secondAttribute="centerY" id="sa2-eE-0iJ"/>
+                                                            <constraint firstItem="xLU-p8-WA0" firstAttribute="height" secondItem="l4K-OE-Liz" secondAttribute="height" id="wc5-3I-Leh"/>
+                                                        </constraints>
+                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-p0-RtV">
                                                         <rect key="frame" x="0.0" y="543" width="375" height="60"/>
                                                         <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5596,14 +5644,18 @@ Terms of Use and Privacy Policy</string>
                                                     <constraint firstItem="wpq-nL-M9Q" firstAttribute="top" secondItem="7E1-Wb-4MC" secondAttribute="top" id="Zbo-kg-Dzm"/>
                                                     <constraint firstItem="wpq-nL-M9Q" firstAttribute="centerX" secondItem="7E1-Wb-4MC" secondAttribute="centerX" id="aYv-Nn-9Y8"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kls-OJ-7hB" secondAttribute="trailing" id="b2j-Hf-xTe"/>
+                                                    <constraint firstItem="ywA-p0-RtV" firstAttribute="top" secondItem="MLo-uJ-ijX" secondAttribute="bottom" constant="43" id="b9z-Gn-QDE"/>
                                                     <constraint firstItem="uLL-1N-hjr" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="cGU-W3-52X"/>
                                                     <constraint firstAttribute="trailing" secondItem="uLL-1N-hjr" secondAttribute="trailing" id="cHB-nU-1ye"/>
+                                                    <constraint firstItem="MLo-uJ-ijX" firstAttribute="top" secondItem="jBw-9c-p2O" secondAttribute="bottom" constant="22" id="fjW-go-QiA"/>
                                                     <constraint firstItem="Agj-aV-B7t" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="grB-g2-HzE"/>
                                                     <constraint firstItem="ywA-p0-RtV" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="ivu-xK-bSf"/>
+                                                    <constraint firstItem="MLo-uJ-ijX" firstAttribute="leading" secondItem="7E1-Wb-4MC" secondAttribute="leading" id="nD0-kz-xT0"/>
                                                     <constraint firstItem="uLL-1N-hjr" firstAttribute="top" secondItem="0ZL-Vy-JPx" secondAttribute="bottom" constant="22" id="ptr-op-TJv"/>
                                                     <constraint firstItem="OlO-Am-Hmj" firstAttribute="top" secondItem="7E1-Wb-4MC" secondAttribute="top" constant="22" id="tnY-gf-3Cl"/>
                                                     <constraint firstAttribute="trailing" secondItem="OlO-Am-Hmj" secondAttribute="trailing" id="uu7-qd-eAe"/>
                                                     <constraint firstItem="3hz-XK-miw" firstAttribute="top" secondItem="Agj-aV-B7t" secondAttribute="bottom" constant="22" id="vHF-5O-Qca"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MLo-uJ-ijX" secondAttribute="trailing" id="xFb-uM-ByZ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -5789,7 +5841,7 @@ Terms of Use and Privacy Policy</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJP-E7-Tk1" userLabel="Main View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="645"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="754"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WEW-Wx-qJ8">
                                                 <rect key="frame" x="12" y="0.0" width="350" height="350"/>
@@ -6013,8 +6065,56 @@ Terms of Use and Privacy Policy</string>
                                                     <constraint firstAttribute="bottom" secondItem="E61-yp-3tO" secondAttribute="bottom" constant="10" id="l4W-nB-lAW"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdx-Qe-2PI" userLabel="TermsView">
+                                                <rect key="frame" x="0.0" y="630" width="375" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By submitting you agree to the:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xr-P3-lHu">
+                                                        <rect key="frame" x="15" y="0.0" width="345" height="22"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IA1-6D-X1h">
+                                                        <rect key="frame" x="127" y="22" width="43" height="22"/>
+                                                        <state key="normal" title="Terms"/>
+                                                        <connections>
+                                                            <action selector="onClickTerms:" destination="E2S-gL-lcH" eventType="touchUpInside" id="0cD-rZ-77a"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oP-IY-wwx">
+                                                        <rect key="frame" x="172" y="22" width="30" height="22"/>
+                                                        <state key="normal" title="and">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8m-a0-RN7">
+                                                        <rect key="frame" x="204" y="22" width="50" height="22"/>
+                                                        <state key="normal" title="Privacy"/>
+                                                        <connections>
+                                                            <action selector="onClickPrivacy:" destination="E2S-gL-lcH" eventType="touchUpInside" id="Ddx-Jn-Gjl"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="0vL-4b-Mrh"/>
+                                                    <constraint firstItem="IA1-6D-X1h" firstAttribute="height" secondItem="0Xr-P3-lHu" secondAttribute="height" id="27p-vQ-daD"/>
+                                                    <constraint firstItem="5oP-IY-wwx" firstAttribute="leading" secondItem="IA1-6D-X1h" secondAttribute="trailing" constant="2" id="5M6-m5-kAy"/>
+                                                    <constraint firstItem="R8m-a0-RN7" firstAttribute="height" secondItem="IA1-6D-X1h" secondAttribute="height" id="7jR-b3-3xy"/>
+                                                    <constraint firstItem="IA1-6D-X1h" firstAttribute="top" secondItem="0Xr-P3-lHu" secondAttribute="bottom" id="ETh-Ah-Zpn"/>
+                                                    <constraint firstItem="R8m-a0-RN7" firstAttribute="centerY" secondItem="IA1-6D-X1h" secondAttribute="centerY" id="LWD-dT-Xy9"/>
+                                                    <constraint firstItem="5oP-IY-wwx" firstAttribute="height" secondItem="0Xr-P3-lHu" secondAttribute="height" id="Tul-6b-592"/>
+                                                    <constraint firstItem="0Xr-P3-lHu" firstAttribute="height" secondItem="xdx-Qe-2PI" secondAttribute="height" multiplier="0.5" id="U2C-NF-8zB"/>
+                                                    <constraint firstItem="R8m-a0-RN7" firstAttribute="leading" secondItem="5oP-IY-wwx" secondAttribute="trailing" constant="2" id="UiJ-91-wyT"/>
+                                                    <constraint firstItem="5oP-IY-wwx" firstAttribute="centerX" secondItem="0Xr-P3-lHu" secondAttribute="centerX" id="bkb-f0-HFW"/>
+                                                    <constraint firstItem="0Xr-P3-lHu" firstAttribute="top" secondItem="xdx-Qe-2PI" secondAttribute="top" id="jDd-Z9-iu8"/>
+                                                    <constraint firstItem="0Xr-P3-lHu" firstAttribute="leading" secondItem="xdx-Qe-2PI" secondAttribute="leading" constant="15" id="jTM-mB-uig"/>
+                                                    <constraint firstItem="5oP-IY-wwx" firstAttribute="top" secondItem="0Xr-P3-lHu" secondAttribute="bottom" id="uB4-7j-YZJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0Xr-P3-lHu" secondAttribute="trailing" constant="15" id="v20-S9-qce"/>
+                                                </constraints>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbI-82-9JL">
-                                                <rect key="frame" x="0.0" y="585" width="375" height="60"/>
+                                                <rect key="frame" x="0.0" y="694" width="375" height="60"/>
                                                 <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="570-cu-fuK"/>
@@ -6028,11 +6128,13 @@ Terms of Use and Privacy Policy</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="xdx-Qe-2PI" firstAttribute="leading" secondItem="AJP-E7-Tk1" secondAttribute="leading" id="2AH-NW-gcG"/>
                                             <constraint firstItem="LPS-6l-gcJ" firstAttribute="top" secondItem="2XR-e9-ngI" secondAttribute="bottom" constant="22" id="2gd-qg-fym"/>
                                             <constraint firstItem="8yp-da-VEA" firstAttribute="leading" secondItem="AJP-E7-Tk1" secondAttribute="leading" id="5in-Md-Etl"/>
                                             <constraint firstAttribute="trailing" secondItem="RdU-Eb-8EQ" secondAttribute="trailing" id="AkX-Bq-Per"/>
-                                            <constraint firstItem="RdU-Eb-8EQ" firstAttribute="bottom" secondItem="wbI-82-9JL" secondAttribute="top" constant="20" id="Cof-kJ-moU"/>
                                             <constraint firstAttribute="trailing" secondItem="8BK-b5-Kbs" secondAttribute="trailing" id="FnZ-t9-UPN"/>
+                                            <constraint firstAttribute="trailing" secondItem="xdx-Qe-2PI" secondAttribute="trailing" id="Fqw-hW-bZ7"/>
+                                            <constraint firstItem="xdx-Qe-2PI" firstAttribute="top" secondItem="RdU-Eb-8EQ" secondAttribute="bottom" constant="25" id="IHL-EE-zAa"/>
                                             <constraint firstItem="8yp-da-VEA" firstAttribute="top" secondItem="8BK-b5-Kbs" secondAttribute="bottom" constant="22" id="IXK-6o-8Fg"/>
                                             <constraint firstItem="RdU-Eb-8EQ" firstAttribute="top" secondItem="K5k-gi-Z4r" secondAttribute="bottom" constant="22" id="LoA-92-zlW"/>
                                             <constraint firstAttribute="trailing" secondItem="LPS-6l-gcJ" secondAttribute="trailing" id="P6T-52-5xZ"/>
@@ -6051,6 +6153,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="WEW-Wx-qJ8" firstAttribute="top" secondItem="AJP-E7-Tk1" secondAttribute="top" id="jpN-ev-jBm"/>
                                             <constraint firstItem="2XR-e9-ngI" firstAttribute="top" secondItem="8yp-da-VEA" secondAttribute="bottom" constant="22" id="okY-Yw-gZv"/>
                                             <constraint firstAttribute="bottom" secondItem="wbI-82-9JL" secondAttribute="bottom" id="olm-Kz-n4g"/>
+                                            <constraint firstItem="wbI-82-9JL" firstAttribute="top" secondItem="xdx-Qe-2PI" secondAttribute="bottom" constant="20" id="p8M-N1-8aa"/>
                                             <constraint firstAttribute="trailing" secondItem="wbI-82-9JL" secondAttribute="trailing" id="qob-yr-dYB"/>
                                             <constraint firstItem="2XR-e9-ngI" firstAttribute="leading" secondItem="AJP-E7-Tk1" secondAttribute="leading" id="rGP-wu-Wcv"/>
                                             <constraint firstItem="8BK-b5-Kbs" firstAttribute="top" secondItem="AJP-E7-Tk1" secondAttribute="top" constant="26" id="rbo-eE-9tf"/>

@@ -9,8 +9,9 @@
 #import "SignupViewController.h"
 #import "SignupResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuickLook/QuickLook.h>
 
-@interface SignupViewController ()<UITextFieldDelegate, CLLocationManagerDelegate,SignupResultViewControllerDelegate>{
+@interface SignupViewController ()<UITextFieldDelegate, CLLocationManagerDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, SignupResultViewControllerDelegate>{
     double latitude;
     double longitude;
 }
@@ -24,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
+
+@property (assign, nonatomic) BOOL isPrivacyActive;
+
 @end
 
 @implementation SignupViewController
@@ -209,6 +213,36 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (IBAction)onClickTerms:(UIButton *)sender {
+    self.isPrivacyActive = NO;
+    [self showPreview];
+}
+
+- (IBAction)onClickPrivacy:(id)sender {
+    self.isPrivacyActive = YES;
+    [self showPreview];
+}
+
+#pragma mark - Preview
+
+- (void)showPreview {
+    QLPreviewController *previewVC = [QLPreviewController new];
+    previewVC.delegate = self;
+    previewVC.dataSource = self;
+    [self presentViewController:previewVC animated:YES completion:nil];
+}
+
+#pragma mark - QLPreviewController
+
+- (id <QLPreviewItem>)previewController:(QLPreviewController*)controller previewItemAtIndex:(NSInteger)index {
+    NSString *fileName = self.isPrivacyActive ? @"TagAlong - Privacy Policy" : @"TagAlong - Terms";
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:fileName withExtension:@"docx"];
+    return URL;
+}
+
+- (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController*)controller {
+    return 1;
+}
 
 #pragma mark - Network
 -(void)ReqRegister{

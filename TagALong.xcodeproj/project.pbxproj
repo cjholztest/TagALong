@@ -152,6 +152,7 @@
 		CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */; };
 		CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */; };
 		CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */; };
+		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
@@ -467,6 +468,8 @@
 		CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentConstants.h; sourceTree = "<group>"; };
 		CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Privacy Policy.docx"; sourceTree = "<group>"; };
 		CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Terms.docx"; sourceTree = "<group>"; };
+		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
+		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
 		CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Customer.m"; sourceTree = "<group>"; };
 		CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+CreditCard.h"; sourceTree = "<group>"; };
@@ -1173,6 +1176,8 @@
 				3232FFB51F7A313E00A0F55D /* SignupResultViewController.h */,
 				3232FFB61F7A313E00A0F55D /* SignupResultViewController.m */,
 				3B79BCCB1F861CF600BD869D /* item */,
+				CE88B1012080D52B00C4EFB7 /* PerviewController.h */,
+				CE88B1022080D52B00C4EFB7 /* PerviewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1670,6 +1675,7 @@
 			files = (
 				3205FD621F6313350037DCE5 /* DAYIndicatorView.m in Sources */,
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
+				CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,

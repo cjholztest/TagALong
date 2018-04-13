@@ -9,8 +9,9 @@
 #import "ProSignupViewController.h"
 #import "SignupResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuickLook/QuickLook.h>
 
-@interface ProSignupViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, SignupResultViewControllerDelegate>{
+@interface ProSignupViewController ()<UITextFieldDelegate, UITextViewDelegate, CLLocationManagerDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, SignupResultViewControllerDelegate>{
     double latitude;
     double longitude;
     NSString *SelSportNM;
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcsvbottomHeight;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (assign, nonatomic) BOOL isPrivacyActive;
 
 @end
 
@@ -250,6 +252,35 @@
         SelSportNM = [dic objectForKey:API_RES_KEY_SPORT_NAME];
     }
     [_bnsport setTitle:SelSportNM forState:UIControlStateNormal];
+}
+
+- (IBAction)onClickTerms:(UIButton *)sender {
+    self.isPrivacyActive = NO;
+    [self showPreview];
+}
+
+- (IBAction)onClickPrivacy:(UIButton *)sender {
+    self.isPrivacyActive = YES;
+    [self showPreview];
+}
+
+- (void)showPreview {
+    QLPreviewController *previewVC = [QLPreviewController new];
+    previewVC.delegate = self;
+    previewVC.dataSource = self;
+    [self presentViewController:previewVC animated:YES completion:nil];
+}
+
+#pragma mark - QLPreviewController
+
+- (id <QLPreviewItem>)previewController:(QLPreviewController*)controller previewItemAtIndex:(NSInteger)index {
+    NSString *fileName = self.isPrivacyActive ? @"TagAlong - Privacy Policy" : @"TagAlong - Terms";
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:fileName withExtension:@"docx"];
+    return URL;
+}
+
+- (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController*)controller {
+    return 1;
 }
 
 #pragma mark - UIPickerViewDelegate / DataSource
