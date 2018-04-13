@@ -227,7 +227,7 @@
 
 - (void)updateNoLocationMapAppearanceByState:(MKCoordinateSpan)span {
     noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude  doubleValue]);
-    [_mvMap setCenterCoordinate:noLocation];
+//    [_mvMap setCenterCoordinate:noLocation];
     MKCoordinateRegion region;
     region = MKCoordinateRegionMake(noLocation, span);
     MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:region];
@@ -266,8 +266,8 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    curLocation = [[CLLocation alloc] initWithLatitude:_mvMap.centerCoordinate.latitude
-                                             longitude:_mvMap.centerCoordinate.longitude];
+//    curLocation = [[CLLocation alloc] initWithLatitude:_mvMap.centerCoordinate.latitude
+//                                             longitude:_mvMap.centerCoordinate.longitude];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
@@ -626,19 +626,10 @@
     Global.g_user.user_latitude = [NSString stringWithFormat:@"%f", lat];
     Global.g_user.user_longitude = [NSString stringWithFormat:@"%f", lnd];
     
-    [_mvMap setCenterCoordinate:tapPoint];
+//    [_mvMap setCenterCoordinate:tapPoint];
     
     [Preference setString:PREFCONST_LATITUDE value:Global.g_user.user_latitude];
     [Preference setString:PREFCONST_LONGTITUDE value:Global.g_user.user_longitude];
-    
-    //all delete
-    NSInteger toRemoveCount = _mvMap.annotations.count;
-    NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
-    for (id annotation in _mvMap.annotations)
-        if (annotation != _mvMap.userLocation)
-            [toRemove addObject:annotation];
-    [_mvMap removeAnnotations:toRemove];
-    [_mvMap reloadInputViews];
     
     //add
     if (@available(iOS 11.0, *)) {
