@@ -10,7 +10,7 @@
 
 NSString *const kEphemeralKeyURLPath = @"get_ephemeral_keys";
 NSString *const kPayoutAccoubtURLPath = @"payout_account";
-NSString *const kApiVersion = @"2015-10-12";
+NSString *const kApiVersion = @"2018-02-28";
 
 @implementation PaymentClient (Customer)
 
