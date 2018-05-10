@@ -9,7 +9,8 @@
 #import "PaymentClient.h"
 #import <Stripe/Stripe.h>
 
-NSString *const kBasePaymentURL = @"http://18.218.218.141:8080/api/payments/"; //@"http://192.168.10.206:8080/api/payments/";
+NSString *const kBasePaymentURL = @"http://54.202.234.120:8080/api/payments/";
+//@"http://18.218.218.141:8080/api/payments/"; //@"http://192.168.10.206:8080/api/payments/";
 
 @implementation PaymentClient
 
