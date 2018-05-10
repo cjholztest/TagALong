@@ -152,6 +152,10 @@
 		CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */; };
 		CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */; };
 		CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */; };
+		CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D74F20A4793D008B0E75 /* ProsViewController.m */; };
+		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
+		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
+		CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE36D75B20A48088008B0E75 /* ProsViewController.storyboard */; };
 		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
@@ -468,6 +472,15 @@
 		CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentConstants.h; sourceTree = "<group>"; };
 		CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Privacy Policy.docx"; sourceTree = "<group>"; };
 		CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Terms.docx"; sourceTree = "<group>"; };
+		CE36D74E20A4793D008B0E75 /* ProsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsViewController.h; sourceTree = "<group>"; };
+		CE36D74F20A4793D008B0E75 /* ProsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsViewController.m; sourceTree = "<group>"; };
+		CE36D75120A4794F008B0E75 /* ProsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModel.h; sourceTree = "<group>"; };
+		CE36D75220A4794F008B0E75 /* ProsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsModel.m; sourceTree = "<group>"; };
+		CE36D75420A47964008B0E75 /* ProsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsView.h; sourceTree = "<group>"; };
+		CE36D75520A47964008B0E75 /* ProsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsView.m; sourceTree = "<group>"; };
+		CE36D75720A479E7008B0E75 /* ProsModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModuleProtocols.h; sourceTree = "<group>"; };
+		CE36D75A20A47A3E008B0E75 /* ProsModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModuleConstants.h; sourceTree = "<group>"; };
+		CE36D75B20A48088008B0E75 /* ProsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProsViewController.storyboard; sourceTree = "<group>"; };
 		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
 		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
@@ -1083,6 +1096,7 @@
 		32FAA0851F6144D500CD4395 /* TagALong */ = {
 			isa = PBXGroup;
 			children = (
+				CE36D74820A47862008B0E75 /* MVC Modules */,
 				32FAA0BC1F614B3F00CD4395 /* App */,
 				32FAA0BE1F614B5D00CD4395 /* Assets */,
 				3205FD531F6313350037DCE5 /* Classes */,
@@ -1335,6 +1349,62 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		CE36D74820A47862008B0E75 /* MVC Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D74920A478FA008B0E75 /* Pros */,
+			);
+			path = "MVC Modules";
+			sourceTree = "<group>";
+		};
+		CE36D74920A478FA008B0E75 /* Pros */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D74A20A478FA008B0E75 /* Controller */,
+				CE36D74B20A478FA008B0E75 /* Model */,
+				CE36D74C20A478FA008B0E75 /* View */,
+				CE36D74D20A478FA008B0E75 /* Protocols */,
+			);
+			path = Pros;
+			sourceTree = "<group>";
+		};
+		CE36D74A20A478FA008B0E75 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D74E20A4793D008B0E75 /* ProsViewController.h */,
+				CE36D74F20A4793D008B0E75 /* ProsViewController.m */,
+				CE36D75B20A48088008B0E75 /* ProsViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE36D74B20A478FA008B0E75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D75120A4794F008B0E75 /* ProsModel.h */,
+				CE36D75220A4794F008B0E75 /* ProsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE36D74C20A478FA008B0E75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D75420A47964008B0E75 /* ProsView.h */,
+				CE36D75520A47964008B0E75 /* ProsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE36D74D20A478FA008B0E75 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D75720A479E7008B0E75 /* ProsModuleProtocols.h */,
+				CE36D75A20A47A3E008B0E75 /* ProsModuleConstants.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1479,6 +1549,7 @@
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
 				32C2DBA61F695F77001B6822 /* SportsListTableViewCell.xib in Resources */,
+				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
@@ -1713,7 +1784,9 @@
 				CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */,
 				3B0C4CF81F887393002CEADA /* SDWebImageDecoder.m in Sources */,
 				1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */,
+				CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */,
 				3230164A1F7A48FC0001BCB4 /* BSAlbumTableViewCellFactory.m in Sources */,
+				CE36D75620A47964008B0E75 /* ProsView.m in Sources */,
 				3B0C4D001F887393002CEADA /* UIImage+WebP.m in Sources */,
 				3205FD611F6313350037DCE5 /* DAYComponentView.m in Sources */,
 				3256F2771F7395A500D0874E /* Globals.m in Sources */,
@@ -1735,6 +1808,7 @@
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
+				CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */,
 				CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
 				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,

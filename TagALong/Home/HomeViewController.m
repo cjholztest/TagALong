@@ -16,6 +16,7 @@
 #import "WorkoutSelectViewController.h"
 #import "ExpertUserProfileViewController.h"
 #import "StartedViewController.h"
+#import "ProsViewController.h"
 
 @interface HomeViewController ()<UIScrollViewDelegate, ListViewControllerDelegate>{
 
@@ -25,6 +26,7 @@
     User1ProfileViewController *vcUser1Profile;
     ExpertUserProfileViewController *vcExpertUserProfile;
     OtherUserProfileViewController *vcOtherProfile;
+    ProsViewController *vcPros;
     //NSInteger nCurPageIdx;
 
     BOOL bOtherPage;  //OtherProfilePage가 열렸는지 판정하는 변수
@@ -255,6 +257,11 @@
             vcExpertUserProfile = nil;
 //        }
     }
+    
+    if (vcPros != nil) {
+        [vcPros.view removeFromSuperview];
+        vcPros = nil;
+    }
 }
 
 -(void)changeBottomButton{
@@ -419,6 +426,16 @@
             [_vwContent addSubview:vcExpertUserProfile.view];
             [self addChildViewController:vcExpertUserProfile];
         }
+    }
+}
+
+- (IBAction)onClickPros:(id)sender {
+    if (!vcPros) {
+        [self removeviewsFromMain];
+        vcPros = [[UIStoryboard storyboardWithName:@"ProsViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ProsViewController"];
+        vcPros.view.frame = _vwContent.bounds;
+        [_vwContent addSubview:vcPros.view];
+        [self addChildViewController:vcPros];
     }
 }
 
