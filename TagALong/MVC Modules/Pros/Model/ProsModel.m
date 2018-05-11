@@ -7,6 +7,7 @@
 //
 
 #import "ProsModel.h"
+#import "ProsTableViewCellDisplayModel.h"
 
 @interface ProsModel()
 
@@ -22,6 +23,20 @@
     if (self = [super init]) {
         self.output = output;
         self.athletes = [NSMutableArray new];
+        
+        for (NSInteger i = 0; i < 5; i++) {
+            
+            ProsTableViewCellDisplayModel *displayModel = [ProsTableViewCellDisplayModel new];
+            
+            displayModel.nameText = [NSString stringWithFormat:@"Name %lu", i];
+            if (i % 2 == 0) {
+                displayModel.locationText = [NSString stringWithFormat:@"City %lu", i];
+            }
+            displayModel.descriptionText = [NSString stringWithFormat:@"Description %lu", i];
+            displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
+            
+            [self.athletes addObject:displayModel];
+        }
     }
     return self;
 }

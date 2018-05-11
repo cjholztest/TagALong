@@ -156,6 +156,12 @@
 		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
 		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
 		CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE36D75B20A48088008B0E75 /* ProsViewController.storyboard */; };
+		CE36D76220A579CB008B0E75 /* ProsTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D76120A579CB008B0E75 /* ProsTableViewAdapter.m */; };
+		CE36D76720A57A5C008B0E75 /* ProsMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D76620A57A5C008B0E75 /* ProsMainSectionAdapter.m */; };
+		CE36D76E20A580D1008B0E75 /* UIView+Nib.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D76D20A580D1008B0E75 /* UIView+Nib.m */; };
+		CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77420A59131008B0E75 /* ProsTableViewCell.m */; };
+		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
+		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
 		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
@@ -481,6 +487,20 @@
 		CE36D75720A479E7008B0E75 /* ProsModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModuleProtocols.h; sourceTree = "<group>"; };
 		CE36D75A20A47A3E008B0E75 /* ProsModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModuleConstants.h; sourceTree = "<group>"; };
 		CE36D75B20A48088008B0E75 /* ProsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProsViewController.storyboard; sourceTree = "<group>"; };
+		CE36D76020A579CB008B0E75 /* ProsTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewAdapter.h; sourceTree = "<group>"; };
+		CE36D76120A579CB008B0E75 /* ProsTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewAdapter.m; sourceTree = "<group>"; };
+		CE36D76320A579EA008B0E75 /* ProsTableViewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewAdapterInput.h; sourceTree = "<group>"; };
+		CE36D76420A57A2B008B0E75 /* ProsSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsSectionAdapter.h; sourceTree = "<group>"; };
+		CE36D76520A57A5C008B0E75 /* ProsMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsMainSectionAdapter.h; sourceTree = "<group>"; };
+		CE36D76620A57A5C008B0E75 /* ProsMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsMainSectionAdapter.m; sourceTree = "<group>"; };
+		CE36D76820A57A6A008B0E75 /* ProsMainSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsMainSectionAdapterOutput.h; sourceTree = "<group>"; };
+		CE36D76C20A580D1008B0E75 /* UIView+Nib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Nib.h"; sourceTree = "<group>"; };
+		CE36D76D20A580D1008B0E75 /* UIView+Nib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Nib.m"; sourceTree = "<group>"; };
+		CE36D77320A59131008B0E75 /* ProsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCell.h; sourceTree = "<group>"; };
+		CE36D77420A59131008B0E75 /* ProsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCell.m; sourceTree = "<group>"; };
+		CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProsTableViewCell.xib; sourceTree = "<group>"; };
+		CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
 		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
 		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
@@ -1096,6 +1116,7 @@
 		32FAA0851F6144D500CD4395 /* TagALong */ = {
 			isa = PBXGroup;
 			children = (
+				CE36D76920A5806B008B0E75 /* Categories */,
 				CE36D74820A47862008B0E75 /* MVC Modules */,
 				32FAA0BC1F614B3F00CD4395 /* App */,
 				32FAA0BE1F614B5D00CD4395 /* Assets */,
@@ -1360,6 +1381,7 @@
 		CE36D74920A478FA008B0E75 /* Pros */ = {
 			isa = PBXGroup;
 			children = (
+				CE36D75D20A57982008B0E75 /* ProsTableViewAdapter */,
 				CE36D74A20A478FA008B0E75 /* Controller */,
 				CE36D74B20A478FA008B0E75 /* Model */,
 				CE36D74C20A478FA008B0E75 /* View */,
@@ -1390,6 +1412,7 @@
 		CE36D74C20A478FA008B0E75 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE36D76F20A590EF008B0E75 /* TableViewCell */,
 				CE36D75420A47964008B0E75 /* ProsView.h */,
 				CE36D75520A47964008B0E75 /* ProsView.m */,
 			);
@@ -1403,6 +1426,65 @@
 				CE36D75A20A47A3E008B0E75 /* ProsModuleConstants.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE36D75D20A57982008B0E75 /* ProsTableViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D75E20A579A0008B0E75 /* Sectoins */,
+				CE36D76020A579CB008B0E75 /* ProsTableViewAdapter.h */,
+				CE36D76120A579CB008B0E75 /* ProsTableViewAdapter.m */,
+				CE36D76320A579EA008B0E75 /* ProsTableViewAdapterInput.h */,
+			);
+			path = ProsTableViewAdapter;
+			sourceTree = "<group>";
+		};
+		CE36D75E20A579A0008B0E75 /* Sectoins */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D75F20A579B9008B0E75 /* Main */,
+				CE36D76420A57A2B008B0E75 /* ProsSectionAdapter.h */,
+			);
+			path = Sectoins;
+			sourceTree = "<group>";
+		};
+		CE36D75F20A579B9008B0E75 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D76520A57A5C008B0E75 /* ProsMainSectionAdapter.h */,
+				CE36D76620A57A5C008B0E75 /* ProsMainSectionAdapter.m */,
+				CE36D76820A57A6A008B0E75 /* ProsMainSectionAdapterOutput.h */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE36D76920A5806B008B0E75 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D76A20A5806B008B0E75 /* UIView Categories */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CE36D76A20A5806B008B0E75 /* UIView Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D76C20A580D1008B0E75 /* UIView+Nib.h */,
+				CE36D76D20A580D1008B0E75 /* UIView+Nib.m */,
+			);
+			path = "UIView Categories";
+			sourceTree = "<group>";
+		};
+		CE36D76F20A590EF008B0E75 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D77320A59131008B0E75 /* ProsTableViewCell.h */,
+				CE36D77420A59131008B0E75 /* ProsTableViewCell.m */,
+				CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */,
+				CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */,
+				CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
@@ -1539,6 +1621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
+				CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */,
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
@@ -1747,6 +1830,7 @@
 				3205FD621F6313350037DCE5 /* DAYIndicatorView.m in Sources */,
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
 				CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */,
+				CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
@@ -1754,6 +1838,7 @@
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
+				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
@@ -1778,6 +1863,7 @@
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
+				CE36D76720A57A5C008B0E75 /* ProsMainSectionAdapter.m in Sources */,
 				323016591F7A4A250001BCB4 /* OHActionSheet.m in Sources */,
 				1A2D65BF2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m in Sources */,
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
@@ -1791,6 +1877,7 @@
 				3205FD611F6313350037DCE5 /* DAYComponentView.m in Sources */,
 				3256F2771F7395A500D0874E /* Globals.m in Sources */,
 				3B0C4CFD1F887393002CEADA /* UIButton+WebCache.m in Sources */,
+				CE36D76220A579CB008B0E75 /* ProsTableViewAdapter.m in Sources */,
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
@@ -1867,6 +1954,7 @@
 				32FAA0BB1F61454300CD4395 /* SplashViewController.m in Sources */,
 				3230164B1F7A48FC0001BCB4 /* BSPhotoCollectionViewCellFactory.m in Sources */,
 				323016371F7A48FC0001BCB4 /* BSExpandAnimator.m in Sources */,
+				CE36D76E20A580D1008B0E75 /* UIView+Nib.m in Sources */,
 				CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */,
 				3B0C4CFC1F887393002CEADA /* SDWebImagePrefetcher.m in Sources */,
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,

@@ -44,6 +44,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ivProfile;
 @property (strong, nonatomic) IBOutlet UILabel *lblProfile;
 
+//Pros
+@property (weak, nonatomic) IBOutlet UIImageView *ivPros;
+@property (weak, nonatomic) IBOutlet UILabel *lblPros;
+
 //Search
 @property (strong, nonatomic) IBOutlet UIImageView *ivSearch;
 @property (strong, nonatomic) IBOutlet UILabel *lblSearch;
@@ -61,6 +65,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.ivPros.image = [[UIImage imageNamed:@"ic_pros"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.ivPros.tintColor = UIColor.whiteColor;
+    self.ivPros.layer.borderColor = UIColor.whiteColor.CGColor;
     
     [self setDefaulttitle];
     //[self addAlarmBarButton];
@@ -265,13 +273,11 @@
 }
 
 -(void)changeBottomButton{
-    [_ivProfile setAlpha:0.5];
-    [_ivSearch setAlpha:0.5];
-    [_ivSubmit setAlpha:0.5];
     
-    [_lblProfile setAlpha:0.5];
-    [_lblSearch setAlpha:0.5];
-    [_lblSubmit setAlpha:0.5];
+    NSArray *uiElements = @[_ivProfile, _ivSearch, _ivSubmit, _ivPros, _lblProfile, _lblSearch, _lblSubmit, _lblPros];
+    for (UIView *view in uiElements) {
+        [view setAlpha:0.5f];
+    }
     
     if (_nCurButtonIdx == BUTTON_PROFILE) {
         [_ivProfile setAlpha:1];
@@ -282,6 +288,9 @@
     } else if (_nCurButtonIdx == BUTTON_SUBMIT) {
         [_ivSubmit setAlpha:1];
         [_lblSubmit setAlpha:1];
+    } else if (_nCurButtonIdx == BUTTON_PROS) {
+        [_ivPros setAlpha:1.0f];
+        [_lblPros setAlpha:1.0f];
     }
 }
 
@@ -431,6 +440,10 @@
 
 - (IBAction)onClickPros:(id)sender {
     if (!vcPros) {
+        bOtherPage = false;
+        _nCurButtonIdx = BUTTON_PROS;
+        [self changeBottomButton];
+        self.navigationItem.title = @"Pros";
         [self removeviewsFromMain];
         vcPros = [[UIStoryboard storyboardWithName:@"ProsViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ProsViewController"];
         vcPros.view.frame = _vwContent.bounds;

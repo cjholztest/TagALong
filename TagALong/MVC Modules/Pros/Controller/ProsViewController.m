@@ -7,14 +7,19 @@
 //
 
 #import "ProsViewController.h"
+#import "ProsSectionAdapter.h"
+#import "ProsMainSectionAdapter.h"
+#import "ProsTableViewAdapter.h"
 #import "ProsModuleProtocols.h"
 #import "ProsModel.h"
 #import "ProsView.h"
 
-@interface ProsViewController () <ProsModelOutput, ProsViewOutput, UITableViewDelegate, UITableViewDataSource>
+@interface ProsViewController () <ProsModelOutput, ProsViewOutput, ProsMainSectionAdapterOutput>
+
+@property (nonatomic, weak) IBOutlet ProsView *contentView;
 
 @property (nonatomic, strong) id <ProsModelInput, ProsModelDataSource> model;
-@property (nonatomic, weak) IBOutlet ProsView *contentView;
+@property (nonatomic, strong) id <ProsTableViewAdapterInput> tableViewAdapter;
 
 @end
 
@@ -28,10 +33,17 @@
 #pragma mark - Setup
 
 - (void)setup {
-    self.model = [[ProsModel alloc] initWithOutput:self];
+    
     self.contentView.output = self;
-    self.contentView.tableView.delegate = self;
-    self.contentView.tableView.dataSource = self;
+    self.model = [[ProsModel alloc] initWithOutput:self];
+    
+    ProsMainSectionAdapter *mainSection = [[ProsMainSectionAdapter alloc] initWithOutput:self];
+    
+    ProsTableViewAdapter *prosTableViewAdapter = [ProsTableViewAdapter new];
+    [prosTableViewAdapter.sectionAdapters addObject:mainSection];
+    
+    self.tableViewAdapter = prosTableViewAdapter;
+    [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
 }
 
 #pragma mark - ProsModelOutput
@@ -46,23 +58,17 @@
 
 #pragma mark - ProsViewOutput
 
-#pragma mark - UITableViewDataSource
+#pragma mark - ProsMainSectionAdapterOutput
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)rowsCount {
     return [self.model athletesCount];
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
-    id athlete = [self.model athleteAtIndex:indexPath.row];
-    
-    return cell;
+- (id)rowDisplayModelAtIndexPath:(NSIndexPath*)indexPath {
+    return [self.model athleteAtIndex:indexPath.row];
 }
 
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)didTouchRowAtIndexPath:(NSIndexPath*)indexPath {
     
 }
 

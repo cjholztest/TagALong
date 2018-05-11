@@ -14,6 +14,8 @@
 #define BUTTON_PROFILE          10
 #define BUTTON_SEARDCH          20
 #define BUTTON_SUBMIT           30
+#define BUTTON_PROS             40
+
 @interface HomeViewController : UIViewController
 
 @property (nonatomic) NSInteger nCurPageIdx;
