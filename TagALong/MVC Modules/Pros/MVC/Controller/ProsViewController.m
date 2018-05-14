@@ -13,6 +13,7 @@
 #import "ProsModuleProtocols.h"
 #import "ProsModel.h"
 #import "ProsView.h"
+#import "AthleteInfoViewController.h"
 
 @interface ProsViewController () <ProsModelOutput, ProsViewOutput, ProsMainSectionAdapterOutput>
 
@@ -69,7 +70,8 @@
 }
 
 - (void)didTouchRowAtIndexPath:(NSIndexPath*)indexPath {
-    
+    AthleteInfoViewController *athleteVC = [[UIStoryboard storyboardWithName:NSStringFromClass(AthleteInfoViewController.class) bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass(AthleteInfoViewController.class)];
+    [self.navigationController pushViewController:athleteVC animated:YES];
 }
 
 @end

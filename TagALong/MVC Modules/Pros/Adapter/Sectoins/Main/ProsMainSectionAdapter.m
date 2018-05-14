@@ -46,11 +46,11 @@
 }
 
 - (CGFloat)estimatedHeightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 44.0f;
+    return 54.0f;
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 44.0f;
+    return 54.0f;
 }
 
 - (BOOL)shouldHighightRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -58,7 +58,9 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath {
-    
+    if ([self.output respondsToSelector:@selector(didTouchRowAtIndexPath:)]) {
+        [self.output didTouchRowAtIndexPath:indexPath];
+    }
 }
 
 @end

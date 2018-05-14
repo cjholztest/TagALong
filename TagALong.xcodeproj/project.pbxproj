@@ -166,6 +166,10 @@
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
+		CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */; };
+		CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */; };
+		CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */; };
+		CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B920A971B60012AAC4 /* AthleteInfoView.m */; };
 		CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */; };
 		CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */; };
 		CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */; };
@@ -509,6 +513,15 @@
 		CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+CreditCard.m"; sourceTree = "<group>"; };
 		CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoViewController.h; sourceTree = "<group>"; };
+		CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoViewController.m; sourceTree = "<group>"; };
+		CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AthleteInfoViewController.storyboard; sourceTree = "<group>"; };
+		CEDF04B520A971A70012AAC4 /* AthleteInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoModel.h; sourceTree = "<group>"; };
+		CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoModel.m; sourceTree = "<group>"; };
+		CEDF04B820A971B60012AAC4 /* AthleteInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoView.h; sourceTree = "<group>"; };
+		CEDF04B920A971B60012AAC4 /* AthleteInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoView.m; sourceTree = "<group>"; };
+		CEDF04BB20A971DA0012AAC4 /* AthleteInfoProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoProtocols.h; sourceTree = "<group>"; };
+		CEDF04BC20A971ED0012AAC4 /* AthleteInfoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoConstants.h; sourceTree = "<group>"; };
 		CEF52F572068C9510014B2B4 /* ProfilePaymentCredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentCredentials.h; sourceTree = "<group>"; };
 		CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentCredentials.m; sourceTree = "<group>"; };
 		CEF52F5D206911D10014B2B4 /* ProfilePaymentRegistrationFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentRegistrationFooter.h; sourceTree = "<group>"; };
@@ -730,6 +743,7 @@
 		1ACFEA32205FF80800675150 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF04BD20A9761D0012AAC4 /* Network */,
 				1ACFEA33205FF80800675150 /* Payments */,
 			);
 			path = Services;
@@ -1373,6 +1387,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE36D77B20A5D615008B0E75 /* AthleteInfo */,
 				CE36D74920A478FA008B0E75 /* Pros */,
 			);
 			path = "MVC Modules";
@@ -1381,10 +1396,8 @@
 		CE36D74920A478FA008B0E75 /* Pros */ = {
 			isa = PBXGroup;
 			children = (
-				CE36D75D20A57982008B0E75 /* ProsTableViewAdapter */,
-				CE36D74A20A478FA008B0E75 /* Controller */,
-				CE36D74B20A478FA008B0E75 /* Model */,
-				CE36D74C20A478FA008B0E75 /* View */,
+				CE36D77D20A5D783008B0E75 /* MVC */,
+				CE36D75D20A57982008B0E75 /* Adapter */,
 				CE36D74D20A478FA008B0E75 /* Protocols */,
 			);
 			path = Pros;
@@ -1428,7 +1441,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		CE36D75D20A57982008B0E75 /* ProsTableViewAdapter */ = {
+		CE36D75D20A57982008B0E75 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
 				CE36D75E20A579A0008B0E75 /* Sectoins */,
@@ -1436,7 +1449,7 @@
 				CE36D76120A579CB008B0E75 /* ProsTableViewAdapter.m */,
 				CE36D76320A579EA008B0E75 /* ProsTableViewAdapterInput.h */,
 			);
-			path = ProsTableViewAdapter;
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 		CE36D75E20A579A0008B0E75 /* Sectoins */ = {
@@ -1487,6 +1500,26 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		CE36D77B20A5D615008B0E75 /* AthleteInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04AD20A96D430012AAC4 /* Adapter */,
+				CEDF04A820A96D430012AAC4 /* MVC */,
+				CEDF04AC20A96D430012AAC4 /* Protocols */,
+			);
+			path = AthleteInfo;
+			sourceTree = "<group>";
+		};
+		CE36D77D20A5D783008B0E75 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE36D74A20A478FA008B0E75 /* Controller */,
+				CE36D74B20A478FA008B0E75 /* Model */,
+				CE36D74C20A478FA008B0E75 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1502,6 +1535,83 @@
 				1A27613D20612E8000C9D703 /* Payment.storyboard */,
 			);
 			path = PaymentStoryboards;
+			sourceTree = "<group>";
+		};
+		CEDF04A820A96D430012AAC4 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04A920A96D430012AAC4 /* Controller */,
+				CEDF04AA20A96D430012AAC4 /* Model */,
+				CEDF04AB20A96D430012AAC4 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CEDF04A920A96D430012AAC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */,
+				CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */,
+				CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDF04AA20A96D430012AAC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04B520A971A70012AAC4 /* AthleteInfoModel.h */,
+				CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEDF04AB20A96D430012AAC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04B820A971B60012AAC4 /* AthleteInfoView.h */,
+				CEDF04B920A971B60012AAC4 /* AthleteInfoView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEDF04AC20A96D430012AAC4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04BB20A971DA0012AAC4 /* AthleteInfoProtocols.h */,
+				CEDF04BC20A971ED0012AAC4 /* AthleteInfoConstants.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CEDF04AD20A96D430012AAC4 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04AE20A96D430012AAC4 /* Sections */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CEDF04AE20A96D430012AAC4 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04AF20A96D790012AAC4 /* Main */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		CEDF04AF20A96D790012AAC4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CEDF04BD20A9761D0012AAC4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1631,6 +1741,7 @@
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
+				CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */,
 				32C2DBA61F695F77001B6822 /* SportsListTableViewCell.xib in Resources */,
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
@@ -1845,6 +1956,7 @@
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
+				CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */,
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
@@ -1915,6 +2027,7 @@
 				3B0C4CFF1F887393002CEADA /* UIImage+MultiFormat.m in Sources */,
 				3232FFA81F79E23200A0F55D /* AddressViewController.m in Sources */,
 				3B0C4D011F887393002CEADA /* UIImageView+HighlightedWebCache.m in Sources */,
+				CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */,
 				1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */,
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
@@ -1959,6 +2072,7 @@
 				3B0C4CFC1F887393002CEADA /* SDWebImagePrefetcher.m in Sources */,
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,
 				323016531F7A48FC0001BCB4 /* BSPhotoCell.m in Sources */,
+				CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */,
 				3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */,
 				1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */,
 				3B79BCCF1F861CF600BD869D /* SelectWorkoutTableViewCell.m in Sources */,
