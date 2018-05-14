@@ -22,6 +22,8 @@
 
 @protocol AthleteInfoViewOutput <NSObject>
 
+- (void)tagALongButtonDidTap;
+
 @end
 
 @protocol AthleteInfoModuleInput <NSObject>

@@ -13,4 +13,6 @@
 + (UIColor*)appColor;
 + (UIColor*)warningColor;
 
++ (NSArray*)backgroundGradientColors;
+
 @end

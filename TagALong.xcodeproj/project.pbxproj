@@ -170,6 +170,40 @@
 		CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */; };
 		CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */; };
 		CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B920A971B60012AAC4 /* AthleteInfoView.m */; };
+		CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04C720A9913D0012AAC4 /* SubmitOfferViewController.m */; };
+		CEDF04CA20A991580012AAC4 /* SubmitOfferViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04C920A991580012AAC4 /* SubmitOfferViewController.storyboard */; };
+		CEDF04CD20A991840012AAC4 /* SubmitOfferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04CC20A991840012AAC4 /* SubmitOfferModel.m */; };
+		CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04CF20A991920012AAC4 /* SubmitOfferView.m */; };
+		CEDF04D620A99CE10012AAC4 /* UIViewController+Storyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04D520A99CE10012AAC4 /* UIViewController+Storyboard.m */; };
+		CEDF04D920A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04D820A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m */; };
+		CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04DE20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m */; };
+		CEDF04EB20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04EA20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m */; };
+		CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04EE20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m */; };
+		CEDF04F320A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04F220A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m */; };
+		CEDF04F720A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04F620A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m */; };
+		CEDF04FB20A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04FA20A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.m */; };
+		CEDF04FF20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04FE20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m */; };
+		CEDF050B20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF050A20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m */; };
+		CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF050C20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib */; };
+		CEDF051020A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF050F20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m */; };
+		CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF051220A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m */; };
+		CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF051420A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib */; };
+		CEDF051820A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF051720A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m */; };
+		CEDF051B20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF051A20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m */; };
+		CEDF051D20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF051C20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib */; };
+		CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF051F20A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m */; };
+		CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF052220A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m */; };
+		CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF052420A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib */; };
+		CEDF052820A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF052720A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m */; };
+		CEDF052B20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF052A20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m */; };
+		CEDF052D20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF052C20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib */; };
+		CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF052F20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m */; };
+		CEDF053320A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF053220A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m */; };
+		CEDF053520A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDF053420A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib */; };
+		CEDF053820A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF053720A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m */; };
+		CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF053C20A9D08D0012AAC4 /* UITableViewCell+Styles.m */; };
+		CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054020A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m */; };
+		CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054620A9D5980012AAC4 /* GradientView.m */; };
 		CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */; };
 		CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */; };
 		CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */; };
@@ -522,6 +556,80 @@
 		CEDF04B920A971B60012AAC4 /* AthleteInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoView.m; sourceTree = "<group>"; };
 		CEDF04BB20A971DA0012AAC4 /* AthleteInfoProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoProtocols.h; sourceTree = "<group>"; };
 		CEDF04BC20A971ED0012AAC4 /* AthleteInfoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoConstants.h; sourceTree = "<group>"; };
+		CEDF04C620A9913D0012AAC4 /* SubmitOfferViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferViewController.h; sourceTree = "<group>"; };
+		CEDF04C720A9913D0012AAC4 /* SubmitOfferViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferViewController.m; sourceTree = "<group>"; };
+		CEDF04C920A991580012AAC4 /* SubmitOfferViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SubmitOfferViewController.storyboard; sourceTree = "<group>"; };
+		CEDF04CB20A991840012AAC4 /* SubmitOfferModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferModel.h; sourceTree = "<group>"; };
+		CEDF04CC20A991840012AAC4 /* SubmitOfferModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferModel.m; sourceTree = "<group>"; };
+		CEDF04CE20A991920012AAC4 /* SubmitOfferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferView.h; sourceTree = "<group>"; };
+		CEDF04CF20A991920012AAC4 /* SubmitOfferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferView.m; sourceTree = "<group>"; };
+		CEDF04D120A991A70012AAC4 /* SubmitOfferProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferProtocols.h; sourceTree = "<group>"; };
+		CEDF04D220A991BA0012AAC4 /* SubmitOfferConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferConstants.h; sourceTree = "<group>"; };
+		CEDF04D420A99CE10012AAC4 /* UIViewController+Storyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Storyboard.h"; sourceTree = "<group>"; };
+		CEDF04D520A99CE10012AAC4 /* UIViewController+Storyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Storyboard.m"; sourceTree = "<group>"; };
+		CEDF04D720A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferTableViewAdapter.h; sourceTree = "<group>"; };
+		CEDF04D820A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferTableViewAdapter.m; sourceTree = "<group>"; };
+		CEDF04DA20A9A2BD0012AAC4 /* SubmitOfferTableViewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferTableViewAdapterInput.h; sourceTree = "<group>"; };
+		CEDF04DC20A9A31D0012AAC4 /* SubmitOfferSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferSectionAdapter.h; sourceTree = "<group>"; };
+		CEDF04DD20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferMainSectionAdapter.h; sourceTree = "<group>"; };
+		CEDF04DE20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferMainSectionAdapter.m; sourceTree = "<group>"; };
+		CEDF04E020A9A3630012AAC4 /* SubmitOfferMainSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferMainSectionAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04E820A9A42D0012AAC4 /* SubmitOfferCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04E920A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAmountCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04EA20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAmountCellAdapter.m; sourceTree = "<group>"; };
+		CEDF04EC20A9A47B0012AAC4 /* SubmitOfferAmountCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAmountCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04ED20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAdditionalInfoCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04EE20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAdditionalInfoCellAdapter.m; sourceTree = "<group>"; };
+		CEDF04F020A9A4A20012AAC4 /* SubmitOfferAdditionalInfoCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAdditionalInfoCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04F120A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhoCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04F220A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhoCellAdapter.m; sourceTree = "<group>"; };
+		CEDF04F420A9A4E40012AAC4 /* SubmitOfferWhoCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhoCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04F520A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhatCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04F620A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhatCellAdapter.m; sourceTree = "<group>"; };
+		CEDF04F820A9A5020012AAC4 /* SubmitOfferWhatCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhatCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04F920A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04FA20A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhenCellAdapter.m; sourceTree = "<group>"; };
+		CEDF04FC20A9A53B0012AAC4 /* SubmitOfferWhenCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF04FD20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferDurationCellAdapter.h; sourceTree = "<group>"; };
+		CEDF04FE20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferDurationCellAdapter.m; sourceTree = "<group>"; };
+		CEDF050020A9A57F0012AAC4 /* SubmitOfferDurationCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferDurationCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDF050120A9B0890012AAC4 /* SubmitOfferAdapterHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAdapterHeaders.h; sourceTree = "<group>"; };
+		CEDF050920A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhoTableViewCell.h; sourceTree = "<group>"; };
+		CEDF050A20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhoTableViewCell.m; sourceTree = "<group>"; };
+		CEDF050C20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferWhoTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF050E20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhoTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF050F20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhoTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF051120A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenTableViewCell.h; sourceTree = "<group>"; };
+		CEDF051220A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhenTableViewCell.m; sourceTree = "<group>"; };
+		CEDF051420A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferWhenTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF051620A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF051720A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhenTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF051920A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhatTableViewCell.h; sourceTree = "<group>"; };
+		CEDF051A20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhatTableViewCell.m; sourceTree = "<group>"; };
+		CEDF051C20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferWhatTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF051E20A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhatTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF051F20A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferWhatTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF052120A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferDurationTableViewCell.h; sourceTree = "<group>"; };
+		CEDF052220A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferDurationTableViewCell.m; sourceTree = "<group>"; };
+		CEDF052420A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferDurationTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF052620A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferDurationTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF052720A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferDurationTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF052920A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAmountTableViewCell.h; sourceTree = "<group>"; };
+		CEDF052A20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAmountTableViewCell.m; sourceTree = "<group>"; };
+		CEDF052C20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferAmountTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF052E20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAmountTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF052F20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAmountTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF053120A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAdditionalInfoTableViewCell.h; sourceTree = "<group>"; };
+		CEDF053220A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAdditionalInfoTableViewCell.m; sourceTree = "<group>"; };
+		CEDF053420A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitOfferAdditionalInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CEDF053620A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAdditionalInfoTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDF053720A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferAdditionalInfoTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDF053B20A9D08D0012AAC4 /* UITableViewCell+Styles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Styles.h"; sourceTree = "<group>"; };
+		CEDF053C20A9D08D0012AAC4 /* UITableViewCell+Styles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Styles.m"; sourceTree = "<group>"; };
+		CEDF053F20A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferBaseTableViewCell.h; sourceTree = "<group>"; };
+		CEDF054020A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferBaseTableViewCell.m; sourceTree = "<group>"; };
+		CEDF054520A9D5980012AAC4 /* GradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		CEDF054620A9D5980012AAC4 /* GradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		CEF52F572068C9510014B2B4 /* ProfilePaymentCredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentCredentials.h; sourceTree = "<group>"; };
 		CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentCredentials.m; sourceTree = "<group>"; };
 		CEF52F5D206911D10014B2B4 /* ProfilePaymentRegistrationFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentRegistrationFooter.h; sourceTree = "<group>"; };
@@ -1130,6 +1238,7 @@
 		32FAA0851F6144D500CD4395 /* TagALong */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF054220A9D5780012AAC4 /* Library */,
 				CE36D76920A5806B008B0E75 /* Categories */,
 				CE36D74820A47862008B0E75 /* MVC Modules */,
 				32FAA0BC1F614B3F00CD4395 /* App */,
@@ -1387,6 +1496,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF04BE20A991180012AAC4 /* SubmitOffer */,
 				CE36D77B20A5D615008B0E75 /* AthleteInfo */,
 				CE36D74920A478FA008B0E75 /* Pros */,
 			);
@@ -1474,6 +1584,8 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF053920A9D0480012AAC4 /* UITableViewCell Categories */,
+				CEDF04D320A99CAA0012AAC4 /* UIViewController Categories */,
 				CE36D76A20A5806B008B0E75 /* UIView Categories */,
 			);
 			path = Categories;
@@ -1614,6 +1726,308 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		CEDF04BE20A991180012AAC4 /* SubmitOffer */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04BF20A991180012AAC4 /* MVC */,
+				CEDF04C320A991180012AAC4 /* Adapter */,
+				CEDF04C520A991180012AAC4 /* Protocols */,
+			);
+			path = SubmitOffer;
+			sourceTree = "<group>";
+		};
+		CEDF04BF20A991180012AAC4 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04C020A991180012AAC4 /* Controller */,
+				CEDF04C120A991180012AAC4 /* Model */,
+				CEDF04C220A991180012AAC4 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CEDF04C020A991180012AAC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04C620A9913D0012AAC4 /* SubmitOfferViewController.h */,
+				CEDF04C720A9913D0012AAC4 /* SubmitOfferViewController.m */,
+				CEDF04C920A991580012AAC4 /* SubmitOfferViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDF04C120A991180012AAC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04CB20A991840012AAC4 /* SubmitOfferModel.h */,
+				CEDF04CC20A991840012AAC4 /* SubmitOfferModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEDF04C220A991180012AAC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF050220A9C42A0012AAC4 /* Cell */,
+				CEDF04CE20A991920012AAC4 /* SubmitOfferView.h */,
+				CEDF04CF20A991920012AAC4 /* SubmitOfferView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEDF04C320A991180012AAC4 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04E120A9A3EC0012AAC4 /* Cells */,
+				CEDF04C420A991180012AAC4 /* Sections */,
+				CEDF04D720A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.h */,
+				CEDF04D820A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m */,
+				CEDF04DA20A9A2BD0012AAC4 /* SubmitOfferTableViewAdapterInput.h */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CEDF04C420A991180012AAC4 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04DB20A9A2D80012AAC4 /* Main */,
+				CEDF04DC20A9A31D0012AAC4 /* SubmitOfferSectionAdapter.h */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		CEDF04C520A991180012AAC4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04D120A991A70012AAC4 /* SubmitOfferProtocols.h */,
+				CEDF04D220A991BA0012AAC4 /* SubmitOfferConstants.h */,
+				CEDF050120A9B0890012AAC4 /* SubmitOfferAdapterHeaders.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CEDF04D320A99CAA0012AAC4 /* UIViewController Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04D420A99CE10012AAC4 /* UIViewController+Storyboard.h */,
+				CEDF04D520A99CE10012AAC4 /* UIViewController+Storyboard.m */,
+			);
+			path = "UIViewController Categories";
+			sourceTree = "<group>";
+		};
+		CEDF04DB20A9A2D80012AAC4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04DD20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.h */,
+				CEDF04DE20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m */,
+				CEDF04E020A9A3630012AAC4 /* SubmitOfferMainSectionAdapterOutput.h */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CEDF04E120A9A3EC0012AAC4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04E220A9A3EC0012AAC4 /* Amount */,
+				CEDF04E320A9A3EC0012AAC4 /* AdditionalInfo */,
+				CEDF04E420A9A3EC0012AAC4 /* Who */,
+				CEDF04E520A9A3EC0012AAC4 /* What */,
+				CEDF04E620A9A3EC0012AAC4 /* When */,
+				CEDF04E720A9A3EC0012AAC4 /* Duration */,
+				CEDF04E820A9A42D0012AAC4 /* SubmitOfferCellAdapter.h */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CEDF04E220A9A3EC0012AAC4 /* Amount */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04E920A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.h */,
+				CEDF04EA20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m */,
+				CEDF04EC20A9A47B0012AAC4 /* SubmitOfferAmountCellAdapterOutput.h */,
+			);
+			path = Amount;
+			sourceTree = "<group>";
+		};
+		CEDF04E320A9A3EC0012AAC4 /* AdditionalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04ED20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.h */,
+				CEDF04EE20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m */,
+				CEDF04F020A9A4A20012AAC4 /* SubmitOfferAdditionalInfoCellAdapterOutput.h */,
+			);
+			path = AdditionalInfo;
+			sourceTree = "<group>";
+		};
+		CEDF04E420A9A3EC0012AAC4 /* Who */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04F120A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.h */,
+				CEDF04F220A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m */,
+				CEDF04F420A9A4E40012AAC4 /* SubmitOfferWhoCellAdapterOutput.h */,
+			);
+			path = Who;
+			sourceTree = "<group>";
+		};
+		CEDF04E520A9A3EC0012AAC4 /* What */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04F520A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.h */,
+				CEDF04F620A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m */,
+				CEDF04F820A9A5020012AAC4 /* SubmitOfferWhatCellAdapterOutput.h */,
+			);
+			path = What;
+			sourceTree = "<group>";
+		};
+		CEDF04E620A9A3EC0012AAC4 /* When */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04F920A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.h */,
+				CEDF04FA20A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.m */,
+				CEDF04FC20A9A53B0012AAC4 /* SubmitOfferWhenCellAdapterOutput.h */,
+			);
+			path = When;
+			sourceTree = "<group>";
+		};
+		CEDF04E720A9A3EC0012AAC4 /* Duration */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF04FD20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.h */,
+				CEDF04FE20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m */,
+				CEDF050020A9A57F0012AAC4 /* SubmitOfferDurationCellAdapterOutput.h */,
+			);
+			path = Duration;
+			sourceTree = "<group>";
+		};
+		CEDF050220A9C42A0012AAC4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF053E20A9D1810012AAC4 /* BaseCell */,
+				CEDF050320A9C42A0012AAC4 /* DurationCell */,
+				CEDF050420A9C42A0012AAC4 /* WhatCell */,
+				CEDF050520A9C42A0012AAC4 /* WhenCell */,
+				CEDF050620A9C42A0012AAC4 /* AmountCell */,
+				CEDF050720A9C42A0012AAC4 /* AdditionalInfoCell */,
+				CEDF050820A9C42A0012AAC4 /* WhoCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CEDF050320A9C42A0012AAC4 /* DurationCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF052120A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.h */,
+				CEDF052220A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m */,
+				CEDF052420A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib */,
+				CEDF052620A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.h */,
+				CEDF052720A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m */,
+			);
+			path = DurationCell;
+			sourceTree = "<group>";
+		};
+		CEDF050420A9C42A0012AAC4 /* WhatCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF051920A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.h */,
+				CEDF051A20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m */,
+				CEDF051C20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib */,
+				CEDF051E20A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.h */,
+				CEDF051F20A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m */,
+			);
+			path = WhatCell;
+			sourceTree = "<group>";
+		};
+		CEDF050520A9C42A0012AAC4 /* WhenCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF051120A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.h */,
+				CEDF051220A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m */,
+				CEDF051420A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib */,
+				CEDF051620A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.h */,
+				CEDF051720A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m */,
+			);
+			path = WhenCell;
+			sourceTree = "<group>";
+		};
+		CEDF050620A9C42A0012AAC4 /* AmountCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF052920A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.h */,
+				CEDF052A20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m */,
+				CEDF052C20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib */,
+				CEDF052E20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.h */,
+				CEDF052F20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m */,
+			);
+			path = AmountCell;
+			sourceTree = "<group>";
+		};
+		CEDF050720A9C42A0012AAC4 /* AdditionalInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF053120A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.h */,
+				CEDF053220A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m */,
+				CEDF053420A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib */,
+				CEDF053620A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.h */,
+				CEDF053720A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m */,
+			);
+			path = AdditionalInfoCell;
+			sourceTree = "<group>";
+		};
+		CEDF050820A9C42A0012AAC4 /* WhoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF050920A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.h */,
+				CEDF050A20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m */,
+				CEDF050C20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib */,
+				CEDF050E20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.h */,
+				CEDF050F20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m */,
+			);
+			path = WhoCell;
+			sourceTree = "<group>";
+		};
+		CEDF053920A9D0480012AAC4 /* UITableViewCell Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF053B20A9D08D0012AAC4 /* UITableViewCell+Styles.h */,
+				CEDF053C20A9D08D0012AAC4 /* UITableViewCell+Styles.m */,
+			);
+			path = "UITableViewCell Categories";
+			sourceTree = "<group>";
+		};
+		CEDF053E20A9D1810012AAC4 /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF053F20A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.h */,
+				CEDF054020A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
+		CEDF054220A9D5780012AAC4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF054320A9D5780012AAC4 /* Base */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		CEDF054320A9D5780012AAC4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF054420A9D5780012AAC4 /* UIView */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CEDF054420A9D5780012AAC4 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF054520A9D5980012AAC4 /* GradientView.h */,
+				CEDF054620A9D5980012AAC4 /* GradientView.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1730,15 +2144,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDF04CA20A991580012AAC4 /* SubmitOfferViewController.storyboard in Resources */,
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
 				CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */,
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
+				CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
+				CEDF051D20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
 				32C2DBD51F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.xib in Resources */,
 				CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */,
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
+				CEDF052D20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
 				CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */,
@@ -1746,9 +2164,12 @@
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
+				CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */,
+				CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
 				32FAA0911F6144D500CD4395 /* Main.storyboard in Resources */,
 				CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */,
+				CEDF053520A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1942,24 +2363,34 @@
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
 				CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */,
 				CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */,
+				CEDF04CD20A991840012AAC4 /* SubmitOfferModel.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
+				CEDF053320A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m in Sources */,
+				CEDF051020A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
+				CEDF051820A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m in Sources */,
 				323016461F7A48FC0001BCB4 /* BSPreviewController+UICollectionView.m in Sources */,
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
+				CEDF04EB20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
+				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
+				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
+				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
+				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
 				CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */,
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
+				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
 				3205FD271F6249930037DCE5 /* ListViewController.m in Sources */,
 				32C2DBCE1F6AD0B1001B6822 /* AreaWorkoutViewController.m in Sources */,
 				3230164D1F7A48FC0001BCB4 /* BSAssetModel.m in Sources */,
@@ -1967,11 +2398,13 @@
 				323016481F7A48FC0001BCB4 /* BSTableController+UITableView.m in Sources */,
 				3B0C4CF51F887393002CEADA /* NSData+ImageContentType.m in Sources */,
 				32C2DBD41F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.m in Sources */,
+				CEDF04FB20A9A5310012AAC4 /* SubmitOfferWhenCellAdapter.m in Sources */,
 				323016391F7A48FC0001BCB4 /* UIImageViewModeScaleAspect.m in Sources */,
 				3B37FC5A1FB37DD200C688DF /* DateSelectDialog.m in Sources */,
 				3205FD281F6249930037DCE5 /* MapViewController.m in Sources */,
 				3256F26E1F73689100D0874E /* UserProfilePlanTableViewCell.m in Sources */,
 				32C2DBC91F6A14B1001B6822 /* WorkoutSelectViewController.m in Sources */,
+				CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */,
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
@@ -1993,26 +2426,33 @@
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
+				CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */,
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
 				CEF8487D206A9E4A0011BFDB /* PaymentClient+Pay.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
 				3232FFB71F7A313E00A0F55D /* SignupResultViewController.m in Sources */,
 				1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */,
 				323016441F7A48FC0001BCB4 /* BSPhotosController+PrivateMethods.m in Sources */,
+				CEDF053820A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m in Sources */,
 				3232FFB01F7A055E00A0F55D /* ProSignupViewController.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
 				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
 				1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */,
 				321F1AC91F6AF85D00EA1F4C /* PostWorkoutDetailViewController.m in Sources */,
+				CEDF04D920A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
+				CEDF04F720A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
+				CEDF050B20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m in Sources */,
 				CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */,
 				CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */,
+				CEDF051B20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
 				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
+				CEDF052B20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
 				3B1E2FCA1F94D2A700E636F4 /* ExportSportsListTableViewCell.m in Sources */,
 				3B01AF241F90950600BDF1AA /* ODRefreshControl.m in Sources */,
@@ -2020,6 +2460,7 @@
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
 				1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */,
+				CEDF04FF20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m in Sources */,
 				323016471F7A48FC0001BCB4 /* BSTableController+BSItemsModel.m in Sources */,
 				1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */,
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
@@ -2035,6 +2476,7 @@
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
+				CEDF04F320A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m in Sources */,
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
 				3273EA5E1F74EF0600DADA58 /* EditDialogViewController.m in Sources */,
 				3205FD751F6551190037DCE5 /* BookWorkoutViewController.m in Sources */,
@@ -2052,6 +2494,7 @@
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
+				CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */,
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
@@ -2059,7 +2502,11 @@
 				3230163F1F7A48FC0001BCB4 /* ALAsset+BSEqual.m in Sources */,
 				3232FFB11F7A055E00A0F55D /* SignupViewController.m in Sources */,
 				32FAA0881F6144D500CD4395 /* main.m in Sources */,
+				CEDF052820A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m in Sources */,
+				CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */,
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
+				CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */,
+				CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */,
 				323016561F7A48FC0001BCB4 /* BSVideoCell.m in Sources */,
 				3230163A1F7A48FC0001BCB4 /* BSCollectionController.m in Sources */,
 				1A27615B206132A700C9D703 /* CreditCardListModel.m in Sources */,
@@ -2068,6 +2515,7 @@
 				3230164B1F7A48FC0001BCB4 /* BSPhotoCollectionViewCellFactory.m in Sources */,
 				323016371F7A48FC0001BCB4 /* BSExpandAnimator.m in Sources */,
 				CE36D76E20A580D1008B0E75 /* UIView+Nib.m in Sources */,
+				CEDF04D620A99CE10012AAC4 /* UIViewController+Storyboard.m in Sources */,
 				CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */,
 				3B0C4CFC1F887393002CEADA /* SDWebImagePrefetcher.m in Sources */,
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,

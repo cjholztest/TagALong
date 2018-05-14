@@ -9,8 +9,10 @@
 #import "AthleteInfoViewController.h"
 #import "AthleteInfoModel.h"
 #import "AthleteInfoView.h"
+#import "UIViewController+Storyboard.h"
+#import "SubmitOfferViewController.h"
 
-@interface AthleteInfoViewController () <AthleteInfoModelOutput, AthleteInfoViewOutput, AthleteInfoModuleInput>
+@interface AthleteInfoViewController () <AthleteInfoModelOutput, AthleteInfoViewOutput, AthleteInfoModuleInput, SubmitOfferModuleOutput>
 
 @property (nonatomic, weak) IBOutlet AthleteInfoView *contentView;
 @property (nonatomic, strong) id <AthleteInfoModelInput> model;
@@ -21,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setup];
 }
 
 - (void)setup {
@@ -33,6 +35,15 @@
 
 #pragma mark - AthleteInfoViewOutput
 
+- (void)tagALongButtonDidTap {
+    
+    SubmitOfferViewController *submitVC = (SubmitOfferViewController*)SubmitOfferViewController.fromStoryboard;
+    submitVC.moduleOutput = self;
+    [self.navigationController pushViewController:submitVC animated:YES];
+}
+
 #pragma mark - AthleteInfoModuleInput
+
+#pragma mark - SubmitOfferModuleOutput
 
 @end

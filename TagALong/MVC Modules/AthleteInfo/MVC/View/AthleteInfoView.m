@@ -17,7 +17,9 @@
 #pragma mark - Actions
 
 - (IBAction)tagALongAction:(UIButton*)button {
-    
+    if ([self.output respondsToSelector:@selector(tagALongButtonDidTap)]) {
+        [self.output tagALongButtonDidTap];
+    }
 }
 
 #pragma mark - AthleteInfoViewInput

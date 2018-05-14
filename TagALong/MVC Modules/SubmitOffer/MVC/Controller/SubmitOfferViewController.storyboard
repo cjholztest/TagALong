@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Submit Offer View Controller-->
+        <scene sceneID="woi-tW-NU7">
+            <objects>
+                <viewController storyboardIdentifier="SubmitOfferViewController" id="yTe-xq-lQD" customClass="SubmitOfferViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zew-km-qgq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08N-GG-TRG" customClass="SubmitOfferView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JEx-GC-c1T">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JEx-GC-c1T" firstAttribute="top" secondItem="08N-GG-TRG" secondAttribute="top" id="Hlo-i3-vcb"/>
+                                    <constraint firstItem="JEx-GC-c1T" firstAttribute="leading" secondItem="08N-GG-TRG" secondAttribute="leading" id="XrH-5E-i67"/>
+                                    <constraint firstAttribute="bottom" secondItem="JEx-GC-c1T" secondAttribute="bottom" id="ap4-O0-qxN"/>
+                                    <constraint firstAttribute="trailing" secondItem="JEx-GC-c1T" secondAttribute="trailing" id="nbC-qt-iAY"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="tableView" destination="JEx-GC-c1T" id="Wct-u2-zr5"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="08N-GG-TRG" firstAttribute="top" secondItem="fLB-Cp-a1q" secondAttribute="top" id="Eru-tk-zU7"/>
+                            <constraint firstItem="fLB-Cp-a1q" firstAttribute="trailing" secondItem="08N-GG-TRG" secondAttribute="trailing" id="M4t-Yz-jGy"/>
+                            <constraint firstItem="fLB-Cp-a1q" firstAttribute="bottom" secondItem="08N-GG-TRG" secondAttribute="bottom" id="QZu-i0-jzG"/>
+                            <constraint firstItem="08N-GG-TRG" firstAttribute="leading" secondItem="fLB-Cp-a1q" secondAttribute="leading" id="uGU-Z7-0xt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fLB-Cp-a1q"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="08N-GG-TRG" id="pi2-bu-bnS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whA-lm-5rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="97" y="-216"/>
+        </scene>
+    </scenes>
+</document>
