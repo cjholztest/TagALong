@@ -7,7 +7,13 @@
 //
 
 #import "SubmitOfferBaseTableViewCell.h"
+#import "SubmitOfferWhoTableViewCellOutput.h"
 
 @interface SubmitOfferWhoTableViewCell : SubmitOfferBaseTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UITextField *whoTextField;
+
+@property (nonatomic, weak) id <SubmitOfferWhoTableViewCellOutput> output;
 
 @end

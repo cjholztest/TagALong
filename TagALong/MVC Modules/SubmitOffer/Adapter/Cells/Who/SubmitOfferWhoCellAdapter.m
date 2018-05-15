@@ -7,10 +7,12 @@
 //
 
 #import "SubmitOfferWhoCellAdapter.h"
+#import "UIColor+AppColors.h"
+#import "UIFont+HelveticaNeue.h"
 #import "UIView+Nib.h"
 #import "SubmitOfferWhoTableViewCell.h"
 
-@interface SubmitOfferWhoCellAdapter()
+@interface SubmitOfferWhoCellAdapter() <UITextFieldDelegate, SubmitOfferWhoTableViewCellOutput>
 
 @property (nonatomic, weak) id <SubmitOfferWhoCellAdapterOutput> output;
 
@@ -30,6 +32,12 @@
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     
     SubmitOfferWhoTableViewCell *cell = (SubmitOfferWhoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:SubmitOfferWhoTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    
+    cell.output = self;
+    cell.whoTextField.delegate = self;
+    
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.titleColor, NSFontAttributeName : [UIFont titleFont]};
+    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Just You? You and friend? Total # of people" attributes:attributes];
     
     return cell;
 }
@@ -52,6 +60,19 @@
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - SubmitOfferWhoTableViewCellOutput
+
+- (void)enteredTexDidChange:(NSString *)text {
+    
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

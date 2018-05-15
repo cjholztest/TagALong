@@ -8,9 +8,11 @@
 
 #import "SubmitOfferAmountCellAdapter.h"
 #import "SubmitOfferAmountTableViewCell.h"
+#import "UIColor+AppColors.h"
+#import "UIFont+HelveticaNeue.h"
 #import "UIView+Nib.h"
 
-@interface SubmitOfferAmountCellAdapter()
+@interface SubmitOfferAmountCellAdapter() <UITextFieldDelegate>
 
 @property (nonatomic, weak) id <SubmitOfferAmountCellAdapterOutput> output;
 
@@ -29,6 +31,12 @@
 
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     SubmitOfferAmountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAmountTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    
+    cell.amountTextField.delegate = self;
+    
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.titleColor, NSFontAttributeName : [UIFont titleFont]};
+    cell.amountTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"$ 0.00" attributes:attributes];
+    
     return cell;
 }
 
@@ -50,6 +58,13 @@
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

@@ -17,6 +17,8 @@
 
 @implementation GradientView
 
+
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -30,8 +32,9 @@
 - (CAGradientLayer*)backgroundGradientLayer {
     if (!_backgroundGradientLayer) {
         _backgroundGradientLayer = [CAGradientLayer new];
-        _backgroundGradientLayer.colors = [UIColor backgroundGradientColors];
-        [self.layer insertSublayer:_backgroundGradientLayer atIndex:0];
+//        _backgroundGradientLayer.colors = [UIColor regularUserBackgroundGradientColors];
+//        [self.layer insertSublayer:_backgroundGradientLayer atIndex:0];
+        self.backgroundColor = [UIColor regularBackgroundColor];
     }
     return _backgroundGradientLayer;
 }

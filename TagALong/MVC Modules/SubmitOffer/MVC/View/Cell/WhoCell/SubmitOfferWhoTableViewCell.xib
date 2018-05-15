@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,21 +19,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lli-5N-aqi">
-                        <rect key="frame" x="16" y="11" width="112.5" height="22"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHO:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lli-5N-aqi">
+                        <rect key="frame" x="16" y="11" width="50" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="3Iw-B9-fSC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type WHO and TOTAL people come" textAlignment="right" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qoV-G4-9a1">
+                        <rect key="frame" x="81" y="0.0" width="279" height="43.5"/>
+                        <color key="textColor" white="1" alpha="0.89945419520547942" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="lli-5N-aqi" secondAttribute="bottom" id="FJw-6e-Oiv"/>
                     <constraint firstItem="lli-5N-aqi" firstAttribute="top" secondItem="nRs-I6-LJ1" secondAttribute="topMargin" id="Hry-Pj-bvm"/>
-                    <constraint firstItem="lli-5N-aqi" firstAttribute="width" secondItem="nRs-I6-LJ1" secondAttribute="width" multiplier="0.3" id="I7Z-qc-jS8"/>
+                    <constraint firstAttribute="bottom" secondItem="qoV-G4-9a1" secondAttribute="bottom" id="L3g-gG-hIi"/>
                     <constraint firstItem="lli-5N-aqi" firstAttribute="leading" secondItem="nRs-I6-LJ1" secondAttribute="leadingMargin" id="SG5-LR-nt7"/>
+                    <constraint firstItem="qoV-G4-9a1" firstAttribute="top" secondItem="nRs-I6-LJ1" secondAttribute="top" id="baG-dO-peT"/>
+                    <constraint firstItem="lli-5N-aqi" firstAttribute="bottom" secondItem="nRs-I6-LJ1" secondAttribute="bottomMargin" id="gVB-Jt-FDq"/>
+                    <constraint firstAttribute="trailing" secondItem="qoV-G4-9a1" secondAttribute="trailing" constant="15" id="mLZ-Wq-v8I"/>
+                    <constraint firstItem="lli-5N-aqi" firstAttribute="top" secondItem="nRs-I6-LJ1" secondAttribute="topMargin" id="weV-RM-Avg"/>
+                    <constraint firstItem="qoV-G4-9a1" firstAttribute="leading" secondItem="lli-5N-aqi" secondAttribute="trailing" constant="15" id="wfi-iJ-Swa"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="lli-5N-aqi" id="8sZ-xI-k3v"/>
+                <outlet property="whoTextField" destination="qoV-G4-9a1" id="auU-fo-Jf3"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

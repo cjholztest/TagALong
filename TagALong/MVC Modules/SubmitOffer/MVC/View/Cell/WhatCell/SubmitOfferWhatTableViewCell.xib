@@ -13,28 +13,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gxg-dC-1nM" customClass="SubmitOfferWhatTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="gxg-dC-1nM" customClass="SubmitOfferWhatTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gxg-dC-1nM" id="pE8-kq-4mq">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-vg-s4B">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-vg-s4B">
                         <rect key="frame" x="16" y="11" width="112.5" height="22"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Running, skating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhL-5K-hJL">
+                        <rect key="frame" x="143.5" y="11" width="215.5" height="22"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.79952375860000002" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="FhL-5K-hJL" secondAttribute="bottom" id="3a1-lx-552"/>
                     <constraint firstItem="vMh-vg-s4B" firstAttribute="width" secondItem="pE8-kq-4mq" secondAttribute="width" multiplier="0.3" id="7wN-QX-1nJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FhL-5K-hJL" secondAttribute="trailing" id="SXd-lt-vD6"/>
                     <constraint firstItem="vMh-vg-s4B" firstAttribute="top" secondItem="pE8-kq-4mq" secondAttribute="topMargin" id="hzf-xI-Ic0"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vMh-vg-s4B" secondAttribute="bottom" id="kVu-E8-042"/>
                     <constraint firstItem="vMh-vg-s4B" firstAttribute="leading" secondItem="pE8-kq-4mq" secondAttribute="leadingMargin" id="qUq-yk-Ma5"/>
+                    <constraint firstItem="FhL-5K-hJL" firstAttribute="top" secondItem="pE8-kq-4mq" secondAttribute="topMargin" id="r7m-Uf-cMz"/>
+                    <constraint firstItem="FhL-5K-hJL" firstAttribute="leading" secondItem="vMh-vg-s4B" secondAttribute="trailing" constant="15" id="zNQ-At-hqQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="optionLabel" destination="FhL-5K-hJL" id="Aeq-Lo-Azj"/>
+                <outlet property="titleLabel" destination="vMh-vg-s4B" id="HwP-dC-6Zl"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

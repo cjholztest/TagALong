@@ -36,6 +36,8 @@
     tableView.backgroundView.backgroundColor = UIColor.clearColor;
     tableView.backgroundColor = UIColor.clearColor;
     
+    tableView.separatorColor = [UIColor.whiteColor colorWithAlphaComponent:0.05];
+    
     for (id <SubmitOfferSectionAdapter> section in self.sectionAdapters) {
         [section registerCellsInTableView:tableView];
     }

@@ -13,7 +13,7 @@
         <!--Submit Offer View Controller-->
         <scene sceneID="woi-tW-NU7">
             <objects>
-                <viewController storyboardIdentifier="SubmitOfferViewController" id="yTe-xq-lQD" customClass="SubmitOfferViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubmitOfferViewController" automaticallyAdjustsScrollViewInsets="NO" id="yTe-xq-lQD" customClass="SubmitOfferViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zew-km-qgq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

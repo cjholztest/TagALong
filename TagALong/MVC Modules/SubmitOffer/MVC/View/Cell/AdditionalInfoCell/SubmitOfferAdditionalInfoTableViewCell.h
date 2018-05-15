@@ -10,4 +10,13 @@
 
 @interface SubmitOfferAdditionalInfoTableViewCell : SubmitOfferBaseTableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UITextView *additionalInfoTextView;
+
+@property (nonatomic, weak) IBOutlet UIView *lineView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *additionalTextViewLayoutConstraint;
+
+- (void)updateTextViewAppearance;
+
 @end

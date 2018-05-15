@@ -20,21 +20,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5k-a1-7cw">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHEN:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5k-a1-7cw">
                         <rect key="frame" x="16" y="11" width="112.5" height="22"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.05.2018 at 8.00 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpc-Ng-tVS">
+                        <rect key="frame" x="143.5" y="11" width="215.5" height="22"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.79952375855616453" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="d5k-a1-7cw" secondAttribute="bottom" id="85p-J4-5xX"/>
+                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="bottom" secondItem="V7I-qD-Sfr" secondAttribute="bottomMargin" id="QI7-M1-taS"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="topMargin" id="SRX-uG-D0t"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Hpc-Ng-tVS" secondAttribute="trailing" id="Ty1-1C-cAQ"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="leading" secondItem="V7I-qD-Sfr" secondAttribute="leadingMargin" id="cUC-7h-MhI"/>
+                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="leading" secondItem="d5k-a1-7cw" secondAttribute="trailing" constant="15" id="m8c-7w-myG"/>
+                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="topMargin" id="mOl-Ll-xtM"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="width" secondItem="V7I-qD-Sfr" secondAttribute="width" multiplier="0.3" id="wBw-FT-Ws7"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="timeLabel" destination="Hpc-Ng-tVS" id="S7m-Dw-s7e"/>
+                <outlet property="titleLabel" destination="d5k-a1-7cw" id="hHn-F3-IVA"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

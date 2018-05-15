@@ -10,4 +10,7 @@
 
 @interface SubmitOfferWhatTableViewCell : SubmitOfferBaseTableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *optionLabel;
+
 @end

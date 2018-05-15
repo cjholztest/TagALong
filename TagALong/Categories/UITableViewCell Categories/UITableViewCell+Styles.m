@@ -14,6 +14,7 @@
     self.backgroundColor = UIColor.clearColor;
     self.backgroundView.backgroundColor = UIColor.clearColor;
     self.contentView.backgroundColor = UIColor.clearColor;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 @end

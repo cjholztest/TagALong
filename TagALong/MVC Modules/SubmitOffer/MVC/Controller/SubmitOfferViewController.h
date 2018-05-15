@@ -6,10 +6,10 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "SubmitOfferProtocols.h"
 
-@interface SubmitOfferViewController : UIViewController <SubmitOfferModuleInput>
+@interface SubmitOfferViewController : BaseViewController <SubmitOfferModuleInput>
 
 @property (nonatomic, weak) id <SubmitOfferModuleOutput> moduleOutput;
 

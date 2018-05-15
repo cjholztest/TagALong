@@ -20,21 +20,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-yw-zih">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMOUNT:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cG-yw-zih">
                         <rect key="frame" x="16" y="11" width="112.5" height="22"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkz-nD-IWj">
+                        <rect key="frame" x="266.5" y="0.0" width="93.5" height="43.5"/>
+                        <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    </textField>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="lkz-nD-IWj" secondAttribute="bottom" id="CMi-2h-sea"/>
+                    <constraint firstAttribute="trailing" secondItem="lkz-nD-IWj" secondAttribute="trailing" constant="15" id="OXh-a1-y8m"/>
                     <constraint firstAttribute="bottomMargin" secondItem="0cG-yw-zih" secondAttribute="bottom" id="OfL-Ze-H5z"/>
+                    <constraint firstItem="lkz-nD-IWj" firstAttribute="width" secondItem="db3-pJ-Y7d" secondAttribute="width" multiplier="0.25" id="ROn-AG-7da"/>
                     <constraint firstItem="0cG-yw-zih" firstAttribute="leading" secondItem="db3-pJ-Y7d" secondAttribute="leadingMargin" id="VYR-SC-pVN"/>
                     <constraint firstItem="0cG-yw-zih" firstAttribute="width" secondItem="db3-pJ-Y7d" secondAttribute="width" multiplier="0.3" id="dEx-Jc-727"/>
+                    <constraint firstItem="lkz-nD-IWj" firstAttribute="top" secondItem="db3-pJ-Y7d" secondAttribute="top" id="tw3-Kt-TQU"/>
                     <constraint firstItem="0cG-yw-zih" firstAttribute="top" secondItem="db3-pJ-Y7d" secondAttribute="topMargin" id="uA7-3i-04h"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="amountTextField" destination="lkz-nD-IWj" id="90X-uH-DSJ"/>
+                <outlet property="titleLabel" destination="0cG-yw-zih" id="gbi-2K-jTC"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

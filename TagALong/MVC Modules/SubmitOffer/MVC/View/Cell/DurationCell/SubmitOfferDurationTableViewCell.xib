@@ -20,21 +20,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1E-GX-wPK">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DURATION:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1E-GX-wPK">
                         <rect key="frame" x="16" y="11" width="112.5" height="22"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVf-tC-ppR">
+                        <rect key="frame" x="143.5" y="11" width="215.5" height="22"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.79952375860000002" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="oVf-tC-ppR" secondAttribute="trailing" id="3Xe-P7-ppD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="oVf-tC-ppR" secondAttribute="bottom" id="9Lc-Bw-R0f"/>
                     <constraint firstItem="M1E-GX-wPK" firstAttribute="leading" secondItem="Vn8-4q-7TF" secondAttribute="leadingMargin" id="Q4f-1w-WQY"/>
+                    <constraint firstItem="oVf-tC-ppR" firstAttribute="top" secondItem="Vn8-4q-7TF" secondAttribute="topMargin" id="Qjx-CY-1Uz"/>
+                    <constraint firstItem="oVf-tC-ppR" firstAttribute="leading" secondItem="M1E-GX-wPK" secondAttribute="trailing" constant="15" id="cNC-UF-RGn"/>
                     <constraint firstItem="M1E-GX-wPK" firstAttribute="top" secondItem="Vn8-4q-7TF" secondAttribute="topMargin" id="cVp-KG-ODs"/>
                     <constraint firstItem="M1E-GX-wPK" firstAttribute="bottom" secondItem="Vn8-4q-7TF" secondAttribute="bottomMargin" id="fAH-uk-leN"/>
                     <constraint firstItem="M1E-GX-wPK" firstAttribute="width" secondItem="Vn8-4q-7TF" secondAttribute="width" multiplier="0.3" id="wI5-WY-yiz"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="durationLabel" destination="oVf-tC-ppR" id="nuq-la-4Xg"/>
+                <outlet property="titleLabel" destination="M1E-GX-wPK" id="qBr-oH-2Zi"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

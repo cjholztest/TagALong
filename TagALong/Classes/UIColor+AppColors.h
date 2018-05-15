@@ -13,6 +13,14 @@
 + (UIColor*)appColor;
 + (UIColor*)warningColor;
 
++ (UIColor*)textColor;
++ (UIColor*)titleColor;
+
++ (UIColor*)regularBackgroundColor;
+
 + (NSArray*)backgroundGradientColors;
+
++ (NSArray*)regularUserBackgroundGradientColors;
++ (NSArray*)expertUserBackgroundGradientColors;
 
 @end

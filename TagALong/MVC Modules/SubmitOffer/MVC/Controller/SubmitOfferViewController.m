@@ -75,4 +75,27 @@
 
 #pragma mark - SubmitOfferModuleInput
 
+#pragma mark - Keyboard Notifications
+
+- (void)keyboardDidAppear:(NSNotification*)notification {
+    
+    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    UIEdgeInsets inset = self.contentView.tableView.contentInset;
+    inset.bottom  = keyboardHeight;
+    self.contentView.tableView.contentInset = inset;
+}
+
+- (void)keyboardDidHide:(NSNotification*)notification {
+    self.contentView.tableView.contentInset = UIEdgeInsetsZero;
+}
+
+- (void)keyboardDidChange:(NSNotification*)notification {
+    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    UIEdgeInsets inset = self.contentView.tableView.contentInset;
+    inset.bottom  = keyboardHeight;
+    self.contentView.tableView.contentInset = inset;
+}
+
 @end

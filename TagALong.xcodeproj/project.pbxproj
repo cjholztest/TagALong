@@ -204,6 +204,10 @@
 		CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF053C20A9D08D0012AAC4 /* UITableViewCell+Styles.m */; };
 		CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054020A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m */; };
 		CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054620A9D5980012AAC4 /* GradientView.m */; };
+		CEDF054B20AB03790012AAC4 /* UIFont+HelveticaNeue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054A20AB03790012AAC4 /* UIFont+HelveticaNeue.m */; };
+		CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF054F20AB0C8F0012AAC4 /* BaseViewController.m */; };
+		CEDF055420AB14530012AAC4 /* UITextView+TextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF055320AB14530012AAC4 /* UITextView+TextSize.m */; };
+		CEDF055820AB16CE0012AAC4 /* NSString+TextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF055720AB16CE0012AAC4 /* NSString+TextSize.m */; };
 		CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */; };
 		CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F5E206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m */; };
 		CEF52F62206911F80014B2B4 /* ProfilePaymentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */; };
@@ -630,6 +634,15 @@
 		CEDF054020A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubmitOfferBaseTableViewCell.m; sourceTree = "<group>"; };
 		CEDF054520A9D5980012AAC4 /* GradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		CEDF054620A9D5980012AAC4 /* GradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		CEDF054920AB03790012AAC4 /* UIFont+HelveticaNeue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+HelveticaNeue.h"; sourceTree = "<group>"; };
+		CEDF054A20AB03790012AAC4 /* UIFont+HelveticaNeue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HelveticaNeue.m"; sourceTree = "<group>"; };
+		CEDF054C20AB075E0012AAC4 /* SubmitOfferWhoTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhoTableViewCellOutput.h; sourceTree = "<group>"; };
+		CEDF054E20AB0C8F0012AAC4 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		CEDF054F20AB0C8F0012AAC4 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		CEDF055220AB14530012AAC4 /* UITextView+TextSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+TextSize.h"; sourceTree = "<group>"; };
+		CEDF055320AB14530012AAC4 /* UITextView+TextSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+TextSize.m"; sourceTree = "<group>"; };
+		CEDF055620AB16CE0012AAC4 /* NSString+TextSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TextSize.h"; sourceTree = "<group>"; };
+		CEDF055720AB16CE0012AAC4 /* NSString+TextSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextSize.m"; sourceTree = "<group>"; };
 		CEF52F572068C9510014B2B4 /* ProfilePaymentCredentials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentCredentials.h; sourceTree = "<group>"; };
 		CEF52F582068C9510014B2B4 /* ProfilePaymentCredentials.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentCredentials.m; sourceTree = "<group>"; };
 		CEF52F5D206911D10014B2B4 /* ProfilePaymentRegistrationFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentRegistrationFooter.h; sourceTree = "<group>"; };
@@ -1584,6 +1597,9 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF055520AB16B70012AAC4 /* NSString Categories */,
+				CEDF055120AB14330012AAC4 /* UITextView Categories */,
+				CEDF054820AB03280012AAC4 /* UIFont Categories */,
 				CEDF053920A9D0480012AAC4 /* UITableViewCell Categories */,
 				CEDF04D320A99CAA0012AAC4 /* UIViewController Categories */,
 				CE36D76A20A5806B008B0E75 /* UIView Categories */,
@@ -1981,6 +1997,7 @@
 				CEDF050C20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib */,
 				CEDF050E20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.h */,
 				CEDF050F20A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m */,
+				CEDF054C20AB075E0012AAC4 /* SubmitOfferWhoTableViewCellOutput.h */,
 			);
 			path = WhoCell;
 			sourceTree = "<group>";
@@ -2014,6 +2031,7 @@
 		CEDF054320A9D5780012AAC4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CEDF054D20AB0C7B0012AAC4 /* UIViewController */,
 				CEDF054420A9D5780012AAC4 /* UIView */,
 			);
 			path = Base;
@@ -2026,6 +2044,42 @@
 				CEDF054620A9D5980012AAC4 /* GradientView.m */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		CEDF054820AB03280012AAC4 /* UIFont Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF054920AB03790012AAC4 /* UIFont+HelveticaNeue.h */,
+				CEDF054A20AB03790012AAC4 /* UIFont+HelveticaNeue.m */,
+			);
+			path = "UIFont Categories";
+			sourceTree = "<group>";
+		};
+		CEDF054D20AB0C7B0012AAC4 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF054E20AB0C8F0012AAC4 /* BaseViewController.h */,
+				CEDF054F20AB0C8F0012AAC4 /* BaseViewController.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		CEDF055120AB14330012AAC4 /* UITextView Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF055220AB14530012AAC4 /* UITextView+TextSize.h */,
+				CEDF055320AB14530012AAC4 /* UITextView+TextSize.m */,
+			);
+			path = "UITextView Categories";
+			sourceTree = "<group>";
+		};
+		CEDF055520AB16B70012AAC4 /* NSString Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF055620AB16CE0012AAC4 /* NSString+TextSize.h */,
+				CEDF055720AB16CE0012AAC4 /* NSString+TextSize.m */,
+			);
+			path = "NSString Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2378,6 +2432,7 @@
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
 				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
+				CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
@@ -2423,6 +2478,7 @@
 				3256F2771F7395A500D0874E /* Globals.m in Sources */,
 				3B0C4CFD1F887393002CEADA /* UIButton+WebCache.m in Sources */,
 				CE36D76220A579CB008B0E75 /* ProsTableViewAdapter.m in Sources */,
+				CEDF055420AB14530012AAC4 /* UITextView+TextSize.m in Sources */,
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
@@ -2430,11 +2486,13 @@
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
 				CEF8487D206A9E4A0011BFDB /* PaymentClient+Pay.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
+				CEDF054B20AB03790012AAC4 /* UIFont+HelveticaNeue.m in Sources */,
 				3232FFB71F7A313E00A0F55D /* SignupResultViewController.m in Sources */,
 				1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */,
 				323016441F7A48FC0001BCB4 /* BSPhotosController+PrivateMethods.m in Sources */,
 				CEDF053820A9CB640012AAC4 /* SubmitOfferAdditionalInfoTableViewCellDisplayModel.m in Sources */,
 				3232FFB01F7A055E00A0F55D /* ProSignupViewController.m in Sources */,
+				CEDF055820AB16CE0012AAC4 /* NSString+TextSize.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
 				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
 				1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */,
