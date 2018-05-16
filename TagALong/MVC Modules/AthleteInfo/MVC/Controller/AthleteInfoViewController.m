@@ -33,6 +33,10 @@
 
 #pragma mark - AthleteInfoModelOutput
 
+- (void)dataDidLoad {
+    
+}
+
 #pragma mark - AthleteInfoViewOutput
 
 - (void)tagALongButtonDidTap {
@@ -43,6 +47,10 @@
 }
 
 #pragma mark - AthleteInfoModuleInput
+
+- (void)setupWithAthleteDetails:(NSDictionary*)athleteDetails {
+//    self.contentView.nameLabel.text  
+}
 
 #pragma mark - SubmitOfferModuleOutput
 

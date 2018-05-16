@@ -10,9 +10,13 @@
 
 @protocol AthleteInfoModelInput <NSObject>
 
+- (void)loadData;
+
 @end
 
 @protocol AthleteInfoModelOutput <NSObject>
+
+- (void)dataDidLoad;
 
 @end
 
@@ -27,6 +31,8 @@
 @end
 
 @protocol AthleteInfoModuleInput <NSObject>
+
+- (void)setupWithAthleteDetails:(NSDictionary*)athleteDetails;
 
 @end
 

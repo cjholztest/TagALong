@@ -10,6 +10,8 @@
 
 @interface BaseViewController ()
 
+@property (nonatomic, readwrite, assign) BOOL isEdidtingEnabled;
+
 @end
 
 @implementation BaseViewController
@@ -45,11 +47,11 @@
 #pragma mark - Keyboard Notifications
 
 - (void)keyboardDidAppear:(NSNotification*)notification {
-
+    self.isEdidtingEnabled = YES;
 }
 
 - (void)keyboardDidHide:(NSNotification*)notification {
-
+    self.isEdidtingEnabled = NO;
 }
 
 - (void)keyboardDidChange:(NSNotification*)notification {

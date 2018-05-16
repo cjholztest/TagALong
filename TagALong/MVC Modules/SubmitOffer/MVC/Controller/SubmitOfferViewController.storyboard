@@ -22,18 +22,35 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JEx-GC-c1T">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pd-fq-swI">
+                                        <rect key="frame" x="0.0" y="587" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8cL-yd-OOc"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="B9A-hP-n09"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="SUBMIT OFFER"/>
+                                        <connections>
+                                            <action selector="submitOfferButtonAction:" destination="08N-GG-TRG" eventType="touchUpInside" id="5aX-be-KVI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2Pd-fq-swI" secondAttribute="bottom" id="CAX-7v-sx5"/>
                                     <constraint firstItem="JEx-GC-c1T" firstAttribute="top" secondItem="08N-GG-TRG" secondAttribute="top" id="Hlo-i3-vcb"/>
+                                    <constraint firstItem="2Pd-fq-swI" firstAttribute="top" secondItem="JEx-GC-c1T" secondAttribute="bottom" id="Wq7-UE-iyb"/>
                                     <constraint firstItem="JEx-GC-c1T" firstAttribute="leading" secondItem="08N-GG-TRG" secondAttribute="leading" id="XrH-5E-i67"/>
-                                    <constraint firstAttribute="bottom" secondItem="JEx-GC-c1T" secondAttribute="bottom" id="ap4-O0-qxN"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Pd-fq-swI" secondAttribute="trailing" id="bjR-vT-LDl"/>
+                                    <constraint firstItem="2Pd-fq-swI" firstAttribute="leading" secondItem="08N-GG-TRG" secondAttribute="leading" id="jNP-jT-ZQu"/>
                                     <constraint firstAttribute="trailing" secondItem="JEx-GC-c1T" secondAttribute="trailing" id="nbC-qt-iAY"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="submitOfferButton" destination="2Pd-fq-swI" id="tSG-gX-M9G"/>
                                     <outlet property="tableView" destination="JEx-GC-c1T" id="Wct-u2-zr5"/>
                                 </connections>
                             </view>
@@ -53,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whA-lm-5rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="-216"/>
+            <point key="canvasLocation" x="96.799999999999997" y="-216.34182908545728"/>
         </scene>
     </scenes>
 </document>

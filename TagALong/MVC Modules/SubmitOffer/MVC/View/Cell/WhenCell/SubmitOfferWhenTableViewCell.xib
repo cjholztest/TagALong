@@ -26,29 +26,40 @@
                         <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.05.2018 at 8.00 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpc-Ng-tVS">
-                        <rect key="frame" x="143.5" y="11" width="215.5" height="22"/>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.05.2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpc-Ng-tVS">
+                        <rect key="frame" x="190.5" y="0.0" width="80.5" height="44"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" white="1" alpha="0.79952375855616453" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.00 am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJc-1X-BXa">
+                        <rect key="frame" x="301" y="0.0" width="58" height="44"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.79952375860000002" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="BJc-1X-BXa" secondAttribute="trailing" id="030-ei-Yut"/>
+                    <constraint firstAttribute="bottom" secondItem="BJc-1X-BXa" secondAttribute="bottom" id="5j0-Yv-TiU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="d5k-a1-7cw" secondAttribute="bottom" id="85p-J4-5xX"/>
-                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="bottom" secondItem="V7I-qD-Sfr" secondAttribute="bottomMargin" id="QI7-M1-taS"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="topMargin" id="SRX-uG-D0t"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Hpc-Ng-tVS" secondAttribute="trailing" id="Ty1-1C-cAQ"/>
+                    <constraint firstItem="BJc-1X-BXa" firstAttribute="leading" secondItem="Hpc-Ng-tVS" secondAttribute="trailing" constant="30" id="ZWk-5B-K2s"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="leading" secondItem="V7I-qD-Sfr" secondAttribute="leadingMargin" id="cUC-7h-MhI"/>
-                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="leading" secondItem="d5k-a1-7cw" secondAttribute="trailing" constant="15" id="m8c-7w-myG"/>
-                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="topMargin" id="mOl-Ll-xtM"/>
+                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d5k-a1-7cw" secondAttribute="trailing" constant="15" id="m8c-7w-myG"/>
+                    <constraint firstAttribute="bottom" secondItem="Hpc-Ng-tVS" secondAttribute="bottom" id="or1-oG-gSN"/>
+                    <constraint firstItem="BJc-1X-BXa" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="top" id="qr5-e1-JZ1"/>
                     <constraint firstItem="d5k-a1-7cw" firstAttribute="width" secondItem="V7I-qD-Sfr" secondAttribute="width" multiplier="0.3" id="wBw-FT-Ws7"/>
+                    <constraint firstItem="Hpc-Ng-tVS" firstAttribute="top" secondItem="V7I-qD-Sfr" secondAttribute="top" id="yTL-dx-sRS"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="timeLabel" destination="Hpc-Ng-tVS" id="S7m-Dw-s7e"/>
+                <outlet property="dateLabel" destination="Hpc-Ng-tVS" id="Lyd-Um-7Lx"/>
+                <outlet property="timeLabel" destination="BJc-1X-BXa" id="HG6-hl-euB"/>
                 <outlet property="titleLabel" destination="d5k-a1-7cw" id="hHn-F3-IVA"/>
             </connections>
+            <point key="canvasLocation" x="33.5" y="80"/>
         </tableViewCell>
     </objects>
 </document>

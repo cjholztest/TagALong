@@ -26,6 +26,10 @@
     return [UIColor.whiteColor colorWithAlphaComponent:0.5f];
 }
 
++ (UIColor*)placeholderColor {
+    return [UIColor.whiteColor colorWithAlphaComponent:0.2f];
+}
+
 + (UIColor*)regularBackgroundColor {
     return [UIColor colorWithRed:(36.0 / 255.0) green:(37.0 / 255.0) blue:(54.0 / 255.0) alpha:1.0];
 }

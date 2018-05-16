@@ -28,7 +28,7 @@
                         <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type WHO and TOTAL people come" textAlignment="right" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qoV-G4-9a1">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qoV-G4-9a1">
                         <rect key="frame" x="81" y="0.0" width="279" height="43.5"/>
                         <color key="textColor" white="1" alpha="0.89945419520547942" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>

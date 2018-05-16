@@ -15,6 +15,7 @@
 
 + (UIColor*)textColor;
 + (UIColor*)titleColor;
++ (UIColor*)placeholderColor;
 
 + (UIColor*)regularBackgroundColor;
 

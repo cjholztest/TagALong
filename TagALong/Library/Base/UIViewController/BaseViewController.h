@@ -10,4 +10,10 @@
 
 @interface BaseViewController : UIViewController
 
+@property (nonatomic, readonly, assign) BOOL isEdidtingEnabled;
+
+- (void)keyboardDidAppear:(NSNotification*)notification;
+- (void)keyboardDidHide:(NSNotification*)notification;
+- (void)keyboardDidChange:(NSNotification*)notification;
+
 @end

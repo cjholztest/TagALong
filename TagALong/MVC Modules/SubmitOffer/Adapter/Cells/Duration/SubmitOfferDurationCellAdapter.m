@@ -50,7 +50,9 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    
+    if ([self.output respondsToSelector:@selector(durationCellDidTap)]) {
+        [self.output durationCellDidTap];
+    }
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @protocol SubmitOfferWhatCellAdapterOutput <NSObject>
 
+- (void)whatCellDidTap;
+
 @end

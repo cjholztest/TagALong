@@ -35,9 +35,10 @@
     
     cell.output = self;
     cell.whoTextField.delegate = self;
+    [cell.whoTextField setTintColor:[UIColor textColor]];
     
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.titleColor, NSFontAttributeName : [UIFont titleFont]};
-    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Just You? You and friend? Total # of people" attributes:attributes];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
+    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"type Who and Total # of people" attributes:attributes];
     
     return cell;
 }
@@ -59,7 +60,9 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    
+    if ([self.output respondsToSelector:@selector(whoCellDidTap)]) {
+        [self.output whoCellDidTap];
+    }
 }
 
 #pragma mark - SubmitOfferWhoTableViewCellOutput

@@ -30,6 +30,9 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     
+    tableView.separatorInset = UIEdgeInsetsZero;
+    tableView.separatorColor = [UIColor.whiteColor colorWithAlphaComponent:0.05];
+    
     for (id <ProsSectionAdapter> section in self.sectionAdapters) {
         [section registerCellsInTableView:tableView];
     }

@@ -24,6 +24,7 @@
 
 @protocol ProsModelDataSource <NSObject>
 
+- (id)athleteDetailsAtIndex:(NSInteger)index;
 - (id)athleteAtIndex:(NSInteger)index;
 - (NSInteger)athletesCount;
 

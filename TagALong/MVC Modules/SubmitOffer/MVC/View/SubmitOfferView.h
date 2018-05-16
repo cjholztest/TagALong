@@ -12,7 +12,10 @@
 @interface SubmitOfferView : GradientView <SubmitOfferViewInput>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *submitOfferButton;
 
 @property (nonatomic, weak) id <SubmitOfferViewOutput> output;
+
+
 
 @end

@@ -33,8 +33,9 @@
     SubmitOfferAmountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAmountTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
     cell.amountTextField.delegate = self;
+    [cell.amountTextField setTintColor:[UIColor textColor]];
     
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.titleColor, NSFontAttributeName : [UIFont titleFont]};
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
     cell.amountTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"$ 0.00" attributes:attributes];
     
     return cell;
@@ -57,7 +58,9 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    
+    if ([self.output respondsToSelector:@selector(amountCellDidTap)]) {
+        [self.output amountCellDidTap];
+    }
 }
 
 #pragma mark - UITextFieldDelegate

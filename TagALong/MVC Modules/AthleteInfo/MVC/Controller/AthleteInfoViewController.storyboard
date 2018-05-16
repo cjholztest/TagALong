@@ -28,8 +28,20 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-8r-ZBc" userLabel="View3">
                                                 <rect key="frame" x="0.0" y="190" width="375" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATHLETE ADDRESSES:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6q-Yn-3R9">
+                                                        <rect key="frame" x="15" y="0.0" width="345" height="40"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="0.50478916955890407" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="j6q-Yn-3R9" firstAttribute="leading" secondItem="k7a-8r-ZBc" secondAttribute="leading" constant="15" id="5xb-ls-1TC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="j6q-Yn-3R9" secondAttribute="trailing" constant="15" id="CMA-SC-pmk"/>
+                                                    <constraint firstItem="j6q-Yn-3R9" firstAttribute="top" secondItem="k7a-8r-ZBc" secondAttribute="top" id="dDt-1B-Ahu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="j6q-Yn-3R9" secondAttribute="bottom" id="eXd-N1-F5k"/>
                                                     <constraint firstAttribute="height" constant="40" id="po1-0D-apK"/>
                                                 </constraints>
                                             </view>
@@ -54,7 +66,7 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="10"/>
+                                                                <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -137,11 +149,18 @@
                                             <constraint firstItem="Dgj-u7-6Rz" firstAttribute="centerX" secondItem="QqL-OR-HVt" secondAttribute="centerX" id="yeg-6h-jKC"/>
                                         </constraints>
                                     </view>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q1P-RW-5u7">
+                                        <rect key="frame" x="0.0" y="230" width="375" height="417"/>
+                                    </mapView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Q1P-RW-5u7" secondAttribute="bottom" id="5LP-0B-mGb"/>
+                                    <constraint firstItem="Q1P-RW-5u7" firstAttribute="leading" secondItem="D5C-HR-vrJ" secondAttribute="leading" id="LrU-cf-BYB"/>
                                     <constraint firstAttribute="trailing" secondItem="ijV-qp-iRP" secondAttribute="trailing" id="M7q-gK-JDr"/>
                                     <constraint firstItem="ijV-qp-iRP" firstAttribute="top" secondItem="D5C-HR-vrJ" secondAttribute="top" id="YuW-fP-g2b"/>
+                                    <constraint firstItem="Q1P-RW-5u7" firstAttribute="top" secondItem="ijV-qp-iRP" secondAttribute="bottom" id="g0y-Gk-VbZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q1P-RW-5u7" secondAttribute="trailing" id="jnW-oa-kNF"/>
                                     <constraint firstItem="ijV-qp-iRP" firstAttribute="leading" secondItem="D5C-HR-vrJ" secondAttribute="leading" id="xFd-qC-aBB"/>
                                 </constraints>
                                 <connections>
@@ -153,7 +172,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UOK-1k-g74" firstAttribute="trailing" secondItem="D5C-HR-vrJ" secondAttribute="trailing" id="JL0-OU-dM0"/>
                             <constraint firstItem="D5C-HR-vrJ" firstAttribute="top" secondItem="UOK-1k-g74" secondAttribute="top" id="Kx9-C4-xJi"/>

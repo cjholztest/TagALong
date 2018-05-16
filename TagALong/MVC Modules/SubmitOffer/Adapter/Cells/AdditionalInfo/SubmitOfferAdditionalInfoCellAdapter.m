@@ -11,6 +11,7 @@
 #import "UIView+Nib.h"
 #import "UIFont+HelveticaNeue.h"
 #import "NSString+TextSize.h"
+#import "UIColor+AppColors.h"
 
 @interface SubmitOfferAdditionalInfoCellAdapter() <UITextViewDelegate>
 
@@ -38,6 +39,8 @@
     SubmitOfferAdditionalInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAdditionalInfoTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
     cell.additionalInfoTextView.delegate = self;
+    [cell.additionalInfoTextView setTintColor:[UIColor textColor]];
+    
     self.cell = cell;
     self.tableView = tableView;
     return cell;
@@ -49,14 +52,14 @@
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.cell setNeedsUpdateConstraints];
-    [self.cell updateConstraintsIfNeeded];
-    
     CGFloat height = 70.0f;
     
     UIFont *font = [UIFont textFont];
     
     if (self.text && font) {
+        
+        [self.cell setNeedsUpdateConstraints];
+        [self.cell updateConstraintsIfNeeded];
         
         CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width - 30.0f;
         
@@ -66,10 +69,10 @@
         if (textHeight > oneStringHeight) {
             height += textHeight - oneStringHeight;
         }
+        
+        [self.cell setNeedsLayout];
+        [self.cell layoutIfNeeded];
     }
-    
-    [self.cell setNeedsLayout];
-    [self.cell layoutIfNeeded];
     
     return height;
 }
@@ -83,7 +86,9 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    
+    if ([self.output respondsToSelector:@selector(additionalInfoCellDidTap)]) {
+        [self.output additionalInfoCellDidTap];
+    }
 }
 
 #pragma mark - UITextViewDelegate

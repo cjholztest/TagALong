@@ -10,6 +10,10 @@
 #import "SubmitOfferModel.h"
 #import "SubmitOfferView.h"
 #import "SubmitOfferAdapterHeaders.h"
+#import "PickerViewController.h"
+#import "DatePickerViewController.h"
+#import "UIViewController+Storyboard.h"
+#import "UIViewController+Presentation.h"
 
 @interface SubmitOfferViewController ()
 <   SubmitOfferViewOutput,
@@ -61,41 +65,106 @@
 
 #pragma mark - SubmitOfferModelOutput
 
+- (void)dataDidChange {
+    [self.contentView.tableView reloadData];
+}
+
 #pragma mark - SubmitOfferWhoCellAdapterOutput
+
+- (void)whoCellDidTap {
+    [self hideKeyboardIfNeeded];
+}
 
 #pragma mark - SubmitOfferWhenCellAdapterOutput
 
+- (void)dateDidTap {
+    [self hideKeyboardIfNeeded];
+    DatePickerViewController *datePickerVC = (DatePickerViewController*)DatePickerViewController.fromStoryboard;
+    [self presentCrossDissolveVC:datePickerVC];
+}
+
+- (void)timeDidTap {
+    [self hideKeyboardIfNeeded];
+    DatePickerViewController *datePickerVC = (DatePickerViewController*)DatePickerViewController.fromStoryboard;
+    [self presentCrossDissolveVC:datePickerVC];
+}
+
+- (void)whenCellDidTap {
+    [self hideKeyboardIfNeeded];
+}
+
 #pragma mark - SubmitOfferWhatCellAdapterOutput
+
+- (void)whatCellDidTap {
+    [self hideKeyboardIfNeeded];
+    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [pickerVC setupAsSports];
+    [self presentCrossDissolveVC:pickerVC];
+}
 
 #pragma mark - SubmitOfferDurationCellAdapterOutput
 
+- (void)durationCellDidTap {
+    [self hideKeyboardIfNeeded];
+    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [self presentCrossDissolveVC:pickerVC];
+}
+
 #pragma mark - SubmitOfferAmountCellAdapterOutput
+
+- (void)amountCellDidTap {
+    [self hideKeyboardIfNeeded];
+}
 
 #pragma mark - SubmitOfferAdditionalInfoCellAdapterOutput
 
+- (void)additionalInfoCellDidTap {
+    [self hideKeyboardIfNeeded];
+}
+
 #pragma mark - SubmitOfferModuleInput
+
+
 
 #pragma mark - Keyboard Notifications
 
 - (void)keyboardDidAppear:(NSNotification*)notification {
-    
+    [super keyboardDidAppear:notification];
     CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
-    UIEdgeInsets inset = self.contentView.tableView.contentInset;
-    inset.bottom  = keyboardHeight;
-    self.contentView.tableView.contentInset = inset;
+    [UIView animateWithDuration:0.2 animations:^{
+        UIEdgeInsets inset = self.contentView.tableView.contentInset;
+        inset.bottom  = keyboardHeight;
+        self.contentView.tableView.contentInset = inset;
+    }];
 }
 
 - (void)keyboardDidHide:(NSNotification*)notification {
-    self.contentView.tableView.contentInset = UIEdgeInsetsZero;
+    [super keyboardDidHide:notification];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.contentView.tableView.contentInset = UIEdgeInsetsZero;
+    }];
 }
 
 - (void)keyboardDidChange:(NSNotification*)notification {
+    [super keyboardDidChange:notification];
+    
     CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
-    UIEdgeInsets inset = self.contentView.tableView.contentInset;
-    inset.bottom  = keyboardHeight;
-    self.contentView.tableView.contentInset = inset;
+    [UIView animateWithDuration:0.2 animations:^{
+        UIEdgeInsets inset = self.contentView.tableView.contentInset;
+        inset.bottom  = keyboardHeight;
+        self.contentView.tableView.contentInset = inset;
+    }];
+}
+
+#pragma mark - Actions
+
+- (void)hideKeyboardIfNeeded {
+    if (self.isEdidtingEnabled) {
+        [self.view endEditing:YES];
+    }
 }
 
 @end

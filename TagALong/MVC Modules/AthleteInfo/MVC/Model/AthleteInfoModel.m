@@ -25,4 +25,9 @@
 
 #pragma mark - AthleteInfoModelInput
 
+- (void)loadData {
+    
+    __weak typeof(self)weakSelf = self;
+}
+
 @end

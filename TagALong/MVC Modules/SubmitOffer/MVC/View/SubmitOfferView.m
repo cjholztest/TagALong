@@ -16,4 +16,12 @@
 
 #pragma mark - SubmitOfferViewInput
 
+#pragma mark - Actoins
+
+- (IBAction)submitOfferButtonAction:(UIButton*)button {
+    if ([self.output respondsToSelector:@selector(submitOfferDidTap)]) {
+        [self.output submitOfferDidTap];
+    }
+}
+
 @end

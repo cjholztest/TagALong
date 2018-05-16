@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
+    [self.model loadPros];
 }
 
 #pragma mark - Setup
@@ -50,7 +51,7 @@
 #pragma mark - ProsModelOutput
 
 - (void)prosDidLoadSuccessfully {
-    
+    [self.contentView.tableView reloadData];
 }
 
 - (void)prosDidLoadWithError:(NSString*)errorMessage {
@@ -71,6 +72,7 @@
 
 - (void)didTouchRowAtIndexPath:(NSIndexPath*)indexPath {
     AthleteInfoViewController *athleteVC = [[UIStoryboard storyboardWithName:NSStringFromClass(AthleteInfoViewController.class) bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass(AthleteInfoViewController.class)];
+    [athleteVC setupWithAthleteDetails:[self.model athleteDetailsAtIndex:indexPath.row]];
     [self.navigationController pushViewController:athleteVC animated:YES];
 }
 

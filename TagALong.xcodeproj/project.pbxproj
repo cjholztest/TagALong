@@ -162,6 +162,12 @@
 		CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77420A59131008B0E75 /* ProsTableViewCell.m */; };
 		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
+		CE7E0F1720AC305000D93035 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1520AC305000D93035 /* PickerViewController.m */; };
+		CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */; };
+		CE7E0F1C20AC4C7300D93035 /* UIViewController+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */; };
+		CE7E0F2520AC4F5F00D93035 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F2420AC4F5F00D93035 /* DatePickerViewController.m */; };
+		CE7E0F2720AC4F7500D93035 /* DatePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F2620AC4F7500D93035 /* DatePickerViewController.storyboard */; };
+		CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */; };
 		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
@@ -543,6 +549,17 @@
 		CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProsTableViewCell.xib; sourceTree = "<group>"; };
 		CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCellDisplayModel.h; sourceTree = "<group>"; };
 		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CE7E0F1520AC305000D93035 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
+		CE7E0F1620AC305000D93035 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickerViewController.storyboard; sourceTree = "<group>"; };
+		CE7E0F1A20AC4C7300D93035 /* UIViewController+Presentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Presentation.h"; sourceTree = "<group>"; };
+		CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Presentation.m"; sourceTree = "<group>"; };
+		CE7E0F2320AC4F5F00D93035 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		CE7E0F2420AC4F5F00D93035 /* DatePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		CE7E0F2620AC4F7500D93035 /* DatePickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatePickerViewController.storyboard; sourceTree = "<group>"; };
+		CE7E0F2820AC625200D93035 /* SubmitOfferWhenTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenTableViewCellOutput.h; sourceTree = "<group>"; };
+		CE7E0F2A20AC6A4400D93035 /* OfferDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfferDataModel.h; sourceTree = "<group>"; };
+		CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfferDataModel.m; sourceTree = "<group>"; };
 		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
 		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
@@ -1509,6 +1526,8 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F1D20AC4F3200D93035 /* DatePicker */,
+				CEDF055920AC2FED0012AAC4 /* Picker */,
 				CEDF04BE20A991180012AAC4 /* SubmitOffer */,
 				CE36D77B20A5D615008B0E75 /* AthleteInfo */,
 				CE36D74920A478FA008B0E75 /* Pros */,
@@ -1648,6 +1667,65 @@
 			path = MVC;
 			sourceTree = "<group>";
 		};
+		CE7E0F1D20AC4F3200D93035 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F1E20AC4F3200D93035 /* MVC */,
+				CE7E0F2220AC4F3200D93035 /* Protocols */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		CE7E0F1E20AC4F3200D93035 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F1F20AC4F3200D93035 /* Controller */,
+				CE7E0F2020AC4F3200D93035 /* Model */,
+				CE7E0F2120AC4F3200D93035 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE7E0F1F20AC4F3200D93035 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F2320AC4F5F00D93035 /* DatePickerViewController.h */,
+				CE7E0F2420AC4F5F00D93035 /* DatePickerViewController.m */,
+				CE7E0F2620AC4F7500D93035 /* DatePickerViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE7E0F2020AC4F3200D93035 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE7E0F2120AC4F3200D93035 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE7E0F2220AC4F3200D93035 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE7E0F2920AC6A2D00D93035 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F2A20AC6A4400D93035 /* OfferDataModel.h */,
+				CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1775,6 +1853,7 @@
 		CEDF04C120A991180012AAC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F2920AC6A2D00D93035 /* Entities */,
 				CEDF04CB20A991840012AAC4 /* SubmitOfferModel.h */,
 				CEDF04CC20A991840012AAC4 /* SubmitOfferModel.m */,
 			);
@@ -1827,6 +1906,8 @@
 			children = (
 				CEDF04D420A99CE10012AAC4 /* UIViewController+Storyboard.h */,
 				CEDF04D520A99CE10012AAC4 /* UIViewController+Storyboard.m */,
+				CE7E0F1A20AC4C7300D93035 /* UIViewController+Presentation.h */,
+				CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */,
 			);
 			path = "UIViewController Categories";
 			sourceTree = "<group>";
@@ -1961,6 +2042,7 @@
 				CEDF051420A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib */,
 				CEDF051620A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.h */,
 				CEDF051720A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m */,
+				CE7E0F2820AC625200D93035 /* SubmitOfferWhenTableViewCellOutput.h */,
 			);
 			path = WhenCell;
 			sourceTree = "<group>";
@@ -2080,6 +2162,56 @@
 				CEDF055720AB16CE0012AAC4 /* NSString+TextSize.m */,
 			);
 			path = "NSString Categories";
+			sourceTree = "<group>";
+		};
+		CEDF055920AC2FED0012AAC4 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF055A20AC2FED0012AAC4 /* MVC */,
+				CEDF055E20AC2FED0012AAC4 /* Protocols */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		CEDF055A20AC2FED0012AAC4 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEDF055B20AC2FED0012AAC4 /* Controller */,
+				CEDF055C20AC2FED0012AAC4 /* Model */,
+				CEDF055D20AC2FED0012AAC4 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CEDF055B20AC2FED0012AAC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F1620AC305000D93035 /* PickerViewController.h */,
+				CE7E0F1520AC305000D93035 /* PickerViewController.m */,
+				CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDF055C20AC2FED0012AAC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEDF055D20AC2FED0012AAC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEDF055E20AC2FED0012AAC4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2213,6 +2345,7 @@
 				CEDF052D20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
+				CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */,
 				CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */,
 				32C2DBA61F695F77001B6822 /* SportsListTableViewCell.xib in Resources */,
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
@@ -2222,6 +2355,7 @@
 				CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
 				32FAA0911F6144D500CD4395 /* Main.storyboard in Resources */,
+				CE7E0F2720AC4F7500D93035 /* DatePickerViewController.storyboard in Resources */,
 				CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */,
 				CEDF053520A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib in Resources */,
 			);
@@ -2413,6 +2547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7E0F2520AC4F5F00D93035 /* DatePickerViewController.m in Sources */,
 				3205FD621F6313350037DCE5 /* DAYIndicatorView.m in Sources */,
 				3230163C1F7A48FC0001BCB4 /* BSPhotosController.m in Sources */,
 				CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */,
@@ -2430,6 +2565,7 @@
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
+				CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
 				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
 				CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */,
@@ -2484,6 +2620,7 @@
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
 				CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */,
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
+				CE7E0F1C20AC4C7300D93035 /* UIViewController+Presentation.m in Sources */,
 				CEF8487D206A9E4A0011BFDB /* PaymentClient+Pay.m in Sources */,
 				323615731F7A3BB8007D4DF3 /* UIFontHelper.m in Sources */,
 				CEDF054B20AB03790012AAC4 /* UIFont+HelveticaNeue.m in Sources */,
@@ -2549,6 +2686,7 @@
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
 				CE12DFDE2064E98C00949AC2 /* ProfilePaymentDataModel.m in Sources */,
+				CE7E0F1720AC305000D93035 /* PickerViewController.m in Sources */,
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
