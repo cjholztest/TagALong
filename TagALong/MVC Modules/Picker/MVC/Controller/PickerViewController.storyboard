@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-VX-kI8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-VX-kI8" customClass="PickerView">
                                 <rect key="frame" x="0.0" y="667" width="375" height="212"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-UC-pW0">
@@ -38,7 +38,7 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
-                                                    <action selector="doneButtonAction:" destination="Ncs-KZ-VgG" eventType="touchUpInside" id="Ala-xe-ftA"/>
+                                                    <action selector="doneButtonAction:" destination="SQS-VX-kI8" eventType="touchUpInside" id="CW6-Kv-Kb6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -61,6 +61,12 @@
                                     <constraint firstItem="AFI-UD-59X" firstAttribute="leading" secondItem="SQS-VX-kI8" secondAttribute="leading" id="yDX-nB-K6P"/>
                                     <constraint firstItem="cKs-UC-pW0" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="bottom" id="zdG-Xd-D3k"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="contentViewBottomConstraint" destination="nBs-5u-Ejr" id="GXY-52-IVV"/>
+                                    <outlet property="contentViewHightConstraint" destination="tfy-Zz-xGg" id="lY1-AG-LII"/>
+                                    <outlet property="doneButton" destination="WT5-zr-fDQ" id="p8i-FZ-FMh"/>
+                                    <outlet property="pickerView" destination="cKs-UC-pW0" id="i1B-Ts-6zy"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,11 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="P7j-v6-xxG"/>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="SQS-VX-kI8" id="tPb-Nf-dZM"/>
-                        <outlet property="contentViewBottomConstraint" destination="nBs-5u-Ejr" id="TCY-b5-YlN"/>
-                        <outlet property="contentViewHightConstraint" destination="tfy-Zz-xGg" id="4I1-jG-JO4"/>
-                        <outlet property="doneButton" destination="WT5-zr-fDQ" id="GO7-ai-a5Z"/>
-                        <outlet property="pickerView" destination="cKs-UC-pW0" id="fWP-3f-wJL"/>
+                        <outlet property="contentView" destination="SQS-VX-kI8" id="0WX-uX-CGS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqx-Kl-DCg" userLabel="First Responder" sceneMemberID="firstResponder"/>

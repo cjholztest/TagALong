@@ -30,6 +30,8 @@
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     SubmitOfferDurationTableViewCell *cell = (SubmitOfferDurationTableViewCell*)[tableView dequeueReusableCellWithIdentifier:SubmitOfferDurationTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
+    cell.durationLabel.text = [self.output durationValue];
+    
     return cell;
 }
 

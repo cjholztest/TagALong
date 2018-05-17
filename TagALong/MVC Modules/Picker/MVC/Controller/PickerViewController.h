@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PickerModuleProtocols.h"
 
-@interface PickerViewController : UIViewController
+@interface PickerViewController : UIViewController <PickerModuleInput>
 
-- (void)setupAsSports;
+@property (nonatomic, weak) id <PickerModuleOutput> moduleOutput;
 
 @end

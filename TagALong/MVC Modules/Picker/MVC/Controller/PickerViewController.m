@@ -7,19 +7,19 @@
 //
 
 #import "PickerViewController.h"
+#import "PickerModel.h"
+#import "PickerView.h"
 #import "UIViewController+Storyboard.h"
 #import "UIFont+HelveticaNeue.h"
+#import "UILabel+PickerView.h"
 
-@interface PickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface PickerViewController () <PickerModelOutput, PickerViewOutput, UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *contentView;
-@property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (nonatomic, assign) PickerType pickerType;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewBottomConstraint;
+@property (nonatomic, weak) IBOutlet PickerView *contentView;
+@property (nonatomic, strong) id <PickerModelInput> model;
 
-@property (nonatomic, strong) NSArray *pickerComponents;
 
 @end
 
@@ -27,77 +27,112 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
-    [self.view addGestureRecognizer:tap];
+    [self setup];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [UIView animateWithDuration:0.3f animations:^{
-        self.contentViewBottomConstraint.constant = 0.0f;
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [UIView animateWithDuration:0.2f animations:^{
-        self.contentViewBottomConstraint.constant = -self.contentViewHightConstraint.constant;
-        [self.view layoutIfNeeded];
-    }];
+    [self showPickerView];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
-#pragma mark - Public
+- (void)setup {
+    
+    self.model = [[PickerModel alloc] initWithOutput:self andPickerType:self.pickerType];    
+    self.contentView.output = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
+    [self.contentView addGestureRecognizer:tap];
+    
+    self.contentView.pickerView.dataSource = self;
+    self.contentView.pickerView.delegate = self;
+}
 
-- (void)setupAsSports {
-    self.pickerComponents = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
-    self.pickerView.dataSource = self;
-    [self.pickerView reloadAllComponents];
+
+- (void)showPickerView {
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.contentView.contentViewBottomConstraint.constant = 0.0f;
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)hidePickerView {
+    
+    __weak typeof(self)weakSelf = self;
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.contentView.contentViewBottomConstraint.constant = -self.contentView.contentViewHightConstraint.constant;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [weakSelf pickerViewDidHide];
+        }
+    }];
+}
+
+#pragma mark - PickerViewOutput
+
+- (void)doneButtonDidTap {
+    if ([self.moduleOutput respondsToSelector:@selector(durationDidSelect:)]) {
+        NSString *durationText = [self.model selectedComponent];
+        if (durationText) {
+            [self.moduleOutput durationDidSelect:durationText];
+        }
+    }
+    [self hidePickerView];
+}
+
+- (void)pickerViewDidHide {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - PickerModelOutput
+
+#pragma mark - PickerModuleInput
+
+- (void)setupWithType:(PickerType)type {
+    self.pickerType = type;
 }
 
 #pragma mark - Actions
-
-- (IBAction)doneButtonAction:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void)contentDidTap {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - PickerViewDataSource
+#pragma mark - PickerViewDataSource and Delegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.pickerComponents.count;
+    return [self.model componentsCount];
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     
-    UILabel *label = (UILabel *)view;
+    UILabel *label = (UILabel*)view;
+    
     if (!label) {
         CGSize rowSize = [pickerView rowSizeForComponent:component];
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, rowSize.width, rowSize.height)];
+        label = [UILabel pickerLabelWithSize:rowSize];
     }
     
-    label.text = self.pickerComponents[row];
-    
-    UIFont *font = [UIFont textFont];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = font;
-    label.adjustsFontSizeToFitWidth = YES;
-    label.minimumScaleFactor = 0.1;
-    
-    label.textColor = [UIColor colorWithRed:(0 / 255.f) green:(0/ 255.f) blue:(0/ 255.f) alpha:1.0];
-    
+    label.text = [self.model titleForComponentAtIndex:row];
     return label;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 30.0f;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    [self.model updateSelectedComponentWithIndex:row];
 }
 
 @end

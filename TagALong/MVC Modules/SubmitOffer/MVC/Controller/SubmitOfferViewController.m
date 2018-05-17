@@ -14,6 +14,7 @@
 #import "DatePickerViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "UIViewController+Presentation.h"
+#import "OfferDataModel.h"
 
 @interface SubmitOfferViewController ()
 <   SubmitOfferViewOutput,
@@ -23,7 +24,8 @@
     SubmitOfferWhatCellAdapterOutput,
     SubmitOfferDurationCellAdapterOutput,
     SubmitOfferAmountCellAdapterOutput,
-    SubmitOfferAdditionalInfoCellAdapterOutput  >
+    SubmitOfferAdditionalInfoCellAdapterOutput,
+    PickerModuleOutput  >
 
 @property (nonatomic, weak) IBOutlet SubmitOfferView *contentView;
 @property (nonatomic, strong) id <SubmitOfferModelInput> model;
@@ -97,9 +99,6 @@
 
 - (void)whatCellDidTap {
     [self hideKeyboardIfNeeded];
-    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
-    [pickerVC setupAsSports];
-    [self presentCrossDissolveVC:pickerVC];
 }
 
 #pragma mark - SubmitOfferDurationCellAdapterOutput
@@ -107,7 +106,14 @@
 - (void)durationCellDidTap {
     [self hideKeyboardIfNeeded];
     PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [pickerVC setupWithType:DuratoinPickerType];
+    pickerVC.moduleOutput = self;
     [self presentCrossDissolveVC:pickerVC];
+}
+
+- (NSString*)durationValue {
+    OfferDataModel *order = [self.model currentOfferInfo];
+    return order.duration;
 }
 
 #pragma mark - SubmitOfferAmountCellAdapterOutput
@@ -165,6 +171,13 @@
     if (self.isEdidtingEnabled) {
         [self.view endEditing:YES];
     }
+}
+
+#pragma mark - PickeModuleOutput
+
+- (void)durationDidSelect:(NSString *)durationText {
+    [self.model updateDuration:durationText];
+    [self.contentView.tableView reloadData];
 }
 
 @end

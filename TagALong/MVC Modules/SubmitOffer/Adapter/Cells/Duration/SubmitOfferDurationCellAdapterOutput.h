@@ -11,5 +11,6 @@
 @protocol SubmitOfferDurationCellAdapterOutput <NSObject>
 
 - (void)durationCellDidTap;
+- (NSString*)durationValue;
 
 @end

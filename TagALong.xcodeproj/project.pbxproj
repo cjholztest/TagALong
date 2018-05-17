@@ -168,6 +168,16 @@
 		CE7E0F2520AC4F5F00D93035 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F2420AC4F5F00D93035 /* DatePickerViewController.m */; };
 		CE7E0F2720AC4F7500D93035 /* DatePickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F2620AC4F7500D93035 /* DatePickerViewController.storyboard */; };
 		CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */; };
+		CE7E0F2F20AD9E9900D93035 /* PickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F2E20AD9E9900D93035 /* PickerModel.m */; };
+		CE7E0F3220AD9EB200D93035 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F3120AD9EB200D93035 /* PickerView.m */; };
+		CE7E0F3820ADA84600D93035 /* UILabel+PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F3720ADA84600D93035 /* UILabel+PickerView.m */; };
+		CE7E0F4720ADC84600D93035 /* ReviewOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F4620ADC84600D93035 /* ReviewOfferViewController.m */; };
+		CE7E0F4920ADC85100D93035 /* ReviewOfferViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F4820ADC85100D93035 /* ReviewOfferViewController.storyboard */; };
+		CE7E0F4C20ADC87600D93035 /* ReviewOfferView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F4B20ADC87600D93035 /* ReviewOfferView.m */; };
+		CE7E0F4F20ADC88E00D93035 /* ReviewOfferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F4E20ADC88E00D93035 /* ReviewOfferModel.m */; };
+		CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F5320ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m */; };
+		CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F5B20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m */; };
+		CE7E0F6020ADC98900D93035 /* ReviewOfferMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F5F20ADC98900D93035 /* ReviewOfferMainSectionAdapter.m */; };
 		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
@@ -560,6 +570,33 @@
 		CE7E0F2820AC625200D93035 /* SubmitOfferWhenTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferWhenTableViewCellOutput.h; sourceTree = "<group>"; };
 		CE7E0F2A20AC6A4400D93035 /* OfferDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfferDataModel.h; sourceTree = "<group>"; };
 		CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfferDataModel.m; sourceTree = "<group>"; };
+		CE7E0F2D20AD9E9900D93035 /* PickerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerModel.h; sourceTree = "<group>"; };
+		CE7E0F2E20AD9E9900D93035 /* PickerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerModel.m; sourceTree = "<group>"; };
+		CE7E0F3020AD9EB200D93035 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		CE7E0F3120AD9EB200D93035 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		CE7E0F3320AD9F6F00D93035 /* PickerModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerModuleProtocols.h; sourceTree = "<group>"; };
+		CE7E0F3420AD9F8100D93035 /* PickerModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerModuleConstants.h; sourceTree = "<group>"; };
+		CE7E0F3620ADA84600D93035 /* UILabel+PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+PickerView.h"; sourceTree = "<group>"; };
+		CE7E0F3720ADA84600D93035 /* UILabel+PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+PickerView.m"; sourceTree = "<group>"; };
+		CE7E0F4520ADC84600D93035 /* ReviewOfferViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferViewController.h; sourceTree = "<group>"; };
+		CE7E0F4620ADC84600D93035 /* ReviewOfferViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferViewController.m; sourceTree = "<group>"; };
+		CE7E0F4820ADC85100D93035 /* ReviewOfferViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewOfferViewController.storyboard; sourceTree = "<group>"; };
+		CE7E0F4A20ADC87600D93035 /* ReviewOfferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferView.h; sourceTree = "<group>"; };
+		CE7E0F4B20ADC87600D93035 /* ReviewOfferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferView.m; sourceTree = "<group>"; };
+		CE7E0F4D20ADC88E00D93035 /* ReviewOfferModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferModel.h; sourceTree = "<group>"; };
+		CE7E0F4E20ADC88E00D93035 /* ReviewOfferModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferModel.m; sourceTree = "<group>"; };
+		CE7E0F5020ADC8A800D93035 /* ReviewOfferModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferModuleProtocols.h; sourceTree = "<group>"; };
+		CE7E0F5120ADC8BD00D93035 /* ReviewOfferModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferModuleConstants.h; sourceTree = "<group>"; };
+		CE7E0F5220ADC8DB00D93035 /* ReviewOfferTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferTableViewAdapter.h; sourceTree = "<group>"; };
+		CE7E0F5320ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferTableViewAdapter.m; sourceTree = "<group>"; };
+		CE7E0F5820ADC8FF00D93035 /* ReviewOfferTableViewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferTableViewAdapterInput.h; sourceTree = "<group>"; };
+		CE7E0F5920ADC91700D93035 /* ReviewOfferSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferSectionAdapter.h; sourceTree = "<group>"; };
+		CE7E0F5A20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferAdditionalSectionAdapter.h; sourceTree = "<group>"; };
+		CE7E0F5B20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferAdditionalSectionAdapter.m; sourceTree = "<group>"; };
+		CE7E0F5D20ADC96700D93035 /* ReviewOfferAdditionalSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferAdditionalSectionAdapterOutput.h; sourceTree = "<group>"; };
+		CE7E0F5E20ADC98900D93035 /* ReviewOfferMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferMainSectionAdapter.h; sourceTree = "<group>"; };
+		CE7E0F5F20ADC98900D93035 /* ReviewOfferMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferMainSectionAdapter.m; sourceTree = "<group>"; };
+		CE7E0F6120ADC99500D93035 /* ReviewOfferMainSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferMainSectionAdapterOutput.h; sourceTree = "<group>"; };
 		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
 		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
@@ -1526,6 +1563,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F3920ADC82400D93035 /* ReviewOffer */,
 				CE7E0F1D20AC4F3200D93035 /* DatePicker */,
 				CEDF055920AC2FED0012AAC4 /* Picker */,
 				CEDF04BE20A991180012AAC4 /* SubmitOffer */,
@@ -1616,6 +1654,7 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F3520ADA83000D93035 /* UILabel Categories */,
 				CEDF055520AB16B70012AAC4 /* NSString Categories */,
 				CEDF055120AB14330012AAC4 /* UITextView Categories */,
 				CEDF054820AB03280012AAC4 /* UIFont Categories */,
@@ -1724,6 +1763,121 @@
 				CE7E0F2B20AC6A4400D93035 /* OfferDataModel.m */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		CE7E0F3520ADA83000D93035 /* UILabel Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F3620ADA84600D93035 /* UILabel+PickerView.h */,
+				CE7E0F3720ADA84600D93035 /* UILabel+PickerView.m */,
+			);
+			path = "UILabel Categories";
+			sourceTree = "<group>";
+		};
+		CE7E0F3920ADC82400D93035 /* ReviewOffer */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F3A20ADC82400D93035 /* MVC */,
+				CE7E0F3F20ADC82400D93035 /* Adapter */,
+				CE7E0F4420ADC82400D93035 /* Protocols */,
+			);
+			path = ReviewOffer;
+			sourceTree = "<group>";
+		};
+		CE7E0F3A20ADC82400D93035 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F3B20ADC82400D93035 /* Controller */,
+				CE7E0F3C20ADC82400D93035 /* Model */,
+				CE7E0F3D20ADC82400D93035 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE7E0F3B20ADC82400D93035 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F4520ADC84600D93035 /* ReviewOfferViewController.h */,
+				CE7E0F4620ADC84600D93035 /* ReviewOfferViewController.m */,
+				CE7E0F4820ADC85100D93035 /* ReviewOfferViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE7E0F3C20ADC82400D93035 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F4D20ADC88E00D93035 /* ReviewOfferModel.h */,
+				CE7E0F4E20ADC88E00D93035 /* ReviewOfferModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE7E0F3D20ADC82400D93035 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F3E20ADC82400D93035 /* Cell */,
+				CE7E0F4A20ADC87600D93035 /* ReviewOfferView.h */,
+				CE7E0F4B20ADC87600D93035 /* ReviewOfferView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE7E0F3E20ADC82400D93035 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE7E0F3F20ADC82400D93035 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F4120ADC82400D93035 /* Sections */,
+				CE7E0F5220ADC8DB00D93035 /* ReviewOfferTableViewAdapter.h */,
+				CE7E0F5320ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m */,
+				CE7E0F5820ADC8FF00D93035 /* ReviewOfferTableViewAdapterInput.h */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CE7E0F4120ADC82400D93035 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F4220ADC82400D93035 /* AdditionalInfo */,
+				CE7E0F4320ADC82400D93035 /* Main */,
+				CE7E0F5920ADC91700D93035 /* ReviewOfferSectionAdapter.h */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		CE7E0F4220ADC82400D93035 /* AdditionalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F5A20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.h */,
+				CE7E0F5B20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m */,
+				CE7E0F5D20ADC96700D93035 /* ReviewOfferAdditionalSectionAdapterOutput.h */,
+			);
+			path = AdditionalInfo;
+			sourceTree = "<group>";
+		};
+		CE7E0F4320ADC82400D93035 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F5E20ADC98900D93035 /* ReviewOfferMainSectionAdapter.h */,
+				CE7E0F5F20ADC98900D93035 /* ReviewOfferMainSectionAdapter.m */,
+				CE7E0F6120ADC99500D93035 /* ReviewOfferMainSectionAdapterOutput.h */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE7E0F4420ADC82400D93035 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E0F5020ADC8A800D93035 /* ReviewOfferModuleProtocols.h */,
+				CE7E0F5120ADC8BD00D93035 /* ReviewOfferModuleConstants.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
@@ -2196,6 +2350,8 @@
 		CEDF055C20AC2FED0012AAC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F2D20AD9E9900D93035 /* PickerModel.h */,
+				CE7E0F2E20AD9E9900D93035 /* PickerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2203,6 +2359,8 @@
 		CEDF055D20AC2FED0012AAC4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F3020AD9EB200D93035 /* PickerView.h */,
+				CE7E0F3120AD9EB200D93035 /* PickerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2210,6 +2368,8 @@
 		CEDF055E20AC2FED0012AAC4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E0F3320AD9F6F00D93035 /* PickerModuleProtocols.h */,
+				CE7E0F3420AD9F8100D93035 /* PickerModuleConstants.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2350,6 +2510,7 @@
 				32C2DBA61F695F77001B6822 /* SportsListTableViewCell.xib in Resources */,
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
+				CE7E0F4920ADC85100D93035 /* ReviewOfferViewController.storyboard in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */,
 				CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */,
@@ -2562,6 +2723,7 @@
 				323016461F7A48FC0001BCB4 /* BSPreviewController+UICollectionView.m in Sources */,
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
 				CEDF04EB20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m in Sources */,
+				CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
@@ -2600,6 +2762,7 @@
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				CE36D76720A57A5C008B0E75 /* ProsMainSectionAdapter.m in Sources */,
+				CE7E0F3820ADA84600D93035 /* UILabel+PickerView.m in Sources */,
 				323016591F7A4A250001BCB4 /* OHActionSheet.m in Sources */,
 				1A2D65BF2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m in Sources */,
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
@@ -2613,6 +2776,7 @@
 				3205FD611F6313350037DCE5 /* DAYComponentView.m in Sources */,
 				3256F2771F7395A500D0874E /* Globals.m in Sources */,
 				3B0C4CFD1F887393002CEADA /* UIButton+WebCache.m in Sources */,
+				CE7E0F4C20ADC87600D93035 /* ReviewOfferView.m in Sources */,
 				CE36D76220A579CB008B0E75 /* ProsTableViewAdapter.m in Sources */,
 				CEDF055420AB14530012AAC4 /* UITextView+TextSize.m in Sources */,
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
@@ -2653,6 +2817,7 @@
 				3B01AF241F90950600BDF1AA /* ODRefreshControl.m in Sources */,
 				323016521F7A48FC0001BCB4 /* BSNumberedSelectionView.m in Sources */,
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
+				CE7E0F6020ADC98900D93035 /* ReviewOfferMainSectionAdapter.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
 				1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */,
 				CEDF04FF20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m in Sources */,
@@ -2675,10 +2840,13 @@
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
 				3273EA5E1F74EF0600DADA58 /* EditDialogViewController.m in Sources */,
 				3205FD751F6551190037DCE5 /* BookWorkoutViewController.m in Sources */,
+				CE7E0F4720ADC84600D93035 /* ReviewOfferViewController.m in Sources */,
+				CE7E0F4F20ADC88E00D93035 /* ReviewOfferModel.m in Sources */,
 				1A276163206133D100C9D703 /* CreditCardTableViewCell.m in Sources */,
 				323016541F7A48FC0001BCB4 /* BSSpeechBubbleView.m in Sources */,
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
+				CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */,
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
@@ -2694,6 +2862,7 @@
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
+				CE7E0F2F20AD9E9900D93035 /* PickerModel.m in Sources */,
 				3B1E2FDB1F95964200E636F4 /* OneBtnDlgViewController.m in Sources */,
 				3230163F1F7A48FC0001BCB4 /* ALAsset+BSEqual.m in Sources */,
 				3232FFB11F7A055E00A0F55D /* SignupViewController.m in Sources */,
@@ -2723,6 +2892,7 @@
 				3205FD601F6313350037DCE5 /* DAYCalendarView.m in Sources */,
 				323016381F7A48FC0001BCB4 /* BSShrinkAnimator.m in Sources */,
 				323615721F7A3BB8007D4DF3 /* MDDeviceHelper.m in Sources */,
+				CE7E0F3220AD9EB200D93035 /* PickerView.m in Sources */,
 				3230163D1F7A48FC0001BCB4 /* BSPreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
