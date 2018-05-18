@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CCHMapClusterController (1.7.0)
+  - CCHMapClusterController (1.7.1)
   - DZNEmptyDataSet (1.8.1)
   - FSCalendar (2.7.9)
   - JElasticPullToRefresh (1.0.3)
@@ -24,21 +24,31 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - CCHMapClusterController (~> 1.7.0)
-  - DZNEmptyDataSet
-  - FSCalendar
+  - DZNEmptyDataSet (~> 1.8.1)
+  - FSCalendar (~> 2.7.9)
   - JElasticPullToRefresh (~> 1.0.3)
   - Stripe (~> 11.4.0)
   - SVProgressHUD (~> 2.0.3)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - CCHMapClusterController
+    - DZNEmptyDataSet
+    - FSCalendar
+    - JElasticPullToRefresh
+    - Stripe
+    - SVProgressHUD
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CCHMapClusterController: d8cd12cd5682ec6cd76d911ac7198f981b6cc1b8
+  CCHMapClusterController: 3de2f03cb659a98ef8518d22de3fcb129d888049
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   JElasticPullToRefresh: 63b15bfbb96ea476dce3df9460509d59473b1e94
   Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: 5fec6b02ef626609d459d66e698144d5a3a811fe
+PODFILE CHECKSUM: 20ae70805a5efb675879bd0e47faffc486e35bbf
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

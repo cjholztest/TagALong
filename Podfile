@@ -21,8 +21,9 @@ use_frameworks!
   pod 'JElasticPullToRefresh', '~>1.0.3'
   pod 'AFNetworking', '~>3.1.0'
   pod 'SVProgressHUD', '~>2.0.3'
-  pod 'FSCalendar'
-  pod 'DZNEmptyDataSet'
+  pod 'FSCalendar', '~>2.7.9'
+  pod 'DZNEmptyDataSet', '~>1.8.1'
   pod 'CCHMapClusterController', '~>1.7.0'
   pod 'Stripe', '~>11.4.0'
+  
 end

@@ -45,8 +45,11 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius"];
     
-    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
+//    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
+//                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
+    
+    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   @(0.0f),
+                             API_REQ_KEY_USER_LONGITUDE     :   @(0.0f)};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
