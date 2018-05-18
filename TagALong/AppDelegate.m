@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD.h"
 #import <Stripe/Stripe.h>
+#import <UserNotifications/UserNotifications.h>
 
 const NSString *kStripeAccountTestKey = @"pk_test_VKdmHHXsKzJ8L7VQecG4HcSh";
 const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
@@ -25,6 +26,8 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     
     NSString *key = [NSString stringWithFormat:@"%@", isStripeTest ? kStripeAccountTestKey : kStripeAccountLiveKey];
     [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:key];
+    
+    [self registerForPushNotification];
     
     //Global.g_token = [[NSUserDefaults standardUserDefaults] stringForKey:PREFCONST_TOKEN];
     return YES;
@@ -57,17 +60,38 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-//- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-//{
-//    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-//    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    NSLog(@"content---%@", token);
-//    
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"deviceToken: %@", deviceToken);
+    
+    NSString *tok = [NSString stringWithFormat:@"%02.2hhx", deviceToken];
+    NSLog(@"dev token = %@", tok);
+    
+    NSString * token = [NSString stringWithFormat:@"%@", deviceToken];
+    //Format token as you need:
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"token: %@", token);
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    NSLog(@"token: %@", token);
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    NSLog(@"token: %@", token);
+    
+    
 //    Global.g_token = token;
-//    
+    
 //    [[NSUserDefaults standardUserDefaults] setValue:token forKey:PREFCONST_TOKEN];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
-//}
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    if (error) {
+        NSLog(@"error register notification %@", error.localizedDescription);
+    }
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [self getNotificationSettings];
+}
 
 - (void)showLoading {
     [[SVProgressHUD appearance] setDefaultStyle:SVProgressHUDStyleCustom];
@@ -78,6 +102,31 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
 
 - (void)closeLoading {
     [SVProgressHUD dismiss];
+}
+
+- (void)registerForPushNotification {
+    [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        NSLog(@"is granted: %@", granted ? @"YES" : @"NO");
+        if (granted) {
+            [self getNotificationSettings];
+        }
+        if (error) {
+            NSLog(@"granted error %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)getNotificationSettings {
+    [UNUserNotificationCenter.currentNotificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        NSLog(@"Settings: %@", settings);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (settings.authorizationStatus != UNAuthorizationStatusNotDetermined) {
+                NSLog(@"didRegisterUser");
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        });
+    }];
 }
 
 @end

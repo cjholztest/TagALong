@@ -606,6 +606,7 @@
 		CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+CreditCard.m"; sourceTree = "<group>"; };
 		CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
+		CEDA65B620AEF5F9009417BF /* TagALong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TagALong.entitlements; sourceTree = "<group>"; };
 		CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoViewController.h; sourceTree = "<group>"; };
 		CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoViewController.m; sourceTree = "<group>"; };
 		CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AthleteInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -1307,6 +1308,7 @@
 		32FAA0851F6144D500CD4395 /* TagALong */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA65B620AEF5F9009417BF /* TagALong.entitlements */,
 				CEDF054220A9D5780012AAC4 /* Library */,
 				CE36D76920A5806B008B0E75 /* Categories */,
 				CE36D74820A47862008B0E75 /* MVC Modules */,
@@ -2449,6 +2451,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = PZQ3TDE8S3;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					32FAA09B1F6144D500CD4395 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -2960,6 +2967,7 @@
 			baseConfigurationReference = D0B345F07BCC0D68EA167641 /* Pods-TagALong.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TagALong/TagALong.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PZQ3TDE8S3;
@@ -2973,7 +2981,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyad.tagalong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46e758d3-56a2-4970-8a6d-60ba542273f9";
+				PROVISIONING_PROFILE = "d68992d6-6797-429c-972a-611561636bd0";
 				PROVISIONING_PROFILE_SPECIFIER = taganlong_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2984,6 +2992,7 @@
 			baseConfigurationReference = 7B310826D40D46F50B4B7F5B /* Pods-TagALong.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TagALong/TagALong.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = PZQ3TDE8S3;
@@ -2997,7 +3006,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyad.tagalong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4700562d-cc6b-4bed-98c0-f0544f8e9e22";
+				PROVISIONING_PROFILE = "5aac04f5-1d80-4b3e-9c40-5161763ada0e";
 				PROVISIONING_PROFILE_SPECIFIER = taganlpng_prod;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
