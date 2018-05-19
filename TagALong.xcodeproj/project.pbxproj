@@ -182,6 +182,37 @@
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
+		CEDA65C120B01B79009417BF /* ProUserSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65C020B01B79009417BF /* ProUserSignUpViewController.m */; };
+		CEDA65C520B01BB9009417BF /* ProUserSignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDA65C420B01BB9009417BF /* ProUserSignUpViewController.storyboard */; };
+		CEDA65C820B02034009417BF /* ProUserSignUpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65C720B02034009417BF /* ProUserSignUpModel.m */; };
+		CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65CA20B0204A009417BF /* ProUserSignUpView.m */; };
+		CEDA65D320B021CF009417BF /* ProUserSignUpTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65D220B021CF009417BF /* ProUserSignUpTableViewAdapter.m */; };
+		CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65D720B02313009417BF /* ProUserSignUpMainSectionAdapter.m */; };
+		CEDA65ED20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65EC20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.m */; };
+		CEDA65F120B03297009417BF /* ProUserSignUpAddressCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65F020B03297009417BF /* ProUserSignUpAddressCellAdapter.m */; };
+		CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65F420B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m */; };
+		CEDA65F920B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65F820B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m */; };
+		CEDA65FD20B03319009417BF /* ProUserSignUpEmailCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA65FC20B03319009417BF /* ProUserSignUpEmailCellAdapter.m */; };
+		CEDA660120B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA660020B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m */; };
+		CEDA660520B03364009417BF /* ProUserSignUpLastNameCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA660420B03364009417BF /* ProUserSignUpLastNameCellAdapter.m */; };
+		CEDA660920B03383009417BF /* ProUserSignUpPasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA660820B03383009417BF /* ProUserSignUpPasswordCellAdapter.m */; };
+		CEDA660D20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA660C20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m */; };
+		CEDA661120B033BF009417BF /* ProUserSignUpSportCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA661020B033BF009417BF /* ProUserSignUpSportCellAdapter.m */; };
+		CEDA661D20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA661C20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.m */; };
+		CEDA661F20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA661E20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib */; };
+		CEDA662320B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA662220B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m */; };
+		CEDA662620B048EE009417BF /* ProUserSignUpTextViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA662520B048EE009417BF /* ProUserSignUpTextViewTableViewCell.m */; };
+		CEDA662820B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA662720B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib */; };
+		CEDA662C20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA662B20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.m */; };
+		CEDA662F20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA662E20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m */; };
+		CEDA663120B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA663020B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib */; };
+		CEDA663520B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA663420B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m */; };
+		CEDA663920B04C52009417BF /* ProSignUpBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA663820B04C52009417BF /* ProSignUpBaseTableViewCell.m */; };
+		CEDA663D20B06853009417BF /* UINavigationBar+Styles.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA663C20B06853009417BF /* UINavigationBar+Styles.m */; };
+		CEDA664120B07BCA009417BF /* ProUserSignUpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA664020B07BCA009417BF /* ProUserSignUpDataModel.m */; };
+		CEDA664620B07F81009417BF /* ProUserSignUpInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA664420B07F81009417BF /* ProUserSignUpInfoTableViewCell.m */; };
+		CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA664520B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib */; };
+		CEDA664A20B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */; };
 		CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */; };
 		CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */; };
 		CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */; };
@@ -607,6 +638,82 @@
 		CEB289562063F91F00C8DD0E /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		CEDA65B620AEF5F9009417BF /* TagALong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TagALong.entitlements; sourceTree = "<group>"; };
+		CEDA65BF20B01B79009417BF /* ProUserSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpViewController.h; sourceTree = "<group>"; };
+		CEDA65C020B01B79009417BF /* ProUserSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpViewController.m; sourceTree = "<group>"; };
+		CEDA65C420B01BB9009417BF /* ProUserSignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProUserSignUpViewController.storyboard; sourceTree = "<group>"; };
+		CEDA65C620B02034009417BF /* ProUserSignUpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpModel.h; sourceTree = "<group>"; };
+		CEDA65C720B02034009417BF /* ProUserSignUpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpModel.m; sourceTree = "<group>"; };
+		CEDA65C920B0204A009417BF /* ProUserSignUpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpView.h; sourceTree = "<group>"; };
+		CEDA65CA20B0204A009417BF /* ProUserSignUpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpView.m; sourceTree = "<group>"; };
+		CEDA65CC20B020E1009417BF /* ProUserSignUpModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpModuleProtocols.h; sourceTree = "<group>"; };
+		CEDA65CD20B02158009417BF /* ProUserSignUpModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpModuleConstants.h; sourceTree = "<group>"; };
+		CEDA65D120B021CF009417BF /* ProUserSignUpTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTableViewAdapter.h; sourceTree = "<group>"; };
+		CEDA65D220B021CF009417BF /* ProUserSignUpTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTableViewAdapter.m; sourceTree = "<group>"; };
+		CEDA65D420B02203009417BF /* ProUserSignUpTableViewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTableViewAdapterInput.h; sourceTree = "<group>"; };
+		CEDA65D520B02296009417BF /* ProUserSignUpSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSectionAdapter.h; sourceTree = "<group>"; };
+		CEDA65D620B02313009417BF /* ProUserSignUpMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpMainSectionAdapter.h; sourceTree = "<group>"; };
+		CEDA65D720B02313009417BF /* ProUserSignUpMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpMainSectionAdapter.m; sourceTree = "<group>"; };
+		CEDA65DF20B025EA009417BF /* ProUserSignUpModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpModuleHeaders.h; sourceTree = "<group>"; };
+		CEDA65E020B02F9E009417BF /* ProUserSignUpCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65EB20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAdditionalInfoCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65EC20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpAdditionalInfoCellAdapter.m; sourceTree = "<group>"; };
+		CEDA65EE20B03286009417BF /* ProUserSignUpAdditionalInfoCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAdditionalInfoCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA65EF20B03297009417BF /* ProUserSignUpAddressCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAddressCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65F020B03297009417BF /* ProUserSignUpAddressCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpAddressCellAdapter.m; sourceTree = "<group>"; };
+		CEDA65F220B032A9009417BF /* ProUserSignUpAddressCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAddressCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA65F320B032C7009417BF /* ProUserSignUpAwardsCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAwardsCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65F420B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpAwardsCellAdapter.m; sourceTree = "<group>"; };
+		CEDA65F620B032D2009417BF /* ProUserSignUpAwardsCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpAwardsCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA65F720B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpConfirmPasswordCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65F820B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpConfirmPasswordCellAdapter.m; sourceTree = "<group>"; };
+		CEDA65FA20B03307009417BF /* ProUserSignUpConfirmPasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpConfirmPasswordCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA65FB20B03319009417BF /* ProUserSignUpEmailCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpEmailCellAdapter.h; sourceTree = "<group>"; };
+		CEDA65FC20B03319009417BF /* ProUserSignUpEmailCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpEmailCellAdapter.m; sourceTree = "<group>"; };
+		CEDA65FE20B03324009417BF /* ProUserSignUpEmailCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpEmailCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA65FF20B03346009417BF /* ProUserSignUpFirstNameCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpFirstNameCellAdapter.h; sourceTree = "<group>"; };
+		CEDA660020B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpFirstNameCellAdapter.m; sourceTree = "<group>"; };
+		CEDA660220B03353009417BF /* ProUserSignUpFirstNameCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpFirstNameCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA660320B03364009417BF /* ProUserSignUpLastNameCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpLastNameCellAdapter.h; sourceTree = "<group>"; };
+		CEDA660420B03364009417BF /* ProUserSignUpLastNameCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpLastNameCellAdapter.m; sourceTree = "<group>"; };
+		CEDA660620B0336F009417BF /* ProUserSignUpLastNameCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpLastNameCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA660720B03383009417BF /* ProUserSignUpPasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpPasswordCellAdapter.h; sourceTree = "<group>"; };
+		CEDA660820B03383009417BF /* ProUserSignUpPasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpPasswordCellAdapter.m; sourceTree = "<group>"; };
+		CEDA660A20B0338E009417BF /* ProUserSignUpPasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpPasswordCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA660B20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpPhoneCellAdapter.h; sourceTree = "<group>"; };
+		CEDA660C20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpPhoneCellAdapter.m; sourceTree = "<group>"; };
+		CEDA660E20B033AA009417BF /* ProUserSignUpPhoneCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpPhoneCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA660F20B033BF009417BF /* ProUserSignUpSportCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSportCellAdapter.h; sourceTree = "<group>"; };
+		CEDA661020B033BF009417BF /* ProUserSignUpSportCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpSportCellAdapter.m; sourceTree = "<group>"; };
+		CEDA661220B033CD009417BF /* ProUserSignUpSportCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSportCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA661B20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		CEDA661C20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		CEDA661E20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA662020B04895009417BF /* ProUserSignUpTextFieldTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextFieldTableViewCellOutput.h; sourceTree = "<group>"; };
+		CEDA662120B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextFieldTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDA662220B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTextFieldTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDA662420B048EE009417BF /* ProUserSignUpTextViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextViewTableViewCell.h; sourceTree = "<group>"; };
+		CEDA662520B048EE009417BF /* ProUserSignUpTextViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTextViewTableViewCell.m; sourceTree = "<group>"; };
+		CEDA662720B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpTextViewTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA662920B0491C009417BF /* ProUserSignUpTextViewTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextViewTableViewCellOutput.h; sourceTree = "<group>"; };
+		CEDA662A20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTextViewTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDA662B20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTextViewTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDA662D20B04977009417BF /* ProUserSignUpSwitchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSwitchTableViewCell.h; sourceTree = "<group>"; };
+		CEDA662E20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpSwitchTableViewCell.m; sourceTree = "<group>"; };
+		CEDA663020B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA663220B04992009417BF /* ProUserSignUpSwitchTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSwitchTableViewCellOutput.h; sourceTree = "<group>"; };
+		CEDA663320B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSwitchTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDA663420B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpSwitchTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDA663720B04C52009417BF /* ProSignUpBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProSignUpBaseTableViewCell.h; sourceTree = "<group>"; };
+		CEDA663820B04C52009417BF /* ProSignUpBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProSignUpBaseTableViewCell.m; sourceTree = "<group>"; };
+		CEDA663B20B06853009417BF /* UINavigationBar+Styles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Styles.h"; sourceTree = "<group>"; };
+		CEDA663C20B06853009417BF /* UINavigationBar+Styles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Styles.m"; sourceTree = "<group>"; };
+		CEDA663F20B07BCA009417BF /* ProUserSignUpDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpDataModel.h; sourceTree = "<group>"; };
+		CEDA664020B07BCA009417BF /* ProUserSignUpDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpDataModel.m; sourceTree = "<group>"; };
+		CEDA664320B07F81009417BF /* ProUserSignUpInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpInfoTableViewCell.h; sourceTree = "<group>"; };
+		CEDA664420B07F81009417BF /* ProUserSignUpInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpInfoTableViewCell.m; sourceTree = "<group>"; };
+		CEDA664520B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA664820B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpInfoTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpInfoTableViewCellDisplayModel.m; sourceTree = "<group>"; };
 		CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoViewController.h; sourceTree = "<group>"; };
 		CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoViewController.m; sourceTree = "<group>"; };
 		CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AthleteInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -1567,6 +1674,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA65B720B01AAB009417BF /* ProUserSignUp */,
 				CE7E0F3920ADC82400D93035 /* ReviewOffer */,
 				CE7E0F1D20AC4F3200D93035 /* DatePicker */,
 				CEDF055920AC2FED0012AAC4 /* Picker */,
@@ -1658,6 +1766,7 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA663A20B0683A009417BF /* UINavigationBar Categories */,
 				CE7E0F3520ADA83000D93035 /* UILabel Categories */,
 				CEDF055520AB16B70012AAC4 /* NSString Categories */,
 				CEDF055120AB14330012AAC4 /* UITextView Categories */,
@@ -1899,6 +2008,304 @@
 				1A27613D20612E8000C9D703 /* Payment.storyboard */,
 			);
 			path = PaymentStoryboards;
+			sourceTree = "<group>";
+		};
+		CEDA65B720B01AAB009417BF /* ProUserSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65B820B01AAB009417BF /* MVC */,
+				CEDA65BD20B01AAB009417BF /* Adapter */,
+				CEDA65BE20B01AAB009417BF /* Protocols */,
+			);
+			path = ProUserSignUp;
+			sourceTree = "<group>";
+		};
+		CEDA65B820B01AAB009417BF /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65B920B01AAB009417BF /* Controller */,
+				CEDA65BA20B01AAB009417BF /* Model */,
+				CEDA65BB20B01AAB009417BF /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CEDA65B920B01AAB009417BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65BF20B01B79009417BF /* ProUserSignUpViewController.h */,
+				CEDA65C020B01B79009417BF /* ProUserSignUpViewController.m */,
+				CEDA65C420B01BB9009417BF /* ProUserSignUpViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDA65BA20B01AAB009417BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA663E20B07B98009417BF /* DataModels */,
+				CEDA65C620B02034009417BF /* ProUserSignUpModel.h */,
+				CEDA65C720B02034009417BF /* ProUserSignUpModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEDA65BB20B01AAB009417BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65BC20B01AAB009417BF /* Cell */,
+				CEDA65C920B0204A009417BF /* ProUserSignUpView.h */,
+				CEDA65CA20B0204A009417BF /* ProUserSignUpView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEDA65BC20B01AAB009417BF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA664220B07F58009417BF /* InfoCell */,
+				CEDA663620B04C15009417BF /* BaseCell */,
+				CEDA661820B0483C009417BF /* SwitchCell */,
+				CEDA661920B0483C009417BF /* TextFieldCell */,
+				CEDA661A20B0483D009417BF /* TextViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CEDA65BD20B01AAB009417BF /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65CE20B021A7009417BF /* Cells */,
+				CEDA65CF20B021A7009417BF /* Sections */,
+				CEDA65D120B021CF009417BF /* ProUserSignUpTableViewAdapter.h */,
+				CEDA65D220B021CF009417BF /* ProUserSignUpTableViewAdapter.m */,
+				CEDA65D420B02203009417BF /* ProUserSignUpTableViewAdapterInput.h */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CEDA65BE20B01AAB009417BF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65CC20B020E1009417BF /* ProUserSignUpModuleProtocols.h */,
+				CEDA65CD20B02158009417BF /* ProUserSignUpModuleConstants.h */,
+				CEDA65DF20B025EA009417BF /* ProUserSignUpModuleHeaders.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CEDA65CE20B021A7009417BF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65E320B0304F009417BF /* AdditionalInfo */,
+				CEDA65E520B03050009417BF /* Address */,
+				CEDA65E220B0304F009417BF /* Awards */,
+				CEDA65E720B03050009417BF /* ConfirmPassword */,
+				CEDA65E420B03050009417BF /* Email */,
+				CEDA65EA20B03051009417BF /* FirstName */,
+				CEDA65E120B0304F009417BF /* LastName */,
+				CEDA65E920B03051009417BF /* Password */,
+				CEDA65E620B03050009417BF /* Phone */,
+				CEDA65E820B03050009417BF /* Sport */,
+				CEDA65E020B02F9E009417BF /* ProUserSignUpCellAdapter.h */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CEDA65CF20B021A7009417BF /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65D020B021A7009417BF /* Main */,
+				CEDA65D520B02296009417BF /* ProUserSignUpSectionAdapter.h */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		CEDA65D020B021A7009417BF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65D620B02313009417BF /* ProUserSignUpMainSectionAdapter.h */,
+				CEDA65D720B02313009417BF /* ProUserSignUpMainSectionAdapter.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CEDA65E120B0304F009417BF /* LastName */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA660320B03364009417BF /* ProUserSignUpLastNameCellAdapter.h */,
+				CEDA660420B03364009417BF /* ProUserSignUpLastNameCellAdapter.m */,
+				CEDA660620B0336F009417BF /* ProUserSignUpLastNameCellAdapterOutput.h */,
+			);
+			path = LastName;
+			sourceTree = "<group>";
+		};
+		CEDA65E220B0304F009417BF /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65F320B032C7009417BF /* ProUserSignUpAwardsCellAdapter.h */,
+				CEDA65F420B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m */,
+				CEDA65F620B032D2009417BF /* ProUserSignUpAwardsCellAdapterOutput.h */,
+			);
+			path = Awards;
+			sourceTree = "<group>";
+		};
+		CEDA65E320B0304F009417BF /* AdditionalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65EB20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.h */,
+				CEDA65EC20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.m */,
+				CEDA65EE20B03286009417BF /* ProUserSignUpAdditionalInfoCellAdapterOutput.h */,
+			);
+			path = AdditionalInfo;
+			sourceTree = "<group>";
+		};
+		CEDA65E420B03050009417BF /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65FB20B03319009417BF /* ProUserSignUpEmailCellAdapter.h */,
+				CEDA65FC20B03319009417BF /* ProUserSignUpEmailCellAdapter.m */,
+				CEDA65FE20B03324009417BF /* ProUserSignUpEmailCellAdapterOutput.h */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		CEDA65E520B03050009417BF /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65EF20B03297009417BF /* ProUserSignUpAddressCellAdapter.h */,
+				CEDA65F020B03297009417BF /* ProUserSignUpAddressCellAdapter.m */,
+				CEDA65F220B032A9009417BF /* ProUserSignUpAddressCellAdapterOutput.h */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		CEDA65E620B03050009417BF /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA660B20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.h */,
+				CEDA660C20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m */,
+				CEDA660E20B033AA009417BF /* ProUserSignUpPhoneCellAdapterOutput.h */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		CEDA65E720B03050009417BF /* ConfirmPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65F720B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.h */,
+				CEDA65F820B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m */,
+				CEDA65FA20B03307009417BF /* ProUserSignUpConfirmPasswordCellAdapterOutput.h */,
+			);
+			path = ConfirmPassword;
+			sourceTree = "<group>";
+		};
+		CEDA65E820B03050009417BF /* Sport */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA660F20B033BF009417BF /* ProUserSignUpSportCellAdapter.h */,
+				CEDA661020B033BF009417BF /* ProUserSignUpSportCellAdapter.m */,
+				CEDA661220B033CD009417BF /* ProUserSignUpSportCellAdapterOutput.h */,
+			);
+			path = Sport;
+			sourceTree = "<group>";
+		};
+		CEDA65E920B03051009417BF /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA660720B03383009417BF /* ProUserSignUpPasswordCellAdapter.h */,
+				CEDA660820B03383009417BF /* ProUserSignUpPasswordCellAdapter.m */,
+				CEDA660A20B0338E009417BF /* ProUserSignUpPasswordCellAdapterOutput.h */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		CEDA65EA20B03051009417BF /* FirstName */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA65FF20B03346009417BF /* ProUserSignUpFirstNameCellAdapter.h */,
+				CEDA660020B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m */,
+				CEDA660220B03353009417BF /* ProUserSignUpFirstNameCellAdapterOutput.h */,
+			);
+			path = FirstName;
+			sourceTree = "<group>";
+		};
+		CEDA661820B0483C009417BF /* SwitchCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA662D20B04977009417BF /* ProUserSignUpSwitchTableViewCell.h */,
+				CEDA662E20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m */,
+				CEDA663020B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib */,
+				CEDA663220B04992009417BF /* ProUserSignUpSwitchTableViewCellOutput.h */,
+				CEDA663320B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.h */,
+				CEDA663420B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m */,
+			);
+			path = SwitchCell;
+			sourceTree = "<group>";
+		};
+		CEDA661920B0483C009417BF /* TextFieldCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA661B20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.h */,
+				CEDA661C20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.m */,
+				CEDA661E20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib */,
+				CEDA662020B04895009417BF /* ProUserSignUpTextFieldTableViewCellOutput.h */,
+				CEDA662120B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.h */,
+				CEDA662220B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m */,
+			);
+			path = TextFieldCell;
+			sourceTree = "<group>";
+		};
+		CEDA661A20B0483D009417BF /* TextViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA662420B048EE009417BF /* ProUserSignUpTextViewTableViewCell.h */,
+				CEDA662520B048EE009417BF /* ProUserSignUpTextViewTableViewCell.m */,
+				CEDA662720B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib */,
+				CEDA662920B0491C009417BF /* ProUserSignUpTextViewTableViewCellOutput.h */,
+				CEDA662A20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.h */,
+				CEDA662B20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.m */,
+			);
+			path = TextViewCell;
+			sourceTree = "<group>";
+		};
+		CEDA663620B04C15009417BF /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA663720B04C52009417BF /* ProSignUpBaseTableViewCell.h */,
+				CEDA663820B04C52009417BF /* ProSignUpBaseTableViewCell.m */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
+		CEDA663A20B0683A009417BF /* UINavigationBar Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA663B20B06853009417BF /* UINavigationBar+Styles.h */,
+				CEDA663C20B06853009417BF /* UINavigationBar+Styles.m */,
+			);
+			path = "UINavigationBar Categories";
+			sourceTree = "<group>";
+		};
+		CEDA663E20B07B98009417BF /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA663F20B07BCA009417BF /* ProUserSignUpDataModel.h */,
+				CEDA664020B07BCA009417BF /* ProUserSignUpDataModel.m */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		CEDA664220B07F58009417BF /* InfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA664320B07F81009417BF /* ProUserSignUpInfoTableViewCell.h */,
+				CEDA664420B07F81009417BF /* ProUserSignUpInfoTableViewCell.m */,
+				CEDA664520B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib */,
+				CEDA664820B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.h */,
+				CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */,
+			);
+			path = InfoCell;
 			sourceTree = "<group>";
 		};
 		CEDF04A820A96D430012AAC4 /* MVC */ = {
@@ -2494,20 +2901,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDA662820B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib in Resources */,
 				CEDF04CA20A991580012AAC4 /* SubmitOfferViewController.storyboard in Resources */,
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
 				CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */,
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
+				CEDA65C520B01BB9009417BF /* ProUserSignUpViewController.storyboard in Resources */,
+				CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */,
 				CEDF051D20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
 				32C2DBD51F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.xib in Resources */,
 				CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */,
+				CEDA663120B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib in Resources */,
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
 				CEDF052D20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
+				CEDA661F20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
 				CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */,
 				CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */,
@@ -2652,6 +3064,7 @@
 				CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
+				CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
@@ -2664,6 +3077,7 @@
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
 				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
 				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
+				CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
 				CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */,
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
@@ -2672,6 +3086,7 @@
 				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
 				3205FD271F6249930037DCE5 /* ListViewController.m in Sources */,
 				32C2DBCE1F6AD0B1001B6822 /* AreaWorkoutViewController.m in Sources */,
+				CEDA662620B048EE009417BF /* ProUserSignUpTextViewTableViewCell.m in Sources */,
 				3230164D1F7A48FC0001BCB4 /* BSAssetModel.m in Sources */,
 				1A276157206131E600C9D703 /* AddCreditCardView.m in Sources */,
 				323016481F7A48FC0001BCB4 /* BSTableController+UITableView.m in Sources */,
@@ -2683,8 +3098,10 @@
 				3205FD281F6249930037DCE5 /* MapViewController.m in Sources */,
 				3256F26E1F73689100D0874E /* UserProfilePlanTableViewCell.m in Sources */,
 				32C2DBC91F6A14B1001B6822 /* WorkoutSelectViewController.m in Sources */,
+				CEDA660D20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m in Sources */,
 				CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */,
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
+				CEDA65FD20B03319009417BF /* ProUserSignUpEmailCellAdapter.m in Sources */,
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				CE36D76720A57A5C008B0E75 /* ProsMainSectionAdapter.m in Sources */,
@@ -2708,6 +3125,7 @@
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
+				CEDA65C820B02034009417BF /* ProUserSignUpModel.m in Sources */,
 				CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */,
 				3B0C4CFE1F887393002CEADA /* UIImage+GIF.m in Sources */,
 				CE7E0F1C20AC4C7300D93035 /* UIViewController+Presentation.m in Sources */,
@@ -2722,12 +3140,17 @@
 				CEDF055820AB16CE0012AAC4 /* NSString+TextSize.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
 				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
+				CEDA664120B07BCA009417BF /* ProUserSignUpDataModel.m in Sources */,
 				1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */,
 				321F1AC91F6AF85D00EA1F4C /* PostWorkoutDetailViewController.m in Sources */,
+				CEDA664620B07F81009417BF /* ProUserSignUpInfoTableViewCell.m in Sources */,
 				CEDF04D920A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m in Sources */,
+				CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
+				CEDA65F920B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m in Sources */,
 				CEDF04F720A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m in Sources */,
+				CEDA662F20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
 				CEDF050B20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m in Sources */,
 				CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */,
@@ -2742,16 +3165,21 @@
 				3B1E2FCA1F94D2A700E636F4 /* ExportSportsListTableViewCell.m in Sources */,
 				3B01AF241F90950600BDF1AA /* ODRefreshControl.m in Sources */,
 				323016521F7A48FC0001BCB4 /* BSNumberedSelectionView.m in Sources */,
+				CEDA660920B03383009417BF /* ProUserSignUpPasswordCellAdapter.m in Sources */,
+				CEDA65ED20B03279009417BF /* ProUserSignUpAdditionalInfoCellAdapter.m in Sources */,
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
 				CE7E0F6020ADC98900D93035 /* ReviewOfferMainSectionAdapter.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
+				CEDA662320B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m in Sources */,
 				1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */,
 				CEDF04FF20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m in Sources */,
 				323016471F7A48FC0001BCB4 /* BSTableController+BSItemsModel.m in Sources */,
 				1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */,
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
+				CEDA660120B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m in Sources */,
 				1A276154206131D800C9D703 /* AddCreditCardModel.m in Sources */,
 				3B0C4CFF1F887393002CEADA /* UIImage+MultiFormat.m in Sources */,
+				CEDA661D20B04867009417BF /* ProUserSignUpTextFieldTableViewCell.m in Sources */,
 				3232FFA81F79E23200A0F55D /* AddressViewController.m in Sources */,
 				3B0C4D011F887393002CEADA /* UIImageView+HighlightedWebCache.m in Sources */,
 				CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */,
@@ -2759,6 +3187,7 @@
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,
+				CEDA65C120B01B79009417BF /* ProUserSignUpViewController.m in Sources */,
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
@@ -2776,6 +3205,7 @@
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
+				CEDA664A20B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m in Sources */,
 				CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */,
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
@@ -2784,17 +3214,22 @@
 				3230163E1F7A48FC0001BCB4 /* BSTableController.m in Sources */,
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
+				CEDA660520B03364009417BF /* ProUserSignUpLastNameCellAdapter.m in Sources */,
 				CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */,
+				CEDA663520B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m in Sources */,
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
+				CEDA663D20B06853009417BF /* UINavigationBar+Styles.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
 				CE7E0F2F20AD9E9900D93035 /* PickerModel.m in Sources */,
 				3B1E2FDB1F95964200E636F4 /* OneBtnDlgViewController.m in Sources */,
 				3230163F1F7A48FC0001BCB4 /* ALAsset+BSEqual.m in Sources */,
+				CEDA661120B033BF009417BF /* ProUserSignUpSportCellAdapter.m in Sources */,
 				3232FFB11F7A055E00A0F55D /* SignupViewController.m in Sources */,
 				32FAA0881F6144D500CD4395 /* main.m in Sources */,
 				CEDF052820A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m in Sources */,
 				CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */,
+				CEDA65D320B021CF009417BF /* ProUserSignUpTableViewAdapter.m in Sources */,
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
 				CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */,
 				CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */,
@@ -2811,12 +3246,15 @@
 				3B0C4CFC1F887393002CEADA /* SDWebImagePrefetcher.m in Sources */,
 				3B0C4CF91F887393002CEADA /* SDWebImageDownloader.m in Sources */,
 				323016531F7A48FC0001BCB4 /* BSPhotoCell.m in Sources */,
+				CEDA65F120B03297009417BF /* ProUserSignUpAddressCellAdapter.m in Sources */,
 				CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */,
 				3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */,
 				1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */,
 				3B79BCCF1F861CF600BD869D /* SelectWorkoutTableViewCell.m in Sources */,
+				CEDA662C20B04936009417BF /* ProUserSignUpTextViewTableViewCellDisplayModel.m in Sources */,
 				3205FD601F6313350037DCE5 /* DAYCalendarView.m in Sources */,
 				323016381F7A48FC0001BCB4 /* BSShrinkAnimator.m in Sources */,
+				CEDA663920B04C52009417BF /* ProSignUpBaseTableViewCell.m in Sources */,
 				323615721F7A3BB8007D4DF3 /* MDDeviceHelper.m in Sources */,
 				CE7E0F3220AD9EB200D93035 /* PickerView.m in Sources */,
 				3230163D1F7A48FC0001BCB4 /* BSPreviewController.m in Sources */,

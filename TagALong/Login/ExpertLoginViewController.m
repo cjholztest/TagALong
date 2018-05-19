@@ -16,6 +16,9 @@
 #import "PaymentClient+Customer.h"
 #import "PaymentClient+CreditCard.h"
 
+#import "UIViewController+Storyboard.h"
+#import "ProUserSignUpViewController.h"
+
 @interface ExpertLoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
     float latitude;
     float longitude;
@@ -154,7 +157,8 @@
 }
 
 - (IBAction)onClickSignUp:(id)sender {
-    ProSignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ProSignupViewController"];
+//    ProSignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ProSignupViewController"];
+    ProUserSignUpViewController *vc = (ProUserSignUpViewController*)ProUserSignUpViewController.fromStoryboard;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pro User Sign Up View Controller-->
+        <scene sceneID="4jg-FP-xkJ">
+            <objects>
+                <viewController storyboardIdentifier="ProUserSignUpViewController" automaticallyAdjustsScrollViewInsets="NO" id="mrA-jU-aMh" customClass="ProUserSignUpViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fa8-Gd-2Z7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-Rq-vpK" customClass="ProUserSignUpView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ivc-n5-jfr">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTF-Yn-BXj">
+                                        <rect key="frame" x="0.0" y="587" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.52941176469999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="UVw-44-AUy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="SIGN UP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerButtonAction:" destination="2sk-Rq-vpK" eventType="touchUpInside" id="J7h-Dp-fjA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RTF-Yn-BXj" secondAttribute="trailing" id="24I-MW-8YT"/>
+                                    <constraint firstItem="ivc-n5-jfr" firstAttribute="top" secondItem="2sk-Rq-vpK" secondAttribute="top" id="8Z2-eU-aij"/>
+                                    <constraint firstItem="RTF-Yn-BXj" firstAttribute="leading" secondItem="2sk-Rq-vpK" secondAttribute="leading" id="PG3-TZ-Gq1"/>
+                                    <constraint firstAttribute="bottom" secondItem="RTF-Yn-BXj" secondAttribute="bottom" id="ZRM-ps-ArI"/>
+                                    <constraint firstItem="RTF-Yn-BXj" firstAttribute="top" secondItem="ivc-n5-jfr" secondAttribute="bottom" id="ckr-nI-8xw"/>
+                                    <constraint firstItem="ivc-n5-jfr" firstAttribute="leading" secondItem="2sk-Rq-vpK" secondAttribute="leading" id="dqz-s1-O2T"/>
+                                    <constraint firstAttribute="trailing" secondItem="ivc-n5-jfr" secondAttribute="trailing" id="qZD-cS-ZUG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="registerButton" destination="RTF-Yn-BXj" id="33P-BA-eEr"/>
+                                    <outlet property="tableView" destination="ivc-n5-jfr" id="IEM-sB-SPf"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mki-Nh-ohE" firstAttribute="bottom" secondItem="2sk-Rq-vpK" secondAttribute="bottom" id="1oz-3B-YcZ"/>
+                            <constraint firstItem="2sk-Rq-vpK" firstAttribute="top" secondItem="mki-Nh-ohE" secondAttribute="top" id="FYs-cN-FJf"/>
+                            <constraint firstItem="2sk-Rq-vpK" firstAttribute="leading" secondItem="mki-Nh-ohE" secondAttribute="leading" id="c7d-xC-KZR"/>
+                            <constraint firstItem="mki-Nh-ohE" firstAttribute="trailing" secondItem="2sk-Rq-vpK" secondAttribute="trailing" id="uVl-vS-iag"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mki-Nh-ohE"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="2sk-Rq-vpK" id="n6l-7D-oyv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mMT-q4-hqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="138"/>
+        </scene>
+    </scenes>
+</document>
