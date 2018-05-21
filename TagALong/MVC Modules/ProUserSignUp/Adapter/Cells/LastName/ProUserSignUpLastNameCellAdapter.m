@@ -42,6 +42,8 @@
     
     [cell.textField setTintColor:[UIColor textColor]];
     
+    cell.textField.text = [self.output lastName];
+    
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
     cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Last name" attributes:attributes];
     

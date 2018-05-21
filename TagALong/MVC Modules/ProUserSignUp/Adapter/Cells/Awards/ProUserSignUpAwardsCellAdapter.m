@@ -42,6 +42,8 @@
     
     [cell.textField setTintColor:[UIColor textColor]];
     
+    cell.textField.text = [self.output awards];
+    
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
     cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Awards" attributes:attributes];
     

@@ -11,5 +11,6 @@
 @protocol ProUserSignUpEmailCellAdapterOutput <NSObject>
 
 - (void)eMailDidChange:(NSString*)eMail;
+- (NSString*)eMail;
 
 @end

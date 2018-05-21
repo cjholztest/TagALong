@@ -24,6 +24,7 @@
 		1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECAE205A823A00A0AA67 /* MapClusterController.m */; };
 		1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */; };
 		1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */; };
+		1A5E687520B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E687420B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m */; };
 		1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB78751206995400013F737 /* UIColor+AppColors.m */; };
 		1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFEA35205FF85500675150 /* PaymentClient.m */; };
 		3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3205FD1E1F6234360037DCE5 /* HomeViewController.m */; };
@@ -314,6 +315,9 @@
 		1A47ECB1205AB12B00A0AA67 /* ClusterAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
 		1A47ECB3205AC92B00A0AA67 /* MapClusterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapClusterListViewController.h; sourceTree = "<group>"; };
 		1A47ECB4205AC92B00A0AA67 /* MapClusterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapClusterListViewController.m; sourceTree = "<group>"; };
+		1A5E687320B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpIsPhoneVisibleCellAdapter.h; sourceTree = "<group>"; };
+		1A5E687420B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpIsPhoneVisibleCellAdapter.m; sourceTree = "<group>"; };
+		1A5E687620B1D62200B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpIsPhoneVisibleCellAdapterOutput.h; sourceTree = "<group>"; };
 		1AB78750206995400013F737 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
 		1AB78751206995400013F737 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		1ACFEA34205FF85500675150 /* PaymentClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentClient.h; sourceTree = "<group>"; };
@@ -1022,6 +1026,16 @@
 				CEF52F61206911F80014B2B4 /* ProfilePaymentHeader.m */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		1A5E687220B1D5BB00B07CAE /* IsPhoneVisible */ = {
+			isa = PBXGroup;
+			children = (
+				1A5E687320B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.h */,
+				1A5E687420B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m */,
+				1A5E687620B1D62200B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapterOutput.h */,
+			);
+			path = IsPhoneVisible;
 			sourceTree = "<group>";
 		};
 		1ACFEA32205FF80800675150 /* Services */ = {
@@ -2097,6 +2111,7 @@
 		CEDA65CE20B021A7009417BF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1A5E687220B1D5BB00B07CAE /* IsPhoneVisible */,
 				CEDA65E320B0304F009417BF /* AdditionalInfo */,
 				CEDA65E520B03050009417BF /* Address */,
 				CEDA65E220B0304F009417BF /* Awards */,
@@ -2796,7 +2811,7 @@
 				32FAA07F1F6144D500CD4395 /* Sources */,
 				32FAA0801F6144D500CD4395 /* Frameworks */,
 				32FAA0811F6144D500CD4395 /* Resources */,
-				F91AFAC60222FE3D2388BB77 /* [CP] Embed Pods Frameworks */,
+				262073FBE29B61CB83E8405F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2991,25 +3006,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A092376ACCBA31190B8636B0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TagALongUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F91AFAC60222FE3D2388BB77 /* [CP] Embed Pods Frameworks */ = {
+		262073FBE29B61CB83E8405F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3037,6 +3034,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A092376ACCBA31190B8636B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TagALongUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3203,6 +3218,7 @@
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
 				CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */,
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
+				1A5E687520B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
 				CEDA664A20B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m in Sources */,

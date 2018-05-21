@@ -10,6 +10,13 @@
 
 @implementation ProUserSignUpSwitchTableViewCell
 
+#pragma mark - Actions
+
+- (IBAction)switcherValueDidChange:(UISwitch *)sender {
+    if ([self.output respondsToSelector:@selector(switcherDidChange:)]) {
+        [self.output switcherDidChange:sender.isOn];
+    }
+}
 
 
 @end

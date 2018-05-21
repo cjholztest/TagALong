@@ -21,8 +21,11 @@
 
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *sport;
+@property (nonatomic) NSInteger *sportIndex;
 
 @property (nonatomic, strong) NSString *additionalInfo;
 @property (nonatomic, strong) NSString *awards;
+
+@property (nonatomic, assign) BOOL isPhoneVisible;
 
 @end

@@ -17,7 +17,9 @@
 #pragma mark - Actions
 
 - (IBAction)registerButtonAction:(UIButton*)button {
-    
+    if ([self.output respondsToSelector:@selector(signUpButtonDidTap)]) {
+        [self.output signUpButtonDidTap];
+    }
 }
 
 @end

@@ -11,5 +11,6 @@
 @protocol ProUserSignUpSportCellAdapterOutput <NSObject>
 
 - (void)sportCellDidTap;
+- (NSString*)kindOfSport;
 
 @end

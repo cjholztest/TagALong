@@ -44,6 +44,8 @@
     
     [cell.textField setTintColor:[UIColor textColor]];
     
+    cell.textField.text = [self.output confirmPassword];
+    
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
     cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Confirm password" attributes:attributes];
     

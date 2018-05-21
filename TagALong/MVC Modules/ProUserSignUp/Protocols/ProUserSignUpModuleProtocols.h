@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class ProUserSignUpDataModel;
+
 @protocol ProUserSignUpModelInput <NSObject>
+
+- (void)signUpaProUser:(ProUserSignUpDataModel*)userModel;
 
 @end
 
 @protocol ProUserSignUpModelOutput <NSObject>
+
+- (void)proUserDidSignUpSuccessed:(BOOL)isSuccessed andMessage:(NSString*)message;
 
 @end
 
@@ -21,6 +27,8 @@
 @end
 
 @protocol ProUserSignUpViewOutput <NSObject>
+
+- (void)signUpButtonDidTap;
 
 @end
 

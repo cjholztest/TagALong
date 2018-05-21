@@ -27,6 +27,9 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1U-Bw-nKD">
                         <rect key="frame" x="311" y="6" width="51" height="31"/>
                         <color key="onTintColor" red="0.1450980392" green="0.52941176469999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="switcherValueDidChange:" destination="2MI-zG-1ae" eventType="valueChanged" id="Wii-AR-NSP"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,6 +42,10 @@
                     <constraint firstItem="y1U-Bw-nKD" firstAttribute="centerY" secondItem="V01-cl-8qr" secondAttribute="centerY" id="nwH-34-fgq"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="switcher" destination="y1U-Bw-nKD" id="koh-Fl-bQK"/>
+                <outlet property="titleLabel" destination="ta9-ux-kth" id="PS1-6k-GOw"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="57"/>
         </tableViewCell>
     </objects>

@@ -11,5 +11,6 @@
 @protocol ProUserSignUpConfirmPasswordCellAdapterOutput <NSObject>
 
 - (void)confirmPasswordDidChange:(NSString*)confirmPassword;
+- (NSString*)confirmPassword;
 
 @end

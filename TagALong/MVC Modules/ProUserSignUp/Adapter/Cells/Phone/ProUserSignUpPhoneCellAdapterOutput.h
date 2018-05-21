@@ -11,5 +11,6 @@
 @protocol ProUserSignUpPhoneCellAdapterOutput <NSObject>
 
 - (void)phoneDidChange:(NSString*)phone;
+- (NSString*)phone;
 
 @end

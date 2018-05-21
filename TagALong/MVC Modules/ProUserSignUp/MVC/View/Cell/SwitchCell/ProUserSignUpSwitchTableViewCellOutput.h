@@ -10,4 +10,6 @@
 
 @protocol ProUserSignUpSwitchTableViewCellOutput <NSObject>
 
+- (void)switcherDidChange:(BOOL)isOn;
+
 @end

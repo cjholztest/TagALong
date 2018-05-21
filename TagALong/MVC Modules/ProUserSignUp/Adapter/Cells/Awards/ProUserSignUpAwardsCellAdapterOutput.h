@@ -11,5 +11,6 @@
 @protocol ProUserSignUpAwardsCellAdapterOutput <NSObject>
 
 - (void)awardsDidChange:(NSString*)awards;
+- (NSString*)awards;
 
 @end

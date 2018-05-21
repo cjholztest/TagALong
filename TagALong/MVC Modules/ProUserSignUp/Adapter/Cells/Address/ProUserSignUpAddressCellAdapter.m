@@ -42,6 +42,8 @@
     
     [cell.textField setTintColor:[UIColor textColor]];
     
+    cell.textField.text = [self.output address];
+    
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
     cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Address" attributes:attributes];
     

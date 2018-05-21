@@ -11,5 +11,6 @@
 @protocol ProUserSignUpAddressCellAdapterOutput <NSObject>
 
 - (void)addressDidChange:(NSString*)address;
+- (NSString*)address;
 
 @end

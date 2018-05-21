@@ -11,5 +11,6 @@
 @protocol ProUserSignUpFirstNameCellAdapterOutput <NSObject>
 
 - (void)firstNameDidChange:(NSString*)firstName;
+- (NSString*)firstName;
 
 @end

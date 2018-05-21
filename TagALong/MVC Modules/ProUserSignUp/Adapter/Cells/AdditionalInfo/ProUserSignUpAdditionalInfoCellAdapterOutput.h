@@ -11,5 +11,6 @@
 @protocol ProUserSignUpAdditionalInfoCellAdapterOutput <NSObject>
 
 - (void)additionalInfoDidChange:(NSString*)additionalInfo;
+- (NSString*)additionalInfo;
 
 @end

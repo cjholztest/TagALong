@@ -37,7 +37,15 @@
     
     ProUserSignUpInfoTableViewCell *cell = (ProUserSignUpInfoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:ProUserSignUpInfoTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
-    cell.infoLabel.text = @"Select Kind of Sport";
+    NSString *sport = [self.output kindOfSport];
+    
+    if (sport) {
+        cell.infoLabel.text = sport;
+        cell.infoLabel.textColor = [UIColor textColor];
+    } else {
+        cell.infoLabel.text = @"Select Kind of Sport";
+        cell.infoLabel.textColor = [UIColor placeholderColor];
+    }
     
     return cell;
 }

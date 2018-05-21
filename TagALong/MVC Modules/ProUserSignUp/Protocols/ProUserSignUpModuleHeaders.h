@@ -21,6 +21,7 @@
 #import "ProUserSignUpSportCellAdapter.h"
 #import "ProUserSignUpAdditionalInfoCellAdapter.h"
 #import "ProUserSignUpAwardsCellAdapter.h"
+#import "ProUserSignUpIsPhoneVisibleCellAdapter.h"
 
 #import "ProUserSignUpModel.h"
 #import "ProUserSignUpView.h"

@@ -7,7 +7,13 @@
 //
 
 #import "ProSignUpBaseTableViewCell.h"
+#import "ProUserSignUpSwitchTableViewCellOutput.h"
 
 @interface ProUserSignUpSwitchTableViewCell : ProSignUpBaseTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UISwitch *switcher;
+
+@property (nonatomic, weak) id <ProUserSignUpSwitchTableViewCellOutput> output;
 
 @end
