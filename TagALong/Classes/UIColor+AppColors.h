@@ -20,6 +20,8 @@
 + (UIColor*)regularBackgroundColor;
 
 + (NSArray*)backgroundGradientColors;
++ (NSArray*)topGradientColors;
++ (NSArray*)bottomGradientColors;
 
 + (NSArray*)regularUserBackgroundGradientColors;
 + (NSArray*)expertUserBackgroundGradientColors;

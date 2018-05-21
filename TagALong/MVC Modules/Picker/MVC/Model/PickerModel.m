@@ -32,6 +32,9 @@
             case DuratoinPickerType:
                 [self setupDurationComponents];
                 break;
+            case SportsPickerType:
+                [self setupSportComponents];
+                break;
             default:
                 break;
         }
@@ -50,7 +53,11 @@
 }
 
 - (NSString*)selectedComponent {
-    return self.selectedIndex != -1 ? self.pickerComponents[self.selectedIndex] : nil;
+    return self.selectedIndex != -1 ? self.pickerComponents[self.selectedIndex] : self.pickerComponents.firstObject;
+}
+
+- (NSInteger)selectedComponentIndex {
+    return self.selectedIndex != -1 ? self.selectedIndex : 0;
 }
 
 - (void)updateSelectedComponentWithIndex:(NSInteger)selectedIndex {
@@ -72,6 +79,10 @@
         }
         [self.pickerComponents addObject:value];
     }
+}
+
+- (void)setupSportComponents {
+    self.pickerComponents = [NSMutableArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
 }
 
 @end

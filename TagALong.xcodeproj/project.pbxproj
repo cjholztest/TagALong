@@ -214,6 +214,18 @@
 		CEDA664620B07F81009417BF /* ProUserSignUpInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA664420B07F81009417BF /* ProUserSignUpInfoTableViewCell.m */; };
 		CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA664520B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib */; };
 		CEDA664A20B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */; };
+		CEDA665320B29F5E009417BF /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA665220B29F5E009417BF /* SelectLocationViewController.m */; };
+		CEDA665520B29F6C009417BF /* SelectLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDA665420B29F6C009417BF /* SelectLocationViewController.storyboard */; };
+		CEDA665820B29F85009417BF /* SelectLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA665720B29F85009417BF /* SelectLocationModel.m */; };
+		CEDA665B20B29F95009417BF /* SelectLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA665A20B29F95009417BF /* SelectLocationView.m */; };
+		CEDA666020B2A52E009417BF /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA665F20B2A52E009417BF /* Pin.m */; };
+		CEDA666420B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA666320B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.m */; };
+		CEDA666920B2F81F009417BF /* TermsPrivacyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA666820B2F81F009417BF /* TermsPrivacyTableViewCell.m */; };
+		CEDA666B20B2F827009417BF /* TermsPrivacyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA666A20B2F827009417BF /* TermsPrivacyTableViewCell.xib */; };
+		CEDA666F20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA666E20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.m */; };
+		CEDA667420B303FC009417BF /* ButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA667320B303FC009417BF /* ButtonTableViewCell.m */; };
+		CEDA667620B30407009417BF /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDA667520B30407009417BF /* ButtonTableViewCell.xib */; };
+		CEDA667A20B3059B009417BF /* ProUserSignUpLocationCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA667920B3059B009417BF /* ProUserSignUpLocationCellAdapter.m */; };
 		CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */; };
 		CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */; };
 		CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */; };
@@ -718,6 +730,32 @@
 		CEDA664520B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CEDA664820B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpInfoTableViewCellDisplayModel.h; sourceTree = "<group>"; };
 		CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpInfoTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CEDA665120B29F5E009417BF /* SelectLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectLocationViewController.h; sourceTree = "<group>"; };
+		CEDA665220B29F5E009417BF /* SelectLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectLocationViewController.m; sourceTree = "<group>"; };
+		CEDA665420B29F6C009417BF /* SelectLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocationViewController.storyboard; sourceTree = "<group>"; };
+		CEDA665620B29F85009417BF /* SelectLocationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectLocationModel.h; sourceTree = "<group>"; };
+		CEDA665720B29F85009417BF /* SelectLocationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectLocationModel.m; sourceTree = "<group>"; };
+		CEDA665920B29F95009417BF /* SelectLocationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectLocationView.h; sourceTree = "<group>"; };
+		CEDA665A20B29F95009417BF /* SelectLocationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectLocationView.m; sourceTree = "<group>"; };
+		CEDA665C20B29FA9009417BF /* SelectLocationModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectLocationModuleProtocols.h; sourceTree = "<group>"; };
+		CEDA665E20B2A52E009417BF /* Pin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
+		CEDA665F20B2A52E009417BF /* Pin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
+		CEDA666220B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTermsPrivacyCellAdapter.h; sourceTree = "<group>"; };
+		CEDA666320B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpTermsPrivacyCellAdapter.m; sourceTree = "<group>"; };
+		CEDA666520B2F6B3009417BF /* ProUserSignUpTermsPrivacyCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpTermsPrivacyCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA666720B2F81F009417BF /* TermsPrivacyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TermsPrivacyTableViewCell.h; sourceTree = "<group>"; };
+		CEDA666820B2F81F009417BF /* TermsPrivacyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TermsPrivacyTableViewCell.m; sourceTree = "<group>"; };
+		CEDA666A20B2F827009417BF /* TermsPrivacyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsPrivacyTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA666D20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpRegisterCellAdapter.h; sourceTree = "<group>"; };
+		CEDA666E20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpRegisterCellAdapter.m; sourceTree = "<group>"; };
+		CEDA667020B2FDF1009417BF /* ProUserSignUpRegisterCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpRegisterCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA667220B303FC009417BF /* ButtonTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonTableViewCell.h; sourceTree = "<group>"; };
+		CEDA667320B303FC009417BF /* ButtonTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonTableViewCell.m; sourceTree = "<group>"; };
+		CEDA667520B30407009417BF /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		CEDA667820B3059B009417BF /* ProUserSignUpLocationCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpLocationCellAdapter.h; sourceTree = "<group>"; };
+		CEDA667920B3059B009417BF /* ProUserSignUpLocationCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpLocationCellAdapter.m; sourceTree = "<group>"; };
+		CEDA667B20B305AF009417BF /* ProUserSignUpLocationCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpLocationCellAdapterOutput.h; sourceTree = "<group>"; };
+		CEDA667C20B30D0F009417BF /* TermsPrivacyTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TermsPrivacyTableViewCellOutput.h; sourceTree = "<group>"; };
 		CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoViewController.h; sourceTree = "<group>"; };
 		CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoViewController.m; sourceTree = "<group>"; };
 		CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AthleteInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -1688,6 +1726,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA664B20B29F38009417BF /* SelectLocation */,
 				CEDA65B720B01AAB009417BF /* ProUserSignUp */,
 				CE7E0F3920ADC82400D93035 /* ReviewOffer */,
 				CE7E0F1D20AC4F3200D93035 /* DatePicker */,
@@ -2077,6 +2116,8 @@
 		CEDA65BC20B01AAB009417BF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA667120B303D8009417BF /* SignUpCell */,
+				CEDA666620B2F7ED009417BF /* TermsPrivacy */,
 				CEDA664220B07F58009417BF /* InfoCell */,
 				CEDA663620B04C15009417BF /* BaseCell */,
 				CEDA661820B0483C009417BF /* SwitchCell */,
@@ -2111,6 +2152,9 @@
 		CEDA65CE20B021A7009417BF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA667720B3057F009417BF /* Location */,
+				CEDA666C20B2FDCC009417BF /* SignUp */,
+				CEDA666120B2F675009417BF /* TermsPrivacy */,
 				1A5E687220B1D5BB00B07CAE /* IsPhoneVisible */,
 				CEDA65E320B0304F009417BF /* AdditionalInfo */,
 				CEDA65E520B03050009417BF /* Address */,
@@ -2321,6 +2365,122 @@
 				CEDA664920B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m */,
 			);
 			path = InfoCell;
+			sourceTree = "<group>";
+		};
+		CEDA664B20B29F38009417BF /* SelectLocation */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA664C20B29F38009417BF /* MVC */,
+				CEDA665020B29F38009417BF /* Protocols */,
+			);
+			path = SelectLocation;
+			sourceTree = "<group>";
+		};
+		CEDA664C20B29F38009417BF /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA664D20B29F38009417BF /* Controller */,
+				CEDA664E20B29F38009417BF /* Model */,
+				CEDA664F20B29F38009417BF /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CEDA664D20B29F38009417BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA665120B29F5E009417BF /* SelectLocationViewController.h */,
+				CEDA665220B29F5E009417BF /* SelectLocationViewController.m */,
+				CEDA665420B29F6C009417BF /* SelectLocationViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEDA664E20B29F38009417BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA665620B29F85009417BF /* SelectLocationModel.h */,
+				CEDA665720B29F85009417BF /* SelectLocationModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEDA664F20B29F38009417BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA665D20B2A509009417BF /* PinView */,
+				CEDA665920B29F95009417BF /* SelectLocationView.h */,
+				CEDA665A20B29F95009417BF /* SelectLocationView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEDA665020B29F38009417BF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA665C20B29FA9009417BF /* SelectLocationModuleProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CEDA665D20B2A509009417BF /* PinView */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA665E20B2A52E009417BF /* Pin.h */,
+				CEDA665F20B2A52E009417BF /* Pin.m */,
+			);
+			path = PinView;
+			sourceTree = "<group>";
+		};
+		CEDA666120B2F675009417BF /* TermsPrivacy */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA666220B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.h */,
+				CEDA666320B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.m */,
+				CEDA666520B2F6B3009417BF /* ProUserSignUpTermsPrivacyCellAdapterOutput.h */,
+			);
+			path = TermsPrivacy;
+			sourceTree = "<group>";
+		};
+		CEDA666620B2F7ED009417BF /* TermsPrivacy */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA666720B2F81F009417BF /* TermsPrivacyTableViewCell.h */,
+				CEDA666820B2F81F009417BF /* TermsPrivacyTableViewCell.m */,
+				CEDA666A20B2F827009417BF /* TermsPrivacyTableViewCell.xib */,
+				CEDA667C20B30D0F009417BF /* TermsPrivacyTableViewCellOutput.h */,
+			);
+			path = TermsPrivacy;
+			sourceTree = "<group>";
+		};
+		CEDA666C20B2FDCC009417BF /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA666D20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.h */,
+				CEDA666E20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.m */,
+				CEDA667020B2FDF1009417BF /* ProUserSignUpRegisterCellAdapterOutput.h */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		CEDA667120B303D8009417BF /* SignUpCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA667220B303FC009417BF /* ButtonTableViewCell.h */,
+				CEDA667320B303FC009417BF /* ButtonTableViewCell.m */,
+				CEDA667520B30407009417BF /* ButtonTableViewCell.xib */,
+			);
+			path = SignUpCell;
+			sourceTree = "<group>";
+		};
+		CEDA667720B3057F009417BF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA667820B3059B009417BF /* ProUserSignUpLocationCellAdapter.h */,
+				CEDA667920B3059B009417BF /* ProUserSignUpLocationCellAdapter.m */,
+				CEDA667B20B305AF009417BF /* ProUserSignUpLocationCellAdapterOutput.h */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		CEDF04A820A96D430012AAC4 /* MVC */ = {
@@ -2920,15 +3080,18 @@
 				CEDF04CA20A991580012AAC4 /* SubmitOfferViewController.storyboard in Resources */,
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
 				CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */,
+				CEDA667620B30407009417BF /* ButtonTableViewCell.xib in Resources */,
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
+				CEDA665520B29F6C009417BF /* SelectLocationViewController.storyboard in Resources */,
 				CEDA65C520B01BB9009417BF /* ProUserSignUpViewController.storyboard in Resources */,
 				CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */,
 				CEDF051D20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
 				32C2DBD51F6AD56B001B6822 /* TypeWorkoutCollectionViewCell.xib in Resources */,
+				CEDA666B20B2F827009417BF /* TermsPrivacyTableViewCell.xib in Resources */,
 				CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */,
 				CEDA663120B04980009417BF /* ProUserSignUpSwitchTableViewCell.xib in Resources */,
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
@@ -3074,10 +3237,12 @@
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
 				CEDF051820A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m in Sources */,
 				323016461F7A48FC0001BCB4 /* BSPreviewController+UICollectionView.m in Sources */,
+				CEDA666F20B2FDE3009417BF /* ProUserSignUpRegisterCellAdapter.m in Sources */,
 				3256F2511F72C69700D0874E /* ExpertUserProfileViewController.m in Sources */,
 				CEDF04EB20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m in Sources */,
 				CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
+				CEDA665820B29F85009417BF /* SelectLocationModel.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
 				CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
@@ -3098,6 +3263,7 @@
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
+				CEDA667420B303FC009417BF /* ButtonTableViewCell.m in Sources */,
 				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
 				3205FD271F6249930037DCE5 /* ListViewController.m in Sources */,
 				32C2DBCE1F6AD0B1001B6822 /* AreaWorkoutViewController.m in Sources */,
@@ -3213,6 +3379,7 @@
 				CE7E0F4720ADC84600D93035 /* ReviewOfferViewController.m in Sources */,
 				CE7E0F4F20ADC88E00D93035 /* ReviewOfferModel.m in Sources */,
 				1A276163206133D100C9D703 /* CreditCardTableViewCell.m in Sources */,
+				CEDA667A20B3059B009417BF /* ProUserSignUpLocationCellAdapter.m in Sources */,
 				323016541F7A48FC0001BCB4 /* BSSpeechBubbleView.m in Sources */,
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
@@ -3231,9 +3398,12 @@
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
 				CEDA660520B03364009417BF /* ProUserSignUpLastNameCellAdapter.m in Sources */,
+				CEDA665B20B29F95009417BF /* SelectLocationView.m in Sources */,
 				CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */,
 				CEDA663520B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m in Sources */,
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
+				CEDA665320B29F5E009417BF /* SelectLocationViewController.m in Sources */,
+				CEDA666020B2A52E009417BF /* Pin.m in Sources */,
 				CEDA663D20B06853009417BF /* UINavigationBar+Styles.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
@@ -3271,9 +3441,11 @@
 				3205FD601F6313350037DCE5 /* DAYCalendarView.m in Sources */,
 				323016381F7A48FC0001BCB4 /* BSShrinkAnimator.m in Sources */,
 				CEDA663920B04C52009417BF /* ProSignUpBaseTableViewCell.m in Sources */,
+				CEDA666920B2F81F009417BF /* TermsPrivacyTableViewCell.m in Sources */,
 				323615721F7A3BB8007D4DF3 /* MDDeviceHelper.m in Sources */,
 				CE7E0F3220AD9EB200D93035 /* PickerView.m in Sources */,
 				3230163D1F7A48FC0001BCB4 /* BSPreviewController.m in Sources */,
+				CEDA666420B2F6A6009417BF /* ProUserSignUpTermsPrivacyCellAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

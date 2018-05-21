@@ -37,9 +37,14 @@
     NSString *password = [userModel.password stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
     NSString *additionalInfo = [userModel.additionalInfo stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
     NSString *awards = [userModel.awards stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+    NSString *address = userModel.address;
     
     NSString *sport = [[NSNumber numberWithInteger:(long)userModel.sportIndex] stringValue];
-    NSString *isPhoneVisible = [[NSNumber numberWithBool:userModel.isPhoneVisible] stringValue];
+//    NSString *isPhoneVisible = [[NSNumber numberWithBool:userModel.isPhoneVisible] stringValue];
+    
+    NSString *latitude = [[NSNumber numberWithFloat:userModel.location.latitude] stringValue];
+    NSString *longitude = [[NSNumber numberWithFloat:userModel.location.longitude] stringValue];
+    NSNumber *hidePhone = [NSNumber numberWithBool:!userModel.isPhoneVisible];
     
     [SharedAppDelegate showLoading];
     
@@ -59,6 +64,11 @@
                              API_REQ_KEY_USER_PWD           :   password,
                              API_REQ_KEY_SPORT_UID          :   sport,
                              API_REQ_KEY_CONTENT            :   additionalInfo,
+                             @"longitude"                   :   longitude,
+                             @"latitude"                    :   latitude,
+                             @"hide_phone"                  :   hidePhone,
+                             @"awards"                      :   awards,
+                             @"user_city"                   :   address
                              };
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {

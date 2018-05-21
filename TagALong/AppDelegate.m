@@ -76,6 +76,30 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
     NSLog(@"token: %@", token);
     
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"device_token"];
+    
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//
+//    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"add_device_token"];
+//
+//    NSDictionary *params = @{@"token" : token};
+//
+//    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+//        NSLog(@"JSON: %@", respObject);
+//        int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+//        if (res_code == RESULT_CODE_SUCCESS) {
+//            NSLog(@"device token was registered successfully");
+//        }
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"error: %@", error);
+//        NSLog(@"device token was not registered");
+//    }];
+    
     
 //    Global.g_token = token;
     

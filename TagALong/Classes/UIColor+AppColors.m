@@ -49,6 +49,22 @@
     return @[(id)upColor.CGColor, (id)downColor.CGColor];
 }
 
++ (NSArray*)topGradientColors {
+    
+    UIColor *upColor = [[UIColor regularBackgroundColor] colorWithAlphaComponent:1.0f];
+    UIColor *downColor = [[UIColor regularBackgroundColor] colorWithAlphaComponent:0.0f];
+    
+    return @[(id)upColor.CGColor, (id)downColor.CGColor];
+}
+
++ (NSArray*)bottomGradientColors {
+    
+    UIColor *upColor = [[UIColor regularBackgroundColor] colorWithAlphaComponent:0.0f];
+    UIColor *downColor = [[UIColor regularBackgroundColor] colorWithAlphaComponent:1.0f];
+    
+    return @[(id)upColor.CGColor, (id)downColor.CGColor];
+}
+
 + (NSArray*)regularUserBackgroundGradientColors {
     
     UIColor *upColor = [UIColor colorWithRed:(36.0f / 255.0f)

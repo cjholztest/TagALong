@@ -15,6 +15,7 @@
 - (NSString*)titleForComponentAtIndex:(NSInteger)index;
 
 - (NSString*)selectedComponent;
+- (NSInteger)selectedComponentIndex;
 
 - (void)updateSelectedComponentWithIndex:(NSInteger)selectedIndex;
 
@@ -43,6 +44,7 @@
 
 @protocol PickerModuleOutput <NSObject>
 
-- (void)durationDidSelect:(NSString*)durationText;
+@optional
+- (void)pickerDoneButtonDidTapWithSelectedIndex:(NSInteger)index andItemTitle:(NSString*)title;
 
 @end

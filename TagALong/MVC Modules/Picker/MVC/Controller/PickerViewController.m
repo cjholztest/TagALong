@@ -77,10 +77,11 @@
 #pragma mark - PickerViewOutput
 
 - (void)doneButtonDidTap {
-    if ([self.moduleOutput respondsToSelector:@selector(durationDidSelect:)]) {
-        NSString *durationText = [self.model selectedComponent];
-        if (durationText) {
-            [self.moduleOutput durationDidSelect:durationText];
+    if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithSelectedIndex:andItemTitle:)]) {
+        NSString *title = [self.model selectedComponent];
+        if (title) {
+            NSInteger index = [self.model selectedComponentIndex];
+            [self.moduleOutput pickerDoneButtonDidTapWithSelectedIndex:index andItemTitle:title];
         }
     }
     [self hidePickerView];

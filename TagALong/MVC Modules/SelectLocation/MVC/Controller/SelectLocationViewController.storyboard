@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Location View Controller-->
+        <scene sceneID="huS-Qv-HGq">
+            <objects>
+                <viewController storyboardIdentifier="SelectLocationViewController" id="RMD-UY-2L1" customClass="SelectLocationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oFo-lb-r9n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLe-9M-gut" customClass="SelectLocationView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-iH-8Iu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="e1Q-iH-8Iu" secondAttribute="trailing" id="IvK-th-mbH"/>
+                                    <constraint firstAttribute="bottom" secondItem="e1Q-iH-8Iu" secondAttribute="bottom" id="LTN-Ug-nOF"/>
+                                    <constraint firstItem="e1Q-iH-8Iu" firstAttribute="top" secondItem="oLe-9M-gut" secondAttribute="top" id="prm-vZ-RZ4"/>
+                                    <constraint firstItem="e1Q-iH-8Iu" firstAttribute="leading" secondItem="oLe-9M-gut" secondAttribute="leading" id="xiP-lo-NjO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="mapView" destination="e1Q-iH-8Iu" id="1fP-nM-OUN"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y1z-A1-x5g" firstAttribute="trailing" secondItem="oLe-9M-gut" secondAttribute="trailing" id="GDo-7A-ncd"/>
+                            <constraint firstItem="oLe-9M-gut" firstAttribute="leading" secondItem="y1z-A1-x5g" secondAttribute="leading" id="aal-n7-gez"/>
+                            <constraint firstItem="y1z-A1-x5g" firstAttribute="bottom" secondItem="oLe-9M-gut" secondAttribute="bottom" id="ohn-VJ-bwz"/>
+                            <constraint firstItem="oLe-9M-gut" firstAttribute="top" secondItem="y1z-A1-x5g" secondAttribute="top" id="vIv-eC-g4U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y1z-A1-x5g"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="oLe-9M-gut" id="tcG-h4-h9S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ROg-0X-FX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="372" y="-242"/>
+        </scene>
+    </scenes>
+</document>

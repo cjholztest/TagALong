@@ -24,7 +24,13 @@ ProUserSignUpAddressCellAdapterOutput,
 ProUserSignUpSportCellAdapterOutput,
 ProUserSignUpAdditionalInfoCellAdapterOutput,
 ProUserSignUpAwardsCellAdapterOutput,
-ProUserSignUpIsPhoneVisibleCellAdapterOutput
+ProUserSignUpIsPhoneVisibleCellAdapterOutput,
+ProUserSignUpTermsPrivacyCellAdapterOutput,
+ProUserSignUpLocationCellAdapterOutput,
+SelectLocationModuleOutput,
+PickerModuleOutput,
+QLPreviewControllerDelegate,
+QLPreviewControllerDataSource
 >
 
 @property (nonatomic, weak) IBOutlet ProUserSignUpView *contentView;
@@ -33,6 +39,8 @@ ProUserSignUpIsPhoneVisibleCellAdapterOutput
 @property (nonatomic, strong) id <ProUserSignUpTableViewAdapterInput> tableViewAdapter;
 
 @property (nonatomic, strong) ProUserSignUpDataModel *proUser;
+
+@property (nonatomic, assign) BOOL isPrivacyActive;
 
 @end
 
@@ -72,13 +80,19 @@ ProUserSignUpIsPhoneVisibleCellAdapterOutput
     ProUserSignUpConfirmPasswordCellAdapter *confirmPassword = [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self];
     
     ProUserSignUpAddressCellAdapter *address = [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self];
+    ProUserSignUpLocationCellAdapter *location = [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self];
+    
     ProUserSignUpSportCellAdapter *sport = [[ProUserSignUpSportCellAdapter alloc] initWithOutput:self];
     
     ProUserSignUpAdditionalInfoCellAdapter *additionalInfo = [[ProUserSignUpAdditionalInfoCellAdapter alloc] initWithOutput:self];
     ProUserSignUpAwardsCellAdapter *awards = [[ProUserSignUpAwardsCellAdapter alloc] initWithOutput:self];
     
+    ProUserSignUpTermsPrivacyCellAdapter *termsPrivacy = [[ProUserSignUpTermsPrivacyCellAdapter alloc] initWithOutput:self];
+    
+//    ProUserSignUpRegisterCellAdapter *signUp = [[ProUserSignUpRegisterCellAdapter alloc] initWithOutput:self];
+    
     ProUserSignUpMainSectionAdapter *mainSection = [ProUserSignUpMainSectionAdapter new];
-    mainSection.cellAdapters =  [NSArray<ProUserSignUpCellAdapter> arrayWithObjects:firstName, lastName, eMail, phone, isPhoneVisible, address, password, confirmPassword, sport, awards, additionalInfo, nil];
+    mainSection.cellAdapters =  [NSArray<ProUserSignUpCellAdapter> arrayWithObjects:firstName, lastName, eMail, phone, isPhoneVisible, address, location, password, confirmPassword, sport, awards, additionalInfo, termsPrivacy, nil];
     
     ProUserSignUpTableViewAdapter *tableAdapter = [ProUserSignUpTableViewAdapter new];
     tableAdapter.sectionAdapters = [NSArray<ProUserSignUpSectionAdapter> arrayWithObject:mainSection];
@@ -96,7 +110,7 @@ ProUserSignUpIsPhoneVisibleCellAdapterOutput
 #pragma mark - ProUserSignUpViewOutput
 
 - (void)signUpButtonDidTap {
-    
+    [self.model signUpaProUser:self.proUser];
 }
 
 #pragma mark - ProUserSignUpModuleInput
@@ -176,6 +190,12 @@ ProUserSignUpIsPhoneVisibleCellAdapterOutput
 
 - (void)sportCellDidTap {
     
+    PickerViewController *sportsPickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    
+    sportsPickerVC.moduleOutput = self;
+    [sportsPickerVC setupWithType:SportsPickerType];
+    
+    [self presentCrossDissolveVC:sportsPickerVC];
 }
 
 - (NSString*)kindOfSport {
@@ -210,6 +230,70 @@ ProUserSignUpIsPhoneVisibleCellAdapterOutput
 
 - (BOOL)isPhoneVisible {
     return self.proUser.isPhoneVisible;
+}
+
+#pragma mark - ProUserSignUpTermsPrivacyCellAdapterOutput
+
+- (void)termsDidTap {
+    self.isPrivacyActive = NO;
+    [self showPreview];
+}
+
+- (void)privacyDidTap {
+    self.isPrivacyActive = YES;
+    [self showPreview];
+}
+
+#pragma mark - ProUserSignUpLocationCellAdapterOutput
+
+- (void)locationDidTapAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SelectLocationViewController *selectLocationVC = (SelectLocationViewController*)SelectLocationViewController.fromStoryboard;
+    
+    selectLocationVC.moduleOutput = self;
+    [selectLocationVC setupLocation:self.proUser.location];
+    
+    [self.navigationController pushViewController:selectLocationVC animated:YES];
+}
+
+- (BOOL)userLocationSelected {
+    return (self.proUser.location.latitude != 0.0f && self.proUser.location.longitude != 0.0f);
+}
+
+#pragma mark - SelectLocationModuleOutput
+
+- (void)locationDidSet:(CLLocationCoordinate2D)location {
+    self.proUser.location = location;
+    [self.contentView.tableView reloadData];
+}
+
+#pragma mark - PickerViewController
+
+- (void)pickerDoneButtonDidTapWithSelectedIndex:(NSInteger)index andItemTitle:(NSString *)title {
+    self.proUser.sportIndex = index;
+    self.proUser.sport = title;
+    [self.contentView.tableView reloadData];
+}
+
+#pragma mark - Preview
+
+- (void)showPreview {
+    QLPreviewController *previewVC = [QLPreviewController new];
+    previewVC.delegate = self;
+    previewVC.dataSource = self;
+    [self presentViewController:previewVC animated:YES completion:nil];
+}
+
+#pragma mark - QLPreviewController
+
+- (id <QLPreviewItem>)previewController:(QLPreviewController*)controller previewItemAtIndex:(NSInteger)index {
+    NSString *fileName = self.isPrivacyActive ? @"TagAlong - Privacy Policy" : @"TagAlong - Terms";
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:fileName withExtension:@"docx"];
+    return URL;
+}
+
+- (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController*)controller {
+    return 1;
 }
 
 @end
