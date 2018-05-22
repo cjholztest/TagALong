@@ -7,10 +7,12 @@
 //
 
 #import "SubmitOfferWhatCellAdapter.h"
-#import "SubmitOfferWhatTableViewCell.h"
+#import "SubmitOfferWhoTableViewCell.h"
+#import "UIColor+AppColors.h"
+#import "UIFont+HelveticaNeue.h"
 #import "UIView+Nib.h"
 
-@interface SubmitOfferWhatCellAdapter()
+@interface SubmitOfferWhatCellAdapter() <SubmitOfferWhoTableViewCellOutput, UITextFieldDelegate>
 
 @property (nonatomic, weak) id <SubmitOfferWhatCellAdapterOutput> output;
 
@@ -28,7 +30,16 @@
 #pragma mark - SubmitOfferCellAdapter
 
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    SubmitOfferWhatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferWhatTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    SubmitOfferWhoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferWhoTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    
+    cell.output = self;
+    cell.whoTextField.delegate = self;
+    [cell.whoTextField setTintColor:[UIColor textColor]];
+
+    cell.whoTextField.text = [self.output what];
+
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
+    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Running, Cycling, Yoga ..." attributes:attributes];
     
     return cell;
 }
@@ -42,7 +53,7 @@
 }
 
 - (void)registerCellsInTableView:(UITableView *)tableView {
-    [tableView registerNib:SubmitOfferWhatTableViewCell.viewNib forCellReuseIdentifier:SubmitOfferWhatTableViewCell.reuseIdentifier];
+    [tableView registerNib:SubmitOfferWhoTableViewCell.viewNib forCellReuseIdentifier:SubmitOfferWhoTableViewCell.reuseIdentifier];
 }
 
 - (BOOL)shouldHighightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,6 +64,21 @@
     if ([self.output respondsToSelector:@selector(whatCellDidTap)]) {
         [self.output whatCellDidTap];
     }
+}
+
+#pragma mark - SubmitOfferWhoTableViewCellOutput
+
+- (void)enteredTexDidChange:(NSString *)text {
+    if ([self.output respondsToSelector:@selector(whatTextDidChange:)]) {
+        [self.output whatTextDidChange:text];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

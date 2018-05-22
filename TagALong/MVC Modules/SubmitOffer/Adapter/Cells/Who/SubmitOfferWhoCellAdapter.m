@@ -10,9 +10,9 @@
 #import "UIColor+AppColors.h"
 #import "UIFont+HelveticaNeue.h"
 #import "UIView+Nib.h"
-#import "SubmitOfferWhoTableViewCell.h"
+#import "SubmitOfferWhatTableViewCell.h"
 
-@interface SubmitOfferWhoCellAdapter() <UITextFieldDelegate, SubmitOfferWhoTableViewCellOutput>
+@interface SubmitOfferWhoCellAdapter()
 
 @property (nonatomic, weak) id <SubmitOfferWhoCellAdapterOutput> output;
 
@@ -30,15 +30,19 @@
 #pragma mark - SubmitOfferCellAdapter
 
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
+
+    SubmitOfferWhatTableViewCell *cell = (SubmitOfferWhatTableViewCell*)[tableView dequeueReusableCellWithIdentifier:SubmitOfferWhatTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
-    SubmitOfferWhoTableViewCell *cell = (SubmitOfferWhoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:SubmitOfferWhoTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    NSString *total = [self.output who];
+    if (total.length > 0) {
+        cell.optionLabel.text = total;
+        cell.optionLabel.textColor = [UIColor textColor];
+    } else {
+        cell.optionLabel.text = @"Select Total # of People";
+        cell.optionLabel.textColor = [UIColor placeholderColor];
+    }
     
-    cell.output = self;
-    cell.whoTextField.delegate = self;
-    [cell.whoTextField setTintColor:[UIColor textColor]];
-    
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
-    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"type Who and Total # of people" attributes:attributes];
+
     
     return cell;
 }
@@ -52,7 +56,7 @@
 }
 
 - (void)registerCellsInTableView:(UITableView *)tableView {
-    [tableView registerNib:SubmitOfferWhoTableViewCell.viewNib forCellReuseIdentifier:SubmitOfferWhoTableViewCell.reuseIdentifier];
+    [tableView registerNib:SubmitOfferWhatTableViewCell.viewNib forCellReuseIdentifier:SubmitOfferWhatTableViewCell.reuseIdentifier];
 }
 
 - (BOOL)shouldHighightRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,19 +67,6 @@
     if ([self.output respondsToSelector:@selector(whoCellDidTap)]) {
         [self.output whoCellDidTap];
     }
-}
-
-#pragma mark - SubmitOfferWhoTableViewCellOutput
-
-- (void)enteredTexDidChange:(NSString *)text {
-    
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class AthleteDataModel;
+
 @protocol AthleteInfoModelInput <NSObject>
 
 - (void)loadData;
@@ -22,6 +24,8 @@
 
 @protocol AthleteInfoViewInput <NSObject>
 
+- (void)setupWithAthlete:(AthleteDataModel*)athlete;
+
 @end
 
 @protocol AthleteInfoViewOutput <NSObject>
@@ -32,7 +36,7 @@
 
 @protocol AthleteInfoModuleInput <NSObject>
 
-- (void)setupWithAthleteDetails:(NSDictionary*)athleteDetails;
+- (void)setupWithAthlete:(AthleteDataModel*)athlete;
 
 @end
 

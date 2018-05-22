@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePickerModuleProtocols.h"
 
-@interface DatePickerViewController : UIViewController
+@interface DatePickerViewController : UIViewController <DatePickerModuleInput>
+
+@property (nonatomic, weak) id <DatePickerModuleOutput> moduleOutput;
 
 @end

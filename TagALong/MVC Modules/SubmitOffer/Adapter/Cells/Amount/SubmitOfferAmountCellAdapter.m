@@ -32,6 +32,12 @@
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     SubmitOfferAmountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAmountTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
+    NSString *amount = [self.output amount];
+    
+    if (amount.length > 0) {
+        cell.amountTextField.text = [NSString stringWithFormat:@"$ %@", amount];
+    }
+    
     cell.amountTextField.delegate = self;
     [cell.amountTextField setTintColor:[UIColor textColor]];
     

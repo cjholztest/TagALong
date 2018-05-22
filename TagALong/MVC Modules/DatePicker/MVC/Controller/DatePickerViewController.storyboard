@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38a-Rq-fHM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38a-Rq-fHM" customClass="DatePickerView">
                                 <rect key="frame" x="0.0" y="667" width="375" height="212"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRi-Pk-Kuk">
@@ -32,7 +32,7 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
-                                                    <action selector="doneButtonAction:" destination="RMR-uG-YEA" eventType="touchUpInside" id="Kdf-jn-6PG"/>
+                                                    <action selector="doneButtonAction:" destination="38a-Rq-fHM" eventType="touchUpInside" id="mCp-ue-VTf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -65,6 +65,10 @@
                                     <constraint firstItem="YRi-Pk-Kuk" firstAttribute="top" secondItem="38a-Rq-fHM" secondAttribute="top" id="sa0-4H-kJe"/>
                                     <constraint firstItem="YRi-Pk-Kuk" firstAttribute="leading" secondItem="38a-Rq-fHM" secondAttribute="leading" id="uTM-wi-L3i"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="datePickerView" destination="wyI-Zz-d6F" id="6wZ-zq-P9A"/>
+                                    <outlet property="doneButton" destination="geu-gu-b2G" id="JFh-Hi-eFb"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,8 +83,6 @@
                         <outlet property="contentView" destination="38a-Rq-fHM" id="pMs-F7-H1v"/>
                         <outlet property="contentViewBottomConstraint" destination="arp-iF-rd6" id="pew-qk-DCG"/>
                         <outlet property="contentViewHeightConstraint" destination="ls0-TD-xbW" id="bKX-Dh-NWn"/>
-                        <outlet property="datePicker" destination="wyI-Zz-d6F" id="P4W-Ci-iLy"/>
-                        <outlet property="doneButton" destination="geu-gu-b2G" id="bPW-Gb-DMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9k-iH-jsW" userLabel="First Responder" sceneMemberID="firstResponder"/>

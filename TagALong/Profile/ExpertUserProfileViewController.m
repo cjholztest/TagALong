@@ -261,7 +261,7 @@
     
     [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPERT_GET_PROFILE];
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"export_get_profile"];
     
     NSDictionary *params = @{ API_REQ_KEY_EXPERT_UID         :   [NSString stringWithFormat:@"%d", Global.g_expert.export_uid],
                              API_REQ_KEY_TARGET_DATE: date };

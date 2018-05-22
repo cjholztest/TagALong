@@ -15,4 +15,7 @@
 
 - (void)whenCellDidTap;
 
+- (NSDate*)date;
+- (NSDate*)time;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "SubmitOfferWhenCellAdapter.h"
 #import "SubmitOfferWhenTableViewCell.h"
+#import "UIColor+AppColors.h"
 #import "UIView+Nib.h"
 
 @interface SubmitOfferWhenCellAdapter() <SubmitOfferWhenTableViewCellOutput>
@@ -31,6 +32,29 @@
     SubmitOfferWhenTableViewCell *cell = (SubmitOfferWhenTableViewCell*)[tableView dequeueReusableCellWithIdentifier:SubmitOfferWhenTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
     cell.output = self;
+    
+    NSDate *date = [self.output date];
+    NSDate *time = [self.output time];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    
+    if (date) {
+        [dateFormatter setDateFormat:@"yyyy.MM.dd"];
+        cell.dateLabel.text = [dateFormatter stringFromDate:date];
+        cell.dateLabel.textColor = [UIColor textColor];
+    } else {
+        cell.dateLabel.text = @"Date";
+        cell.dateLabel.textColor = [UIColor placeholderColor];
+    }
+    
+    if (time) {
+        [dateFormatter setDateFormat:@"h:mm a"];
+        cell.timeLabel.text = [dateFormatter stringFromDate:date];
+        cell.timeLabel.textColor = [UIColor textColor];
+    } else {
+        cell.timeLabel.text = @"Time";
+        cell.timeLabel.textColor = [UIColor placeholderColor];
+    }
     
     return cell;
 }

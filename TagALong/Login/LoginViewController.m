@@ -143,24 +143,24 @@
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"add_device_token"];
     
     NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"device_token"];
-    NSDictionary *params = @{@"token" : deviceToken};
-    
-    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
-        NSLog(@"JSON: %@", respObject);
-        int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
-        if (res_code == RESULT_CODE_SUCCESS) {
-            NSLog(@"device token was registered successfully");
-        }
-        StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error: %@", error);
-        NSLog(@"device token was not registered");
-        StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
-        [self.navigationController pushViewController:vc animated:YES];
-    }];
-    
-    
+    if (deviceToken) {
+        NSDictionary *params = @{@"token" : deviceToken};
+        
+        [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+            NSLog(@"JSON: %@", respObject);
+            int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+            if (res_code == RESULT_CODE_SUCCESS) {
+                NSLog(@"device token was registered successfully");
+            }
+            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            NSLog(@"device token was not registered");
+            StartedViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"StartedViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
 }
 
 #pragma mark - click events

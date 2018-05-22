@@ -8,6 +8,8 @@
 
 #import "ProsModel.h"
 #import "ProsTableViewCellDisplayModel.h"
+#import "AthleteDataModel.h"
+#import "AthleteMapper.h"
 
 @interface ProsModel()
 
@@ -45,11 +47,11 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius"];
     
-//    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-//                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
-    
-    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   @(0.0f),
-                             API_REQ_KEY_USER_LONGITUDE     :   @(0.0f)};
+    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
+                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
+
+//    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   @(0.0f),
+//                             API_REQ_KEY_USER_LONGITUDE     :   @(0.0f)};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -63,10 +65,14 @@
         self.athletes = [NSMutableArray array];
         
         for (NSDictionary *dict in responseObject) {
+            
+            AthleteDataModel *athlete = [AthleteMapper athleteFromJSON:dict];
+            [self.athletes addObject:athlete];
+            
             ProsTableViewCellDisplayModel *displayModel = [ProsTableViewCellDisplayModel new];
             
-            displayModel.nameText = [NSString stringWithFormat:@"%@ %@", dict[@"user_nck"], dict[@"user_last_name"]];
-            displayModel.locationText = dict[@"user_city"];
+            displayModel.nameText = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
+            displayModel.locationText = athlete.city;
             
             //                displayModel.descriptionText = [NSString stringWithFormat:@"Description %lu", i];
             //                displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
@@ -88,7 +94,7 @@
 #pragma mark - ProsModelDataSource
 
 - (id)athleteDetailsAtIndex:(NSInteger)index {
-    return nil;// self.athletes[index];
+    return self.athletes[index];
 }
 
 - (id)athleteAtIndex:(NSInteger)index {

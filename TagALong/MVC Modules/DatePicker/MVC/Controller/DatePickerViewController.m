@@ -7,16 +7,19 @@
 //
 
 #import "DatePickerViewController.h"
+#import "DatePickerModel.h"
+#import "DatePickerView.h"
 
-@interface DatePickerViewController ()
+@interface DatePickerViewController () <DatePickerModelOutput, DatePickerViewOutput>
 
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet DatePickerView *contentView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewBottomConstraint;
 
+@property (nonatomic, assign) DatePickerType datePickerType;
+
+@property (nonatomic, strong) id <DatePickerModelInput> model;
 
 @end
 
@@ -24,6 +27,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.model = [[DatePickerModel alloc] initWithOutput:self andType:self.datePickerType];
+    self.contentView.output = self;
+    
+    if (self.datePickerType == DateDatePickerType) {
+        [self.contentView.datePickerView setDatePickerMode:UIDatePickerModeDate];
+    } else {
+        [self.contentView.datePickerView setDatePickerMode:UIDatePickerModeTime];
+    }
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
     [self.view addGestureRecognizer:tap];
 }
@@ -48,10 +61,33 @@
     return UIStatusBarStyleLightContent;
 }
 
-#pragma mark - Actions
+#pragma mark - DatePickerViewOutput
 
-- (IBAction)doneButtonAction:(UIButton *)sender {
+- (void)doneButtonDidTap {
+    
+    switch (self.datePickerType) {
+            
+        case DateDatePickerType:
+            if ([self.moduleOutput respondsToSelector:@selector(dateDidChange:)]) {
+                [self.moduleOutput dateDidChange:[self.contentView.datePickerView date]];
+            }
+            break;
+        case TimeDatePickerType:
+            if ([self.moduleOutput respondsToSelector:@selector(timeDidChange:)]) {
+                [self.moduleOutput timeDidChange:[self.contentView.datePickerView date]];
+            }
+            break;
+        default:
+            break;
+    }
+
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - DatePickerModuleInput
+
+- (void)setupWithType:(DatePickerType)type {
+    self.datePickerType = type;
 }
 
 - (void)contentDidTap {

@@ -11,5 +11,7 @@
 @protocol SubmitOfferWhatCellAdapterOutput <NSObject>
 
 - (void)whatCellDidTap;
+- (void)whatTextDidChange:(NSString*)text;
+- (NSString*)what;
 
 @end

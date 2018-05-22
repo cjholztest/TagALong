@@ -72,7 +72,8 @@
 
 - (void)didTouchRowAtIndexPath:(NSIndexPath*)indexPath {
     AthleteInfoViewController *athleteVC = [[UIStoryboard storyboardWithName:NSStringFromClass(AthleteInfoViewController.class) bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass(AthleteInfoViewController.class)];
-    [athleteVC setupWithAthleteDetails:[self.model athleteDetailsAtIndex:indexPath.row]];
+    AthleteDataModel *athlete = [self.model athleteDetailsAtIndex:indexPath.row];
+    [athleteVC setupWithAthlete:athlete];
     [self.navigationController pushViewController:athleteVC animated:YES];
 }
 

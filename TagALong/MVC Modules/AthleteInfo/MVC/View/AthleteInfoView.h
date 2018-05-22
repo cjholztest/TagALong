@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AthleteInfoProtocols.h"
+#import <MapKit/MapKit.h>
 
 @interface AthleteInfoView : UIView <AthleteInfoViewInput>
 
@@ -17,6 +18,8 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *tagALongLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
+
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, weak) id <AthleteInfoViewOutput> output;
 

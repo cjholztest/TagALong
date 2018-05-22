@@ -35,6 +35,9 @@
             case SportsPickerType:
                 [self setupSportComponents];
                 break;
+            case TotalPeoplePickerType:
+                [self setupTotalOfPeopleComponents];
+                break;
             default:
                 break;
         }
@@ -83,6 +86,14 @@
 
 - (void)setupSportComponents {
     self.pickerComponents = [NSMutableArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+}
+
+- (void)setupTotalOfPeopleComponents {
+    self.pickerComponents = [NSMutableArray array];
+    for (NSInteger i = 0; i < 10; i++) {
+        NSString *title = [NSString stringWithFormat:@"%lu", i+1];
+        [self.pickerComponents addObject:title];
+    }
 }
 
 @end

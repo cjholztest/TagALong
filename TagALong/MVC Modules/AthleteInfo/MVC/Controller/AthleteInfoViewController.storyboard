@@ -149,7 +149,7 @@
                                             <constraint firstItem="Dgj-u7-6Rz" firstAttribute="centerX" secondItem="QqL-OR-HVt" secondAttribute="centerX" id="yeg-6h-jKC"/>
                                         </constraints>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q1P-RW-5u7">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1P-RW-5u7">
                                         <rect key="frame" x="0.0" y="230" width="375" height="417"/>
                                     </mapView>
                                 </subviews>
@@ -167,6 +167,7 @@
                                     <outlet property="avatarImageView" destination="C8e-Xg-opL" id="O3b-PB-hgI"/>
                                     <outlet property="infoLabel" destination="TRj-0L-n3g" id="x0i-e5-isS"/>
                                     <outlet property="locationLabel" destination="Dgj-u7-6Rz" id="9zh-yU-1Wu"/>
+                                    <outlet property="mapView" destination="Q1P-RW-5u7" id="Ay1-qd-SUA"/>
                                     <outlet property="nameLabel" destination="s1D-Ta-9Gt" id="CMd-8a-Dof"/>
                                     <outlet property="tagALongLabel" destination="4DI-yI-jhd" id="2v5-3P-ZyO"/>
                                 </connections>

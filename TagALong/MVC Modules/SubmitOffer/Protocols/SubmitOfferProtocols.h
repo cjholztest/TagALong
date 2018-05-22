@@ -24,11 +24,16 @@
 
 - (OfferDataModel*)currentOfferInfo;
 
+- (void)submitOfferToArhlete:(NSString*)athleteID;
+
 @end
 
 @protocol SubmitOfferModelOutput <NSObject>
 
 - (void)dataDidChange;
+
+- (void)offerDidSubmitSuccess:(BOOL)isSuccess message:(NSString*)message;
+- (void)validationDidFailWithMessage:(NSString*)message;
 
 @end
 
@@ -45,6 +50,8 @@
 @end
 
 @protocol SubmitOfferModuleInput <NSObject>
+
+- (void)setupWithAthleteID:(NSString*)athleteID;
 
 @end
 

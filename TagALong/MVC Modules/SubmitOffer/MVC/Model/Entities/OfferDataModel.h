@@ -18,4 +18,8 @@
 @property (nonatomic, strong) NSString *amount;
 @property (nonatomic, strong) NSString *additionalInfo;
 
+@property (nonatomic, strong) NSString *addressUID;
+
+@property (nonatomic, strong) NSString *athleteUID;
+
 @end

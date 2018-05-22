@@ -77,13 +77,37 @@
 #pragma mark - PickerViewOutput
 
 - (void)doneButtonDidTap {
-    if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithSelectedIndex:andItemTitle:)]) {
-        NSString *title = [self.model selectedComponent];
-        if (title) {
-            NSInteger index = [self.model selectedComponentIndex];
-            [self.moduleOutput pickerDoneButtonDidTapWithSelectedIndex:index andItemTitle:title];
-        }
+    
+    switch (self.pickerType) {
+        case DuratoinPickerType:
+            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithDuration:)]) {
+                NSString *title = [self.model selectedComponent];
+                if (title) {
+                    [self.moduleOutput pickerDoneButtonDidTapWithDuration:title];
+                }
+            }
+            break;
+        case SportsPickerType:
+            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithSelectedIndex:andItemTitle:)]) {
+                NSString *title = [self.model selectedComponent];
+                if (title) {
+                    NSInteger index = [self.model selectedComponentIndex];
+                    [self.moduleOutput pickerDoneButtonDidTapWithSelectedIndex:index andItemTitle:title];
+                }
+            }
+            break;
+        case TotalPeoplePickerType:
+            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithTotalOfPeople:)]) {
+                NSString *title = [self.model selectedComponent];
+                if (title) {
+                    [self.moduleOutput pickerDoneButtonDidTapWithTotalOfPeople:title];
+                }
+            }
+            break;
+        default:
+            break;
     }
+   
     [self hidePickerView];
 }
 

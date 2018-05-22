@@ -11,5 +11,6 @@
 @protocol SubmitOfferWhoCellAdapterOutput <NSObject>
 
 - (void)whoCellDidTap;
+- (NSString*)who;
 
 @end

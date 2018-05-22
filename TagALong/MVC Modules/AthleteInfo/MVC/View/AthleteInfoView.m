@@ -7,6 +7,7 @@
 //
 
 #import "AthleteInfoView.h"
+#import "AthleteDataModel.h"
 
 @interface AthleteInfoView()
 
@@ -23,5 +24,20 @@
 }
 
 #pragma mark - AthleteInfoViewInput
+
+- (void)setupWithAthlete:(AthleteDataModel *)athlete {
+    
+    self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
+    self.infoLabel.text = [NSString stringWithFormat:@"%@\n%@", athlete.awards, athlete.additionalInfo];
+    
+    self.locationLabel.text = athlete.city;
+    
+    NSString *title = [NSString stringWithFormat:@"TagALong with %@", athlete.firstName];
+    
+    [self.tagALongLabel setTitle:title forState:UIControlStateNormal];
+    [self.tagALongLabel setTitle:title forState:UIControlStateSelected];
+    [self.tagALongLabel setTitle:title forState:UIControlStateHighlighted];
+    
+}
 
 @end

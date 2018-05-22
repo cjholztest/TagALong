@@ -17,20 +17,25 @@
 #import "OfferDataModel.h"
 
 @interface SubmitOfferViewController ()
-<   SubmitOfferViewOutput,
-    SubmitOfferModelOutput,
-    SubmitOfferWhoCellAdapterOutput,
-    SubmitOfferWhenCellAdapterOutput,
-    SubmitOfferWhatCellAdapterOutput,
-    SubmitOfferDurationCellAdapterOutput,
-    SubmitOfferAmountCellAdapterOutput,
-    SubmitOfferAdditionalInfoCellAdapterOutput,
-    PickerModuleOutput  >
+<
+SubmitOfferViewOutput,
+SubmitOfferModelOutput,
+SubmitOfferWhoCellAdapterOutput,
+SubmitOfferWhenCellAdapterOutput,
+SubmitOfferWhatCellAdapterOutput,
+SubmitOfferDurationCellAdapterOutput,
+SubmitOfferAmountCellAdapterOutput,
+SubmitOfferAdditionalInfoCellAdapterOutput,
+PickerModuleOutput,
+DatePickerModuleOutput
+>
 
 @property (nonatomic, weak) IBOutlet SubmitOfferView *contentView;
 @property (nonatomic, strong) id <SubmitOfferModelInput> model;
 
 @property (nonatomic, strong) id <SubmitOfferTableViewAdapterInput> tableViewAdapter;
+
+@property (nonatomic, strong) NSString *athleteID;
 
 @end
 
@@ -65,16 +70,36 @@
 
 #pragma mark - SubmitOfferViewOutput
 
+- (void)submitOfferDidTap {
+    [self.model submitOfferToArhlete:self.athleteID];
+}
+
 #pragma mark - SubmitOfferModelOutput
 
 - (void)dataDidChange {
     [self.contentView.tableView reloadData];
 }
 
+- (void)offerDidSubmitSuccess:(BOOL)isSuccess message:(NSString*)message {
+    
+}
+
+- (void)validationDidFailWithMessage:(NSString*)message {
+    
+}
+
 #pragma mark - SubmitOfferWhoCellAdapterOutput
 
 - (void)whoCellDidTap {
     [self hideKeyboardIfNeeded];
+    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [pickerVC setupWithType:TotalPeoplePickerType];
+    pickerVC.moduleOutput = self;
+    [self presentCrossDissolveVC:pickerVC];
+}
+
+- (NSString*)who {
+    return self.model.currentOfferInfo.who;
 }
 
 #pragma mark - SubmitOfferWhenCellAdapterOutput
@@ -82,12 +107,16 @@
 - (void)dateDidTap {
     [self hideKeyboardIfNeeded];
     DatePickerViewController *datePickerVC = (DatePickerViewController*)DatePickerViewController.fromStoryboard;
+    [datePickerVC setupWithType:DateDatePickerType];
+    datePickerVC.moduleOutput = self;
     [self presentCrossDissolveVC:datePickerVC];
 }
 
 - (void)timeDidTap {
     [self hideKeyboardIfNeeded];
     DatePickerViewController *datePickerVC = (DatePickerViewController*)DatePickerViewController.fromStoryboard;
+    [datePickerVC setupWithType:TimeDatePickerType];
+    datePickerVC.moduleOutput = self;
     [self presentCrossDissolveVC:datePickerVC];
 }
 
@@ -95,10 +124,26 @@
     [self hideKeyboardIfNeeded];
 }
 
+- (NSDate*)date {
+    return self.model.currentOfferInfo.date;
+}
+
+- (NSDate*)time {
+    return self.model.currentOfferInfo.time;
+}
+
 #pragma mark - SubmitOfferWhatCellAdapterOutput
 
 - (void)whatCellDidTap {
     [self hideKeyboardIfNeeded];
+}
+
+- (void)whatTextDidChange:(NSString*)text {
+    [self.model updateWhatInfo:text];
+}
+
+- (NSString*)what {
+    return self.model.currentOfferInfo.what;
 }
 
 #pragma mark - SubmitOfferDurationCellAdapterOutput
@@ -112,8 +157,7 @@
 }
 
 - (NSString*)durationValue {
-    OfferDataModel *order = [self.model currentOfferInfo];
-    return order.duration;
+    return self.model.currentOfferInfo.duration;
 }
 
 #pragma mark - SubmitOfferAmountCellAdapterOutput
@@ -122,47 +166,24 @@
     [self hideKeyboardIfNeeded];
 }
 
+- (NSString*)amount {
+    return self.model.currentOfferInfo.amount;
+}
+
 #pragma mark - SubmitOfferAdditionalInfoCellAdapterOutput
 
 - (void)additionalInfoCellDidTap {
     [self hideKeyboardIfNeeded];
 }
 
+- (NSString*)additionalInfo {
+    return self.model.currentOfferInfo.additionalInfo;
+}
+
 #pragma mark - SubmitOfferModuleInput
 
-
-
-#pragma mark - Keyboard Notifications
-
-- (void)keyboardDidAppear:(NSNotification*)notification {
-    [super keyboardDidAppear:notification];
-    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        UIEdgeInsets inset = self.contentView.tableView.contentInset;
-        inset.bottom  = keyboardHeight;
-        self.contentView.tableView.contentInset = inset;
-    }];
-}
-
-- (void)keyboardDidHide:(NSNotification*)notification {
-    [super keyboardDidHide:notification];
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.contentView.tableView.contentInset = UIEdgeInsetsZero;
-    }];
-}
-
-- (void)keyboardDidChange:(NSNotification*)notification {
-    [super keyboardDidChange:notification];
-    
-    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        UIEdgeInsets inset = self.contentView.tableView.contentInset;
-        inset.bottom  = keyboardHeight;
-        self.contentView.tableView.contentInset = inset;
-    }];
+- (void)setupWithAthleteID:(NSString *)athleteID {
+    self.athleteID = athleteID;
 }
 
 #pragma mark - Actions
@@ -177,7 +198,24 @@
 
 - (void)durationDidSelect:(NSString *)durationText {
     [self.model updateDuration:durationText];
-    [self.contentView.tableView reloadData];
+}
+
+- (void)pickerDoneButtonDidTapWithTotalOfPeople:(NSString*)title {
+    [self.model updateWhoInfo:title];
+}
+
+- (void)pickerDoneButtonDidTapWithDuration:(NSString*)duration {
+    [self.model updateDuration:duration];
+}
+
+#pragma mark - DatePickerModuleOutput
+
+- (void)dateDidChange:(NSDate *)date {
+    [self.model updateDate:date];
+}
+
+- (void)timeDidChange:(NSDate *)date {
+    [self.model updateTime:date];
 }
 
 @end

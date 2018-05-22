@@ -38,6 +38,8 @@
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     SubmitOfferAdditionalInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAdditionalInfoTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
+    cell.additionalInfoTextView.text = [self.output additionalInfo];
+    
     cell.additionalInfoTextView.delegate = self;
     [cell.additionalInfoTextView setTintColor:[UIColor textColor]];
     
