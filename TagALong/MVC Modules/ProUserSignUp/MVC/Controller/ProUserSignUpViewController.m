@@ -103,13 +103,43 @@ QLPreviewControllerDataSource
 
 #pragma mark - ProUserSignUpModelOutput
 
-- (void)proUserDidSignUpWithState:(BOOL)isSuccessed andErrorMessage:(NSString*)errorMessage {
+- (void)proUserDidSignUpSuccessed:(BOOL)isSuccessed andMessage:(NSString*)message {
     
+    [SharedAppDelegate closeLoading];
+    
+    __weak typeof(self)weakSelf = self;
+    
+    UIAlertAction *alertAction = nil;;
+    NSString *title  = nil;
+    
+    if (isSuccessed) {
+        title = @"THANK YOU";
+        alertAction = [UIAlertAction actionWithTitle:@"Great"
+                                               style:UIAlertActionStyleDefault
+                                             handler:^(UIAlertAction * action) {
+                                                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                                                    }];
+    } else {
+        title = @"ERROR";
+        alertAction = [UIAlertAction actionWithTitle:@"Ok"
+                                               style:UIAlertActionStyleDefault
+                                             handler:nil];
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:alertAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)validationDidFailWithMessage:(NSString*)message {
+    [SharedAppDelegate closeLoading];
+    [Commons showToast:message];
 }
 
 #pragma mark - ProUserSignUpViewOutput
 
 - (void)signUpButtonDidTap {
+    [SharedAppDelegate showLoading];
     [self.model signUpaProUser:self.proUser];
 }
 

@@ -19,6 +19,7 @@
 @protocol ProUserSignUpModelOutput <NSObject>
 
 - (void)proUserDidSignUpSuccessed:(BOOL)isSuccessed andMessage:(NSString*)message;
+- (void)validationDidFailWithMessage:(NSString*)message;
 
 @end
 

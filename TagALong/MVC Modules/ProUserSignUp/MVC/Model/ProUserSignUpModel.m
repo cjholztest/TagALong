@@ -28,6 +28,12 @@
 
 - (void)signUpaProUser:(ProUserSignUpDataModel*)userModel {
     
+    NSString *validationError = [self isUserDataValid:userModel];
+    if (validationError) {
+        [self.output validationDidFailWithMessage:validationError];
+        return;
+    }
+    
     __weak typeof(self)weakSelf = self;
     
     NSString *eMail = [userModel.eMail stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
@@ -46,8 +52,6 @@
     NSString *longitude = [[NSNumber numberWithFloat:userModel.location.longitude] stringValue];
     NSNumber *hidePhone = [NSNumber numberWithBool:!userModel.isPhoneVisible];
     
-    [SharedAppDelegate showLoading];
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -57,18 +61,18 @@
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"export_register"];
     
     NSDictionary *params = @{
-                             API_REQ_KEY_USER_NICKNAME      :   firstName,
-                             API_REQ_KEY_USER_LAST_NAME     :   lastName,
-                             API_REQ_KEY_USER_EMAIL         :   eMail,
-                             API_REQ_KEY_USER_PHONE         :   phone,
-                             API_REQ_KEY_USER_PWD           :   password,
-                             API_REQ_KEY_SPORT_UID          :   sport,
-                             API_REQ_KEY_CONTENT            :   additionalInfo,
+                             API_REQ_KEY_USER_NICKNAME      :   firstName ? firstName : @"",
+                             API_REQ_KEY_USER_LAST_NAME     :   lastName ? lastName : @"",
+                             API_REQ_KEY_USER_EMAIL         :   eMail ? eMail : @"",
+                             API_REQ_KEY_USER_PHONE         :   phone ? phone : @"",
+                             API_REQ_KEY_USER_PWD           :   password ? password : @"",
+                             API_REQ_KEY_SPORT_UID          :   sport ? sport : @"",
+                             API_REQ_KEY_CONTENT            :   additionalInfo ? additionalInfo : @"",
                              @"longitude"                   :   longitude,
                              @"latitude"                    :   latitude,
                              @"hide_phone"                  :   hidePhone,
-                             @"awards"                      :   awards,
-                             @"user_city"                   :   address
+                             @"awards"                      :   awards ? awards : @"",
+                             @"user_city"                   :   address ? address : @""
                              };
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
@@ -99,13 +103,67 @@
             default:
                 break;
         }
-        
-        
+        [weakSelf.output proUserDidSignUpSuccessed:isSuccessed andMessage:message];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [weakSelf.output proUserDidSignUpSuccessed:NO andMessage:error.localizedDescription];
     }];
+}
+
+#pragma mark - Private
+
+- (NSString*)isUserDataValid:(ProUserSignUpDataModel*)user {
+    
+    if ([user.firstName stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        return @"Input first name!";
+    }
+    
+    if ([user.lastName stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        return @"Input last name!";
+    }
+    
+    if (user.eMail.length == 0) {
+        return @"Input email!";
+    }
+    
+    if (![Commons checkEmail:user.eMail]) {
+        return @"Please enter in email format.";
+    }
+    
+    if ([user.phone stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        return @"Input phone number!";
+    }
+    
+    if (![Commons checkPhoneNumber:user.phone]) {
+        return @"The phone number should be in format +XXXXXXXXXXXX";
+    }
+    
+    if ([user.password stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        return @"Input password";
+    }
+    
+    if ([user.password stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length < 5) {
+        return @"The password must be at least 5 symbols length";
+    }
+    
+    if ([user.confirmPassword stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
+        return @"Input confirm password";
+    }
+    
+    if (![user.password isEqualToString:user.confirmPassword]) {
+        return @"Confirm password does not match Password!";
+    }
+    
+    if (user.sport.length == 0) {
+        return @"Please, select a kind of sport";
+    }
+    
+    if (user.awards.length == 0) {
+        return @"Please, input awards!";
+    }
+    
+    return nil;
 }
 
 @end
