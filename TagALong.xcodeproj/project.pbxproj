@@ -231,6 +231,7 @@
 		CEDA668620B43AA1009417BF /* OfferMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA668520B43AA1009417BF /* OfferMapper.m */; };
 		CEDA668B20B45CDE009417BF /* DatePickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA668A20B45CDE009417BF /* DatePickerModel.m */; };
 		CEDA668E20B45CF8009417BF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA668D20B45CF8009417BF /* DatePickerView.m */; };
+		CEDA669120B54014009417BF /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDA669020B54014009417BF /* UIViewController+Alert.m */; };
 		CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */; };
 		CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */; };
 		CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF04B620A971A70012AAC4 /* AthleteInfoModel.m */; };
@@ -774,6 +775,8 @@
 		CEDA668A20B45CDE009417BF /* DatePickerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatePickerModel.m; sourceTree = "<group>"; };
 		CEDA668C20B45CF8009417BF /* DatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		CEDA668D20B45CF8009417BF /* DatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		CEDA668F20B54014009417BF /* UIViewController+Alert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
+		CEDA669020B54014009417BF /* UIViewController+Alert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		CEDF04B020A9716C0012AAC4 /* AthleteInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoViewController.h; sourceTree = "<group>"; };
 		CEDF04B120A9716C0012AAC4 /* AthleteInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoViewController.m; sourceTree = "<group>"; };
 		CEDF04B320A9717A0012AAC4 /* AthleteInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AthleteInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -2686,6 +2689,8 @@
 				CEDF04D520A99CE10012AAC4 /* UIViewController+Storyboard.m */,
 				CE7E0F1A20AC4C7300D93035 /* UIViewController+Presentation.h */,
 				CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */,
+				CEDA668F20B54014009417BF /* UIViewController+Alert.h */,
+				CEDA669020B54014009417BF /* UIViewController+Alert.m */,
 			);
 			path = "UIViewController Categories";
 			sourceTree = "<group>";
@@ -3290,6 +3295,7 @@
 				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
 				CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
+				CEDA669120B54014009417BF /* UIViewController+Alert.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,

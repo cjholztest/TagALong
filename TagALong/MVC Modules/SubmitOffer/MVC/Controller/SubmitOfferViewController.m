@@ -14,6 +14,7 @@
 #import "DatePickerViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "UIViewController+Presentation.h"
+#import "UIViewController+Alert.h"
 #import "OfferDataModel.h"
 
 @interface SubmitOfferViewController ()
@@ -71,6 +72,7 @@ DatePickerModuleOutput
 #pragma mark - SubmitOfferViewOutput
 
 - (void)submitOfferDidTap {
+    [SharedAppDelegate showLoading];
     [self.model submitOfferToArhlete:self.athleteID];
 }
 
@@ -81,11 +83,17 @@ DatePickerModuleOutput
 }
 
 - (void)offerDidSubmitSuccess:(BOOL)isSuccess message:(NSString*)message {
+    [SharedAppDelegate closeLoading];
+    NSString *title = isSuccess ? @"TAGALONG" : @"ERROR";
     
+    [self showAllertWithTitle:title message:message okCompletion:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (void)validationDidFailWithMessage:(NSString*)message {
-    
+    [SharedAppDelegate closeLoading];
+    [Commons showToast:message];
 }
 
 #pragma mark - SubmitOfferWhoCellAdapterOutput

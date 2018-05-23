@@ -78,7 +78,7 @@
         return;
     }
     
-    [SharedAppDelegate showLoading];
+    __weak typeof(self)weakSelf = self;
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -94,13 +94,20 @@
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
-        [SharedAppDelegate closeLoading];
+        BOOL isSuccessed = NO;
+        NSString *message = nil;
+        
+        NSNumber *result = responseObject[@"result"];
+        if ([result integerValue] == 1) {
+            isSuccessed = YES;
+            message = @"Your offer has been successfully submited!";
+        }
+        
+        [weakSelf.output offerDidSubmitSuccess:isSuccessed message:message];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
-        [SharedAppDelegate closeLoading];
-//        [Commons showToast:@"Failed to communicate with the server"];
-        
+        [weakSelf.output offerDidSubmitSuccess:NO message:error.localizedDescription];
     }];
 }
 

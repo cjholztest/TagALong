@@ -37,7 +37,7 @@
     NSString *amount = [self.output amount];
     
     if (amount.length > 0) {
-        cell.amountTextField.text = [NSString stringWithFormat:@"$ %@", amount];
+        cell.amountTextField.text = amount;
     }
     
     cell.amountTextField.delegate = self;
@@ -83,6 +83,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    textField.text = [NSString stringWithFormat:@"$ %@", textField.text];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$ " withString:@""];
     return YES;
 }
 
