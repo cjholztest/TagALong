@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReviewOfferAdditionalSectionAdapterOutput.h"
+#import "ReviewOfferSectionAdapter.h"
 
 @interface ReviewOfferAdditionalSectionAdapter : NSObject
+
+- (instancetype)initWithOutput:(id<ReviewOfferAdditionalSectionAdapterOutput>)output;
 
 @end

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2508D720B602F90063801D /* SimpleUserEditProfileViewController.m */; };
+		1A2508DA20B6030C0063801D /* SimpleUserEditProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2508D920B6030C0063801D /* SimpleUserEditProfileViewController.storyboard */; };
+		1A2508DD20B603250063801D /* SimpleUserEditProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2508DC20B603250063801D /* SimpleUserEditProfileModel.m */; };
+		1A2508E020B603360063801D /* SimpleUserEditProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2508DF20B603360063801D /* SimpleUserEditProfileView.m */; };
+		1A2508E920B61AC70063801D /* ReviewOfferCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2508E820B61AC70063801D /* ReviewOfferCellDisplayModel.m */; };
 		1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A27613D20612E8000C9D703 /* Payment.storyboard */; };
 		1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27614020612EB600C9D703 /* CreditCardListViewController.m */; };
 		1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27614320612ED100C9D703 /* AddCreditCardViewController.m */; };
@@ -300,6 +305,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A2508D620B602F90063801D /* SimpleUserEditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserEditProfileViewController.h; sourceTree = "<group>"; };
+		1A2508D720B602F90063801D /* SimpleUserEditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserEditProfileViewController.m; sourceTree = "<group>"; };
+		1A2508D920B6030C0063801D /* SimpleUserEditProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimpleUserEditProfileViewController.storyboard; sourceTree = "<group>"; };
+		1A2508DB20B603250063801D /* SimpleUserEditProfileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserEditProfileModel.h; sourceTree = "<group>"; };
+		1A2508DC20B603250063801D /* SimpleUserEditProfileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserEditProfileModel.m; sourceTree = "<group>"; };
+		1A2508DE20B603360063801D /* SimpleUserEditProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserEditProfileView.h; sourceTree = "<group>"; };
+		1A2508DF20B603360063801D /* SimpleUserEditProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserEditProfileView.m; sourceTree = "<group>"; };
+		1A2508E120B603470063801D /* SimpleUserEditProfileModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserEditProfileModuleProtocols.h; sourceTree = "<group>"; };
+		1A2508E720B61AC70063801D /* ReviewOfferCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferCellDisplayModel.h; sourceTree = "<group>"; };
+		1A2508E820B61AC70063801D /* ReviewOfferCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferCellDisplayModel.m; sourceTree = "<group>"; };
 		1A27613D20612E8000C9D703 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		1A27613F20612EB600C9D703 /* CreditCardListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditCardListViewController.h; sourceTree = "<group>"; };
 		1A27614020612EB600C9D703 /* CreditCardListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreditCardListViewController.m; sourceTree = "<group>"; };
@@ -918,6 +933,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A2508CF20B602A40063801D /* SImpleUserEditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508D020B602A40063801D /* MVC */,
+				1A2508D420B602A40063801D /* Adapter */,
+				1A2508D520B602A40063801D /* Protocols */,
+			);
+			path = SImpleUserEditProfile;
+			sourceTree = "<group>";
+		};
+		1A2508D020B602A40063801D /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508D120B602A40063801D /* Controller */,
+				1A2508D220B602A40063801D /* Model */,
+				1A2508D320B602A40063801D /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		1A2508D120B602A40063801D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508D620B602F90063801D /* SimpleUserEditProfileViewController.h */,
+				1A2508D720B602F90063801D /* SimpleUserEditProfileViewController.m */,
+				1A2508D920B6030C0063801D /* SimpleUserEditProfileViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1A2508D220B602A40063801D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508DB20B603250063801D /* SimpleUserEditProfileModel.h */,
+				1A2508DC20B603250063801D /* SimpleUserEditProfileModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A2508D320B602A40063801D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508DE20B603360063801D /* SimpleUserEditProfileView.h */,
+				1A2508DF20B603360063801D /* SimpleUserEditProfileView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A2508D420B602A40063801D /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		1A2508D520B602A40063801D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508E120B603470063801D /* SimpleUserEditProfileModuleProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1A2508E620B61A980063801D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1A2508E720B61AC70063801D /* ReviewOfferCellDisplayModel.h */,
+				1A2508E820B61AC70063801D /* ReviewOfferCellDisplayModel.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1A2761452061314B00C9D703 /* PaymentClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,6 +1840,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1A2508CF20B602A40063801D /* SImpleUserEditProfile */,
 				CEDA664B20B29F38009417BF /* SelectLocation */,
 				CEDA65B720B01AAB009417BF /* ProUserSignUp */,
 				CE7E0F3920ADC82400D93035 /* ReviewOffer */,
@@ -1883,7 +1971,6 @@
 		CE36D77B20A5D615008B0E75 /* AthleteInfo */ = {
 			isa = PBXGroup;
 			children = (
-				CEDF04AD20A96D430012AAC4 /* Adapter */,
 				CEDF04A820A96D430012AAC4 /* MVC */,
 				CEDF04AC20A96D430012AAC4 /* Protocols */,
 			);
@@ -2019,20 +2106,11 @@
 		CE7E0F3D20ADC82400D93035 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE7E0F3E20ADC82400D93035 /* Cell */,
+				1A2508E620B61A980063801D /* Cells */,
 				CE7E0F4A20ADC87600D93035 /* ReviewOfferView.h */,
 				CE7E0F4B20ADC87600D93035 /* ReviewOfferView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		CE7E0F3E20ADC82400D93035 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CEDA669920B59E52009417BF /* AdditionalCell */,
-				CEDA669A20B59E52009417BF /* InfoCell */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		CE7E0F3F20ADC82400D93035 /* Adapter */ = {
@@ -2544,20 +2622,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		CEDA669920B59E52009417BF /* AdditionalCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AdditionalCell;
-			sourceTree = "<group>";
-		};
-		CEDA669A20B59E52009417BF /* InfoCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InfoCell;
-			sourceTree = "<group>";
-		};
 		CEDF04A820A96D430012AAC4 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2603,29 +2667,6 @@
 				CEDF04BC20A971ED0012AAC4 /* AthleteInfoConstants.h */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		CEDF04AD20A96D430012AAC4 /* Adapter */ = {
-			isa = PBXGroup;
-			children = (
-				CEDF04AE20A96D430012AAC4 /* Sections */,
-			);
-			path = Adapter;
-			sourceTree = "<group>";
-		};
-		CEDF04AE20A96D430012AAC4 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				CEDF04AF20A96D790012AAC4 /* Main */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
-		CEDF04AF20A96D790012AAC4 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		CEDF04BD20A9761D0012AAC4 /* Network */ = {
@@ -3188,6 +3229,7 @@
 				CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
 				32FAA0911F6144D500CD4395 /* Main.storyboard in Resources */,
+				1A2508DA20B6030C0063801D /* SimpleUserEditProfileViewController.storyboard in Resources */,
 				CE7E0F2720AC4F7500D93035 /* DatePickerViewController.storyboard in Resources */,
 				CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */,
 				CEDF053520A9CB4D0012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.xib in Resources */,
@@ -3311,6 +3353,7 @@
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				CEDF053320A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m in Sources */,
 				CEDF051020A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m in Sources */,
+				1A2508E020B603360063801D /* SimpleUserEditProfileView.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
 				CEDF051820A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m in Sources */,
@@ -3335,6 +3378,7 @@
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
 				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
+				1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */,
 				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
 				CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
@@ -3433,6 +3477,7 @@
 				3230164E1F7A48FC0001BCB4 /* BSAssetsGroupModel.m in Sources */,
 				CE7E0F6020ADC98900D93035 /* ReviewOfferMainSectionAdapter.m in Sources */,
 				323016401F7A48FC0001BCB4 /* ALAssetsGroup+Equal.m in Sources */,
+				1A2508E920B61AC70063801D /* ReviewOfferCellDisplayModel.m in Sources */,
 				CEDA662320B048AD009417BF /* ProUserSignUpTextFieldTableViewCellDisplayModel.m in Sources */,
 				1A27614120612EB600C9D703 /* CreditCardListViewController.m in Sources */,
 				CEDF04FF20A9A5530012AAC4 /* SubmitOfferDurationCellAdapter.m in Sources */,
@@ -3469,6 +3514,7 @@
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
 				CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */,
+				1A2508DD20B603250063801D /* SimpleUserEditProfileModel.m in Sources */,
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				1A5E687520B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,

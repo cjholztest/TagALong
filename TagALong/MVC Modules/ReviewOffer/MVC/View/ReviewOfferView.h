@@ -14,10 +14,12 @@
 @property (nonatomic, weak) IBOutlet UIImageView *userIconImageView;
 
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 
 @property (nonatomic, weak) IBOutlet UIButton *accpetButton;
 @property (nonatomic, weak) IBOutlet UIButton *declineButton;
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) id <ReviewOfferViewOutput> output;
 

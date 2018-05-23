@@ -18,6 +18,8 @@
 #import "FSCalendar.h"
 #import <Photos/Photos.h>
 #import "ExpertUserProfileEditViewController.h"
+#import "SimpleUserEditProfileViewController.h"
+#import "UIViewController+Storyboard.h"
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate, ExpertUserProfileEditViewControllerDelegate>{
     NSString *file_url;
@@ -79,17 +81,7 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - click events
 - (void)onClickEdit:(id)sender {
-    ExpertUserProfileEditViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpertUserProfileEditViewController"];
-    vc.delegate = self;
-    vc.phone = phone;
-//    vc.location = location;
-//    vc.url = profileurl;
-//    vc.level = level;
-    vc.nickname = nickname;
-//    vc.arrSchedule = _arrWorkout;
-    vc.vcParent = self.vcParent;
-    vc.isRegularUser = YES;
-//    vc.debitCard = self.lblCreditCard.text;
+    SimpleUserEditProfileViewController *vc = (SimpleUserEditProfileViewController*)SimpleUserEditProfileViewController.fromStoryboard;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

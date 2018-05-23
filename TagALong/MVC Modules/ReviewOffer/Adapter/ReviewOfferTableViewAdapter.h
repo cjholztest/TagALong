@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReviewOfferTableViewAdapterInput.h"
+#import "SubmitOfferSectionAdapter.h"
 
-@interface ReviewOfferTableViewAdapter : NSObject
+@interface ReviewOfferTableViewAdapter : NSObject <ReviewOfferTableViewAdapterInput>
+
+@property (nonatomic, strong) NSMutableArray <SubmitOfferSectionAdapter> *sectionAdapters;
 
 @end

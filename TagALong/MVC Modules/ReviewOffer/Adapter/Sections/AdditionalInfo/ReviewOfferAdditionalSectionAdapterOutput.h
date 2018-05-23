@@ -10,4 +10,8 @@
 
 @protocol ReviewOfferAdditionalSectionAdapterOutput <NSObject>
 
+- (NSInteger)additionalRowsCount;
+
+- (id)additionalDisplayModelAtIndexPath:(NSIndexPath*)indexPath;
+
 @end
