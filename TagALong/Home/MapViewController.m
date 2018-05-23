@@ -297,6 +297,10 @@
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
         
+        if (sport_uid - 1 < 0) {
+            sport_uid = 1;
+        }
+        
         uniqueImageName = arrSportImg[sport_uid - 1];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         
@@ -434,6 +438,11 @@
     NSDictionary *dic = _arrSportList[index];
     NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
     int sport_uid = [sports.firstObject intValue];
+    
+    if (sport_uid - 1 < 0) {
+        sport_uid = 1;
+    }
+    
     uniqueImageName = arrSportImg[sport_uid - 1];
     
     NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
@@ -484,7 +493,9 @@
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportYellowImg[sport_uid - 1]]];
 
         } else if ([level isEqualToString:@"3"]) { //trainer
-            [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportBlueImg[sport_uid - 1]]];
+            if (sport_uid) {
+                [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportBlueImg[sport_uid - 1]]];
+            }
         }
         if (ptAnno) {
             [annotations addObject:ptAnno];

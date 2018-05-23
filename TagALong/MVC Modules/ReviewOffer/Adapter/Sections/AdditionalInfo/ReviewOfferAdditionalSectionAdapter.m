@@ -7,6 +7,7 @@
 //
 
 #import "ReviewOfferAdditionalSectionAdapter.h"
+#import "SubmitOfferAdditionalInfoTableViewCell.h"
 
 @implementation ReviewOfferAdditionalSectionAdapter
 

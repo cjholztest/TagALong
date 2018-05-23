@@ -13,8 +13,12 @@
 #import "BookWorkoutViewController.h"
 #import "PaymentClient+Customer.h"
 #import "PaymentClient+CreditCard.h"
+#import "ReviewOfferDataModel.h"
+#import "ReviewOfferMapper.h"
+#import "ReviewOfferViewController.h"
+#import "UIViewController+Storyboard.h"
 
-@interface ExpertUserProfileViewController ()<ExpertUserProfileEditViewControllerDelegate>{
+@interface ExpertUserProfileViewController ()<ExpertUserProfileEditViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>{
     NSString *nickname ;
     NSString *phone ;
     NSString *location ;
@@ -29,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblCreditCard;
 @property (strong, nonatomic) IBOutlet UIView *vwNoData;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
+@property (nonatomic, strong) NSMutableArray *arrOffers;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *creditCardImageView;
@@ -43,6 +48,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self initUI];
+    [self requestOffers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,9 +70,13 @@
 }
 
 #pragma mark -  UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return _arrWorkout.count;
+    return section == 0 ? self.arrOffers.count : _arrWorkout.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,29 +84,41 @@
     static NSString *CellIdentifier = @"UserProfilePlanTableViewCell";
     UserProfilePlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSDictionary *dic  = _arrWorkout[indexPath.row];
-    
-//    cell.lblTime.text = [NSString stringWithFormat:@"%02ld:%02ld", (indexPath.row * 15 ) / 60, (indexPath.row * 15 ) % 60];
-    cell.lblTime.text = [dic objectForKey:API_RES_KEY_START_TIME];
-//    NSString *workout = [dic objectForKey:@"workout"];
-//    
-//    if ([workout isEqualToString:@"1"]) {
-//        cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
-//    } else {
-//        cell.vwBG.backgroundColor = [UIColor whiteColor];
-//    }
-    
-    NSString *star = [dic objectForKey:@"star_mark"];
-    if ([star isEqualToString:@"1"]) {
+    if (indexPath.section == 0) {
+        
+        ReviewOfferDataModel *offer = self.arrOffers[indexPath.row];
+        
+        cell.lblTitle.text = offer.title;
+        cell.lblTime.text = offer.timeString;
+        
         [cell.ivStar setHidden:NO];
-        NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
-        NSString *loc = [dic objectForKey:API_RES_KEY_USER_LOCATION];
-        cell.lblTitle.text = [NSString stringWithFormat:@"%@\n%@", title, loc];
-        cell.lblTitle.textAlignment = NSTextAlignmentLeft;
+        
     } else {
+        NSDictionary *dic  = _arrWorkout[indexPath.row];
+        
+    //    cell.lblTime.text = [NSString stringWithFormat:@"%02ld:%02ld", (indexPath.row * 15 ) / 60, (indexPath.row * 15 ) % 60];
+        cell.lblTime.text = [dic objectForKey:API_RES_KEY_START_TIME];
+    //    NSString *workout = [dic objectForKey:@"workout"];
+    //
+    //    if ([workout isEqualToString:@"1"]) {
+    //        cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
+    //    } else {
+    //        cell.vwBG.backgroundColor = [UIColor whiteColor];
+    //    }
         [cell.ivStar setHidden:YES];
-        cell.lblTitle.text = @"";
-        cell.lblTitle.textAlignment = NSTextAlignmentCenter;
+        
+        NSString *star = [dic objectForKey:@"star_mark"];
+        if ([star isEqualToString:@"1"]) {
+//            [cell.ivStar setHidden:NO];
+            NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
+            NSString *loc = [dic objectForKey:API_RES_KEY_USER_LOCATION];
+            cell.lblTitle.text = [NSString stringWithFormat:@"%@\n%@", title, loc];
+            cell.lblTitle.textAlignment = NSTextAlignmentLeft;
+        } else {
+//            [cell.ivStar setHidden:YES];
+            cell.lblTitle.text = @"";
+            cell.lblTitle.textAlignment = NSTextAlignmentCenter;
+        }
     }
     
     return cell;
@@ -111,11 +133,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSDictionary *dic = _arrWorkout[indexPath.row];
-    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-    vc.bProfile = YES;
-    [self.vcParent.navigationController pushViewController:vc animated:YES];
+    
+    if (indexPath.section == 0) {
+        
+        ReviewOfferDataModel *reviewOffer = self.arrOffers[indexPath.row];
+        
+        ReviewOfferViewController *reviewOfferVC = (ReviewOfferViewController*)ReviewOfferViewController.fromStoryboard;
+        [reviewOfferVC setupWithReviewOffer:reviewOffer];
+        [self.vcParent.navigationController pushViewController:reviewOfferVC animated:YES];
+        
+    } else {
+        NSDictionary *dic = _arrWorkout[indexPath.row];
+        BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
+        vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+        vc.bProfile = YES;
+        [self.vcParent.navigationController pushViewController:vc animated:YES];
+    }
 
 }
 
@@ -316,13 +349,15 @@
                 
             }
             
-            if (arrData.count > 0) {
-                [_vwNoData setHidden:YES];
-            } else {
-                [_vwNoData setHidden:NO];
-            }
+            [_vwNoData setHidden:YES];
             
-            [_tvSchedule reloadData];
+//            if (arrData.count > 0) {
+//                [_vwNoData setHidden:YES];
+//            } else {
+//                [_vwNoData setHidden:NO];
+//            }
+            
+            [_tvSchedule reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
@@ -335,6 +370,41 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
+        [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+- (void)requestOffers {
+    
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"bids/my_bids"];
+    
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        self.arrOffers = [NSMutableArray array];
+        
+        for (NSDictionary *json in responseObject) {
+            ReviewOfferDataModel *reviewOffer = [ReviewOfferMapper reviewOfferFromJSON:json];
+            [self.arrOffers addObject:reviewOffer];
+        }
+        if (self.arrOffers.count > 0) {
+            [_vwNoData setHidden:YES];
+        }
+//        [SharedAppDelegate closeLoading];
+        [_tvSchedule reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+       
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+//        [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
     }];
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import "UIViewController+Alert.h"
+#import "UIViewController+AlertController.h"
 
 @implementation UIViewController (Alert)
 

@@ -301,15 +301,25 @@ static const NSInteger kMaxImageCnt = 1;
 
 - (IBAction)onClickCreditCardEdit:(id)sender {
     __weak typeof(self)weakSelf = self;
-    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
-        if (isPaymentAccountExists && isCreditCradExists) {
-            [weakSelf showCreditCardList];
-        } else if (isPaymentAccountExists && !isCreditCradExists) {
-            [weakSelf showAddCreditCard];
-        } else if (!isPaymentAccountExists) {
-            [weakSelf showRegisterCredentials];
-        }
-    }];
+    if (self.isRegularUser) {
+        [self checkCreditsWithCompletion:^(BOOL isCreditCradExists) {
+            if (isCreditCradExists) {
+                [weakSelf showCreditCardList];
+            } else {
+                [weakSelf showAddCreditCard];
+            }
+        }];
+    } else {
+        [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+            if (isPaymentAccountExists && isCreditCradExists) {
+                [weakSelf showCreditCardList];
+            } else if (isPaymentAccountExists && !isCreditCradExists) {
+                [weakSelf showAddCreditCard];
+            } else if (!isPaymentAccountExists) {
+                [weakSelf showRegisterCredentials];
+            }
+        }];
+    }
 }
 
 - (void)showRegisterCredentials {
@@ -551,6 +561,30 @@ static const NSInteger kMaxImageCnt = 1;
             if (completion) {
                 completion(isAccountExists, isCreditExists);
             }
+        }
+    }];
+}
+
+- (void)checkCreditsWithCompletion:(void(^)(BOOL isCreditCradExists))completion {
+    [SharedAppDelegate showLoading];
+    
+    __block BOOL isCreditExists = NO;
+    __weak typeof(self)weakSelf = self;
+    
+    
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        
+        [SharedAppDelegate closeLoading];
+        
+        NSArray *cards = responseObject;
+        weakSelf.lblCreditCard.text = @"no debit";
+        if (cards.count != 0) {
+            isCreditExists = YES;
+            NSDictionary *card = cards.firstObject;
+            weakSelf.lblCreditCard.text = [NSString stringWithFormat:@"●●●● %@", card[@"last4"]];
+        }
+        if (completion) {
+            completion(isCreditExists);
         }
     }];
 }

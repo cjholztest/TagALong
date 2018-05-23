@@ -7,8 +7,17 @@
 //
 
 #import "ReviewOfferViewController.h"
+#import "ReviewOfferModel.h"
+#import "ReviewOfferView.h"
+#import "ReviewOfferDataModel.h"
+#import "UIViewController+AlertController.h"
 
-@interface ReviewOfferViewController ()
+@interface ReviewOfferViewController () <ReviewOfferModelOutput, ReviewOfferViewOutput>
+
+@property (nonatomic, weak) IBOutlet ReviewOfferView *contentView;
+
+@property (nonatomic, strong) id <ReviewOfferModelInput> model;
+@property (nonatomic, strong) ReviewOfferDataModel *reviewOffer;
 
 @end
 
@@ -16,22 +25,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setup];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.model offerWasSeen:self.reviewOffer.bidUID.stringValue];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setup {
+    self.model = [[ReviewOfferModel alloc] initWithOutput:self];
+    self.contentView.output = self;
 }
-*/
+
+#pragma mark - ReviewOfferModelOutput
+
+- (void)showResultOfferIsAccepted:(BOOL)isAccepted isSuccess:(BOOL)isSuccessed message:(NSString*)message {
+    [SharedAppDelegate closeLoading];
+    NSString *title = isSuccessed ? @"TagALong" : @"ERROR";
+    [self showAllertWithTitle:title message:message okCompletion:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+#pragma mark - ReviewOfferViewOutput
+
+- (void)acceptButtonDidTap {
+    [SharedAppDelegate showLoading];
+    [self.model acceptOffer:self.reviewOffer.bidUID.stringValue];
+}
+
+- (void)declineButtonDidTap {
+    [SharedAppDelegate showLoading];
+    [self.model declineOffer:self.reviewOffer.bidUID.stringValue];
+}
+
+#pragma mark - ReviewOfferModuleInput
+
+- (void)setupWithReviewOffer:(ReviewOfferDataModel*)reviewOffer {
+    self.reviewOffer = reviewOffer;
+}
+
+#pragma mark - Private
 
 @end

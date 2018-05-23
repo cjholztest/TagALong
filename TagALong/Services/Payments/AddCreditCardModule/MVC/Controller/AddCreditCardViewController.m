@@ -8,6 +8,7 @@
 
 #import "AddCreditCardViewController.h"
 #import "EditDialogViewController.h"
+#import "UIViewController+AlertController.h"
 #import "UIViewController+Alert.h"
 #import "AddCreditCardModel.h"
 #import "AddCreditCardView.h"
@@ -82,14 +83,20 @@
 - (void)creditCardDidCreateWithError:(NSError*)error {
     [SharedAppDelegate closeLoading];
     if (error) {
-        [self showAlert:error.localizedDescription];
+        [self showAllertWithTitle:@"ERROR" message:error.localizedDescription okCompletion:nil];
+//        [self showAlert:error.localizedDescription];
     } else {
         __weak typeof(self)weakSelf = self;
-        [self showAlert:@"Credit Card was successfully added" withOkCompletion:^{
+        [self showAllertWithTitle:@"TagALong" message:@"Credit Card was successfully added" okCompletion:^{
             if ([weakSelf.moduleDelegate respondsToSelector:@selector(creditCardDidAdd)]) {
                 [weakSelf.moduleDelegate creditCardDidAdd];
             }
         }];
+//        [self showAlert:@"Credit Card was successfully added" withOkCompletion:^{
+//            if ([weakSelf.moduleDelegate respondsToSelector:@selector(creditCardDidAdd)]) {
+//                [weakSelf.moduleDelegate creditCardDidAdd];
+//            }
+//        }];
     }
 }
 

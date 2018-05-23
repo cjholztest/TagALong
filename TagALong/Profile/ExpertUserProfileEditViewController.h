@@ -25,5 +25,8 @@
 @property (nonatomic, strong) NSString *debitCard;
 @property (nonatomic, strong) NSMutableArray *arrSchedule;
 @property (nonatomic, retain) UIViewController *vcParent;
+
+@property (nonatomic, assign) BOOL isRegularUser;
+
 @end
 

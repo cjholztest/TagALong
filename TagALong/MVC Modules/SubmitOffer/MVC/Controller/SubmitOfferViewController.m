@@ -14,7 +14,7 @@
 #import "DatePickerViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "UIViewController+Presentation.h"
-#import "UIViewController+Alert.h"
+#import "UIViewController+AlertController.h"
 #import "OfferDataModel.h"
 
 @interface SubmitOfferViewController ()

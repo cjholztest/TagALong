@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol ReviewOfferTableViewAdapterInput <NSObject>
+
+- (void)setupWithTableView:(UITableView*)tableView;
 
 @end

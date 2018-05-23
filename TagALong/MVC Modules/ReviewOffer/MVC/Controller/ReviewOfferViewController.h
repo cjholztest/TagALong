@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReviewOfferModuleProtocols.h"
 
-@interface ReviewOfferViewController : UIViewController
+@interface ReviewOfferViewController : UIViewController <ReviewOfferModuleInput>
+
+@property (nonatomic, weak) id <ReviewOfferModuleOutput> moduleOutput;
 
 @end

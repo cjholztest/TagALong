@@ -13,7 +13,7 @@ typedef void(^AlertCancelCompletion)(void);
 typedef void(^AlertYesCompletion)(void);
 typedef void(^AlertNoCompletion)(void);
 
-@interface UIViewController (Alert)
+@interface UIViewController (AlertController)
 
 - (void)showAllertWithTitle:(NSString*)title
                     message:(NSString*)message

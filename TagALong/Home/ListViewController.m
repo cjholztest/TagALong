@@ -130,6 +130,11 @@
         //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
+        
+        if (sport_uid - 1 < 0) {
+            sport_uid = 1;
+        }
+        
         NSString *distance = @"";
         NSString *startTime = @"";
         NSString *duration = @"";
@@ -261,6 +266,11 @@
         //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
         NSArray *sports = [[NSArray alloc] initWithObjects:[dic objectForKey:API_RES_KEY_SPORT_UID], nil];
         int sport_uid = [sports.firstObject intValue];
+        
+        if (sport_uid - 1 < 0) {
+            sport_uid = 1;
+        }
+        
         NSString* startTime = @"";
         NSString *first_name = @"";
         NSString *last_name = @"";

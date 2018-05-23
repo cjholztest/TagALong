@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReviewOfferModuleProtocols.h"
 
-@interface ReviewOfferModel : NSObject
+@interface ReviewOfferModel : NSObject <ReviewOfferModelInput>
+
+- (instancetype)initWithOutput:(id<ReviewOfferModelOutput>)output;
 
 @end

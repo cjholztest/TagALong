@@ -17,8 +17,9 @@
 #import "BookWorkoutViewController.h"
 #import "FSCalendar.h"
 #import <Photos/Photos.h>
+#import "ExpertUserProfileEditViewController.h"
 
-@interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate>{
+@interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate, ExpertUserProfileEditViewControllerDelegate>{
     NSString *file_url;
     NSString *file_name;
     NSString *nickname;
@@ -65,9 +66,35 @@ static const NSInteger kMaxImageCnt = 1;
     [self initUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self addEditInfoBarButton];
+}
+
+-(void)addEditInfoBarButton {
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
+    self.vcParent.navigationItem.rightBarButtonItem = editButton;
+    //self.navigationController.navigationItem.rightBarButtonItem = editButton;
+}
+
+#pragma mark - click events
+- (void)onClickEdit:(id)sender {
+    ExpertUserProfileEditViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpertUserProfileEditViewController"];
+    vc.delegate = self;
+    vc.phone = phone;
+//    vc.location = location;
+//    vc.url = profileurl;
+//    vc.level = level;
+    vc.nickname = nickname;
+//    vc.arrSchedule = _arrWorkout;
+    vc.vcParent = self.vcParent;
+    vc.isRegularUser = YES;
+//    vc.debitCard = self.lblCreditCard.text;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)setEditDate:(NSMutableDictionary *)dic {
+    
 }
 
 - (void)calendarViewDidChange:(id)sender {
