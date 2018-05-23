@@ -10,4 +10,17 @@
 
 @implementation SubmitOfferAmountTableViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.amountTextField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
+}
+
+#pragma mark - Actions
+
+- (void)textDidChange:(UITextField*)textField {
+    if ([self.output respondsToSelector:@selector(amountValueDidChange:)]) {
+        [self.output amountValueDidChange:textField.text];
+    }
+}
+
 @end

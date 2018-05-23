@@ -11,6 +11,7 @@
 @protocol SubmitOfferAmountCellAdapterOutput <NSObject>
 
 - (void)amountCellDidTap;
+- (void)amountDidChange:(NSString*)amount;
 - (NSString*)amount;
 
 @end

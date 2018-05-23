@@ -12,7 +12,7 @@
 #import "UIFont+HelveticaNeue.h"
 #import "UIView+Nib.h"
 
-@interface SubmitOfferAmountCellAdapter() <UITextFieldDelegate>
+@interface SubmitOfferAmountCellAdapter() <SubmitOfferAmountTableViewCellOutput, UITextFieldDelegate>
 
 @property (nonatomic, weak) id <SubmitOfferAmountCellAdapterOutput> output;
 
@@ -31,6 +31,8 @@
 
 - (UITableViewCell *)cellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     SubmitOfferAmountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SubmitOfferAmountTableViewCell.reuseIdentifier forIndexPath:indexPath];
+    
+    cell.output = self;
     
     NSString *amount = [self.output amount];
     
@@ -66,6 +68,14 @@
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     if ([self.output respondsToSelector:@selector(amountCellDidTap)]) {
         [self.output amountCellDidTap];
+    }
+}
+
+#pragma mark - SubmitOfferAmountTableViewCellOutput
+
+- (void)amountValueDidChange:(NSString *)amount {
+    if ([self.output respondsToSelector:@selector(amountDidChange:)]) {
+        [self.output amountDidChange:amount];
     }
 }
 

@@ -335,6 +335,7 @@
 		1A5E687320B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpIsPhoneVisibleCellAdapter.h; sourceTree = "<group>"; };
 		1A5E687420B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpIsPhoneVisibleCellAdapter.m; sourceTree = "<group>"; };
 		1A5E687620B1D62200B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpIsPhoneVisibleCellAdapterOutput.h; sourceTree = "<group>"; };
+		1A93017E20B5268C0075615E /* SubmitOfferAmountTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubmitOfferAmountTableViewCellOutput.h; sourceTree = "<group>"; };
 		1AB78750206995400013F737 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
 		1AB78751206995400013F737 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		1ACFEA34205FF85500675150 /* PaymentClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentClient.h; sourceTree = "<group>"; };
@@ -2832,6 +2833,7 @@
 				CEDF052C20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib */,
 				CEDF052E20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.h */,
 				CEDF052F20A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m */,
+				1A93017E20B5268C0075615E /* SubmitOfferAmountTableViewCellOutput.h */,
 			);
 			path = AmountCell;
 			sourceTree = "<group>";

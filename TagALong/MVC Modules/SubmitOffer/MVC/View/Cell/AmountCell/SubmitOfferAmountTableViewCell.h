@@ -7,10 +7,13 @@
 //
 
 #import "SubmitOfferBaseTableViewCell.h"
+#import "SubmitOfferAmountTableViewCellOutput.h"
 
 @interface SubmitOfferAmountTableViewCell : SubmitOfferBaseTableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITextField *amountTextField;
+
+@property (nonatomic, weak) id <SubmitOfferAmountTableViewCellOutput> output;
 
 @end

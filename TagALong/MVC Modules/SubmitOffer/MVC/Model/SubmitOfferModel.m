@@ -72,63 +72,63 @@
     self.offer.athleteUID = athleteID;
     self.offer.addressUID = @"-1";
     
-    NSDictionary *parameters = [OfferMapper jsonFromOffer:self.offer];
+    NSString *validationMessage = [self validateOfferData];
+    if (validationMessage) {
+        [self.output validationDidFailWithMessage:validationMessage];
+        return;
+    }
     
-    return;
+    [SharedAppDelegate showLoading];
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"bids/make_bid"];
+
+    NSDictionary *params = [OfferMapper jsonFromOffer:self.offer];
     
-//    [SharedAppDelegate showLoading];
-//
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
-//
-//    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"bids/make_bid"];
-//
-//    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-//                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
-    
-    //    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   @(0.0f),
-    //                             API_REQ_KEY_USER_LONGITUDE     :   @(0.0f)};
-    
-//    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-        //        NSError* error;
-        //        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-        //                                                                       options:kNilOptions
-        //                                                                         error:&error];
-//        [SharedAppDelegate closeLoading];
-//
-//        self.athletesDisplayModels = [NSMutableArray array];
-//        self.athletes = [NSMutableArray array];
-//
-//        for (NSDictionary *dict in responseObject) {
-//
-//            AthleteDataModel *athlete = [AthleteMapper athleteFromJSON:dict];
-//            [self.athletes addObject:athlete];
-//
-//            ProsTableViewCellDisplayModel *displayModel = [ProsTableViewCellDisplayModel new];
-//
-//            displayModel.nameText = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
-//            displayModel.locationText = athlete.city;
-//
-//            //                displayModel.descriptionText = [NSString stringWithFormat:@"Description %lu", i];
-//            //                displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
-//
-//            [self.athletesDisplayModels addObject:displayModel];
-//
-//        }
-//
-//        [self.output prosDidLoadSuccessfully];
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
         
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"error: %@", error);
-//        [SharedAppDelegate closeLoading];
+        [SharedAppDelegate closeLoading];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
 //        [Commons showToast:@"Failed to communicate with the server"];
         
-//    }];
+    }];
+}
+
+#pragma mark - Prvate
+
+- (NSString*)validateOfferData {
+    
+    if (self.offer.who.length == 0) {
+        return @"Select number of people";
+    }
+    
+    if (!self.offer.date) {
+        return @"Input Date";
+    }
+    
+    if (!self.offer.time) {
+        return @"Input Time";
+    }
+    
+    if (!self.offer.duration) {
+        return @"Select Duration";
+    }
+    
+    if (!self.offer.amount) {
+        return @"Input Amount";
+    }
+    
+    return nil;
 }
 
 @end

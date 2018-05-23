@@ -166,6 +166,10 @@ DatePickerModuleOutput
     [self hideKeyboardIfNeeded];
 }
 
+- (void)amountDidChange:(NSString*)amount {
+    [self.model updateAmount:amount];
+}
+
 - (NSString*)amount {
     return self.model.currentOfferInfo.amount;
 }
