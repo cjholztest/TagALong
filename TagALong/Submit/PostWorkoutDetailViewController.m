@@ -390,7 +390,9 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
 
 - (IBAction)onClickPostworkout:(id)sender {
     
-    if ([Global.g_user.user_login isEqualToString:@"2"]) {
+    BOOL isAmountEmpty = ([amount isEqualToString:@""] || [amount floatValue] == 0.0f);
+    
+    if ([Global.g_user.user_login isEqualToString:@"2"] && !isAmountEmpty) {
         __weak typeof(self)weakSelf = self;
         [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
             if (isPaymentAccountExists && isCreditCradExists) {
