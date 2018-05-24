@@ -24,6 +24,8 @@
     NSString *location ;
     NSString *level;
     NSString *profileurl;
+    NSNumber *latitude;
+    NSNumber *longitude;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tvSchedule;
 @property (strong, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -159,7 +161,14 @@
     _lblPhone.text = [dic objectForKey:@"phone"];
     level = [dic objectForKey:@"level"];
     NSString *url = [dic objectForKey:@"profile"];
-    [_ivProfile sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+    
+    if (url) {
+        [self updateImageProfileWithURL:url];
+    }
+    
+//    [_ivProfile sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+//
+    
 
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";
@@ -192,7 +201,9 @@
     _arrWorkout = [[NSMutableArray alloc]  init];
 
     _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.width / 2;
-
+    [_ivProfile setClipsToBounds:YES];
+    _ivProfile.layer.masksToBounds = YES;
+    
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"UserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserProfilePlanTableViewCell"];
     
     [_vwNoData setHidden:YES];
@@ -242,6 +253,9 @@
     location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
     level = [[dicInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
     
+    latitude = dicInfo[@"latitude"];
+    longitude = dicInfo[@"longitude"];
+    
     _lblPhone.text = phone;
     _lblAddress.text = location;
     
@@ -259,7 +273,10 @@
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
     } else {
         profileurl = [dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG];
-        [_ivProfile sd_setImageWithURL:[NSURL URLWithString:profileurl] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+//        [_ivProfile sd_setImageWithURL:[NSURL URLWithString:profileurl] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+        if (profileurl) {
+            [self updateImageProfileWithURL:profileurl];
+        }
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeTitle" object:self userInfo:@{@"title": nickname}];
@@ -277,6 +294,8 @@
     vc.arrSchedule = _arrWorkout;
     vc.vcParent = self.vcParent;
     vc.debitCard = self.lblCreditCard.text;
+    vc.longitude = longitude;
+    vc.latitude = latitude;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -538,5 +557,20 @@
 //        [Commons showToast:@"Failed to communicate with the server"];
 //    }];
 //}
+
+- (void)updateImageProfileWithURL:(NSString*)url {
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.ivProfile.image = [UIImage imageWithData:imageData];
+            self.ivProfile.layer.cornerRadius = self.ivProfile.bounds.size.width / 2.0;
+            self.ivProfile.clipsToBounds = YES;
+        });
+    });
+}
 
 @end

@@ -22,6 +22,8 @@
 #import "CreditCardListViewController.h"
 #import "PaymentClient+Customer.h"
 #import "PaymentClient+CreditCard.h"
+#import "SelectLocationViewController.h"
+#import "UIViewController+Storyboard.h"
 
 #define LEVEL_GYM       1
 #define LEVEL_PRO       2
@@ -31,7 +33,7 @@
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define IS_IOS8_OR_ABOVE                            ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 static const NSInteger kMaxImageCnt = 1;
-@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate, ProfilePaymentDataModuleDelegate, AddCreditCardModuleDelegate, CreditCardListModuleDelegate>{
+@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate, ProfilePaymentDataModuleDelegate, AddCreditCardModuleDelegate, CreditCardListModuleDelegate, SelectLocationModuleOutput>{
     NSInteger nCurSelLevel;
     NSString *file_url;
     NSString *file_name;
@@ -56,6 +58,9 @@ static const NSInteger kMaxImageCnt = 1;
 @property (nonatomic, weak) IBOutlet UILabel *lblCreditCard;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
 
+@property (nonatomic, weak) IBOutlet UIView *changeLocationView;
+@property (weak, nonatomic) IBOutlet UISwitch *isPhoneVisibleSwitch;
+
 @end
 
 @implementation ExpertUserProfileEditViewController
@@ -79,9 +84,14 @@ static const NSInteger kMaxImageCnt = 1;
     self.lblCreditCard.text = self.debitCard;
     //
     [_ivProfile sd_setImageWithURL:[NSURL URLWithString:self.url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
-
+    self.ivProfile.layer.cornerRadius = self.ivProfile.frame.size.width / 2.0f;
+    [self.ivProfile setClipsToBounds:YES];
+    self.ivProfile.layer.masksToBounds = YES;
+    
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"UserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserProfilePlanTableViewCell"];
 
+    UITapGestureRecognizer *changeLocationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeLocationDidTap)];
+    [self.changeLocationView addGestureRecognizer:changeLocationTap];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -166,6 +176,17 @@ static const NSInteger kMaxImageCnt = 1;
     } else if ([type isEqualToString:@"phone"]) {
         _lblPhone.text = content;
     }
+}
+
+- (void)changeLocationDidTap {
+    SelectLocationViewController *selectLocationVC = (SelectLocationViewController*)SelectLocationViewController.fromStoryboard;
+    selectLocationVC.moduleOutput = self;
+    [selectLocationVC setupLocation:CLLocationCoordinate2DMake(self.latitude.floatValue, self.longitude.floatValue)];
+    [self.navigationController pushViewController:selectLocationVC animated:YES];
+}
+
+- (IBAction)phoneVisibleSwitchAction:(UISwitch *)sender {
+    
 }
 
 #pragma mark - user defined functions
@@ -411,6 +432,13 @@ static const NSInteger kMaxImageCnt = 1;
      }];
 }
 
+#pragma mark - SelectLocationModuleOutput
+
+- (void)locationDidSet:(CLLocationCoordinate2D)location {
+    self.latitude = @(location.latitude);
+    self.longitude = @(location.longitude);
+}
+
 #pragma mark - Network
 - (void)uploadImage:(UIImage*)image scale:(float)scale {
     if (image == nil)
@@ -471,9 +499,9 @@ static const NSInteger kMaxImageCnt = 1;
     phone = _lblPhone.text;
     location = _lblArea.text;
     
-    CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
-    double latitude = code.latitude;
-    double longitude = code.longitude;
+//    CLLocationCoordinate2D code = [Commons geoCodeUsingAddress:location];
+//    double latitude = code.latitude;
+//    double longitude = code.longitude;
     
     [SharedAppDelegate showLoading];
     
@@ -492,8 +520,8 @@ static const NSInteger kMaxImageCnt = 1;
                              API_REQ_KEY_EXPERT_PHONE       :    phone,
                              API_REQ_KEY_LEVEL              :    [NSString stringWithFormat:@"%ld", (long)nCurSelLevel],
                              API_REQ_KEY_USER_LOCATION      :    location ?: self.nickname,
-                             API_REQ_KEY_USER_LATITUDE      :   [NSString stringWithFormat:@"%f", latitude],
-                             API_REQ_KEY_USER_LONGITUDE     :   [NSString stringWithFormat:@"%f", longitude],
+                             API_REQ_KEY_USER_LATITUDE      :   self.latitude.stringValue,
+                             API_REQ_KEY_USER_LONGITUDE     :   self.longitude.stringValue,
                              API_REQ_KEY_USER_PROFILE_IMG   :   file_url
                              };
 
