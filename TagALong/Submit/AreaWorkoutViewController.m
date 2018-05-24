@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    arrAreaImg = [NSArray arrayWithObjects:@"ic_cardio.png", @"ic_strength.png", @"ic_intensity.png", @"ic_balance.png", @"ic_weights.png", @"ic_interval.png", nil];
+    arrAreaImg = [NSArray arrayWithObjects:@"ic_cardio.png", @"ic_strength.png", @"ic_intensity.png", @"ic_balance.png", @"ic_weights.png", @"stopwatch-icon.png", nil];
     arrAreaName = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
     
     static NSString * const identifier = @"TypeWorkoutCollectionViewCell";
@@ -54,6 +54,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     TypeWorkoutCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TypeWorkoutCollectionViewCell" forIndexPath:indexPath];
+    
     cell.ivSport.image = [UIImage imageNamed:arrAreaImg[indexPath.row]];
     cell.lblName.text = arrAreaName[indexPath.row];
     
