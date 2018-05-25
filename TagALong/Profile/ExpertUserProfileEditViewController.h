@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSMutableArray *arrSchedule;
 @property (nonatomic, retain) UIViewController *vcParent;
+@property (nonatomic, assign) NSInteger radius;
 
 @property (nonatomic, assign) BOOL isRegularUser;
 @property (nonatomic, assign) BOOL hidePhone;

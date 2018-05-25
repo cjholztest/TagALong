@@ -24,6 +24,8 @@
 #import "PaymentClient+CreditCard.h"
 #import "SelectLocationViewController.h"
 #import "UIViewController+Storyboard.h"
+#import "UIViewController+Presentation.h"
+#import "PickerViewController.h"
 
 #define LEVEL_GYM       1
 #define LEVEL_PRO       2
@@ -33,7 +35,7 @@
 #define SYSTEM_VERSION                              ([[UIDevice currentDevice] systemVersion])
 #define IS_IOS8_OR_ABOVE                            ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 static const NSInteger kMaxImageCnt = 1;
-@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate, ProfilePaymentDataModuleDelegate, AddCreditCardModuleDelegate, CreditCardListModuleDelegate, SelectLocationModuleOutput>{
+@interface ExpertUserProfileEditViewController () <UIImagePickerControllerDelegate, EditDialogViewControllerDelegate, ProfilePaymentDataModuleDelegate, AddCreditCardModuleDelegate, CreditCardListModuleDelegate, SelectLocationModuleOutput, PickerModuleOutput>{
     NSInteger nCurSelLevel;
     NSString *file_url;
     NSString *file_name;
@@ -60,6 +62,10 @@ static const NSInteger kMaxImageCnt = 1;
 
 @property (nonatomic, weak) IBOutlet UIView *changeLocationView;
 @property (weak, nonatomic) IBOutlet UISwitch *isPhoneVisibleSwitch;
+
+@property (nonatomic, weak) IBOutlet UILabel *areaRadiusLabel;
+@property (nonatomic, weak) IBOutlet UISwitch *radiusLimitSwitcher;
+@property (weak, nonatomic) IBOutlet UIView *areaContentView;
 
 @end
 
@@ -93,6 +99,19 @@ static const NSInteger kMaxImageCnt = 1;
 
     UITapGestureRecognizer *changeLocationTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeLocationDidTap)];
     [self.changeLocationView addGestureRecognizer:changeLocationTap];
+    
+    UITapGestureRecognizer *areaRadiusTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(areaViewTapAction)];
+    [self.areaContentView addGestureRecognizer:areaRadiusTap];
+    
+    NSInteger radius = self.radius;
+    BOOL isLimitEnabled = radius != -1;
+    
+    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"Infinity";
+    
+    [self.radiusLimitSwitcher setOn:isLimitEnabled];
+    self.areaRadiusLabel.text = value;
+    
+    [self updateRadiusInterface:isLimitEnabled];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -110,6 +129,28 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)radiusSwitchAction:(UISwitch *)sender {
+    [self updateRadiusInterface:sender.isOn];
+}
+
+- (void)updateRadiusInterface:(BOOL)isOn {
+    self.areaContentView.alpha = isOn ? 1.0f : 0.2f;
+    [self.areaContentView setUserInteractionEnabled:isOn];
+}
+
+- (void)areaViewTapAction {
+    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [pickerVC setupWithType:MilesPickerType];
+    pickerVC.moduleOutput = self;
+    [self presentCrossDissolveVC:pickerVC];
+}
+
+#pragma mark - PickerModuleOutput
+
+- (void)pickerDoneButtonDidTapWithMiles:(NSString *)miles {
+    self.areaRadiusLabel.text = miles;
 }
 
 #pragma mark -  UITableViewDataSource
@@ -513,6 +554,8 @@ static const NSInteger kMaxImageCnt = 1;
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
+    NSNumber *limit = self.radiusLimitSwitcher.isOn ? @(self.areaRadiusLabel.text.integerValue) : @(-1);
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_EXPERT_UPDATE_PROFILE];
     
     NSDictionary *params = @{
@@ -524,7 +567,8 @@ static const NSInteger kMaxImageCnt = 1;
                              API_REQ_KEY_USER_LATITUDE      :   self.latitude.stringValue,
                              API_REQ_KEY_USER_LONGITUDE     :   self.longitude.stringValue,
                              API_REQ_KEY_USER_PROFILE_IMG   :   file_url,
-                             @"hide_phone"                  :   @(self.hidePhone)
+                             @"hide_phone"                  :   @(self.hidePhone),
+                             @"pro_search_radius"           :   limit
                              };
 
     [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {

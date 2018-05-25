@@ -28,6 +28,7 @@
     NSNumber *longitude;
     NSNumber *sportID;
     NSNumber *hidePhone;
+    NSInteger miles;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tvSchedule;
 @property (strong, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -259,6 +260,8 @@
     latitude = dicInfo[@"latitude"];
     longitude = dicInfo[@"longitude"];
     
+    miles = [dicInfo[@"pro_search_radius"] integerValue];
+    
     _lblPhone.text = phone;
     _lblAddress.text = location;
     
@@ -305,6 +308,7 @@
     vc.longitude = longitude;
     vc.latitude = latitude;
     vc.hidePhone = hidePhone.boolValue;
+    vc.radius = miles;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
