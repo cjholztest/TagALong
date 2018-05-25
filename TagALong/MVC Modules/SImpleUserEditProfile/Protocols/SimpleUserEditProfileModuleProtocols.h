@@ -13,11 +13,14 @@
 - (void)loadCrediCards;
 - (void)loadCrediCardsWithCompletion:(void(^)(NSArray *cards))completion;
 
+- (void)updateAreaRadius:(BOOL)isEnabled miles:(NSString*)miles;
+
 @end
 
 @protocol SimpleUserEditProfileModelOutput <NSObject>
 
 - (void)creditCardsDidLoadSuccess:(BOOL)isSuccess cardInfo:(NSString*)cardInfo;
+- (void)areaRadiusDidUpdateSuccess:(BOOL)isSuccess message:(NSString*)message;
 
 @end
 
@@ -29,10 +32,13 @@
 
 - (void)limitSwitcherDidChange:(BOOL)isOn;
 - (void)editCreditButtonDidTap;
+- (void)areaRadiusDidTap;
 
 @end
 
 @protocol SimpleUserEditProfileModuleInput <NSObject>
+
+- (void)setupMiles:(NSInteger)miles;
 
 @end
 

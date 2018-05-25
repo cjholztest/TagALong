@@ -15,7 +15,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *creditCardEditButton;
 
 @property (nonatomic, weak) IBOutlet UISwitch *limitSwithch;
-@property (nonatomic, weak) IBOutlet UISlider *limitSlider;
+@property (nonatomic, weak) IBOutlet UIView *areaContentView;
+@property (nonatomic, weak) IBOutlet UILabel *areaRadiusLabel;
 
 @property (nonatomic, weak) IBOutlet UIImageView *profileIconImageView;
 

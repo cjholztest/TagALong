@@ -30,13 +30,15 @@
                                                     <constraint firstAttribute="width" constant="70" id="Pga-PN-GJL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                <state key="normal" title="Done"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="doneButtonAction:" destination="38a-Rq-fHM" eventType="touchUpInside" id="mCp-ue-VTf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="geu-gu-b2G" firstAttribute="top" secondItem="YRi-Pk-Kuk" secondAttribute="top" id="7di-eu-bUb"/>
                                             <constraint firstAttribute="trailing" secondItem="geu-gu-b2G" secondAttribute="trailing" constant="15" id="C4I-hw-h2O"/>
@@ -46,6 +48,7 @@
                                     </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wyI-Zz-d6F">
                                         <rect key="frame" x="0.0" y="44" width="375" height="168"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="168" id="JGw-xR-tVK"/>
                                         </constraints>
@@ -54,7 +57,7 @@
                                         </date>
                                     </datePicker>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YRi-Pk-Kuk" secondAttribute="trailing" id="B1J-bQ-ghh"/>
                                     <constraint firstAttribute="bottom" secondItem="wyI-Zz-d6F" secondAttribute="bottom" id="Cpy-Wk-3qv"/>
@@ -71,7 +74,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fgR-0S-3J9" firstAttribute="bottom" secondItem="38a-Rq-fHM" secondAttribute="bottom" constant="-212" id="arp-iF-rd6"/>
                             <constraint firstItem="38a-Rq-fHM" firstAttribute="trailing" secondItem="fgR-0S-3J9" secondAttribute="trailing" id="i3v-Ul-qSr"/>

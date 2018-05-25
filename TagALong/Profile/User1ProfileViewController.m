@@ -29,6 +29,7 @@
     NSData *imgData;
     NSDateFormatter *formatter;
     NSCalendar *gregorian;
+    NSInteger miles;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -82,6 +83,7 @@ static const NSInteger kMaxImageCnt = 1;
 #pragma mark - click events
 - (void)onClickEdit:(id)sender {
     SimpleUserEditProfileViewController *vc = (SimpleUserEditProfileViewController*)SimpleUserEditProfileViewController.fromStoryboard;
+    [vc setupMiles:miles];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -242,6 +244,8 @@ static const NSInteger kMaxImageCnt = 1;
     //_lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
     _lblAge.text = location;
     _lblLevel.text = @"INDIVIDUAL";
+    
+    miles = [dicInfo[@"pro_search_radius"] integerValue];
     
     if ([[dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];

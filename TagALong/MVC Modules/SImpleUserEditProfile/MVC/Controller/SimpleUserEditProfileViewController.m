@@ -12,13 +12,17 @@
 #import "UIViewController+AlertController.h"
 #import "AddCreditCardViewController.h"
 #import "CreditCardListViewController.h"
+#import "PickerViewController.h"
+#import "UIViewController+Storyboard.h"
+#import "UIViewController+Presentation.h"
 
-
-@interface SimpleUserEditProfileViewController () <SimpleUserEditProfileModelOutput, SimpleUserEditProfileViewOutput, AddCreditCardModuleDelegate, CreditCardListModuleDelegate>
+@interface SimpleUserEditProfileViewController () <SimpleUserEditProfileModelOutput, SimpleUserEditProfileViewOutput, AddCreditCardModuleDelegate, CreditCardListModuleDelegate, PickerModuleOutput>
 
 @property (nonatomic, weak) IBOutlet SimpleUserEditProfileView *contentView;
 
 @property (nonatomic, strong) id <SimpleUserEditProfileModelInput> model;
+
+@property (nonatomic, assign) NSInteger miles;
 
 @end
 
@@ -30,10 +34,22 @@
 }
 
 - (void)setup {
+    
     self.model = [[SimpleUserEditProfileModel alloc] initWithOutput:self];
     self.contentView.output = self;
     
     [self.model loadCrediCards];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonDidTap)];
+    
+    NSInteger radius = self.miles;
+    BOOL isLimitEnabled = radius != -1;
+    
+    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"Infinity";
+    
+    [self.contentView.limitSwithch setOn:isLimitEnabled];
+    self.contentView.areaRadiusLabel.text = value;
+    
+    [self limitSwitcherDidChange:isLimitEnabled];
 }
 
 #pragma mark - SimpleUserEditProfileModelOutput
@@ -42,10 +58,22 @@
     self.contentView.creditCardLabel.text = cardInfo;
 }
 
+- (void)areaRadiusDidUpdateSuccess:(BOOL)isSuccess message:(NSString*)message {
+    
+    if (isSuccess) {
+        [self showAllertWithTitle:@"TagALong" message:message okCompletion:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    } else {
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+    }
+}
+
 #pragma mark - SimpleUserEditProfileViewOutput
 
 - (void)limitSwitcherDidChange:(BOOL)isOn {
-    [self.contentView.limitSlider setEnabled:isOn];
+    self.contentView.areaContentView.alpha = isOn ? 1.0f : 0.2f;
+    [self.contentView.areaContentView setUserInteractionEnabled:isOn];
 }
 
 - (void)editCreditButtonDidTap {
@@ -69,6 +97,13 @@
     }];
 }
 
+- (void)areaRadiusDidTap {
+    PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [pickerVC setupWithType:MilesPickerType];
+    pickerVC.moduleOutput = self;
+    [self presentCrossDissolveVC:pickerVC];
+}
+
 #pragma mark - AddCreditCardModuleDelegate
 
 - (void)creditCardDidAdd {
@@ -77,5 +112,24 @@
 }
 
 #pragma mark - CreditCardListViewController
+
+#pragma mark - SimpleUserEditProfileModuleInput
+
+- (void)setupMiles:(NSInteger)miles {
+    self.miles = miles;
+}
+
+#pragma mark - PickerModuleOutput
+
+- (void)pickerDoneButtonDidTapWithMiles:(NSString *)miles {
+    self.contentView.areaRadiusLabel.text = miles;
+}
+
+#pragma mark - Private
+
+- (void)saveButtonDidTap {
+    [self.model updateAreaRadius:self.contentView.limitSwithch.isOn
+                           miles:self.contentView.areaRadiusLabel.text];
+}
 
 @end

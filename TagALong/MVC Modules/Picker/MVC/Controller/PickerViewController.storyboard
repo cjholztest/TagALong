@@ -23,6 +23,8 @@
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-UC-pW0">
                                         <rect key="frame" x="0.0" y="44" width="375" height="168"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="168" id="S0N-0c-MjM"/>
                                         </constraints>
@@ -36,13 +38,15 @@
                                                     <constraint firstAttribute="width" constant="70" id="03n-9k-oUi"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                <state key="normal" title="Done"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="doneButtonAction:" destination="SQS-VX-kI8" eventType="touchUpInside" id="CW6-Kv-Kb6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="5fw-cM-4KU"/>
                                             <constraint firstItem="WT5-zr-fDQ" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="top" id="Ddc-1e-CTm"/>
@@ -69,7 +73,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="P7j-v6-xxG" firstAttribute="trailing" secondItem="SQS-VX-kI8" secondAttribute="trailing" id="468-5h-1xa"/>
                             <constraint firstItem="SQS-VX-kI8" firstAttribute="leading" secondItem="P7j-v6-xxG" secondAttribute="leading" id="6TN-QY-mbI"/>

@@ -38,6 +38,9 @@
             case TotalPeoplePickerType:
                 [self setupTotalOfPeopleComponents];
                 break;
+            case MilesPickerType:
+                [self setupMilesComponents];
+                break;
             default:
                 break;
         }
@@ -94,6 +97,10 @@
         NSString *title = [NSString stringWithFormat:@"%lu", i+1];
         [self.pickerComponents addObject:title];
     }
+}
+
+- (void)setupMilesComponents {
+    self.pickerComponents = [NSMutableArray arrayWithObjects:@"5", @"10", @"15", @"20", @"25", @"30", nil];
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "DatePickerViewController.h"
 #import "DatePickerModel.h"
 #import "DatePickerView.h"
+#import "UIColor+AppColors.h"
+#import "UIFont+HelveticaNeue.h"
 
 @interface DatePickerViewController () <DatePickerModelOutput, DatePickerViewOutput>
 
@@ -36,6 +38,8 @@
     } else {
         [self.contentView.datePickerView setDatePickerMode:UIDatePickerModeTime];
     }
+    
+    [self.contentView.datePickerView setValue:UIColor.textColor forKey:@"textColor"];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
     [self.view addGestureRecognizer:tap];

@@ -49,7 +49,7 @@
     
     if (time) {
         [dateFormatter setDateFormat:@"h:mm a"];
-        cell.timeLabel.text = [dateFormatter stringFromDate:date];
+        cell.timeLabel.text = [dateFormatter stringFromDate:time];
         cell.timeLabel.textColor = [UIColor textColor];
     } else {
         cell.timeLabel.text = @"Time";

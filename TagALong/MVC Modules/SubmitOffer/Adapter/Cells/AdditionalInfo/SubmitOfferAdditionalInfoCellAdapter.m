@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *text;
 
 @property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, assign) BOOL isTypingActive;
 
 @end
 
@@ -88,8 +89,13 @@
 }
 
 - (void)didSelectRowInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
-    if ([self.output respondsToSelector:@selector(additionalInfoCellDidTap)]) {
-        [self.output additionalInfoCellDidTap];
+    if (self.isTypingActive) {
+        if ([self.output respondsToSelector:@selector(additionalInfoCellDidTap)]) {
+            [self.output additionalInfoCellDidTap];
+        }
+    } else {
+        SubmitOfferAdditionalInfoTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell.additionalInfoTextView becomeFirstResponder];
     }
 }
 
@@ -108,6 +114,16 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     
+    return YES;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    self.isTypingActive = YES;
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    self.isTypingActive = NO;
     return YES;
 }
 

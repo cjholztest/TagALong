@@ -30,7 +30,7 @@
                         <rect key="frame" x="266.5" y="0.0" width="93.5" height="43.5"/>
                         <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert"/>
                     </textField>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

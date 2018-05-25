@@ -11,6 +11,7 @@
 #import "PickerView.h"
 #import "UIViewController+Storyboard.h"
 #import "UIFont+HelveticaNeue.h"
+#import "UIColor+AppColors.h"
 #import "UILabel+PickerView.h"
 
 @interface PickerViewController () <PickerModelOutput, PickerViewOutput, UIPickerViewDataSource, UIPickerViewDelegate>
@@ -78,36 +79,35 @@
 
 - (void)doneButtonDidTap {
     
-    switch (self.pickerType) {
-        case DuratoinPickerType:
-            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithDuration:)]) {
-                NSString *title = [self.model selectedComponent];
-                if (title) {
+    NSString *title = [self.model selectedComponent];
+    
+    if (title) {
+        switch (self.pickerType) {
+            case DuratoinPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithDuration:)]) {
                     [self.moduleOutput pickerDoneButtonDidTapWithDuration:title];
                 }
-            }
-            break;
-        case SportsPickerType:
-            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithSelectedIndex:andItemTitle:)]) {
-                NSString *title = [self.model selectedComponent];
-                if (title) {
+                break;
+            case SportsPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithSelectedIndex:andItemTitle:)]) {
                     NSInteger index = [self.model selectedComponentIndex];
                     [self.moduleOutput pickerDoneButtonDidTapWithSelectedIndex:index andItemTitle:title];
                 }
-            }
-            break;
-        case TotalPeoplePickerType:
-            if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithTotalOfPeople:)]) {
-                NSString *title = [self.model selectedComponent];
-                if (title) {
+                break;
+            case TotalPeoplePickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithTotalOfPeople:)]) {
                     [self.moduleOutput pickerDoneButtonDidTapWithTotalOfPeople:title];
                 }
-            }
-            break;
-        default:
-            break;
+                break;
+            case MilesPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMiles:)]) {
+                    [self.moduleOutput pickerDoneButtonDidTapWithMiles:title];
+                }
+                break;
+            default:
+                break;
+        }
     }
-   
     [self hidePickerView];
 }
 
@@ -148,7 +148,8 @@
         label = [UILabel pickerLabelWithSize:rowSize];
     }
     
-    label.text = [self.model titleForComponentAtIndex:row];
+//    label.text = [self.model titleForComponentAtIndex:row];
+    label.attributedText = [self pickerView:pickerView attributedTitleForRow:row forComponent:component];
     return label;
 }
 
@@ -158,6 +159,16 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     [self.model updateSelectedComponentWithIndex:row];
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    NSString *title = [self.model titleForComponentAtIndex:row];
+    NSDictionary *attriputes = @{NSForegroundColorAttributeName : UIColor.textColor,
+                                 NSFontAttributeName : UIFont.textFont};
+    
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:attriputes];
+    return attString;
 }
 
 @end

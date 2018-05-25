@@ -48,5 +48,6 @@
 - (void)pickerDoneButtonDidTapWithSelectedIndex:(NSInteger)index andItemTitle:(NSString*)title;
 - (void)pickerDoneButtonDidTapWithTotalOfPeople:(NSString*)title;
 - (void)pickerDoneButtonDidTapWithDuration:(NSString*)duration;
+- (void)pickerDoneButtonDidTapWithMiles:(NSString*)miles;
 
 @end

@@ -10,6 +10,12 @@
 
 @implementation SimpleUserEditProfileView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    UITapGestureRecognizer *areaRadiusTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(areaViewTapAction)];
+    [self.areaContentView addGestureRecognizer:areaRadiusTap];
+}
+
 #pragma mark - Actions
 
 - (IBAction)creditCardButtonAction:(UIButton*)button {
@@ -24,5 +30,10 @@
     }
 }
 
+- (void)areaViewTapAction {
+    if ([self.output respondsToSelector:@selector(areaRadiusDidTap)]) {
+        [self.output areaRadiusDidTap];
+    }
+}
 
 @end

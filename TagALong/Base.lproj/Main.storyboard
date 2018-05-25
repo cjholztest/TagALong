@@ -4374,7 +4374,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="98j-9t-DGZ" firstAttribute="leading" secondItem="ANK-Uq-My7" secondAttribute="trailing" constant="10" id="wti-nu-7sW"/>
                                         </constraints>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="2DR-Xf-Zj2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="2DR-Xf-Zj2">
                                         <rect key="frame" x="16" y="55" width="125" height="125"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2DR-Xf-Zj2" secondAttribute="height" multiplier="1:1" id="3uE-SS-euY"/>
@@ -4441,7 +4441,7 @@ Terms of Use and Privacy Policy</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.066666666669999999" green="0.27450980390000002" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rKc-al-Ntl" firstAttribute="bottom" secondItem="WrS-nc-i2J" secondAttribute="bottom" id="2IP-Ja-bcW"/>
                             <constraint firstItem="WrS-nc-i2J" firstAttribute="top" secondItem="jAW-po-eT7" secondAttribute="bottom" id="4vV-GZ-8O2"/>
@@ -4685,7 +4685,7 @@ Terms of Use and Privacy Policy</string>
                                             <constraint firstItem="sW0-3e-aZH" firstAttribute="top" secondItem="Una-yS-AjX" secondAttribute="bottom" constant="10" id="ve5-9q-tkK"/>
                                         </constraints>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="Ysv-Yv-Ugn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="Ysv-Yv-Ugn">
                                         <rect key="frame" x="16" y="41.5" width="125" height="125"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ysv-Yv-Ugn" secondAttribute="height" multiplier="1:1" id="qon-1O-KF4"/>
@@ -4931,7 +4931,7 @@ Terms of Use and Privacy Policy</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.11764705882352941" green="0.13333333333333333" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Lhy-ss-kVy" firstAttribute="bottom" secondItem="tAg-1Q-pAS" secondAttribute="bottom" id="CjJ-dC-mum"/>
                             <constraint firstItem="tAg-1Q-pAS" firstAttribute="top" secondItem="wEr-6r-HQv" secondAttribute="bottom" id="EIZ-He-ECx"/>

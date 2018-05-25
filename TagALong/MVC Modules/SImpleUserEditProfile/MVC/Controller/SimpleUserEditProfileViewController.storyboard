@@ -177,22 +177,53 @@
                                                     <action selector="limitSwitcherAction:" destination="dcc-3U-bg5" eventType="valueChanged" id="wGR-08-1YY"/>
                                                 </connections>
                                             </switch>
-                                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="esB-gu-Qaj">
-                                                <rect key="frame" x="13" y="58" width="349" height="31"/>
-                                                <color key="tintColor" red="0.035294117649999998" green="0.61176470589999998" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </slider>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Joe-UW-SZV">
+                                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Area Radius (miles):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipn-AC-JUY">
+                                                        <rect key="frame" x="15" y="0.0" width="266" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="qmF-Xq-jLJ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infinity" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKg-fJ-YuW">
+                                                        <rect key="frame" x="296" y="0.0" width="64" height="44"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="64" id="JWM-6v-Qb1"/>
+                                                            <constraint firstAttribute="height" constant="44" id="ZWN-nv-xNU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="0.80466074485753436" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="BKg-fJ-YuW" firstAttribute="top" secondItem="Joe-UW-SZV" secondAttribute="top" id="9Os-mF-U4D"/>
+                                                    <constraint firstItem="ipn-AC-JUY" firstAttribute="top" secondItem="Joe-UW-SZV" secondAttribute="top" id="CYx-U4-fzQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BKg-fJ-YuW" secondAttribute="trailing" constant="15" id="Igd-Gz-M3g"/>
+                                                    <constraint firstItem="BKg-fJ-YuW" firstAttribute="leading" secondItem="ipn-AC-JUY" secondAttribute="trailing" constant="15" id="Nme-SZ-My7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BKg-fJ-YuW" secondAttribute="bottom" id="gjN-hD-opl"/>
+                                                    <constraint firstItem="ipn-AC-JUY" firstAttribute="leading" secondItem="Joe-UW-SZV" secondAttribute="leading" constant="15" id="oRb-PG-dMd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ipn-AC-JUY" secondAttribute="bottom" id="wde-2F-XpS"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="esB-gu-Qaj" secondAttribute="trailing" constant="15" id="Fya-bR-2w9"/>
+                                            <constraint firstAttribute="bottom" secondItem="Joe-UW-SZV" secondAttribute="bottom" id="Ckh-Fh-1OK"/>
                                             <constraint firstItem="WSR-Xu-MN3" firstAttribute="top" secondItem="xLr-UZ-33n" secondAttribute="top" id="IHb-2g-4UZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="esB-gu-Qaj" secondAttribute="bottom" id="Uac-fU-1sq"/>
+                                            <constraint firstItem="Joe-UW-SZV" firstAttribute="top" secondItem="WSR-Xu-MN3" secondAttribute="bottom" id="QQn-4J-s4w"/>
                                             <constraint firstAttribute="height" constant="88" id="c6B-YX-h4G"/>
                                             <constraint firstItem="fVg-D1-yvu" firstAttribute="leading" secondItem="WSR-Xu-MN3" secondAttribute="trailing" constant="15" id="emT-a6-eU3"/>
                                             <constraint firstItem="fVg-D1-yvu" firstAttribute="centerY" secondItem="WSR-Xu-MN3" secondAttribute="centerY" id="jkR-mg-2Wd"/>
+                                            <constraint firstItem="Joe-UW-SZV" firstAttribute="leading" secondItem="xLr-UZ-33n" secondAttribute="leading" id="jlD-kM-gCH"/>
                                             <constraint firstAttribute="trailing" secondItem="fVg-D1-yvu" secondAttribute="trailing" constant="15" id="oLp-Ot-kGi"/>
-                                            <constraint firstItem="esB-gu-Qaj" firstAttribute="leading" secondItem="xLr-UZ-33n" secondAttribute="leading" constant="15" id="toS-aD-QOy"/>
                                             <constraint firstItem="WSR-Xu-MN3" firstAttribute="leading" secondItem="xLr-UZ-33n" secondAttribute="leading" constant="15" id="x8w-OZ-sTx"/>
+                                            <constraint firstAttribute="trailing" secondItem="Joe-UW-SZV" secondAttribute="trailing" id="xEq-pn-TgL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -206,15 +237,16 @@
                                     <constraint firstItem="2uC-LO-3aJ" firstAttribute="leading" secondItem="dcc-3U-bg5" secondAttribute="leading" id="v4c-Ae-ZRT"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="areaContentView" destination="Joe-UW-SZV" id="8nS-V2-7mC"/>
+                                    <outlet property="areaRadiusLabel" destination="BKg-fJ-YuW" id="pmY-Sm-zxb"/>
                                     <outlet property="creditCardEditButton" destination="DVV-Sl-cuD" id="7OM-Lr-yDY"/>
                                     <outlet property="creditCardLabel" destination="xOS-sV-trv" id="O9n-mI-NZf"/>
-                                    <outlet property="limitSlider" destination="esB-gu-Qaj" id="EJo-Eh-0cw"/>
                                     <outlet property="limitSwithch" destination="fVg-D1-yvu" id="vTH-6r-7lc"/>
                                     <outlet property="profileIconImageView" destination="ulG-Bi-Uxu" id="2df-Wn-waF"/>
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dcc-3U-bg5" firstAttribute="leading" secondItem="xHP-aU-SSl" secondAttribute="leading" id="14k-07-O5r"/>
                             <constraint firstItem="xHP-aU-SSl" firstAttribute="bottom" secondItem="dcc-3U-bg5" secondAttribute="bottom" id="VnI-8Q-8Xr"/>
@@ -229,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmD-Mb-Xvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110" y="101"/>
+            <point key="canvasLocation" x="-111.2" y="100.29985007496252"/>
         </scene>
     </scenes>
     <resources>
