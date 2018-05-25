@@ -26,6 +26,7 @@
     NSString *profileurl;
     NSNumber *latitude;
     NSNumber *longitude;
+    NSNumber *sportID;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tvSchedule;
 @property (strong, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -252,12 +253,16 @@
     phone = [dicInfo objectForKey:API_RES_KEY_EXPpRT_PHONE];
     location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
     level = [[dicInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
+    sportID = dicInfo[@"sport_uid"];
     
     latitude = dicInfo[@"latitude"];
     longitude = dicInfo[@"longitude"];
     
     _lblPhone.text = phone;
     _lblAddress.text = location;
+    
+    NSArray *sports = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
+    NSString *sportName = [NSString stringWithFormat:@" - %@", sports[sportID.integerValue] ];
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";
@@ -268,6 +273,8 @@
     } else {
         _lblLevel.text = @"INDIVIDUAL";
     }
+    
+    _lblLevel.text = [NSString stringWithFormat:@"%@%@", _lblLevel.text, sportName];
     
     if ([[dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];

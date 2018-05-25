@@ -158,6 +158,10 @@
 		CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE12DFE02064E9A500949AC2 /* ProfilePaymentDataView.m */; };
 		CE22F23F207FBB2800B467E1 /* TagAlong - Privacy Policy.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */; };
 		CE22F240207FBB2800B467E1 /* TagAlong - Terms.docx in Resources */ = {isa = PBXBuildFile; fileRef = CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */; };
+		CE2A631A20B7F04E00AE9CD3 /* ProUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A631920B7F04E00AE9CD3 /* ProUserProfileViewController.m */; };
+		CE2A631D20B7F11B00AE9CD3 /* ProUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A631C20B7F11B00AE9CD3 /* ProUserProfileModel.m */; };
+		CE2A632020B7F17300AE9CD3 /* ProUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A631F20B7F17300AE9CD3 /* ProUserProfileView.m */; };
+		CE2A632320B7F58A00AE9CD3 /* ProUserProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2A632220B7F58A00AE9CD3 /* ProUserProfileViewController.storyboard */; };
 		CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D74F20A4793D008B0E75 /* ProsViewController.m */; };
 		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
 		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
@@ -607,6 +611,14 @@
 		CE12DFFA2065428B00949AC2 /* ProfilePaymentConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentConstants.h; sourceTree = "<group>"; };
 		CE22F23D207FBB2700B467E1 /* TagAlong - Privacy Policy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Privacy Policy.docx"; sourceTree = "<group>"; };
 		CE22F23E207FBB2700B467E1 /* TagAlong - Terms.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TagAlong - Terms.docx"; sourceTree = "<group>"; };
+		CE2A631820B7F04E00AE9CD3 /* ProUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfileViewController.h; sourceTree = "<group>"; };
+		CE2A631920B7F04E00AE9CD3 /* ProUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserProfileViewController.m; sourceTree = "<group>"; };
+		CE2A631B20B7F11B00AE9CD3 /* ProUserProfileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfileModel.h; sourceTree = "<group>"; };
+		CE2A631C20B7F11B00AE9CD3 /* ProUserProfileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserProfileModel.m; sourceTree = "<group>"; };
+		CE2A631E20B7F17300AE9CD3 /* ProUserProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfileView.h; sourceTree = "<group>"; };
+		CE2A631F20B7F17300AE9CD3 /* ProUserProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserProfileView.m; sourceTree = "<group>"; };
+		CE2A632120B7F23100AE9CD3 /* ProUserProfileModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfileModuleProtocols.h; sourceTree = "<group>"; };
+		CE2A632220B7F58A00AE9CD3 /* ProUserProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProUserProfileViewController.storyboard; sourceTree = "<group>"; };
 		CE36D74E20A4793D008B0E75 /* ProsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsViewController.h; sourceTree = "<group>"; };
 		CE36D74F20A4793D008B0E75 /* ProsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsViewController.m; sourceTree = "<group>"; };
 		CE36D75120A4794F008B0E75 /* ProsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModel.h; sourceTree = "<group>"; };
@@ -1837,9 +1849,65 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		CE2A631220B7EFF000AE9CD3 /* ProUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A631320B7EFF000AE9CD3 /* MVC */,
+				CE2A631720B7EFF000AE9CD3 /* Protocols */,
+			);
+			path = ProUserProfile;
+			sourceTree = "<group>";
+		};
+		CE2A631320B7EFF000AE9CD3 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A631420B7EFF000AE9CD3 /* Controller */,
+				CE2A631520B7EFF000AE9CD3 /* Model */,
+				CE2A631620B7EFF000AE9CD3 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE2A631420B7EFF000AE9CD3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A631820B7F04E00AE9CD3 /* ProUserProfileViewController.h */,
+				CE2A631920B7F04E00AE9CD3 /* ProUserProfileViewController.m */,
+				CE2A632220B7F58A00AE9CD3 /* ProUserProfileViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE2A631520B7EFF000AE9CD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A631B20B7F11B00AE9CD3 /* ProUserProfileModel.h */,
+				CE2A631C20B7F11B00AE9CD3 /* ProUserProfileModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE2A631620B7EFF000AE9CD3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A631E20B7F17300AE9CD3 /* ProUserProfileView.h */,
+				CE2A631F20B7F17300AE9CD3 /* ProUserProfileView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE2A631720B7EFF000AE9CD3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A632120B7F23100AE9CD3 /* ProUserProfileModuleProtocols.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A631220B7EFF000AE9CD3 /* ProUserProfile */,
 				1A2508CF20B602A40063801D /* SImpleUserEditProfile */,
 				CEDA664B20B29F38009417BF /* SelectLocation */,
 				CEDA65B720B01AAB009417BF /* ProUserSignUp */,
@@ -3203,6 +3271,7 @@
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */,
 				32FAA0961F6144D500CD4395 /* LaunchScreen.storyboard in Resources */,
+				CE2A632320B7F58A00AE9CD3 /* ProUserProfileViewController.storyboard in Resources */,
 				CEDA665520B29F6C009417BF /* SelectLocationViewController.storyboard in Resources */,
 				CEDA65C520B01BB9009417BF /* ProUserSignUpViewController.storyboard in Resources */,
 				CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */,
@@ -3381,10 +3450,12 @@
 				1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */,
 				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
 				CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */,
+				CE2A631A20B7F04E00AE9CD3 /* ProUserProfileViewController.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
 				CEDF04B720A971A70012AAC4 /* AthleteInfoModel.m in Sources */,
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
+				CE2A631D20B7F11B00AE9CD3 /* ProUserProfileModel.m in Sources */,
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
 				CEDA667420B303FC009417BF /* ButtonTableViewCell.m in Sources */,
 				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
@@ -3500,6 +3571,7 @@
 				CEDA65C120B01B79009417BF /* ProUserSignUpViewController.m in Sources */,
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
+				CE2A632020B7F17300AE9CD3 /* ProUserProfileView.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
 				CEDF04F320A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m in Sources */,
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
