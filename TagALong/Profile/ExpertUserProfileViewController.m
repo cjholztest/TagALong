@@ -27,6 +27,7 @@
     NSNumber *latitude;
     NSNumber *longitude;
     NSNumber *sportID;
+    NSNumber *hidePhone;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tvSchedule;
 @property (strong, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -254,7 +255,7 @@
     location = [dicInfo objectForKey:API_RES_KEY_USER_LOCATION];
     level = [[dicInfo objectForKey:API_RES_KEY_LEVEL] stringValue];
     sportID = dicInfo[@"sport_uid"];
-    
+    hidePhone = dicInfo[@"hide_phone"];
     latitude = dicInfo[@"latitude"];
     longitude = dicInfo[@"longitude"];
     
@@ -303,6 +304,7 @@
     vc.debitCard = self.lblCreditCard.text;
     vc.longitude = longitude;
     vc.latitude = latitude;
+    vc.hidePhone = hidePhone.boolValue;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

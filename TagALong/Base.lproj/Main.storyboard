@@ -4864,13 +4864,13 @@ Terms of Use and Privacy Policy</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzX-jf-f32" userLabel="PhonePrivacy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Phone Visible For Other:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-At-456">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Phone for Other:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-At-456">
                                                 <rect key="frame" x="15" y="0.0" width="281" height="44"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXg-se-05d">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vXg-se-05d">
                                                 <rect key="frame" x="311" y="6" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.1450980392" green="0.52941176469999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
@@ -4931,7 +4931,7 @@ Terms of Use and Privacy Policy</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.066666666666666666" green="0.27450980392156865" blue="0.41568627450980394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.13333333333333333" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Lhy-ss-kVy" firstAttribute="bottom" secondItem="tAg-1Q-pAS" secondAttribute="bottom" id="CjJ-dC-mum"/>
                             <constraint firstItem="tAg-1Q-pAS" firstAttribute="top" secondItem="wEr-6r-HQv" secondAttribute="bottom" id="EIZ-He-ECx"/>

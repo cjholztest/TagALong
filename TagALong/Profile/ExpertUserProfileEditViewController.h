@@ -29,6 +29,7 @@
 @property (nonatomic, retain) UIViewController *vcParent;
 
 @property (nonatomic, assign) BOOL isRegularUser;
+@property (nonatomic, assign) BOOL hidePhone;
 
 @end
 

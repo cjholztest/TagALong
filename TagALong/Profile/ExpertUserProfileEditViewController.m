@@ -74,6 +74,7 @@ static const NSInteger kMaxImageCnt = 1;
     phone = self.phone;
     location = self.location;
     file_url = self.url;
+    [self.isPhoneVisibleSwitch setOn:self.hidePhone];
     
     nCurSelLevel = [self.level intValue];
     [self setLevel];
@@ -186,7 +187,7 @@ static const NSInteger kMaxImageCnt = 1;
 }
 
 - (IBAction)phoneVisibleSwitchAction:(UISwitch *)sender {
-    
+    self.hidePhone = sender.isOn;
 }
 
 #pragma mark - user defined functions
@@ -522,7 +523,8 @@ static const NSInteger kMaxImageCnt = 1;
                              API_REQ_KEY_USER_LOCATION      :    location ?: self.nickname,
                              API_REQ_KEY_USER_LATITUDE      :   self.latitude.stringValue,
                              API_REQ_KEY_USER_LONGITUDE     :   self.longitude.stringValue,
-                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url
+                             API_REQ_KEY_USER_PROFILE_IMG   :   file_url,
+                             @"hide_phone"                  :   @(self.hidePhone)
                              };
 
     [manager PUT:url parameters:params success:^(NSURLSessionTask *task, id responseObject) {
