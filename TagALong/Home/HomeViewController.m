@@ -444,6 +444,7 @@
         _nCurButtonIdx = BUTTON_PROS;
         [self changeBottomButton];
         self.navigationItem.title = @"Pros";
+        self.navigationItem.rightBarButtonItem = nil;
         [self removeviewsFromMain];
         vcPros = [[UIStoryboard storyboardWithName:@"ProsViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ProsViewController"];
         vcPros.view.frame = _vwContent.bounds;

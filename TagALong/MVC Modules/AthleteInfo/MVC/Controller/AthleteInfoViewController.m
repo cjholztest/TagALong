@@ -81,7 +81,9 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location, 5000, 5000);
     MKCoordinateRegion adjustedRegion = [self.contentView.mapView regionThatFits:viewRegion];
     
-    [self.contentView.mapView setRegion:adjustedRegion animated:YES];
+    if( location.latitude > -89 && location.latitude < 89 && location.longitude > -179 && location.longitude < 179 ){
+        [self.contentView.mapView setRegion:adjustedRegion animated:YES];
+    }
 }
 
 @end
