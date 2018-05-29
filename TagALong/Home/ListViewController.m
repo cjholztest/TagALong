@@ -16,6 +16,9 @@
 #import "User1ProfileViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 
+#import "UIViewController+Storyboard.h"
+#import "WorkoutDetailsViewController.h"
+
 @interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>{
     OtherUserProfileViewController *vcOtherProfile;
     NSArray *arrSportNM;
@@ -356,12 +359,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    NSDictionary *dic = _arrSportList[indexPath.row];
-    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-    if (Global.g_user.user_uid  == [[dic objectForKey:API_RES_KEY_USER_UID] intValue] || Global.g_expert.export_uid == [[dic objectForKey:API_RES_KEY_EXPERT_UID] intValue]) {
-        vc.bProfile = YES;
-    }
+//    NSDictionary *dic = _arrSportList[indexPath.row];
+//    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
+//    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+//    if (Global.g_user.user_uid  == [[dic objectForKey:API_RES_KEY_USER_UID] intValue] || Global.g_expert.export_uid == [[dic objectForKey:API_RES_KEY_EXPERT_UID] intValue]) {
+//        vc.bProfile = YES;
+//    }
+//    [self.vcParent.navigationController pushViewController:vc animated:YES];
+    
+    WorkoutDetailsViewController *vc = (WorkoutDetailsViewController*)WorkoutDetailsViewController.fromStoryboard;
     [self.vcParent.navigationController pushViewController:vc animated:YES];
 }
 

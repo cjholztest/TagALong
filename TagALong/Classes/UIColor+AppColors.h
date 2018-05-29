@@ -26,4 +26,18 @@
 + (NSArray*)regularUserBackgroundGradientColors;
 + (NSArray*)expertUserBackgroundGradientColors;
 
+#pragma mark - User Type Color
+
++ (UIColor*)individualTextColor;
++ (UIColor*)individualBackgroundColor;
+
++ (UIColor*)gymTextColor;
++ (UIColor*)gymBackgroundColor;
+
++ (UIColor*)proTextColor;
++ (UIColor*)proBackgroundColor;
+
++ (UIColor*)trainerTextColor;
++ (UIColor*)trainerBackgroundColor;
+
 @end
