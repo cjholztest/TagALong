@@ -81,6 +81,15 @@
 
 #pragma mark - UITextFieldDelegate
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if ([textField.text containsString:@"."] && [string isEqualToString:@"."]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     textField.text = [NSString stringWithFormat:@"$ %@", textField.text];
@@ -89,6 +98,10 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$ " withString:@""];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     return YES;
 }
 

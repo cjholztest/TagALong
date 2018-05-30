@@ -55,7 +55,6 @@
 
 - (void)updateAmount:(NSString*)amount {
     self.offer.amount = amount;
-    [self.output dataDidChange];
 }
 
 - (void)updateAdditionalInfo:(NSString*)additionalInfo {
