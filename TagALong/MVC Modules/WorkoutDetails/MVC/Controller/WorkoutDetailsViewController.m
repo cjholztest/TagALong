@@ -13,6 +13,7 @@
 <
 WorkoutDetailsModelOutput,
 WorkoutDetailsViewOutput,
+WorkoutDetailsTitleSectionAdapterOutput,
 WorkoutDetailsMainSectionAdapterOutput,
 WorkoutDetailsAdditionalSectionAdapterOutput
 >
@@ -34,6 +35,12 @@ WorkoutDetailsAdditionalSectionAdapterOutput
     [self setup];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.contentView.profileIconImageView.layer.cornerRadius = self.contentView.profileIconImageView.bounds.size.width / 2.0;
+    self.contentView.profileIconImageView.clipsToBounds = YES;
+}
+
 - (void)setup {
     self.model = [[WorkoutDetailsModel alloc] initWithOutput:self];
     self.contentView.output = self;
@@ -41,14 +48,36 @@ WorkoutDetailsAdditionalSectionAdapterOutput
     WorkoutDetailsTableViewAdapter *tableAdapter = [[WorkoutDetailsTableViewAdapter alloc] init];
     
     tableAdapter.sectionAdapters = [NSMutableArray<WorkoutDetailsSectionAdapter> arrayWithObjects:
+                                    [[WorkoutDetailsTitleSectionAdapter alloc] initWithOutput:self],
                                     [[WorkoutDetailsMainSectionAdapter alloc] initWithOutput:self],
                                     [[WorkoutDetailsAdditionalSectionAdapter alloc] initWithOutput:self], nil];
     
     self.tableViewAdapter = tableAdapter;
     [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
+    
+    [SharedAppDelegate showLoading];
+    [self.model loadDetaisForWorkout:self.workoutUID];
 }
 
 #pragma mark - WorkoutDetailsModelOutput
+
+- (void)workoutDetaisDidLoadSuccess:(BOOL)isSuccessed
+                            message:(NSString*)message
+                      displayModels:(NSArray*)displayModels
+                profileDisplayModel:(WorkoutDetailsViewDisplayModel*)profileDisplayModel {
+    
+    [SharedAppDelegate closeLoading];
+    
+    if (!isSuccessed) {
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+        return;
+    }
+    
+    self.displayModels = displayModels;
+    
+    [self.contentView.tableView reloadData];
+    [self.contentView setupWithProfileInfo:profileDisplayModel];
+}
 
 #pragma mark - WorkoutDetailsViewOutput
 
@@ -58,24 +87,26 @@ WorkoutDetailsAdditionalSectionAdapterOutput
     self.workoutUID = workout;
 }
 
-#pragma mark - WorkoutDetailsMainSectionAdapterOutput
+#pragma mark - WorkoutDetailsTitleSectionAdapterOutput
 
-- (NSInteger)reviewRowsCount {
-    return 0;
+- (NSString*)titleAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.model titleText];
 }
 
-- (id)infoDisplayModelAtIndexPath:(NSIndexPath*)indexPath {
-    return nil;
+#pragma mark - WorkoutDetailsMainSectionAdapterOutput
+
+- (NSInteger)mainRowsCount {
+    return self.displayModels.count;
+}
+
+- (id)workoutDisplayModelAtIndexPath:(NSIndexPath*)indexPath {
+    return self.displayModels[indexPath.row];
 }
 
 #pragma mark - WorkoutDetailsAdditionalSectionAdapterOutput
 
-- (NSInteger)additionalRowsCount {
-    return 0;
-}
-
-- (id)additionalDisplayModelAtIndexPath:(NSIndexPath*)indexPath {
-    return nil;
+- (NSString*)additionalTextAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.model additionalInfoText];
 }
 
 @end

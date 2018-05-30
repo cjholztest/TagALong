@@ -12,6 +12,22 @@
 
 - (void)showAllertWithTitle:(NSString*)title
                     message:(NSString*)message
+                    okTitle:(NSString*)okTitle
+               okCompletion:(AlertOkCompletion)okCompletion {
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * action) {
+                                                         if (okCompletion) {
+                                                             okCompletion();
+                                                         }
+                                                     }];
+    
+    [self showAlertWithTitle:title message:message actions:@[okAction]];
+}
+
+- (void)showAllertWithTitle:(NSString*)title
+                    message:(NSString*)message
                okCompletion:(AlertOkCompletion)okCompletion {
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"

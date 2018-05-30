@@ -8,13 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@class WorkoutDetailsViewDisplayModel;
+
 @protocol WorkoutDetailsModelInput <NSObject>
 
 - (void)loadDetaisForWorkout:(NSString*)workoutUID;
 
+- (NSString*)titleText;
+- (NSString*)additionalInfoText;
+
 @end
 
 @protocol WorkoutDetailsModelOutput <NSObject>
+
+- (void)workoutDetaisDidLoadSuccess:(BOOL)isSuccessed
+                            message:(NSString*)message
+                      displayModels:(NSArray*)displayModels
+                profileDisplayModel:(WorkoutDetailsViewDisplayModel*)profileDisplayModel;
 
 @end
 

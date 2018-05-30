@@ -17,6 +17,11 @@ typedef void(^AlertNoCompletion)(void);
 
 - (void)showAllertWithTitle:(NSString*)title
                     message:(NSString*)message
+                    okTitle:(NSString*)okTitle
+               okCompletion:(AlertOkCompletion)okCompletion;
+
+- (void)showAllertWithTitle:(NSString*)title
+                    message:(NSString*)message
                okCompletion:(AlertOkCompletion)okCompletion;
 
 - (void)showAllertWithTitle:(NSString*)title

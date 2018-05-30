@@ -6,11 +6,11 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SubmitOfferBaseTableViewCell.h"
 
 @class WorkoutAdditionalDetailsTableViewCellDisplayModel;
 
-@interface WorkoutAdditionalDetailsTableViewCell : UITableViewCell
+@interface WorkoutAdditionalDetailsTableViewCell : SubmitOfferBaseTableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *valueLabel;

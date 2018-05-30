@@ -38,22 +38,14 @@
 }
 
 - (NSInteger)numberOfRows {
-    return [self.output additionalRowsCount];
+    return 1;
 }
 
 - (UITableViewCell*)cellForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath {
     WorkoutAdditionalDetailsTableViewCell *cell = (WorkoutAdditionalDetailsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:WorkoutAdditionalDetailsTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
-    ReviewOfferCellDisplayModel *displayModel = [self.output additionalDisplayModelAtIndexPath:indexPath];
-    
-//    self.cell = cell;
-//    self.text = displayModel.text;
-    
-//    cell.titleLabel.text = displayModel.title;
-//    cell.additionalInfoTextView.text = displayModel.text;
-    
-//    [cell.additionalInfoTextView setUserInteractionEnabled:NO];
-    //    [cell.additionalInfoTextView setSelectable:NO];
+    self.text = [self.output additionalTextAtIndexPath:indexPath];
+    cell.valueLabel.text = self.text;
     
     return cell;
 }

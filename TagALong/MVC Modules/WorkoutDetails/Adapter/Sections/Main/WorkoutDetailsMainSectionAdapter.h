@@ -10,7 +10,7 @@
 #import "WorkoutDetailsMainSectionAdapterOutput.h"
 #import "WorkoutDetailsSectionAdapter.h"
 
-@interface WorkoutDetailsMainSectionAdapter : NSObject
+@interface WorkoutDetailsMainSectionAdapter : NSObject <WorkoutDetailsSectionAdapter>
 
 - (instancetype)initWithOutput:(id<WorkoutDetailsMainSectionAdapterOutput>)output;
 

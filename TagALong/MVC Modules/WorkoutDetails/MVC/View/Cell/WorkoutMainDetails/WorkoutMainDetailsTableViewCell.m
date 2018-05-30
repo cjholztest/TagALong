@@ -19,6 +19,8 @@
 
 - (void)setupWithDisplayModel:(WorkoutMainDetailsTableViewCellDisplayModel*)displayModel {
     
+    self.titleLabel.text = displayModel.title;
+    self.valueLabel.text = displayModel.text;
 }
 
 @end

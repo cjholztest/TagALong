@@ -40,7 +40,7 @@ UITableViewDelegate
     tableView.backgroundView.backgroundColor = UIColor.clearColor;
     tableView.backgroundColor = UIColor.clearColor;
     
-    tableView.separatorColor = [UIColor.whiteColor colorWithAlphaComponent:0.05];
+    tableView.separatorColor = UIColor.clearColor;
     
     for (id <WorkoutDetailsSectionAdapter> section in self.sectionAdapters) {
         [section registerCellsInTableView:tableView];
@@ -48,6 +48,10 @@ UITableViewDelegate
 }
 
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.sectionAdapters.count;
+}
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [(self.sectionAdapters[indexPath.section]) cellForTableView:tableView atIndexPath:indexPath];

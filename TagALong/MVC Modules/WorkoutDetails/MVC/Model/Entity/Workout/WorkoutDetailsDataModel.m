@@ -10,4 +10,12 @@
 
 @implementation WorkoutDetailsDataModel
 
+- (NSString*)amountText {
+    
+    if ([self.amount floatValue] > 0.0f) {
+        return [NSString stringWithFormat:@"$ %.2f", self.amount.floatValue];
+    }
+    return @"FREE";
+}
+
 @end

@@ -10,8 +10,6 @@
 
 @protocol WorkoutDetailsAdditionalSectionAdapterOutput <NSObject>
 
-- (NSInteger)additionalRowsCount;
-
-- (id)additionalDisplayModelAtIndexPath:(NSIndexPath*)indexPath;
+- (NSString*)additionalTextAtIndexPath:(NSIndexPath*)indexPath;
 
 @end

@@ -178,6 +178,12 @@
 		CE2A635F20BD639300AE9CD3 /* WorkoutAdditionalDetailsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A635E20BD639300AE9CD3 /* WorkoutAdditionalDetailsTableViewCellDisplayModel.m */; };
 		CE2A636320BD6D2200AE9CD3 /* SportService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A636220BD6D2200AE9CD3 /* SportService.m */; };
 		CE2A636620BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A636520BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m */; };
+		CE2A636920BECC8E00AE9CD3 /* WorkoutProfileInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A636820BECC8D00AE9CD3 /* WorkoutProfileInfoDataModel.m */; };
+		CE2A636C20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A636B20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m */; };
+		CE2A637220BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A637120BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.m */; };
+		CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A637620BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m */; };
+		CE2A637920BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2A637720BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib */; };
+		CE2A637C20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A637B20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m */; };
 		CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D74F20A4793D008B0E75 /* ProsViewController.m */; };
 		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
 		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
@@ -671,6 +677,18 @@
 		CE2A636220BD6D2200AE9CD3 /* SportService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportService.m; sourceTree = "<group>"; };
 		CE2A636420BDB2BC00AE9CD3 /* WorkoutDetailsMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsMapper.h; sourceTree = "<group>"; };
 		CE2A636520BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsMapper.m; sourceTree = "<group>"; };
+		CE2A636720BECC8D00AE9CD3 /* WorkoutProfileInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutProfileInfoDataModel.h; sourceTree = "<group>"; };
+		CE2A636820BECC8D00AE9CD3 /* WorkoutProfileInfoDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutProfileInfoDataModel.m; sourceTree = "<group>"; };
+		CE2A636A20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutProfileInfoMapper.h; sourceTree = "<group>"; };
+		CE2A636B20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutProfileInfoMapper.m; sourceTree = "<group>"; };
+		CE2A637020BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsTitleSectionAdapter.h; sourceTree = "<group>"; };
+		CE2A637120BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsTitleSectionAdapter.m; sourceTree = "<group>"; };
+		CE2A637320BEE07D00AE9CD3 /* WorkoutDetailsTitleSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsTitleSectionAdapterOutput.h; sourceTree = "<group>"; };
+		CE2A637520BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutTitleDetailsTableViewCell.h; sourceTree = "<group>"; };
+		CE2A637620BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutTitleDetailsTableViewCell.m; sourceTree = "<group>"; };
+		CE2A637720BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutTitleDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		CE2A637A20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsViewDisplayModel.h; sourceTree = "<group>"; };
+		CE2A637B20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsViewDisplayModel.m; sourceTree = "<group>"; };
 		CE36D74E20A4793D008B0E75 /* ProsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsViewController.h; sourceTree = "<group>"; };
 		CE36D74F20A4793D008B0E75 /* ProsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsViewController.m; sourceTree = "<group>"; };
 		CE36D75120A4794F008B0E75 /* ProsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModel.h; sourceTree = "<group>"; };
@@ -2003,6 +2021,8 @@
 				CE2A634D20BD62DE00AE9CD3 /* Cell */,
 				CE2A633320BD361D00AE9CD3 /* WorkoutDetailsView.h */,
 				CE2A633420BD361D00AE9CD3 /* WorkoutDetailsView.m */,
+				CE2A637A20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.h */,
+				CE2A637B20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2031,6 +2051,7 @@
 		CE2A633D20BD4BBB00AE9CD3 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A636F20BEE04A00AE9CD3 /* Title */,
 				CE2A633E20BD4BBB00AE9CD3 /* Additional */,
 				CE2A633F20BD4BBB00AE9CD3 /* Main */,
 				CE2A634020BD4C1800AE9CD3 /* WorkoutDetailsSectionAdapter.h */,
@@ -2061,10 +2082,8 @@
 		CE2A634920BD623B00AE9CD3 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				CE2A634A20BD626D00AE9CD3 /* WorkoutDetailsDataModel.h */,
-				CE2A634B20BD626D00AE9CD3 /* WorkoutDetailsDataModel.m */,
-				CE2A636420BDB2BC00AE9CD3 /* WorkoutDetailsMapper.h */,
-				CE2A636520BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m */,
+				CE2A636D20BECCB700AE9CD3 /* ProfileInfo */,
+				CE2A636E20BECCB800AE9CD3 /* Workout */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -2072,6 +2091,7 @@
 		CE2A634D20BD62DE00AE9CD3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A637420BEE15600AE9CD3 /* WorkoutTitleDetails */,
 				CE2A634E20BD62DE00AE9CD3 /* WorkoutAdditionalDetails */,
 				CE2A634F20BD62DE00AE9CD3 /* WorkoutMainDetails */,
 			);
@@ -2109,6 +2129,48 @@
 				CE2A636220BD6D2200AE9CD3 /* SportService.m */,
 			);
 			path = Sport;
+			sourceTree = "<group>";
+		};
+		CE2A636D20BECCB700AE9CD3 /* ProfileInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A636720BECC8D00AE9CD3 /* WorkoutProfileInfoDataModel.h */,
+				CE2A636820BECC8D00AE9CD3 /* WorkoutProfileInfoDataModel.m */,
+				CE2A636A20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.h */,
+				CE2A636B20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m */,
+			);
+			path = ProfileInfo;
+			sourceTree = "<group>";
+		};
+		CE2A636E20BECCB800AE9CD3 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A634A20BD626D00AE9CD3 /* WorkoutDetailsDataModel.h */,
+				CE2A634B20BD626D00AE9CD3 /* WorkoutDetailsDataModel.m */,
+				CE2A636420BDB2BC00AE9CD3 /* WorkoutDetailsMapper.h */,
+				CE2A636520BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		CE2A636F20BEE04A00AE9CD3 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A637020BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.h */,
+				CE2A637120BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.m */,
+				CE2A637320BEE07D00AE9CD3 /* WorkoutDetailsTitleSectionAdapterOutput.h */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		CE2A637420BEE15600AE9CD3 /* WorkoutTitleDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A637520BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.h */,
+				CE2A637620BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m */,
+				CE2A637720BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib */,
+			);
+			path = WorkoutTitleDetails;
 			sourceTree = "<group>";
 		};
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
@@ -3507,6 +3569,7 @@
 				CE2A635420BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.xib in Resources */,
 				CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */,
 				CEDF051520A9CA150012AAC4 /* SubmitOfferWhenTableViewCell.xib in Resources */,
+				CE2A637920BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib in Resources */,
 				3256F26F1F73689100D0874E /* UserProfilePlanTableViewCell.xib in Resources */,
 				32FAA0911F6144D500CD4395 /* Main.storyboard in Resources */,
 				1A2508DA20B6030C0063801D /* SimpleUserEditProfileViewController.storyboard in Resources */,
@@ -3658,8 +3721,10 @@
 				CE2A636320BD6D2200AE9CD3 /* SportService.m in Sources */,
 				CE2A632D20BD35D600AE9CD3 /* WorkoutDetailsViewController.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
+				CE2A636C20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
+				CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
 				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
 				1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */,
@@ -3675,6 +3740,7 @@
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
 				CEDA667420B303FC009417BF /* ButtonTableViewCell.m in Sources */,
 				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
+				CE2A637220BEE06800AE9CD3 /* WorkoutDetailsTitleSectionAdapter.m in Sources */,
 				3205FD271F6249930037DCE5 /* ListViewController.m in Sources */,
 				32C2DBCE1F6AD0B1001B6822 /* AreaWorkoutViewController.m in Sources */,
 				CEDA668020B40DEE009417BF /* AthleteDataModel.m in Sources */,
@@ -3791,6 +3857,7 @@
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,
 				CEDA65C120B01B79009417BF /* ProUserSignUpViewController.m in Sources */,
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
+				CE2A636920BECC8E00AE9CD3 /* WorkoutProfileInfoDataModel.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
 				CE2A632020B7F17300AE9CD3 /* ProUserProfileView.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
@@ -3870,6 +3937,7 @@
 				323016381F7A48FC0001BCB4 /* BSShrinkAnimator.m in Sources */,
 				CEDA663920B04C52009417BF /* ProSignUpBaseTableViewCell.m in Sources */,
 				CEDA666920B2F81F009417BF /* TermsPrivacyTableViewCell.m in Sources */,
+				CE2A637C20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m in Sources */,
 				323615721F7A3BB8007D4DF3 /* MDDeviceHelper.m in Sources */,
 				CE7E0F3220AD9EB200D93035 /* PickerView.m in Sources */,
 				3230163D1F7A48FC0001BCB4 /* BSPreviewController.m in Sources */,

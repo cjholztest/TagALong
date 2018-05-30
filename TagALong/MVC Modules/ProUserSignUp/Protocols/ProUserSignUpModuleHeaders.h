@@ -8,6 +8,8 @@
 
 #import <QuickLook/QuickLook.h>
 
+#import "UIViewController+AlertController.h"
+
 #import "ProUserSignUpTableViewAdapterInput.h"
 #import "ProUserSignUpTableViewAdapter.h"
 

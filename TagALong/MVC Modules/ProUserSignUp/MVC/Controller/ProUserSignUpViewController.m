@@ -69,30 +69,21 @@ QLPreviewControllerDataSource
     self.model = [[ProUserSignUpModel alloc] initWithOutput:self];
     self.contentView.output = self;
     
-    ProUserSignUpFirstNameCellAdapter *firstName = [[ProUserSignUpFirstNameCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpLastNameCellAdapter *lastName = [[ProUserSignUpLastNameCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpEmailCellAdapter *eMail = [[ProUserSignUpEmailCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpPhoneCellAdapter *phone = [[ProUserSignUpPhoneCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpIsPhoneVisibleCellAdapter *isPhoneVisible = [[ProUserSignUpIsPhoneVisibleCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpPasswordCellAdapter *password = [[ProUserSignUpPasswordCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpConfirmPasswordCellAdapter *confirmPassword = [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpAddressCellAdapter *address = [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpLocationCellAdapter *location = [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpSportCellAdapter *sport = [[ProUserSignUpSportCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpAdditionalInfoCellAdapter *additionalInfo = [[ProUserSignUpAdditionalInfoCellAdapter alloc] initWithOutput:self];
-    ProUserSignUpAwardsCellAdapter *awards = [[ProUserSignUpAwardsCellAdapter alloc] initWithOutput:self];
-    
-    ProUserSignUpTermsPrivacyCellAdapter *termsPrivacy = [[ProUserSignUpTermsPrivacyCellAdapter alloc] initWithOutput:self];
-    
-//    ProUserSignUpRegisterCellAdapter *signUp = [[ProUserSignUpRegisterCellAdapter alloc] initWithOutput:self];
-    
     ProUserSignUpMainSectionAdapter *mainSection = [ProUserSignUpMainSectionAdapter new];
-    mainSection.cellAdapters =  [NSArray<ProUserSignUpCellAdapter> arrayWithObjects:firstName, lastName, eMail, phone, isPhoneVisible, address, location, password, confirmPassword, sport, awards, additionalInfo, termsPrivacy, nil];
+    mainSection.cellAdapters =  [NSArray<ProUserSignUpCellAdapter> arrayWithObjects:
+                                 [[ProUserSignUpFirstNameCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpLastNameCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpEmailCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpPhoneCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpIsPhoneVisibleCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpPasswordCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpSportCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpAwardsCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpAdditionalInfoCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpTermsPrivacyCellAdapter alloc] initWithOutput:self], nil];
     
     ProUserSignUpTableViewAdapter *tableAdapter = [ProUserSignUpTableViewAdapter new];
     tableAdapter.sectionAdapters = [NSArray<ProUserSignUpSectionAdapter> arrayWithObject:mainSection];
@@ -109,26 +100,13 @@ QLPreviewControllerDataSource
     
     __weak typeof(self)weakSelf = self;
     
-    UIAlertAction *alertAction = nil;;
-    NSString *title  = nil;
-    
     if (isSuccessed) {
-        title = @"THANK YOU";
-        alertAction = [UIAlertAction actionWithTitle:@"Great"
-                                               style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction * action) {
-                                                        [weakSelf.navigationController popViewControllerAnimated:YES];
-                                                    }];
+        [self showAllertWithTitle:@"THANK YOU" message:message okTitle:@"Great" okCompletion:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
     } else {
-        title = @"ERROR";
-        alertAction = [UIAlertAction actionWithTitle:@"Ok"
-                                               style:UIAlertActionStyleDefault
-                                             handler:nil];
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
     }
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:alertAction];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)validationDidFailWithMessage:(NSString*)message {

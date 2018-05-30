@@ -367,7 +367,11 @@
 //    }
 //    [self.vcParent.navigationController pushViewController:vc animated:YES];
     
+    NSDictionary *dic = _arrSportList[indexPath.row];
+    NSString *workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+    
     WorkoutDetailsViewController *vc = (WorkoutDetailsViewController*)WorkoutDetailsViewController.fromStoryboard;
+    [vc setupWorkout:workout_id];
     [self.vcParent.navigationController pushViewController:vc animated:YES];
 }
 

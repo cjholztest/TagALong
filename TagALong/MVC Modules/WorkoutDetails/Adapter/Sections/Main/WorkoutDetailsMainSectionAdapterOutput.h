@@ -10,8 +10,7 @@
 
 @protocol WorkoutDetailsMainSectionAdapterOutput <NSObject>
 
-- (NSInteger)reviewRowsCount;
-
-- (id)infoDisplayModelAtIndexPath:(NSIndexPath*)indexPath;
+- (NSInteger)mainRowsCount;
+- (id)workoutDisplayModelAtIndexPath:(NSIndexPath*)indexPath;
 
 @end

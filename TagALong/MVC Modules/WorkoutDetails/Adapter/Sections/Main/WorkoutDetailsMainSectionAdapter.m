@@ -9,7 +9,7 @@
 #import "WorkoutDetailsMainSectionAdapter.h"
 #import "UIView+Nib.h"
 #import "WorkoutMainDetailsTableViewCell.h"
-#import "ReviewOfferCellDisplayModel.h"
+#import "WorkoutMainDetailsTableViewCellDisplayModel.h"
 
 @interface WorkoutDetailsMainSectionAdapter()
 
@@ -33,29 +33,24 @@
 }
 
 - (NSInteger)numberOfRows {
-    return [self.output reviewRowsCount];
+    return [self.output mainRowsCount];
 }
 
 - (UITableViewCell*)cellForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath {
     WorkoutMainDetailsTableViewCell *cell = (WorkoutMainDetailsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:WorkoutMainDetailsTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
-    ReviewOfferCellDisplayModel *displayModel = [self.output infoDisplayModelAtIndexPath:indexPath];
-    
-//    cell.titleLabel.text = displayModel.title;
-//    cell.durationLabel.text = displayModel.text;
-    
-    //    WorkoutMainDetailsTableViewCellDisplayModel *displayModel = [self.output rowDisplayModelAtIndexPath:indexPath];
-    //    [cell setupWithDisplayModel:displayModel];
+    WorkoutMainDetailsTableViewCellDisplayModel *displayModel = [self.output workoutDisplayModelAtIndexPath:indexPath];
+    [cell setupWithDisplayModel:displayModel];
     
     return cell;
 }
 
 - (CGFloat)estimatedHeightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 54.0f;
+    return 44.0f;
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 54.0f;
+    return 44.0f;
 }
 
 - (BOOL)shouldHighightRowAtIndexPath:(NSIndexPath*)indexPath {
