@@ -23,6 +23,7 @@
 @property (nonatomic, strong) id <SimpleUserEditProfileModelInput> model;
 
 @property (nonatomic, assign) NSInteger miles;
+@property (nonatomic, strong) NSString *iconURL;
 
 @end
 
@@ -50,6 +51,13 @@
     self.contentView.areaRadiusLabel.text = value;
     
     [self limitSwitcherDidChange:isLimitEnabled];
+    
+    if (self.iconURL) {
+        [self.contentView.profileIconImageView sd_setImageWithURL:[NSURL URLWithString:self.iconURL] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+        [self.contentView layoutIfNeeded];
+        self.contentView.profileIconImageView.layer.cornerRadius = self.contentView.profileIconImageView.bounds.size.width / 2.0f;
+        self.contentView.profileIconImageView.clipsToBounds = YES;
+    }
 }
 
 #pragma mark - SimpleUserEditProfileModelOutput
@@ -117,6 +125,10 @@
 
 - (void)setupMiles:(NSInteger)miles {
     self.miles = miles;
+}
+
+- (void)setupProfileIcon:(NSString*)iconUrl {
+    self.iconURL = iconUrl;
 }
 
 #pragma mark - PickerModuleOutput

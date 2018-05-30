@@ -129,7 +129,7 @@
                                                     <constraint firstAttribute="width" secondItem="ulG-Bi-Uxu" secondAttribute="height" multiplier="1:1" id="aZh-8e-Q9H"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcq-EM-mqn">
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcq-EM-mqn">
                                                 <rect key="frame" x="16" y="41.5" width="125" height="125"/>
                                             </button>
                                         </subviews>

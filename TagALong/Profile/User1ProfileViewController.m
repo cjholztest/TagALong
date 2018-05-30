@@ -30,6 +30,7 @@
     NSDateFormatter *formatter;
     NSCalendar *gregorian;
     NSInteger miles;
+    NSString *iconURL;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivProfile;
@@ -84,6 +85,7 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)onClickEdit:(id)sender {
     SimpleUserEditProfileViewController *vc = (SimpleUserEditProfileViewController*)SimpleUserEditProfileViewController.fromStoryboard;
     [vc setupMiles:miles];
+    [vc setupProfileIcon:iconURL];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -251,6 +253,7 @@ static const NSInteger kMaxImageCnt = 1;
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
     } else {
         NSString *url = [dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG];
+        iconURL = url;
         [_ivProfile sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
     }
     

@@ -64,9 +64,8 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    if (self.ivProfile.layer.cornerRadius != self.profileIconImageViewRatioConstraint.constant / 2.0) {
-        self.ivProfile.layer.cornerRadius = self.profileIconImageViewRatioConstraint.constant / 2.0;
-    }
+    self.ivProfile.layer.cornerRadius = self.ivProfile.bounds.size.width / 2.0f;
+    self.ivProfile.clipsToBounds = YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -284,9 +283,11 @@
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
     } else {
         profileurl = [dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG];
-//        [_ivProfile sd_setImageWithURL:[NSURL URLWithString:profileurl] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
         if (profileurl) {
-            [self updateImageProfileWithURL:profileurl];
+            [self.ivProfile sd_setImageWithURL:[NSURL URLWithString:profileurl] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+            [self.view layoutIfNeeded];
+            self.ivProfile.layer.cornerRadius = self.ivProfile.bounds.size.width / 2.0f;
+            self.ivProfile.clipsToBounds = YES;
         }
     }
     

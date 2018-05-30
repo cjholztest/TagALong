@@ -116,9 +116,8 @@ static const NSInteger kMaxImageCnt = 1;
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    if (self.ivProfile.layer.cornerRadius != self.profileIconImageViewRatioConstraint.constant / 2.0) {
-        self.ivProfile.layer.cornerRadius = self.profileIconImageViewRatioConstraint.constant / 2.0;
-    }
+    self.ivProfile.layer.cornerRadius = self.ivProfile.bounds.size.width / 2.0f;
+    self.ivProfile.clipsToBounds = YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

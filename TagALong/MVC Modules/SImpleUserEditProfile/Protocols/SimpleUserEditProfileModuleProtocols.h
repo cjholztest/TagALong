@@ -39,6 +39,7 @@
 @protocol SimpleUserEditProfileModuleInput <NSObject>
 
 - (void)setupMiles:(NSInteger)miles;
+- (void)setupProfileIcon:(NSString*)iconUrl;
 
 @end
 
