@@ -201,6 +201,13 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
+        
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        NSString *errorMessage = dict[@"error"][@"message"];
+        NSError *errorToDisplay = nil;
+        
         [SharedAppDelegate closeLoading];
     }];
 }

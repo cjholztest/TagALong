@@ -39,6 +39,11 @@
     [self.tagALongLabel setTitle:title forState:UIControlStateSelected];
     [self.tagALongLabel setTitle:title forState:UIControlStateHighlighted];
     
+    if (athlete.profileImage.length > 0) {
+        [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:athlete.profileImage] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.size.width / 2.0f;
+        self.avatarImageView.clipsToBounds = YES;
+    }
 }
 
 @end
