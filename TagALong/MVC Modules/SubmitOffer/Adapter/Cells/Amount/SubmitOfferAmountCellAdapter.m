@@ -86,7 +86,7 @@
     if ([textField.text containsString:@"."] && [string isEqualToString:@"."]) {
         return NO;
     }
-    
+
     return YES;
 }
 

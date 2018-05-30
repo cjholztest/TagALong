@@ -30,7 +30,8 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
     self.infoLabel.text = [NSString stringWithFormat:@"%@\n%@", athlete.awards, athlete.additionalInfo];
     
-    self.locationLabel.text = athlete.city;
+    self.cityLabel.text = athlete.city;
+    self.locationLabel.text = @"ATHLETE LOCATION:";
     
     NSString *title = [NSString stringWithFormat:@"TagALong with %@", athlete.firstName];
     

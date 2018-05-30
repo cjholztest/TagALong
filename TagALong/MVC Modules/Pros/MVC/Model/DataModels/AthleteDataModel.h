@@ -16,6 +16,9 @@
 @property (nonatomic, strong) NSNumber *userUID;
 
 @property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSString *address;
+
 @property (nonatomic, strong) NSNumber *sportIndex;
 
 @property (nonatomic, strong) NSString *profileImage;

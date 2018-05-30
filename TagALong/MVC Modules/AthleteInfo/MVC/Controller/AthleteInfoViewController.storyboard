@@ -165,8 +165,9 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="avatarImageView" destination="C8e-Xg-opL" id="O3b-PB-hgI"/>
+                                    <outlet property="cityLabel" destination="Dgj-u7-6Rz" id="Rls-XZ-3BZ"/>
                                     <outlet property="infoLabel" destination="TRj-0L-n3g" id="x0i-e5-isS"/>
-                                    <outlet property="locationLabel" destination="Dgj-u7-6Rz" id="9zh-yU-1Wu"/>
+                                    <outlet property="locationLabel" destination="j6q-Yn-3R9" id="Jsx-Go-PGE"/>
                                     <outlet property="mapView" destination="Q1P-RW-5u7" id="Ay1-qd-SUA"/>
                                     <outlet property="nameLabel" destination="s1D-Ta-9Gt" id="CMd-8a-Dof"/>
                                     <outlet property="tagALongLabel" destination="4DI-yI-jhd" id="2v5-3P-ZyO"/>

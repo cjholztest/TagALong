@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *infoLabel;
+
+@property (nonatomic, weak) IBOutlet UILabel *cityLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 
 @property (nonatomic, weak) IBOutlet UIButton *tagALongLabel;
