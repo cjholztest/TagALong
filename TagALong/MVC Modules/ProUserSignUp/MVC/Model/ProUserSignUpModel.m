@@ -44,8 +44,9 @@
     NSString *additionalInfo = [userModel.additionalInfo stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
     NSString *awards = [userModel.awards stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
     NSString *address = userModel.address;
+    NSString *city = userModel.cityName;
     
-    NSString *sport = [[NSNumber numberWithInteger:(long)userModel.sportIndex] stringValue];
+    NSString *sport = userModel.sportActivity;
 //    NSString *isPhoneVisible = [[NSNumber numberWithBool:userModel.isPhoneVisible] stringValue];
     
     NSString *latitude = [[NSNumber numberWithFloat:userModel.location.latitude] stringValue];
@@ -72,7 +73,8 @@
                              @"latitude"                    :   latitude,
                              @"hide_phone"                  :   hidePhone,
                              @"awards"                      :   awards ? awards : @"",
-                             @"user_city"                   :   address ? address : @""
+                             @"user_city"                   :   city ? city : @"",
+                             @"user_address"                :   address ? address : @"",
                              };
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
@@ -155,8 +157,8 @@
         return @"Confirm password does not match Password!";
     }
     
-    if (user.sport.length == 0) {
-        return @"Please, select a kind of sport";
+    if (user.sportActivity.length == 0) {
+        return @"Please, Enter Sport Activity";
     }
     
     if (user.awards.length == 0) {

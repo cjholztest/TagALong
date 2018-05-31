@@ -486,10 +486,9 @@
         }
         
         //int sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] intValue];
-
-        ptAnno.title = [NSString stringWithFormat:@"%ld", i];
         
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
+        
         if ( [level isEqual:[NSNull null]] )  { //individual
             [[_mvMap viewForAnnotation:ptAnno] setImage:[UIImage imageNamed:arrSportImg[sport_uid - 1]]];
         } else if ([level isEqualToString:@"1"]) { //gym
@@ -763,6 +762,9 @@
             }
             
             NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            
+//            NSLog(@"response size: %zd", malloc_size((__bridge const void *)(responseObject)));
+            
             [_arrSportList addObjectsFromArray:arr];
             
             [self OhterPlayPosSet];

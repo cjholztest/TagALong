@@ -14,6 +14,8 @@
 #import "NSString+TextSize.h"
 #import "UIColor+AppColors.h"
 
+static NSString *const kTitleText = @"ADDITIONAL INFO:";
+
 @interface WorkoutDetailsAdditionalSectionAdapter()
 
 @property (nonatomic, weak) id <WorkoutDetailsAdditionalSectionAdapterOutput> output;
@@ -45,7 +47,9 @@
     WorkoutAdditionalDetailsTableViewCell *cell = (WorkoutAdditionalDetailsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:WorkoutAdditionalDetailsTableViewCell.reuseIdentifier forIndexPath:indexPath];
     
     self.text = [self.output additionalTextAtIndexPath:indexPath];
+    
     cell.valueLabel.text = self.text;
+    cell.titleLabel.text = self.text.length > 0 ? kTitleText : @"";
     
     return cell;
 }
@@ -55,6 +59,7 @@
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+    
     CGFloat height = 70.0f;
     
     UIFont *font = [UIFont textFont];
@@ -75,6 +80,8 @@
         
         [self.cell setNeedsLayout];
         [self.cell layoutIfNeeded];
+    } else {
+        height = CGFLOAT_MIN;
     }
     
     return height;

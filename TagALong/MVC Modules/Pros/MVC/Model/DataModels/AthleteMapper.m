@@ -19,7 +19,7 @@
     athlete.lastName = json[@"user_last_name"];
     athlete.userUID = json[@"user_uid"];
     athlete.city = json[@"user_city"];
-    athlete.sportIndex = json[@"sport_uid"];
+    athlete.sportActivity = json[@"sport_uid"];
     athlete.profileImage = json[@"profile_img"];
     athlete.longitude = json[@"longitude"];
     athlete.latitude = json[@"latitude"];

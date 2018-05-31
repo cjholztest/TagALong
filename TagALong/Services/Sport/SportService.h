@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIColor.h>
 
 @interface SportService : NSObject
 
@@ -15,5 +16,9 @@
 - (NSString*)sportNameForIndex:(NSInteger)index;
 - (NSString*)categoryNameForIndex:(NSInteger)index;
 - (NSString*)levelTitleByLevelIndex:(NSString*)index;
+
+- (UIColor*)backgroundColorForLevel:(NSString*)level;
+- (UIColor*)titleColorForLevel:(NSString*)level;
+- (BOOL)isLevelIndividual:(NSString*)level;
 
 @end

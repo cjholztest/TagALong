@@ -10,4 +10,12 @@
 
 @implementation MUser
 
+- (BOOL)loggedInUserIsPro {
+    return [self.user_login isEqualToString:@"2"];
+}
+
+- (BOOL)loggedInUserIsRegualar {
+    return [self.user_login isEqualToString:@"1"];
+}
+
 @end

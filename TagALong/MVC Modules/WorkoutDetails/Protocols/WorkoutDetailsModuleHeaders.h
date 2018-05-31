@@ -15,3 +15,12 @@
 #import "WorkoutDetailsTableViewAdapterInput.h"
 #import "WorkoutDetailsTableViewAdapter.h"
 #import "UIViewController+AlertController.h"
+
+#import "PaymentViewController.h"
+#import "PaymentClient.h"
+#import "CreditCardListViewController.h"
+#import "ListOfWorkoutVisitorsViewController.h"
+#import "PaymentClient+Pay.h"
+#import "EditDialogViewController.h"
+#import "PaymentClient+CreditCard.h"
+#import "AddCreditCardViewController.h"

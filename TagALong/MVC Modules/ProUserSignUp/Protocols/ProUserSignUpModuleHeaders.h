@@ -29,6 +29,8 @@
 #import "ProUserSignUpTermsPrivacyCellAdapter.h"
 #import "ProUserSignUpRegisterCellAdapter.h"
 #import "ProUserSignUpLocationCellAdapter.h"
+#import "ProUserSignUpCityCellAdapter.h"
+#import "ProUserSignUpSportActivityCellAdapter.h"
 
 #import "ProUserSignUpModel.h"
 #import "ProUserSignUpView.h"

@@ -38,6 +38,7 @@
 
     [self.tvAddress registerNib:[UINib nibWithNibName:@"SelectWorkoutTableViewCell" bundle:nil] forCellReuseIdentifier:@"SelectWorkoutTableViewCell"];
     
+    [SharedAppDelegate registerForPushNotification];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

@@ -74,8 +74,8 @@
             displayModel.nameText = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
             displayModel.locationText = athlete.city;
             
-            //                displayModel.descriptionText = [NSString stringWithFormat:@"Description %lu", i];
-            //                displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
+            displayModel.descriptionText = athlete.sportActivity;
+//                displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
             
             [self.athletesDisplayModels addObject:displayModel];
             

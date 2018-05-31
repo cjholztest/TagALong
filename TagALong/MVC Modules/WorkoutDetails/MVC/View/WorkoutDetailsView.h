@@ -26,9 +26,10 @@
 @property (nonatomic, weak) IBOutlet UIView *phoneContainerView;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *phoneContainerHeightLayoutConastraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonHeightLayoutConastraint;
 
 @property (nonatomic, weak) id <WorkoutDetailsViewOutput> output;
 
-- (void)setupWithProfileInfo:(WorkoutDetailsViewDisplayModel*)profile;
+- (void)setupWithProfileInfo:(WorkoutDetailsViewDisplayModel*)displayModel;
 
 @end

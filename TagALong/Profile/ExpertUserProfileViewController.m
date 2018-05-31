@@ -264,8 +264,7 @@
     _lblPhone.text = phone;
     _lblAddress.text = location;
     
-    NSArray *sports = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
-    NSString *sportName = [NSString stringWithFormat:@" - %@", sports[sportID.integerValue] ];
+    NSString *sportName = [NSString stringWithFormat:@" - %@", sportID];
     
     if ([level isEqualToString:@"1"]) {
         _lblLevel.text = @"GYM";

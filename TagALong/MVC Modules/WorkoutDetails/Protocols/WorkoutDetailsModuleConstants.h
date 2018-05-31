@@ -8,4 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^BookedUsersCompletion)(NSArray *bookedUsers, NSError *error);
+typedef void(^WorkoutDetilsCompletion)(NSDictionary *workoutInfo, NSError *error);
 
+typedef enum : NSUInteger {
+    NoneButtonType,
+    BookNowButtonType,
+    BookedUsersButtonType,
+} WorkoutDetailsButtonType;

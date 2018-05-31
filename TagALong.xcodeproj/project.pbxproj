@@ -184,6 +184,8 @@
 		CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A637620BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m */; };
 		CE2A637920BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2A637720BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib */; };
 		CE2A637C20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A637B20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m */; };
+		CE2A638120C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A638020C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m */; };
+		CE2A638520C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A638420C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m */; };
 		CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D74F20A4793D008B0E75 /* ProsViewController.m */; };
 		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
 		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
@@ -689,6 +691,12 @@
 		CE2A637720BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkoutTitleDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		CE2A637A20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsViewDisplayModel.h; sourceTree = "<group>"; };
 		CE2A637B20BEF9AD00AE9CD3 /* WorkoutDetailsViewDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsViewDisplayModel.m; sourceTree = "<group>"; };
+		CE2A637F20C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpCityCellAdapter.h; sourceTree = "<group>"; };
+		CE2A638020C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpCityCellAdapter.m; sourceTree = "<group>"; };
+		CE2A638220C0546C00AE9CD3 /* ProUserSignUpCityCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpCityCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE2A638320C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSportActivityCellAdapter.h; sourceTree = "<group>"; };
+		CE2A638420C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpSportActivityCellAdapter.m; sourceTree = "<group>"; };
+		CE2A638620C0548D00AE9CD3 /* ProUserSignUpSportActivityCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpSportActivityCellAdapterOutput.h; sourceTree = "<group>"; };
 		CE36D74E20A4793D008B0E75 /* ProsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsViewController.h; sourceTree = "<group>"; };
 		CE36D74F20A4793D008B0E75 /* ProsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsViewController.m; sourceTree = "<group>"; };
 		CE36D75120A4794F008B0E75 /* ProsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModel.h; sourceTree = "<group>"; };
@@ -2173,6 +2181,26 @@
 			path = WorkoutTitleDetails;
 			sourceTree = "<group>";
 		};
+		CE2A637D20C0544300AE9CD3 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A637F20C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.h */,
+				CE2A638020C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m */,
+				CE2A638220C0546C00AE9CD3 /* ProUserSignUpCityCellAdapterOutput.h */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		CE2A637E20C0544300AE9CD3 /* SportActivity */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A638320C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.h */,
+				CE2A638420C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m */,
+				CE2A638620C0548D00AE9CD3 /* ProUserSignUpSportActivityCellAdapterOutput.h */,
+			);
+			path = SportActivity;
+			sourceTree = "<group>";
+		};
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -2607,6 +2635,8 @@
 		CEDA65CE20B021A7009417BF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A637D20C0544300AE9CD3 /* City */,
+				CE2A637E20C0544300AE9CD3 /* SportActivity */,
 				CEDA667720B3057F009417BF /* Location */,
 				CEDA666C20B2FDCC009417BF /* SignUp */,
 				CEDA666120B2F675009417BF /* TermsPrivacy */,
@@ -3872,6 +3902,7 @@
 				323016541F7A48FC0001BCB4 /* BSSpeechBubbleView.m in Sources */,
 				CEDA668620B43AA1009417BF /* OfferMapper.m in Sources */,
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
+				CE2A638120C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
 				CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */,
 				1A2508DD20B603250063801D /* SimpleUserEditProfileModel.m in Sources */,
@@ -3891,6 +3922,7 @@
 				CEDA660520B03364009417BF /* ProUserSignUpLastNameCellAdapter.m in Sources */,
 				CEDA665B20B29F95009417BF /* SelectLocationView.m in Sources */,
 				CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */,
+				CE2A638520C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m in Sources */,
 				CEDA663520B049A6009417BF /* ProUserSignUpSwitchTableViewCellDisplayModel.m in Sources */,
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
 				CEDA665320B29F5E009417BF /* SelectLocationViewController.m in Sources */,

@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *address;
 
-@property (nonatomic, strong) NSNumber *sportIndex;
+@property (nonatomic, strong) NSString *sportActivity;
 
 @property (nonatomic, strong) NSString *profileImage;
 

@@ -14,5 +14,8 @@
 
 - (void)showLoading;
 - (void)closeLoading;
+
+- (void)registerForPushNotification;
+
 @end
 

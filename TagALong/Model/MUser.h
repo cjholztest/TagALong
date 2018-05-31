@@ -26,5 +26,8 @@
 @property(nonatomic, retain) NSString *user_latitude;
 @property(nonatomic, retain) NSString *user_longitude;
 
+- (BOOL)loggedInUserIsPro;
+- (BOOL)loggedInUserIsRegualar;
+
 @end
 

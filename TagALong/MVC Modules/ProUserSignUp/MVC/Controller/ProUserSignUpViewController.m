@@ -27,6 +27,8 @@ ProUserSignUpAwardsCellAdapterOutput,
 ProUserSignUpIsPhoneVisibleCellAdapterOutput,
 ProUserSignUpTermsPrivacyCellAdapterOutput,
 ProUserSignUpLocationCellAdapterOutput,
+ProUserSignUpCityCellAdapterOutput,
+ProUserSignUpSportActivityCellAdapterOutput,
 SelectLocationModuleOutput,
 PickerModuleOutput,
 QLPreviewControllerDelegate,
@@ -76,11 +78,12 @@ QLPreviewControllerDataSource
                                  [[ProUserSignUpEmailCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpPhoneCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpIsPhoneVisibleCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpCityCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpPasswordCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self],
-                                 [[ProUserSignUpSportCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpSportActivityCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpAwardsCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpAdditionalInfoCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpTermsPrivacyCellAdapter alloc] initWithOutput:self], nil];
@@ -266,6 +269,26 @@ QLPreviewControllerDataSource
 
 - (BOOL)userLocationSelected {
     return (self.proUser.location.latitude != 0.0f && self.proUser.location.longitude != 0.0f);
+}
+
+#pragma mark - ProUserSignUpCityCellAdapterOutput
+
+- (void)cityNameDidChange:(NSString *)cityName {
+    self.proUser.cityName = cityName;
+}
+
+- (NSString*)cityName {
+    return self.proUser.cityName;
+}
+
+#pragma mark - ProUserSignUpSportActivityCellAdapterOutput
+
+- (void)sportActivityDidChange:(NSString *)sportActivity {
+    self.proUser.sportActivity = sportActivity;
+}
+
+- (NSString*)sportActivity {
+    return self.proUser.sportActivity;
 }
 
 #pragma mark - SelectLocationModuleOutput

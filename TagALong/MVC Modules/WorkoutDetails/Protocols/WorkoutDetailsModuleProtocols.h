@@ -13,6 +13,7 @@
 @protocol WorkoutDetailsModelInput <NSObject>
 
 - (void)loadDetaisForWorkout:(NSString*)workoutUID;
+- (void)bookWorkout;
 
 - (NSString*)titleText;
 - (NSString*)additionalInfoText;
@@ -25,6 +26,16 @@
                             message:(NSString*)message
                       displayModels:(NSArray*)displayModels
                 profileDisplayModel:(WorkoutDetailsViewDisplayModel*)profileDisplayModel;
+
+- (void)workoutDidBookSuccess:(BOOL)isSuccessed
+                      message:(NSString*)message;
+
+- (void)showConfirmationPyamentAlertWithCompletion:(void(^)(void))completion;
+
+- (void)creditCardNotFound;
+
+- (void)showLoader;
+- (void)hideLoader;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "SportService.h"
+#import "UIColor+AppColors.h"
 
 @interface SportService()
 
@@ -90,6 +91,18 @@
         title = self.levels[levelIndex];
     }
     return title;
+}
+
+- (UIColor*)backgroundColorForLevel:(NSString*)level {
+    return nil;
+}
+
+- (UIColor*)titleColorForLevel:(NSString*)level {
+    return nil;
+}
+
+- (BOOL)isLevelIndividual:(NSString*)level {
+    return level.integerValue == 0;
 }
 
 @end

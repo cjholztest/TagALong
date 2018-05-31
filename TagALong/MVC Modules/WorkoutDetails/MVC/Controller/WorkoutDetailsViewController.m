@@ -15,7 +15,8 @@ WorkoutDetailsModelOutput,
 WorkoutDetailsViewOutput,
 WorkoutDetailsTitleSectionAdapterOutput,
 WorkoutDetailsMainSectionAdapterOutput,
-WorkoutDetailsAdditionalSectionAdapterOutput
+WorkoutDetailsAdditionalSectionAdapterOutput,
+AddCreditCardModuleDelegate
 >
 
 @property (nonatomic, weak) IBOutlet WorkoutDetailsView *contentView;
@@ -54,8 +55,6 @@ WorkoutDetailsAdditionalSectionAdapterOutput
     
     self.tableViewAdapter = tableAdapter;
     [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
-    
-    [SharedAppDelegate showLoading];
     [self.model loadDetaisForWorkout:self.workoutUID];
 }
 
@@ -66,8 +65,6 @@ WorkoutDetailsAdditionalSectionAdapterOutput
                       displayModels:(NSArray*)displayModels
                 profileDisplayModel:(WorkoutDetailsViewDisplayModel*)profileDisplayModel {
     
-    [SharedAppDelegate closeLoading];
-    
     if (!isSuccessed) {
         [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
         return;
@@ -77,6 +74,32 @@ WorkoutDetailsAdditionalSectionAdapterOutput
     
     [self.contentView.tableView reloadData];
     [self.contentView setupWithProfileInfo:profileDisplayModel];
+}
+
+- (void)workoutDidBookSuccess:(BOOL)isSuccessed
+                      message:(NSString*)message {
+    if (!isSuccessed) {
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+        return;
+    }
+    
+//    self show
+}
+
+- (void)showConfirmationPyamentAlertWithCompletion:(void(^)(void))completion {
+    
+}
+
+- (void)creditCardNotFound {
+    [self showAddCreditCard];
+}
+
+- (void)showLoader {
+    [SharedAppDelegate showLoading];
+}
+
+- (void)hideLoader {
+    [SharedAppDelegate closeLoading];
 }
 
 #pragma mark - WorkoutDetailsViewOutput
@@ -107,6 +130,23 @@ WorkoutDetailsAdditionalSectionAdapterOutput
 
 - (NSString*)additionalTextAtIndexPath:(NSIndexPath *)indexPath {
     return [self.model additionalInfoText];
+}
+
+#pragma mark - Credit Cards
+
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtModeTypePostWorkout;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popViewControllerAnimated:YES];
+//    self.model 
 }
 
 @end

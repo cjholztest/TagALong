@@ -27,7 +27,7 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     NSString *key = [NSString stringWithFormat:@"%@", isStripeTest ? kStripeAccountTestKey : kStripeAccountLiveKey];
     [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:key];
     
-    [self registerForPushNotification];
+//    [self registerForPushNotification];
     
     //Global.g_token = [[NSUserDefaults standardUserDefaults] stringForKey:PREFCONST_TOKEN];
     return YES;

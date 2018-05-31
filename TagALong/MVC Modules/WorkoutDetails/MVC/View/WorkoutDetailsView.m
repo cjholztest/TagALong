@@ -9,25 +9,28 @@
 #import "WorkoutDetailsView.h"
 #import "WorkoutDetailsViewDisplayModel.h"
 
+static NSString *const kPlaceholderIconName = @"ic_profile_black";
+
 @implementation WorkoutDetailsView
 
-- (void)setupWithProfileInfo:(WorkoutDetailsViewDisplayModel*)profile {
+- (void)setupWithProfileInfo:(WorkoutDetailsViewDisplayModel*)displayModel {
     
-    self.userTypeLabel.text = [profile.levelText uppercaseString];
-    self.locationLabel.text = profile.locationText;
+    self.userTypeLabel.text = [displayModel.levelText uppercaseString];
+    self.locationLabel.text = displayModel.locationText;
     
-    [self.profileIconImageView sd_setImageWithURL:[NSURL URLWithString:profile.iconURL] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];
+    NSString *buttonTitle = displayModel.isButtonVisible ? displayModel.buttonTitle : @"";
     
-    if (profile.phoneText.length > 0) {
-        self.phoneLabel.text = profile.phoneText;
-        [self.phoneContainerView setHidden:NO];
-        self.phoneContainerHeightLayoutConastraint.constant = 36.0f;
-    } else {
-        [self.phoneContainerView setHidden:YES];
-        self.phoneContainerHeightLayoutConastraint.constant = 0.0f;
-    }
+    [self.confirmationButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.confirmationButton setTitle:buttonTitle forState:UIControlStateSelected];
+    [self.confirmationButton setTitle:buttonTitle forState:UIControlStateHighlighted];
     
-    [self layoutIfNeeded];
+    self.confirmationButton.tag = displayModel.actionButtonType;
+    
+    [self.profileIconImageView sd_setImageWithURL:[NSURL URLWithString:displayModel.iconURL]
+                                 placeholderImage:[UIImage imageNamed:kPlaceholderIconName]];
+    
+    self.phoneLabel.text = (displayModel.phoneText.length > 0) ? displayModel.phoneText : @"no phone number";
+    self.buttonHeightLayoutConastraint.constant = displayModel.isButtonVisible ? 60.0f : 0.0f;
 }
 
 @end
