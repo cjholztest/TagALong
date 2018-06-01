@@ -65,7 +65,6 @@
                              API_REQ_KEY_USER_NICKNAME      :   firstName ? firstName : @"",
                              API_REQ_KEY_USER_LAST_NAME     :   lastName ? lastName : @"",
                              API_REQ_KEY_USER_EMAIL         :   eMail ? eMail : @"",
-                             API_REQ_KEY_USER_PHONE         :   phone ? phone : @"",
                              API_REQ_KEY_USER_PWD           :   password ? password : @"",
                              API_REQ_KEY_SPORT_UID          :   sport ? sport : @"",
                              API_REQ_KEY_CONTENT            :   additionalInfo ? additionalInfo : @"",
@@ -76,8 +75,12 @@
                              @"user_city"                   :   city ? city : @"",
                              @"user_address"                :   address ? address : @"",
                              };
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+    if (phone.length > 0) {
+        [parameters setObject:phone forKey:API_REQ_KEY_USER_PHONE];
+    }
     
-    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+    [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id respObject) {
         NSLog(@"JSON: %@", respObject);
         
         NSString *message = nil;
@@ -133,11 +136,7 @@
         return @"Please enter in email format.";
     }
     
-    if ([user.phone stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
-        return @"Input phone number!";
-    }
-    
-    if (![Commons checkPhoneNumber:user.phone]) {
+    if (![Commons checkPhoneNumber:user.phone] && user.phone.length > 0) {
         return @"The phone number should be in format +XXXXXXXXXXXX";
     }
     

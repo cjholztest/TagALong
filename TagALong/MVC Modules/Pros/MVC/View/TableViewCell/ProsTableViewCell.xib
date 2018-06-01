@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-D3-wcB">
-                        <rect key="frame" x="15" y="0.0" width="147.5" height="29"/>
+                        <rect key="frame" x="15" y="0.0" width="39.5" height="29"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jy-7Y-QaK">
-                        <rect key="frame" x="15" y="29" width="147.5" height="14.5"/>
+                        <rect key="frame" x="15" y="29" width="39.5" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="BMf-Ty-mxd"/>
                         </constraints>
@@ -35,13 +34,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-ua-Hio">
-                        <rect key="frame" x="172.5" y="0.0" width="187.5" height="28.5"/>
+                        <rect key="frame" x="320.5" y="0.0" width="39.5" height="28.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3N-Pp-zSl">
-                        <rect key="frame" x="172.5" y="28.5" width="187.5" height="14.5"/>
+                        <rect key="frame" x="320.5" y="28.5" width="39.5" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Aew-la-28w"/>
                         </constraints>
@@ -55,13 +54,12 @@
                     <constraint firstItem="2jy-7Y-QaK" firstAttribute="top" secondItem="Q1t-D3-wcB" secondAttribute="bottom" id="4wc-Fg-Vlz"/>
                     <constraint firstItem="I3N-Pp-zSl" firstAttribute="top" secondItem="ek8-ua-Hio" secondAttribute="bottom" id="5Kt-BU-Ga7"/>
                     <constraint firstAttribute="trailing" secondItem="ek8-ua-Hio" secondAttribute="trailing" constant="15" id="BbG-wV-aYI"/>
-                    <constraint firstItem="ek8-ua-Hio" firstAttribute="width" secondItem="L83-vd-Zph" secondAttribute="width" multiplier="0.5" id="DyB-OQ-voA"/>
                     <constraint firstAttribute="bottom" secondItem="I3N-Pp-zSl" secondAttribute="bottom" id="Lbe-fh-dYu"/>
                     <constraint firstItem="2jy-7Y-QaK" firstAttribute="width" secondItem="Q1t-D3-wcB" secondAttribute="width" id="MDC-A5-kbC"/>
                     <constraint firstAttribute="trailing" secondItem="I3N-Pp-zSl" secondAttribute="trailing" constant="15" id="Me5-Ja-aZz"/>
                     <constraint firstItem="2jy-7Y-QaK" firstAttribute="leading" secondItem="L83-vd-Zph" secondAttribute="leading" constant="15" id="Zlh-R1-7Y1"/>
                     <constraint firstItem="Q1t-D3-wcB" firstAttribute="leading" secondItem="L83-vd-Zph" secondAttribute="leading" constant="15" id="aTD-xa-zu5"/>
-                    <constraint firstItem="ek8-ua-Hio" firstAttribute="leading" secondItem="Q1t-D3-wcB" secondAttribute="trailing" constant="10" id="bn1-UE-UYB"/>
+                    <constraint firstItem="ek8-ua-Hio" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Q1t-D3-wcB" secondAttribute="trailing" constant="10" id="bn1-UE-UYB"/>
                     <constraint firstItem="ek8-ua-Hio" firstAttribute="top" secondItem="L83-vd-Zph" secondAttribute="top" id="cYq-mS-z08"/>
                     <constraint firstItem="I3N-Pp-zSl" firstAttribute="width" secondItem="ek8-ua-Hio" secondAttribute="width" id="h7D-xr-CTd"/>
                     <constraint firstItem="Q1t-D3-wcB" firstAttribute="top" secondItem="L83-vd-Zph" secondAttribute="top" id="smN-by-Au1"/>

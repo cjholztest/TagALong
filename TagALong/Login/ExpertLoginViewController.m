@@ -115,9 +115,36 @@
 
 
 -(void)goHome{
-    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
-
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"add_device_token"];
+    
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"device_token"];
+    if (deviceToken) {
+        NSDictionary *params = @{@"token" : deviceToken};
+        
+        [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+            NSLog(@"JSON: %@", respObject);
+            int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+            if (res_code == RESULT_CODE_SUCCESS) {
+                NSLog(@"device token was registered successfully");
+            }
+            HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            NSLog(@"device token was not registered");
+            HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+    }
 }
 
 - (void)showPaymentRegistration {

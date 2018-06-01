@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSDate *startTime;
 @property (nonatomic, strong) NSDate *workoutDate;
 
+@property (nonatomic, strong) NSString *startTimeString;
+
 @property (nonatomic, strong) NSNumber *repeat;
 @property (nonatomic, strong) NSNumber *repeatsUID;
 
@@ -39,5 +41,6 @@
 @property (nonatomic, strong) NSString *additionalInfo;
 
 - (NSString*)amountText;
+- (BOOL)isAmountEmpty;
 
 @end

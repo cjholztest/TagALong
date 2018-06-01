@@ -50,6 +50,27 @@
     return self.workotDetails.additionalInfo;
 }
 
+- (void)bookWorkout {
+    
+    BOOL isAmountEmpty = self.workotDetails.isAmountEmpty;
+    
+    if (isAmountEmpty) {
+        [self bookWorkoutNow];
+    } else {
+        __weak typeof(self)weakSelf = self;
+        [self requestCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                weakSelf.creditCardUID = cardID;
+                [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
+                    [weakSelf bookPaymentWorkout];
+                }];
+            } else {
+                [weakSelf.output creditCardNotFound];
+            }
+        }];
+    }
+}
+
 - (void)loadDetaisForWorkout:(NSString*)workoutUID {
     
     __weak typeof(self)weakSelf = self;
@@ -211,9 +232,7 @@
     formtter.dateFormat = @"dd/MM/yyyy";
     
     NSString *date = [formtter stringFromDate:self.workotDetails.workoutDate];
-    
-    formtter.dateFormat = @"h:mm a";
-    NSString *startTime = [formtter stringFromDate:self.workotDetails.startTime];
+    NSString *startTime = self.workotDetails.startTimeString;
     
     NSString *when = [NSString stringWithFormat:@"%@    %@", date, startTime];
     NSString *duratoin = self.workotDetails.duration;
@@ -263,24 +282,7 @@
 
 #pragma mark - Payment
 
-- (void)onClickWorkout:(id)sender {
-    
-    if (self.workotDetails.amount.floatValue == 0.0f || self.workotDetails.amount.integerValue == -1) {
-//        [self ReqBookNoew];
-    } else {
-        __weak typeof(self)weakSelf = self;
-        [self requestCardInfoWithCompletion:^(NSString *cardID) {
-            if (cardID) {
-                self.creditCardUID = cardID;
-//                [weakSelf showConfirmBookPayWorkoutAlert];
-            } else {
-//                [weakSelf showAddCreditCard];
-            }
-        }];
-    }
-}
-
-- (void)bookPayWorkout {
+- (void)bookPaymentWorkout {
     
     [self.output showLoader];
     
@@ -295,15 +297,21 @@
         
         [weakSelf.output hideLoader];
         
+        BOOL isSuccess = NO;
+        NSString *message = nil;
+        
         if (error) {
-//            [weakSelf showAlert:error.localizedDescription];
+            message = error.localizedDescription;
         } else {
             if ([responseObject[@"status"] boolValue]) {
-//                [weakSelf showSuccessAlert];
+                isSuccess = YES;
+                message = @"You booked successfully";
             } else {
-//                [weakSelf showAlert:@"Failure payment process"];
+                isSuccess = NO;
+                message = @"Failure payment process";
             }
         }
+        [weakSelf.output workoutDidBookSuccess:isSuccess message:message];
     }];
 }
 
@@ -317,17 +325,14 @@
         [weakSelf.output hideLoader];
         
         if (error) {
-//            [weakSelf showAlert:error.localizedDescription];
+            [weakSelf.output workoutDidBookSuccess:NO message:error.localizedDescription];
         } else {
             NSArray *cardList = responseObject;
             NSString *ccUIID = nil;
             
             if (cardList.count > 0) {
                 NSDictionary *card = cardList.firstObject;
-                //                creditCardID = card[@"card_uid"];
                 ccUIID = card[@"card_uid"];
-                //                [weakSelf showEnterPasswordDialog];
-                //                [weakSelf bookPayWorkout];
             }
             
             if (completion) {
@@ -357,39 +362,41 @@
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-        //        NSError* error;
-        //        NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:respObject
-        //                                                                       options:kNilOptions
-        //                                                                         error:&error];
         
         [weakSelf.output hideLoader];
         
+        BOOL isSuccessed = NO;
+        NSString *message = nil;
+        
         int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
-        if (res_code == RESULT_CODE_SUCCESS) {
-            
-//            if ([self.where isEqualToString:@"profile"]) {
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"ExportProfile" object:nil];
-//            }
-//            [self showSuccessAlert];
-            //MARK: Pop up
-            //            [self.navigationController popViewControllerAnimated:YES];
-            //            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
-            
-        }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
-            
-        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
-            [Commons showToast:@"User does not exist."];
-        }  else if(res_code == RESULT_ERROR_PARAMETER){
-            [Commons showToast:@"The request parameters are incorrect."];
-        }  else if(res_code == RESULT_ERROR_ALREADY_BOOKED){
-            [Commons showToast:@"Already booked"];
+        
+        switch (res_code) {
+            case RESULT_CODE_SUCCESS:
+                isSuccessed = YES;
+                message = @"You booked successfully";
+                break;
+            case RESULT_ERROR_PASSWORD:
+                message = @"The password is incorrect.";
+                break;
+            case RESULT_ERROR_USER_NO_EXIST:
+                message = @"User does not exist.";
+                break;
+            case RESULT_ERROR_PARAMETER:
+                message = @"The request parameters are incorrect.";
+                break;
+            case RESULT_ERROR_ALREADY_BOOKED:
+                message = @"Already booked";
+                break;
+            default:
+                break;
         }
+        
+        [weakSelf.output workoutDidBookSuccess:isSuccessed message:message];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         [weakSelf.output hideLoader];
-        [Commons showToast:@"Failed to communicate with the server"];
+        [weakSelf.output workoutDidBookSuccess:NO message:error.localizedDescription];
     }];
 }
 

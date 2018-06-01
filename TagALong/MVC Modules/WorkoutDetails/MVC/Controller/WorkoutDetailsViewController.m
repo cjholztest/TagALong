@@ -83,11 +83,22 @@ AddCreditCardModuleDelegate
         return;
     }
     
-//    self show
+    __weak typeof(self)weakSelf = self;
+    [self showAllertWithTitle:@"SUCCESS" message:message okTitle:@"Great" okCompletion:^{
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
-- (void)showConfirmationPyamentAlertWithCompletion:(void(^)(void))completion {
+- (void)showConfirmationPyamentAlertWithAmount:(NSString *)amount andCompletion:(void (^)(void))completion {
     
+    NSString *title = @"BOOK CONFIRMATION";
+    NSString *message = [NSString stringWithFormat:@"Your card will be charged %@ for booking a workout. Confirm withdrawal of funds?", amount];
+    
+    [self showAllertWithTitle:title message:message yesCompletion:^{
+        if (completion) {
+            completion();
+        }
+    } noCompletion:nil];
 }
 
 - (void)creditCardNotFound {
@@ -103,6 +114,17 @@ AddCreditCardModuleDelegate
 }
 
 #pragma mark - WorkoutDetailsViewOutput
+
+- (void)bookWorkoutNowDidTap {
+    [self.model bookWorkout];
+}
+
+- (void)showVisitorsDidTap {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ListOfWorkoutVisitorsViewController *visitorsVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([ListOfWorkoutVisitorsViewController class])];
+    visitorsVC.workoutID = self.workoutUID;
+    [self.navigationController pushViewController:visitorsVC animated:YES];
+}
 
 #pragma mark - WorkoutDetailsModuleInput
 

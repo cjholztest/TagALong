@@ -30,7 +30,7 @@
 - (void)workoutDidBookSuccess:(BOOL)isSuccessed
                       message:(NSString*)message;
 
-- (void)showConfirmationPyamentAlertWithCompletion:(void(^)(void))completion;
+- (void)showConfirmationPyamentAlertWithAmount:(NSString*)amount andCompletion:(void(^)(void))completion;
 
 - (void)creditCardNotFound;
 
@@ -44,6 +44,9 @@
 @end
 
 @protocol WorkoutDetailsViewOutput <NSObject>
+
+- (void)bookWorkoutNowDidTap;
+- (void)showVisitorsDidTap;
 
 @end
 

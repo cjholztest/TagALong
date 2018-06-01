@@ -42,6 +42,7 @@ NSString *const kApiVersion = @"2018-02-28";
 //        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
 //        NSError *jsonError = nil;
 //        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        
         NSString *errorMessage = nil; //dict[@"error"][@"message"];
         NSError *errorToDisplay = nil;
         if (errorMessage) {

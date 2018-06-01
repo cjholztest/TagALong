@@ -18,4 +18,12 @@
     return @"FREE";
 }
 
+- (BOOL)isAmountEmpty {
+    BOOL isEmpty = (self.amount.integerValue == 0 ||
+                    self.amount.floatValue == 0.0f ||
+                    self.amount.integerValue == -1 ||
+                    [self.amount.stringValue isEqualToString:@""] || !self.amount);
+    return isEmpty;
+}
+
 @end

@@ -36,7 +36,9 @@
     formatter.dateFormat = @"h:mm a";
     
     NSString *startTimeString = json[@"start_time"];
-    model.startTime = [formatter dateFromString:startTimeString];
+    
+    model.startTimeString = startTimeString.uppercaseString;
+    model.startTime = [formatter dateFromString:model.startTimeString];
     
     formatter.dateFormat = @"yyyy-MM-dd";
     

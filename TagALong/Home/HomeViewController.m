@@ -96,6 +96,7 @@
                                                  name:@"ExportProfile"
                                                object:nil];
 
+    [SharedAppDelegate registerForPushNotification];
 }
 
 -(void)addLogoutButton {

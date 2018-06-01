@@ -299,10 +299,8 @@
     [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"booked_users"];
+    NSDictionary *params = @{ API_REQ_KEY_WORKOUT_UID: self.workout_id };
     
-    NSDictionary *params = @{
-                             API_REQ_KEY_WORKOUT_UID: self.workout_id,
-                             };
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
@@ -338,10 +336,8 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USR_BOOKING];
     
-    NSDictionary *params = @{
-                             API_REQ_KEY_WORKOUT_UID        :   [NSString stringWithFormat:@"%@", self.workout_id],
-                             API_REQ_KEY_AMOUNT             :   [NSString stringWithFormat:@"%ld", (long)amount],
-                             };
+    NSDictionary *params = @{API_REQ_KEY_WORKOUT_UID    :   [NSString stringWithFormat:@"%@", self.workout_id],
+                             API_REQ_KEY_AMOUNT         :   [NSString stringWithFormat:@"%ld", (long)amount]};
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);

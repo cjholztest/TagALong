@@ -111,7 +111,7 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    
+    self.tfAmount.keyboardType = UIKeyboardTypeDecimalPad;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

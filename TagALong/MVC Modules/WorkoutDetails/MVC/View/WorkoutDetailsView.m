@@ -33,4 +33,28 @@ static NSString *const kPlaceholderIconName = @"ic_profile_black";
     self.buttonHeightLayoutConastraint.constant = displayModel.isButtonVisible ? 60.0f : 0.0f;
 }
 
+#pragma mark - Actions
+
+- (IBAction)buttonAction:(UIButton*)button {
+    
+    WorkoutDetailsButtonType type = button.tag;
+    
+    switch (type) {
+        case NoneButtonType:
+            break;
+        case BookNowButtonType:
+            if ([self.output respondsToSelector:@selector(bookWorkoutNowDidTap)]) {
+                [self.output bookWorkoutNowDidTap];
+            }
+            break;
+        case BookedUsersButtonType:
+            if ([self.output respondsToSelector:@selector(showVisitorsDidTap)]) {
+                [self.output showVisitorsDidTap];
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 @end
