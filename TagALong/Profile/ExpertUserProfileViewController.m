@@ -53,7 +53,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self initUI];
-    [self requestOffers];
+//    [self requestOffers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -390,6 +390,7 @@
 //            }
             
             [_tvSchedule reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self requestOffers];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];

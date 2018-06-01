@@ -276,6 +276,9 @@
                                  API_REQ_KEY_USER_CITY          :   _city,
                                  API_REQ_KEY_USER_PHONE         :   _phone,
                                  API_REQ_KEY_USER_PWD           :   _pwd,
+                                 @"latitude"   : @(0.0),
+                                 @"longitude"   : @(0.0),
+                                 @"hide_phone" : @(NO)
                                  };
         
         [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {

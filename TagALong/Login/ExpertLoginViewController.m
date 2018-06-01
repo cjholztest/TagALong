@@ -116,6 +116,8 @@
 
 -(void)goHome{
     
+    __weak typeof(self)weakSelf = self;
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -127,6 +129,7 @@
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"add_device_token"];
     
     NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"device_token"];
+    
     if (deviceToken) {
         NSDictionary *params = @{@"token" : deviceToken};
         
@@ -136,15 +139,20 @@
             if (res_code == RESULT_CODE_SUCCESS) {
                 NSLog(@"device token was registered successfully");
             }
-            HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf showHomeScreen];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error: %@", error);
             NSLog(@"device token was not registered");
-            HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
-            [self.navigationController pushViewController:vc animated:YES];
+            [weakSelf showHomeScreen];
         }];
+    } else {
+        [self showHomeScreen];
     }
+}
+
+- (void)showHomeScreen {
+    HomeViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)showPaymentRegistration {
