@@ -10,4 +10,10 @@
 
 @implementation SimpleUserSignUpView
 
+- (IBAction)signUpButtonAction:(UIButton*)button {
+    if ([self.output respondsToSelector:@selector(signUpButtonDidTap)]) {
+        [self.output signUpButtonDidTap];
+    }
+}
+
 @end

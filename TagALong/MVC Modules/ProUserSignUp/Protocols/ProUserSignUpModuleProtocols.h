@@ -13,6 +13,8 @@
 @protocol ProUserSignUpModelInput <NSObject>
 
 - (void)signUpaProUser:(ProUserSignUpDataModel*)userModel;
+- (void)updateAddressByLocation:(CLLocationCoordinate2D)location
+                 withConpletion:(void(^)(NSString *city, NSString *address))completion;
 
 @end
 

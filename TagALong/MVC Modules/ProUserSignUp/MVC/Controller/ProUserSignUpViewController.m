@@ -294,8 +294,15 @@ QLPreviewControllerDataSource
 #pragma mark - SelectLocationModuleOutput
 
 - (void)locationDidSet:(CLLocationCoordinate2D)location {
+    
     self.proUser.location = location;
-    [self.contentView.tableView reloadData];
+    __weak typeof(self)weakSelf = self;
+    
+    [self.model updateAddressByLocation:location withConpletion:^(NSString *city, NSString *address) {
+        weakSelf.proUser.cityName = city;
+        weakSelf.proUser.address = address;
+        [weakSelf.contentView.tableView reloadData];
+    }];
 }
 
 #pragma mark - PickerViewController

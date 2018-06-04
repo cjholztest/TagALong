@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SimpleUserSignUpModuleProtocols.h"
 
-@interface SimpleUserSignUpViewController : UIViewController
+@interface SimpleUserSignUpViewController : UIViewController <SimpleUserSignUpModuleInput>
+
+@property (nonatomic, weak) id <SimpleUserSignUpModuleOutput> moduleOutput;
 
 @end

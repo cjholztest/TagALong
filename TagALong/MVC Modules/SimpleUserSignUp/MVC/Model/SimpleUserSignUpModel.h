@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SimpleUserSignUpModuleProtocols.h"
 
-@interface SimpleUserSignUpModel : NSObject
+@interface SimpleUserSignUpModel : NSObject <SimpleUserSignUpModelInput>
+
+- (instancetype)initWithOutput:(id<SimpleUserSignUpModelOutput>)output;
 
 @end

@@ -17,9 +17,57 @@
                     <view key="view" contentMode="scaleToFill" id="SQD-Xk-KdX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-YI-r1Z" customClass="SimpleUserSignUpView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XTW-K9-wsu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-bf-0oc">
+                                        <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.52941176469999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="aHf-lj-Sv3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="SIGN UP">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpButtonAction:" destination="VQX-YI-r1Z" eventType="touchUpInside" id="6F1-a5-ZL2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="JkV-bf-0oc" firstAttribute="leading" secondItem="VQX-YI-r1Z" secondAttribute="leading" id="2ku-UL-WJl"/>
+                                    <constraint firstItem="XTW-K9-wsu" firstAttribute="leading" secondItem="VQX-YI-r1Z" secondAttribute="leading" id="HGO-QP-fay"/>
+                                    <constraint firstAttribute="trailing" secondItem="JkV-bf-0oc" secondAttribute="trailing" id="LoS-Mx-qfN"/>
+                                    <constraint firstAttribute="bottom" secondItem="JkV-bf-0oc" secondAttribute="bottom" id="Whx-ij-4PA"/>
+                                    <constraint firstAttribute="trailing" secondItem="XTW-K9-wsu" secondAttribute="trailing" id="nNQ-jo-k1J"/>
+                                    <constraint firstItem="JkV-bf-0oc" firstAttribute="top" secondItem="XTW-K9-wsu" secondAttribute="bottom" id="wRm-08-8Mk"/>
+                                    <constraint firstItem="XTW-K9-wsu" firstAttribute="top" secondItem="VQX-YI-r1Z" secondAttribute="top" id="z59-Pg-kta"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="signUpButton" destination="JkV-bf-0oc" id="84h-Lp-we5"/>
+                                    <outlet property="tableView" destination="XTW-K9-wsu" id="oWr-WC-s9g"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VQX-YI-r1Z" firstAttribute="trailing" secondItem="bpO-IZ-qMa" secondAttribute="trailing" id="CKg-GP-RwZ"/>
+                            <constraint firstItem="bpO-IZ-qMa" firstAttribute="bottom" secondItem="VQX-YI-r1Z" secondAttribute="bottom" id="LEj-UV-lNi"/>
+                            <constraint firstItem="VQX-YI-r1Z" firstAttribute="leading" secondItem="bpO-IZ-qMa" secondAttribute="leading" id="cce-m7-2wK"/>
+                            <constraint firstItem="VQX-YI-r1Z" firstAttribute="top" secondItem="SQD-Xk-KdX" secondAttribute="top" id="yTJ-ro-pw1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bpO-IZ-qMa"/>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="VQX-YI-r1Z" id="do9-pa-TAe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQv-Ut-FLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

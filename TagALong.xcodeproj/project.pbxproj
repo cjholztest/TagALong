@@ -190,6 +190,7 @@
 		CE2A639220C1C1AB00AE9CD3 /* SimpleUserSignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2A639120C1C1AB00AE9CD3 /* SimpleUserSignUpViewController.storyboard */; };
 		CE2A639520C1C1CF00AE9CD3 /* SimpleUserSignUpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A639420C1C1CF00AE9CD3 /* SimpleUserSignUpModel.m */; };
 		CE2A639820C1C1DD00AE9CD3 /* SimpleUserSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A639720C1C1DD00AE9CD3 /* SimpleUserSignUpView.m */; };
+		CE2A639E20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A639D20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m */; };
 		CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D74F20A4793D008B0E75 /* ProsViewController.m */; };
 		CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75220A4794F008B0E75 /* ProsModel.m */; };
 		CE36D75620A47964008B0E75 /* ProsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D75520A47964008B0E75 /* ProsView.m */; };
@@ -710,6 +711,8 @@
 		CE2A639720C1C1DD00AE9CD3 /* SimpleUserSignUpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserSignUpView.m; sourceTree = "<group>"; };
 		CE2A639920C1C20B00AE9CD3 /* SimpleUserSignUpModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserSignUpModuleProtocols.h; sourceTree = "<group>"; };
 		CE2A639A20C1C24400AE9CD3 /* SimpleUserSignUpModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserSignUpModuleHeaders.h; sourceTree = "<group>"; };
+		CE2A639C20C512F900AE9CD3 /* SimpleUserSignUpDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserSignUpDataModel.h; sourceTree = "<group>"; };
+		CE2A639D20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserSignUpDataModel.m; sourceTree = "<group>"; };
 		CE36D74E20A4793D008B0E75 /* ProsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsViewController.h; sourceTree = "<group>"; };
 		CE36D74F20A4793D008B0E75 /* ProsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsViewController.m; sourceTree = "<group>"; };
 		CE36D75120A4794F008B0E75 /* ProsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsModel.h; sourceTree = "<group>"; };
@@ -2247,6 +2250,7 @@
 		CE2A638A20C1C17D00AE9CD3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE2A639B20C512DC00AE9CD3 /* DataModel */,
 				CE2A639320C1C1CF00AE9CD3 /* SimpleUserSignUpModel.h */,
 				CE2A639420C1C1CF00AE9CD3 /* SimpleUserSignUpModel.m */,
 			);
@@ -2276,6 +2280,15 @@
 				CE2A639A20C1C24400AE9CD3 /* SimpleUserSignUpModuleHeaders.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE2A639B20C512DC00AE9CD3 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE2A639C20C512F900AE9CD3 /* SimpleUserSignUpDataModel.h */,
+				CE2A639D20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
@@ -3924,6 +3937,7 @@
 				CEDF04F720A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m in Sources */,
 				CEDA662F20B04977009417BF /* ProUserSignUpSwitchTableViewCell.m in Sources */,
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
+				CE2A639E20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m in Sources */,
 				CEDF050B20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m in Sources */,
 				CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */,
 				CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */,

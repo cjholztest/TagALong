@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SimpleUserSignUpModuleProtocols.h"
 
-@interface SimpleUserSignUpView : UIView
+@interface SimpleUserSignUpView : UIView <SimpleUserSignUpViewInput>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *signUpButton;
+
+@property (nonatomic, weak) id <SimpleUserSignUpViewOutput> output;
 
 @end

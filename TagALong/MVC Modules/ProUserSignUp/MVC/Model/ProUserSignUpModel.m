@@ -116,6 +116,36 @@
     }];
 }
 
+- (void)updateAddressByLocation:(CLLocationCoordinate2D)location withConpletion:(void (^)(NSString *, NSString *))completion {
+    
+    __weak typeof(self)weakSelf = self;
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"reverse_geocoding"];
+    
+    NSDictionary *params = @{@"latitude" : @(location.latitude), @"longitude" : @(location.longitude)};
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+        
+        NSLog(@"JSON: %@", respObject);
+        NSString *city = respObject[@"city"];
+        NSString *address = respObject[@"address"];
+        
+        if (completion) {
+            completion(city, address);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [weakSelf.output proUserDidSignUpSuccessed:NO andMessage:error.localizedDescription];
+    }];
+}
+
 #pragma mark - Private
 
 - (NSString*)isUserDataValid:(ProUserSignUpDataModel*)user {

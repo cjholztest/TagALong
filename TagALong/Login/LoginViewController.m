@@ -13,6 +13,8 @@
 #import "SignupViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SimpleUserSignUpViewController.h"
+#import "UIViewController+Storyboard.h"
 
 @interface LoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate>{
     float latitude;
@@ -185,7 +187,8 @@
 
 - (IBAction)onClickSignUp:(id)sender {
     
-    SignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupViewController"];
+//    SignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SignupViewController"];
+    SimpleUserSignUpViewController *vc = (SimpleUserSignUpViewController*)SimpleUserSignUpViewController.fromStoryboard;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
