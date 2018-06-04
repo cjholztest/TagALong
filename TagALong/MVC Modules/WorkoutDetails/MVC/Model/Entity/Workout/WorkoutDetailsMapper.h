@@ -14,4 +14,6 @@
 
 + (WorkoutDetailsDataModel*)workoutDetailsFromJSON:(NSDictionary*)json;
 
++ (NSDictionary*)jsonFromWorkoutDetails:(WorkoutDetailsDataModel*)workoutDetails;
+
 @end

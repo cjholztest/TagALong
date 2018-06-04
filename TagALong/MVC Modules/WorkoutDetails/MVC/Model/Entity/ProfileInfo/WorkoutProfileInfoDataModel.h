@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
-@property (nonatomic, strong) NSString *level;
+@property (nonatomic, strong) NSNumber *level;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSString *profileIconURL;

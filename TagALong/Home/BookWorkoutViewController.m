@@ -156,6 +156,11 @@
     //NSInteger sport_uid = [[workInfo objectForKey:API_RES_KEY_SPORT_UID] integerValue];
     NSArray *sports = [[NSArray alloc] initWithObjects:[workInfo objectForKey:API_RES_KEY_SPORT_UID], nil];
     int sport_uid = [sports.firstObject intValue];
+    
+    if (sport_uid - 1 < 0) {
+        sport_uid = 1;
+    }
+    
     _lblWorkType.text = arrSportNM[sport_uid - 1];
     
     _lblLocation.text = [workInfo objectForKey:API_RES_KEY_USER_LOCATION];

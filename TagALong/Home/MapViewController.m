@@ -596,6 +596,10 @@
         }
     }
     
+    if (sport_uid - 1 < 0) {
+        sport_uid = 1;
+    }
+    
     _ivSport.image = [UIImage imageNamed:arrSportImg1[sport_uid - 1]];
     _lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
     _lblDistance.text = title;

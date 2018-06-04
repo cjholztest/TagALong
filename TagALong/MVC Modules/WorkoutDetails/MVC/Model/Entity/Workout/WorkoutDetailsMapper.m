@@ -57,4 +57,78 @@
     return model;
 }
 
++ (NSDictionary*)jsonFromWorkoutDetails:(WorkoutDetailsDataModel*)workoutDetails {
+    
+    NSMutableDictionary *json = [NSMutableDictionary dictionary];
+    
+    [json setObject:Global.g_user.user_login forKey:API_REQ_KEY_LOGIN_TYPE];
+    
+    if (workoutDetails.sportUID) {
+        [json setObject:workoutDetails.sportUID forKey:API_REQ_KEY_SPORT_UID];
+    }
+    
+    if (workoutDetails.categories.count > 0) {
+        NSMutableString *categoriesString = [NSMutableString stringWithString:workoutDetails.categories.firstObject];
+        for (NSInteger i = 1; i < workoutDetails.categories.count; i++) {
+            NSString *category = workoutDetails.categories[i];
+            [categoriesString appendString:[NSString stringWithFormat:@",%@", category]];
+        }
+        [json setObject:categoriesString forKey:API_REQ_KEY_CATEGORIES];
+    }
+    
+    if (workoutDetails.title) {
+        [json setObject:workoutDetails.title forKey:API_REQ_KEY_TITLE];
+    }
+    
+    if (workoutDetails.workoutDate) {
+        
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateString = [dateFormatter stringFromDate:workoutDetails.workoutDate];
+        
+        if (dateString) {
+            [json setObject:dateString forKey:API_REQ_KEY_WORKOUT_DATE];
+        }
+    }
+    
+    if (workoutDetails.startTime) {
+        
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"h:mm a"];
+        NSString *startTimeString = [dateFormatter stringFromDate:workoutDetails.startTime];
+        
+        [json setObject:startTimeString forKey:API_REQ_KEY_START_TIME];
+    }
+    
+    if (workoutDetails.duration) {
+        [json setObject:workoutDetails.duration forKey:API_REQ_KEY_DURATION];
+    }
+    
+    if (workoutDetails.repeatsUID) {
+        [json setObject:workoutDetails.repeatsUID forKey:API_REQ_KEY_FREQUENCY];
+    }
+    
+    if (workoutDetails.amount) {
+        [json setObject:workoutDetails.amount forKey:API_REQ_KEY_AMOUNT];
+    }
+    
+    if (workoutDetails.additionalInfo) {
+        [json setObject:workoutDetails.additionalInfo forKey:API_REQ_KEY_ADDITION];
+    }
+    
+    if (workoutDetails.location) {
+        [json setObject:workoutDetails.location forKey:API_REQ_KEY_USER_LOCATION];
+    }
+    
+    if (workoutDetails.latitude) {
+        [json setObject:workoutDetails.latitude forKey:API_REQ_KEY_USER_LATITUDE];
+    }
+    
+    if (workoutDetails.longitude) {
+        [json setObject:workoutDetails.longitude forKey:API_REQ_KEY_USER_LONGITUDE];
+    }
+    
+    return json;
+}
+
 @end

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pro User Post Workout View Controller-->
+        <scene sceneID="xCj-kC-GpN">
+            <objects>
+                <viewController storyboardIdentifier="ProUserPostWorkoutViewController" id="5bq-Ik-VZ0" customClass="ProUserPostWorkoutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zov-Kd-RJm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTb-Ba-cAy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bTG-7h-QUD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KN-oC-V6n">
+                                        <rect key="frame" x="0.0" y="587" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.52941176469999995" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="PpJ-gw-vHr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="POST WORKOUT">
+                                            <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4KN-oC-V6n" firstAttribute="leading" secondItem="zTb-Ba-cAy" secondAttribute="leading" id="0Ey-Vj-y2h"/>
+                                    <constraint firstAttribute="trailing" secondItem="4KN-oC-V6n" secondAttribute="trailing" id="EUH-0a-pf9"/>
+                                    <constraint firstAttribute="trailing" secondItem="bTG-7h-QUD" secondAttribute="trailing" id="RZQ-6N-Tzw"/>
+                                    <constraint firstAttribute="bottom" secondItem="4KN-oC-V6n" secondAttribute="bottom" id="amo-RK-mT2"/>
+                                    <constraint firstItem="bTG-7h-QUD" firstAttribute="top" secondItem="zTb-Ba-cAy" secondAttribute="top" id="cc5-mH-J8D"/>
+                                    <constraint firstItem="bTG-7h-QUD" firstAttribute="leading" secondItem="zTb-Ba-cAy" secondAttribute="leading" id="hdV-7t-am4"/>
+                                    <constraint firstItem="4KN-oC-V6n" firstAttribute="top" secondItem="bTG-7h-QUD" secondAttribute="bottom" id="y95-J6-y5v"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zTb-Ba-cAy" firstAttribute="leading" secondItem="gNI-RZ-k8Q" secondAttribute="leading" id="IRh-P8-ArG"/>
+                            <constraint firstItem="zTb-Ba-cAy" firstAttribute="top" secondItem="gNI-RZ-k8Q" secondAttribute="top" id="S7h-0j-Rwm"/>
+                            <constraint firstItem="gNI-RZ-k8Q" firstAttribute="bottom" secondItem="zTb-Ba-cAy" secondAttribute="bottom" id="ddh-8R-tIj"/>
+                            <constraint firstItem="gNI-RZ-k8Q" firstAttribute="trailing" secondItem="zTb-Ba-cAy" secondAttribute="trailing" id="tee-hh-cLP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gNI-RZ-k8Q"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pTA-Mg-HY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="113"/>
+        </scene>
+    </scenes>
+</document>

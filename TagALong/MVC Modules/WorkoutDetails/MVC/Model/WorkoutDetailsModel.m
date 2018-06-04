@@ -128,15 +128,17 @@
         
         [weakSelf updateTitle];
         
-        BOOL isIndividual = [[SportService shared] isLevelIndividual:weakSelf.profileInfo.level];
-        BOOL isUserPro = Global.g_user.loggedInUserIsPro;
+        NSString *curentUserID = Global.g_user.user_id;
+        NSString *email = Global.g_user.user_email;
+        
+        BOOL isIndividual = currentUserID.integerValue == weakSelf.workotDetails.postUID.integerValue;
         
         NSArray *displayModels = [weakSelf generateDisplayModels];
         WorkoutDetailsViewDisplayModel *profileDisplayModel = [weakSelf profileDispayModel];
         
         profileDisplayModel.isButtonVisible = !(userAlreadyBooked || isIndividual);
         profileDisplayModel.actionButtonType = isIndividual ? BookedUsersButtonType : BookNowButtonType;
-        profileDisplayModel.buttonTitle = isUserPro ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
+        profileDisplayModel.buttonTitle = isIndividual ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
 
         [weakSelf updateTitle];
         
@@ -269,6 +271,10 @@
 }
 
 - (void)updateTitle {
+    
+    if (!self.workotDetails.title) {
+        return;
+    }
     
     NSMutableString *title = [[NSMutableString alloc] initWithString:self.workotDetails.title];
     

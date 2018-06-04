@@ -101,7 +101,7 @@
     return nil;
 }
 
-- (BOOL)isLevelIndividual:(NSString*)level {
+- (BOOL)isLevelIndividual:(NSNumber*)level {
     return level.integerValue == 0;
 }
 

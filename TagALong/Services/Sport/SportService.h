@@ -19,6 +19,6 @@
 
 - (UIColor*)backgroundColorForLevel:(NSString*)level;
 - (UIColor*)titleColorForLevel:(NSString*)level;
-- (BOOL)isLevelIndividual:(NSString*)level;
+- (BOOL)isLevelIndividual:(NSNumber*)level;
 
 @end

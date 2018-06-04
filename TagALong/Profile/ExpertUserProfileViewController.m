@@ -17,6 +17,7 @@
 #import "ReviewOfferMapper.h"
 #import "ReviewOfferViewController.h"
 #import "UIViewController+Storyboard.h"
+#import "WorkoutDetailsViewController.h"
 
 @interface ExpertUserProfileViewController ()<ExpertUserProfileEditViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>{
     NSString *nickname ;
@@ -148,9 +149,15 @@
         
     } else {
         NSDictionary *dic = _arrWorkout[indexPath.row];
-        BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-        vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-        vc.bProfile = YES;
+//        BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
+//        vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+//        vc.bProfile = YES;
+        
+        NSString *workoutUID = dic[API_RES_KEY_WORKOUT_UID];
+        
+        WorkoutDetailsViewController *vc = (WorkoutDetailsViewController*)WorkoutDetailsViewController.fromStoryboard;
+        [vc setupWorkout:workoutUID];
+        
         [self.vcParent.navigationController pushViewController:vc animated:YES];
     }
 
@@ -432,12 +439,12 @@
         if (self.arrOffers.count > 0) {
             [_vwNoData setHidden:YES];
         }
-//        [SharedAppDelegate closeLoading];
+        [SharedAppDelegate closeLoading];
         [_tvSchedule reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
-//        [SharedAppDelegate closeLoading];
+        [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
     }];
 }
