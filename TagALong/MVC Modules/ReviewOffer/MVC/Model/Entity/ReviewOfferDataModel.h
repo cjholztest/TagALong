@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSNumber *status;
 
 @property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) NSNumber *postType;
 
 @property (nonatomic, strong) NSNumber *toTrainerUID;
 @property (nonatomic, strong) NSNumber *fromUserUID;
@@ -24,6 +25,7 @@
 
 @property (nonatomic, strong) NSDate *workoutDate;
 @property (nonatomic, strong) NSDate *workoutTime;
+@property (nonatomic, strong) NSString *workoutTimeSting;
 
 @property (nonatomic, strong) NSString *descriptionInfo;
 @property (nonatomic, strong) NSString *duration;

@@ -11,7 +11,7 @@
 @implementation UIColor (AppColors)
 
 + (UIColor*)appColor {
-    return [UIColor colorWithRed:(1.0/9.0) green:(1.0/156) blue:(1.0/242.0) alpha:1.0];
+    return [UIColor colorWithRed:(37.0f/255.0f) green:(135.0f/255.0f) blue:(233.0f/255.0f) alpha:1.0];
 }
 
 + (UIColor*)warningColor {

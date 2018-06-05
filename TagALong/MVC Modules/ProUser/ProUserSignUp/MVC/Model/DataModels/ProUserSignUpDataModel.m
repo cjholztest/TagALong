@@ -14,11 +14,4 @@
 
 @implementation ProUserSignUpDataModel
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.isPhoneVisible = YES;
-    }
-    return self;
-}
-
 @end

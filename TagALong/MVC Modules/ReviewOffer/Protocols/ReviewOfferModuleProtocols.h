@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class ReviewOfferDataModel;
+@class ReviewOfferDataModel, ReviewOfferViewDisplayModel, RegularUserInfoDataModel;
 
 @protocol ReviewOfferModelInput <NSObject>
 
@@ -17,17 +17,20 @@
 
 - (void)offerWasSeen:(NSString*)offerUID;
 
+- (void)loadInfoForUserUID:(NSString*)userUID userType:(NSNumber*)userType byDate:(NSString*)date;
+
 @end
 
 @protocol ReviewOfferModelOutput <NSObject>
 
 - (void)showResultOfferIsAccepted:(BOOL)isAccepted isSuccess:(BOOL)isSuccessed message:(NSString*)message;
+- (void)userInfoDidLoad:(RegularUserInfoDataModel*)userInfo isSuccess:(BOOL)isSuccessed message:(NSString*)message;;
 
 @end
 
 @protocol ReviewOfferViewInput <NSObject>
 
-//- (void)acceptOffer
+- (void)setupWithDisplayModel:(RegularUserInfoDataModel*)userInfo;
 
 @end
 

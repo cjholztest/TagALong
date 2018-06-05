@@ -16,6 +16,7 @@
     ReviewOfferDataModel *reviewOffer = [ReviewOfferDataModel new];
     
     reviewOffer.bidUID = json[@"bid_uid"];
+    reviewOffer.postType = json[@"post_type"];
     
     reviewOffer.amount = json[@"amount"];
     reviewOffer.additionalInfo = json[@"addition"];
@@ -29,9 +30,11 @@
     NSString *dateString = json[@"workout_date"];
     reviewOffer.workoutDate = [dateFormatter dateFromString:dateString];
     
-    dateFormatter.dateFormat = @"h:mm";
+    [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    dateFormatter.dateFormat = @"h:mm a";
     
     NSString *timeString = json[@"start_time"];
+    reviewOffer.workoutTimeSting = timeString;
     reviewOffer.workoutTime = [dateFormatter dateFromString:timeString];
     
     reviewOffer.status = json[@"status"];

@@ -5955,11 +5955,23 @@ Terms of Use and Privacy Policy</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvn-nH-qfm">
-                                                    <rect key="frame" x="360" y="0.0" width="0.0" height="56.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvn-nH-qfm">
+                                                    <rect key="frame" x="330" y="13.5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="B6r-H7-cUm"/>
+                                                        <constraint firstAttribute="width" constant="30" id="gOU-aX-hxk"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -5967,10 +5979,9 @@ Terms of Use and Privacy Policy</string>
                                                 <constraint firstItem="INm-j1-Hup" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="K82-sv-FFw"/>
                                                 <constraint firstAttribute="trailing" secondItem="uvn-nH-qfm" secondAttribute="trailing" constant="15" id="QSg-pt-dFM"/>
                                                 <constraint firstItem="uvn-nH-qfm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="INm-j1-Hup" secondAttribute="trailing" constant="15" id="aVZ-6T-xBp"/>
-                                                <constraint firstItem="uvn-nH-qfm" firstAttribute="top" secondItem="KP9-kW-zBD" secondAttribute="top" id="bg9-Dr-gCi"/>
+                                                <constraint firstItem="uvn-nH-qfm" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="oG9-AQ-ebe"/>
                                                 <constraint firstItem="Ne4-fB-gYH" firstAttribute="leading" secondItem="KP9-kW-zBD" secondAttribute="leading" constant="15" id="sxc-fL-4Wz"/>
                                                 <constraint firstItem="Ne4-fB-gYH" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="tcs-hW-sCg"/>
-                                                <constraint firstAttribute="bottom" secondItem="uvn-nH-qfm" secondAttribute="bottom" id="wLS-B3-JUt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

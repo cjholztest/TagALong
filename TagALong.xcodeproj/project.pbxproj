@@ -206,6 +206,11 @@
 		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
 		CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */; };
+		CE5DB34020C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33F20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m */; };
+		CE5DB34420C6DD08001F8A87 /* NSDateFormatter+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34320C6DD08001F8A87 /* NSDateFormatter+Workout.m */; };
+		CE5DB34720C6DD25001F8A87 /* NSDateFormatter+ServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34620C6DD25001F8A87 /* NSDateFormatter+ServerRequest.m */; };
+		CE5DB34A20C6ED2B001F8A87 /* RegularUserInfoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34920C6ED2B001F8A87 /* RegularUserInfoDataModel.m */; };
+		CE5DB34D20C6ED36001F8A87 /* RegularUserInfoMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34C20C6ED36001F8A87 /* RegularUserInfoMapper.m */; };
 		CE7E0F1720AC305000D93035 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1520AC305000D93035 /* PickerViewController.m */; };
 		CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */; };
 		CE7E0F1C20AC4C7300D93035 /* UIViewController+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */; };
@@ -752,6 +757,16 @@
 		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
 		CE5DB33B20C6AC61001F8A87 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		CE5DB33E20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferViewDisplayModel.h; sourceTree = "<group>"; };
+		CE5DB33F20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewOfferViewDisplayModel.m; sourceTree = "<group>"; };
+		CE5DB34220C6DD08001F8A87 /* NSDateFormatter+Workout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Workout.h"; sourceTree = "<group>"; };
+		CE5DB34320C6DD08001F8A87 /* NSDateFormatter+Workout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Workout.m"; sourceTree = "<group>"; };
+		CE5DB34520C6DD25001F8A87 /* NSDateFormatter+ServerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+ServerRequest.h"; sourceTree = "<group>"; };
+		CE5DB34620C6DD25001F8A87 /* NSDateFormatter+ServerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ServerRequest.m"; sourceTree = "<group>"; };
+		CE5DB34820C6ED2B001F8A87 /* RegularUserInfoDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegularUserInfoDataModel.h; sourceTree = "<group>"; };
+		CE5DB34920C6ED2B001F8A87 /* RegularUserInfoDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegularUserInfoDataModel.m; sourceTree = "<group>"; };
+		CE5DB34B20C6ED36001F8A87 /* RegularUserInfoMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegularUserInfoMapper.h; sourceTree = "<group>"; };
+		CE5DB34C20C6ED36001F8A87 /* RegularUserInfoMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegularUserInfoMapper.m; sourceTree = "<group>"; };
 		CE7E0F1520AC305000D93035 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		CE7E0F1620AC305000D93035 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickerViewController.storyboard; sourceTree = "<group>"; };
@@ -2481,6 +2496,7 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DB34120C6DCE0001F8A87 /* NSDateFormatter Categories */,
 				CE5DB33A20C6AC3B001F8A87 /* MKMapView Categories */,
 				CEDA663A20B0683A009417BF /* UINavigationBar Categories */,
 				CE7E0F3520ADA83000D93035 /* UILabel Categories */,
@@ -2541,6 +2557,17 @@
 				CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */,
 			);
 			path = "MKMapView Categories";
+			sourceTree = "<group>";
+		};
+		CE5DB34120C6DCE0001F8A87 /* NSDateFormatter Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DB34220C6DD08001F8A87 /* NSDateFormatter+Workout.h */,
+				CE5DB34320C6DD08001F8A87 /* NSDateFormatter+Workout.m */,
+				CE5DB34520C6DD25001F8A87 /* NSDateFormatter+ServerRequest.h */,
+				CE5DB34620C6DD25001F8A87 /* NSDateFormatter+ServerRequest.m */,
+			);
+			path = "NSDateFormatter Categories";
 			sourceTree = "<group>";
 		};
 		CE7E0F1D20AC4F3200D93035 /* DatePicker */ = {
@@ -2665,6 +2692,8 @@
 				1A2508E620B61A980063801D /* Cells */,
 				CE7E0F4A20ADC87600D93035 /* ReviewOfferView.h */,
 				CE7E0F4B20ADC87600D93035 /* ReviewOfferView.m */,
+				CE5DB33E20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.h */,
+				CE5DB33F20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3176,6 +3205,10 @@
 				CEDA669420B55813009417BF /* ReviewOfferDataModel.m */,
 				CEDA669620B56505009417BF /* ReviewOfferMapper.h */,
 				CEDA669720B56505009417BF /* ReviewOfferMapper.m */,
+				CE5DB34820C6ED2B001F8A87 /* RegularUserInfoDataModel.h */,
+				CE5DB34920C6ED2B001F8A87 /* RegularUserInfoDataModel.m */,
+				CE5DB34B20C6ED36001F8A87 /* RegularUserInfoMapper.h */,
+				CE5DB34C20C6ED36001F8A87 /* RegularUserInfoMapper.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -3933,6 +3966,7 @@
 				CE2A63A920C55B7F00AE9CD3 /* ProUserPostWorkoutViewController.m in Sources */,
 				CEDA665820B29F85009417BF /* SelectLocationModel.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
+				CE5DB34420C6DD08001F8A87 /* NSDateFormatter+Workout.m in Sources */,
 				CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */,
@@ -4009,6 +4043,7 @@
 				3256F2651F73688A00D0874E /* UserProfileViewController.m in Sources */,
 				CE2A634320BD4C3800AE9CD3 /* WorkoutDetailsMainSectionAdapter.m in Sources */,
 				CEF52F5F206911D10014B2B4 /* ProfilePaymentRegistrationFooter.m in Sources */,
+				CE5DB34020C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m in Sources */,
 				3236156D1F7A3B88007D4DF3 /* UIColorHelper.m in Sources */,
 				CEDA65C820B02034009417BF /* ProUserSignUpModel.m in Sources */,
 				CEDF054720A9D5980012AAC4 /* GradientView.m in Sources */,
@@ -4033,6 +4068,7 @@
 				CEDF04D920A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m in Sources */,
 				CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */,
 				CE2A634720BD4C6100AE9CD3 /* WorkoutDetailsAdditionalSectionAdapter.m in Sources */,
+				CE5DB34A20C6ED2B001F8A87 /* RegularUserInfoDataModel.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
@@ -4052,6 +4088,7 @@
 				CEDF052B20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
 				CEDA668E20B45CF8009417BF /* DatePickerView.m in Sources */,
+				CE5DB34D20C6ED36001F8A87 /* RegularUserInfoMapper.m in Sources */,
 				3B1E2FCA1F94D2A700E636F4 /* ExportSportsListTableViewCell.m in Sources */,
 				CE2A635320BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.m in Sources */,
 				3B01AF241F90950600BDF1AA /* ODRefreshControl.m in Sources */,
@@ -4079,6 +4116,7 @@
 				3B0C4D011F887393002CEADA /* UIImageView+HighlightedWebCache.m in Sources */,
 				CEDF04B220A9716C0012AAC4 /* AthleteInfoViewController.m in Sources */,
 				1A47ECAF205A823A00A0AA67 /* MapClusterController.m in Sources */,
+				CE5DB34720C6DD25001F8A87 /* NSDateFormatter+ServerRequest.m in Sources */,
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,

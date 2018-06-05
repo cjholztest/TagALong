@@ -7,6 +7,7 @@
 //
 
 #import "ReviewOfferView.h"
+#import "RegularUserInfoDataModel.h"
 
 @implementation ReviewOfferView
 
@@ -22,6 +23,14 @@
     if ([self.output respondsToSelector:@selector(declineButtonDidTap)]) {
         [self.output declineButtonDidTap];
     }
+}
+
+#pragma mark -
+
+- (void)setupWithDisplayModel:(RegularUserInfoDataModel*)userInfo {
+    
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.firstName, userInfo.lastName];
+    self.descriptionLabel.text = userInfo.location;
 }
 
 @end

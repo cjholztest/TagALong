@@ -45,8 +45,11 @@
     BOOL isPaid = [self.visitorsList[indexPath.row][@"user_bookings"][@"paid"] boolValue];
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     cell.nameLabel.textColor = UIColor.textColor;
-    cell.isPaidLabel.text = isPaid ? @"PAID" : @"NOT PAID";
-    cell.isPaidLabel.textColor = isPaid ? UIColor.greenColor : UIColor.redColor;
+    cell.isPaidLabel.text = @"$";
+    cell.isPaidLabel.font = [UIFont systemFontOfSize:16.0f];
+    cell.isPaidLabel.textColor = isPaid ? UIColor.greenColor : UIColor.textColor;
+    cell.isPaidLabel.layer.borderColor = cell.isPaidLabel.textColor.CGColor;
+    cell.isPaidLabel.textAlignment = NSTextAlignmentCenter;
     
     NSString *photoURL = self.visitorsList[indexPath.row][API_REQ_KEY_USER_PROFILE_IMG];
     if (photoURL) {

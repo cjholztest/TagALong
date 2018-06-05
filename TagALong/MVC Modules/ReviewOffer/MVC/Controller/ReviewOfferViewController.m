@@ -16,6 +16,8 @@
 #import "ReviewOfferMainSectionAdapter.h"
 #import "ReviewOfferAdditionalSectionAdapter.h"
 #import "ReviewOfferCellDisplayModel.h"
+#import "ReviewOfferViewDisplayModel.h"
+#import "NSDateFormatter+ServerRequest.h"
 
 @interface ReviewOfferViewController () <ReviewOfferModelOutput, ReviewOfferViewOutput, ReviewOfferMainSectionAdapterOutput, ReviewOfferAdditionalSectionAdapterOutput>
 
@@ -55,10 +57,10 @@
     NSString *who = [NSString stringWithFormat:@"%@ people", self.reviewOffer.totalPeople.stringValue];
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"yyyy.MM.dd";
+    dateFormatter.dateFormat = @"MM/dd/yyyy";
     NSString *dateString = [dateFormatter stringFromDate:self.reviewOffer.workoutDate];
     
-    dateFormatter.dateFormat = @"h: mm a";
+    dateFormatter.dateFormat = @"h:mm a";
     NSString *timeString = [dateFormatter stringFromDate:self.reviewOffer.workoutTime];
     
     NSString *when = [NSString stringWithFormat:@"%@, %@", dateString, timeString];
@@ -85,6 +87,14 @@
     
     self.tableViewAdapter = reviewOfferTableViewAdapter;
     [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
+    
+//    ReviewOfferViewDisplayModel *displayModel = [ReviewOfferViewDisplayModel new];
+    
+    [self.model loadInfoForUserUID:self.reviewOffer.fromUserUID.stringValue
+                          userType:self.reviewOffer.postType
+                            byDate:[NSDateFormatter workoutDateStringFromDate:self.reviewOffer.workoutDate]];
+    
+//    displayModel.fullName = [NSString stringWithFormat:self.reviewOffer.us]
 }
 
 #pragma mark - ReviewOfferModelOutput
@@ -95,6 +105,16 @@
     [self showAllertWithTitle:title message:message okCompletion:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
+}
+
+- (void)userInfoDidLoad:(RegularUserInfoDataModel *)userInfo isSuccess:(BOOL)isSuccessed message:(NSString *)message {
+    
+    if (!isSuccessed) {
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+        return;
+    }
+    
+    [self.contentView setupWithDisplayModel:userInfo];
 }
 
 #pragma mark - ReviewOfferViewOutput
