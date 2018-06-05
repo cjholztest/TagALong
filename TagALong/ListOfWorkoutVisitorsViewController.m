@@ -8,6 +8,7 @@
 
 #import "ListOfWorkoutVisitorsViewController.h"
 #import "WorkoutVisitorTableViewCell.h"
+#import "UIColor+AppColors.h"
 
 @interface ListOfWorkoutVisitorsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -41,7 +42,11 @@
     WorkoutVisitorTableViewCell *cell = (WorkoutVisitorTableViewCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     NSString *firstName = self.visitorsList[indexPath.row][API_REQ_KEY_USER_NICKNAME];
     NSString *lastName = self.visitorsList[indexPath.row][API_REQ_KEY_USER_LAST_NAME];
+    BOOL isPaid = [self.visitorsList[indexPath.row][@"user_bookings"][@"paid"] boolValue];
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    cell.nameLabel.textColor = UIColor.textColor;
+    cell.isPaidLabel.text = isPaid ? @"PAID" : @"NOT PAID";
+    cell.isPaidLabel.textColor = isPaid ? UIColor.greenColor : UIColor.redColor;
     
     NSString *photoURL = self.visitorsList[indexPath.row][API_REQ_KEY_USER_PROFILE_IMG];
     if (photoURL) {

@@ -31,6 +31,7 @@
 @protocol AthleteInfoViewOutput <NSObject>
 
 - (void)tagALongButtonDidTap;
+- (void)centeringButtonDidTap;
 
 @end
 

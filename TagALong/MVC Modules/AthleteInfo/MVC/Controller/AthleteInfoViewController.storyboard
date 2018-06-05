@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -148,15 +148,34 @@
                                             <constraint firstItem="bV3-VY-36T" firstAttribute="bottom" secondItem="aSy-7X-bRB" secondAttribute="top" id="tYL-K7-bD5"/>
                                         </constraints>
                                     </view>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1P-RW-5u7">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1P-RW-5u7">
                                         <rect key="frame" x="0.0" y="230" width="375" height="417"/>
                                     </mapView>
+                                    <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogX-g5-O9Q">
+                                        <rect key="frame" x="310" y="582" width="50" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EB4-GR-VK0"/>
+                                            <constraint firstAttribute="width" constant="50" id="je8-ZL-fIJ"/>
+                                        </constraints>
+                                        <state key="normal" image="center_location"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.corenrRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="centerButtonAction:" destination="D5C-HR-vrJ" eventType="touchUpInside" id="OL1-OK-76J"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.14117647059999999" green="0.1450980392" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Q1P-RW-5u7" secondAttribute="bottom" id="5LP-0B-mGb"/>
+                                    <constraint firstAttribute="bottom" secondItem="ogX-g5-O9Q" secondAttribute="bottom" constant="15" id="71Z-Px-WYY"/>
                                     <constraint firstItem="Q1P-RW-5u7" firstAttribute="leading" secondItem="D5C-HR-vrJ" secondAttribute="leading" id="LrU-cf-BYB"/>
                                     <constraint firstAttribute="trailing" secondItem="ijV-qp-iRP" secondAttribute="trailing" id="M7q-gK-JDr"/>
+                                    <constraint firstAttribute="trailing" secondItem="ogX-g5-O9Q" secondAttribute="trailing" constant="15" id="Rn6-u2-KGV"/>
                                     <constraint firstItem="ijV-qp-iRP" firstAttribute="top" secondItem="D5C-HR-vrJ" secondAttribute="top" id="YuW-fP-g2b"/>
                                     <constraint firstItem="Q1P-RW-5u7" firstAttribute="top" secondItem="ijV-qp-iRP" secondAttribute="bottom" id="g0y-Gk-VbZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Q1P-RW-5u7" secondAttribute="trailing" id="jnW-oa-kNF"/>
@@ -164,6 +183,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="avatarImageView" destination="C8e-Xg-opL" id="O3b-PB-hgI"/>
+                                    <outlet property="centerButton" destination="ogX-g5-O9Q" id="yaY-ac-1oy"/>
                                     <outlet property="cityLabel" destination="Dgj-u7-6Rz" id="Rls-XZ-3BZ"/>
                                     <outlet property="infoLabel" destination="TRj-0L-n3g" id="x0i-e5-isS"/>
                                     <outlet property="locationLabel" destination="j6q-Yn-3R9" id="Jsx-Go-PGE"/>
@@ -192,6 +212,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="center_location" width="25" height="25"/>
         <image name="ic_profile_black" width="190" height="190"/>
     </resources>
 </document>

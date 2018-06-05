@@ -15,11 +15,23 @@
 
 @implementation AthleteInfoView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.centerButton.layer.cornerRadius = 25.0f;
+    self.centerButton.clipsToBounds = YES;
+}
+
 #pragma mark - Actions
 
 - (IBAction)tagALongAction:(UIButton*)button {
     if ([self.output respondsToSelector:@selector(tagALongButtonDidTap)]) {
         [self.output tagALongButtonDidTap];
+    }
+}
+
+- (IBAction)centerButtonAction:(UIButton*)button {
+    if ([self.output respondsToSelector:@selector(centeringButtonDidTap)]) {
+        [self.output centeringButtonDidTap];
     }
 }
 

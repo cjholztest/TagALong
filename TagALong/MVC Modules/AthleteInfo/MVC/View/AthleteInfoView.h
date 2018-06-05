@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 
 @property (nonatomic, weak) IBOutlet UIButton *tagALongLabel;
+@property (nonatomic, weak) IBOutlet UIButton *centerButton;
 @property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;

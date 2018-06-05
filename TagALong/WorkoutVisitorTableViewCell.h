@@ -6,11 +6,12 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SubmitOfferBaseTableViewCell.h"
 
-@interface WorkoutVisitorTableViewCell : UITableViewCell
+@interface WorkoutVisitorTableViewCell : SubmitOfferBaseTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *isPaidLabel;
 
 @end

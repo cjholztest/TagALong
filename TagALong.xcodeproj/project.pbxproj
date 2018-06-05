@@ -205,6 +205,7 @@
 		CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77420A59131008B0E75 /* ProsTableViewCell.m */; };
 		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
+		CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */; };
 		CE7E0F1720AC305000D93035 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1520AC305000D93035 /* PickerViewController.m */; };
 		CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */; };
 		CE7E0F1C20AC4C7300D93035 /* UIViewController+Presentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F1B20AC4C7300D93035 /* UIViewController+Presentation.m */; };
@@ -749,6 +750,8 @@
 		CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProsTableViewCell.xib; sourceTree = "<group>"; };
 		CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCellDisplayModel.h; sourceTree = "<group>"; };
 		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CE5DB33B20C6AC61001F8A87 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		CE7E0F1520AC305000D93035 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		CE7E0F1620AC305000D93035 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		CE7E0F1820AC305900D93035 /* PickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PickerViewController.storyboard; sourceTree = "<group>"; };
@@ -2478,6 +2481,7 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CE5DB33A20C6AC3B001F8A87 /* MKMapView Categories */,
 				CEDA663A20B0683A009417BF /* UINavigationBar Categories */,
 				CE7E0F3520ADA83000D93035 /* UILabel Categories */,
 				CEDF055520AB16B70012AAC4 /* NSString Categories */,
@@ -2528,6 +2532,15 @@
 				CE36D74C20A478FA008B0E75 /* View */,
 			);
 			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE5DB33A20C6AC3B001F8A87 /* MKMapView Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE5DB33B20C6AC61001F8A87 /* MKMapView+ZoomLevel.h */,
+				CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */,
+			);
+			path = "MKMapView Categories";
 			sourceTree = "<group>";
 		};
 		CE7E0F1D20AC4F3200D93035 /* DatePicker */ = {
@@ -4021,6 +4034,7 @@
 				CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */,
 				CE2A634720BD4C6100AE9CD3 /* WorkoutDetailsAdditionalSectionAdapter.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
+				CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,
 				CEDA65F920B032E8009417BF /* ProUserSignUpConfirmPasswordCellAdapter.m in Sources */,
 				CEDF04F720A9A4F60012AAC4 /* SubmitOfferWhatCellAdapter.m in Sources */,

@@ -128,15 +128,14 @@
         
         [weakSelf updateTitle];
         
-        NSString *curentUserID = Global.g_user.user_id;
-        NSString *email = Global.g_user.user_email;
+        NSNumber *proUserID = @(Global.g_expert.export_uid);
         
-        BOOL isIndividual = currentUserID.integerValue == weakSelf.workotDetails.postUID.integerValue;
+        BOOL isIndividual = proUserID.integerValue == weakSelf.workotDetails.postUID.integerValue;
         
         NSArray *displayModels = [weakSelf generateDisplayModels];
         WorkoutDetailsViewDisplayModel *profileDisplayModel = [weakSelf profileDispayModel];
         
-        profileDisplayModel.isButtonVisible = !(userAlreadyBooked || isIndividual);
+        profileDisplayModel.isButtonVisible = !(userAlreadyBooked);
         profileDisplayModel.actionButtonType = isIndividual ? BookedUsersButtonType : BookNowButtonType;
         profileDisplayModel.buttonTitle = isIndividual ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
 
