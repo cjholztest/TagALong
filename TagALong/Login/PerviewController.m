@@ -2,7 +2,7 @@
 //  PerviewController.m
 //  TagALong
 //
-//  Created by User on 4/13/18.
+//  Created by Nikita Vintonovich on 4/13/18.
 //  Copyright © 2018 PJH. All rights reserved.
 //
 

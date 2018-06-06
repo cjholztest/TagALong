@@ -2,7 +2,7 @@
 //  ProfilePaymentCredentials.h
 //  TagALong
 //
-//  Created by User on 3/26/18.
+//  Created by Nikita Vintonovich on 3/26/18.
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
