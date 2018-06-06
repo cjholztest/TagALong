@@ -5955,6 +5955,9 @@ Terms of Use and Privacy Policy</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZoZ-CY-TPv">
+                                                    <rect key="frame" x="315" y="5.5" width="45" height="45"/>
+                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvn-nH-qfm">
                                                     <rect key="frame" x="330" y="13.5" width="30" height="30"/>
                                                     <constraints>
@@ -5977,14 +5980,19 @@ Terms of Use and Privacy Policy</string>
                                             <constraints>
                                                 <constraint firstItem="INm-j1-Hup" firstAttribute="leading" secondItem="Ne4-fB-gYH" secondAttribute="trailing" constant="19" id="D51-RI-qxN"/>
                                                 <constraint firstItem="INm-j1-Hup" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="K82-sv-FFw"/>
+                                                <constraint firstItem="ZoZ-CY-TPv" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="Oqv-Ei-LTZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="uvn-nH-qfm" secondAttribute="trailing" constant="15" id="QSg-pt-dFM"/>
                                                 <constraint firstItem="uvn-nH-qfm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="INm-j1-Hup" secondAttribute="trailing" constant="15" id="aVZ-6T-xBp"/>
+                                                <constraint firstItem="ZoZ-CY-TPv" firstAttribute="width" secondItem="KP9-kW-zBD" secondAttribute="height" multiplier="0.8" id="dNr-nf-va0"/>
+                                                <constraint firstItem="ZoZ-CY-TPv" firstAttribute="height" secondItem="KP9-kW-zBD" secondAttribute="height" multiplier="0.8" id="ggZ-qv-YTU"/>
                                                 <constraint firstItem="uvn-nH-qfm" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="oG9-AQ-ebe"/>
+                                                <constraint firstItem="ZoZ-CY-TPv" firstAttribute="trailing" secondItem="KP9-kW-zBD" secondAttribute="trailingMargin" id="qTU-ct-L0i"/>
                                                 <constraint firstItem="Ne4-fB-gYH" firstAttribute="leading" secondItem="KP9-kW-zBD" secondAttribute="leading" constant="15" id="sxc-fL-4Wz"/>
                                                 <constraint firstItem="Ne4-fB-gYH" firstAttribute="centerY" secondItem="KP9-kW-zBD" secondAttribute="centerY" id="tcs-hW-sCg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="iconImageView" destination="ZoZ-CY-TPv" id="ef8-aY-JmI"/>
                                             <outlet property="isPaidLabel" destination="uvn-nH-qfm" id="Tni-On-4CK"/>
                                             <outlet property="nameLabel" destination="INm-j1-Hup" id="aWO-VX-FYv"/>
                                             <outlet property="profileIconImageView" destination="Ne4-fB-gYH" id="3yP-ws-mN5"/>

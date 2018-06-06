@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *isPaidLabel;
 
+@property (nonatomic, weak) IBOutlet UIImageView *iconImageView;
+
 @end

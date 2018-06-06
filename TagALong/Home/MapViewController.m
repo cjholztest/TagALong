@@ -20,6 +20,8 @@
 #import <CCHMapClusterController/CCHMapClusterAnnotation.h>
 #import "ClusterAnnotationView.h"
 #import "MapClusterListViewController.h"
+#import "UIViewController+Storyboard.h"
+#import "WorkoutDetailsViewController.h"
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate, CCHMapClusterControllerDelegate>{
     
@@ -610,8 +612,9 @@
         _lbldate.text = [NSString stringWithFormat:@"%02ld:%02ld am", (date * 15) / 60 , (date * 15) % 60];
     }
 
-    
-    _lblAmount.text = [NSString stringWithFormat:@"$%@", amount];
+    if (amount.length > 0) {
+        _lblAmount.text = [NSString stringWithFormat:@"$%@", amount];
+    }
 //    _lblLocation.text = location;
     
     if ( [level isEqual:[NSNull null]] )  { //individual
@@ -689,10 +692,9 @@
 #pragma mark - click events
 
 - (IBAction)onClickBookNow:(id)sender {
-    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-    vc.workout_id = workout_uid;
+    WorkoutDetailsViewController *vc = (WorkoutDetailsViewController*)WorkoutDetailsViewController.fromStoryboard;
+    [vc setupWorkout:workout_uid];
     [self.vcParent.navigationController pushViewController:vc animated:YES];
-
 }
 
 //filter click

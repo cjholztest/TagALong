@@ -138,7 +138,11 @@
         profileDisplayModel.isButtonVisible = !(userAlreadyBooked);
         profileDisplayModel.actionButtonType = isIndividual ? BookedUsersButtonType : BookNowButtonType;
         profileDisplayModel.buttonTitle = isIndividual ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
-
+        
+        if (isIndividual) {
+            profileDisplayModel.isButtonVisible = YES;
+        }
+        
         [weakSelf updateTitle];
         
         [weakSelf.output workoutDetaisDidLoadSuccess:isSuccessed

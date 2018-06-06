@@ -60,7 +60,7 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     arrSportNM = [NSArray arrayWithObjects:@"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
-    arrCateNM = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
+    arrCateNM = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", @"Other", nil];
 
     _ivProfile.layer.cornerRadius = _ivProfile.frame.size.width / 2;
     if ([Global.g_user.user_login isEqualToString:@"1"]) {

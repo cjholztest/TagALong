@@ -110,7 +110,7 @@
 }
 
 + (UIColor*)gymBackgroundColor {
-    return [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+    return [UIColor colorWithRed:(254.0f/255.f) green:(214.0f/255.f) blue:(49.0f/255.f) alpha:1.0];
 }
 
 + (UIColor*)proTextColor {
