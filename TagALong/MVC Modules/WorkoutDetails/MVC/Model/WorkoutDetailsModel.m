@@ -20,6 +20,8 @@
 #import "PaymentClient+Pay.h"
 #import "PaymentClient+CreditCard.h"
 
+static NSString *kUserDidPay = @"CurrentUserDidPay";
+
 @interface WorkoutDetailsModel()
 
 @property (nonatomic, weak) id <WorkoutDetailsModelOutput> output;
@@ -81,12 +83,16 @@
     __block NSDictionary *workoutJSON = nil;
     __block NSArray *bookedUsersArray = nil;
     
+    __block NSString *didCurrentUserPay = nil;
+    
     dispatch_group_t serviceGroup = dispatch_group_create();
     
     dispatch_group_enter(serviceGroup);
     [self workoutDetilsForWorkoutID:workoutUID withCompletion:^(NSDictionary *workoutInfo, NSError *error) {
         workoutJSON = workoutInfo;
         workoutDetailsError = error;
+        
+        
         dispatch_group_leave(serviceGroup);
     }];
     
@@ -94,6 +100,30 @@
     [self bookedUsersForWorkoutID:workoutUID withCompletion:^(NSArray *bookedUsers, NSError *error) {
         bookedUsersArray = bookedUsers;
         bookedUsersError = error;
+        
+        NSNumber *currentUserUID = nil;
+        
+        id dd = Global.g_user.user_id;
+        NSNumber *ss = @(Global.g_expert.export_uid);
+        
+        if (Global.g_user.loggedInUserIsRegualar) {
+            currentUserUID = @(Global.g_user.user_id.integerValue);
+        } else {
+            currentUserUID = @(Global.g_expert.export_uid);
+        }
+        
+        for (NSInteger i = 0; i < bookedUsers.count; i++) {
+            NSDictionary *dict = bookedUsers[i];
+            NSNumber *userUID = dict[@"user_uid"];
+            NSNumber *userBookingUID = dict[@"user_bookings"][@"user_booking_uid"];
+            if (currentUserUID.integerValue == userUID.integerValue) {
+                NSNumber *isPaid = dict[@"user_bookings"][@"paid"];
+                if (isPaid.integerValue == 1) {
+                    didCurrentUserPay = kUserDidPay;
+                }
+            }
+        }
+        
         dispatch_group_leave(serviceGroup);
     }];
     

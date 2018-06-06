@@ -103,8 +103,11 @@
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self changeSort:sort_index];
     } else {
-        //[self ReqWorkoutList];
-        [self ReqExportWorkoutList];
+        [self.btnTime setHidden:YES];
+        [self.btnDistance setHidden:YES];
+        [self.btnDuration setHidden:YES];
+        [self ReqWorkoutListForPro];
+//        [self ReqExportWorkoutList];
     }
 }
 
@@ -668,6 +671,76 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
         [Commons showToast:@"Failed to communicate with the server"];
+    }];
+}
+
+-(void)ReqWorkoutListForPro {
+    
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
+    
+    NSNumber *start = [NSNumber numberWithDouble:self.startDate];
+    NSNumber *end = [NSNumber numberWithDouble:self.endDate];
+    
+    double lat =  Global.g_expert.expert_latitude.doubleValue;
+    double lnd =  Global.g_expert.expert_longitude.doubleValue;
+    
+    NSDictionary *params = @{
+                             API_REQ_KEY_USER_LATITUDE      :   @(lat),
+                             API_REQ_KEY_USER_LONGITUDE     :   @(lnd),
+                             API_REQ_KEY_SORT_TYPE          :   @"distance",
+                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
+                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
+                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
+                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_IS_MAP             :   @"0",
+                             //API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             API_REQ_KEY_START_DATE         :   start ?: 0,
+                             API_REQ_KEY_END_DATE           :   end ?: 0,
+                             };
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        [SharedAppDelegate closeLoading];
+        
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+            
+            if( nPage == 1 )
+            {
+                [_arrSportList removeAllObjects];
+            }
+            
+            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            count_per_page = [[responseObject objectForKey:API_RES_KEY_COUNT_PER_PAGE] intValue];
+            if (count_per_page > arr.count) {
+                isMore = YES;
+            } else {
+                isMore = NO;
+            }
+            [_arrSportList addObjectsFromArray:arr];
+            
+            [_tvSportList reloadData];
+            
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+            
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
     }];
 }
 

@@ -145,6 +145,9 @@
 
     Global.g_user.user_latitude = [Preference getString:PREFCONST_LATITUDE default:nil];
     Global.g_user.user_longitude = [Preference getString:PREFCONST_LONGTITUDE default:nil];
+    
+    Global.g_expert.expert_latitude = [Preference getString:PREFCONST_EXPERT_LATITUDE default:nil];
+    Global.g_expert.expert_longitude = [Preference getString:PREFCONST_EXPERT_LONGTITUDE default:nil];
 
     if (Global.g_user.user_latitude == nil) {
         Global.g_user.user_latitude = @"38";
@@ -176,8 +179,18 @@
             [self setMyPosSetting];
         }
     } else {
-        //[self ReqWorkoutList];
-        [self ReqExportWorkoutList];
+        
+        double lat =  locationMng.location.coordinate.latitude;
+        double lnd =  locationMng.location.coordinate.longitude;
+        
+        Global.g_expert.expert_latitude = [NSString stringWithFormat:@"%f", lat];
+        Global.g_expert.expert_longitude = [NSString stringWithFormat:@"%f", lnd];
+        
+        [Preference setString:PREFCONST_EXPERT_LATITUDE value:Global.g_expert.expert_latitude];
+        [Preference setString:PREFCONST_EXPERT_LONGTITUDE value:Global.g_expert.expert_longitude];
+        
+        [self ReqWorkoutListForPro];
+//        [self ReqExportWorkoutList];
     }
 }
 
@@ -770,6 +783,71 @@
             NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
             
 //            NSLog(@"response size: %zd", malloc_size((__bridge const void *)(responseObject)));
+            
+            [_arrSportList addObjectsFromArray:arr];
+            
+            [self OhterPlayPosSet];
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+            
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [SharedAppDelegate closeLoading];
+    }];
+}
+
+-(void)ReqWorkoutListForPro {
+    
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
+    
+    NSNumber *start = [NSNumber numberWithDouble:self.startDate];
+    NSNumber *end = [NSNumber numberWithDouble:self.endDate];
+    
+    double lat =  locationMng.location.coordinate.latitude;
+    double lnd =  locationMng.location.coordinate.longitude;
+    
+    NSDictionary *params = @{
+                             API_REQ_KEY_USER_LATITUDE      :   @(lat),
+                             API_REQ_KEY_USER_LONGITUDE     :   @(lnd),
+                             API_REQ_KEY_SORT_TYPE          :   @"distance",
+                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
+                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
+                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
+                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_IS_MAP             :   @"1",
+                             //API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             API_REQ_KEY_START_DATE         :   start ?: 0,
+                             API_REQ_KEY_END_DATE           :   end ?: 0,
+                             };
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        [SharedAppDelegate closeLoading];
+        
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+            
+            if (_arrSportList.count > 0) {
+                [_arrSportList removeAllObjects];
+            }
+            
+            NSArray *arr  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            
+            //            NSLog(@"response size: %zd", malloc_size((__bridge const void *)(responseObject)));
             
             [_arrSportList addObjectsFromArray:arr];
             

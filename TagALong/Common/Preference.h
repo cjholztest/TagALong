@@ -42,6 +42,8 @@
 #define PREFCONST_EXPERT_CONTENT            @"pref_expert_content"
 #define PREFCONST_EXPERT_SPORT              @"pref_expert_sport"
 #define PREFCONST_EXPERT_COMMUNICATION      @"pref_expert_communicatiom"
+#define PREFCONST_EXPERT_LATITUDE          @"pref_expert_latitude"
+#define PREFCONST_EXPERT_LONGTITUDE        @"pref_expert_longtitude"
 
 
 @interface Preference : NSObject

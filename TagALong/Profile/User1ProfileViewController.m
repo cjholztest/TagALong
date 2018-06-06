@@ -20,6 +20,7 @@
 #import "ExpertUserProfileEditViewController.h"
 #import "SimpleUserEditProfileViewController.h"
 #import "UIViewController+Storyboard.h"
+#import "WorkoutDetailsViewController.h"
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate, ExpertUserProfileEditViewControllerDelegate>{
     NSString *file_url;
@@ -165,9 +166,11 @@ static const NSInteger kMaxImageCnt = 1;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     NSDictionary *dic = _arrWorkout[indexPath.row];
-    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
-    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
-    vc.bProfile = YES;
+//    BookWorkoutViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BookWorkoutViewController"];
+//    vc.workout_id = [dic objectForKey:API_RES_KEY_WORKOUT_UID];
+//    vc.bProfile = YES;
+    WorkoutDetailsViewController *vc = (WorkoutDetailsViewController*)WorkoutDetailsViewController.fromStoryboard;
+    [vc setupWorkout:[dic objectForKey:API_RES_KEY_WORKOUT_UID]];
     [self.vcParent.navigationController pushViewController:vc animated:YES];
     
 }

@@ -25,6 +25,9 @@
 @property(nonatomic, retain) NSString *expert_communication;
 @property(nonatomic, retain) NSString *expert_content;
 
+@property(nonatomic, retain) NSString *expert_latitude;
+@property(nonatomic, retain) NSString *expert_longitude;
+
 @end
 
 
