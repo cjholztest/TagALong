@@ -8,6 +8,7 @@
 
 #import "ReviewOfferView.h"
 #import "RegularUserInfoDataModel.h"
+#import "UIColor+AppColors.h"
 
 @implementation ReviewOfferView
 
@@ -31,6 +32,12 @@
     
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", userInfo.firstName, userInfo.lastName];
     self.descriptionLabel.text = userInfo.location;
+    
+    UIColor *color = userInfo.level.integerValue == 0 ? UIColor.whiteColor : UIColor.proBackgroundColor;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+       self.athleteTypeLineView.backgroundColor = color;
+    }];
 }
 
 @end

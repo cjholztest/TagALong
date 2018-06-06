@@ -34,7 +34,7 @@
     cell.output = self;
     
     NSDate *date = [self.output date];
-    NSDate *time = [self.output time];
+    NSString *time = [self.output time];
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
@@ -48,8 +48,7 @@
     }
     
     if (time) {
-        [dateFormatter setDateFormat:@"h:mm a"];
-        cell.timeLabel.text = [dateFormatter stringFromDate:time];
+        cell.timeLabel.text = time;
         cell.timeLabel.textColor = [UIColor textColor];
     } else {
         cell.timeLabel.text = @"Time";

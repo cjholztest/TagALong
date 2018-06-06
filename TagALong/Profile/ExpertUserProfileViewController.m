@@ -96,7 +96,8 @@
         cell.lblTitle.text = offer.title;
         cell.lblTime.text = offer.timeString;
         
-        [cell.ivStar setHidden:NO];
+        BOOL isHidden = offer.status.integerValue == 2;
+        [cell.ivStar setHidden:isHidden];
         
     } else {
         NSDictionary *dic  = _arrWorkout[indexPath.row];
@@ -110,20 +111,21 @@
     //    } else {
     //        cell.vwBG.backgroundColor = [UIColor whiteColor];
     //    }
-        [cell.ivStar setHidden:YES];
+//        [cell.ivStar setHidden:YES];
         
-        NSString *star = [dic objectForKey:@"star_mark"];
-        if ([star isEqualToString:@"1"]) {
+//        NSNumber *star = [dic objectForKey:@"status"];
+//        if (star.integerValue == 2) {
 //            [cell.ivStar setHidden:NO];
             NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
             NSString *loc = [dic objectForKey:API_RES_KEY_USER_LOCATION];
             cell.lblTitle.text = [NSString stringWithFormat:@"%@\n%@", title, loc];
             cell.lblTitle.textAlignment = NSTextAlignmentLeft;
-        } else {
-//            [cell.ivStar setHidden:YES];
-            cell.lblTitle.text = @"";
-            cell.lblTitle.textAlignment = NSTextAlignmentCenter;
-        }
+//        } else {
+////            [cell.ivStar setHidden:YES];
+//            cell.lblTitle.text = @"";
+//            cell.lblTitle.textAlignment = NSTextAlignmentCenter;
+//        }
+        [cell.ivStar setHidden:YES];
     }
     
     return cell;

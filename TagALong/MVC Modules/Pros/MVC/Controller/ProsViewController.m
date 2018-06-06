@@ -32,6 +32,11 @@
     [self.model loadPros];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationItem.rightBarButtonItem = nil;
+}
+
 #pragma mark - Setup
 
 - (void)setup {

@@ -12,5 +12,6 @@ typedef NS_ENUM(NSUInteger, PickerType) {
     DuratoinPickerType,
     SportsPickerType,
     TotalPeoplePickerType,
-    MilesPickerType
+    MilesPickerType,
+    StartTimePickerType
 };

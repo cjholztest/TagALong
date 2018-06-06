@@ -34,8 +34,8 @@
     [self.output dataDidChange];
 }
 
-- (void)updateTime:(NSDate*)time {
-    self.offer.time = time;
+- (void)updateTime:(NSString *)timeString {
+    self.offer.timeString = timeString;
     [self.output dataDidChange];
 }
 
@@ -122,7 +122,7 @@
         return @"Input Date";
     }
     
-    if (!self.offer.time) {
+    if (!self.offer.timeString) {
         return @"Input Time";
     }
     

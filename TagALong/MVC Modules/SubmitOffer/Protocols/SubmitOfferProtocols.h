@@ -13,7 +13,7 @@
 @protocol SubmitOfferModelInput <NSObject>
 
 - (void)updateDate:(NSDate*)date;
-- (void)updateTime:(NSDate*)time;
+- (void)updateTime:(NSString*)timeString;
 
 - (void)updateWhoInfo:(NSString*)whoInfo;
 - (void)updateWhatInfo:(NSString*)whatInfo;

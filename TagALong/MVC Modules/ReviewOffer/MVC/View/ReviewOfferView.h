@@ -21,6 +21,8 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
+@property (nonatomic, weak) IBOutlet UIView *athleteTypeLineView;
+
 @property (nonatomic, weak) id <ReviewOfferViewOutput> output;
 
 @end

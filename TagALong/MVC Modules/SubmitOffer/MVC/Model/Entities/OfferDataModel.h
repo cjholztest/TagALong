@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *who;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSDate *time;
+@property (nonatomic, strong) NSString *timeString;
 @property (nonatomic, strong) NSString *what;
 @property (nonatomic, strong) NSString *duration;
 @property (nonatomic, strong) NSString *amount;

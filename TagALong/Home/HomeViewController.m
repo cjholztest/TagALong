@@ -120,6 +120,11 @@
     
     [self setPage];
     [self changeBottomButton];
+    
+    if (_nCurButtonIdx == BUTTON_PROS) {
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationController.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -137,7 +142,10 @@
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
     
-
+    if (_nCurButtonIdx == BUTTON_PROS) {
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationController.navigationItem.rightBarButtonItem = nil;
+    }
     
 //    if ([Global.g_user.user_login isEqualToString:@"expert"]) {
 //        [self onClickProfile:self];
@@ -440,13 +448,16 @@
 }
 
 - (IBAction)onClickPros:(id)sender {
+    
+    bOtherPage = false;
+    _nCurButtonIdx = BUTTON_PROS;
+    [self changeBottomButton];
+    self.navigationItem.title = @"Pros";
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    [self removeviewsFromMain];
+    
     if (!vcPros) {
-        bOtherPage = false;
-        _nCurButtonIdx = BUTTON_PROS;
-        [self changeBottomButton];
-        self.navigationItem.title = @"Pros";
-        self.navigationItem.rightBarButtonItem = nil;
-        [self removeviewsFromMain];
         vcPros = [[UIStoryboard storyboardWithName:@"ProsViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ProsViewController"];
         vcPros.view.frame = _vwContent.bounds;
         [_vwContent addSubview:vcPros.view];

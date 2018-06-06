@@ -23,6 +23,9 @@
     user.profileIconURL = json[@"usr_uid"];
     user.phoneNumber = json[@"usr_phone"];
     
+    id level = json[@"level"];
+    user.level = level ? level : @(0);
+    
     user.hidePhone = [json[@"hide_phone"] boolValue];
     
     return user;

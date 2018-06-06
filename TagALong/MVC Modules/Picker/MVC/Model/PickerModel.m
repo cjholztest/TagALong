@@ -41,6 +41,9 @@
             case MilesPickerType:
                 [self setupMilesComponents];
                 break;
+            case StartTimePickerType:
+                [self setupStartTimeComponents];
+                break;
             default:
                 break;
         }
@@ -84,6 +87,26 @@
             value = [NSString stringWithFormat:@"%0ldh %0ldmin", (i * 15) / 60, (i  * 15) % 60];
         }
         [self.pickerComponents addObject:value];
+    }
+}
+
+- (void)setupStartTimeComponents {
+    self.pickerComponents = [NSMutableArray array];
+    
+    for (NSInteger i = 0; i < 96; i++) {
+        NSString *temp = @"";
+        if (i >= 48) {
+            NSInteger hours = ((i - 48) * 15) / 60;
+            NSInteger mins = ((i - 48) * 15) % 60;
+            if (hours == 0) hours = 12;
+            temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
+            [self.pickerComponents addObject:temp];
+        } else {
+            if (i == 20 || i == 24 || i == 28 || i >= 32) {
+                temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
+                [self.pickerComponents addObject:temp];
+            }
+        }
     }
 }
 

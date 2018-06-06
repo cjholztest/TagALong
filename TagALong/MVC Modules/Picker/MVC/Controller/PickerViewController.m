@@ -104,6 +104,11 @@
                     [self.moduleOutput pickerDoneButtonDidTapWithMiles:title];
                 }
                 break;
+            case StartTimePickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithStartTime:)]) {
+                    [self.moduleOutput pickerDoneButtonDidTapWithStartTime:title];
+                }
+                break;
             default:
                 break;
         }
@@ -154,7 +159,7 @@
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 30.0f;
+    return 40.0f;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -165,7 +170,7 @@
     
     NSString *title = [self.model titleForComponentAtIndex:row];
     NSDictionary *attriputes = @{NSForegroundColorAttributeName : UIColor.textColor,
-                                 NSFontAttributeName : UIFont.textFont};
+                                 NSFontAttributeName : UIFont.pickerFont};
     
     NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:attriputes];
     return attString;

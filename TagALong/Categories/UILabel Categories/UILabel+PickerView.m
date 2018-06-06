@@ -7,6 +7,8 @@
 //
 
 #import "UILabel+PickerView.h"
+#import "UIFont+HelveticaNeue.h"
+#import "UIColor+AppColors.h"
 
 @implementation UILabel (PickerView)
 
@@ -16,8 +18,8 @@
 
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
-//    label.textColor = UIColor.textColor;
-//    label.font = [UIFont textFont];
+    label.textColor = UIColor.textColor;
+    label.font = [UIFont pickerFont];
     label.minimumScaleFactor = 0.1;
     
     return label;

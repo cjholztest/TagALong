@@ -18,6 +18,7 @@
 
 #import "UIViewController+Storyboard.h"
 #import "WorkoutDetailsViewController.h"
+#import "UIColor+AppColors.h"
 
 @interface ListViewController ()<UITableViewDelegate, UITableViewDataSource, FilterViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>{
     OtherUserProfileViewController *vcOtherProfile;
@@ -89,6 +90,8 @@
     [self.refreshControl addTarget:self action:@selector(WorkoutListRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tvSportList addSubview:self.refreshControl];
 
+    self.tvSportList.backgroundColor = UIColor.clearColor;
+    self.view.backgroundColor = UIColor.regularBackgroundColor;
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -127,7 +130,11 @@
     
         static NSString *CellIdentifier = @"SportsListTableViewCell";
         SportsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
+        
+        for (UIView *view in cell.subviews) {
+            view.backgroundColor = UIColor.clearColor;
+        }
+        
         NSDictionary *dic = _arrSportList[indexPath.row];
         NSString *level = [[dic objectForKey:API_RES_KEY_LEVEL] stringValue];
         //NSInteger sport_uid = [[dic objectForKey:API_RES_KEY_SPORT_UID] integerValue];
@@ -185,14 +192,16 @@
         }
         
         if ( [level isEqual:[NSNull null]] || !level )  { //individual
-            cell.vwBG.backgroundColor = [UIColor whiteColor];
+//            cell.vwBG.backgroundColor = [UIColor whiteColor];
+            cell.ivSport.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
             cell.lblDistance.textColor = [UIColor blackColor];
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow3"];
             cell.lblSportName.textColor = [UIColor blackColor];
         } else if ([level isEqualToString:@"1"]) { //gym
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[1], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor whiteColor];
             cell.lblSportName.textColor = [UIColor whiteColor];
@@ -200,15 +209,18 @@
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
             cell.lblSportName.textColor = [UIColor whiteColor];
         } else if ([level isEqualToString:@"2"]) { //pro
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[2], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
             cell.lblSportName.textColor = [UIColor blackColor];
             cell.lblDistance.textColor = [UIColor blackColor];
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow2"];
+            cell.ivArrow.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
             cell.lblSportName.textColor = [UIColor blackColor];
         } else if ([level isEqualToString:@"3"]) { //trainer
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[3], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor whiteColor];
             cell.lblSportName.textColor = [UIColor whiteColor];
@@ -216,6 +228,14 @@
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
             cell.lblSportName.textColor = [UIColor whiteColor];
         }
+        
+        cell.lblName.textColor = UIColor.whiteColor;
+        cell.lblSportName.textColor = UIColor.whiteColor;
+        cell.lblDistance.textColor = UIColor.whiteColor;
+        cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
+        cell.ivArrow.backgroundColor = UIColor.clearColor;
+        cell.lblSportName.textColor = UIColor.whiteColor;
+        
         cell.lblDate.text = [self workoutStringDateFromDateString:dic[@"workout_date"]];
         cell.lblDate.textColor = cell.lblDistance.textColor;
         //profile
@@ -236,6 +256,9 @@
             }
         }
 
+        cell.ivSport.layer.cornerRadius = cell.ivSport.bounds.size.width / 2.0f;
+        cell.ivSport.clipsToBounds = YES;
+        
         cell.ivSport.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         cell.lblName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
         if ([sort_index isEqualToString:@"distance"]) {
@@ -258,6 +281,12 @@
 
         [cell.bnProfile addTarget:self action:@selector(onClickUserProfile:) forControlEvents:UIControlEventTouchUpInside];
         cell.bnProfile.tag = indexPath.row;
+        
+        cell.backgroundColor = UIColor.clearColor;
+        cell.contentView.backgroundColor = UIColor.clearColor;
+        cell.backgroundView.backgroundColor = UIColor.clearColor;
+        cell.vwBG.backgroundColor = UIColor.clearColor;
+        
         return cell;
     } else {
         
@@ -304,14 +333,16 @@
 
         
         if ( [level isEqual:[NSNull null]] || !level )  { //individual
-            cell.vwBG.backgroundColor = [UIColor whiteColor];
+//            cell.vwBG.backgroundColor = [UIColor whiteColor];
+            cell.ivSport.backgroundColor = [UIColor whiteColor];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[0], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
             cell.lblDistance.textColor = [UIColor blackColor];
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow3"];
             cell.lblSportName.textColor = [UIColor blackColor];
         } else if ([level isEqualToString:@"1"]) { //gym
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[1], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor whiteColor];
             cell.lblSportName.textColor = [UIColor whiteColor];
@@ -319,7 +350,8 @@
             cell.lblSportName.textColor = [UIColor whiteColor];
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
         } else if ([level isEqualToString:@"2"]) { //pro
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[2], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor blackColor];
             cell.lblSportName.textColor = [UIColor blackColor];
@@ -327,7 +359,8 @@
             cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow2"];
             cell.lblSportName.textColor = [UIColor blackColor];
         } else if ([level isEqualToString:@"3"]) { //trainer
-            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+//            cell.vwBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
+            cell.ivSport.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
             cell.lblSportName.text = [NSString stringWithFormat:@"%@ / %@", arrLevel[3], arrSportNM[sport_uid - 1]];
             cell.lblName.textColor = [UIColor whiteColor];
             cell.lblSportName.textColor = [UIColor whiteColor];
@@ -336,6 +369,16 @@
             cell.lblSportName.textColor = [UIColor whiteColor];
         }
         
+        cell.lblName.textColor = UIColor.whiteColor;
+        cell.lblSportName.textColor = UIColor.whiteColor;
+        cell.lblDistance.textColor = UIColor.whiteColor;
+        cell.ivArrow.image = [UIImage imageNamed:@"ic_right_arrow1"];
+        cell.ivArrow.backgroundColor = UIColor.clearColor;
+        cell.lblSportName.textColor = UIColor.whiteColor;
+        
+        cell.ivSport.layer.cornerRadius = cell.ivSport.bounds.size.width / 2.0f;
+        cell.ivSport.clipsToBounds = YES;
+        
         cell.ivSport.image = [UIImage imageNamed:arrSportImg[sport_uid - 1]];
         cell.lblName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];   
       
@@ -343,6 +386,11 @@
          //NSString *temp = [self startTime:startTime];
         cell.lblDistance.text = startTime;
     
+        cell.backgroundColor = UIColor.clearColor;
+        cell.contentView.backgroundColor = UIColor.clearColor;
+        cell.backgroundView.backgroundColor = UIColor.clearColor;
+        cell.vwBG.backgroundColor = UIColor.clearColor;
+        
         return cell;
     }
 

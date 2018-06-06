@@ -8,6 +8,7 @@
 
 #import "AthleteInfoView.h"
 #import "AthleteDataModel.h"
+#import "UIColor+AppColors.h"
 
 @interface AthleteInfoView()
 
@@ -50,6 +51,14 @@
     [self.tagALongLabel setTitle:title forState:UIControlStateNormal];
     [self.tagALongLabel setTitle:title forState:UIControlStateSelected];
     [self.tagALongLabel setTitle:title forState:UIControlStateHighlighted];
+    
+    BOOL isButtonActive = Global.g_expert.export_uid != athlete.userUID.intValue;
+    
+    UIColor *buttonColor = isButtonActive ? UIColor.appColor : UIColor.grayColor;
+    [self.tagALongLabel setBackgroundColor:buttonColor];
+    
+    [self.tagALongLabel setEnabled:isButtonActive];
+    [self.tagALongLabel setUserInteractionEnabled:isButtonActive];
     
     if (athlete.profileImage.length > 0) {
         [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:athlete.profileImage] placeholderImage:[UIImage imageNamed:@"ic_profile_black"]];

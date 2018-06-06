@@ -122,10 +122,10 @@ DatePickerModuleOutput
 
 - (void)timeDidTap {
     [self hideKeyboardIfNeeded];
-    DatePickerViewController *datePickerVC = (DatePickerViewController*)DatePickerViewController.fromStoryboard;
-    [datePickerVC setupWithType:TimeDatePickerType];
-    datePickerVC.moduleOutput = self;
-    [self presentCrossDissolveVC:datePickerVC];
+    PickerViewController *startTimePickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    [startTimePickerVC setupWithType:StartTimePickerType];
+    startTimePickerVC.moduleOutput = self;
+    [self presentCrossDissolveVC:startTimePickerVC];
 }
 
 - (void)whenCellDidTap {
@@ -136,8 +136,8 @@ DatePickerModuleOutput
     return self.model.currentOfferInfo.date;
 }
 
-- (NSDate*)time {
-    return self.model.currentOfferInfo.time;
+- (NSString*)time {
+    return self.model.currentOfferInfo.timeString;
 }
 
 #pragma mark - SubmitOfferWhatCellAdapterOutput
@@ -220,6 +220,10 @@ DatePickerModuleOutput
     [self.model updateDuration:duration];
 }
 
+- (void)pickerDoneButtonDidTapWithStartTime:(NSString *)title {
+    [self.model updateTime:title];
+}
+
 #pragma mark - DatePickerModuleOutput
 
 - (void)dateDidChange:(NSDate *)date {
@@ -227,7 +231,7 @@ DatePickerModuleOutput
 }
 
 - (void)timeDidChange:(NSDate *)date {
-    [self.model updateTime:date];
+//    [self.model updateTime:date];
 }
 
 @end

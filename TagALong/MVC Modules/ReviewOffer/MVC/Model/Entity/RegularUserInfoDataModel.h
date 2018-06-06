@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSString *profileIconURL;
 @property (nonatomic, strong) NSString *phoneNumber;
 
+@property (nonatomic, strong) NSNumber *level;
+
 @property (nonatomic, assign) BOOL hidePhone;
 
 @end

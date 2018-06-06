@@ -12,5 +12,6 @@
 
 + (UIFont*)textFont;
 + (UIFont*)titleFont;
++ (UIFont*)pickerFont;
 
 @end

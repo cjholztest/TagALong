@@ -18,4 +18,8 @@
     return [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0f];
 }
 
++ (UIFont*)pickerFont {
+    return [UIFont fontWithName:@"HelveticaNeue" size:20.0f];
+}
+
 @end

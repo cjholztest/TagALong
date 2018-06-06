@@ -35,6 +35,7 @@
     
     if (self.datePickerType == DateDatePickerType) {
         [self.contentView.datePickerView setDatePickerMode:UIDatePickerModeDate];
+        [self.contentView.datePickerView setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
     } else {
         [self.contentView.datePickerView setDatePickerMode:UIDatePickerModeTime];
     }

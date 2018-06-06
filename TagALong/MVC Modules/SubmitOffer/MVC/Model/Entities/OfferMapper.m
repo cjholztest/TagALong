@@ -28,10 +28,7 @@
     NSString *dateString = [formatter stringFromDate:offer.date];
     
     [json setObject:dateString forKey:@"workout_date"];
-    [formatter setDateFormat:@"h:mm a"];
-    
-    NSString *timeString = [formatter stringFromDate:offer.time];
-    [json setObject:timeString forKey:@"start_time"];
+    [json setObject:offer.timeString forKey:@"start_time"];
     
     [json setObject:offer.duration forKey:@"duration"];
     [json setObject:@([offer.amount floatValue]) forKey:@"amount"];
