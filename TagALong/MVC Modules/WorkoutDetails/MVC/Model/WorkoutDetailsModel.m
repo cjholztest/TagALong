@@ -106,20 +106,26 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         id dd = Global.g_user.user_id;
         NSNumber *ss = @(Global.g_expert.export_uid);
         
+        NSString *userEmail = nil;
+        
         if (Global.g_user.loggedInUserIsRegualar) {
             currentUserUID = @(Global.g_user.user_id.integerValue);
+            userEmail = Global.g_user.user_email;
         } else {
             currentUserUID = @(Global.g_expert.export_uid);
+            userEmail = Global.g_expert.export_email;
         }
         
         for (NSInteger i = 0; i < bookedUsers.count; i++) {
+            
             NSDictionary *dict = bookedUsers[i];
-            NSNumber *userUID = dict[@"user_uid"];
-            NSNumber *userBookingUID = dict[@"user_bookings"][@"user_booking_uid"];
-            if (currentUserUID.integerValue == userUID.integerValue) {
+            NSString *email = dict[@"user_email"];
+            
+            if ([userEmail isEqualToString:email]) {
                 NSNumber *isPaid = dict[@"user_bookings"][@"paid"];
                 if (isPaid.integerValue == 1) {
                     didCurrentUserPay = kUserDidPay;
+                    break;
                 }
             }
         }
@@ -165,12 +171,17 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         NSArray *displayModels = [weakSelf generateDisplayModels];
         WorkoutDetailsViewDisplayModel *profileDisplayModel = [weakSelf profileDispayModel];
         
-        profileDisplayModel.isButtonVisible = !(userAlreadyBooked);
+        profileDisplayModel.isButtonVisible = !([didCurrentUserPay isEqualToString:kUserDidPay]/* userAlreadyBooked*/);
         profileDisplayModel.actionButtonType = isIndividual ? BookedUsersButtonType : BookNowButtonType;
         profileDisplayModel.buttonTitle = isIndividual ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
         
         if (isIndividual) {
             profileDisplayModel.isButtonVisible = YES;
+        }
+        
+        if (![didCurrentUserPay isEqualToString:kUserDidPay] && !profileDisplayModel.isButtonVisible) {
+            profileDisplayModel.actionButtonType = BookNowButtonType;
+            profileDisplayModel.buttonTitle = @"PAY FOR WORKOUT";
         }
         
         [weakSelf updateTitle];

@@ -22,6 +22,10 @@
 #import "MapClusterListViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "WorkoutDetailsViewController.h"
+#import "AthleteMapper.h"
+#import "AthleteDataModel.h"
+#import "UIColor+AppColors.h"
+#import "MKMapView+ZoomLevel.h"
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate, CCHMapClusterControllerDelegate>{
     
@@ -54,6 +58,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblDate;
 @property (strong, nonatomic) IBOutlet UIView *vwFilter;
 @property (nonatomic, strong) CCHMapClusterController *mapClusterController;
+@property (nonatomic, strong) NSMutableArray *athletes;
 
 @end
 
@@ -161,7 +166,7 @@
     [self updateNoLocationMapAppearanceByState:span];
     
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
-        [self ReqWorkoutList];
+//        [self ReqWorkoutList];
 
         NSString *address_uid = [Preference getString:PREFCONST_ADDRESS_UID default:nil];
         if ([address_uid isEqualToString:@""]) {
@@ -189,9 +194,11 @@
         [Preference setString:PREFCONST_EXPERT_LATITUDE value:Global.g_expert.expert_latitude];
         [Preference setString:PREFCONST_EXPERT_LONGTITUDE value:Global.g_expert.expert_longitude];
         
-        [self ReqWorkoutListForPro];
+//        [self ReqWorkoutListForPro];
 //        [self ReqExportWorkoutList];
     }
+    
+    [self reloadAllData];
 }
 
 -(void)addFilterBarButton {
@@ -283,6 +290,7 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 //    curLocation = [[CLLocation alloc] initWithLatitude:_mvMap.centerCoordinate.latitude
 //                                             longitude:_mvMap.centerCoordinate.longitude];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
@@ -290,10 +298,36 @@
     [self updateNoLocationMapAppearanceByState:span];
 }
 
+
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 
     MKAnnotationView *pinView = nil;
     NSString *uniqueImageName = nil;
+    
+    if ([annotation.title isEqualToString:@"pro"]) {
+        static NSString *prouserpin = @"prouserpin";
+        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:prouserpin];
+        if ( pinView == nil ) {
+            pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:prouserpin];
+        }
+        CGRect frame = pinView.frame;
+        frame.size.width = 34.0f;
+        frame.size.height = 34.0f;
+        pinView.frame = [mapView zoomLevel] > 12.0 ? CGRectZero : frame;
+        
+        pinView.layer.cornerRadius = 17.0f;
+        pinView.clipsToBounds = YES;
+        
+        pinView.layer.borderWidth = 0.5f;
+        pinView.layer.borderColor = UIColor.blackColor.CGColor;
+        
+        pinView.backgroundColor = UIColor.proBackgroundColor;
+        
+//        pinView.alpha = [mapView zoomLevel] > 12.0 ? 0.0f : 1.0f;
+        
+        return pinView;
+    }
     
     if(annotation != mapView.userLocation) {
         int index = [[annotation title] intValue];
@@ -370,6 +404,10 @@
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
      [mapView deselectAnnotation:view.annotation animated:YES];
+    
+    if ([view.annotation.title isEqualToString:@"pro"]) {
+        return;
+    }
     
     if ([view.annotation isKindOfClass:CCHMapClusterAnnotation.class]) {
         CCHMapClusterAnnotation *clusterAnnotation = (CCHMapClusterAnnotation*)view.annotation;
@@ -521,11 +559,63 @@
         }
     }
     if (annotations.count > 0) {
+        
+        __weak typeof(self)weakSelf = self;
+        
         [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
         for (id<MKOverlay> overlay in self.mvMap.overlays) {
             [self.mvMap removeOverlay:overlay];
         }
-        [self.mapClusterController addAnnotations:annotations withCompletionHandler:NULL];
+        [self.mapClusterController addAnnotations:annotations withCompletionHandler:^{
+            [weakSelf OhterProsSet];
+        }];
+    }
+}
+
+-(void)OhterProsSet {
+    
+    NSMutableArray *annotations = [NSMutableArray new];
+    
+    for (long i = 0; i < self.athletes.count; i++) {
+        
+        AthleteDataModel *pro = self.athletes[i];
+        
+        CLLocationCoordinate2D proLocation = CLLocationCoordinate2DMake([pro.latitude doubleValue], [pro.longitude doubleValue]);
+        
+        MKPointAnnotation *ptAnno = [[MKPointAnnotation alloc] init];
+        ptAnno.coordinate = proLocation;
+        ptAnno.title = @"pro";
+        
+        MKAnnotationView *view = [self.mvMap viewForAnnotation:ptAnno];
+        view.alpha = [self.mvMap zoomLevel] > 12.0f ? 0.0f : 1.0f;
+        
+//        NSInteger level = pro.level.integerValue;
+//        UIColor *color = UIColor.whiteColor;
+//        
+//        switch (level) {
+//            case 0:
+//                color = UIColor.whiteColor;
+//                break;
+//            case 1:
+//                color = UIColor.blueColor;
+//                break;
+//            case 2:
+//                color = UIColor.blueColor;
+//                break;
+//            case 3:
+//                color = UIColor.yellowColor;
+//                break;
+//            default:
+//                color = UIColor.whiteColor;
+//                break;
+//        }
+        
+        if (ptAnno) {
+            [annotations addObject:ptAnno];
+        }
+    }
+    if (annotations.count > 0) {
+        [self.mvMap addAnnotations:annotations];
     }
 }
 
@@ -1035,6 +1125,113 @@
     }];
 }
 
+- (void)loadProsWithCompletion:(void(^)(NSArray *pros, NSError *error))completion {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius"];
+    
+    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
+                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSMutableArray *athletesArray = [NSMutableArray array];
+        
+        for (NSDictionary *dict in responseObject) {
+            AthleteDataModel *athlete = [AthleteMapper athleteFromJSON:dict];
+            [athletesArray addObject:athlete];
+        }
+        
+        if (completion) {
+            completion(athletesArray, nil);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
+- (void)loadWorkoutsWithCompletion:(void(^)(NSArray *workouts, NSError *error))completion {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
+    
+    NSNumber *start = [NSNumber numberWithDouble:self.startDate];
+    NSNumber *end = [NSNumber numberWithDouble:self.endDate];
+    
+    double lat = 0.0f;
+    double lnd = 0.0f;
+    
+    if ([Global.g_user.user_login isEqualToString:@"1"]) {
+        lat = Global.g_user.user_latitude.doubleValue;
+        lnd = Global.g_user.user_longitude.doubleValue;
+    } else {
+        lat =  locationMng.location.coordinate.latitude;
+        lnd =  locationMng.location.coordinate.longitude;
+    }
+    
+    NSDictionary *params = @{
+                             API_REQ_KEY_USER_LATITUDE      :   @(lat),
+                             API_REQ_KEY_USER_LONGITUDE     :   @(lnd),
+                             API_REQ_KEY_SORT_TYPE          :   @"distance",
+                             API_REQ_KEY_LEVEL_FILTER       :   _level_filter,
+                             API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
+                             API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
+                             API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
+                             API_REQ_KEY_IS_MAP             :   @"1",
+                             //API_REQ_KEY_TARGET_DATE        :   searchdate,
+                             API_REQ_KEY_START_DATE         :   start ?: 0,
+                             API_REQ_KEY_END_DATE           :   end ?: 0,
+                             };
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSArray *result = nil;
+        NSError *error = nil;
+        
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+            
+            result  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+            error = [[NSError alloc] initWithDomain:@"error.generated.locally" code:500 userInfo:@{NSLocalizedDescriptionKey : @"The password is incorrect."}];
+            
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+            error = [[NSError alloc] initWithDomain:@"error.generated.locally" code:500 userInfo:@{NSLocalizedDescriptionKey : @"User does not exist."}];
+        }
+        
+        if (completion) {
+            completion(result, error);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        if (completion) {
+            completion(nil, error);
+        }
+    }];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     //CLLocation *currentLocation = newLocation;
     
@@ -1045,6 +1242,51 @@
         [self UpdateMePoss:newLocation.coordinate.latitude longtigude:newLocation.coordinate.longitude];
     }
     
+}
+
+- (void)reloadAllData {
+    
+    [SharedAppDelegate showLoading];
+    
+    __weak typeof(self)weakSelf = self;
+    
+    __block NSError *workoutsError = nil;
+    __block NSError *prosError = nil;
+    
+    __block NSArray *workoutsArray = nil;
+    __block NSArray *athletesArray = nil;
+    
+    dispatch_group_t serviceGroup = dispatch_group_create();
+    
+    dispatch_group_enter(serviceGroup);
+    [self loadProsWithCompletion:^(NSArray *pros, NSError *error) {
+        prosError = error;
+        athletesArray = pros;
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_enter(serviceGroup);
+    [self loadWorkoutsWithCompletion:^(NSArray *workouts, NSError *error) {
+        workoutsError = error;
+        workoutsArray = workouts;
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_notify(serviceGroup,dispatch_get_main_queue(),^{
+        
+        [SharedAppDelegate closeLoading];
+        
+        if (workoutsError || prosError) {
+            NSString *mess = workoutsError ? workoutsError.localizedDescription : prosError.localizedDescription;
+            [Commons showToast:mess];
+            return;
+        }
+        
+        weakSelf.athletes = [NSMutableArray arrayWithArray:athletesArray];
+        weakSelf.arrSportList = [NSMutableArray arrayWithArray:workoutsArray];
+        
+        [weakSelf OhterPlayPosSet];
+    });
 }
 
 #pragma mark - Help Methods
