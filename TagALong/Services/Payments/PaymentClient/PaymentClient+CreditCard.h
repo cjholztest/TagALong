@@ -13,4 +13,7 @@
 + (void)sendCardToken:(NSString*)token password:(NSString*)password completion:(PaymentCompletion)paymentCompletion;
 + (void)listOfCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion;
 
++ (void)sendProUserCreditCardToken:(NSString*)token password:(NSString*)password completion:(PaymentCompletion)paymentCompletion;
++ (void)listOfProUserCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion;
+
 @end

@@ -9,6 +9,8 @@
 #import "ReviewOfferView.h"
 #import "RegularUserInfoDataModel.h"
 #import "UIColor+AppColors.h"
+#import "SportService.h"
+#import "UIFont+HelveticaNeue.h"
 
 @implementation ReviewOfferView
 
@@ -34,6 +36,14 @@
     self.descriptionLabel.text = userInfo.location;
     
     UIColor *color = userInfo.level.integerValue == 0 ? UIColor.whiteColor : UIColor.proBackgroundColor;
+    
+    self.levelUserLabel.text = [[SportService shared] levelTitleByLevelIndex:userInfo.level.stringValue];
+    self.levelUserLabel.textColor = [[SportService shared] titleColorForLevel:userInfo.level.stringValue];
+    self.levelUserLabel.font = [UIFont levelTitleFont];
+    
+    if (!userInfo.hidePhone) {
+        self.phoneLabel.text = userInfo.phoneNumber;
+    }
     
     [UIView animateWithDuration:0.5 animations:^{
        self.athleteTypeLineView.backgroundColor = color;

@@ -160,16 +160,20 @@
     
     NSString *url;
     
+    __block BOOL isPro = NO;
+    
     NSDictionary *params = [[NSDictionary alloc] init];
     if (userType.integerValue == 1) {
         url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_OTHER_GET_PROFILE];
         params = @{ API_REQ_KEY_USER_UID: userUID,
                     API_REQ_KEY_TARGET_DATE: date };
+        isPro = NO;
         
     } else {
         url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"export_other_get_profile"];
         params = @{ API_REQ_KEY_EXPERT_UID: userUID,
                     API_REQ_KEY_TARGET_DATE: date };
+        isPro = YES;
     }
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -186,8 +190,11 @@
             
             isSuccessed = YES;
             NSDictionary *json = responseObject[@"user_info"];
-            
-            userInfo = [RegularUserInfoMapper regularUserInfoFromJSON:json];
+            if (isPro) {
+                userInfo = [RegularUserInfoMapper proUserInfoFromJSON:json];
+            } else {
+                userInfo = [RegularUserInfoMapper regularUserInfoFromJSON:json];
+            }
             
         }  else if(res_code == RESULT_ERROR_PASSWORD) {
             message = @"The password is incorrect.";

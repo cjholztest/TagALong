@@ -13,5 +13,6 @@
 @interface RegularUserInfoMapper : NSObject
 
 + (RegularUserInfoDataModel*)regularUserInfoFromJSON:(NSDictionary*)json;
++ (RegularUserInfoDataModel*)proUserInfoFromJSON:(NSDictionary*)json;
 
 @end

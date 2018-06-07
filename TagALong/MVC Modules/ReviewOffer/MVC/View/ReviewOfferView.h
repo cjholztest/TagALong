@@ -23,6 +23,10 @@
 
 @property (nonatomic, weak) IBOutlet UIView *athleteTypeLineView;
 
+@property (nonatomic, weak) IBOutlet UILabel *levelUserLabel;
+
+@property (nonatomic, weak) IBOutlet UILabel *phoneLabel;
+
 @property (nonatomic, weak) id <ReviewOfferViewOutput> output;
 
 @end

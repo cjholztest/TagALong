@@ -22,4 +22,8 @@
     return [UIFont fontWithName:@"HelveticaNeue" size:20.0f];
 }
 
++ (UIFont*)levelTitleFont {
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:27.0f];
+}
+
 @end

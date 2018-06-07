@@ -118,7 +118,11 @@
 
 - (void)addCreditCard {
     [SharedAppDelegate showLoading];
-    [self.model createCreditCardWithCardParams:self.contentView.paymentCardTextField.cardParams];
+    if (self.modeType == AddCreditCardtProUserModeTypePostWorkout) {
+        [self.model createCreditCardForProUserWithCardParams:self.contentView.paymentCardTextField.cardParams];
+    } else {
+        [self.model createCreditCardWithCardParams:self.contentView.paymentCardTextField.cardParams];
+    }
 }
 
 @end

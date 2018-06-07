@@ -41,6 +41,19 @@
     }];
 }
 
-
+- (void)createCreditCardForProUserWithCardParams:(STPCardParams*)cardParams {
+    __weak typeof(self)weakSelf = self;
+    STPCardParams *cardparameters = cardParams;
+    cardparameters.currency = @"USD";
+    [[STPAPIClient sharedClient] createTokenWithCard:cardparameters completion:^(STPToken * _Nullable token, NSError * _Nullable error) {
+        if (error) {
+            [weakSelf.output creditCardDidCreateWithError:error];
+        } else {
+            [PaymentClient sendProUserCreditCardToken:token.tokenId password:weakSelf.userPassword completion:^(id responseObject, NSError *error) {
+                [weakSelf.output creditCardDidCreateWithError:error];
+            }];
+        }
+    }];
+}
 
 @end

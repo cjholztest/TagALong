@@ -94,11 +94,51 @@
 }
 
 - (UIColor*)backgroundColorForLevel:(NSString*)level {
-    return nil;
+    
+    UIColor *color = nil;
+    
+    switch (level.integerValue) {
+        case 0:
+            color = UIColor.individualBackgroundColor;
+            break;
+        case 1:
+            color = UIColor.gymBackgroundColor;
+            break;
+        case 2:
+            color = UIColor.proBackgroundColor;
+            break;
+        case 3:
+            color = UIColor.trainerBackgroundColor;
+            break;
+        default:
+            break;
+    }
+    
+    return color;
 }
 
 - (UIColor*)titleColorForLevel:(NSString*)level {
-    return nil;
+    
+    UIColor *color = nil;
+    
+    switch (level.integerValue) {
+        case 0:
+            color = UIColor.individualTextColor;
+            break;
+        case 1:
+            color = UIColor.gymTextColor;
+            break;
+        case 2:
+            color = UIColor.proTextColor;
+            break;
+        case 3:
+            color = UIColor.trainerTextColor;
+            break;
+        default:
+            break;
+    }
+    
+    return color;
 }
 
 - (BOOL)isLevelIndividual:(NSNumber*)level {

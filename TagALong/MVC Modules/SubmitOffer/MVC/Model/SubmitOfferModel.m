@@ -74,13 +74,23 @@
     
     __weak typeof(self)weakSelf = self;
     
-    [self requestCardInfoWithCompletion:^(NSString *cardID) {
-        if (cardID) {
-            [weakSelf submitOffer];
-        } else {
-            [weakSelf.output showAddCreditCard];
-        }
-    }];
+    if (Global.g_user.loggedInUserIsPro) {
+        [self requestProUserCreditCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                [weakSelf submitOffer];
+            } else {
+                [weakSelf.output showAddCreditCard];
+            }
+        }];
+    } else {
+        [self requestCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                [weakSelf submitOffer];
+            } else {
+                [weakSelf.output showAddCreditCard];
+            }
+        }];
+    }
 }
 
 #pragma mark - Prvate
@@ -91,6 +101,31 @@
     [SharedAppDelegate showLoading];
     
     [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        if (error) {
+            [weakSelf.output offerDidSubmitSuccess:NO message:error.localizedDescription];
+        } else {
+            NSArray *cardList = responseObject;
+            NSString *ccUIID = nil;
+            
+            if (cardList.count > 0) {
+                NSDictionary *card = cardList.firstObject;
+                ccUIID = card[@"card_uid"];
+            }
+            
+            if (completion) {
+                completion(ccUIID);
+            }
+        }
+    }];
+}
+
+- (void)requestProUserCreditCardInfoWithCompletion:(void(^)(NSString *cardID))completion {
+    
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    
+    [PaymentClient listOfProUserCrediCardsWithCompletion:^(id responseObject, NSError *error) {
         [SharedAppDelegate closeLoading];
         if (error) {
             [weakSelf.output offerDidSubmitSuccess:NO message:error.localizedDescription];

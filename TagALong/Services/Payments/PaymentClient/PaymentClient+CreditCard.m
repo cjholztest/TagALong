@@ -45,6 +45,35 @@ static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
     }];
 }
 
++ (void)sendProUserCreditCardToken:(NSString*)token password:(NSString*)password completion:(PaymentCompletion)paymentCompletion {
+    
+    AFHTTPSessionManager *manager = [PaymentClient sessionManager];
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, kSimpleUserCreditCardURLPath];
+    NSDictionary *params = @{@"card_token" : token, @"password" : password};
+    
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if (paymentCompletion) {
+            paymentCompletion(responseObject, nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSError *jsonError = nil;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+        NSString *errorMessage = dict[@"message"];
+        NSError *errorToDisplay = nil;
+        if (errorMessage) {
+            NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
+            [customDetails setValue:errorMessage forKey:NSLocalizedDescriptionKey];
+            errorToDisplay = [NSError errorWithDomain:@"local" code:200 userInfo:customDetails];
+        } else {
+            errorToDisplay = error;
+        }
+        if (paymentCompletion) {
+            paymentCompletion(nil, errorToDisplay);
+        }
+    }];
+}
+
 + (void)listOfCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion {
     
     BOOL isExpertUser = [Global.g_user.user_login isEqualToString:@"2"];
@@ -52,6 +81,22 @@ static NSString *const kExpertUserCreditCardURLPath = @"payout_credit_card";
     AFHTTPSessionManager *manager = [PaymentClient sessionManager];
     NSString *creditCardUrlPath = isExpertUser ? kExpertUserCreditCardURLPath : kSimpleUserCreditCardURLPath;
     NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, creditCardUrlPath];
+    
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if (paymentCompletion) {
+            paymentCompletion(responseObject, nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (paymentCompletion) {
+            paymentCompletion(nil, error);
+        }
+    }];
+}
+
++ (void)listOfProUserCrediCardsWithCompletion:(PaymentCompletion)paymentCompletion {
+    
+    AFHTTPSessionManager *manager = [PaymentClient sessionManager];
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBasePaymentURL, kSimpleUserCreditCardURLPath];
     
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (paymentCompletion) {

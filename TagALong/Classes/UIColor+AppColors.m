@@ -122,7 +122,7 @@
 }
 
 + (UIColor*)trainerTextColor {
-    return [UIColor whiteColor];
+    return [UIColor blackColor];
 }
 
 + (UIColor*)trainerBackgroundColor {

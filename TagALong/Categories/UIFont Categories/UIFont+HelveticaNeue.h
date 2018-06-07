@@ -13,5 +13,6 @@
 + (UIFont*)textFont;
 + (UIFont*)titleFont;
 + (UIFont*)pickerFont;
++ (UIFont*)levelTitleFont;
 
 @end

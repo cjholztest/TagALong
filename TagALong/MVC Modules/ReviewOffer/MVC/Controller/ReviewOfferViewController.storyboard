@@ -28,10 +28,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w30-LI-jjn" userLabel="View3">
                                                 <rect key="frame" x="0.0" y="190" width="375" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDt-XU-maQ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDt-XU-maQ">
                                                         <rect key="frame" x="15" y="0.0" width="345" height="40"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                        <color key="textColor" white="1" alpha="0.50478916959999998" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -47,23 +47,24 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccp-TL-4wV" userLabel="View2">
                                                 <rect key="frame" x="0.0" y="140" width="375" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2b-Lx-WTd">
-                                                        <rect key="frame" x="78" y="25" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2b-Lx-WTd">
+                                                        <rect key="frame" x="15" y="0.0" width="345" height="50"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="q2b-Lx-WTd" firstAttribute="centerY" secondItem="ccp-TL-4wV" secondAttribute="centerY" id="BDl-tk-7MJ"/>
-                                                    <constraint firstItem="q2b-Lx-WTd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ccp-TL-4wV" secondAttribute="leading" priority="250" constant="5" id="RUP-Vu-up7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="q2b-Lx-WTd" secondAttribute="bottom" id="GQj-nH-K9G"/>
+                                                    <constraint firstItem="q2b-Lx-WTd" firstAttribute="leading" secondItem="ccp-TL-4wV" secondAttribute="leading" constant="15" id="Qru-AG-c2Q"/>
                                                     <constraint firstAttribute="height" constant="50" id="hTR-JX-joM"/>
+                                                    <constraint firstItem="q2b-Lx-WTd" firstAttribute="top" secondItem="ccp-TL-4wV" secondAttribute="top" id="hXh-Ao-LqF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="q2b-Lx-WTd" secondAttribute="trailing" constant="15" id="t6K-gI-udk"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wim-9a-nep" userLabel="View1">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-Po-k5T">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9p-Po-k5T">
                                                         <rect key="frame" x="155" y="58.5" width="205" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="xAk-WL-AQx"/>
@@ -107,7 +108,6 @@
                                             <constraint firstItem="ccp-TL-4wV" firstAttribute="leading" secondItem="hiQ-gS-7n1" secondAttribute="leading" id="8ZN-fZ-Hdx"/>
                                             <constraint firstItem="bNT-94-xNo" firstAttribute="centerY" secondItem="mLe-ab-oa8" secondAttribute="centerY" id="8mc-mB-b0C"/>
                                             <constraint firstAttribute="trailing" secondItem="w30-LI-jjn" secondAttribute="trailing" id="9Zo-fh-Vad"/>
-                                            <constraint firstItem="q2b-Lx-WTd" firstAttribute="centerX" secondItem="bNT-94-xNo" secondAttribute="centerX" id="9pa-m9-mSt"/>
                                             <constraint firstAttribute="trailing" secondItem="Wim-9a-nep" secondAttribute="trailing" id="FAk-nQ-IOR"/>
                                             <constraint firstItem="ccp-TL-4wV" firstAttribute="top" secondItem="mLe-ab-oa8" secondAttribute="bottom" constant="-10" id="Mzv-z8-A5O"/>
                                             <constraint firstAttribute="bottom" secondItem="w30-LI-jjn" secondAttribute="bottom" id="QxX-ZK-hyG"/>
@@ -178,6 +178,8 @@
                                     <outlet property="athleteTypeLineView" destination="ccp-TL-4wV" id="nvQ-2g-xgk"/>
                                     <outlet property="declineButton" destination="Jmh-kt-eiR" id="xSW-SO-EAX"/>
                                     <outlet property="descriptionLabel" destination="2F0-Ac-Pip" id="T5L-wn-aa8"/>
+                                    <outlet property="levelUserLabel" destination="q2b-Lx-WTd" id="yrk-NG-F1e"/>
+                                    <outlet property="phoneLabel" destination="KDt-XU-maQ" id="A3N-Pl-Qxa"/>
                                     <outlet property="tableView" destination="bfS-k9-E8H" id="1yq-SQ-3ct"/>
                                     <outlet property="userNameLabel" destination="V9p-Po-k5T" id="yON-oH-eHj"/>
                                 </connections>

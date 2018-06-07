@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSInteger, AddCreditCardtModeType) {
     AddCreditCardtModeTypeRegistration,
     AddCreditCardtModeTypePostWorkout,
+    AddCreditCardtProUserModeTypePostWorkout,
     AddCreditCardtModeTypeProfile
 };
 
