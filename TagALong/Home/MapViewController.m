@@ -589,27 +589,6 @@
         MKAnnotationView *view = [self.mvMap viewForAnnotation:ptAnno];
         view.alpha = [self.mvMap zoomLevel] > 12.0f ? 0.0f : 1.0f;
         
-//        NSInteger level = pro.level.integerValue;
-//        UIColor *color = UIColor.whiteColor;
-//        
-//        switch (level) {
-//            case 0:
-//                color = UIColor.whiteColor;
-//                break;
-//            case 1:
-//                color = UIColor.blueColor;
-//                break;
-//            case 2:
-//                color = UIColor.blueColor;
-//                break;
-//            case 3:
-//                color = UIColor.yellowColor;
-//                break;
-//            default:
-//                color = UIColor.whiteColor;
-//                break;
-//        }
-        
         if (ptAnno) {
             [annotations addObject:ptAnno];
         }

@@ -108,6 +108,14 @@ EditDialogViewControllerDelegate
     [self showAddCreditCard];
 }
 
+- (void)proUserCreditCardNotFound {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtProUserModeTypePostWorkout;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
+}
+
 - (void)showLoader {
     [SharedAppDelegate showLoading];
 }

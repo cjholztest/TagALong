@@ -90,16 +90,29 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     __weak typeof(self)weakSelf = self;
     __block NSString *pass = password;
     
-    [self requestCardInfoWithCompletion:^(NSString *cardID) {
-        if (cardID) {
-            weakSelf.creditCardUID = cardID;
-            [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
-                [weakSelf payBookedWorkout:pass];
-            }];
-        } else {
-            [weakSelf.output creditCardNotFound];
-        }
-    }];
+    if (Global.g_user.loggedInUserIsRegualar) {
+        [self requestCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                weakSelf.creditCardUID = cardID;
+                [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
+                    [weakSelf payBookedWorkout:pass];
+                }];
+            } else {
+                [weakSelf.output creditCardNotFound];
+            }
+        }];
+    } else {
+        [self requestProcreditCardInfoWithCompletion:^(NSString *cardID) {
+            if (cardID) {
+                weakSelf.creditCardUID = cardID;
+                [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
+                    [weakSelf payBookedWorkout:pass];
+                }];
+            } else {
+                [weakSelf.output proUserCreditCardNotFound];
+            }
+        }];
+    }
 }
 
 - (void)loadDetaisForWorkout:(NSString*)workoutUID {
@@ -131,11 +144,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         bookedUsersArray = bookedUsers;
         bookedUsersError = error;
         
-        NSNumber *currentUserUID = nil;
-        
-        id dd = Global.g_user.user_id;
-        NSNumber *ss = @(Global.g_expert.export_uid);
-        
+        NSNumber *currentUserUID = nil;        
         NSString *userEmail = nil;
         
         if (Global.g_user.loggedInUserIsRegualar) {
@@ -436,6 +445,33 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     __weak typeof(self)weakSelf = self;
     
     [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        
+        [weakSelf.output hideLoader];
+        
+        if (error) {
+            [weakSelf.output workoutDidBookSuccess:NO message:error.localizedDescription];
+        } else {
+            NSArray *cardList = responseObject;
+            NSString *ccUIID = nil;
+            
+            if (cardList.count > 0) {
+                NSDictionary *card = cardList.firstObject;
+                ccUIID = card[@"card_uid"];
+            }
+            
+            if (completion) {
+                completion(ccUIID);
+            }
+        }
+    }];
+}
+
+- (void)requestProcreditCardInfoWithCompletion:(void(^)(NSString *cardID))completion {
+    
+    [self.output showLoader];
+    __weak typeof(self)weakSelf = self;
+    
+    [PaymentClient listOfProUserCrediCardsWithCompletion:^(id responseObject, NSError *error) {
         
         [weakSelf.output hideLoader];
         

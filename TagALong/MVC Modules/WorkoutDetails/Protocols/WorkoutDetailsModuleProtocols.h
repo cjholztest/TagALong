@@ -36,6 +36,7 @@
 - (void)showConfirmationPyamentAlertWithAmount:(NSString*)amount andCompletion:(void(^)(void))completion;
 
 - (void)creditCardNotFound;
+- (void)proUserCreditCardNotFound;
 
 - (void)showLoader;
 - (void)hideLoader;
