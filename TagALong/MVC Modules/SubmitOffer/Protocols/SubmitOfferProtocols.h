@@ -35,6 +35,8 @@
 - (void)offerDidSubmitSuccess:(BOOL)isSuccess message:(NSString*)message;
 - (void)validationDidFailWithMessage:(NSString*)message;
 
+- (void)showAddCreditCard;
+
 @end
 
 @protocol SubmitOfferViewInput <NSObject>

@@ -13,10 +13,13 @@
 @protocol WorkoutDetailsModelInput <NSObject>
 
 - (void)loadDetaisForWorkout:(NSString*)workoutUID;
-- (void)bookWorkout;
+- (void)bookFreeWorkout;
+- (void)bookWorkoutWithPassword:(NSString*)password;
+- (void)payBookedWorkoutWithPassword:(NSString*)password;
 
 - (NSString*)titleText;
 - (NSString*)additionalInfoText;
+- (BOOL)isWokoutFree;
 
 @end
 
@@ -46,6 +49,7 @@
 @protocol WorkoutDetailsViewOutput <NSObject>
 
 - (void)bookWorkoutNowDidTap;
+- (void)payBookedWorkoutDidTap;
 - (void)showVisitorsDidTap;
 
 @end

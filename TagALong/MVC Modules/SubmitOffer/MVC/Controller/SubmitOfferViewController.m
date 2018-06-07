@@ -16,6 +16,7 @@
 #import "UIViewController+Presentation.h"
 #import "UIViewController+AlertController.h"
 #import "OfferDataModel.h"
+#import "AddCreditCardViewController.h"
 
 @interface SubmitOfferViewController ()
 <
@@ -28,7 +29,8 @@ SubmitOfferDurationCellAdapterOutput,
 SubmitOfferAmountCellAdapterOutput,
 SubmitOfferAdditionalInfoCellAdapterOutput,
 PickerModuleOutput,
-DatePickerModuleOutput
+DatePickerModuleOutput,
+AddCreditCardModuleDelegate
 >
 
 @property (nonatomic, weak) IBOutlet SubmitOfferView *contentView;
@@ -89,6 +91,14 @@ DatePickerModuleOutput
     [self showAllertWithTitle:title message:message okCompletion:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
+}
+
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = AddCreditCardtModeTypePostWorkout;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
 }
 
 - (void)validationDidFailWithMessage:(NSString*)message {
@@ -232,6 +242,12 @@ DatePickerModuleOutput
 
 - (void)timeDidChange:(NSDate *)date {
 //    [self.model updateTime:date];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

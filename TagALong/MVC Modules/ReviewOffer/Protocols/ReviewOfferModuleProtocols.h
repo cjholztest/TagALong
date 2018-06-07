@@ -24,7 +24,10 @@
 @protocol ReviewOfferModelOutput <NSObject>
 
 - (void)showResultOfferIsAccepted:(BOOL)isAccepted isSuccess:(BOOL)isSuccessed message:(NSString*)message;
-- (void)userInfoDidLoad:(RegularUserInfoDataModel*)userInfo isSuccess:(BOOL)isSuccessed message:(NSString*)message;;
+- (void)userInfoDidLoad:(RegularUserInfoDataModel*)userInfo isSuccess:(BOOL)isSuccessed message:(NSString*)message;
+
+- (void)showPaymentCredentialsRegistration;
+- (void)showAddCreditCard;
 
 @end
 

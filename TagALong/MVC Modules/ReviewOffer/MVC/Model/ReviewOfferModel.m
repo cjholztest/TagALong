@@ -9,6 +9,8 @@
 #import "ReviewOfferModel.h"
 #import "RegularUserInfoDataModel.h"
 #import "RegularUserInfoMapper.h"
+#import "PaymentClient+Customer.h"
+#import "PaymentClient+CreditCard.h"
 
 @interface ReviewOfferModel()
 
@@ -28,7 +30,17 @@
 #pragma mark - ReviewOfferModelInput
 
 - (void)acceptOffer:(NSString*)offerUID {
-    [self updateOffer:offerUID withAcceptionState:YES];
+    __weak typeof(self)weakSelf = self;
+    
+    [self checkPaymentAccountCredentialsWithCompletion:^(BOOL isPaymentAccountExists, BOOL isCreditCradExists) {
+        if (isPaymentAccountExists && isCreditCradExists) {
+            [weakSelf updateOffer:offerUID withAcceptionState:YES];
+        } else if (!isPaymentAccountExists && !isCreditCradExists) {
+            [weakSelf.output showPaymentCredentialsRegistration];
+        } else if (isPaymentAccountExists && !isCreditCradExists) {
+            [weakSelf.output showAddCreditCard];
+        }
+    }];
 }
 
 - (void)declineOffer:(NSString*)offerUID {
@@ -117,18 +129,18 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
         
-        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
-        NSError *jsonError = nil;
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-        NSString *errorMessage = dict[@"error"][@"message"];
-        NSError *errorToDisplay = nil;
-        if (errorMessage) {
-            NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
-            [customDetails setValue:errorMessage forKey:NSLocalizedDescriptionKey];
-            errorToDisplay = [NSError errorWithDomain:@"local" code:200 userInfo:customDetails];
-        } else {
-            errorToDisplay = error;
-        }
+//        NSData *responseData = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+//        NSError *jsonError = nil;
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+//        NSString *errorMessage = dict[@"error"][@"message"];
+//        NSError *errorToDisplay = nil;
+//        if (errorMessage) {
+//            NSMutableDictionary* customDetails = [NSMutableDictionary dictionary];
+//            [customDetails setValue:errorMessage forKey:NSLocalizedDescriptionKey];
+//            errorToDisplay = [NSError errorWithDomain:@"local" code:200 userInfo:customDetails];
+//        } else {
+//            errorToDisplay = error;
+//        }
     }];
 }
 
@@ -191,6 +203,35 @@
         NSLog(@"error: %@", error);
         [SharedAppDelegate closeLoading];
         [weakSelf.output userInfoDidLoad:nil isSuccess:NO message:error.localizedDescription];
+    }];
+}
+
+- (void)checkPaymentAccountCredentialsWithCompletion:(void(^)(BOOL isPaymentAccountExists, BOOL isCreditCradExists))completion {
+    [SharedAppDelegate showLoading];
+    
+    __block BOOL isAccountExists = NO;
+    __block BOOL isCreditExists = NO;
+    
+    [PaymentClient expertPaymentDataWithCompletion:^(id responseObject, NSError *error) {
+        BOOL isDataExists = [responseObject[@"exist"] boolValue];
+        if (isDataExists) {
+            isAccountExists = YES;
+            [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+                [SharedAppDelegate closeLoading];
+                NSArray *cards = responseObject;
+                if (cards.count != 0) {
+                    isCreditExists = YES;
+                }
+                if (completion) {
+                    completion(isAccountExists, isCreditExists);
+                }
+            }];
+        } else {
+            [SharedAppDelegate closeLoading];
+            if (completion) {
+                completion(isAccountExists, isCreditExists);
+            }
+        }
     }];
 }
 

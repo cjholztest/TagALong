@@ -47,6 +47,11 @@ static NSString *const kPlaceholderIconName = @"ic_profile_black";
                 [self.output bookWorkoutNowDidTap];
             }
             break;
+        case PayBoockedButtonType:
+            if ([self.output respondsToSelector:@selector(payBookedWorkoutDidTap)]) {
+                [self.output payBookedWorkoutDidTap];
+            }
+            break;
         case BookedUsersButtonType:
             if ([self.output respondsToSelector:@selector(showVisitorsDidTap)]) {
                 [self.output showVisitorsDidTap];

@@ -440,7 +440,7 @@ static const NSInteger kMaxImageCnt = 1;
                 //[dic_workout setObject:@"1" forKey:API_RES_KEY_START_TIME];
 
                 [dic_workout setObject:location forKey:API_RES_KEY_USER_LOCATION];
-                [dic_workout setObject:@"1" forKey:@"star_mark"];
+                [dic_workout setObject:@"0" forKey:@"star_mark"];
                 [dic_workout setObject:title forKey:API_RES_KEY_TITLE];
                 [dic_workout setObject:startTime forKey:API_RES_KEY_START_TIME];
                 [dic_workout setObject:duration forKey:API_REQ_KEY_DURATION];

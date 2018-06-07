@@ -24,3 +24,4 @@
 #import "EditDialogViewController.h"
 #import "PaymentClient+CreditCard.h"
 #import "AddCreditCardViewController.h"
+#import "WorkoutDetailsModuleConstants.h"

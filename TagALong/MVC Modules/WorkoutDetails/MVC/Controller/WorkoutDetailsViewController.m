@@ -16,7 +16,8 @@ WorkoutDetailsViewOutput,
 WorkoutDetailsTitleSectionAdapterOutput,
 WorkoutDetailsMainSectionAdapterOutput,
 WorkoutDetailsAdditionalSectionAdapterOutput,
-AddCreditCardModuleDelegate
+AddCreditCardModuleDelegate,
+EditDialogViewControllerDelegate
 >
 
 @property (nonatomic, weak) IBOutlet WorkoutDetailsView *contentView;
@@ -26,6 +27,8 @@ AddCreditCardModuleDelegate
 
 @property (nonatomic, strong) NSString *workoutUID;
 @property (nonatomic, strong) NSArray *displayModels;
+
+@property (nonatomic, assign) WorkoutDetailsButtonType type;
 
 @end
 
@@ -116,7 +119,15 @@ AddCreditCardModuleDelegate
 #pragma mark - WorkoutDetailsViewOutput
 
 - (void)bookWorkoutNowDidTap {
-    [self.model bookWorkout];
+    if (self.model.isWokoutFree) {
+        [self.model bookFreeWorkout];
+    } else {
+        [self showEnterPasswordDialogWithType:BookNowButtonType];
+    }
+}
+
+- (void)payBookedWorkoutDidTap {
+    [self showEnterPasswordDialogWithType:PayBoockedButtonType];
 }
 
 - (void)showVisitorsDidTap {
@@ -169,6 +180,43 @@ AddCreditCardModuleDelegate
 - (void)creditCardDidAdd {
     [self.navigationController popViewControllerAnimated:YES];
 //    self.model 
+}
+
+#pragma mark - Private
+
+- (void)showEnterPasswordDialogWithType:(WorkoutDetailsButtonType)type {
+    
+    EditDialogViewController *dlgDialog = [[EditDialogViewController alloc] initWithNibName:@"EditDialogViewController" bundle:nil];
+    dlgDialog.providesPresentationContextTransitionStyle = YES;
+    dlgDialog.definesPresentationContext = YES;
+    [dlgDialog setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+    dlgDialog.delegate = self;
+    
+    dlgDialog.type = @"password";
+    dlgDialog.content = @"";
+    
+    self.type = type;
+    
+    [self presentViewController:dlgDialog animated:NO completion:nil];
+}
+
+#pragma mark - EditDialogViewControllerDelegate
+
+- (void)setContent:(NSString*)type msg:(NSString*)content {
+    
+    if ([type isEqualToString:@"password"]) {
+        
+        switch (self.type) {
+            case BookNowButtonType:
+                [self.model bookWorkoutWithPassword:content];
+                break;
+            case PayBoockedButtonType:
+                [self.model payBookedWorkoutWithPassword:content];
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 @end

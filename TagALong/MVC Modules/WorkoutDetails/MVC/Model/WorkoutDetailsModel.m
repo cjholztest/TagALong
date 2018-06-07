@@ -52,25 +52,54 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     return self.workotDetails.additionalInfo;
 }
 
-- (void)bookWorkout {
+- (BOOL)isWokoutFree {
+    return self.workotDetails.isAmountEmpty;
+}
+
+- (void)bookFreeWorkout {
+    [self bookWorkoutNow];
+}
+
+- (void)bookWorkoutWithPassword:(NSString*)password {
     
     BOOL isAmountEmpty = self.workotDetails.isAmountEmpty;
     
     if (isAmountEmpty) {
         [self bookWorkoutNow];
     } else {
+        
         __weak typeof(self)weakSelf = self;
+        __block NSString *pass = password;
+        
         [self requestCardInfoWithCompletion:^(NSString *cardID) {
             if (cardID) {
                 weakSelf.creditCardUID = cardID;
                 [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
-                    [weakSelf bookPaymentWorkout];
+                    [weakSelf bookPaymentWorkout:pass];
                 }];
             } else {
                 [weakSelf.output creditCardNotFound];
             }
         }];
     }
+
+}
+
+- (void)payBookedWorkoutWithPassword:(NSString*)password {
+        
+    __weak typeof(self)weakSelf = self;
+    __block NSString *pass = password;
+    
+    [self requestCardInfoWithCompletion:^(NSString *cardID) {
+        if (cardID) {
+            weakSelf.creditCardUID = cardID;
+            [weakSelf.output showConfirmationPyamentAlertWithAmount:weakSelf.workotDetails.amountText andCompletion:^{
+                [weakSelf payBookedWorkout:pass];
+            }];
+        } else {
+            [weakSelf.output creditCardNotFound];
+        }
+    }];
 }
 
 - (void)loadDetaisForWorkout:(NSString*)workoutUID {
@@ -84,6 +113,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     __block NSArray *bookedUsersArray = nil;
     
     __block NSString *didCurrentUserPay = nil;
+    __block BOOL isCurrentUserVisitor = NO;
     
     dispatch_group_t serviceGroup = dispatch_group_create();
     
@@ -122,6 +152,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
             NSString *email = dict[@"user_email"];
             
             if ([userEmail isEqualToString:email]) {
+                isCurrentUserVisitor = YES;
                 NSNumber *isPaid = dict[@"user_bookings"][@"paid"];
                 if (isPaid.integerValue == 1) {
                     didCurrentUserPay = kUserDidPay;
@@ -177,10 +208,12 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         
         if (isIndividual) {
             profileDisplayModel.isButtonVisible = YES;
+        } else if (weakSelf.workotDetails.isAmountEmpty && isCurrentUserVisitor) {
+            profileDisplayModel.isButtonVisible = NO;
         }
         
-        if (![didCurrentUserPay isEqualToString:kUserDidPay] && !profileDisplayModel.isButtonVisible) {
-            profileDisplayModel.actionButtonType = BookNowButtonType;
+        if (![didCurrentUserPay isEqualToString:kUserDidPay] && isCurrentUserVisitor && !weakSelf.workotDetails.isAmountEmpty) {
+            profileDisplayModel.actionButtonType = PayBoockedButtonType;
             profileDisplayModel.buttonTitle = @"PAY FOR WORKOUT";
         }
         
@@ -309,8 +342,6 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     model.locationText = self.profileInfo.location;
     model.iconURL = self.profileInfo.profileIconURL;
     
-    
-    
     return model;
 }
 
@@ -332,13 +363,14 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
 
 #pragma mark - Payment
 
-- (void)bookPaymentWorkout {
+- (void)bookPaymentWorkout:(NSString*)password {
     
     [self.output showLoader];
     
-    NSDictionary *params = @{@"workout_uid" : [self.workotDetails.uid stringValue],
-                             @"amount" : self.workotDetails.amount,
-                             @"user_card_uid" : self.creditCardUID};
+    NSDictionary *params = @{@"workout_uid"     : [self.workotDetails.uid stringValue],
+                             @"amount"          : self.workotDetails.amount,
+                             @"user_card_uid"   : self.creditCardUID,
+                             @"password"        : password};
     
     __weak typeof(self)weakSelf = self;
     
@@ -356,6 +388,39 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
             if ([responseObject[@"status"] boolValue]) {
                 isSuccess = YES;
                 message = @"You booked successfully";
+            } else {
+                isSuccess = NO;
+                message = @"Failure payment process";
+            }
+        }
+        [weakSelf.output workoutDidBookSuccess:isSuccess message:message];
+    }];
+}
+
+- (void)payBookedWorkout:(NSString*)password {
+    
+    [self.output showLoader];
+    
+    NSDictionary *params = @{@"workout_uid"     : [self.workotDetails.uid stringValue],
+                             @"amount"          : self.workotDetails.amount,
+                             @"user_card_uid"   : self.creditCardUID,
+                             @"password"        : password};
+    
+    __weak typeof(self)weakSelf = self;
+    
+    
+    [PaymentClient payForBookedWorkoutWithParams:params withCompletion:^(id responseObject, NSError *error) {
+        [weakSelf.output hideLoader];
+        
+        BOOL isSuccess = NO;
+        NSString *message = nil;
+        
+        if (error) {
+            message = error.localizedDescription;
+        } else {
+            if ([responseObject[@"status"] boolValue]) {
+                isSuccess = YES;
+                message = @"You paid successfully";
             } else {
                 isSuccess = NO;
                 message = @"Failure payment process";

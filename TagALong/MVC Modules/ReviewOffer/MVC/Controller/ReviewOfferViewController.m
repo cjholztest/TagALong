@@ -18,8 +18,18 @@
 #import "ReviewOfferCellDisplayModel.h"
 #import "ReviewOfferViewDisplayModel.h"
 #import "NSDateFormatter+ServerRequest.h"
+#import "AddCreditCardViewController.h"
+#import "ProfilePaymentDataViewController.h"
 
-@interface ReviewOfferViewController () <ReviewOfferModelOutput, ReviewOfferViewOutput, ReviewOfferMainSectionAdapterOutput, ReviewOfferAdditionalSectionAdapterOutput>
+@interface ReviewOfferViewController ()
+<
+ReviewOfferModelOutput,
+ReviewOfferViewOutput,
+ReviewOfferMainSectionAdapterOutput,
+ReviewOfferAdditionalSectionAdapterOutput,
+ProfilePaymentDataModuleDelegate,
+AddCreditCardModuleDelegate
+>
 
 @property (nonatomic, weak) IBOutlet ReviewOfferView *contentView;
 
@@ -117,6 +127,22 @@
     [self.contentView setupWithDisplayModel:userInfo];
 }
 
+- (void)showPaymentCredentialsRegistration {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    ProfilePaymentDataViewController *profilePaymentVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(ProfilePaymentDataViewController.class)];
+    profilePaymentVC.modeType = ProfilPaymentModeTypePostWorkout;
+    profilePaymentVC.moduleDelegate = self;
+    [self.navigationController pushViewController:profilePaymentVC animated:YES];
+}
+
+- (void)showAddCreditCard {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
+    AddCreditCardViewController *addCreditCardVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
+    addCreditCardVC.moduleDelegate = self;
+    addCreditCardVC.modeType = ProfilPaymentModeTypePostWorkout;
+    [self.navigationController pushViewController:addCreditCardVC animated:YES];
+}
+
 #pragma mark - ReviewOfferViewOutput
 
 - (void)acceptButtonDidTap {
@@ -158,6 +184,16 @@
     return displayModel;
 }
 
-#pragma mark - Private
+#pragma mark - ProfilePaymentDataModuleDelegate
+
+- (void)paymentCredentialsDidSend {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - AddCreditCardModuleDelegate
+
+- (void)creditCardDidAdd {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

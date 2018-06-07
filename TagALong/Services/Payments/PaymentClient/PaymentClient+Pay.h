@@ -11,5 +11,6 @@
 @interface PaymentClient (Pay)
 
 + (void)payForWorkoutWithParams:(NSDictionary*)params withCompletion:(PaymentCompletion)paymentCompletion;
++ (void)payForBookedWorkoutWithParams:(NSDictionary*)params withCompletion:(PaymentCompletion)paymentCompletion;
 
 @end

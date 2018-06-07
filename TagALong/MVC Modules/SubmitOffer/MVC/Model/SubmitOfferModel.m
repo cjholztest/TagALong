@@ -9,6 +9,7 @@
 #import "SubmitOfferModel.h"
 #import "OfferDataModel.h"
 #import "OfferMapper.h"
+#import "PaymentClient+CreditCard.h"
 
 @interface SubmitOfferModel()
 
@@ -71,6 +72,46 @@
     self.offer.athleteUID = athleteID;
     self.offer.addressUID = @"-1";
     
+    __weak typeof(self)weakSelf = self;
+    
+    [self requestCardInfoWithCompletion:^(NSString *cardID) {
+        if (cardID) {
+            [weakSelf submitOffer];
+        } else {
+            [weakSelf.output showAddCreditCard];
+        }
+    }];
+}
+
+#pragma mark - Prvate
+
+- (void)requestCardInfoWithCompletion:(void(^)(NSString *cardID))completion {
+    
+    __weak typeof(self)weakSelf = self;
+    [SharedAppDelegate showLoading];
+    
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        [SharedAppDelegate closeLoading];
+        if (error) {
+            [weakSelf.output offerDidSubmitSuccess:NO message:error.localizedDescription];
+        } else {
+            NSArray *cardList = responseObject;
+            NSString *ccUIID = nil;
+            
+            if (cardList.count > 0) {
+                NSDictionary *card = cardList.firstObject;
+                ccUIID = card[@"card_uid"];
+            }
+            
+            if (completion) {
+                completion(ccUIID);
+            }
+        }
+    }];
+}
+
+- (void)submitOffer {
+    
     NSString *validationMessage = [self validateOfferData];
     if (validationMessage) {
         [self.output validationDidFailWithMessage:validationMessage];
@@ -78,16 +119,16 @@
     }
     
     __weak typeof(self)weakSelf = self;
-
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
-
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"bids/make_bid"];
-
+    
     NSDictionary *params = [OfferMapper jsonFromOffer:self.offer];
     
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -109,8 +150,6 @@
         [weakSelf.output offerDidSubmitSuccess:NO message:error.localizedDescription];
     }];
 }
-
-#pragma mark - Prvate
 
 - (NSString*)validateOfferData {
     
