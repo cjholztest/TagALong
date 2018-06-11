@@ -45,7 +45,7 @@
     NSInteger radius = self.miles;
     BOOL isLimitEnabled = radius != -1;
     
-    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"Infinity";
+    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"No Limit";
     
     [self.contentView.limitSwithch setOn:isLimitEnabled];
     self.contentView.areaRadiusLabel.text = value;

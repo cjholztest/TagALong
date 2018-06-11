@@ -106,7 +106,7 @@ static const NSInteger kMaxImageCnt = 1;
     NSInteger radius = self.radius;
     BOOL isLimitEnabled = radius != -1;
     
-    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"Infinity";
+    NSString *value = isLimitEnabled ? [NSString stringWithFormat:@"%lu", radius] : @"No Limit";
     
     [self.radiusLimitSwitcher setOn:isLimitEnabled];
     self.areaRadiusLabel.text = value;
