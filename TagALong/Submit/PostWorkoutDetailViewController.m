@@ -91,7 +91,7 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
 //    arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Martial Arts", @"Dance", @"Combo", @"Youth",  @"Other Sports/Equipment", nil];
     arrSportNM = [NSArray arrayWithObjects: @"Running", @"Cycling", @"Yoga", @"Pilates", @"Crossfit", @"Other", nil];
     
-    frequencies = [NSArray arrayWithObjects:@{@"title": @"None", @"id": @"0"}, @{@"title": @"Every day", @"id": @"1"}, @{@"title": @"Every week", @"id": @"7"}, nil];
+    frequencies = [NSArray arrayWithObjects:@{@"title": @"Just This One", @"id": @"0"}, @{@"title": @"Every day", @"id": @"1"}, @{@"title": @"Every week", @"id": @"7"}, nil];
 
     
     UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
