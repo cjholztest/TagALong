@@ -13,5 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (weak, nonatomic) IBOutlet UIImageView *ivStar;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
-
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @end

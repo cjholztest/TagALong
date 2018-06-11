@@ -135,16 +135,19 @@ static const NSInteger kMaxImageCnt = 1;
     cell.vwBG.backgroundColor = [UIColor whiteColor];
     
     NSString *star = [dic objectForKey:@"star_mark"];
-    if ([star isEqualToString:@"1"]) {
-        [cell.ivStar setHidden:NO];
-        NSString *title = [dic objectForKey:API_RES_KEY_TITLE];
-        NSString *location = [dic objectForKey:API_RES_KEY_USER_LOCATION];
-        cell.lblTitle.text = [NSString stringWithFormat:@"%@\n%@", title, location];
-        cell.lblTitle.textAlignment = NSTextAlignmentLeft;
-    } else {
-        [cell.ivStar setHidden:YES];
-        cell.lblTitle.text = @"";
-        cell.lblTitle.textAlignment = NSTextAlignmentCenter;
+    
+    BOOL isStarVisible = [star isEqualToString:@"1"];
+    
+    [cell.ivStar setHidden:!isStarVisible];
+    [cell.durationLabel setHidden:isStarVisible];
+    
+    if (dic[@"duration"]) {
+        cell.durationLabel.text = [NSString stringWithFormat:@"duration\n%@", dic[@"duration"]];
+    }
+    
+    if (dic[API_RES_KEY_TITLE]) {
+        cell.lblTitle.numberOfLines = 2;
+        cell.lblTitle.text = dic[API_RES_KEY_TITLE];
     }
    
     return cell;

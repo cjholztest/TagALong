@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -52,6 +53,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jiI-X3-cdW" userLabel="View2">
                                 <rect key="frame" x="74" y="0.0" width="78" height="46"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNj-vL-uV7">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="46"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_blue" translatesAutoresizingMaskIntoConstraints="NO" id="zUb-52-FjA">
                                         <rect key="frame" x="27" y="11" width="25" height="25"/>
                                         <constraints>
@@ -62,8 +69,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YNj-vL-uV7" secondAttribute="trailing" id="2wA-qY-raP"/>
                                     <constraint firstItem="zUb-52-FjA" firstAttribute="centerX" secondItem="jiI-X3-cdW" secondAttribute="centerX" id="BFm-yB-xQq"/>
+                                    <constraint firstItem="YNj-vL-uV7" firstAttribute="leading" secondItem="jiI-X3-cdW" secondAttribute="leading" id="DA0-vO-2Bt"/>
+                                    <constraint firstAttribute="bottom" secondItem="YNj-vL-uV7" secondAttribute="bottom" id="EIo-OK-6R7"/>
                                     <constraint firstItem="zUb-52-FjA" firstAttribute="centerY" secondItem="jiI-X3-cdW" secondAttribute="centerY" id="FmQ-qk-osQ"/>
+                                    <constraint firstItem="YNj-vL-uV7" firstAttribute="top" secondItem="jiI-X3-cdW" secondAttribute="top" id="yKW-gZ-znT"/>
                                     <constraint firstAttribute="width" constant="78" id="yLa-kx-But"/>
                                 </constraints>
                             </view>
@@ -131,6 +142,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="durationLabel" destination="YNj-vL-uV7" id="gxQ-Ck-Erd"/>
                 <outlet property="ivStar" destination="zUb-52-FjA" id="64z-dv-IXM"/>
                 <outlet property="lblTime" destination="jeI-Ps-poe" id="hOm-Ba-wBE"/>
                 <outlet property="lblTitle" destination="Y8l-gi-YN0" id="c3K-zD-crR"/>
