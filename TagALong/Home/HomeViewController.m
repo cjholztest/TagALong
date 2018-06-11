@@ -121,10 +121,10 @@
     [self setPage];
     [self changeBottomButton];
     
-    if (_nCurButtonIdx == BUTTON_PROS) {
+//    if (_nCurButtonIdx == BUTTON_PROS) {
         self.navigationItem.rightBarButtonItem = nil;
         self.navigationController.navigationItem.rightBarButtonItem = nil;
-    }
+//    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -142,10 +142,10 @@
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
     
-    if (_nCurButtonIdx == BUTTON_PROS) {
+//    if (_nCurButtonIdx == BUTTON_PROS) {
         self.navigationItem.rightBarButtonItem = nil;
         self.navigationController.navigationItem.rightBarButtonItem = nil;
-    }
+//    }
     
 //    if ([Global.g_user.user_login isEqualToString:@"expert"]) {
 //        [self onClickProfile:self];
@@ -250,6 +250,8 @@
         }
         
     }
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)removeviewsFromMain{
@@ -480,6 +482,9 @@
     
     [self setDefaulttitle];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pageRefresh" object:nil];
+    
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (IBAction)onClickSubmit:(id)sender {

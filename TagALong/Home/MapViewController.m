@@ -119,6 +119,9 @@
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,7 +207,7 @@
 -(void)addFilterBarButton {
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filter"] style:UIBarButtonItemStylePlain target:self action: @selector(onClickFilter:)];
     
-    self.vcParent.navigationItem.rightBarButtonItem = filterButton;
+    self.vcParent.navigationItem.rightBarButtonItem = nil; //filterButton;
 }
 
 -(void)setMyPosSetting{

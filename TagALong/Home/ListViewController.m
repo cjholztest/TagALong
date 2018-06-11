@@ -109,6 +109,9 @@
         [self ReqWorkoutListForPro];
 //        [self ReqExportWorkoutList];
     }
+    
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)addFilterBarButton {
@@ -119,6 +122,8 @@
     } else {
         self.vcParent.navigationItem.rightBarButtonItem = nil;
     }
+    // temp customer wish to hide filter button:
+    self.vcParent.navigationItem.rightBarButtonItem = nil;
 }
 
 #pragma mark -  UITableViewDataSource
