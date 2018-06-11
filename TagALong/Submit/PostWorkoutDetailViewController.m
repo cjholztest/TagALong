@@ -550,7 +550,7 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
 }
 
 - (void)showLoctionPopup {
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:@"Do you want to use your current location or to input it manually?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:@"Use Current Location or Input Manually?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *locationAction = [UIAlertAction actionWithTitle:@"Current" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [SharedAppDelegate showLoading];
