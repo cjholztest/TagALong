@@ -64,7 +64,7 @@ QLPreviewControllerDataSource
 
 - (void)setup {
     
-    self.title = @"Pro Sign Up";
+    self.title = @"Sign Up";
     self.simpleUser = [[SimpleUserSignUpDataModel alloc] init];
     
     self.model = [[SimpleUserSignUpModel alloc] initWithOutput:self];
