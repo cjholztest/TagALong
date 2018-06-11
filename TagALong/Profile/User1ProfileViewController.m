@@ -248,7 +248,17 @@ static const NSInteger kMaxImageCnt = 1;
     phone = [dicInfo objectForKey:API_RES_KEY_USR_PHONE];
     //_lblAge.text = [NSString stringWithFormat:@"%@ years old   %@", age, location];
     _lblAge.text = location;
-    _lblLevel.text = @"INDIVIDUAL";
+    
+    NSMutableString *fullName = [NSMutableString string];
+    
+    if (dicInfo[@"usr_nck_nm"]) {
+        [fullName appendString:dicInfo[@"usr_nck_nm"]];
+    }
+    
+    if (dicInfo[@"usr_last_name"]) {
+        [fullName appendString:[NSString stringWithFormat:@" %@", dicInfo[@"usr_last_name"]]];
+    }
+    _lblLevel.text = fullName;
     
     miles = [dicInfo[@"pro_search_radius"] integerValue];
     
