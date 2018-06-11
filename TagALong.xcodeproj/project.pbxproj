@@ -205,6 +205,7 @@
 		CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77420A59131008B0E75 /* ProsTableViewCell.m */; };
 		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
+		CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */; };
 		CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */; };
 		CE5DB34020C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33F20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m */; };
 		CE5DB34420C6DD08001F8A87 /* NSDateFormatter+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34320C6DD08001F8A87 /* NSDateFormatter+Workout.m */; };
@@ -755,6 +756,9 @@
 		CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProsTableViewCell.xib; sourceTree = "<group>"; };
 		CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCellDisplayModel.h; sourceTree = "<group>"; };
 		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CE5519D620CEB7E000AC7BC8 /* NoContentSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapter.h; sourceTree = "<group>"; };
+		CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContentSectionAdapter.m; sourceTree = "<group>"; };
+		CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapterOutput.h; sourceTree = "<group>"; };
 		CE5DB33B20C6AC61001F8A87 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		CE5DB33E20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferViewDisplayModel.h; sourceTree = "<group>"; };
@@ -2477,6 +2481,7 @@
 		CE36D75E20A579A0008B0E75 /* Sectoins */ = {
 			isa = PBXGroup;
 			children = (
+				CE5519D520CEB7BF00AC7BC8 /* NoContent */,
 				CE36D75F20A579B9008B0E75 /* Main */,
 				CE36D76420A57A2B008B0E75 /* ProsSectionAdapter.h */,
 			);
@@ -2548,6 +2553,16 @@
 				CE36D74C20A478FA008B0E75 /* View */,
 			);
 			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE5519D520CEB7BF00AC7BC8 /* NoContent */ = {
+			isa = PBXGroup;
+			children = (
+				CE5519D620CEB7E000AC7BC8 /* NoContentSectionAdapter.h */,
+				CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */,
+				CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */,
+			);
+			path = NoContent;
 			sourceTree = "<group>";
 		};
 		CE5DB33A20C6AC3B001F8A87 /* MKMapView Categories */ = {
@@ -4069,6 +4084,7 @@
 				CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */,
 				CE2A634720BD4C6100AE9CD3 /* WorkoutDetailsAdditionalSectionAdapter.m in Sources */,
 				CE5DB34A20C6ED2B001F8A87 /* RegularUserInfoDataModel.m in Sources */,
+				CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
 				CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */,
 				32C2DBCF1F6AD0B1001B6822 /* TypeWorkoutViewController.m in Sources */,

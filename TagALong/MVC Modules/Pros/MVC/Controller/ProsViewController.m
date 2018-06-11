@@ -9,13 +9,14 @@
 #import "ProsViewController.h"
 #import "ProsSectionAdapter.h"
 #import "ProsMainSectionAdapter.h"
+#import "NoContentSectionAdapter.h"
 #import "ProsTableViewAdapter.h"
 #import "ProsModuleProtocols.h"
 #import "ProsModel.h"
 #import "ProsView.h"
 #import "AthleteInfoViewController.h"
 
-@interface ProsViewController () <ProsModelOutput, ProsViewOutput, ProsMainSectionAdapterOutput>
+@interface ProsViewController () <ProsModelOutput, ProsViewOutput, ProsMainSectionAdapterOutput, NoContentSectionAdapterOutput>
 
 @property (nonatomic, weak) IBOutlet ProsView *contentView;
 
@@ -45,9 +46,11 @@
     self.model = [[ProsModel alloc] initWithOutput:self];
     
     ProsMainSectionAdapter *mainSection = [[ProsMainSectionAdapter alloc] initWithOutput:self];
+    NoContentSectionAdapter *noContentSection = [[NoContentSectionAdapter alloc] initWithOutput:self];
     
     ProsTableViewAdapter *prosTableViewAdapter = [ProsTableViewAdapter new];
     [prosTableViewAdapter.sectionAdapters addObject:mainSection];
+    [prosTableViewAdapter.sectionAdapters addObject:noContentSection];
     
     self.tableViewAdapter = prosTableViewAdapter;
     [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
@@ -64,6 +67,12 @@
 }
 
 #pragma mark - ProsViewOutput
+
+#pragma mark - NoContentSectionAdapterOutput
+
+- (BOOL)isNoContentVisible {
+    return [self.model athletesCount] == 0;
+}
 
 #pragma mark - ProsMainSectionAdapterOutput
 
