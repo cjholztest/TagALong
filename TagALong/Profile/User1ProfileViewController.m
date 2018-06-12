@@ -21,6 +21,9 @@
 #import "SimpleUserEditProfileViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "WorkoutDetailsViewController.h"
+#import "UIColor+AppColors.h"
+#import "NextWorkoutsView.h"
+#import "UIFont+HelveticaNeue.h"
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate, ExpertUserProfileEditViewControllerDelegate>{
     NSString *file_url;
@@ -56,6 +59,8 @@
 @property (nonatomic, strong) NSMutableArray *arM_Photo;
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
 
+@property (nonatomic, strong) NextWorkoutsView *nextWorkoutsContainerView;
+
 @end
 
 static const NSInteger kMaxImageCnt = 1;
@@ -74,6 +79,27 @@ static const NSInteger kMaxImageCnt = 1;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self addEditInfoBarButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    CGRect nextWorkotsFrame = CGRectZero;
+    nextWorkotsFrame.size.height = 44.0f;
+    nextWorkotsFrame.size.width = self.view.bounds.size.width;
+    nextWorkotsFrame.origin.y = self.view.bounds.size.height - nextWorkotsFrame.size.height;
+    
+    self.nextWorkoutsContainerView.frame = nextWorkotsFrame;
+}
+
+- (NextWorkoutsView*)nextWorkoutsContainerView {
+    if (!_nextWorkoutsContainerView) {
+        _nextWorkoutsContainerView = [NextWorkoutsView new];
+        _nextWorkoutsContainerView.backgroundColor = UIColor.appColor;
+        [_nextWorkoutsContainerView setHidden:YES];
+        [self.view insertSubview:_nextWorkoutsContainerView aboveSubview:self.vwNoData];
+    }
+    return _nextWorkoutsContainerView;
 }
 
 -(void)addEditInfoBarButton {
@@ -96,14 +122,107 @@ static const NSInteger kMaxImageCnt = 1;
 
 - (void)calendarViewDidChange:(id)sender {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"YYYY-MM-dd";
-    NSLog(@"%@", [formatter stringFromDate:self.calendarView.selectedDate]);
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    formatter.dateFormat = @"YYYY-MM-dd";
+//    NSLog(@"%@", [formatter stringFromDate:self.calendarView.selectedDate]);
+//
+//    NSString *seldate = [formatter stringFromDate:self.calendarView.selectedDate];
     
-    NSString *seldate = [formatter stringFromDate:self.calendarView.selectedDate];
+    NSDate *seldate = self.calendarView.selectedDate;
+    
     [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
     //[self ReqOldGetUserProfile:seldate];
     [self ReqGetUserProfile:seldate];
+}
+
+- (NSDate*)nextDayDateFromDate:(NSDate*)date {
+    NSTimeInterval dateTimeInterval = [date timeIntervalSince1970];
+    NSTimeInterval newTimeInterval = dateTimeInterval + 86400;
+    NSDate *newDate = [NSDate dateWithTimeIntervalSince1970:newTimeInterval];
+    return newDate;
+}
+
+- (void)updateNextWorkoutsForDate:(NSDate*)date {
+    
+    [SharedAppDelegate showLoading];
+    
+    __weak typeof(self)weakSelf = self;
+    [weakSelf.nextWorkoutsContainerView setHidden:YES];
+    
+    NSDate *firstDate = [self nextDayDateFromDate:date];
+    NSDate *secondDate = [self nextDayDateFromDate:firstDate];
+    NSDate *thirdDate = [self nextDayDateFromDate:secondDate];
+    
+    __block NSError *firsttDayError = nil;
+    __block NSError *secondDayError = nil;
+    __block NSError *thirdDayError = nil;
+    
+    __block BOOL firstDayWorkoutExists = NO;
+    __block BOOL secondDayWorkoutExists = NO;
+    __block BOOL thirdDayWorkoutExists = NO;
+    
+    dispatch_group_t serviceGroup = dispatch_group_create();
+    
+    dispatch_group_enter(serviceGroup);
+    
+    [self reqUserProfile:firstDate withCompletion:^(BOOL workoutsExist, NSError *error) {
+        firstDayWorkoutExists = workoutsExist;
+        firsttDayError = error;
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_enter(serviceGroup);
+    
+    [self reqUserProfile:secondDate withCompletion:^(BOOL workoutsExist, NSError *error) {
+        secondDayWorkoutExists = workoutsExist;
+        secondDayError = error;
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_enter(serviceGroup);
+    
+    [self reqUserProfile:thirdDate withCompletion:^(BOOL workoutsExist, NSError *error) {
+        thirdDayWorkoutExists = workoutsExist;
+        thirdDayError = error;
+        dispatch_group_leave(serviceGroup);
+    }];
+    
+    dispatch_group_notify(serviceGroup,dispatch_get_main_queue(),^{
+        
+        NSDate *visibleDate = nil;
+        
+        if (firstDayWorkoutExists) {
+            visibleDate = firstDate;
+        } else if (secondDayWorkoutExists) {
+            visibleDate = secondDate;
+        } else if (thirdDayWorkoutExists) {
+            visibleDate = thirdDate;
+        }
+        
+        if (visibleDate) {
+            NSDateFormatter *dateFormatter = [NSDateFormatter new];
+            dateFormatter.dateFormat = @"E, d";
+            
+            [weakSelf.nextWorkoutsContainerView setHidden:NO];
+            
+            NSString *titleText = @"Next workouts will be on ";
+            NSString *valueText = [dateFormatter stringFromDate:visibleDate];
+            
+            NSString *textToDisplay = [NSString stringWithFormat:@"%@%@", titleText, valueText];
+            
+            NSDictionary *titleAttributes = @{NSForegroundColorAttributeName : UIColor.whiteColor, NSFontAttributeName : UIFont.textFont};
+            NSDictionary *valueAttributes = @{NSForegroundColorAttributeName : UIColor.proBackgroundColor, NSFontAttributeName : UIFont.textBoldFont};
+            
+            NSMutableAttributedString *resultString = [[NSMutableAttributedString alloc] initWithString:textToDisplay];
+            [resultString setAttributes:titleAttributes range:[textToDisplay rangeOfString:titleText]];
+            [resultString setAttributes:valueAttributes range:[textToDisplay rangeOfString:valueText]];
+            
+            weakSelf.nextWorkoutsContainerView.titleNWLabel.attributedText = resultString;
+        }
+        
+        [SharedAppDelegate closeLoading];
+    });
+    
 }
 
 #pragma mark -  UITableViewDataSource
@@ -180,6 +299,7 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - user defined functions
 -(void)initUI{
+    [self.nextWorkoutsContainerView setHidden:YES];
     _arrWorkout = [[NSMutableArray alloc]  init];
     _ivProfile.layer.cornerRadius = _ivProfile.bounds.size.width / 2;
     
@@ -194,12 +314,12 @@ static const NSInteger kMaxImageCnt = 1;
     [self.tvSchedule registerNib:[UINib nibWithNibName:@"UserProfilePlanTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserProfilePlanTableViewCell"];
     
     NSDate *curdate = [NSDate date];
-    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
-    [dateformat setDateFormat:@"yyyy-MM-dd"];
-    NSString *today = [dateformat stringFromDate:curdate];
+//    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+//    [dateformat setDateFormat:@"yyyy-MM-dd"];
+//    NSString *today = [dateformat stringFromDate:curdate];
 
     //[self ReqOldGetUserProfile:today];
-    [self ReqGetUserProfile:today];
+    [self ReqGetUserProfile:curdate];
 }
 
 - (void)initData{
@@ -401,7 +521,15 @@ static const NSInteger kMaxImageCnt = 1;
 
 #pragma mark - Network
 
--(void)ReqGetUserProfile:(NSString*)date{
+-(void)ReqGetUserProfile:(NSDate*)date {
+    
+    __weak typeof(self)weakSelf = self;
+    
+    __block NSDate *selectedDate = date;
+    
+    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+    [dateformat setDateFormat:@"yyyy-MM-dd"];
+    __block NSString *dateStr = [dateformat stringFromDate:date];
     
     [SharedAppDelegate showLoading];
     
@@ -415,7 +543,7 @@ static const NSInteger kMaxImageCnt = 1;
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_GET_PROFILE];
     
-    NSDictionary *params = @{ API_REQ_KEY_TARGET_DATE: date,};
+    NSDictionary *params = @{ API_REQ_KEY_TARGET_DATE: dateStr,};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -471,6 +599,8 @@ static const NSInteger kMaxImageCnt = 1;
             }
             
             [_tvSchedule reloadData];
+            
+            [weakSelf updateNextWorkoutsForDate:selectedDate];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
             [Commons showToast:@"The password is incorrect."];
@@ -585,6 +715,59 @@ static const NSInteger kMaxImageCnt = 1;
     }];
 }
 
+- (void)reqUserProfile:(NSDate*)date withCompletion:(void(^)(BOOL workoutsExist, NSError *error))completion {
+    
+    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+    [dateformat setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr = [dateformat stringFromDate:date];
+    
+    [SharedAppDelegate showLoading];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, API_TYPE_USER_GET_PROFILE];
+    
+    NSDictionary *params = @{ API_REQ_KEY_TARGET_DATE: dateStr,};
+    
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        BOOL workoutsExist = NO;
+        NSError *err = nil;
+        
+        int res_code = [[responseObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+        if (res_code == RESULT_CODE_SUCCESS) {
+            
+            NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
+            workoutsExist = arrData.count > 0;
+            
+        }  else if(res_code == RESULT_ERROR_PASSWORD){
+            [Commons showToast:@"The password is incorrect."];
+            
+        }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
+            [Commons showToast:@"User does not exist."];
+        }  else if(res_code == RESULT_ERROR_PARAMETER){
+            [Commons showToast:@"The request parameters are incorrect."];
+        }
+        
+        if (completion) {
+            completion(workoutsExist, err);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        if (completion) {
+            completion(NO, error);
+        }
+    }];
+}
+
 - (void)uploadImage:(UIImage*)image scale:(float)scale {
     if (image == nil)
         return;
@@ -694,12 +877,12 @@ static const NSInteger kMaxImageCnt = 1;
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
     
-    formatter.dateFormat = @"YYYY-MM-dd";
-    
-    NSString *seldate = [formatter stringFromDate:date];
+//    formatter.dateFormat = @"YYYY-MM-dd";
+//
+//    NSString *seldate = [formatter stringFromDate:date];
     [_tvSchedule setContentOffset:CGPointMake(0, 0) animated:YES];
     //[self ReqOldGetUserProfile:seldate];
-    [self ReqGetUserProfile:seldate];
+    [self ReqGetUserProfile:date];
 }
 
 @end

@@ -14,6 +14,10 @@
     return [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
 }
 
++ (UIFont*)textBoldFont {
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f];
+}
+
 + (UIFont*)titleFont {
     return [UIFont fontWithName:@"HelveticaNeue-Thin" size:16.0f];
 }

@@ -11,6 +11,7 @@
 @interface UIFont (HelveticaNeue)
 
 + (UIFont*)textFont;
++ (UIFont*)textBoldFont;
 + (UIFont*)titleFont;
 + (UIFont*)pickerFont;
 + (UIFont*)levelTitleFont;

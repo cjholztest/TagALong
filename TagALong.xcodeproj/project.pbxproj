@@ -207,6 +207,7 @@
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
 		CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */; };
 		CE5519DD20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DC20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m */; };
+		CE5519E020D026E800AC7BC8 /* NextWorkoutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */; };
 		CE5DB33D20C6AC61001F8A87 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */; };
 		CE5DB34020C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB33F20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.m */; };
 		CE5DB34420C6DD08001F8A87 /* NSDateFormatter+Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB34320C6DD08001F8A87 /* NSDateFormatter+Workout.m */; };
@@ -762,6 +763,8 @@
 		CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapterOutput.h; sourceTree = "<group>"; };
 		CE5519DB20CFB31C00AC7BC8 /* NSObject+CheckEmpty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CheckEmpty.h"; sourceTree = "<group>"; };
 		CE5519DC20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CheckEmpty.m"; sourceTree = "<group>"; };
+		CE5519DE20D026E800AC7BC8 /* NextWorkoutsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextWorkoutsView.h; sourceTree = "<group>"; };
+		CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextWorkoutsView.m; sourceTree = "<group>"; };
 		CE5DB33B20C6AC61001F8A87 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		CE5DB33C20C6AC61001F8A87 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		CE5DB33E20C6D2EA001F8A87 /* ReviewOfferViewDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewOfferViewDisplayModel.h; sourceTree = "<group>"; };
@@ -1449,6 +1452,8 @@
 				3256F2691F73689100D0874E /* UserProfilePlanTableViewCell.h */,
 				3256F26A1F73689100D0874E /* UserProfilePlanTableViewCell.m */,
 				3256F26B1F73689100D0874E /* UserProfilePlanTableViewCell.xib */,
+				CE5519DE20D026E800AC7BC8 /* NextWorkoutsView.h */,
+				CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */,
 			);
 			path = item;
 			sourceTree = "<group>";
@@ -4209,6 +4214,7 @@
 				CEDF052820A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m in Sources */,
 				CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */,
 				CEDA65D320B021CF009417BF /* ProUserSignUpTableViewAdapter.m in Sources */,
+				CE5519E020D026E800AC7BC8 /* NextWorkoutsView.m in Sources */,
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
 				CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */,
 				CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */,
