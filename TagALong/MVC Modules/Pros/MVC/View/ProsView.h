@@ -14,5 +14,6 @@
 @property (nonatomic, weak) id <ProsViewOutput> output;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end

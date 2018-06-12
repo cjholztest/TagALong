@@ -59,6 +59,14 @@
 #pragma mark - ProsModelOutput
 
 - (void)prosDidLoadSuccessfully {
+    NSString *title = nil;
+    if (self.model.isCurrentProUserAloneInArea) {
+        title = @"You are the only Pro Athlete in your area.";
+    } else {
+        title = @"Athletes Registered in your Area.";
+    }
+    
+    self.contentView.titleLabel.text = title;
     [self.contentView.tableView reloadData];
 }
 

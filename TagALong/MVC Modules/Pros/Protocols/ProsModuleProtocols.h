@@ -19,6 +19,7 @@
 @protocol ProsModelInput <NSObject>
 
 - (void)loadPros;
+- (BOOL)isCurrentProUserAloneInArea;
 
 @end
 

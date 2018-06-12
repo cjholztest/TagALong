@@ -91,6 +91,17 @@
     }];
 }
 
+- (BOOL)isCurrentProUserAloneInArea {
+    if (self.athletes.count == 1) {
+        AthleteDataModel *athlete = self.athletes.firstObject;
+        int currentProUID = Global.g_expert.export_uid;
+        if (currentProUID == athlete.userUID.intValue) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - ProsModelDataSource
 
 - (id)athleteDetailsAtIndex:(NSInteger)index {
