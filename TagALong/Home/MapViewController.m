@@ -26,6 +26,7 @@
 #import "AthleteDataModel.h"
 #import "UIColor+AppColors.h"
 #import "MKMapView+ZoomLevel.h"
+#import "NSObject+CheckEmpty.h"
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate, CCHMapClusterControllerDelegate>{
     
@@ -689,13 +690,23 @@
     
     _ivSport.image = [UIImage imageNamed:arrSportImg1[sport_uid - 1]];
     _lblNickName.text = [NSString stringWithFormat:@"%@ %@", first_name, last_name];
-    _lblDistance.text = title;
     
-    if ((date * 15) / 60 > 12) {
-        _lbldate.text = [NSString stringWithFormat:@"%02ld:%02ld pm", (date * 15) / 60 - 12 , (date * 15) % 60];
-    } else {
-        _lbldate.text = [NSString stringWithFormat:@"%02ld:%02ld am", (date * 15) / 60 , (date * 15) % 60];
+    NSString *workoutTime = dic[@"start_time"];
+    NSString *workoutDate = dic[@"workout_date"];
+    
+    if ([workoutTime isNotEmpty]) {
+        _lblDistance.text = workoutTime;
     }
+    
+    if ([workoutDate isNotEmpty]) {
+        _lbldate.text = workoutDate;
+    }
+    
+//    if ((date * 15) / 60 > 12) {
+//        _lbldate.text = [NSString stringWithFormat:@"%02ld:%02ld pm", (date * 15) / 60 - 12 , (date * 15) % 60];
+//    } else {
+//        _lbldate.text = [NSString stringWithFormat:@"%02ld:%02ld am", (date * 15) / 60 , (date * 15) % 60];
+//    }
 
     if (amount.length > 0) {
         _lblAmount.text = [NSString stringWithFormat:@"$%@", amount];

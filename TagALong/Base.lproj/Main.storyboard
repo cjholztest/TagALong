@@ -1150,45 +1150,44 @@ someone wants to Tag-A-Long</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEu-q5-q4y" userLabel="Money  View">
-                                                <rect key="frame" x="215" y="50" width="80" height="40"/>
+                                                <rect key="frame" x="295" y="50" width="0.0" height="40"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rectangle_white" translatesAutoresizingMaskIntoConstraints="NO" id="KuB-sK-c43">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KuB-sK-c43">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-Ww-MQH">
-                                                        <rect key="frame" x="40" y="20" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-Ww-MQH">
+                                                        <rect key="frame" x="0.0" y="20" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                                        <color key="textColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="KuB-sK-c43" secondAttribute="trailing" id="43N-FO-tMp"/>
                                                     <constraint firstAttribute="bottom" secondItem="KuB-sK-c43" secondAttribute="bottom" id="Ftg-GG-MbA"/>
                                                     <constraint firstItem="XGW-Ww-MQH" firstAttribute="centerX" secondItem="gEu-q5-q4y" secondAttribute="centerX" id="brf-Cs-V7T"/>
                                                     <constraint firstItem="KuB-sK-c43" firstAttribute="top" secondItem="gEu-q5-q4y" secondAttribute="top" id="fW9-HE-kRI"/>
                                                     <constraint firstItem="KuB-sK-c43" firstAttribute="leading" secondItem="gEu-q5-q4y" secondAttribute="leading" id="hzC-Nj-vc7"/>
-                                                    <constraint firstAttribute="width" constant="80" id="oEe-yc-aFo"/>
+                                                    <constraint firstAttribute="width" id="oEe-yc-aFo"/>
                                                     <constraint firstAttribute="height" constant="40" id="vkd-1d-WPm"/>
                                                     <constraint firstItem="XGW-Ww-MQH" firstAttribute="centerY" secondItem="gEu-q5-q4y" secondAttribute="centerY" id="zaQ-XV-5VV"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWS-kR-1GE" userLabel="Data View">
-                                                <rect key="frame" x="121" y="44" width="89" height="46"/>
+                                                <rect key="frame" x="121" y="44" width="169" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y44-fH-csK">
-                                                        <rect key="frame" x="0.0" y="3" width="84" height="24"/>
+                                                        <rect key="frame" x="0.0" y="3" width="164" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="23.5" id="hSW-6l-lth"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcO-Ko-ORP">
-                                                        <rect key="frame" x="0.0" y="32" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                        <rect key="frame" x="0.0" y="27" width="0.0" height="19"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1196,8 +1195,9 @@ someone wants to Tag-A-Long</string>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Y44-fH-csK" secondAttribute="trailing" constant="5" id="2dk-Px-hHK"/>
-                                                    <constraint firstItem="kcO-Ko-ORP" firstAttribute="top" secondItem="Y44-fH-csK" secondAttribute="bottom" constant="5" id="2z9-ct-Fig"/>
+                                                    <constraint firstItem="kcO-Ko-ORP" firstAttribute="top" secondItem="Y44-fH-csK" secondAttribute="bottom" id="2z9-ct-Fig"/>
                                                     <constraint firstItem="kcO-Ko-ORP" firstAttribute="leading" secondItem="mWS-kR-1GE" secondAttribute="leading" id="FlG-CB-dGO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="kcO-Ko-ORP" secondAttribute="bottom" id="jbw-2z-37I"/>
                                                     <constraint firstItem="Y44-fH-csK" firstAttribute="leading" secondItem="mWS-kR-1GE" secondAttribute="leading" id="nVA-T0-sae"/>
                                                     <constraint firstItem="Y44-fH-csK" firstAttribute="top" secondItem="mWS-kR-1GE" secondAttribute="top" constant="3" id="yjC-XL-tDS"/>
                                                 </constraints>
@@ -7028,7 +7028,6 @@ within the next 24 hours.</string>
         <image name="ic_rectangle" width="334" height="73"/>
         <image name="ic_rectangle1" width="729" height="75"/>
         <image name="ic_rectangle_blue" width="142" height="84"/>
-        <image name="ic_rectangle_white" width="167" height="84"/>
         <image name="ic_right_arrow1" width="28" height="51"/>
         <image name="ic_right_arrow2" width="28" height="52"/>
         <image name="ic_search_tab" width="24" height="24"/>

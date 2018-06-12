@@ -15,6 +15,7 @@
 #import "PaymentClient+CreditCard.h"
 #import "UIColor+AppColors.h"
 #import "AddCreditCardViewController.h"
+#import "NSObject+CheckEmpty.h"
 
 static const NSInteger kPostWorkoutDefaultTag = 234;
 static const NSInteger kPostWorkoutPaymentAccountTag = 254;
@@ -553,7 +554,7 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Tag-A-Long \n" message:@"Use Current Location or Input Manually?" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *locationAction = [UIAlertAction actionWithTitle:@"Current" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [SharedAppDelegate showLoading];
+//        [SharedAppDelegate showLoading];
         locationManager = [[CLLocationManager alloc] init];
         geocoder = [[CLGeocoder alloc] init];
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -762,8 +763,26 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
             if (error == nil && [placemarks count] > 0) {
                 placemark = [placemarks lastObject];
                 
-                NSString *address = [NSString stringWithFormat:@"%@ %@\n%@\n",
-                                     placemark.subThoroughfare, placemark.thoroughfare, placemark.locality];
+                NSMutableString *address = [NSMutableString string];
+                
+                if ([placemark.subThoroughfare isNotEmpty]) {
+                    [address appendString:placemark.subThoroughfare];
+                }
+                
+                if ([placemark.thoroughfare isNotEmpty]) {
+                    if (address.length > 0) {
+                        [address appendString:@" "];
+                    }
+                    [address appendString:placemark.thoroughfare];
+                }
+                
+                if ([placemark.locality isNotEmpty]) {
+                    if (address.length > 0) {
+                        [address appendString:@"\n"];
+                    }
+                    [address appendString:placemark.locality];
+                }
+                
                 location = address;
                 self.tfLocation.text = address;
                 userLocation = currentLocation;
