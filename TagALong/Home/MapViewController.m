@@ -27,6 +27,9 @@
 #import "UIColor+AppColors.h"
 #import "MKMapView+ZoomLevel.h"
 #import "NSObject+CheckEmpty.h"
+#import "AthleteInfoViewController.h"
+
+static NSString *const kProPrefix = @"athlete";
 
 @interface MapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, DateSelectDialogDelegate, FilterViewControllerDelegate, CCHMapClusterControllerDelegate>{
     
@@ -309,7 +312,9 @@
     MKAnnotationView *pinView = nil;
     NSString *uniqueImageName = nil;
     
-    if ([annotation.title isEqualToString:@"pro"]) {
+    BOOL isAthlete = [annotation.title containsString:kProPrefix];
+    
+    if (isAthlete) {
         static NSString *prouserpin = @"prouserpin";
         pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:prouserpin];
         if ( pinView == nil ) {
@@ -409,7 +414,23 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
      [mapView deselectAnnotation:view.annotation animated:YES];
     
-    if ([view.annotation.title isEqualToString:@"pro"]) {
+    BOOL isAthlete = [view.annotation.title containsString:kProPrefix];
+    
+    if (isAthlete) {
+        
+        NSString *stringIndex = [view.annotation.title stringByReplacingOccurrencesOfString:kProPrefix withString:@""];
+        NSInteger index = stringIndex.integerValue;
+        
+        if (index >= 0 && index < self.athletes.count) {
+           
+            AthleteDataModel *athlete = self.athletes[index];
+            
+            AthleteInfoViewController *athleteVC = (AthleteInfoViewController*)AthleteInfoViewController.fromStoryboard;
+            [athleteVC setupWithAthlete:athlete];
+            
+            [self.navigationController pushViewController:athleteVC animated:YES];
+        }
+        
         return;
     }
     
@@ -562,17 +583,19 @@
             [annotations addObject:ptAnno];
         }
     }
+    
+    [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
+    for (id<MKOverlay> overlay in self.mvMap.overlays) {
+        [self.mvMap removeOverlay:overlay];
+    }
+    
     if (annotations.count > 0) {
-        
         __weak typeof(self)weakSelf = self;
-        
-        [self.mapClusterController removeAnnotations:self.mapClusterController.annotations.allObjects withCompletionHandler:NULL];
-        for (id<MKOverlay> overlay in self.mvMap.overlays) {
-            [self.mvMap removeOverlay:overlay];
-        }
         [self.mapClusterController addAnnotations:annotations withCompletionHandler:^{
             [weakSelf OhterProsSet];
         }];
+    } else {
+        [self OhterProsSet];
     }
 }
 
@@ -588,7 +611,7 @@
         
         MKPointAnnotation *ptAnno = [[MKPointAnnotation alloc] init];
         ptAnno.coordinate = proLocation;
-        ptAnno.title = @"pro";
+        ptAnno.title = [NSString stringWithFormat:@"%@%lu", kProPrefix, i];
         
         MKAnnotationView *view = [self.mvMap viewForAnnotation:ptAnno];
         view.alpha = [self.mvMap zoomLevel] > 12.0f ? 0.0f : 1.0f;
@@ -1127,7 +1150,7 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius"];
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius_for_map"];
     
     NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
