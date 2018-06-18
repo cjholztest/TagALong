@@ -125,6 +125,10 @@
         self.navigationItem.rightBarButtonItem = nil;
         self.navigationController.navigationItem.rightBarButtonItem = nil;
 //    }
+    
+    if (_nCurPageIdx == PAGE_MENU_MAP) {
+        [vcMap reloadAllData];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -234,7 +238,7 @@
             [_svContetns addSubview:vcMap.view];
             [self addChildViewController:vcMap];
         }
-        
+        [_svContetns bringSubviewToFront:vcMap.view];
     } else if (_nCurPageIdx == PAGE_MENU_LIST) {
 
         [_ivListLine setHidden:NO];
@@ -248,7 +252,7 @@
             [_svContetns addSubview:vcList.view];
             [self addChildViewController:vcList];
         }
-        
+        [_svContetns bringSubviewToFront:vcList.view];
     }
     self.navigationItem.rightBarButtonItem = nil;
     self.navigationController.navigationItem.rightBarButtonItem = nil;
@@ -331,15 +335,15 @@
 
 - (void)removeMainPages{
 
-    if (vcMap != nil) {
-        [vcMap.view removeFromSuperview];
-        vcMap = nil;
-    }
-
-    if (vcList != nil) {
-        [vcList.view removeFromSuperview];
-        vcList = nil;
-    }
+//    if (vcMap != nil) {
+//        [vcMap.view removeFromSuperview];
+//        vcMap = nil;
+//    }
+//
+//    if (vcList != nil) {
+//        [vcList.view removeFromSuperview];
+//        vcList = nil;
+//    }
 
 }
 
@@ -413,12 +417,13 @@
     [self removeMainPages];
     _nCurPageIdx = PAGE_MENU_MAP;
     [self setPage];
+    [vcMap reloadAllData];
 }
 - (IBAction)onClickList:(id)sender {
     [self removeMainPages];
     _nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
- 
+    [vcList ReqWorkoutList];
 }
 
 //bottom

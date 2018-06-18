@@ -21,5 +21,7 @@
 @property (nonatomic) NSTimeInterval startDate;
 @property (nonatomic) NSTimeInterval endDate;
 
+- (void)reloadAllData;
+
 @end
 

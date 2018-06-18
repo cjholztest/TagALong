@@ -204,9 +204,15 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         
         [weakSelf updateTitle];
         
-        NSNumber *proUserID = @(Global.g_expert.export_uid);
+        NSNumber *userID;// = @(Global.g_expert.export_uid);
         
-        BOOL isIndividual = proUserID.integerValue == weakSelf.workotDetails.postUID.integerValue;
+        if ([Global.g_user loggedInUserIsRegualar]) {
+            userID = @(Global.g_user.user_uid);
+        } else {
+            userID = @(Global.g_expert.export_uid);
+        }
+        
+        BOOL isIndividual = userID.integerValue == weakSelf.workotDetails.postUID.integerValue;
         
         NSArray *displayModels = [weakSelf generateDisplayModels];
         WorkoutDetailsViewDisplayModel *profileDisplayModel = [weakSelf profileDispayModel];

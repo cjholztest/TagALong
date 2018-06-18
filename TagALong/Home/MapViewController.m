@@ -1188,8 +1188,9 @@ static NSString *const kProPrefix = @"athlete";
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
     
-    NSNumber *start = [NSNumber numberWithDouble:self.startDate];
-    NSNumber *end = [NSNumber numberWithDouble:self.endDate];
+    NSInteger timeInterval = [[NSDate date] timeIntervalSince1970];
+    NSNumber *start = @(timeInterval); // [NSNumber numberWithDouble:self.startDate];
+//    NSNumber *end = @(0); // [NSNumber numberWithDouble:self.endDate];
     
     double lat = 0.0f;
     double lnd = 0.0f;
@@ -1212,8 +1213,8 @@ static NSString *const kProPrefix = @"athlete";
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
                              API_REQ_KEY_IS_MAP             :   @"1",
                              //API_REQ_KEY_TARGET_DATE        :   searchdate,
-                             API_REQ_KEY_START_DATE         :   start ?: 0,
-                             API_REQ_KEY_END_DATE           :   end ?: 0,
+                             API_REQ_KEY_START_DATE         :   start ? start : @(1),
+                             API_REQ_KEY_END_DATE           :   @(0),
                              };
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {

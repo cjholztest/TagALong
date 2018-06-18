@@ -572,8 +572,9 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"list_workout"];
     
-    NSNumber *startDate = [NSNumber numberWithLong:_startDate];
-    NSNumber *endDate = [NSNumber numberWithLong:_endDate];
+    NSInteger timeInterval = [[NSDate date] timeIntervalSince1970];
+    NSNumber *startDate = @(timeInterval); //[NSNumber numberWithLong:_startDate];
+//    NSNumber *endDate = [NSNumber numberWithLong:_endDate];
     
     NSDictionary *params = @{
                              API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
@@ -583,8 +584,8 @@
                              API_REQ_KEY_SPORTS_FILTER      :   _sport_filter,
                              API_REQ_KEY_CATEGORIES_FILTER  :   _cate_filter,
                              API_REQ_KEY_DISTANCE_limit     :   _distance_limit,
-                             API_REQ_KEY_START_DATE         :   startDate ?: 0,
-                             API_REQ_KEY_END_DATE           :   endDate ?: 0,
+                             API_REQ_KEY_START_DATE         :   startDate ? startDate : @(1),
+                             API_REQ_KEY_END_DATE           :   @(0),
                              API_REQ_KEY_IS_MAP             :   @"0",
                              API_REQ_KEY_PAGE_NUM           :   [NSString stringWithFormat:@"%ld", (long)nPage],
                              };

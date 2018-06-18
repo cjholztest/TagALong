@@ -26,5 +26,7 @@
 @property (nonatomic) NSTimeInterval startDate;
 @property (nonatomic) NSTimeInterval endDate;
 
+- (void)ReqWorkoutList;
+
 @end
 
