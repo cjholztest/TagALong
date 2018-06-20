@@ -43,6 +43,8 @@
     self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", athlete.firstName, athlete.lastName];
     self.infoLabel.text = [NSString stringWithFormat:@"%@\n%@", athlete.awards, athlete.additionalInfo];
     
+    self.sportActivityLabel.text = athlete.sportActivity;
+    
     self.cityLabel.text = athlete.city;
     self.locationLabel.text = @"ATHLETE LOCATION:";
     

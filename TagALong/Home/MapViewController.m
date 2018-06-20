@@ -319,6 +319,7 @@ static NSString *const kProPrefix = @"athlete";
         pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:prouserpin];
         if ( pinView == nil ) {
             pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:prouserpin];
+            pinView.image = [UIImage imageNamed:@"ic_profile_black"];
         }
         CGRect frame = pinView.frame;
         frame.size.width = 34.0f;

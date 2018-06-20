@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Athlete Info View Controller-->
         <scene sceneID="xsu-Kf-Ykf">
@@ -97,9 +102,15 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Wqwpd pqw pqwo qpdw kd. AJK fwof. Akfma lfma." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRj-0L-n3g">
-                                                        <rect key="frame" x="155" y="87.5" width="210" height="33"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqG-PH-Jh2">
+                                                        <rect key="frame" x="155" y="85" width="205" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Wqwpd pqw pqwo qpdw kd. AJK fwof. Akfma lfma." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRj-0L-n3g">
+                                                        <rect key="frame" x="155" y="87.5" width="210" height="28"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -107,11 +118,14 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="s1D-Ta-9Gt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bV3-VY-36T" secondAttribute="top" constant="15" id="3ds-rt-cf3"/>
-                                                    <constraint firstItem="TRj-0L-n3g" firstAttribute="top" secondItem="s1D-Ta-9Gt" secondAttribute="bottom" constant="5" id="8GU-5t-CM5"/>
+                                                    <constraint firstItem="aqG-PH-Jh2" firstAttribute="top" secondItem="s1D-Ta-9Gt" secondAttribute="bottom" constant="2.5" id="UsT-PR-cKX"/>
                                                     <constraint firstItem="TRj-0L-n3g" firstAttribute="leading" secondItem="s1D-Ta-9Gt" secondAttribute="leading" id="Xzu-Wv-7c6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aqG-PH-Jh2" secondAttribute="trailing" constant="15" id="fQJ-Fp-Igc"/>
+                                                    <constraint firstItem="aqG-PH-Jh2" firstAttribute="leading" secondItem="s1D-Ta-9Gt" secondAttribute="leading" id="jUv-yu-Q3w"/>
                                                     <constraint firstAttribute="trailing" secondItem="TRj-0L-n3g" secondAttribute="trailing" constant="10" id="ktv-ui-Rwm"/>
                                                     <constraint firstAttribute="trailing" secondItem="s1D-Ta-9Gt" secondAttribute="trailing" constant="15" id="x2T-6s-Jhy"/>
-                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TRj-0L-n3g" secondAttribute="bottom" constant="15" id="yfq-Vc-Tfj"/>
+                                                    <constraint firstItem="TRj-0L-n3g" firstAttribute="top" secondItem="aqG-PH-Jh2" secondAttribute="bottom" constant="2.5" id="yMt-gv-mRV"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TRj-0L-n3g" secondAttribute="bottom" constant="5" id="yfq-Vc-Tfj"/>
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="C8e-Xg-opL">
@@ -189,6 +203,7 @@
                                     <outlet property="locationLabel" destination="j6q-Yn-3R9" id="Jsx-Go-PGE"/>
                                     <outlet property="mapView" destination="Q1P-RW-5u7" id="Ay1-qd-SUA"/>
                                     <outlet property="nameLabel" destination="s1D-Ta-9Gt" id="CMd-8a-Dof"/>
+                                    <outlet property="sportActivityLabel" destination="aqG-PH-Jh2" id="qJU-9f-RXt"/>
                                     <outlet property="tagALongLabel" destination="4DI-yI-jhd" id="2v5-3P-ZyO"/>
                                 </connections>
                             </view>
