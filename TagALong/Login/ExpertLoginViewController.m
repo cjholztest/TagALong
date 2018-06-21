@@ -163,6 +163,46 @@
     [self presentViewController:profilePaymentVC animated:YES completion:nil];
 }
 
+- (void)showProUserRegistrationScreen {
+    ProUserSignUpViewController *vc = (ProUserSignUpViewController*)ProUserSignUpViewController.fromStoryboard;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)showEnterTagALongCodeAlert {
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"TagALong"
+                                                                              message: @"Input validation code. If you don't have this one, please contact TagALong support."
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"type validation code";
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleNone;
+        textField.secureTextEntry = YES;
+    }];
+    
+    __weak typeof(self)weakSelf = self;
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+        NSArray *textfields = alertController.textFields;
+        UITextField *codeTextField = textfields.firstObject;
+
+      NSString *textHash = [NSString stringWithFormat:@"%lu", codeTextField.text.hash];
+                                                              
+                                                              if ([weakSelf isEnteredCodeValid:textHash]) {
+                                                                  [weakSelf showProUserRegistrationScreen];
+                                                              }
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alertController addAction:confirmAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - ProfilePaymentDataModuleDelegate
 
 - (void)paymentCredentialsDidSend {
@@ -193,8 +233,11 @@
 
 - (IBAction)onClickSignUp:(id)sender {
 //    ProSignupViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ProSignupViewController"];
-    ProUserSignUpViewController *vc = (ProUserSignUpViewController*)ProUserSignUpViewController.fromStoryboard;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [self showEnterTagALongCodeAlert];
+    
+//    ProUserSignUpViewController *vc = (ProUserSignUpViewController*)ProUserSignUpViewController.fromStoryboard;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)onClickPassForget:(id)sender {
@@ -217,6 +260,27 @@
     
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (BOOL)isEnteredCodeValid:(NSString*)codeHash {
+    
+    BOOL isValid = NO;
+    
+    NSArray *hashes = @[@"1919067032892125673",
+                        @"13545421518092288235",
+                        @"16994407326441334500",
+                        @"10066267483383479567",
+                        @"16251320495889094080"];
+    
+    for (NSInteger i = 0; i < hashes.count; i++) {
+        NSString *currentHash = hashes[i];
+        if ([currentHash isEqualToString:codeHash]) {
+            isValid = YES;
+            break;
+        }
+    }
+    
+    return isValid;
 }
 
 #pragma mark - Network
