@@ -187,9 +187,9 @@
         NSArray *textfields = alertController.textFields;
         UITextField *codeTextField = textfields.firstObject;
 
-      NSString *textHash = [NSString stringWithFormat:@"%lu", codeTextField.text.hash];
+                                                              NSString *textCode = codeTextField.text;
                                                               
-                                                              if ([weakSelf isEnteredCodeValid:textHash]) {
+                                                              if ([weakSelf isEnteredCodeValid:textCode]) {
                                                                   [weakSelf showProUserRegistrationScreen];
                                                               }
     }];
@@ -266,11 +266,11 @@
     
     BOOL isValid = NO;
     
-    NSArray *hashes = @[@"1919067032892125673",
-                        @"13545421518092288235",
-                        @"16994407326441334500",
-                        @"10066267483383479567",
-                        @"16251320495889094080"];
+    NSArray *hashes = @[@"kFjUT#R985",
+                        @"oIReW#W476",
+                        @"PoldC#M503",
+                        @"mNjkX#U984",
+                        @"jhFGV#A760"];
     
     for (NSInteger i = 0; i < hashes.count; i++) {
         NSString *currentHash = hashes[i];

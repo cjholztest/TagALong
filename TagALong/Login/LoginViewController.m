@@ -57,6 +57,9 @@
     _lblMsg.layer.masksToBounds = NO;
     _lblMsg.layer.shouldRasterize = YES;
     
+    self.expertLoginButton.layer.borderWidth = 1.0f;
+    self.expertLoginButton.layer.borderColor = UIColor.whiteColor.CGColor;
+    
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"email@email.com" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];
     _tfEmail.attributedPlaceholder = str;
     NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];

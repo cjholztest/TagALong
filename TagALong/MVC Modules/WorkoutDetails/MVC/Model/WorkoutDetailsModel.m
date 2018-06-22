@@ -384,8 +384,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     
     NSDictionary *params = @{@"workout_uid"     : [self.workotDetails.uid stringValue],
                              @"amount"          : self.workotDetails.amount,
-                             @"user_card_uid"   : self.creditCardUID,
-                             @"password"        : password};
+                             @"user_card_uid"   : self.creditCardUID};
     
     __weak typeof(self)weakSelf = self;
     
@@ -418,8 +417,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     
     NSDictionary *params = @{@"workout_uid"     : [self.workotDetails.uid stringValue],
                              @"amount"          : self.workotDetails.amount,
-                             @"user_card_uid"   : self.creditCardUID,
-                             @"password"        : password};
+                             @"user_card_uid"   : self.creditCardUID};
     
     __weak typeof(self)weakSelf = self;
     

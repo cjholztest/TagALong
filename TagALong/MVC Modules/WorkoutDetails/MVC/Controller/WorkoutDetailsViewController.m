@@ -130,12 +130,12 @@ EditDialogViewControllerDelegate
     if (self.model.isWokoutFree) {
         [self.model bookFreeWorkout];
     } else {
-        [self showEnterPasswordDialogWithType:BookNowButtonType];
+        [self.model bookWorkoutWithPassword:nil];
     }
 }
 
 - (void)payBookedWorkoutDidTap {
-    [self showEnterPasswordDialogWithType:PayBoockedButtonType];
+    [self.model payBookedWorkoutWithPassword:nil];
 }
 
 - (void)showVisitorsDidTap {
