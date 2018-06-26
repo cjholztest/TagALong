@@ -84,8 +84,11 @@ static const NSInteger kMaxImageCnt = 1;
     
     nCurSelLevel = [self.level intValue];
     [self setLevel];
+    
+    _lbLevel.text = self.sportActivity.uppercaseString;
     _lblArea.text = location;
     _lblPhone.text = phone;
+    
     self.navigationItem.title = self.nickname;
     _lblTitle.text = nickname;
     self.lblCreditCard.text = self.debitCard;
@@ -238,13 +241,13 @@ static const NSInteger kMaxImageCnt = 1;
     
     if (nCurSelLevel == LEVEL_GYM) {
         [_vwGYM setAlpha:1];
-        _lbLevel.text = @"GYM";
+//        _lbLevel.text = @"GYM";
     } else if (nCurSelLevel == LEVEL_PRO) {
         [_vwPRO setAlpha:1];
-        _lbLevel.text = @"PRO";
+//        _lbLevel.text = @"PRO";
     } else if (nCurSelLevel == LEVEL_TRAINER) {
         [_vwTRAINER setAlpha:1];
-        _lbLevel.text = @"TRAINER";
+//        _lbLevel.text = @"TRAINER";
     }
 }
 

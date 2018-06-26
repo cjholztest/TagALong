@@ -146,7 +146,7 @@
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
     
-//    if (_nCurButtonIdx == BUTTON_PROS) {
+//    if (_nCurButtonIdx != BUTTON_PROFILE) {
         self.navigationItem.rightBarButtonItem = nil;
         self.navigationController.navigationItem.rightBarButtonItem = nil;
 //    }

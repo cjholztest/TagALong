@@ -27,7 +27,7 @@
     NSString *profileurl;
     NSNumber *latitude;
     NSNumber *longitude;
-    NSNumber *sportID;
+    NSString *sportID;
     NSNumber *hidePhone;
     NSInteger miles;
 }
@@ -60,6 +60,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self addEditInfoBarButton];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self addEditInfoBarButton];
 }
 
@@ -245,7 +250,6 @@
 -(void)addEditInfoBarButton {
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
     self.vcParent.navigationItem.rightBarButtonItem = editButton;
-    //self.navigationController.navigationItem.rightBarButtonItem = editButton;
 }
 
 -(void)setUserInfo:(NSDictionary*)dicInfo{
@@ -273,19 +277,7 @@
     _lblPhone.text = phone;
     _lblAddress.text = location;
     
-    NSString *sportName = [NSString stringWithFormat:@" - %@", sportID];
-    
-    if ([level isEqualToString:@"1"]) {
-        _lblLevel.text = @"GYM";
-    } else if ([level isEqualToString:@"2"]) {
-        _lblLevel.text = @"PRO";
-    } else if ([level isEqualToString:@"3"]) {
-        _lblLevel.text = @"TRAINER";
-    } else {
-        _lblLevel.text = @"INDIVIDUAL";
-    }
-    
-    _lblLevel.text = [NSString stringWithFormat:@"%@%@", _lblLevel.text, sportName];
+    _lblLevel.text = sportID.uppercaseString;
     
     if ([[dicInfo objectForKey:API_RES_KEY_USER_PROFILE_IMG] isEqual:[NSNull null]]) {
         _ivProfile.image = [UIImage imageNamed:@"ic_profile_black"];
@@ -310,6 +302,7 @@
     vc.location = location;
     vc.url = profileurl;
     vc.level = level;
+    vc.sportActivity = sportID;
     vc.nickname = nickname;
     vc.arrSchedule = _arrWorkout;
     vc.vcParent = self.vcParent;

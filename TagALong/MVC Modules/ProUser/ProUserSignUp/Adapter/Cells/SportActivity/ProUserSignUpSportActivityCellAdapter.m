@@ -45,7 +45,7 @@
     cell.textField.text = [self.output sportActivity];
     
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
-    cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter Activity" attributes:attributes];
+    cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter Sport" attributes:attributes];
     
     cell.textField.delegate = self;
     cell.output = self;

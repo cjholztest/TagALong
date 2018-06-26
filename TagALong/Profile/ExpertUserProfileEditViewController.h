@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *nickname;
 @property (nonatomic, strong) NSString *debitCard;
+@property (nonatomic, strong) NSString *sportActivity;
 @property (nonatomic, strong) NSNumber *latitude;
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSMutableArray *arrSchedule;

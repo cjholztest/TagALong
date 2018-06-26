@@ -65,7 +65,6 @@ QLPreviewControllerDataSource
 
 - (void)setup {
     
-    self.title = @"Pro Sign Up";
     self.proUser = [[ProUserSignUpDataModel alloc] init];
     
     self.model = [[ProUserSignUpModel alloc] initWithOutput:self];
@@ -85,7 +84,6 @@ QLPreviewControllerDataSource
                                  [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpSportActivityCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpAwardsCellAdapter alloc] initWithOutput:self],
-                                 [[ProUserSignUpAdditionalInfoCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpTermsPrivacyCellAdapter alloc] initWithOutput:self], nil];
     
     ProUserSignUpTableViewAdapter *tableAdapter = [ProUserSignUpTableViewAdapter new];
