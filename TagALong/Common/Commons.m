@@ -211,12 +211,16 @@
     Global.g_expert.export_email = nil;
     Global.g_expert.export_pwd = nil;
     Global.g_user.user_login = @"1";
+    Global.g_user.user_uid = -1;
+    Global.g_expert.export_uid = -1;
     
     [Preference setString:PREFCONST_LOGIN_EMAIL value:@""];
     [Preference setString:PREFCONST_LOGIN_PWD value:@""];
+    [Preference setString:PREFCONST_ID value:@""];
 
     [Preference setString:PREFCONST_EXPERT_LOGIN_EMAIL value:@""];
     [Preference setString:PREFCONST_EXPERT_LOGIN_PWD value:@""];
+    [Preference setString:PREFCONST_EXPERT_ID value:@""];
 
 }
 
