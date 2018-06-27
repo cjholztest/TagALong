@@ -64,10 +64,9 @@
 #pragma mark - ProUserSignUpSwitchTableViewCellOutput
 
 - (void)switcherDidChange:(BOOL)isOn {
-    NSLog(@"%@", isOn ? @"YES" : @"NO");
-//    if ([self.output respondsToSelector:@selector(switcherDidChange:)]) {
-//        [self.output additionalInfoDidChange:text];
-//    }
+    if ([self.output respondsToSelector:@selector(isPhoneVisibleStateDidChange:)]) {
+        [self.output isPhoneVisibleStateDidChange:isOn];
+    }
 }
 
 @end
