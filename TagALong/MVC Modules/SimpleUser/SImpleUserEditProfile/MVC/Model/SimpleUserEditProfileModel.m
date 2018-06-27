@@ -46,7 +46,7 @@
     [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
         
         NSArray *cards = responseObject;
-        NSString *cardInfo = @"no debit";
+        NSString *cardInfo = @"no credit card";
         
         if (cards.count != 0) {
             NSDictionary *card = cards.firstObject;

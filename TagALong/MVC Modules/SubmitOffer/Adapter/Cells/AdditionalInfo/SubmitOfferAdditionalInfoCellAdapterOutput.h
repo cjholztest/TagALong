@@ -10,6 +10,7 @@
 
 @protocol SubmitOfferAdditionalInfoCellAdapterOutput <NSObject>
 
+- (void)additionalInfoTextDidChange:(NSString*)additionalInfo;
 - (void)additionalInfoCellDidTap;
 - (NSString*)additionalInfo;
 

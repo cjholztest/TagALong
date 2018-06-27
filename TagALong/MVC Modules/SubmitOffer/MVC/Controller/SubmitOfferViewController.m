@@ -194,6 +194,10 @@ AddCreditCardModuleDelegate
 
 #pragma mark - SubmitOfferAdditionalInfoCellAdapterOutput
 
+- (void)additionalInfoTextDidChange:(NSString *)additionalInfo {
+    [self.model updateAdditionalInfo: additionalInfo];
+}
+
 - (void)additionalInfoCellDidTap {
     [self hideKeyboardIfNeeded];
 }

@@ -174,7 +174,7 @@ AddCreditCardModuleDelegate
 #pragma mark - ReviewOfferAdditionalSectionAdapterOutput
 
 - (NSInteger)additionalRowsCount {
-    return 1;
+    return self.reviewOffer.additionalInfo.length > 0 ? 1 : 0;
 }
 
 - (id)additionalDisplayModelAtIndexPath:(NSIndexPath *)indexPath {

@@ -134,7 +134,7 @@
         _lblLevel.textColor = [UIColor blackColor];
     } else if ([level isEqualToString:@"1"]) { //gym
         _vwLevelBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
-        _lblLevel.text = @"GYM";
+        _lblLevel.text = @"PRO";
         _lblLevel.textColor = [UIColor whiteColor];
     } else if ([level isEqualToString:@"2"]) { //pro
         _vwLevelBG.backgroundColor = [UIColor colorWithRed:(255/255.f) green:(210/255.f) blue:(0/255.f) alpha:1.0];
@@ -143,7 +143,7 @@
         
     } else if ( [level isEqualToString:@"3"]) { //trainer
         _vwLevelBG.backgroundColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
-        _lblLevel.text = @"TRAINER";
+        _lblLevel.text = @"PRO";
         _lblLevel.textColor = [UIColor whiteColor];
     }
     

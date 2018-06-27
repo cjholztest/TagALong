@@ -53,7 +53,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self initUI];
+//    [self initUI];
 //    [self requestOffers];
 }
 
@@ -61,6 +61,7 @@
     [super viewWillAppear:animated];
     
     [self addEditInfoBarButton];
+    [self initUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

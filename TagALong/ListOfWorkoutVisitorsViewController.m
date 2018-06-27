@@ -48,16 +48,19 @@
     cell.isPaidLabel.text = @"$";
     cell.isPaidLabel.font = [UIFont systemFontOfSize:16.0f];
     
-    cell.isPaidLabel.textColor = UIColor.textColor;
-    cell.isPaidLabel.layer.borderColor = cell.isPaidLabel.textColor.CGColor;
-    cell.isPaidLabel.textAlignment = NSTextAlignmentCenter;
+//    cell.isPaidLabel.textColor = UIColor.textColor;
+//    cell.isPaidLabel.layer.borderColor = cell.isPaidLabel.textColor.CGColor;
+    cell.isPaidLabel.textAlignment = NSTextAlignmentRight;
     
     UIImage *image = [[UIImage imageNamed:@"money_transfer"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.iconImageView.image = image;
     cell.iconImageView.tintColor = UIColor.gymBackgroundColor;
     
-    cell.isPaidLabel.alpha = isPaid ? 1.0f : 0.0f;
-    cell.iconImageView.alpha = isPaid ? 0.0f : 1.0f;
+    cell.isPaidLabel.alpha = 1.0f; // isPaid ? 1.0f : 0.0f;
+    cell.iconImageView.alpha = 0.0f; //isPaid ? 0.0f : 1.0f;
+    
+    cell.isPaidLabel.text = isPaid ? @"Paid" : @"Not Paid";
+    cell.isPaidLabel.textColor = isPaid ? UIColor.textColor : UIColor.proBackgroundColor;
     
     NSString *photoURL = self.visitorsList[indexPath.row][API_REQ_KEY_USER_PROFILE_IMG];
     if (photoURL) {

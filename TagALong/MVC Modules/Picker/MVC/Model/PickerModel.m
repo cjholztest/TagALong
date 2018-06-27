@@ -102,7 +102,8 @@
             temp = [NSString stringWithFormat:@"%0ld:%02ld pm", hours, mins];
             [self.pickerComponents addObject:temp];
         } else {
-            if (i == 20 || i == 24 || i == 28 || i >= 32) {
+//            if (i == 20 || i == 24 || i == 28 || i >= 32) {
+            if (i == 20 || i == 24 || i == 28 || i >= 20) {
                 temp = [NSString stringWithFormat:@"%0ld:%02ld am", (i * 15) / 60, (i * 15) % 60];
                 [self.pickerComponents addObject:temp];
             }

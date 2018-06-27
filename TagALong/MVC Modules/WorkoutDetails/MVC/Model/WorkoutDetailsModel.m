@@ -368,11 +368,11 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
     
     NSMutableString *title = [[NSMutableString alloc] initWithString:self.workotDetails.title];
     
-    for (NSString *category in self.workotDetails.categories) {
-        NSInteger index = category.integerValue;
-        NSString *categoryName = [[SportService shared] categoryNameForIndex:index];
-        [title appendString:[NSString stringWithFormat:@", %@", categoryName]];
-    }
+//    for (NSString *category in self.workotDetails.categories) {
+//        NSInteger index = category.integerValue;
+//        NSString *categoryName = [[SportService shared] categoryNameForIndex:index];
+//        [title appendString:[NSString stringWithFormat:@", %@", categoryName]];
+//    }
     self.workoutTitle = title;
 }
 

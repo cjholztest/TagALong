@@ -33,6 +33,10 @@
     [json setObject:offer.duration forKey:@"duration"];
     [json setObject:@([offer.amount floatValue]) forKey:@"amount"];
     
+    if (offer.additionalInfo.length > 0) {
+        [json setObject:offer.additionalInfo forKeyedSubscript:@"addition"];
+    }
+    
     return json;
 }
 

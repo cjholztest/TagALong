@@ -73,11 +73,16 @@ static const NSInteger kMaxImageCnt = 1;
     
     gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     formatter = [[NSDateFormatter alloc] init];
-    [self initUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self addEditInfoBarButton];
+    [self initUI];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self addEditInfoBarButton];
 }
 

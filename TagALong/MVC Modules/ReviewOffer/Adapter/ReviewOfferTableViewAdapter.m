@@ -45,6 +45,10 @@
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.sectionAdapters.count;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [(self.sectionAdapters[indexPath.section]) cellForTableView:tableView atIndexPath:indexPath];
 }

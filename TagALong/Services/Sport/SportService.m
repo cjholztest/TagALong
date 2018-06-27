@@ -57,9 +57,9 @@
 - (NSArray*)levels {
     if (!_levels) {
         _levels = @[@"INDIVIDUAL",
-                    @"GYM",
                     @"PRO",
-                    @"TRAINER"];
+                    @"PRO",
+                    @"PRO"];
     }
     return _levels;
 }

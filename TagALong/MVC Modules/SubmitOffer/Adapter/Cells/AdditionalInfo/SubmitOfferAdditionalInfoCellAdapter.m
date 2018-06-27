@@ -124,6 +124,9 @@
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
     self.isTypingActive = NO;
+    if ([self.output respondsToSelector:@selector(additionalInfoTextDidChange:)]) {
+        [self.output additionalInfoTextDidChange:textView.text];
+    }
     return YES;
 }
 

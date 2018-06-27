@@ -22,7 +22,7 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    BOOL isStripeTest = NO;
+    BOOL isStripeTest = YES;
     
     NSString *key = [NSString stringWithFormat:@"%@", isStripeTest ? kStripeAccountTestKey : kStripeAccountLiveKey];
     [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:key];
