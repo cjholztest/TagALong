@@ -40,6 +40,8 @@
     cell.textField.keyboardType = UIKeyboardTypePhonePad;
     cell.textField.keyboardAppearance = UIKeyboardAppearanceDark;
     
+    cell.textField.secureTextEntry = NO;
+    
     [cell.textField setTintColor:[UIColor textColor]];
     
     cell.textField.text = [self.output phone];

@@ -44,8 +44,26 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
 }
 
 - (void)loadCreditCardList {
+    
     [SharedAppDelegate showLoading];
-    [self.model loadCardList];
+    
+    switch (self.cardListType) {
+        case NoneCardListType:
+            [self.model loadRegularUserCreditCardList];
+            break;
+        case RegularUserCreditCardListType:
+            [self.model loadRegularUserCreditCardList];
+            break;
+        case ProUserCreditCardListType:
+            [self.model loadProUserCreditCardList];
+            break;
+        case ProUserDebitCardListType:
+            [self.model loadProUserDebittCardList];
+            break;
+        default:
+            [self.model loadRegularUserCreditCardList];
+            break;
+    }
 }
 
 #pragma mark - CreditCardListModelOutput
@@ -67,7 +85,7 @@ static NSString *const kReusableIdentifier = @"CreditCardTableViewCellIdentifier
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Payment" bundle:nil];
     AddCreditCardViewController *addCreditVC = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass(AddCreditCardViewController.class)];
     addCreditVC.moduleDelegate = self;
-    addCreditVC.modeType = AddCreditCardtModeTypeProfile;
+    addCreditVC.modeType = self.cardListType == ProUserDebitCardListType ? AddCreditCardtModeTypeProfile : AddCreditCardtProUserModeTypePostWorkout;
     [self.navigationController pushViewController:addCreditVC animated:YES];
 }
 

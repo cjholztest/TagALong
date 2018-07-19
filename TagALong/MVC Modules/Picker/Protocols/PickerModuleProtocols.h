@@ -50,5 +50,9 @@
 - (void)pickerDoneButtonDidTapWithDuration:(NSString*)duration;
 - (void)pickerDoneButtonDidTapWithMiles:(NSString*)miles;
 - (void)pickerDoneButtonDidTapWithStartTime:(NSString*)title;
+- (void)pickerDoneButtonDidTapWithGender:(NSString*)title atIndex:(NSInteger)index;
+
+- (void)pickerDoneButtonDidTapWithMonth:(NSString*)month atIndex:(NSInteger)index;
+- (void)pickerDoneButtonDidTapWithYear:(NSString*)year;
 
 @end

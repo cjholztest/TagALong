@@ -29,9 +29,57 @@
     return self.cardList[index];
 }
 
-- (void)loadCardList {
+- (void)loadCreditCardList {
     __weak typeof(self)weakSelf = self;
     [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        if (error) {
+            [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
+        } else {
+            [weakSelf reloadCardListWithResponseCards:responseObject];
+            [weakSelf.output cardListDidLoad];
+        }
+    }];
+}
+
+- (void)loadDebitCardList {
+    __weak typeof(self)weakSelf = self;
+    [PaymentClient proUserCreditCardsWithCompletion:^(id responseObject, NSError *error) {
+        if (error) {
+            [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
+        } else {
+            [weakSelf reloadCardListWithResponseCards:responseObject];
+            [weakSelf.output cardListDidLoad];
+        }
+    }];
+}
+
+- (void)loadRegularUserCreditCardList {
+    __weak typeof(self)weakSelf = self;
+    [PaymentClient listOfCrediCardsWithCompletion:^(id responseObject, NSError *error) {
+        if (error) {
+            [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
+        } else {
+            [weakSelf reloadCardListWithResponseCards:responseObject];
+            [weakSelf.output cardListDidLoad];
+        }
+    }];
+}
+
+- (void)loadProUserCreditCardList {
+    __weak typeof(self)weakSelf = self;
+    [PaymentClient proUserCreditCardsWithCompletion:^(id responseObject, NSError *error) {
+        if (error) {
+            [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
+        } else {
+            [weakSelf reloadCardListWithResponseCards:responseObject];
+            [weakSelf.output cardListDidLoad];
+        }
+    }];
+}
+
+- (void)loadProUserDebittCardList {
+    __weak typeof(self)weakSelf = self;
+    [PaymentClient proUserDebitCardsWithCompletion:^(id responseObject, NSError *error) {
         if (error) {
             [weakSelf.output cardListDidLoadWithError:error.localizedDescription];
         } else {

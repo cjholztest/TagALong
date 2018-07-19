@@ -13,4 +13,6 @@
 
 @property (nonatomic, weak) id <CreditCardListModuleDelegate> moduleDelegate;
 
+@property (nonatomic, assign) CardListType cardListType;
+
 @end

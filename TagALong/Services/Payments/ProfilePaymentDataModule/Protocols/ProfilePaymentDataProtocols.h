@@ -14,6 +14,7 @@
 - (void)updateValue:(id)value forType:(NSInteger)type;
 - (void)setupMode:(ProfilePaymentModeType)mode;
 - (void)sendPaymentCredentials;
+- (void)updatePaymentCredentials;
 
 - (NSInteger)rowsCount;
 - (BOOL)isRegistrationMode;

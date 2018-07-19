@@ -207,7 +207,7 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     ProfilePaymentHeader *cell = [tableView dequeueReusableCellWithIdentifier:kHeaderIentifier];
-    NSString *title = [NSString stringWithFormat:@"You have to send your credential to have possibility to get the payouts.%@", self.model.isRegistrationMode ? @" You can send it later from your Profile or during creation new workout." : @""];
+    NSString *title = @"Enter your Debit Card info so TagALong can send payments directly to your account. You can also fill this out later on your profile page";
     cell.titleLabel.text = title;
     return cell.contentView;
 }
@@ -245,7 +245,11 @@ static NSString *const kFooterRegisterIdentifier = @"ProfilePaymentRegisterFoote
         [self.model updateValue:content forType:ProfilePaymentFieldTypePassword];
         if (self.model.isPasswordContained) {
             [SharedAppDelegate showLoading];
-            [self.model sendPaymentCredentials];
+            if (self.isUpdateMode) {
+                [self.model updatePaymentCredentials];
+            } else {
+                [self.model sendPaymentCredentials];
+            }
         }
     }
 }

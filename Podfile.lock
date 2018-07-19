@@ -31,7 +31,7 @@ DEPENDENCIES:
   - SVProgressHUD (~> 2.0.3)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CCHMapClusterController
     - DZNEmptyDataSet
@@ -49,6 +49,6 @@ SPEC CHECKSUMS:
   Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: ba2a8765ed729aecc54f32f93a811c200f0ad0d6
+PODFILE CHECKSUM: b00bdad2e710f38ba47216cb419bfe31f5b5e1a9
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

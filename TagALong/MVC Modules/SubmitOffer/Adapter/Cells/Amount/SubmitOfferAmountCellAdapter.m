@@ -83,6 +83,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    if (![textField.text containsString:@"$"]) {
+        textField.text = [NSString stringWithFormat:@"$ %@", textField.text];
+    }
+    
     if ([textField.text containsString:@"."] && [string isEqualToString:@"."]) {
         return NO;
     }
@@ -92,12 +96,13 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    textField.text = [NSString stringWithFormat:@"$ %@", textField.text];
     return YES;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$ " withString:@""];
+    if (![textField.text containsString:@"$"]) {
+        textField.text = [NSString stringWithFormat:@"$ %@", textField.text];
+    }
     return YES;
 }
 

@@ -31,6 +31,8 @@
 #import "ProUserSignUpLocationCellAdapter.h"
 #import "ProUserSignUpCityCellAdapter.h"
 #import "ProUserSignUpSportActivityCellAdapter.h"
+#import "ProUserSignUpGenderCellAdapter.h"
+#import "ProUserSignUpBirthdayCellAdapter.h"
 
 #import "ProUserSignUpModel.h"
 #import "ProUserSignUpView.h"

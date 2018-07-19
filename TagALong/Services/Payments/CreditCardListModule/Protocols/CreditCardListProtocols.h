@@ -8,9 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    NoneCardListType,
+    RegularUserCreditCardListType,
+    ProUserCreditCardListType,
+    ProUserDebitCardListType
+} CardListType;
+
 @protocol CreditCardListModelInput <NSObject>
 
-- (void)loadCardList;
+- (void)loadRegularUserCreditCardList;
+- (void)loadProUserCreditCardList;
+- (void)loadProUserDebittCardList;
+
 - (void)cardSetSelected:(BOOL)isSelected atIndexPath:(NSIndexPath*)indexPath;
 
 - (NSInteger)cardsCount;

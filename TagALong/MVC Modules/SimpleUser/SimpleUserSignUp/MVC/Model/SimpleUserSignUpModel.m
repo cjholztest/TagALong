@@ -45,7 +45,10 @@
     
     NSString *latitude = [[NSNumber numberWithFloat:userModel.location.latitude] stringValue];
     NSString *longitude = [[NSNumber numberWithFloat:userModel.location.longitude] stringValue];
-    NSNumber *hidePhone = [NSNumber numberWithBool:!userModel.isPhoneVisible];
+    NSNumber *hidePhone = [NSNumber numberWithBool:YES];
+    
+    NSNumber *birthday = [NSNumber numberWithInteger:userModel.birthday.timeInterval];
+    NSNumber *gender = [NSNumber numberWithInteger:userModel.genderIndex];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -62,7 +65,10 @@
                              API_REQ_KEY_USER_PWD           :   password ? password : @"",
                              @"latitude"                    :   latitude ? latitude : @"",
                              @"longitude"                   :   longitude ? longitude : @"",
-                             @"hide_phone"                  :   hidePhone};
+                             @"hide_phone"                  :   hidePhone,
+                             @"date_of_birth"               :   birthday,
+                             @"gender"                      :   gender
+                             };
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
     if (phone.length > 0) {
@@ -176,6 +182,14 @@
     
     if (![user.password isEqualToString:user.confirmPassword]) {
         return @"Confirm password does not match Password!";
+    }
+    
+    if (!user.birthday.dataExists) {
+        return @"Please, input Birthday";
+    }
+    
+    if (user.gender.length == 0) {
+        return @"Please, input Gender";
     }
     
     return nil;

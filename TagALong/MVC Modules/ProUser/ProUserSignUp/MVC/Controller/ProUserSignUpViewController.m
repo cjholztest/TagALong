@@ -31,6 +31,8 @@ ProUserSignUpCityCellAdapterOutput,
 ProUserSignUpSportActivityCellAdapterOutput,
 SelectLocationModuleOutput,
 PickerModuleOutput,
+ProUserSignUpGenderCellAdapterOutput,
+ProUserSignUpBirthdayCellAdapterOutput,
 QLPreviewControllerDelegate,
 QLPreviewControllerDataSource
 >
@@ -74,9 +76,10 @@ QLPreviewControllerDataSource
     mainSection.cellAdapters =  [NSArray<ProUserSignUpCellAdapter> arrayWithObjects:
                                  [[ProUserSignUpFirstNameCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpLastNameCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpBirthdayCellAdapter alloc] initWithOutput:self],
+                                 [[ProUserSignUpGenderCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpEmailCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpPhoneCellAdapter alloc] initWithOutput:self],
-                                 [[ProUserSignUpIsPhoneVisibleCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpCityCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self],
@@ -198,13 +201,7 @@ QLPreviewControllerDataSource
 #pragma mark - ProUserSignUpSportCellAdapterOutput
 
 - (void)sportCellDidTap {
-    
-    PickerViewController *sportsPickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
-    
-    sportsPickerVC.moduleOutput = self;
-    [sportsPickerVC setupWithType:SportsPickerType];
-    
-    [self presentCrossDissolveVC:sportsPickerVC];
+    [self showPickerWithType:SportsPickerType];
 }
 
 - (NSString*)kindOfSport {
@@ -289,6 +286,34 @@ QLPreviewControllerDataSource
     return self.proUser.sportActivity;
 }
 
+#pragma mark - ProUserSignUpGenderActivityCellAdapterOutput
+
+- (void)genderDidTap {
+    [self showPickerWithType:GenderPickerType];
+}
+
+- (NSString*)gender {
+    return self.proUser.gender;
+}
+
+#pragma mark - ProUserSignUpBirthdayCellAdapterOutput
+
+- (void)birthdayMonthDidTap {
+    [self showPickerWithType:MonthPickerType];
+}
+
+- (void)birthdayYearDidTap {
+    [self showPickerWithType:YearPickerType];
+}
+
+- (NSString*)birthdayMonth {
+    return self.proUser.birthday.monthTitle;
+}
+
+- (NSString*)birthdayYear {
+    return self.proUser.birthday.yearTitle;
+}
+
 #pragma mark - SelectLocationModuleOutput
 
 - (void)locationDidSet:(CLLocationCoordinate2D)location {
@@ -311,6 +336,23 @@ QLPreviewControllerDataSource
     [self.contentView.tableView reloadData];
 }
 
+- (void)pickerDoneButtonDidTapWithGender:(NSString *)title atIndex:(NSInteger)index {
+    self.proUser.gender = title;
+    self.proUser.genderIndex = index;
+    [self.contentView.tableView reloadData];
+}
+
+- (void)pickerDoneButtonDidTapWithMonth:(NSString*)month atIndex:(NSInteger)index {
+    self.proUser.birthday.monthTitle = month;
+    self.proUser.birthday.monthIndex = index;    
+    [self.contentView.tableView reloadData];
+}
+
+- (void)pickerDoneButtonDidTapWithYear:(NSString*)year {
+    self.proUser.birthday.yearTitle = year;
+    [self.contentView.tableView reloadData];
+}
+
 #pragma mark - Preview
 
 - (void)showPreview {
@@ -330,6 +372,18 @@ QLPreviewControllerDataSource
 
 - (NSInteger) numberOfPreviewItemsInPreviewController:(QLPreviewController*)controller {
     return 1;
+}
+
+#pragma mark - Private
+
+- (void)showPickerWithType:(PickerType)type {
+    
+    PickerViewController *sportsPickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    
+    sportsPickerVC.moduleOutput = self;
+    [sportsPickerVC setupWithType:type];
+    
+    [self presentCrossDissolveVC:sportsPickerVC];
 }
 
 @end

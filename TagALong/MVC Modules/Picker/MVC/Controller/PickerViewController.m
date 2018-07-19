@@ -109,6 +109,23 @@
                     [self.moduleOutput pickerDoneButtonDidTapWithStartTime:title];
                 }
                 break;
+            case GenderPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithGender:atIndex:)]) {
+                    NSInteger genderIndex = [self.model selectedComponentIndex] + 1;
+                    [self.moduleOutput pickerDoneButtonDidTapWithGender:title atIndex:genderIndex];
+                }
+                break;
+            case MonthPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMonth:atIndex:)]) {
+                    NSInteger monthIndex = [self.model selectedComponentIndex] + 1;
+                    [self.moduleOutput pickerDoneButtonDidTapWithMonth:title atIndex:monthIndex];
+                }
+                break;
+            case YearPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithYear:)]) {
+                    [self.moduleOutput pickerDoneButtonDidTapWithYear:title];
+                }
+                break;
             default:
                 break;
         }

@@ -23,6 +23,7 @@
 		1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */; };
 		1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */; };
 		1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */; };
+		1A2C32C3210129370039A476 /* ProUserEditProfileLocationCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C32C2210129370039A476 /* ProUserEditProfileLocationCellAdapter.m */; };
 		1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65B82065B17300D04E65 /* ProfilePaymentTableViewCell.m */; };
 		1A2D65BC2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65BB2065BD7800D04E65 /* ProfilePaymentDataFriendsController.m */; };
 		1A2D65BF2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D65BE2065BEFC00D04E65 /* ProfilePaymentTableViewCellViewModle.m */; };
@@ -205,6 +206,44 @@
 		CE36D77520A59131008B0E75 /* ProsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77420A59131008B0E75 /* ProsTableViewCell.m */; };
 		CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */; };
 		CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */; };
+		CE4C379920F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C379820F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.m */; };
+		CE4C379F20F79BA9009B1135 /* Birthday.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C379E20F79BA9009B1135 /* Birthday.m */; };
+		CE4C37A320F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37A220F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.m */; };
+		CE4C37A920F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37A720F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m */; };
+		CE4C37AA20F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C37A820F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.xib */; };
+		CE4C37AD20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37AC20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.m */; };
+		CE4C37B920FC8CC7009B1135 /* ProUserEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37B820FC8CC7009B1135 /* ProUserEditProfileViewController.m */; };
+		CE4C37BB20FC8CDA009B1135 /* ProUserEditProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4C37BA20FC8CDA009B1135 /* ProUserEditProfileViewController.storyboard */; };
+		CE4C37BE20FC8D43009B1135 /* ProUserEditProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37BD20FC8D43009B1135 /* ProUserEditProfileModel.m */; };
+		CE4C37C120FC8D53009B1135 /* ProUserEditProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37C020FC8D53009B1135 /* ProUserEditProfileView.m */; };
+		CE4C37C620FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37C520FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.m */; };
+		CE4C37CE20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37CD20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.m */; };
+		CE4C37DA20FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37D920FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m */; };
+		CE4C37DE20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37DD20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.m */; };
+		CE4C37E220FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37E120FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.m */; };
+		CE4C37E820FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37E620FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m */; };
+		CE4C37E920FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C37E720FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib */; };
+		CE4C37EE20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37EC20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.m */; };
+		CE4C37EF20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C37ED20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib */; };
+		CE4C37F420FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37F320FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.m */; };
+		CE4C380020FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C37FF20FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m */; };
+		CE4C380620FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C380420FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.m */; };
+		CE4C380720FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C380520FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.xib */; };
+		CE4C380B20FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C380A20FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.m */; };
+		CE4C381020FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C380F20FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m */; };
+		CE4C381420FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C381320FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m */; };
+		CE4C381820FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C381720FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.m */; };
+		CE4C381F20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C381E20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.m */; };
+		CE4C382320FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C382220FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.m */; };
+		CE4C382720FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C382620FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.m */; };
+		CE4C382C20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C382B20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.m */; };
+		CE4C382E20FE1030009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C382D20FE1030009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.xib */; };
+		CE4C383220FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C383120FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.m */; };
+		CE4C383620FE2797009B1135 /* EmptyFooterCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C383520FE2797009B1135 /* EmptyFooterCellAdapter.m */; };
+		CE4C383C20FF2C3C009B1135 /* ProUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C383B20FF2C3C009B1135 /* ProUserProfile.m */; };
+		CE4C383F20FF2C4B009B1135 /* ProUserProfileMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C383E20FF2C4B009B1135 /* ProUserProfileMapper.m */; };
+		CE4C384320FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C384220FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m */; };
+		CE4C384820FF7D2E009B1135 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C384720FF7D2E009B1135 /* NSString+Validation.m */; };
 		CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */; };
 		CE5519DD20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DC20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m */; };
 		CE5519E020D026E800AC7BC8 /* NextWorkoutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */; };
@@ -384,6 +423,9 @@
 		1A2C0207205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOfWorkoutVisitorsViewController.m; sourceTree = "<group>"; };
 		1A2C0209205C359C001887FA /* WorkoutVisitorTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutVisitorTableViewCell.h; sourceTree = "<group>"; };
 		1A2C020A205C359C001887FA /* WorkoutVisitorTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutVisitorTableViewCell.m; sourceTree = "<group>"; };
+		1A2C32C1210129370039A476 /* ProUserEditProfileLocationCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLocationCellAdapter.h; sourceTree = "<group>"; };
+		1A2C32C2210129370039A476 /* ProUserEditProfileLocationCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileLocationCellAdapter.m; sourceTree = "<group>"; };
+		1A2C32C42101294C0039A476 /* ProUserEditProfileLocationCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLocationCellAdapterOutput.h; sourceTree = "<group>"; };
 		1A2D65B72065B17300D04E65 /* ProfilePaymentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentTableViewCell.h; sourceTree = "<group>"; };
 		1A2D65B82065B17300D04E65 /* ProfilePaymentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePaymentTableViewCell.m; sourceTree = "<group>"; };
 		1A2D65BA2065BD7800D04E65 /* ProfilePaymentDataFriendsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePaymentDataFriendsController.h; sourceTree = "<group>"; };
@@ -758,6 +800,96 @@
 		CE36D77620A5913E008B0E75 /* ProsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProsTableViewCell.xib; sourceTree = "<group>"; };
 		CE36D77820A59173008B0E75 /* ProsTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsTableViewCellDisplayModel.h; sourceTree = "<group>"; };
 		CE36D77920A59173008B0E75 /* ProsTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CE4C379720F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpGenderCellAdapter.h; sourceTree = "<group>"; };
+		CE4C379820F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpGenderCellAdapter.m; sourceTree = "<group>"; };
+		CE4C379A20F76FE5009B1135 /* ProUserSignUpGenderCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpGenderCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C379D20F79BA9009B1135 /* Birthday.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Birthday.h; sourceTree = "<group>"; };
+		CE4C379E20F79BA9009B1135 /* Birthday.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Birthday.m; sourceTree = "<group>"; };
+		CE4C37A120F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpBirthdayCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37A220F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpBirthdayCellAdapter.m; sourceTree = "<group>"; };
+		CE4C37A420F7A013009B1135 /* ProUserSignUpBirthdayCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpBirthdayCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C37A620F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpBirthdayTableViewCell.h; sourceTree = "<group>"; };
+		CE4C37A720F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpBirthdayTableViewCell.m; sourceTree = "<group>"; };
+		CE4C37A820F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserSignUpBirthdayTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C37AB20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpBirthdayTableViewCellDisplayModel.h; sourceTree = "<group>"; };
+		CE4C37AC20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserSignUpBirthdayTableViewCellDisplayModel.m; sourceTree = "<group>"; };
+		CE4C37AE20F7ADEA009B1135 /* ProUserSignUpBirthdayTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserSignUpBirthdayTableViewCellOutput.h; sourceTree = "<group>"; };
+		CE4C37B720FC8CC7009B1135 /* ProUserEditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileViewController.h; sourceTree = "<group>"; };
+		CE4C37B820FC8CC7009B1135 /* ProUserEditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileViewController.m; sourceTree = "<group>"; };
+		CE4C37BA20FC8CDA009B1135 /* ProUserEditProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProUserEditProfileViewController.storyboard; sourceTree = "<group>"; };
+		CE4C37BC20FC8D43009B1135 /* ProUserEditProfileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileModel.h; sourceTree = "<group>"; };
+		CE4C37BD20FC8D43009B1135 /* ProUserEditProfileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileModel.m; sourceTree = "<group>"; };
+		CE4C37BF20FC8D53009B1135 /* ProUserEditProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileView.h; sourceTree = "<group>"; };
+		CE4C37C020FC8D53009B1135 /* ProUserEditProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileView.m; sourceTree = "<group>"; };
+		CE4C37C220FC8D8F009B1135 /* ProUserEditProfileModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileModuleProtocols.h; sourceTree = "<group>"; };
+		CE4C37C320FC8E38009B1135 /* ProUserEditProfileModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileModuleHeaders.h; sourceTree = "<group>"; };
+		CE4C37C420FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileTableVIewAdapter.h; sourceTree = "<group>"; };
+		CE4C37C520FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileTableVIewAdapter.m; sourceTree = "<group>"; };
+		CE4C37C720FC9919009B1135 /* ProUserEditProfileTableVIewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileTableVIewAdapterInput.h; sourceTree = "<group>"; };
+		CE4C37CB20FC997E009B1135 /* ProUserEditProfileSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileSectionAdapter.h; sourceTree = "<group>"; };
+		CE4C37CC20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileMainSectionAdapter.h; sourceTree = "<group>"; };
+		CE4C37CD20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileMainSectionAdapter.m; sourceTree = "<group>"; };
+		CE4C37CF20FC9AD1009B1135 /* ProUserEditProfileCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37D820FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileFirstNameCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37D920FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileFirstNameCellAdapter.m; sourceTree = "<group>"; };
+		CE4C37DB20FC9BE2009B1135 /* ProUserEditProfileFirstNameCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileFirstNameCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C37DC20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLastNameCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37DD20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileLastNameCellAdapter.m; sourceTree = "<group>"; };
+		CE4C37DF20FC9C04009B1135 /* ProUserEditProfileLastNameCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLastNameCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C37E020FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfilePhoneNumberCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37E120FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfilePhoneNumberCellAdapter.m; sourceTree = "<group>"; };
+		CE4C37E320FC9C22009B1135 /* ProUserEditProfilePhoneNumberCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfilePhoneNumberCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C37E520FCAEFF009B1135 /* ProUserEditProfileTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileTableViewCell.h; sourceTree = "<group>"; };
+		CE4C37E620FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileTableViewCell.m; sourceTree = "<group>"; };
+		CE4C37E720FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserEditProfileTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C37EB20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLogoInfoTableViewCell.h; sourceTree = "<group>"; };
+		CE4C37EC20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileLogoInfoTableViewCell.m; sourceTree = "<group>"; };
+		CE4C37ED20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserEditProfileLogoInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C37F220FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileUserInfoCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37F320FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileUserInfoCellAdapter.m; sourceTree = "<group>"; };
+		CE4C37F520FCBBE4009B1135 /* ProUserEditProfileUserInfoCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileUserInfoCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C37FE20FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCityNameCellAdapter.h; sourceTree = "<group>"; };
+		CE4C37FF20FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileCityNameCellAdapter.m; sourceTree = "<group>"; };
+		CE4C380120FCC46E009B1135 /* ProUserEditProfileCityNameCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCityNameCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C380320FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileHeaderTableViewCell.h; sourceTree = "<group>"; };
+		CE4C380420FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileHeaderTableViewCell.m; sourceTree = "<group>"; };
+		CE4C380520FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserEditProfileHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C380920FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfilePhoneHeaderCellAdapter.h; sourceTree = "<group>"; };
+		CE4C380A20FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfilePhoneHeaderCellAdapter.m; sourceTree = "<group>"; };
+		CE4C380E20FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCityHeaderCellAdapter.h; sourceTree = "<group>"; };
+		CE4C380F20FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileCityHeaderCellAdapter.m; sourceTree = "<group>"; };
+		CE4C381220FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileAwardsHeaderCellAdapter.h; sourceTree = "<group>"; };
+		CE4C381320FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileAwardsHeaderCellAdapter.m; sourceTree = "<group>"; };
+		CE4C381620FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileAwardsCellAdapter.h; sourceTree = "<group>"; };
+		CE4C381720FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileAwardsCellAdapter.m; sourceTree = "<group>"; };
+		CE4C381920FDE5C9009B1135 /* ProUserEditProfileAwardsCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileAwardsCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C381D20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileDebitCellAdapter.h; sourceTree = "<group>"; };
+		CE4C381E20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileDebitCellAdapter.m; sourceTree = "<group>"; };
+		CE4C382020FDEBC7009B1135 /* ProUserEditProfileDebitCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileDebitCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C382120FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCreditCellAdapter.h; sourceTree = "<group>"; };
+		CE4C382220FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileCreditCellAdapter.m; sourceTree = "<group>"; };
+		CE4C382420FDEBE3009B1135 /* ProUserEditProfileCreditCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileCreditCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C382520FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileBankCredentialsCellAdapter.h; sourceTree = "<group>"; };
+		CE4C382620FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileBankCredentialsCellAdapter.m; sourceTree = "<group>"; };
+		CE4C382820FDEC14009B1135 /* ProUserEditProfileBankCredentialsCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileBankCredentialsCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C382A20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfilePaymentInfoTableViewCell.h; sourceTree = "<group>"; };
+		CE4C382B20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfilePaymentInfoTableViewCell.m; sourceTree = "<group>"; };
+		CE4C382D20FE1030009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProUserEditProfilePaymentInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C383020FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfilePaymentHeaderCellAdapter.h; sourceTree = "<group>"; };
+		CE4C383120FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfilePaymentHeaderCellAdapter.m; sourceTree = "<group>"; };
+		CE4C383420FE2797009B1135 /* EmptyFooterCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyFooterCellAdapter.h; sourceTree = "<group>"; };
+		CE4C383520FE2797009B1135 /* EmptyFooterCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyFooterCellAdapter.m; sourceTree = "<group>"; };
+		CE4C383720FE3ECF009B1135 /* ProUserEditProfileTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileTableViewCellOutput.h; sourceTree = "<group>"; };
+		CE4C383A20FF2C3C009B1135 /* ProUserProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfile.h; sourceTree = "<group>"; };
+		CE4C383B20FF2C3C009B1135 /* ProUserProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserProfile.m; sourceTree = "<group>"; };
+		CE4C383D20FF2C4B009B1135 /* ProUserProfileMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserProfileMapper.h; sourceTree = "<group>"; };
+		CE4C383E20FF2C4B009B1135 /* ProUserProfileMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserProfileMapper.m; sourceTree = "<group>"; };
+		CE4C384120FF788E009B1135 /* ProUserEditProfileSportCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileSportCellAdapter.h; sourceTree = "<group>"; };
+		CE4C384220FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileSportCellAdapter.m; sourceTree = "<group>"; };
+		CE4C384420FF7899009B1135 /* ProUserEditProfileSportCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileSportCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C384620FF7D2E009B1135 /* NSString+Validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		CE4C384720FF7D2E009B1135 /* NSString+Validation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		CE4C38492100A648009B1135 /* ProUserEditProfileLogoInfoTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLogoInfoTableViewCellOutput.h; sourceTree = "<group>"; };
 		CE5519D620CEB7E000AC7BC8 /* NoContentSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapter.h; sourceTree = "<group>"; };
 		CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContentSectionAdapter.m; sourceTree = "<group>"; };
 		CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapterOutput.h; sourceTree = "<group>"; };
@@ -1286,6 +1418,16 @@
 				1A276165206133E500C9D703 /* CreditCardTableViewCellViewModel.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1A2C32C0210129120039A476 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				1A2C32C1210129370039A476 /* ProUserEditProfileLocationCellAdapter.h */,
+				1A2C32C2210129370039A476 /* ProUserEditProfileLocationCellAdapter.m */,
+				1A2C32C42101294C0039A476 /* ProUserEditProfileLocationCellAdapterOutput.h */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		1A2D65B32065B14400D04E65 /* Cell */ = {
@@ -1895,6 +2037,7 @@
 		3B79BCB71F83B1FA00BD869D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C379C20F79B8B009B1135 /* Birthday */,
 				3B79BCC21F8402A300BD869D /* MExpertUser.h */,
 				3B79BCC31F8402A300BD869D /* MExpertUser.m */,
 				3B79BCB81F83B1FA00BD869D /* MUser.h */,
@@ -2019,6 +2162,8 @@
 		CE2A631520B7EFF000AE9CD3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C383820FF2C08009B1135 /* Entity */,
+				CE4C383920FF2C09009B1135 /* Mapper */,
 				CE2A631B20B7F11B00AE9CD3 /* ProUserProfileModel.h */,
 				CE2A631C20B7F11B00AE9CD3 /* ProUserProfileModel.m */,
 			);
@@ -2412,6 +2557,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C37AF20FC8C8C009B1135 /* ProUserEditProfile */,
 				CE2A63A520C55ACB00AE9CD3 /* ProUser */,
 				CE2A63A620C55ACB00AE9CD3 /* SimpleUser */,
 				CE2A632420BD35C000AE9CD3 /* WorkoutDetails */,
@@ -2562,6 +2708,376 @@
 				CE36D74C20A478FA008B0E75 /* View */,
 			);
 			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE4C379620F76F9E009B1135 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C379720F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.h */,
+				CE4C379820F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.m */,
+				CE4C379A20F76FE5009B1135 /* ProUserSignUpGenderCellAdapterOutput.h */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		CE4C379C20F79B8B009B1135 /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C379D20F79BA9009B1135 /* Birthday.h */,
+				CE4C379E20F79BA9009B1135 /* Birthday.m */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		CE4C37A020F79FAF009B1135 /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37A120F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.h */,
+				CE4C37A220F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.m */,
+				CE4C37A420F7A013009B1135 /* ProUserSignUpBirthdayCellAdapterOutput.h */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		CE4C37A520F7A166009B1135 /* BirthdayCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37A620F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.h */,
+				CE4C37A720F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m */,
+				CE4C37A820F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.xib */,
+				CE4C37AB20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.h */,
+				CE4C37AC20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.m */,
+				CE4C37AE20F7ADEA009B1135 /* ProUserSignUpBirthdayTableViewCellOutput.h */,
+			);
+			path = BirthdayCell;
+			sourceTree = "<group>";
+		};
+		CE4C37AF20FC8C8C009B1135 /* ProUserEditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37B020FC8C8C009B1135 /* MVC */,
+				CE4C37B520FC8C8C009B1135 /* Adapter */,
+				CE4C37B620FC8C8C009B1135 /* Protocol */,
+			);
+			path = ProUserEditProfile;
+			sourceTree = "<group>";
+		};
+		CE4C37B020FC8C8C009B1135 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37B120FC8C8C009B1135 /* Controller */,
+				CE4C37B220FC8C8C009B1135 /* Model */,
+				CE4C37B320FC8C8C009B1135 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE4C37B120FC8C8C009B1135 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37B720FC8CC7009B1135 /* ProUserEditProfileViewController.h */,
+				CE4C37B820FC8CC7009B1135 /* ProUserEditProfileViewController.m */,
+				CE4C37BA20FC8CDA009B1135 /* ProUserEditProfileViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE4C37B220FC8C8C009B1135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37BC20FC8D43009B1135 /* ProUserEditProfileModel.h */,
+				CE4C37BD20FC8D43009B1135 /* ProUserEditProfileModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4C37B320FC8C8C009B1135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37B420FC8C8C009B1135 /* Cell */,
+				CE4C37BF20FC8D53009B1135 /* ProUserEditProfileView.h */,
+				CE4C37C020FC8D53009B1135 /* ProUserEditProfileView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE4C37B420FC8C8C009B1135 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C382920FE0FFE009B1135 /* ProUserEditProfilePaymentInfoCell */,
+				CE4C380220FDDE09009B1135 /* ProUserEditProfileHeaderTableViewCell */,
+				CE4C37EA20FCBA4B009B1135 /* ProUserEditProfileLogoInfoTableViewCell */,
+				CE4C37E420FCAEE2009B1135 /* ProUserEditProfileTableViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE4C37B520FC8C8C009B1135 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37C820FC9943009B1135 /* Cell */,
+				CE4C37C920FC9943009B1135 /* Section */,
+				CE4C37C420FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.h */,
+				CE4C37C520FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.m */,
+				CE4C37C720FC9919009B1135 /* ProUserEditProfileTableVIewAdapterInput.h */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CE4C37B620FC8C8C009B1135 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37C220FC8D8F009B1135 /* ProUserEditProfileModuleProtocols.h */,
+				CE4C37C320FC8E38009B1135 /* ProUserEditProfileModuleHeaders.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CE4C37C820FC9943009B1135 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1A2C32C0210129120039A476 /* Location */,
+				CE4C384020FF786C009B1135 /* Sport */,
+				CE4C383320FE2742009B1135 /* EmptyFooter */,
+				CE4C382F20FE1733009B1135 /* PaymnentsHeader */,
+				CE4C381A20FDEB56009B1135 /* BankCredentials */,
+				CE4C381C20FDEB57009B1135 /* Credit */,
+				CE4C381B20FDEB57009B1135 /* Debit */,
+				CE4C381520FDE5AB009B1135 /* Awards */,
+				CE4C381120FDE532009B1135 /* AwardsHeader */,
+				CE4C380D20FDE3B3009B1135 /* CityHeader */,
+				CE4C380820FDDFA6009B1135 /* PhoneHeader */,
+				CE4C37F120FCBBB9009B1135 /* UserInfo */,
+				CE4C37D020FC9B51009B1135 /* City */,
+				CE4C37D320FC9B51009B1135 /* FirstName */,
+				CE4C37D220FC9B51009B1135 /* LastName */,
+				CE4C37D120FC9B51009B1135 /* PhoneNumber */,
+				CE4C37CF20FC9AD1009B1135 /* ProUserEditProfileCellAdapter.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE4C37C920FC9943009B1135 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37CA20FC9943009B1135 /* MainSection */,
+				CE4C37CB20FC997E009B1135 /* ProUserEditProfileSectionAdapter.h */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		CE4C37CA20FC9943009B1135 /* MainSection */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37CC20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.h */,
+				CE4C37CD20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.m */,
+			);
+			path = MainSection;
+			sourceTree = "<group>";
+		};
+		CE4C37D020FC9B51009B1135 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37FE20FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.h */,
+				CE4C37FF20FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m */,
+				CE4C380120FCC46E009B1135 /* ProUserEditProfileCityNameCellAdapterOutput.h */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		CE4C37D120FC9B51009B1135 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37E020FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.h */,
+				CE4C37E120FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.m */,
+				CE4C37E320FC9C22009B1135 /* ProUserEditProfilePhoneNumberCellAdapterOutput.h */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		CE4C37D220FC9B51009B1135 /* LastName */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37DC20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.h */,
+				CE4C37DD20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.m */,
+				CE4C37DF20FC9C04009B1135 /* ProUserEditProfileLastNameCellAdapterOutput.h */,
+			);
+			path = LastName;
+			sourceTree = "<group>";
+		};
+		CE4C37D320FC9B51009B1135 /* FirstName */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37D820FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.h */,
+				CE4C37D920FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m */,
+				CE4C37DB20FC9BE2009B1135 /* ProUserEditProfileFirstNameCellAdapterOutput.h */,
+			);
+			path = FirstName;
+			sourceTree = "<group>";
+		};
+		CE4C37E420FCAEE2009B1135 /* ProUserEditProfileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37E520FCAEFF009B1135 /* ProUserEditProfileTableViewCell.h */,
+				CE4C37E620FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m */,
+				CE4C37E720FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib */,
+				CE4C383720FE3ECF009B1135 /* ProUserEditProfileTableViewCellOutput.h */,
+			);
+			path = ProUserEditProfileTableViewCell;
+			sourceTree = "<group>";
+		};
+		CE4C37EA20FCBA4B009B1135 /* ProUserEditProfileLogoInfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37EB20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.h */,
+				CE4C37EC20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.m */,
+				CE4C37ED20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib */,
+				CE4C38492100A648009B1135 /* ProUserEditProfileLogoInfoTableViewCellOutput.h */,
+			);
+			path = ProUserEditProfileLogoInfoTableViewCell;
+			sourceTree = "<group>";
+		};
+		CE4C37F120FCBBB9009B1135 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C37F220FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.h */,
+				CE4C37F320FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.m */,
+				CE4C37F520FCBBE4009B1135 /* ProUserEditProfileUserInfoCellAdapterOutput.h */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		CE4C380220FDDE09009B1135 /* ProUserEditProfileHeaderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C380320FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.h */,
+				CE4C380420FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.m */,
+				CE4C380520FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.xib */,
+			);
+			path = ProUserEditProfileHeaderTableViewCell;
+			sourceTree = "<group>";
+		};
+		CE4C380820FDDFA6009B1135 /* PhoneHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C380920FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.h */,
+				CE4C380A20FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.m */,
+			);
+			path = PhoneHeader;
+			sourceTree = "<group>";
+		};
+		CE4C380D20FDE3B3009B1135 /* CityHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C380E20FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.h */,
+				CE4C380F20FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m */,
+			);
+			path = CityHeader;
+			sourceTree = "<group>";
+		};
+		CE4C381120FDE532009B1135 /* AwardsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C381220FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.h */,
+				CE4C381320FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m */,
+			);
+			path = AwardsHeader;
+			sourceTree = "<group>";
+		};
+		CE4C381520FDE5AB009B1135 /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C381620FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.h */,
+				CE4C381720FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.m */,
+				CE4C381920FDE5C9009B1135 /* ProUserEditProfileAwardsCellAdapterOutput.h */,
+			);
+			path = Awards;
+			sourceTree = "<group>";
+		};
+		CE4C381A20FDEB56009B1135 /* BankCredentials */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C382520FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.h */,
+				CE4C382620FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.m */,
+				CE4C382820FDEC14009B1135 /* ProUserEditProfileBankCredentialsCellAdapterOutput.h */,
+			);
+			path = BankCredentials;
+			sourceTree = "<group>";
+		};
+		CE4C381B20FDEB57009B1135 /* Debit */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C381D20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.h */,
+				CE4C381E20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.m */,
+				CE4C382020FDEBC7009B1135 /* ProUserEditProfileDebitCellAdapterOutput.h */,
+			);
+			path = Debit;
+			sourceTree = "<group>";
+		};
+		CE4C381C20FDEB57009B1135 /* Credit */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C382120FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.h */,
+				CE4C382220FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.m */,
+				CE4C382420FDEBE3009B1135 /* ProUserEditProfileCreditCellAdapterOutput.h */,
+			);
+			path = Credit;
+			sourceTree = "<group>";
+		};
+		CE4C382920FE0FFE009B1135 /* ProUserEditProfilePaymentInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C382A20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.h */,
+				CE4C382B20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.m */,
+				CE4C382D20FE1030009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.xib */,
+			);
+			path = ProUserEditProfilePaymentInfoCell;
+			sourceTree = "<group>";
+		};
+		CE4C382F20FE1733009B1135 /* PaymnentsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C383020FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.h */,
+				CE4C383120FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.m */,
+			);
+			path = PaymnentsHeader;
+			sourceTree = "<group>";
+		};
+		CE4C383320FE2742009B1135 /* EmptyFooter */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C383420FE2797009B1135 /* EmptyFooterCellAdapter.h */,
+				CE4C383520FE2797009B1135 /* EmptyFooterCellAdapter.m */,
+			);
+			path = EmptyFooter;
+			sourceTree = "<group>";
+		};
+		CE4C383820FF2C08009B1135 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C383A20FF2C3C009B1135 /* ProUserProfile.h */,
+				CE4C383B20FF2C3C009B1135 /* ProUserProfile.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		CE4C383920FF2C09009B1135 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C383D20FF2C4B009B1135 /* ProUserProfileMapper.h */,
+				CE4C383E20FF2C4B009B1135 /* ProUserProfileMapper.m */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CE4C384020FF786C009B1135 /* Sport */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C384120FF788E009B1135 /* ProUserEditProfileSportCellAdapter.h */,
+				CE4C384220FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m */,
+				CE4C384420FF7899009B1135 /* ProUserEditProfileSportCellAdapterOutput.h */,
+			);
+			path = Sport;
 			sourceTree = "<group>";
 		};
 		CE5519D520CEB7BF00AC7BC8 /* NoContent */ = {
@@ -2851,6 +3367,7 @@
 		CEDA65BC20B01AAB009417BF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C37A520F7A166009B1135 /* BirthdayCell */,
 				CEDA667120B303D8009417BF /* SignUpCell */,
 				CEDA666620B2F7ED009417BF /* TermsPrivacy */,
 				CEDA664220B07F58009417BF /* InfoCell */,
@@ -2887,6 +3404,8 @@
 		CEDA65CE20B021A7009417BF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C37A020F79FAF009B1135 /* Birthday */,
+				CE4C379620F76F9E009B1135 /* Gender */,
 				CE2A637D20C0544300AE9CD3 /* City */,
 				CE2A637E20C0544300AE9CD3 /* SportActivity */,
 				CEDA667720B3057F009417BF /* Location */,
@@ -3643,6 +4162,8 @@
 			children = (
 				CEDF055620AB16CE0012AAC4 /* NSString+TextSize.h */,
 				CEDF055720AB16CE0012AAC4 /* NSString+TextSize.m */,
+				CE4C384620FF7D2E009B1135 /* NSString+Validation.h */,
+				CE4C384720FF7D2E009B1135 /* NSString+Validation.m */,
 			);
 			path = "NSString Categories";
 			sourceTree = "<group>";
@@ -3820,11 +4341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDA662820B048F8009417BF /* ProUserSignUpTextViewTableViewCell.xib in Resources */,
+				CE4C37AA20F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.xib in Resources */,
 				CEDF04CA20A991580012AAC4 /* SubmitOfferViewController.storyboard in Resources */,
 				CE2A639220C1C1AB00AE9CD3 /* SimpleUserSignUpViewController.storyboard in Resources */,
 				3B1E2FDC1F95964200E636F4 /* OneBtnDlgViewController.xib in Resources */,
 				CE36D77720A5913E008B0E75 /* ProsTableViewCell.xib in Resources */,
 				CEDA667620B30407009417BF /* ButtonTableViewCell.xib in Resources */,
+				CE4C37BB20FC8CDA009B1135 /* ProUserEditProfileViewController.storyboard in Resources */,
 				1A27613E20612E8000C9D703 /* Payment.storyboard in Resources */,
 				CE2A632F20BD35EF00AE9CD3 /* WorkoutDetailsViewController.storyboard in Resources */,
 				CEDF052520A9CA9E0012AAC4 /* SubmitOfferDurationTableViewCell.xib in Resources */,
@@ -3834,7 +4357,9 @@
 				CEDA665520B29F6C009417BF /* SelectLocationViewController.storyboard in Resources */,
 				CEDA65C520B01BB9009417BF /* ProUserSignUpViewController.storyboard in Resources */,
 				CE2A63AB20C55B8A00AE9CD3 /* ProUserPostWorkoutViewController.storyboard in Resources */,
+				CE4C380720FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.xib in Resources */,
 				CEDA664720B07F81009417BF /* ProUserSignUpInfoTableViewCell.xib in Resources */,
+				CE4C382E20FE1030009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.xib in Resources */,
 				CEDF051D20A9CA5C0012AAC4 /* SubmitOfferWhatTableViewCell.xib in Resources */,
 				3256F26D1F73689100D0874E /* OtherUserProfilePlanTableViewCell.xib in Resources */,
 				3273EA5F1F74EF0600DADA58 /* EditDialogViewController.xib in Resources */,
@@ -3847,12 +4372,14 @@
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
 				CEDA661F20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
+				CE4C37E920FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib in Resources */,
 				CE7E0F1920AC305900D93035 /* PickerViewController.storyboard in Resources */,
 				CEDF04B420A9717A0012AAC4 /* AthleteInfoViewController.storyboard in Resources */,
 				32C2DBA61F695F77001B6822 /* SportsListTableViewCell.xib in Resources */,
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
 				CE7E0F4920ADC85100D93035 /* ReviewOfferViewController.storyboard in Resources */,
+				CE4C37EF20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				CE2A635420BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.xib in Resources */,
 				CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */,
@@ -3985,6 +4512,8 @@
 				CE2A633B20BD4B9000AE9CD3 /* WorkoutDetailsTableViewAdapter.m in Sources */,
 				3236156A1F7A3B51007D4DF3 /* UIView+MDExtension.m in Sources */,
 				CEDF053320A9CB440012AAC4 /* SubmitOfferAdditionalInfoTableViewCell.m in Sources */,
+				CE4C383220FE1889009B1135 /* ProUserEditProfilePaymentHeaderCellAdapter.m in Sources */,
+				CE4C380020FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m in Sources */,
 				CEDF051020A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m in Sources */,
 				1A2508E020B603360063801D /* SimpleUserEditProfileView.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
@@ -4003,24 +4532,30 @@
 				CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */,
+				CE4C37DA20FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
+				CE4C381020FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m in Sources */,
 				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
 				CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
 				CEDA669120B54014009417BF /* UIViewController+AlertController.m in Sources */,
 				CE2A636320BD6D2200AE9CD3 /* SportService.m in Sources */,
+				CE4C382320FDEBD8009B1135 /* ProUserEditProfileCreditCellAdapter.m in Sources */,
 				CE2A632D20BD35D600AE9CD3 /* WorkoutDetailsViewController.m in Sources */,
 				3256F26C1F73689100D0874E /* OtherUserProfilePlanTableViewCell.m in Sources */,
 				CE2A636C20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m in Sources */,
+				CE4C37B920FC8CC7009B1135 /* ProUserEditProfileViewController.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
+				CE4C384320FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m in Sources */,
 				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
 				1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */,
 				CE2A636620BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m in Sources */,
 				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
 				CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */,
+				CE4C379920F76FC5009B1135 /* ProUserSignUpGenderCellAdapter.m in Sources */,
 				CE2A631A20B7F04E00AE9CD3 /* ProUserProfileViewController.m in Sources */,
 				CE2A63B120C55C9000AE9CD3 /* ProUserPostWorkoutModel.m in Sources */,
 				3230163B1F7A48FC0001BCB4 /* BSImagePickerController.m in Sources */,
@@ -4028,6 +4563,7 @@
 				3B79BCBE1F83B29400BD869D /* Commons.m in Sources */,
 				3256F27B1F739AD200D0874E /* Preference.m in Sources */,
 				CE2A631D20B7F11B00AE9CD3 /* ProUserProfileModel.m in Sources */,
+				CE4C380620FDDE23009B1135 /* ProUserEditProfileHeaderTableViewCell.m in Sources */,
 				3205FD2B1F629B9B0037DCE5 /* FilterViewController.m in Sources */,
 				CEDA667420B303FC009417BF /* ButtonTableViewCell.m in Sources */,
 				CEDF051320A9CA0D0012AAC4 /* SubmitOfferWhenTableViewCell.m in Sources */,
@@ -4053,6 +4589,7 @@
 				CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */,
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
 				CEDA65FD20B03319009417BF /* ProUserSignUpEmailCellAdapter.m in Sources */,
+				CE4C37C120FC8D53009B1135 /* ProUserEditProfileView.m in Sources */,
 				1ACFEA36205FF85500675150 /* PaymentClient.m in Sources */,
 				32FAA08B1F6144D500CD4395 /* AppDelegate.m in Sources */,
 				CE36D76720A57A5C008B0E75 /* ProsMainSectionAdapter.m in Sources */,
@@ -4062,6 +4599,7 @@
 				323615691F7A3B51007D4DF3 /* MDToast.m in Sources */,
 				CE12DFE12064E9A500949AC2 /* ProfilePaymentDataView.m in Sources */,
 				3B0C4CF81F887393002CEADA /* SDWebImageDecoder.m in Sources */,
+				CE4C382720FDEC07009B1135 /* ProUserEditProfileBankCredentialsCellAdapter.m in Sources */,
 				1A27614420612ED100C9D703 /* AddCreditCardViewController.m in Sources */,
 				CE36D75320A4794F008B0E75 /* ProsModel.m in Sources */,
 				3230164A1F7A48FC0001BCB4 /* BSAlbumTableViewCellFactory.m in Sources */,
@@ -4093,6 +4631,7 @@
 				CEDF055820AB16CE0012AAC4 /* NSString+TextSize.m in Sources */,
 				323016411F7A48FC0001BCB4 /* BSCollectionController+BSItemsModel.m in Sources */,
 				CE2A635720BD635500AE9CD3 /* WorkoutMainDetailsTableViewCellDisplayModel.m in Sources */,
+				CE4C37A320F7A004009B1135 /* ProUserSignUpBirthdayCellAdapter.m in Sources */,
 				CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */,
 				CEDA664120B07BCA009417BF /* ProUserSignUpDataModel.m in Sources */,
 				1AB78752206995400013F737 /* UIColor+AppColors.m in Sources */,
@@ -4101,6 +4640,7 @@
 				CEDF04D920A9A2A60012AAC4 /* SubmitOfferTableViewAdapter.m in Sources */,
 				CEDA65F520B032C7009417BF /* ProUserSignUpAwardsCellAdapter.m in Sources */,
 				CE2A634720BD4C6100AE9CD3 /* WorkoutDetailsAdditionalSectionAdapter.m in Sources */,
+				CE4C37DE20FC9BF2009B1135 /* ProUserEditProfileLastNameCellAdapter.m in Sources */,
 				CE5DB34A20C6ED2B001F8A87 /* RegularUserInfoDataModel.m in Sources */,
 				CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */,
 				3B0471DB1FB78719003D9B01 /* User1ProfileViewController.m in Sources */,
@@ -4125,6 +4665,7 @@
 				CE5DB34D20C6ED36001F8A87 /* RegularUserInfoMapper.m in Sources */,
 				3B1E2FCA1F94D2A700E636F4 /* ExportSportsListTableViewCell.m in Sources */,
 				CE2A635320BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.m in Sources */,
+				CE4C381F20FDEBBB009B1135 /* ProUserEditProfileDebitCellAdapter.m in Sources */,
 				3B01AF241F90950600BDF1AA /* ODRefreshControl.m in Sources */,
 				323016521F7A48FC0001BCB4 /* BSNumberedSelectionView.m in Sources */,
 				CEDA660920B03383009417BF /* ProUserSignUpPasswordCellAdapter.m in Sources */,
@@ -4140,6 +4681,7 @@
 				323016471F7A48FC0001BCB4 /* BSTableController+BSItemsModel.m in Sources */,
 				1A47ECB5205AC92B00A0AA67 /* MapClusterListViewController.m in Sources */,
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
+				CE4C383620FE2797009B1135 /* EmptyFooterCellAdapter.m in Sources */,
 				CEDA660120B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m in Sources */,
 				1A276154206131D800C9D703 /* AddCreditCardModel.m in Sources */,
 				CEDA669820B56505009417BF /* ReviewOfferMapper.m in Sources */,
@@ -4159,11 +4701,16 @@
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				CE2A636920BECC8E00AE9CD3 /* WorkoutProfileInfoDataModel.m in Sources */,
 				3B0C4CF61F887393002CEADA /* SDImageCache.m in Sources */,
+				CE4C37E220FC9C18009B1135 /* ProUserEditProfilePhoneNumberCellAdapter.m in Sources */,
 				CE2A632020B7F17300AE9CD3 /* ProUserProfileView.m in Sources */,
+				CE4C383C20FF2C3C009B1135 /* ProUserProfile.m in Sources */,
+				CE4C381820FDE5BD009B1135 /* ProUserEditProfileAwardsCellAdapter.m in Sources */,
+				CE4C379F20F79BA9009B1135 /* Birthday.m in Sources */,
 				3B79BCB61F83B17F00BD869D /* NSURLHelper.m in Sources */,
 				CEDF04F320A9A4C40012AAC4 /* SubmitOfferWhoCellAdapter.m in Sources */,
 				3205FD631F6313350037DCE5 /* DAYNavigationBar.m in Sources */,
 				3273EA5E1F74EF0600DADA58 /* EditDialogViewController.m in Sources */,
+				CE4C37EE20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.m in Sources */,
 				3205FD751F6551190037DCE5 /* BookWorkoutViewController.m in Sources */,
 				CE7E0F4720ADC84600D93035 /* ReviewOfferViewController.m in Sources */,
 				CE7E0F4F20ADC88E00D93035 /* ReviewOfferModel.m in Sources */,
@@ -4174,13 +4721,18 @@
 				1A47ECB2205AB12B00A0AA67 /* ClusterAnnotationView.m in Sources */,
 				CE2A638120C0546000AE9CD3 /* ProUserSignUpCityCellAdapter.m in Sources */,
 				32FAA0C51F61532400CD4395 /* StartedViewController.m in Sources */,
+				CE4C37AD20F7A1AA009B1135 /* ProUserSignUpBirthdayTableViewCellDisplayModel.m in Sources */,
+				CE4C37F420FCBBD6009B1135 /* ProUserEditProfileUserInfoCellAdapter.m in Sources */,
 				CE7E0F5420ADC8DB00D93035 /* ReviewOfferTableViewAdapter.m in Sources */,
 				1A2508DD20B603250063801D /* SimpleUserEditProfileModel.m in Sources */,
 				3B0C4CF71F887393002CEADA /* SDWebImageCompat.m in Sources */,
 				1A5E687520B1D5FD00B07CAE /* ProUserSignUpIsPhoneVisibleCellAdapter.m in Sources */,
 				3256F2501F72C69700D0874E /* ExpertUserProfileEditViewController.m in Sources */,
+				CE4C37C620FC9905009B1135 /* ProUserEditProfileTableVIewAdapter.m in Sources */,
 				3B79BCC41F8402A300BD869D /* MExpertUser.m in Sources */,
 				CEDA664A20B07FDF009417BF /* ProUserSignUpInfoTableViewCellDisplayModel.m in Sources */,
+				CE4C380B20FDDFC6009B1135 /* ProUserEditProfilePhoneHeaderCellAdapter.m in Sources */,
+				CE4C383F20FF2C4B009B1135 /* ProUserProfileMapper.m in Sources */,
 				CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */,
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				CE2A639020C1C19F00AE9CD3 /* SimpleUserSignUpViewController.m in Sources */,
@@ -4198,6 +4750,8 @@
 				1A2D65B92065B17300D04E65 /* ProfilePaymentTableViewCell.m in Sources */,
 				CEDA665320B29F5E009417BF /* SelectLocationViewController.m in Sources */,
 				CEDA666020B2A52E009417BF /* Pin.m in Sources */,
+				CE4C37BE20FC8D43009B1135 /* ProUserEditProfileModel.m in Sources */,
+				CE4C37A920F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m in Sources */,
 				CE2A635F20BD639300AE9CD3 /* WorkoutAdditionalDetailsTableViewCellDisplayModel.m in Sources */,
 				CEDA663D20B06853009417BF /* UINavigationBar+Styles.m in Sources */,
 				CE2A63AE20C55C7E00AE9CD3 /* ProUserPostWorkoutView.m in Sources */,
@@ -4208,6 +4762,9 @@
 				3B1E2FDB1F95964200E636F4 /* OneBtnDlgViewController.m in Sources */,
 				3230163F1F7A48FC0001BCB4 /* ALAsset+BSEqual.m in Sources */,
 				CEDA661120B033BF009417BF /* ProUserSignUpSportCellAdapter.m in Sources */,
+				CE4C384820FF7D2E009B1135 /* NSString+Validation.m in Sources */,
+				CE4C382C20FE1026009B1135 /* ProUserEditProfilePaymentInfoTableViewCell.m in Sources */,
+				CE4C37CE20FC99AC009B1135 /* ProUserEditProfileMainSectionAdapter.m in Sources */,
 				3232FFB11F7A055E00A0F55D /* SignupViewController.m in Sources */,
 				32FAA0881F6144D500CD4395 /* main.m in Sources */,
 				CE2A639520C1C1CF00AE9CD3 /* SimpleUserSignUpModel.m in Sources */,
@@ -4218,7 +4775,9 @@
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
 				CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */,
 				CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */,
+				1A2C32C3210129370039A476 /* ProUserEditProfileLocationCellAdapter.m in Sources */,
 				323016561F7A48FC0001BCB4 /* BSVideoCell.m in Sources */,
+				CE4C381420FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m in Sources */,
 				3230163A1F7A48FC0001BCB4 /* BSCollectionController.m in Sources */,
 				1A27615B206132A700C9D703 /* CreditCardListModel.m in Sources */,
 				32E9438F1F681F64006111B7 /* PaymentViewController.m in Sources */,
@@ -4235,6 +4794,7 @@
 				323016531F7A48FC0001BCB4 /* BSPhotoCell.m in Sources */,
 				CEDA65F120B03297009417BF /* ProUserSignUpAddressCellAdapter.m in Sources */,
 				CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */,
+				CE4C37E820FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m in Sources */,
 				3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */,
 				1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */,
 				3B79BCCF1F861CF600BD869D /* SelectWorkoutTableViewCell.m in Sources */,

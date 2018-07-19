@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     arrAreaImg = [NSArray arrayWithObjects:@"ic_cardio.png", @"ic_strength.png", @"ic_intensity.png", @"ic_balance.png", @"ic_weights.png", @"stopwatch-icon.png", nil];
-    arrAreaName = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", nil];
+    arrAreaName = [NSArray arrayWithObjects:@"Cardio", @"Strength", @"High Intensity", @"Balance", @"Weights", @"Intervals", @"Other", nil];
     
     static NSString * const identifier = @"TypeWorkoutCollectionViewCell";
     [_clArea registerNib:[UINib nibWithNibName:identifier bundle:nil] forCellWithReuseIdentifier:identifier];

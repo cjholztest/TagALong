@@ -51,7 +51,12 @@
     
     NSString *latitude = [[NSNumber numberWithFloat:userModel.location.latitude] stringValue];
     NSString *longitude = [[NSNumber numberWithFloat:userModel.location.longitude] stringValue];
-    NSNumber *hidePhone = [NSNumber numberWithBool:!userModel.isPhoneVisible];
+    NSNumber *hidePhone = [NSNumber numberWithBool:YES];
+    
+    NSNumber *birthday = [NSNumber numberWithInteger:userModel.birthday.timeInterval];
+    NSNumber *gender = [NSNumber numberWithInteger:userModel.genderIndex];
+    
+    // date_of_birth и gender
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -74,6 +79,8 @@
                              @"awards"                      :   awards ? awards : @"",
                              @"user_city"                   :   city ? city : @"",
                              @"user_address"                :   address ? address : @"",
+                             @"date_of_birth"               :   birthday,
+                             @"gender"                      :   gender
                              };
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
     if (phone.length > 0) {
@@ -192,6 +199,14 @@
     
     if (user.awards.length == 0) {
         return @"Please, input awards!";
+    }
+    
+    if (!user.birthday.dataExists) {
+        return @"Please, input Birthday";
+    }
+    
+    if (user.gender.length == 0) {
+        return @"Please, input Gender";
     }
     
     return nil;

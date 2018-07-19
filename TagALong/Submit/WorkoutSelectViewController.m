@@ -38,7 +38,6 @@
     } else {
         [_vwBlueBG setHidden:NO];
     }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -106,15 +105,13 @@
     
     if (nCurPageIdx == PAGE_MENU_TYPE) {
         if ([vcTypeWrokout.sport_uid isEqualToString:@""] ||vcTypeWrokout.sport_uid == nil ) {
-            [Commons showToast:@"Select sport"];
-            return;
+            vcTypeWrokout.sport_uid = @"6";
         }
         nCurPageIdx = PAGE_MENU_AREA;
         [self setPage];
     } else {
         if ([vcAreaWorkout.categories isEqualToString:@""] ||vcAreaWorkout.categories == nil ) {
-            [Commons showToast:@"Select category"];
-            return;
+            vcAreaWorkout.categories = @"7";
         }
 
         PostWorkoutDetailViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PostWorkoutDetailViewController"];
@@ -125,8 +122,12 @@
     }
 }
 - (IBAction)onClickLeft:(id)sender {
-    nCurPageIdx = PAGE_MENU_TYPE;
-    [self setPage];
+    if (nCurPageIdx == PAGE_MENU_TYPE) {
+        [self.navigationController popViewControllerAnimated: YES];
+    } else {
+        nCurPageIdx = PAGE_MENU_TYPE;
+        [self setPage];
+    }
 }
 - (IBAction)onClickBack:(id)sender {
     [self.navigationController popViewControllerAnimated: YES];

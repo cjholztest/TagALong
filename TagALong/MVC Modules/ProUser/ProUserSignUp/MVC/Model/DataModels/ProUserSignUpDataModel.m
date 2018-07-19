@@ -14,4 +14,13 @@
 
 @implementation ProUserSignUpDataModel
 
+#pragma mark - Lazy Init
+
+- (Birthday*)birthday {
+    if (!_birthday) {
+        _birthday = [Birthday new];
+    }
+    return _birthday;
+}
+
 @end

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="ProUserSignUpBirthdayTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5J-K2-RKI">
+                        <rect key="frame" x="15" y="13" width="64.5" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="ANP-Rz-nwe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr0-cn-mke">
+                        <rect key="frame" x="79.5" y="12" width="240.5" height="19"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.80348351883561642" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig6-DY-CC4">
+                        <rect key="frame" x="79.5" y="-1" width="115.5" height="44"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="monthButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bst-hh-zeP"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hC1-8F-hYO">
+                        <rect key="frame" x="204.5" y="-1" width="115.5" height="44"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="yearButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="weO-ib-htc"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="ig6-DY-CC4" firstAttribute="leading" secondItem="zr0-cn-mke" secondAttribute="leading" id="1DW-HY-KdG"/>
+                    <constraint firstAttribute="trailing" secondItem="zr0-cn-mke" secondAttribute="trailing" id="3Zp-C1-yvq"/>
+                    <constraint firstItem="ig6-DY-CC4" firstAttribute="width" secondItem="zr0-cn-mke" secondAttribute="width" multiplier="0.48" id="4FG-UH-Ydl"/>
+                    <constraint firstItem="ig6-DY-CC4" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="IC7-CY-ujO"/>
+                    <constraint firstItem="zr0-cn-mke" firstAttribute="leading" secondItem="s5J-K2-RKI" secondAttribute="trailing" id="KHa-SG-mSa"/>
+                    <constraint firstItem="zr0-cn-mke" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="R0f-qJ-MKY"/>
+                    <constraint firstItem="s5J-K2-RKI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Tb7-xd-5fe"/>
+                    <constraint firstItem="hC1-8F-hYO" firstAttribute="width" secondItem="zr0-cn-mke" secondAttribute="width" multiplier="0.48" id="WkK-p8-O5o"/>
+                    <constraint firstItem="s5J-K2-RKI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YfL-Zq-CNK"/>
+                    <constraint firstItem="hC1-8F-hYO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hL1-cv-HoR"/>
+                    <constraint firstItem="hC1-8F-hYO" firstAttribute="trailing" secondItem="zr0-cn-mke" secondAttribute="trailing" id="lje-ON-jAd"/>
+                    <constraint firstItem="ig6-DY-CC4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qgm-xu-b4X"/>
+                    <constraint firstItem="hC1-8F-hYO" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="wJy-6M-7wC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="monthButton" destination="ig6-DY-CC4" id="ZwI-Py-Sa6"/>
+                <outlet property="yearButton" destination="hC1-8F-hYO" id="bwg-8O-2Ia"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
