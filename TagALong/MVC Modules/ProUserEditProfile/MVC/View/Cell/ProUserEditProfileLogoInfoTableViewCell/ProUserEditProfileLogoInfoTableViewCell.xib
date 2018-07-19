@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ProUserEditProfileLogoInfoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvM-Mm-iPR">
+                        <rect key="frame" x="0.0" y="66" width="320" height="38"/>
+                        <color key="backgroundColor" red="1" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="38" id="63u-xZ-B3I"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile_black" translatesAutoresizingMaskIntoConstraints="NO" id="xPj-dr-8Gu">
+                        <rect key="frame" x="15" y="16" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="16i-Gk-5mO"/>
+                            <constraint firstAttribute="height" constant="100" id="5ny-PG-LBO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEy-IZ-vtt">
+                        <rect key="frame" x="130" y="66" width="175" height="38"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IEy-IZ-vtt" firstAttribute="centerY" secondItem="wvM-Mm-iPR" secondAttribute="centerY" id="5nh-QS-nGa"/>
+                    <constraint firstItem="IEy-IZ-vtt" firstAttribute="leading" secondItem="xPj-dr-8Gu" secondAttribute="trailing" constant="15" id="Cvb-Z6-y6N"/>
+                    <constraint firstItem="wvM-Mm-iPR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Jfy-ow-IFF"/>
+                    <constraint firstItem="xPj-dr-8Gu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OVN-hG-2IZ"/>
+                    <constraint firstItem="xPj-dr-8Gu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="chD-bZ-cD2"/>
+                    <constraint firstItem="IEy-IZ-vtt" firstAttribute="height" secondItem="wvM-Mm-iPR" secondAttribute="height" id="fg6-7l-cNW"/>
+                    <constraint firstItem="wvM-Mm-iPR" firstAttribute="top" secondItem="xPj-dr-8Gu" secondAttribute="centerY" id="n7C-us-hcx"/>
+                    <constraint firstAttribute="trailing" secondItem="IEy-IZ-vtt" secondAttribute="trailing" constant="15" id="on2-fX-6oU"/>
+                    <constraint firstAttribute="trailing" secondItem="wvM-Mm-iPR" secondAttribute="trailing" id="q7f-zg-MhR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="lineView" destination="wvM-Mm-iPR" id="xwO-TK-cg1"/>
+                <outlet property="typeLabel" destination="IEy-IZ-vtt" id="pkN-nT-tcA"/>
+                <outlet property="userIconImageView" destination="xPj-dr-8Gu" id="hyU-fe-NDJ"/>
+            </connections>
+            <point key="canvasLocation" x="29" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_profile_black" width="190" height="190"/>
+    </resources>
+</document>

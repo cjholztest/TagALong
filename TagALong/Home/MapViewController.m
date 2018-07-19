@@ -257,8 +257,17 @@ static NSString *const kProPrefix = @"athlete";
 - (void)updateNoLocationMapAppearanceByState:(MKCoordinateSpan)span {
     noLocation = CLLocationCoordinate2DMake([Global.g_user.user_latitude doubleValue], [Global.g_user.user_longitude  doubleValue]);
 //    [_mvMap setCenterCoordinate:noLocation];
-    MKCoordinateRegion region;
-    region = MKCoordinateRegionMake(noLocation, span);
+//    MKCoordinateRegion region;
+//    region = MKCoordinateRegionMake(noLocation, span);
+    
+    double miles = 20.0;
+    double scalingFactor = ABS((cos(2 * M_PI * noLocation.latitude / 360.0)));
+    
+    span.latitudeDelta = miles/69.0;
+    span.longitudeDelta = miles/(scalingFactor * 69.0);
+    
+    MKCoordinateRegion region = MKCoordinateRegionMake(noLocation, span);
+    
     MKCoordinateRegion adjustedRegion = [_mvMap regionThatFits:region];
     [_mvMap setRegion:adjustedRegion animated:YES];
 }

@@ -15,6 +15,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SimpleUserSignUpViewController.h"
 #import "UIViewController+Storyboard.h"
+#import "UIFont+HelveticaNeue.h"
 
 @interface LoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate>{
     float latitude;
@@ -60,9 +61,9 @@
     self.expertLoginButton.layer.borderWidth = 1.0f;
     self.expertLoginButton.layer.borderColor = UIColor.whiteColor.CGColor;
     
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"email@email.com" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7], NSFontAttributeName : [UIFont pickerBoldFont] }];
     _tfEmail.attributedPlaceholder = str;
-    NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7] }];
+    NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7], NSFontAttributeName : [UIFont pickerBoldFont] }];
     _tfPassword.attributedPlaceholder = pass;
     
     UITapGestureRecognizer *singleFingerTap =

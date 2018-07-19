@@ -44,6 +44,15 @@
             case StartTimePickerType:
                 [self setupStartTimeComponents];
                 break;
+            case GenderPickerType:
+                [self setupGenderComponentes];
+                break;
+            case MonthPickerType:
+                [self setupMonthComponents];
+                break;
+            case YearPickerType:
+                [self setupYearComponents];
+                break;
             default:
                 break;
         }
@@ -125,6 +134,36 @@
 
 - (void)setupMilesComponents {
     self.pickerComponents = [NSMutableArray arrayWithObjects:@"5", @"10", @"15", @"20", @"25", @"30", nil];
+}
+
+- (void)setupGenderComponentes {
+    self.pickerComponents = [NSMutableArray arrayWithObjects:@"Male", @"Female", nil];
+}
+
+- (void)setupMonthComponents {
+    
+    NSMutableArray *monthes = [NSMutableArray array];
+    
+    NSDateFormatter  *dateFormatter   = [[NSDateFormatter alloc] init];
+    [monthes addObjectsFromArray:[dateFormatter monthSymbols]];
+    
+    self.pickerComponents = monthes;
+}
+
+- (void)setupYearComponents {
+    
+    NSMutableArray *years = [NSMutableArray array];
+    
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSCalendarUnitYear fromDate:[NSDate date]];
+    
+    NSInteger currentYear = [components year];
+    NSInteger startYear = currentYear - 100;
+    
+    for (NSInteger i = currentYear; i >= startYear; i--) {
+        [years addObject:[NSString stringWithFormat:@"%lu", i]];
+    }
+    
+    self.pickerComponents = years;
 }
 
 @end

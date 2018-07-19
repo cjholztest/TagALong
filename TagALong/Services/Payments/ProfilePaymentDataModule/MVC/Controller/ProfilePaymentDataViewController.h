@@ -15,4 +15,6 @@
 @property (nonatomic, weak) id <ProfilePaymentDataModuleDelegate> moduleDelegate;
 @property (nonatomic, assign) ProfilePaymentModeType modeType;
 
+@property (nonatomic, assign) BOOL isUpdateMode;
+
 @end

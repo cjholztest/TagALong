@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="K76-hX-pHC" customClass="ProUserEditProfilePaymentInfoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K76-hX-pHC" id="Z4A-YM-Ts6">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PN-0k-GMH">
+                        <rect key="frame" x="15" y="0.0" width="0.0" height="43.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ6-yZ-lbh">
+                        <rect key="frame" x="330" y="11" width="0.0" height="22"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_right_arrow1" translatesAutoresizingMaskIntoConstraints="NO" id="FsD-6B-Rab">
+                        <rect key="frame" x="345" y="10" width="15" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="V6C-2H-sfs"/>
+                            <constraint firstAttribute="width" constant="15" id="yvB-O2-hDa"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="1PN-0k-GMH" firstAttribute="top" secondItem="Z4A-YM-Ts6" secondAttribute="top" id="FMg-JP-wm0"/>
+                    <constraint firstAttribute="bottom" secondItem="1PN-0k-GMH" secondAttribute="bottom" id="HmH-Dr-RZb"/>
+                    <constraint firstItem="FsD-6B-Rab" firstAttribute="leading" secondItem="IJ6-yZ-lbh" secondAttribute="trailing" constant="15" id="K8N-8G-IrK"/>
+                    <constraint firstItem="1PN-0k-GMH" firstAttribute="leading" secondItem="Z4A-YM-Ts6" secondAttribute="leading" constant="15" id="csb-Rr-H8g"/>
+                    <constraint firstItem="IJ6-yZ-lbh" firstAttribute="bottom" secondItem="Z4A-YM-Ts6" secondAttribute="bottomMargin" id="fBy-Gz-DW8"/>
+                    <constraint firstAttribute="trailing" secondItem="FsD-6B-Rab" secondAttribute="trailing" constant="15" id="ffp-NR-uaC"/>
+                    <constraint firstItem="FsD-6B-Rab" firstAttribute="centerY" secondItem="Z4A-YM-Ts6" secondAttribute="centerY" id="oI6-Y4-71b"/>
+                    <constraint firstItem="IJ6-yZ-lbh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1PN-0k-GMH" secondAttribute="trailing" constant="15" id="pOM-XN-ioB"/>
+                    <constraint firstItem="IJ6-yZ-lbh" firstAttribute="top" secondItem="Z4A-YM-Ts6" secondAttribute="topMargin" id="wBD-YH-edn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="accessoryImageView" destination="FsD-6B-Rab" id="qca-0O-jua"/>
+                <outlet property="titleLabel" destination="1PN-0k-GMH" id="3FZ-Nh-z3t"/>
+                <outlet property="valueLabel" destination="IJ6-yZ-lbh" id="R1c-bq-PtI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_right_arrow1" width="28" height="51"/>
+    </resources>
+</document>

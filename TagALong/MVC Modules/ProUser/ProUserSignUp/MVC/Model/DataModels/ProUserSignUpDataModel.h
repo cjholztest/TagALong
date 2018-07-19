@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Birthday.h"
 
 @interface ProUserSignUpDataModel : NSObject
 
@@ -29,7 +30,12 @@
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *sportActivity;
 
+@property (nonatomic, strong) NSString *gender;
+@property (nonatomic, assign) NSInteger genderIndex;
+
 @property (nonatomic, assign) BOOL isPhoneVisible;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
+
+@property (nonatomic, strong) Birthday *birthday;
 
 @end

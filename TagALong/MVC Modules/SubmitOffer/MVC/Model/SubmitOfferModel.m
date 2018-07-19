@@ -55,7 +55,7 @@
 }
 
 - (void)updateAmount:(NSString*)amount {
-    self.offer.amount = amount;
+    self.offer.amount = [amount stringByReplacingOccurrencesOfString:@"$ " withString:@""];
 }
 
 - (void)updateAdditionalInfo:(NSString*)additionalInfo {

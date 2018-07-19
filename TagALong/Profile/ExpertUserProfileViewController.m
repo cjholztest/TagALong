@@ -18,6 +18,9 @@
 #import "ReviewOfferViewController.h"
 #import "UIViewController+Storyboard.h"
 #import "WorkoutDetailsViewController.h"
+#import "ProUserEditProfileViewController.h"
+#import "ProUserProfile.h"
+#import "ProUserProfileMapper.h"
 
 @interface ExpertUserProfileViewController ()<ExpertUserProfileEditViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>{
     NSString *nickname ;
@@ -44,6 +47,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *creditCardImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profileIconImageViewRatioConstraint;
+
+@property (nonatomic, strong) ProUserProfile *profile;
 
 @end
 
@@ -249,11 +254,14 @@
 }
 
 -(void)addEditInfoBarButton {
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
     self.vcParent.navigationItem.rightBarButtonItem = editButton;
 }
 
 -(void)setUserInfo:(NSDictionary*)dicInfo{
+    
+    self.profile = [ProUserProfileMapper proUserProfileFromJSON:dicInfo];
+    
     NSString *first_name = @"";
     NSString *last_name = @"";
     if (![[dicInfo objectForKey:API_RES_KEY_EXPORT_NCK_NM] isEqual:[NSNull null]]) {
@@ -297,21 +305,24 @@
 
 #pragma mark - click events
 - (IBAction)onClickEdit:(id)sender {
-    ExpertUserProfileEditViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpertUserProfileEditViewController"];
-    vc.delegate = self;
-    vc.phone = phone;
-    vc.location = location;
-    vc.url = profileurl;
-    vc.level = level;
-    vc.sportActivity = sportID;
-    vc.nickname = nickname;
-    vc.arrSchedule = _arrWorkout;
-    vc.vcParent = self.vcParent;
-    vc.debitCard = self.lblCreditCard.text;
-    vc.longitude = longitude;
-    vc.latitude = latitude;
-    vc.hidePhone = hidePhone.boolValue;
-    vc.radius = miles;
+//    ExpertUserProfileEditViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ExpertUserProfileEditViewController"];
+//    vc.delegate = self;
+//    vc.phone = phone;
+//    vc.location = location;
+//    vc.url = profileurl;
+//    vc.level = level;
+//    vc.sportActivity = sportID;
+//    vc.nickname = nickname;
+//    vc.arrSchedule = _arrWorkout;
+//    vc.vcParent = self.vcParent;
+//    vc.debitCard = self.lblCreditCard.text;
+//    vc.longitude = longitude;
+//    vc.latitude = latitude;
+//    vc.hidePhone = hidePhone.boolValue;
+//    vc.radius = miles;
+    
+    ProUserEditProfileViewController *vc = (ProUserEditProfileViewController*)ProUserEditProfileViewController.fromStoryboard;
+    [vc setupProfile:self.profile];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

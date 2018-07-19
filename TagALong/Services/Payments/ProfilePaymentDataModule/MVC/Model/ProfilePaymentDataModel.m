@@ -99,6 +99,16 @@
     }];
 }
 
+- (void)updatePaymentCredentials {
+    NSDictionary *params = [self.credentials paramsCredentials];
+    NSLog(@"sendPaymentCredentials");
+    
+    [PaymentClient updateExpertWithPaymentData:params completion:^(id responseObject, NSError *error) {
+        BOOL isRegistrationSuccessed = [responseObject[@"status"] boolValue];
+        [self.output paymentCredentialsDidRegisterSuccess:isRegistrationSuccessed errorMessage:error.localizedDescription];
+    }];
+}
+
 - (NSString*)enteredBirthdayDate {
     NSString *resultDateString = nil;
     if (self.credentials.birthdayDate) {

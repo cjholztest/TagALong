@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pro User Edit Profile View Controller-->
+        <scene sceneID="Zr3-Y6-qC7">
+            <objects>
+                <viewController storyboardIdentifier="ProUserEditProfileViewController" id="ixU-k5-zw1" customClass="ProUserEditProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ld-PZ-3L0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCU-Y0-a0V" customClass="ProUserEditProfileView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-bO-o9O">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Cu4-bO-o9O" secondAttribute="bottom" id="GG4-FB-Tgw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cu4-bO-o9O" secondAttribute="trailing" id="T5e-vT-3xp"/>
+                                    <constraint firstItem="Cu4-bO-o9O" firstAttribute="top" secondItem="hCU-Y0-a0V" secondAttribute="top" id="k3A-2E-FUZ"/>
+                                    <constraint firstItem="Cu4-bO-o9O" firstAttribute="leading" secondItem="hCU-Y0-a0V" secondAttribute="leading" id="sxA-1N-Gid"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="tableView" destination="Cu4-bO-o9O" id="orH-fx-LBn"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1176470588" green="0.1333333333" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hCU-Y0-a0V" firstAttribute="top" secondItem="XUk-R0-QH1" secondAttribute="top" id="TlO-Tf-1AZ"/>
+                            <constraint firstItem="hCU-Y0-a0V" firstAttribute="leading" secondItem="XUk-R0-QH1" secondAttribute="leading" id="b36-gc-4Td"/>
+                            <constraint firstItem="XUk-R0-QH1" firstAttribute="trailing" secondItem="hCU-Y0-a0V" secondAttribute="trailing" id="cpF-hz-WLu"/>
+                            <constraint firstItem="XUk-R0-QH1" firstAttribute="bottom" secondItem="hCU-Y0-a0V" secondAttribute="bottom" id="tsE-fY-h3S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XUk-R0-QH1"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="hCU-Y0-a0V" id="zY9-1j-lOD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IJM-UI-pfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="-185"/>
+        </scene>
+    </scenes>
+</document>

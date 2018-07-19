@@ -40,6 +40,8 @@
     cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
     cell.textField.keyboardAppearance = UIKeyboardAppearanceDark;
     
+    cell.textField.secureTextEntry = NO;
+    
     [cell.textField setTintColor:[UIColor textColor]];
     
     cell.textField.text = [self.output eMail];

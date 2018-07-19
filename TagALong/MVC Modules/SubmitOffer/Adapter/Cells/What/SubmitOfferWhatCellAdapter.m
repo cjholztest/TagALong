@@ -39,7 +39,7 @@
     cell.whoTextField.text = [self.output what];
 
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
-    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Running, Cycling, Yoga ..." attributes:attributes];
+    cell.whoTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter Sport/Activity" attributes:attributes];
     
     return cell;
 }

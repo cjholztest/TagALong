@@ -19,7 +19,14 @@
 
 - (NSArray*)placeholders {
     if (!_placeholders) {
-        _placeholders = @[@"First name", @"Last name", @"Birthday", @"Address", @"Postal code", @"City", @"State in format: AL, AK, AZ ...", @"SSN last 4 numbers"];
+        _placeholders = @[@"First Name",
+                          @"Last Name",
+                          @"Date of Birth",
+                          @"Address",
+                          @"City",
+                          @"State (in AL, AK, AZ…)",
+                          @"Zip Code",
+                          @"Last 4 Digits of SSN"];
     }
     return _placeholders;
 }

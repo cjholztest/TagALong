@@ -13,9 +13,9 @@ typedef NS_ENUM(NSInteger, ProfilePaymentFieldType) {
     ProfilePaymentFieldTypeLastName,
     ProfilePaymentFieldTypeBirthday,
     ProfilePaymentFieldTypeAddress,
-    ProfilePaymentFieldTypePostalCode,
     ProfilePaymentFieldTypeCity,
     ProfilePaymentFieldTypeState,
+    ProfilePaymentFieldTypePostalCode,
     ProfilePaymentFieldTypeSSNLast,
     ProfilePaymentFieldTypePassword
 };

@@ -18,8 +18,12 @@
 
 #import "UIViewController+Storyboard.h"
 #import "ProUserSignUpViewController.h"
+#import "UIFont+HelveticaNeue.h"
+#import "UIColor+AppColors.h"
 
-@interface ExpertLoginViewController ()<UITextFieldDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
+#import <MessageUI/MessageUI.h>
+
+@interface ExpertLoginViewController ()<MFMailComposeViewControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate, ProfilePaymentDataModuleDelegate>{
     float latitude;
     float longitude;
 }
@@ -48,11 +52,10 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"email@email.com" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:0 alpha:0.4] }];
-    _tfEmail.attributedPlaceholder = str;
     
-    NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:0 alpha:0.4] }];
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7], NSFontAttributeName : [UIFont pickerBoldFont] }];
+    _tfEmail.attributedPlaceholder = str;
+    NSAttributedString *pass = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithWhite:1 alpha:0.7], NSFontAttributeName : [UIFont pickerBoldFont] }];
     _tfPassword.attributedPlaceholder = pass;
     
     UITapGestureRecognizer *singleFingerTap =
@@ -171,7 +174,7 @@
 - (void)showEnterTagALongCodeAlert {
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"TagALong"
-                                                                              message: @"Input validation code. If you don't have this one, please contact TagALong support."
+                                                                              message: @"Input Pro Code. If you don’t have one, contact Pro.Tagalong@tagalong.pro"
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"type validation code";
@@ -198,8 +201,16 @@
                                                            style:UIAlertActionStyleCancel
                                                          handler:nil];
     
+    UIAlertAction *contactAction = [UIAlertAction actionWithTitle:@"Contact Pro.Tagalong@tagalong.pro"
+                                                           style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+                                                              [weakSelf showMailScreen];
+                                                          }];
+    
     [alertController addAction:confirmAction];
+    [alertController addAction:contactAction];
     [alertController addAction:cancelAction];
+    
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -350,6 +361,23 @@
             completion(isAccountExists);
         }
     }];
+}
+
+- (void)showMailScreen {
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setToRecipients:@[@"Pro.Tagalong@tagalong.pro"]];
+        [self presentViewController:mail animated:YES completion:NULL];
+    } else {
+        NSLog(@"This device cannot send email");
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

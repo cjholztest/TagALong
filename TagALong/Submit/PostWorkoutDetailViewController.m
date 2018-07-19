@@ -95,8 +95,15 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
     frequencies = [NSArray arrayWithObjects:@{@"title": @"Just This One", @"id": @"0"}, @{@"title": @"Every day", @"id": @"1"}, @{@"title": @"Every week", @"id": @"7"}, nil];
 
     
-    UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
-    [self.tfLocation addGestureRecognizer:tapRecog];
+//    UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
+//    [self.tfLocation addGestureRecognizer:tapRecog];
+
+    locationManager = [[CLLocationManager alloc] init];
+    geocoder = [[CLGeocoder alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.delegate = self;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self

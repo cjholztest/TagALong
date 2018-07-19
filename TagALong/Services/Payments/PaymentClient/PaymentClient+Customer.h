@@ -12,6 +12,7 @@
 
 + (void)createCustomerKeyWithCompletion:(PaymentCompletion)paymentCompletion;
 + (void)registerExpertWithPaymentData:(NSDictionary*)params completion:(PaymentCompletion)paymentCompletion;
++ (void)updateExpertWithPaymentData:(NSDictionary*)params completion:(PaymentCompletion)paymentCompletion;
 + (void)expertPaymentDataWithCompletion:(PaymentCompletion)paymentCompletion;
 
 @end
