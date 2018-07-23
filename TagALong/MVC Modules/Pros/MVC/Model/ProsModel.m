@@ -11,6 +11,8 @@
 #import "AthleteDataModel.h"
 #import "AthleteMapper.h"
 
+static const CGFloat kMetersInMile = 1609.34f;
+
 @interface ProsModel()
 
 @property (nonatomic, weak) id <ProsModelOutput> output;
@@ -33,8 +35,9 @@
 
 #pragma mark - ProsModelInput
 
-- (void)loadPros {
-    // need to add load logic
+- (void)loadProsInRadius:(NSString*)miles {
+    
+    __block CGFloat radius = miles.floatValue;
     
     [SharedAppDelegate showLoading];
     
@@ -47,11 +50,20 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius"];
     
-    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
-
-//    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   @(0.0f),
-//                             API_REQ_KEY_USER_LONGITUDE     :   @(0.0f)};
+    NSNumber *latitude = nil;
+    NSNumber *longitude = nil;
+    
+    if (Global.g_user.loggedInUserIsRegualar) {
+        latitude = @(Global.g_user.user_latitude.floatValue);
+        longitude = @(Global.g_user.user_longitude.floatValue);
+    } else {
+        latitude = @(Global.g_expert.expert_latitude.floatValue);
+        longitude = @(Global.g_expert.expert_longitude.floatValue);
+    }
+    
+    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   latitude,
+                             API_REQ_KEY_USER_LONGITUDE     :   longitude,
+                             @"radius" : miles};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -67,6 +79,10 @@
         for (NSDictionary *dict in responseObject) {
             
             AthleteDataModel *athlete = [AthleteMapper athleteFromJSON:dict];
+            
+            CGFloat athleteMilesDistance = athlete.distance.floatValue * kMetersInMile;
+            athlete.isInSelectedRadius = athleteMilesDistance <= radius;
+            
             [self.athletes addObject:athlete];
             
             ProsTableViewCellDisplayModel *displayModel = [ProsTableViewCellDisplayModel new];
@@ -75,10 +91,8 @@
             displayModel.locationText = athlete.city;
             
             displayModel.descriptionText = athlete.sportActivity;
-//                displayModel.subInfoText = [NSString stringWithFormat:@"Sub info %lu", i];
             
             [self.athletesDisplayModels addObject:displayModel];
-            
         }
         
         [self.output prosDidLoadSuccessfully];

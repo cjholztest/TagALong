@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *descriptionText;
 @property (nonatomic, strong) NSString *subInfoText;
 
+@property (nonatomic, assign) BOOL inArea;
+
 @end

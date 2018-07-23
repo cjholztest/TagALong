@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProsModuleProtocols.h"
 
-@interface ProsViewController : UIViewController
+@interface ProsViewController : UIViewController <ProsModuleInput>
+
+@property (nonatomic, weak) id <ProsModuleOutput> moduleOutput;
 
 @end

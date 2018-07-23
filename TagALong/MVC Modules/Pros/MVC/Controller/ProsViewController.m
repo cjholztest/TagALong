@@ -11,12 +11,20 @@
 #import "ProsMainSectionAdapter.h"
 #import "NoContentSectionAdapter.h"
 #import "ProsTableViewAdapter.h"
-#import "ProsModuleProtocols.h"
 #import "ProsModel.h"
 #import "ProsView.h"
 #import "AthleteInfoViewController.h"
+#import "ProsFilterViewController.h"
+#import "UIViewController+Storyboard.h"
 
-@interface ProsViewController () <ProsModelOutput, ProsViewOutput, ProsMainSectionAdapterOutput, NoContentSectionAdapterOutput>
+@interface ProsViewController ()
+<
+ProsModelOutput,
+ProsViewOutput,
+ProsMainSectionAdapterOutput,
+NoContentSectionAdapterOutput,
+ProsFilterModuleOutput
+>
 
 @property (nonatomic, weak) IBOutlet ProsView *contentView;
 
@@ -30,11 +38,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
-    [self.model loadPros];
+    [self.model loadProsInRadius:@"30"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(showProsFilter)];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -97,6 +110,25 @@
     AthleteDataModel *athlete = [self.model athleteDetailsAtIndex:indexPath.row];
     [athleteVC setupWithAthlete:athlete];
     [self.navigationController pushViewController:athleteVC animated:YES];
+}
+
+#pragma mark - ProsModuleInput
+
+- (void)radiusDidChangeTo:(NSString*)miles {
+    [self.model loadProsInRadius:miles];
+}
+
+#pragma mark - ProsFilterModuleOutput
+
+#pragma mark - Actions
+
+- (void)showProsFilter {
+    
+    ProsFilterViewController *vc = (ProsFilterViewController*)ProsFilterViewController.fromStoryboard;
+    vc.moduleOutput = self;
+    
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:navigationVC animated:YES completion:nil];
 }
 
 @end

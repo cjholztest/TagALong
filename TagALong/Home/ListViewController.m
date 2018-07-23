@@ -99,7 +99,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self addFilterBarButton];
+//    [self addFilterBarButton];
     if ([Global.g_user.user_login isEqualToString:@"1"]) {
         [self changeSort:sort_index];
     } else {
@@ -109,9 +109,6 @@
         [self ReqWorkoutListForPro];
 //        [self ReqExportWorkoutList];
     }
-    
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)addFilterBarButton {
@@ -123,7 +120,7 @@
         self.vcParent.navigationItem.rightBarButtonItem = nil;
     }
     // temp customer wish to hide filter button:
-    self.vcParent.navigationItem.rightBarButtonItem = nil;
+//    self.vcParent.navigationItem.rightBarButtonItem = nil;
 }
 
 #pragma mark -  UITableViewDataSource

@@ -24,6 +24,8 @@
 #import "UIColor+AppColors.h"
 #import "NextWorkoutsView.h"
 #import "UIFont+HelveticaNeue.h"
+#import "SimpleUserProfileMapper.h"
+#import "SimpleUserProfile.h"
 
 @interface User1ProfileViewController ()<UIImagePickerControllerDelegate, FSCalendarDataSource, FSCalendarDelegate, ExpertUserProfileEditViewControllerDelegate>{
     NSString *file_url;
@@ -60,6 +62,7 @@
 @property (nonatomic, strong) NSMutableArray *arrWorkout;
 
 @property (nonatomic, strong) NextWorkoutsView *nextWorkoutsContainerView;
+@property (nonatomic, strong) SimpleUserProfile *profile;
 
 @end
 
@@ -108,7 +111,7 @@ static const NSInteger kMaxImageCnt = 1;
 }
 
 -(void)addEditInfoBarButton {
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"edit_white"] style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onClickEdit:)];
     self.vcParent.navigationItem.rightBarButtonItem = editButton;
     //self.navigationController.navigationItem.rightBarButtonItem = editButton;
 }
@@ -116,8 +119,7 @@ static const NSInteger kMaxImageCnt = 1;
 #pragma mark - click events
 - (void)onClickEdit:(id)sender {
     SimpleUserEditProfileViewController *vc = (SimpleUserEditProfileViewController*)SimpleUserEditProfileViewController.fromStoryboard;
-    [vc setupMiles:miles];
-    [vc setupProfileIcon:iconURL];
+    [vc setupProfile:self.profile];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -559,6 +561,9 @@ static const NSInteger kMaxImageCnt = 1;
         if (res_code == RESULT_CODE_SUCCESS) {
             
             [self setUserInfo:[responseObject objectForKey:API_RES_KEY_USER_INFO]];
+            
+            NSDictionary *userInfoJSON = [responseObject objectForKey:API_RES_KEY_USER_INFO];
+            weakSelf.profile = [SimpleUserProfileMapper simpleUserProfileFromJSON:userInfoJSON];
             
             NSArray *arrData = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
             

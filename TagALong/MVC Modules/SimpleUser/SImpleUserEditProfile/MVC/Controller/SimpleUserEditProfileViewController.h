@@ -6,10 +6,10 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "SImpleUserEditProfileModuleProtocols.h"
 
-@interface SimpleUserEditProfileViewController : UIViewController <SimpleUserEditProfileModuleInput>
+@interface SimpleUserEditProfileViewController : BaseViewController <SimpleUserEditProfileModuleInput>
 
 @property (nonatomic, weak) id <SimpleUserEditProfileModuleOutput> moduleOutput;
 

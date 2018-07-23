@@ -244,6 +244,12 @@
 		CE4C383F20FF2C4B009B1135 /* ProUserProfileMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C383E20FF2C4B009B1135 /* ProUserProfileMapper.m */; };
 		CE4C384320FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C384220FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m */; };
 		CE4C384820FF7D2E009B1135 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C384720FF7D2E009B1135 /* NSString+Validation.m */; };
+		CE4C38522101FD31009B1135 /* ProsFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38512101FD31009B1135 /* ProsFilterModel.m */; };
+		CE4C38552101FD42009B1135 /* ProsFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38542101FD42009B1135 /* ProsFilterView.m */; };
+		CE4C38582101FD61009B1135 /* ProsFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38572101FD61009B1135 /* ProsFilterViewController.m */; };
+		CE4C385A2101FD69009B1135 /* ProsFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4C38592101FD69009B1135 /* ProsFilterViewController.storyboard */; };
+		CE4C386221062351009B1135 /* SimpleUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C386121062351009B1135 /* SimpleUserProfile.m */; };
+		CE4C38652106236B009B1135 /* SimpleUserProfileMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */; };
 		CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */; };
 		CE5519DD20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DC20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m */; };
 		CE5519E020D026E800AC7BC8 /* NextWorkoutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */; };
@@ -890,6 +896,20 @@
 		CE4C384620FF7D2E009B1135 /* NSString+Validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		CE4C384720FF7D2E009B1135 /* NSString+Validation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		CE4C38492100A648009B1135 /* ProUserEditProfileLogoInfoTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileLogoInfoTableViewCellOutput.h; sourceTree = "<group>"; };
+		CE4C38502101FD31009B1135 /* ProsFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsFilterModel.h; sourceTree = "<group>"; };
+		CE4C38512101FD31009B1135 /* ProsFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsFilterModel.m; sourceTree = "<group>"; };
+		CE4C38532101FD42009B1135 /* ProsFilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsFilterView.h; sourceTree = "<group>"; };
+		CE4C38542101FD42009B1135 /* ProsFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsFilterView.m; sourceTree = "<group>"; };
+		CE4C38562101FD61009B1135 /* ProsFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsFilterViewController.h; sourceTree = "<group>"; };
+		CE4C38572101FD61009B1135 /* ProsFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProsFilterViewController.m; sourceTree = "<group>"; };
+		CE4C38592101FD69009B1135 /* ProsFilterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProsFilterViewController.storyboard; sourceTree = "<group>"; };
+		CE4C385B2101FE6C009B1135 /* ProsFilterModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsFilterModuleProtocols.h; sourceTree = "<group>"; };
+		CE4C385C2101FE80009B1135 /* ProsFilterModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProsFilterModuleHeaders.h; sourceTree = "<group>"; };
+		CE4C385D21060C25009B1135 /* SimpleUserEditProfileModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserEditProfileModuleHeaders.h; sourceTree = "<group>"; };
+		CE4C386021062351009B1135 /* SimpleUserProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserProfile.h; sourceTree = "<group>"; };
+		CE4C386121062351009B1135 /* SimpleUserProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserProfile.m; sourceTree = "<group>"; };
+		CE4C38632106236B009B1135 /* SimpleUserProfileMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserProfileMapper.h; sourceTree = "<group>"; };
+		CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserProfileMapper.m; sourceTree = "<group>"; };
 		CE5519D620CEB7E000AC7BC8 /* NoContentSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapter.h; sourceTree = "<group>"; };
 		CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContentSectionAdapter.m; sourceTree = "<group>"; };
 		CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapterOutput.h; sourceTree = "<group>"; };
@@ -1245,6 +1265,8 @@
 		1A2508D220B602A40063801D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C385F2106233C009B1135 /* Mapper */,
+				CE4C385E2106232F009B1135 /* Entity */,
 				1A2508DB20B603250063801D /* SimpleUserEditProfileModel.h */,
 				1A2508DC20B603250063801D /* SimpleUserEditProfileModel.m */,
 			);
@@ -1271,6 +1293,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2508E120B603470063801D /* SimpleUserEditProfileModuleProtocols.h */,
+				CE4C385D21060C25009B1135 /* SimpleUserEditProfileModuleHeaders.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2557,6 +2580,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C384A2101FCE7009B1135 /* ProsFilter */,
 				CE4C37AF20FC8C8C009B1135 /* ProUserEditProfile */,
 				CE2A63A520C55ACB00AE9CD3 /* ProUser */,
 				CE2A63A620C55ACB00AE9CD3 /* SimpleUser */,
@@ -3078,6 +3102,80 @@
 				CE4C384420FF7899009B1135 /* ProUserEditProfileSportCellAdapterOutput.h */,
 			);
 			path = Sport;
+			sourceTree = "<group>";
+		};
+		CE4C384A2101FCE7009B1135 /* ProsFilter */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C384C2101FD16009B1135 /* MVC */,
+				CE4C384B2101FD16009B1135 /* Protocol */,
+			);
+			path = ProsFilter;
+			sourceTree = "<group>";
+		};
+		CE4C384B2101FD16009B1135 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C385B2101FE6C009B1135 /* ProsFilterModuleProtocols.h */,
+				CE4C385C2101FE80009B1135 /* ProsFilterModuleHeaders.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CE4C384C2101FD16009B1135 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C384D2101FD16009B1135 /* Controller */,
+				CE4C384E2101FD16009B1135 /* Model */,
+				CE4C384F2101FD16009B1135 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE4C384D2101FD16009B1135 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38562101FD61009B1135 /* ProsFilterViewController.h */,
+				CE4C38572101FD61009B1135 /* ProsFilterViewController.m */,
+				CE4C38592101FD69009B1135 /* ProsFilterViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE4C384E2101FD16009B1135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38502101FD31009B1135 /* ProsFilterModel.h */,
+				CE4C38512101FD31009B1135 /* ProsFilterModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4C384F2101FD16009B1135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38532101FD42009B1135 /* ProsFilterView.h */,
+				CE4C38542101FD42009B1135 /* ProsFilterView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE4C385E2106232F009B1135 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C386021062351009B1135 /* SimpleUserProfile.h */,
+				CE4C386121062351009B1135 /* SimpleUserProfile.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		CE4C385F2106233C009B1135 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38632106236B009B1135 /* SimpleUserProfileMapper.h */,
+				CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		CE5519D520CEB7BF00AC7BC8 /* NoContent */ = {
@@ -4379,6 +4477,7 @@
 				CE36D75C20A48088008B0E75 /* ProsViewController.storyboard in Resources */,
 				3B79BCD01F861CF600BD869D /* SelectWorkoutTableViewCell.xib in Resources */,
 				CE7E0F4920ADC85100D93035 /* ReviewOfferViewController.storyboard in Resources */,
+				CE4C385A2101FD69009B1135 /* ProsFilterViewController.storyboard in Resources */,
 				CE4C37EF20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				CE2A635420BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.xib in Resources */,
@@ -4536,6 +4635,7 @@
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
 				CE4C381020FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m in Sources */,
 				CEDF04D020A991920012AAC4 /* SubmitOfferView.m in Sources */,
+				CE4C386221062351009B1135 /* SimpleUserProfile.m in Sources */,
 				CEDF055020AB0C8F0012AAC4 /* BaseViewController.m in Sources */,
 				3205FD221F62362D0037DCE5 /* ExpertLoginViewController.m in Sources */,
 				CEDA669120B54014009417BF /* UIViewController+AlertController.m in Sources */,
@@ -4546,6 +4646,7 @@
 				CE2A636C20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m in Sources */,
 				CE4C37B920FC8CC7009B1135 /* ProUserEditProfileViewController.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
+				CE4C38552101FD42009B1135 /* ProsFilterView.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */,
 				1A2C020B205C359C001887FA /* WorkoutVisitorTableViewCell.m in Sources */,
@@ -4652,12 +4753,14 @@
 				323016511F7A48FC0001BCB4 /* BSCameraView.m in Sources */,
 				CE2A639E20C512F900AE9CD3 /* SimpleUserSignUpDataModel.m in Sources */,
 				CEDF050B20A9C4550012AAC4 /* SubmitOfferWhoTableViewCell.m in Sources */,
+				CE4C38582101FD61009B1135 /* ProsFilterViewController.m in Sources */,
 				CE36D75020A4793D008B0E75 /* ProsViewController.m in Sources */,
 				CE12DFDB2064E97A00949AC2 /* ProfilePaymentDataViewController.m in Sources */,
 				CEDF051B20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
 				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
+				CE4C38652106236B009B1135 /* SimpleUserProfileMapper.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
 				CEDF052B20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
@@ -4775,6 +4878,7 @@
 				323016491F7A48FC0001BCB4 /* UIViewController+BSImagePicker.m in Sources */,
 				CEDF052020A9CA750012AAC4 /* SubmitOfferWhatTableViewCellDisplayModel.m in Sources */,
 				CEDF04C820A9913D0012AAC4 /* SubmitOfferViewController.m in Sources */,
+				CE4C38522101FD31009B1135 /* ProsFilterModel.m in Sources */,
 				1A2C32C3210129370039A476 /* ProUserEditProfileLocationCellAdapter.m in Sources */,
 				323016561F7A48FC0001BCB4 /* BSVideoCell.m in Sources */,
 				CE4C381420FDE544009B1135 /* ProUserEditProfileAwardsHeaderCellAdapter.m in Sources */,

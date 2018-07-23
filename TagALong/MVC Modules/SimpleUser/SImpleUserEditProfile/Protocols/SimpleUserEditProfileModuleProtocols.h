@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SimpleUserProfile;
+
 @protocol SimpleUserEditProfileModelInput <NSObject>
 
 - (void)loadCrediCards;
@@ -15,12 +17,25 @@
 
 - (void)updateAreaRadius:(BOOL)isEnabled miles:(NSString*)miles;
 
+- (void)saveProfile:(SimpleUserProfile*)profile;
+
+- (UIImage *)compressedImageFrom:(UIImage*)original scale:(CGFloat)scale;
+- (void)uploadImage:(UIImage*)image scale:(float)scale;
+
+- (void)checkCreditsWithCompletion:(void(^)(BOOL isCreditCradExists))completion;
+- (void)loadDataForCreditWithCompletion:(void(^)(NSString *result))completion;
+
 @end
 
 @protocol SimpleUserEditProfileModelOutput <NSObject>
 
 - (void)creditCardsDidLoadSuccess:(BOOL)isSuccess cardInfo:(NSString*)cardInfo;
 - (void)areaRadiusDidUpdateSuccess:(BOOL)isSuccess message:(NSString*)message;
+
+- (void)profileDidUpdate:(BOOL)success errorMessage:(NSString*)message;
+- (void)photoDidLoadWithUrl:(NSString*)url;
+
+- (void)creditCardDataDidLoad:(NSString*)creditData;
 
 @end
 
@@ -30,13 +45,11 @@
 
 @protocol SimpleUserEditProfileViewOutput <NSObject>
 
-- (void)limitSwitcherDidChange:(BOOL)isOn;
-- (void)editCreditButtonDidTap;
-- (void)areaRadiusDidTap;
-
 @end
 
 @protocol SimpleUserEditProfileModuleInput <NSObject>
+
+- (void)setupProfile:(SimpleUserProfile*)profile;
 
 - (void)setupMiles:(NSInteger)miles;
 - (void)setupProfileIcon:(NSString*)iconUrl;

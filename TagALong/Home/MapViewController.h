@@ -22,6 +22,7 @@
 @property (nonatomic) NSTimeInterval endDate;
 
 - (void)reloadAllData;
+- (void)radiusDidChange:(NSString*)radius;
 
 @end
 
