@@ -64,6 +64,8 @@ static NSString *const kProPrefix = @"athlete";
 @property (nonatomic, strong) CCHMapClusterController *mapClusterController;
 @property (nonatomic, strong) NSMutableArray *athletes;
 
+@property (nonatomic, strong) NSString *miles;
+
 @end
 
 @implementation MapViewController
@@ -112,7 +114,7 @@ static NSString *const kProPrefix = @"athlete";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self addFilterBarButton];
+//    [self addFilterBarButton];
     [self.navigationController.navigationBar setBackgroundImage: [UIImage imageNamed:@"bg_profile_top"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setTranslucent: YES];
     [self.navigationController.navigationBar setShadowImage:  [UIImage new]];
@@ -124,8 +126,8 @@ static NSString *const kProPrefix = @"athlete";
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationItem.rightBarButtonItem = nil;
+//    self.navigationItem.rightBarButtonItem = nil;
+//    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -555,6 +557,8 @@ static NSString *const kProPrefix = @"athlete";
 
 #pragma mark - user defined functions
 -(void)OhterPlayPosSet {
+    
+    [_mvMap removeAnnotations:_mvMap.annotations];
     
     NSMutableArray *annotations = [NSMutableArray new];
     
@@ -1162,8 +1166,22 @@ static NSString *const kProPrefix = @"athlete";
     
     NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"exports_in_radius_for_map"];
     
-    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   Global.g_user.user_latitude,
-                             API_REQ_KEY_USER_LONGITUDE     :   Global.g_user.user_longitude};
+    NSNumber *latitude = nil;
+    NSNumber *longitude = nil;
+    
+    if (Global.g_user.loggedInUserIsRegualar) {
+        latitude = @(Global.g_user.user_latitude.floatValue);
+        longitude = @(Global.g_user.user_longitude.floatValue);
+    } else {
+        latitude = @(Global.g_expert.expert_latitude.floatValue);
+        longitude = @(Global.g_expert.expert_longitude.floatValue);
+    }
+    
+    NSNumber *radius = self.miles ? @(self.miles.floatValue) : @(30.0f);
+    
+    NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   latitude,
+                             API_REQ_KEY_USER_LONGITUDE     :   longitude,
+                             @"radius" : radius};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -1314,6 +1332,10 @@ static NSString *const kProPrefix = @"athlete";
         
         [weakSelf OhterPlayPosSet];
     });
+}
+
+- (void)radiusDidChange:(NSString*)radius {
+    self.miles = radius;
 }
 
 #pragma mark - Help Methods

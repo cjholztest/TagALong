@@ -3570,7 +3570,6 @@ Terms of Use and Privacy Policy</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" image="ic_submit_tub" id="tF1-FU-kX5"/>
                     <navigationItem key="navigationItem" title="Workout Type" id="68e-wb-0CX">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="vbr-eK-dpK"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Item" image="ic_alarm_normal" id="21o-Pc-M5p"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

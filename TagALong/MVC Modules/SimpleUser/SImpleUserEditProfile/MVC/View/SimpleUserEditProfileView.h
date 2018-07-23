@@ -11,14 +11,7 @@
 
 @interface SimpleUserEditProfileView : UIView
 
-@property (nonatomic, weak) IBOutlet UILabel *creditCardLabel;
-@property (nonatomic, weak) IBOutlet UIButton *creditCardEditButton;
-
-@property (nonatomic, weak) IBOutlet UISwitch *limitSwithch;
-@property (nonatomic, weak) IBOutlet UIView *areaContentView;
-@property (nonatomic, weak) IBOutlet UILabel *areaRadiusLabel;
-
-@property (nonatomic, weak) IBOutlet UIImageView *profileIconImageView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) id <SimpleUserEditProfileViewOutput> output;
 

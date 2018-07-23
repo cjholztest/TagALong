@@ -26,6 +26,7 @@
     athlete.level = json[@"level"];
     athlete.awards = json[@"awards"];
     athlete.additionalInfo = json[@"content"];
+    athlete.distance = json[@"distance"];
     
     return athlete;
 }

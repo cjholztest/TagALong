@@ -8,6 +8,7 @@
 
 #import "ProsTableViewCell.h"
 #import "ProsTableViewCellDisplayModel.h"
+#import "UIColor+AppColors.h"
 
 @interface ProsTableViewCell()
 
@@ -44,6 +45,8 @@
     
     self.descriptionLabel.text = displayModel.descriptionText;
     self.subInfoLabel.text = displayModel.subInfoText;
+    
+    self.subInfoLabel.textColor = UIColor.proBackgroundColor;
 }
 
 @end

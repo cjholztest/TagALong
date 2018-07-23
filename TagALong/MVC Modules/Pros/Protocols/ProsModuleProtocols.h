@@ -19,6 +19,7 @@
 @protocol ProsModelInput <NSObject>
 
 - (void)loadPros;
+- (void)loadProsInRadius:(NSString*)miles;
 - (BOOL)isCurrentProUserAloneInArea;
 
 @end
@@ -36,6 +37,8 @@
 @end
 
 @protocol ProsModuleInput <NSObject>
+
+- (void)radiusDidChangeTo:(NSString*)miles;
 
 @end
 

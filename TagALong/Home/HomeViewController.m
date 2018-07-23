@@ -17,8 +17,11 @@
 #import "ExpertUserProfileViewController.h"
 #import "StartedViewController.h"
 #import "ProsViewController.h"
+#import "PickerViewController.h"
+#import "UIViewController+Storyboard.h"
+#import "UIViewController+Presentation.h"
 
-@interface HomeViewController ()<UIScrollViewDelegate, ListViewControllerDelegate>{
+@interface HomeViewController ()<UIScrollViewDelegate, ListViewControllerDelegate, ProsModuleOutput, PickerModuleOutput>{
 
     MapViewController *vcMap;
     ListViewController *vcList;
@@ -57,6 +60,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblSubmit;
 @property (weak, nonatomic) IBOutlet UIControl *vwBack;
 @property (weak, nonatomic) IBOutlet UIControl *vwAlarm;
+
+@property (nonatomic, assign) BOOL isMapFilter;
 
 @end
 
@@ -121,11 +126,6 @@
     [self setPage];
     [self changeBottomButton];
     
-//    if (_nCurButtonIdx == BUTTON_PROS) {
-        self.navigationItem.rightBarButtonItem = nil;
-        self.navigationController.navigationItem.rightBarButtonItem = nil;
-//    }
-    
     if (_nCurPageIdx == PAGE_MENU_MAP) {
         [vcMap reloadAllData];
     }
@@ -145,20 +145,6 @@
     
     _svContetns.contentSize = CGSizeMake(self.view.frame.size.width * 2, _svContetns.bounds.size.height);
     _svContetns.pagingEnabled = YES;
-    
-//    if (_nCurButtonIdx != BUTTON_PROFILE) {
-        self.navigationItem.rightBarButtonItem = nil;
-        self.navigationController.navigationItem.rightBarButtonItem = nil;
-//    }
-    
-//    if ([Global.g_user.user_login isEqualToString:@"expert"]) {
-//        [self onClickProfile:self];
-//    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //#pragma mark - UIScrollViewDelegate
@@ -225,9 +211,17 @@
     //[self addAlarmBarButton];
     [_ivMapLine setHidden:YES];
     [_ivListLine setHidden:YES];
+    
     //_nCurButtonIdx = BUTTON_SEARDCH;
     if (_nCurPageIdx == PAGE_MENU_MAP) {
     
+        self.isMapFilter = YES;
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter"
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(showProsFilter)];
+        
         [_ivMapLine setHidden:NO];
         _lblMap.textColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
         _svContetns.contentOffset = CGPointMake(_vwContent.frame.size.width * (0), 0);
@@ -241,6 +235,8 @@
         [_svContetns bringSubviewToFront:vcMap.view];
     } else if (_nCurPageIdx == PAGE_MENU_LIST) {
 
+        self.navigationItem.rightBarButtonItem = nil;
+        
         [_ivListLine setHidden:NO];
         _lblList.textColor = [UIColor colorWithRed:(9/255.f) green:(156/255.f) blue:(242/255.f) alpha:1.0];
         _svContetns.contentOffset = CGPointMake(_vwContent.frame.size.width * (1), 0);
@@ -254,8 +250,6 @@
         }
         [_svContetns bringSubviewToFront:vcList.view];
     }
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)removeviewsFromMain{
@@ -459,14 +453,21 @@
     bOtherPage = false;
     _nCurButtonIdx = BUTTON_PROS;
     [self changeBottomButton];
-    self.navigationItem.title = @"Pros";
-    self.navigationItem.rightBarButtonItem = nil;
+    
+    self.isMapFilter = NO;
+    
+    self.navigationItem.title = @"Pros";    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(showProsFilter)];
     
     [self removeviewsFromMain];
     
     if (!vcPros) {
         vcPros = [[UIStoryboard storyboardWithName:@"ProsViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ProsViewController"];
         vcPros.view.frame = _vwContent.bounds;
+        vcPros.moduleOutput = self;
         [_vwContent addSubview:vcPros.view];
         [self addChildViewController:vcPros];
     }
@@ -478,6 +479,7 @@
     [self removeMainPages];
 
     self.navigationItem.title = @"Explore Workouts";
+    
     //[self addAlarmBarButton];
     _nCurPageIdx = PAGE_MENU_LIST;
     [self setPage];
@@ -487,9 +489,6 @@
     
     [self setDefaulttitle];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pageRefresh" object:nil];
-    
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (IBAction)onClickSubmit:(id)sender {
@@ -497,14 +496,35 @@
     [self removeviewsFromMain];
     
     WorkoutSelectViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WorkoutSelectViewController"];
-    [self.navigationController pushViewController:vc animated:YES];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:navVC animated:YES completion:nil];
+//    [self.navigationController pushViewController:vc animated:YES];
 
 }
 
-//-(void)addAlarmBarButton {
-//    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"filter"] style:UIBarButtonItemStylePlain target:self action: nil];
-//
-//    self.navigationItem.rightBarButtonItem = editButton;
-//}
+#pragma mark - ProsFilterModuleOutput
+
+#pragma mark - Actions
+
+- (void)showProsFilter {
+    
+    PickerViewController *sportsPickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
+    
+    sportsPickerVC.moduleOutput = self;
+    [sportsPickerVC setupWithType:MilesPickerType];
+    
+    [self presentCrossDissolveVC:sportsPickerVC];
+}
+
+#pragma mark - PickerModuleOutput
+
+- (void)pickerDoneButtonDidTapWithMiles:(NSString*)miles {
+    if (self.isMapFilter) {
+        [vcMap radiusDidChange:miles];
+        [vcMap reloadAllData];
+    } else {
+        [vcPros radiusDidChangeTo:miles];
+    }
+}
 
 @end

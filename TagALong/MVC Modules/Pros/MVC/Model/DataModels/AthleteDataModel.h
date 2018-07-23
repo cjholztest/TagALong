@@ -31,6 +31,9 @@
 @property (nonatomic, strong) NSString *awards;
 @property (nonatomic, strong) NSString *additionalInfo;
 
+@property (nonatomic, strong) NSNumber *distance;
+@property (nonatomic, assign) BOOL isInSelectedRadius;
+
 - (CLLocationCoordinate2D)locatoinCoordinate;
 
 @end
