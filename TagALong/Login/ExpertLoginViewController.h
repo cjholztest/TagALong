@@ -6,9 +6,9 @@
 //  Copyright © 2017 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ExpertLoginViewController : UIViewController
+@interface ExpertLoginViewController : BaseViewController
 
 
 @end
