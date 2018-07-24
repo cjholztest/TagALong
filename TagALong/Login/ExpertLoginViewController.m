@@ -35,12 +35,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic,retain) CLLocationManager *locationManager;
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @end
 
 @implementation ExpertLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.titleLabel.text = @"Professional Athletes\nLogin/Sign Up Here";
+    
     NSArray *buttons = @[self.logoButton, self.loginButton, self.signUpButton, self.forgetPasswordButton, self.backButton];
     for (UIButton *button in buttons) {
         [button setExclusiveTouch:YES];
@@ -73,6 +79,7 @@
     [self.navigationController.navigationBar setBarTintColor: UIColor.clearColor];
     [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBackgroundColor: UIColor.clearColor];
+    self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -378,6 +385,51 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Keyboard Notifications
+
+- (void)keyboardDidAppear:(NSNotification*)notification {
+        
+    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        UIEdgeInsets inset = self.scrollView.contentInset;
+        inset.bottom  = keyboardHeight;
+        self.scrollView.contentInset = inset;
+        [self scrollToPasswordField];
+    }];
+}
+
+- (void)keyboardDidHide:(NSNotification*)notification {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.scrollView.contentInset = UIEdgeInsetsZero;
+    }];
+}
+
+- (void)keyboardDidChange:(NSNotification*)notification {
+
+    CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        UIEdgeInsets inset = self.scrollView.contentInset;
+        inset.bottom  = keyboardHeight;
+        self.scrollView.contentInset = inset;
+    }];
+}
+
+#pragma mark - Helpers
+
+- (void)scrollToPasswordField {
+    CGRect rect = [self.scrollView convertRect:self.tfPassword.frame fromView:self.tfPassword];
+    [self.scrollView scrollRectToVisible:rect animated:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
