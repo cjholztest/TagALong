@@ -250,6 +250,20 @@
 		CE4C385A2101FD69009B1135 /* ProsFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4C38592101FD69009B1135 /* ProsFilterViewController.storyboard */; };
 		CE4C386221062351009B1135 /* SimpleUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C386121062351009B1135 /* SimpleUserProfile.m */; };
 		CE4C38652106236B009B1135 /* SimpleUserProfileMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */; };
+		CE4C386921088CC1009B1135 /* UIToolbar+Done.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C386821088CC1009B1135 /* UIToolbar+Done.m */; };
+		CE4C38732108951C009B1135 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38722108951C009B1135 /* ChangePasswordViewController.m */; };
+		CE4C38752108952E009B1135 /* ChangePasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4C38742108952E009B1135 /* ChangePasswordViewController.storyboard */; };
+		CE4C3878210895D7009B1135 /* ChangePasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C3877210895D7009B1135 /* ChangePasswordModel.m */; };
+		CE4C387B210895E5009B1135 /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C387A210895E5009B1135 /* ChangePasswordView.m */; };
+		CE4C3880210896F5009B1135 /* ChangePasswordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C387E210896F5009B1135 /* ChangePasswordTableViewCell.m */; };
+		CE4C3881210896F5009B1135 /* ChangePasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C387F210896F5009B1135 /* ChangePasswordTableViewCell.xib */; };
+		CE4C38872108A229009B1135 /* ChangePasswordTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38862108A229009B1135 /* ChangePasswordTableViewAdapter.m */; };
+		CE4C38972108A43B009B1135 /* OldPasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38962108A43B009B1135 /* OldPasswordCellAdapter.m */; };
+		CE4C389B2108A452009B1135 /* NewPasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C389A2108A452009B1135 /* NewPasswordCellAdapter.m */; };
+		CE4C389F2108A46B009B1135 /* ConfirmPasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C389E2108A46B009B1135 /* ConfirmPasswordCellAdapter.m */; };
+		CE4C38A42108A64C009B1135 /* ChangePasswordMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38A32108A64C009B1135 /* ChangePasswordMainSectionAdapter.m */; };
+		CE4C38A82108ABDB009B1135 /* UserPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38A72108ABDB009B1135 /* UserPassword.m */; };
+		CE4C38AC2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4C38AB2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.m */; };
 		CE5519D820CEB7E000AC7BC8 /* NoContentSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */; };
 		CE5519DD20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DC20CFB31C00AC7BC8 /* NSObject+CheckEmpty.m */; };
 		CE5519E020D026E800AC7BC8 /* NextWorkoutsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5519DF20D026E800AC7BC8 /* NextWorkoutsView.m */; };
@@ -910,6 +924,42 @@
 		CE4C386121062351009B1135 /* SimpleUserProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserProfile.m; sourceTree = "<group>"; };
 		CE4C38632106236B009B1135 /* SimpleUserProfileMapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUserProfileMapper.h; sourceTree = "<group>"; };
 		CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleUserProfileMapper.m; sourceTree = "<group>"; };
+		CE4C386721088CC1009B1135 /* UIToolbar+Done.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+Done.h"; sourceTree = "<group>"; };
+		CE4C386821088CC1009B1135 /* UIToolbar+Done.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+Done.m"; sourceTree = "<group>"; };
+		CE4C38712108951C009B1135 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		CE4C38722108951C009B1135 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		CE4C38742108952E009B1135 /* ChangePasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePasswordViewController.storyboard; sourceTree = "<group>"; };
+		CE4C3876210895D7009B1135 /* ChangePasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordModel.h; sourceTree = "<group>"; };
+		CE4C3877210895D7009B1135 /* ChangePasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordModel.m; sourceTree = "<group>"; };
+		CE4C3879210895E5009B1135 /* ChangePasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
+		CE4C387A210895E5009B1135 /* ChangePasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
+		CE4C387D210896F5009B1135 /* ChangePasswordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewCell.h; sourceTree = "<group>"; };
+		CE4C387E210896F5009B1135 /* ChangePasswordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordTableViewCell.m; sourceTree = "<group>"; };
+		CE4C387F210896F5009B1135 /* ChangePasswordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordTableViewCell.xib; sourceTree = "<group>"; };
+		CE4C388221089912009B1135 /* ChangePasswordModuleProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordModuleProtocols.h; sourceTree = "<group>"; };
+		CE4C388321089942009B1135 /* ChangePasswordModuleHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordModuleHeaders.h; sourceTree = "<group>"; };
+		CE4C388421089E52009B1135 /* ChangePasswordTableViewCellOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewCellOutput.h; sourceTree = "<group>"; };
+		CE4C38852108A229009B1135 /* ChangePasswordTableViewAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewAdapter.h; sourceTree = "<group>"; };
+		CE4C38862108A229009B1135 /* ChangePasswordTableViewAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordTableViewAdapter.m; sourceTree = "<group>"; };
+		CE4C38882108A237009B1135 /* ChangePasswordTableViewAdapterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordTableViewAdapterInput.h; sourceTree = "<group>"; };
+		CE4C38942108A354009B1135 /* ChangePasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordCellAdapter.h; sourceTree = "<group>"; };
+		CE4C38952108A43B009B1135 /* OldPasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldPasswordCellAdapter.h; sourceTree = "<group>"; };
+		CE4C38962108A43B009B1135 /* OldPasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldPasswordCellAdapter.m; sourceTree = "<group>"; };
+		CE4C38982108A446009B1135 /* OldPasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldPasswordCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C38992108A452009B1135 /* NewPasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPasswordCellAdapter.h; sourceTree = "<group>"; };
+		CE4C389A2108A452009B1135 /* NewPasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPasswordCellAdapter.m; sourceTree = "<group>"; };
+		CE4C389C2108A45C009B1135 /* NewPasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPasswordCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C389D2108A46B009B1135 /* ConfirmPasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordCellAdapter.h; sourceTree = "<group>"; };
+		CE4C389E2108A46B009B1135 /* ConfirmPasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmPasswordCellAdapter.m; sourceTree = "<group>"; };
+		CE4C38A02108A477009B1135 /* ConfirmPasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordCellAdapterOutput.h; sourceTree = "<group>"; };
+		CE4C38A12108A638009B1135 /* ChangePasswordSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordSectionAdapter.h; sourceTree = "<group>"; };
+		CE4C38A22108A64C009B1135 /* ChangePasswordMainSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordMainSectionAdapter.h; sourceTree = "<group>"; };
+		CE4C38A32108A64C009B1135 /* ChangePasswordMainSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordMainSectionAdapter.m; sourceTree = "<group>"; };
+		CE4C38A62108ABDB009B1135 /* UserPassword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserPassword.h; sourceTree = "<group>"; };
+		CE4C38A72108ABDB009B1135 /* UserPassword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserPassword.m; sourceTree = "<group>"; };
+		CE4C38AA2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileChangePasswordCellAdapter.h; sourceTree = "<group>"; };
+		CE4C38AB2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProUserEditProfileChangePasswordCellAdapter.m; sourceTree = "<group>"; };
+		CE4C38AD2108B087009B1135 /* ProUserEditProfileChangePasswordCellAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProUserEditProfileChangePasswordCellAdapterOutput.h; sourceTree = "<group>"; };
 		CE5519D620CEB7E000AC7BC8 /* NoContentSectionAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapter.h; sourceTree = "<group>"; };
 		CE5519D720CEB7E000AC7BC8 /* NoContentSectionAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContentSectionAdapter.m; sourceTree = "<group>"; };
 		CE5519D920CEB7FF00AC7BC8 /* NoContentSectionAdapterOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentSectionAdapterOutput.h; sourceTree = "<group>"; };
@@ -2580,6 +2630,7 @@
 		CE36D74820A47862008B0E75 /* MVC Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C386A210894FD009B1135 /* ChangePassword */,
 				CE4C384A2101FCE7009B1135 /* ProsFilter */,
 				CE4C37AF20FC8C8C009B1135 /* ProUserEditProfile */,
 				CE2A63A520C55ACB00AE9CD3 /* ProUser */,
@@ -2679,6 +2730,7 @@
 		CE36D76920A5806B008B0E75 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C386621088C99009B1135 /* UIToolBar Categories */,
 				CE5519DA20CFB2E800AC7BC8 /* NSObject Categories */,
 				CE5DB34120C6DCE0001F8A87 /* NSDateFormatter Categories */,
 				CE5DB33A20C6AC3B001F8A87 /* MKMapView Categories */,
@@ -2860,6 +2912,7 @@
 		CE4C37C820FC9943009B1135 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CE4C38A92108B05F009B1135 /* ChangePassword */,
 				1A2C32C0210129120039A476 /* Location */,
 				CE4C384020FF786C009B1135 /* Sport */,
 				CE4C383320FE2742009B1135 /* EmptyFooter */,
@@ -3176,6 +3229,175 @@
 				CE4C38642106236B009B1135 /* SimpleUserProfileMapper.m */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CE4C386621088C99009B1135 /* UIToolBar Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C386721088CC1009B1135 /* UIToolbar+Done.h */,
+				CE4C386821088CC1009B1135 /* UIToolbar+Done.m */,
+			);
+			path = "UIToolBar Categories";
+			sourceTree = "<group>";
+		};
+		CE4C386A210894FD009B1135 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C386B210894FD009B1135 /* MVC */,
+				CE4C386F210894FD009B1135 /* Adapter */,
+				CE4C3870210894FD009B1135 /* Protocol */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		CE4C386B210894FD009B1135 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C386C210894FD009B1135 /* Controller */,
+				CE4C386D210894FD009B1135 /* Model */,
+				CE4C386E210894FD009B1135 /* View */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		CE4C386C210894FD009B1135 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38712108951C009B1135 /* ChangePasswordViewController.h */,
+				CE4C38722108951C009B1135 /* ChangePasswordViewController.m */,
+				CE4C38742108952E009B1135 /* ChangePasswordViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE4C386D210894FD009B1135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38A52108ABC9009B1135 /* Entity */,
+				CE4C3876210895D7009B1135 /* ChangePasswordModel.h */,
+				CE4C3877210895D7009B1135 /* ChangePasswordModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4C386E210894FD009B1135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C387C210895FD009B1135 /* Cell */,
+				CE4C3879210895E5009B1135 /* ChangePasswordView.h */,
+				CE4C387A210895E5009B1135 /* ChangePasswordView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE4C386F210894FD009B1135 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C388B2108A2DA009B1135 /* Cell */,
+				CE4C38892108A264009B1135 /* Section */,
+				CE4C38852108A229009B1135 /* ChangePasswordTableViewAdapter.h */,
+				CE4C38862108A229009B1135 /* ChangePasswordTableViewAdapter.m */,
+				CE4C38882108A237009B1135 /* ChangePasswordTableViewAdapterInput.h */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CE4C3870210894FD009B1135 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C388221089912009B1135 /* ChangePasswordModuleProtocols.h */,
+				CE4C388321089942009B1135 /* ChangePasswordModuleHeaders.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CE4C387C210895FD009B1135 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C387D210896F5009B1135 /* ChangePasswordTableViewCell.h */,
+				CE4C387E210896F5009B1135 /* ChangePasswordTableViewCell.m */,
+				CE4C387F210896F5009B1135 /* ChangePasswordTableViewCell.xib */,
+				CE4C388421089E52009B1135 /* ChangePasswordTableViewCellOutput.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE4C38892108A264009B1135 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C388A2108A264009B1135 /* Main */,
+				CE4C38A12108A638009B1135 /* ChangePasswordSectionAdapter.h */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		CE4C388A2108A264009B1135 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38A22108A64C009B1135 /* ChangePasswordMainSectionAdapter.h */,
+				CE4C38A32108A64C009B1135 /* ChangePasswordMainSectionAdapter.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CE4C388B2108A2DA009B1135 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C388C2108A2DA009B1135 /* ConfirmPassword */,
+				CE4C388E2108A2DA009B1135 /* NewPassword */,
+				CE4C388F2108A2DA009B1135 /* OldPassword */,
+				CE4C38942108A354009B1135 /* ChangePasswordCellAdapter.h */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE4C388C2108A2DA009B1135 /* ConfirmPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C389D2108A46B009B1135 /* ConfirmPasswordCellAdapter.h */,
+				CE4C389E2108A46B009B1135 /* ConfirmPasswordCellAdapter.m */,
+				CE4C38A02108A477009B1135 /* ConfirmPasswordCellAdapterOutput.h */,
+			);
+			path = ConfirmPassword;
+			sourceTree = "<group>";
+		};
+		CE4C388E2108A2DA009B1135 /* NewPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38992108A452009B1135 /* NewPasswordCellAdapter.h */,
+				CE4C389A2108A452009B1135 /* NewPasswordCellAdapter.m */,
+				CE4C389C2108A45C009B1135 /* NewPasswordCellAdapterOutput.h */,
+			);
+			path = NewPassword;
+			sourceTree = "<group>";
+		};
+		CE4C388F2108A2DA009B1135 /* OldPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38952108A43B009B1135 /* OldPasswordCellAdapter.h */,
+				CE4C38962108A43B009B1135 /* OldPasswordCellAdapter.m */,
+				CE4C38982108A446009B1135 /* OldPasswordCellAdapterOutput.h */,
+			);
+			path = OldPassword;
+			sourceTree = "<group>";
+		};
+		CE4C38A52108ABC9009B1135 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38A62108ABDB009B1135 /* UserPassword.h */,
+				CE4C38A72108ABDB009B1135 /* UserPassword.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		CE4C38A92108B05F009B1135 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C38AA2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.h */,
+				CE4C38AB2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.m */,
+				CE4C38AD2108B087009B1135 /* ProUserEditProfileChangePasswordCellAdapterOutput.h */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		CE5519D520CEB7BF00AC7BC8 /* NoContent */ = {
@@ -4468,6 +4690,7 @@
 				3B37FC5B1FB37DD200C688DF /* DateSelectDialog.xib in Resources */,
 				CEDF052D20A9CAF40012AAC4 /* SubmitOfferAmountTableViewCell.xib in Resources */,
 				3205FD361F62DA700037DCE5 /* FilterCollectionViewCell.xib in Resources */,
+				CE4C38752108952E009B1135 /* ChangePasswordViewController.storyboard in Resources */,
 				CEDA661F20B04873009417BF /* ProUserSignUpTextFieldTableViewCell.xib in Resources */,
 				32FAA0931F6144D500CD4395 /* Assets.xcassets in Resources */,
 				CE4C37E920FCAEFF009B1135 /* ProUserEditProfileTableViewCell.xib in Resources */,
@@ -4479,6 +4702,7 @@
 				CE7E0F4920ADC85100D93035 /* ReviewOfferViewController.storyboard in Resources */,
 				CE4C385A2101FD69009B1135 /* ProsFilterViewController.storyboard in Resources */,
 				CE4C37EF20FCBA59009B1135 /* ProUserEditProfileLogoInfoTableViewCell.xib in Resources */,
+				CE4C3881210896F5009B1135 /* ChangePasswordTableViewCell.xib in Resources */,
 				3B1E2FCB1F94D2A700E636F4 /* ExportSportsListTableViewCell.xib in Resources */,
 				CE2A635420BD634500AE9CD3 /* WorkoutMainDetailsTableViewCell.xib in Resources */,
 				CEDF050D20A9C4610012AAC4 /* SubmitOfferWhoTableViewCell.xib in Resources */,
@@ -4615,6 +4839,7 @@
 				CE4C380020FCC462009B1135 /* ProUserEditProfileCityNameCellAdapter.m in Sources */,
 				CEDF051020A9C48C0012AAC4 /* SubmitOfferWhoTableViewCellDisplayModel.m in Sources */,
 				1A2508E020B603360063801D /* SimpleUserEditProfileView.m in Sources */,
+				CE4C389B2108A452009B1135 /* NewPasswordCellAdapter.m in Sources */,
 				3B0C4CFB1F887393002CEADA /* SDWebImageManager.m in Sources */,
 				323016431F7A48FC0001BCB4 /* BSPhotosController+BSItemsModel.m in Sources */,
 				CEDF051820A9CA310012AAC4 /* SubmitOfferWhenTableViewCellDisplayModel.m in Sources */,
@@ -4624,6 +4849,7 @@
 				CEDF04EB20A9A4690012AAC4 /* SubmitOfferAmountCellAdapter.m in Sources */,
 				CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */,
 				3232FFAB1F79E78200A0F55D /* PassForgetViewController.m in Sources */,
+				CE4C38A42108A64C009B1135 /* ChangePasswordMainSectionAdapter.m in Sources */,
 				CE2A63A920C55B7F00AE9CD3 /* ProUserPostWorkoutViewController.m in Sources */,
 				CEDA665820B29F85009417BF /* SelectLocationModel.m in Sources */,
 				CEDF04DF20A9A34A0012AAC4 /* SubmitOfferMainSectionAdapter.m in Sources */,
@@ -4653,6 +4879,7 @@
 				CE4C384320FF788E009B1135 /* ProUserEditProfileSportCellAdapter.m in Sources */,
 				CEDF04EF20A9A4940012AAC4 /* SubmitOfferAdditionalInfoCellAdapter.m in Sources */,
 				1A2508D820B602F90063801D /* SimpleUserEditProfileViewController.m in Sources */,
+				CE4C3880210896F5009B1135 /* ChangePasswordTableViewCell.m in Sources */,
 				CE2A636620BDB2BC00AE9CD3 /* WorkoutDetailsMapper.m in Sources */,
 				CEDF052320A9CA920012AAC4 /* SubmitOfferDurationTableViewCell.m in Sources */,
 				CEDA65CB20B0204A009417BF /* ProUserSignUpView.m in Sources */,
@@ -4688,6 +4915,7 @@
 				32C2DBC91F6A14B1001B6822 /* WorkoutSelectViewController.m in Sources */,
 				CEDA660D20B033A0009417BF /* ProUserSignUpPhoneCellAdapter.m in Sources */,
 				CEDF054120A9D1A10012AAC4 /* SubmitOfferBaseTableViewCell.m in Sources */,
+				CE4C389F2108A46B009B1135 /* ConfirmPasswordCellAdapter.m in Sources */,
 				323016501F7A48FC0001BCB4 /* BSAlbumCell.m in Sources */,
 				CEDA65FD20B03319009417BF /* ProUserSignUpEmailCellAdapter.m in Sources */,
 				CE4C37C120FC8D53009B1135 /* ProUserEditProfileView.m in Sources */,
@@ -4759,10 +4987,12 @@
 				CEDF051B20A9CA530012AAC4 /* SubmitOfferWhatTableViewCell.m in Sources */,
 				323016451F7A48FC0001BCB4 /* BSPhotosController+UICollectionView.m in Sources */,
 				CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */,
+				CE4C3878210895D7009B1135 /* ChangePasswordModel.m in Sources */,
 				3B79BCBA1F83B1FA00BD869D /* MUser.m in Sources */,
 				CE4C38652106236B009B1135 /* SimpleUserProfileMapper.m in Sources */,
 				3205FD351F62DA700037DCE5 /* FilterCollectionViewCell.m in Sources */,
 				CEDF052B20A9CAE10012AAC4 /* SubmitOfferAmountTableViewCell.m in Sources */,
+				CE4C387B210895E5009B1135 /* ChangePasswordView.m in Sources */,
 				3230164F1F7A48FC0001BCB4 /* BSImagePickerSettings.m in Sources */,
 				CEDA668E20B45CF8009417BF /* DatePickerView.m in Sources */,
 				CE5DB34D20C6ED36001F8A87 /* RegularUserInfoMapper.m in Sources */,
@@ -4786,6 +5016,7 @@
 				3B0C4D031F887393002CEADA /* UIView+WebCacheOperation.m in Sources */,
 				CE4C383620FE2797009B1135 /* EmptyFooterCellAdapter.m in Sources */,
 				CEDA660120B03346009417BF /* ProUserSignUpFirstNameCellAdapter.m in Sources */,
+				CE4C38872108A229009B1135 /* ChangePasswordTableViewAdapter.m in Sources */,
 				1A276154206131D800C9D703 /* AddCreditCardModel.m in Sources */,
 				CEDA669820B56505009417BF /* ReviewOfferMapper.m in Sources */,
 				CEDA668B20B45CDE009417BF /* DatePickerModel.m in Sources */,
@@ -4800,6 +5031,7 @@
 				3B0C4CF41F887393002CEADA /* MKAnnotationView+WebCache.m in Sources */,
 				323016551F7A48FC0001BCB4 /* BSTriangleView.m in Sources */,
 				3205FD641F6313350037DCE5 /* DAYUtils.m in Sources */,
+				CE4C38AC2108B07B009B1135 /* ProUserEditProfileChangePasswordCellAdapter.m in Sources */,
 				CEDA65C120B01B79009417BF /* ProUserSignUpViewController.m in Sources */,
 				CEF52F592068C9510014B2B4 /* ProfilePaymentCredentials.m in Sources */,
 				CE2A636920BECC8E00AE9CD3 /* WorkoutProfileInfoDataModel.m in Sources */,
@@ -4839,6 +5071,7 @@
 				CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */,
 				1A2C0208205C31BD001887FA /* ListOfWorkoutVisitorsViewController.m in Sources */,
 				CE2A639020C1C19F00AE9CD3 /* SimpleUserSignUpViewController.m in Sources */,
+				CE4C38972108A43B009B1135 /* OldPasswordCellAdapter.m in Sources */,
 				3B0C4CFA1F887393002CEADA /* SDWebImageDownloaderOperation.m in Sources */,
 				CE12DFDE2064E98C00949AC2 /* ProfilePaymentDataModel.m in Sources */,
 				CE7E0F1720AC305000D93035 /* PickerViewController.m in Sources */,
@@ -4846,6 +5079,7 @@
 				1A27615E206132B700C9D703 /* CreditCardListView.m in Sources */,
 				3B0C4D021F887393002CEADA /* UIImageView+WebCache.m in Sources */,
 				CEDA660520B03364009417BF /* ProUserSignUpLastNameCellAdapter.m in Sources */,
+				CE4C386921088CC1009B1135 /* UIToolbar+Done.m in Sources */,
 				CEDA665B20B29F95009417BF /* SelectLocationView.m in Sources */,
 				CEDF053020A9CB150012AAC4 /* SubmitOfferAmountTableViewCellDisplayModel.m in Sources */,
 				CE2A638520C0548000AE9CD3 /* ProUserSignUpSportActivityCellAdapter.m in Sources */,
@@ -4857,6 +5091,7 @@
 				CE4C37A920F7A193009B1135 /* ProUserSignUpBirthdayTableViewCell.m in Sources */,
 				CE2A635F20BD639300AE9CD3 /* WorkoutAdditionalDetailsTableViewCellDisplayModel.m in Sources */,
 				CEDA663D20B06853009417BF /* UINavigationBar+Styles.m in Sources */,
+				CE4C38A82108ABDB009B1135 /* UserPassword.m in Sources */,
 				CE2A63AE20C55C7E00AE9CD3 /* ProUserPostWorkoutView.m in Sources */,
 				32C2DBA51F695F77001B6822 /* SportsListTableViewCell.m in Sources */,
 				3230164C1F7A48FC0001BCB4 /* BSPreviewCollectionViewCellFactory.m in Sources */,
@@ -4899,6 +5134,7 @@
 				CEDA65F120B03297009417BF /* ProUserSignUpAddressCellAdapter.m in Sources */,
 				CEDF04BA20A971B60012AAC4 /* AthleteInfoView.m in Sources */,
 				CE4C37E820FCAEFF009B1135 /* ProUserEditProfileTableViewCell.m in Sources */,
+				CE4C38732108951C009B1135 /* ChangePasswordViewController.m in Sources */,
 				3205FD1F1F6234360037DCE5 /* HomeViewController.m in Sources */,
 				1A276166206133E500C9D703 /* CreditCardTableViewCellViewModel.m in Sources */,
 				3B79BCCF1F861CF600BD869D /* SelectWorkoutTableViewCell.m in Sources */,

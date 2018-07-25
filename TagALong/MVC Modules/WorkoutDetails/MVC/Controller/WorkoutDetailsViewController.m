@@ -58,6 +58,7 @@ EditDialogViewControllerDelegate
     
     self.tableViewAdapter = tableAdapter;
     [self.tableViewAdapter setupWithTableView:self.contentView.tableView];
+    
     [self.model loadDetaisForWorkout:self.workoutUID];
 }
 

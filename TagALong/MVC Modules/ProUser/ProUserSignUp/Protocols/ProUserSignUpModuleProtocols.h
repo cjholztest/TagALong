@@ -16,6 +16,8 @@
 - (void)updateAddressByLocation:(CLLocationCoordinate2D)location
                  withConpletion:(void(^)(NSString *city, NSString *address))completion;
 
+- (NSString*)isUserDataValid:(ProUserSignUpDataModel*)user;
+
 @end
 
 @protocol ProUserSignUpModelOutput <NSObject>

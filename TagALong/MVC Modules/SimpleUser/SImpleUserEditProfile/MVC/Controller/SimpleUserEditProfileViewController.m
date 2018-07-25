@@ -25,7 +25,8 @@ ProUserEditProfileFirstNameCellAdapterOutput,
 ProUserEditProfileLastNameCellAdapterOutput,
 ProUserEditProfilePhoneNumberCellAdapterOutput,
 ProUserEditProfileCityNameCellAdapterOutput,
-ProUserEditProfileCreditCellAdapterOutput
+ProUserEditProfileCreditCellAdapterOutput,
+ProUserEditProfileChangePasswordCellAdapterOutput
 >
 
 @property (nonatomic, weak) IBOutlet SimpleUserEditProfileView *contentView;
@@ -63,8 +64,8 @@ ProUserEditProfileCreditCellAdapterOutput
                                  [[ProUserEditProfileLastNameCellAdapter alloc] initWithOutput:self],
                                  [[ProUserEditProfilePhoneHeaderCellAdapter alloc] init],
                                  [[ProUserEditProfilePhoneNumberCellAdapter alloc] initWithOutput:self],
-//                                 [[ProUserEditProfileCityHeaderCellAdapter alloc] init],
-//                                 [[ProUserEditProfileCityNameCellAdapter alloc] initWithOutput:self],
+                                 [[EmptyFooterCellAdapter alloc] init],
+                                 [[ProUserEditProfileChangePasswordCellAdapter alloc] initWithOutput:self],
                                  [[ProUserEditProfilePaymentHeaderCellAdapter alloc] init],
                                  [[ProUserEditProfileCreditCellAdapter alloc] initWithOutput:self],
                                  [[EmptyFooterCellAdapter alloc] init], nil];
@@ -280,6 +281,15 @@ ProUserEditProfileCreditCellAdapterOutput
     creditCardListVC.cardListType = type;
     [self.navigationController pushViewController:creditCardListVC animated:YES];
 }
+
+#pragma mark - ProUserEditProfileChangePasswordCellAdapterOutput
+
+- (void)changePasswordDidTap {
+    ChangePasswordViewController *vc = (ChangePasswordViewController*)ChangePasswordViewController.fromStoryboard;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Image Picker
 
 - (void)showImagePicker {
     

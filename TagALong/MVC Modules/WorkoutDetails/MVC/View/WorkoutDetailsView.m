@@ -30,6 +30,8 @@ static NSString *const kPlaceholderIconName = @"ic_profile_black";
                                  placeholderImage:[UIImage imageNamed:kPlaceholderIconName]];
     
     self.phoneLabel.text = (displayModel.phoneText.length > 0) ? displayModel.phoneText : @"no phone number";
+    self.phoneLabel.alpha = 0.0f;
+    
     self.buttonHeightLayoutConastraint.constant = displayModel.isButtonVisible ? 60.0f : 0.0f;
 }
 

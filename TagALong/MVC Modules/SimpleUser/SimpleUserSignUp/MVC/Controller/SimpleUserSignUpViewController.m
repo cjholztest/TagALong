@@ -44,6 +44,7 @@ QLPreviewControllerDataSource
 @property (nonatomic, strong) SimpleUserSignUpDataModel *simpleUser;
 
 @property (nonatomic, assign) BOOL isPrivacyActive;
+@property (nonatomic, assign) BOOL isPrivacyAccepted;
 
 @end
 
@@ -117,8 +118,20 @@ QLPreviewControllerDataSource
 #pragma mark - ProUserSignUpViewOutput
 
 - (void)signUpButtonDidTap {
-    [SharedAppDelegate showLoading];
-    [self.model signUpSimpleUser:self.simpleUser];
+    
+    NSString *validationErrorMessage = [self.model isUserDataValid:self.simpleUser];
+    if (validationErrorMessage) {
+        [Commons showToast:validationErrorMessage];
+        return;
+    }
+    
+    if (self.isAccepted) {
+        [SharedAppDelegate showLoading];
+        [self.model signUpSimpleUser:self.simpleUser];
+    } else {
+        NSString *message = @"Terms and Privacy Policy are not accepted";
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+    }
 }
 
 #pragma mark - ProUserSignUpModuleInput
@@ -254,6 +267,15 @@ QLPreviewControllerDataSource
 - (void)privacyDidTap {
     self.isPrivacyActive = YES;
     [self showPreview];
+}
+
+- (void)iAcceptDidTap {
+    self.isPrivacyAccepted = !self.isPrivacyAccepted;
+    [self.contentView.tableView reloadData];
+}
+
+- (BOOL)isAccepted {
+    return self.isPrivacyAccepted;
 }
 
 #pragma mark - ProUserSignUpLocationCellAdapterOutput

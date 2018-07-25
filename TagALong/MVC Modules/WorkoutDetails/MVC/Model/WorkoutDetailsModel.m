@@ -219,7 +219,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         
         profileDisplayModel.isButtonVisible = !([didCurrentUserPay isEqualToString:kUserDidPay]/* userAlreadyBooked*/);
         profileDisplayModel.actionButtonType = isIndividual ? BookedUsersButtonType : BookNowButtonType;
-        profileDisplayModel.buttonTitle = isIndividual ? @"SHOW VISITORS" : @"BOOK WORKOUT NOW";
+        profileDisplayModel.buttonTitle = isIndividual ? (bookedUsersArray.count > 0 ? @"SHOW VISITORS" : @"There are no participants yet") : @"BOOK WORKOUT NOW";
         
         if (isIndividual) {
             profileDisplayModel.isButtonVisible = YES;

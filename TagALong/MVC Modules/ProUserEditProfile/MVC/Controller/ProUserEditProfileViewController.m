@@ -28,6 +28,7 @@ ProUserEditProfileDebitCellAdapterOutput,
 ProUserEditProfileCreditCellAdapterOutput,
 ProUserEditProfileSportCellAdapterOutput,
 ProUserEditProfileLocationCellAdapterOutput,
+ProUserEditProfileChangePasswordCellAdapterOutput,
 AddCreditCardModuleDelegate,
 CreditCardListModuleDelegate,
 SelectLocationModuleOutput,
@@ -84,6 +85,9 @@ SelectLocationModuleOutput
                                  [[ProUserEditProfileLocationCellAdapter alloc] initWithOutput:self],
                                  [[ProUserEditProfileAwardsHeaderCellAdapter alloc] init],
                                  [[ProUserEditProfileAwardsCellAdapter alloc] initWithOutput:self],
+                                 [[EmptyFooterCellAdapter alloc] init],
+                                 [[ProUserEditProfileChangePasswordCellAdapter alloc] initWithOutput:self],
+                                 [[EmptyFooterCellAdapter alloc] init],
                                  [[ProUserEditProfilePaymentHeaderCellAdapter alloc] init],
                                  [[ProUserEditProfileBankCredentialsCellAdapter alloc] initWithOutput:self],
                                  [[ProUserEditProfileDebitCellAdapter alloc] initWithOutput:self],
@@ -292,6 +296,13 @@ SelectLocationModuleOutput
 - (void)locationDidSet:(CLLocationCoordinate2D)location {
     self.profile.latitude = @(location.latitude);
     self.profile.longitude = @(location.longitude);
+}
+
+#pragma mark - ProUserEditProfileChangePasswordCellAdapterOutput
+
+- (void)changePasswordDidTap {
+    ChangePasswordViewController *vc = (ChangePasswordViewController*)ChangePasswordViewController.fromStoryboard;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - ImagePickerDelegate

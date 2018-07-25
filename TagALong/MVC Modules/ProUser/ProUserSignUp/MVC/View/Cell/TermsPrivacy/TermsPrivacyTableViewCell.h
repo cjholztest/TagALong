@@ -11,6 +11,9 @@
 
 @interface TermsPrivacyTableViewCell : ProSignUpBaseTableViewCell
 
+@property (nonatomic, weak) IBOutlet UIView *acceptActionView;
+@property (nonatomic, weak) IBOutlet UIImageView *checkBoxImageView;
+
 @property (nonatomic, weak) id <TermsPrivacyTableViewCellOutput> output;
 
 @end

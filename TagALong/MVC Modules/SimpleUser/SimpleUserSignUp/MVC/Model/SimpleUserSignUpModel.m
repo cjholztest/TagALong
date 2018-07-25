@@ -140,9 +140,7 @@
     }];
 }
 
-#pragma mark - Private
-
-- (NSString*)isUserDataValid:(ProUserSignUpDataModel*)user {
+- (NSString*)isUserDataValid:(SimpleUserSignUpDataModel*)user {
     
     if ([user.firstName stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length == 0) {
         return @"Input first name!";

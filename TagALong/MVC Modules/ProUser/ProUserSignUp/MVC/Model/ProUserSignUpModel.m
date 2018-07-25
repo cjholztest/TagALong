@@ -50,7 +50,13 @@
 //    NSString *isPhoneVisible = [[NSNumber numberWithBool:userModel.isPhoneVisible] stringValue];
     
     NSString *latitude = [[NSNumber numberWithFloat:userModel.location.latitude] stringValue];
+    if (!latitude) {
+        latitude = @"0";
+    }
     NSString *longitude = [[NSNumber numberWithFloat:userModel.location.longitude] stringValue];
+    if (!longitude) {
+        longitude = @"0";
+    }
     NSNumber *hidePhone = [NSNumber numberWithBool:YES];
     
     NSNumber *birthday = [NSNumber numberWithInteger:userModel.birthday.timeInterval];
@@ -78,7 +84,7 @@
                              @"hide_phone"                  :   hidePhone,
                              @"awards"                      :   awards ? awards : @"",
                              @"user_city"                   :   city ? city : @"",
-                             @"user_address"                :   address ? address : @"",
+                             @"user_address"                :   city ? city : @"",
                              @"date_of_birth"               :   birthday,
                              @"gender"                      :   gender
                              };
@@ -152,8 +158,6 @@
         [weakSelf.output proUserDidSignUpSuccessed:NO andMessage:error.localizedDescription];
     }];
 }
-
-#pragma mark - Private
 
 - (NSString*)isUserDataValid:(ProUserSignUpDataModel*)user {
     

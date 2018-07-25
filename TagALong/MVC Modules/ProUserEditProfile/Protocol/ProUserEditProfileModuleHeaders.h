@@ -30,9 +30,12 @@
 #import "ProUserEditProfilePaymentHeaderCellAdapter.h"
 #import "ProUserEditProfileSportCellAdapter.h"
 #import "ProUserEditProfileLocationCellAdapter.h"
+#import "ProUserEditProfileChangePasswordCellAdapter.h"
 #import "EmptyFooterCellAdapter.h"
 
 #import "ProfilePaymentDataViewController.h"
+#import "ChangePasswordViewController.h"
+
 #import "AddCreditCardViewController.h"
 #import "CreditCardListViewController.h"
 #import "PaymentClient+Customer.h"

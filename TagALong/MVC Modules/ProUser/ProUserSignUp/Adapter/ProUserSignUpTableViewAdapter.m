@@ -34,6 +34,7 @@
     tableView.separatorColor = [UIColor.whiteColor colorWithAlphaComponent:0.05];
     
     tableView.tableFooterView = [UIView new];
+    tableView.backgroundColor = UIColor.clearColor;
     
     for (id <ProUserSignUpSectionAdapter> section in self.sectionAdapters) {
         [section registerCellsInTableView:tableView];
@@ -60,6 +61,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self.sectionAdapters[indexPath.section] shouldHighightRowAtIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 44.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section {
+    return 44.0f;
 }
 
 #pragma mark - UITableViewDelegate
