@@ -39,15 +39,19 @@
     
     cell.output = self;
     
+    BOOL isAccepted = [self.output isAccepted];
+    
+    cell.checkBoxImageView.image = isAccepted ? [[UIImage imageNamed:@"checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
+    
     return cell;
 }
 
 - (CGFloat)estimatedHeightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 88.0f;
+    return 100.0f;
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-    return 88.0f;
+    return 100.0f;
 }
 
 - (BOOL)shouldHighightRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -69,6 +73,12 @@
 - (void)privacyDidTap {
     if ([self.output respondsToSelector:@selector(privacyDidTap)]) {
         [self.output privacyDidTap];
+    }
+}
+
+- (void)iAcceptDidTap {
+    if ([self.output respondsToSelector:@selector(iAcceptDidTap)]) {
+        [self.output iAcceptDidTap];
     }
 }
 

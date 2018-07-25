@@ -12,6 +12,9 @@
 
 @property (nonatomic, readonly, assign) BOOL isEdidtingEnabled;
 
+- (void)subscribeForKeyboardNotification;
+- (void)unsubscribeForKeyboardNotification;
+
 - (void)keyboardDidAppear:(NSNotification*)notification;
 - (void)keyboardDidHide:(NSNotification*)notification;
 - (void)keyboardDidChange:(NSNotification*)notification;

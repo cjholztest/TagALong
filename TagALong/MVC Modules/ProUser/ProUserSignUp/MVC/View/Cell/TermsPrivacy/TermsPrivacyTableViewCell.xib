@@ -17,15 +17,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Iut-Gl-egS" customClass="TermsPrivacyTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="99" id="Iut-Gl-egS" customClass="TermsPrivacyTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iut-Gl-egS" id="SkS-qo-HeH">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idF-qh-AT4" userLabel="TermsView">
-                        <rect key="frame" x="0.0" y="-0.5" width="375" height="44.5"/>
+                        <rect key="frame" x="0.0" y="5" width="375" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Signing up, you agree to TagALong’s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGh-ww-yUn">
                                 <rect key="frame" x="15" y="0.0" width="345" height="22.5"/>
@@ -33,49 +33,76 @@
                                 <color key="textColor" white="1" alpha="0.503799229490411" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-kW-bwM">
-                                <rect key="frame" x="127" y="22.5" width="43" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="Terms">
-                                    <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="termsButtonAction:" destination="Iut-Gl-egS" eventType="touchUpInside" id="HyQ-fI-LqG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdA-Sb-RVQ">
-                                <rect key="frame" x="172" y="22.5" width="30" height="22"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="and">
-                                    <color key="titleColor" white="1" alpha="0.5037992295" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lti-eX-O2Z">
-                                <rect key="frame" x="204" y="22.5" width="95" height="22"/>
-                                <state key="normal" title="Privacy Policy">
-                                    <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="privacyButtonAction:" destination="Iut-Gl-egS" eventType="touchUpInside" id="a0e-k4-SQB"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4xn-kW-8eo">
+                                <rect key="frame" x="98.5" y="22.5" width="178" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxi-kW-bwM">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Terms">
+                                            <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="termsButtonAction:" destination="Iut-Gl-egS" eventType="touchUpInside" id="HyQ-fI-LqG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdA-Sb-RVQ">
+                                        <rect key="frame" x="48" y="0.0" width="30" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="and">
+                                            <color key="titleColor" white="1" alpha="0.5037992295" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lti-eX-O2Z">
+                                        <rect key="frame" x="83" y="0.0" width="95" height="31"/>
+                                        <state key="normal" title="Privacy Policy">
+                                            <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="privacyButtonAction:" destination="Iut-Gl-egS" eventType="touchUpInside" id="a0e-k4-SQB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4xn-kW-8eo" firstAttribute="top" secondItem="pGh-ww-yUn" secondAttribute="bottom" id="0mE-5s-KSx"/>
                             <constraint firstItem="pGh-ww-yUn" firstAttribute="top" secondItem="idF-qh-AT4" secondAttribute="top" id="24E-oB-26b"/>
-                            <constraint firstItem="qdA-Sb-RVQ" firstAttribute="centerX" secondItem="pGh-ww-yUn" secondAttribute="centerX" id="6nu-Rh-ufn"/>
-                            <constraint firstItem="qdA-Sb-RVQ" firstAttribute="leading" secondItem="oxi-kW-bwM" secondAttribute="trailing" constant="2" id="7RN-y9-nSh"/>
-                            <constraint firstItem="qdA-Sb-RVQ" firstAttribute="height" secondItem="pGh-ww-yUn" secondAttribute="height" id="KZi-Bx-1I9"/>
                             <constraint firstAttribute="height" constant="44" id="MtK-lr-GP0"/>
-                            <constraint firstItem="oxi-kW-bwM" firstAttribute="top" secondItem="pGh-ww-yUn" secondAttribute="bottom" id="NeC-3T-o0Z"/>
                             <constraint firstAttribute="trailing" secondItem="pGh-ww-yUn" secondAttribute="trailing" constant="15" id="YrS-jb-7iy"/>
-                            <constraint firstItem="Lti-eX-O2Z" firstAttribute="centerY" secondItem="oxi-kW-bwM" secondAttribute="centerY" id="Zh3-mu-UlW"/>
-                            <constraint firstItem="qdA-Sb-RVQ" firstAttribute="top" secondItem="pGh-ww-yUn" secondAttribute="bottom" id="hel-Mc-Vh8"/>
-                            <constraint firstItem="Lti-eX-O2Z" firstAttribute="height" secondItem="oxi-kW-bwM" secondAttribute="height" id="ks9-T1-ExG"/>
+                            <constraint firstItem="4xn-kW-8eo" firstAttribute="centerX" secondItem="idF-qh-AT4" secondAttribute="centerX" id="jyN-wI-dcc"/>
                             <constraint firstItem="pGh-ww-yUn" firstAttribute="height" secondItem="idF-qh-AT4" secondAttribute="height" multiplier="0.5" id="lTv-Xx-7YU"/>
-                            <constraint firstItem="oxi-kW-bwM" firstAttribute="height" secondItem="pGh-ww-yUn" secondAttribute="height" id="lce-Og-WBq"/>
                             <constraint firstItem="pGh-ww-yUn" firstAttribute="leading" secondItem="idF-qh-AT4" secondAttribute="leading" constant="15" id="qPs-Z1-SN2"/>
-                            <constraint firstItem="Lti-eX-O2Z" firstAttribute="leading" secondItem="qdA-Sb-RVQ" secondAttribute="trailing" constant="2" id="znp-Mo-HpA"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-wK-JvL">
+                        <rect key="frame" x="0.0" y="59.5" width="375" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept the Terms and Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imf-eg-wCP">
+                                <rect key="frame" x="54" y="0.0" width="306" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="0.5037992295" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIb-2L-q6j">
+                                <rect key="frame" x="15" y="8" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="scT-mn-Wsw"/>
+                                    <constraint firstAttribute="height" constant="24" id="ttJ-PD-ESI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aIb-2L-q6j" firstAttribute="leading" secondItem="dTR-wK-JvL" secondAttribute="leading" constant="15" id="8cU-B0-tHM"/>
+                            <constraint firstItem="imf-eg-wCP" firstAttribute="leading" secondItem="aIb-2L-q6j" secondAttribute="trailing" constant="15" id="9I6-9R-NMP"/>
+                            <constraint firstItem="aIb-2L-q6j" firstAttribute="centerY" secondItem="dTR-wK-JvL" secondAttribute="centerY" id="G78-aN-Z4v"/>
+                            <constraint firstItem="imf-eg-wCP" firstAttribute="top" secondItem="dTR-wK-JvL" secondAttribute="top" id="oJW-0f-2zl"/>
+                            <constraint firstAttribute="trailing" secondItem="imf-eg-wCP" secondAttribute="trailing" constant="15" id="odv-fA-VhN"/>
+                            <constraint firstAttribute="bottom" secondItem="imf-eg-wCP" secondAttribute="bottom" id="sFT-vu-0pP"/>
+                            <constraint firstAttribute="height" constant="40" id="yPL-af-u6l"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -83,9 +110,18 @@
                 <constraints>
                     <constraint firstItem="idF-qh-AT4" firstAttribute="leading" secondItem="SkS-qo-HeH" secondAttribute="leading" id="AiC-2K-NDN"/>
                     <constraint firstAttribute="trailing" secondItem="idF-qh-AT4" secondAttribute="trailing" id="B2W-ls-dnJ"/>
-                    <constraint firstItem="idF-qh-AT4" firstAttribute="centerY" secondItem="SkS-qo-HeH" secondAttribute="centerY" id="vjT-RC-7Xv"/>
+                    <constraint firstAttribute="bottom" secondItem="dTR-wK-JvL" secondAttribute="bottom" id="BaK-IA-RbY"/>
+                    <constraint firstItem="idF-qh-AT4" firstAttribute="top" secondItem="SkS-qo-HeH" secondAttribute="top" constant="5" id="OJe-bh-iud"/>
+                    <constraint firstItem="dTR-wK-JvL" firstAttribute="leading" secondItem="SkS-qo-HeH" secondAttribute="leading" id="lmf-Ho-mPO"/>
+                    <constraint firstAttribute="trailing" secondItem="dTR-wK-JvL" secondAttribute="trailing" id="mfi-Qv-E9k"/>
+                    <constraint firstItem="dTR-wK-JvL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="idF-qh-AT4" secondAttribute="bottom" constant="5" id="wxA-l9-thN"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="acceptActionView" destination="dTR-wK-JvL" id="d97-S5-btG"/>
+                <outlet property="checkBoxImageView" destination="aIb-2L-q6j" id="U67-nf-KIM"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="84"/>
         </tableViewCell>
     </objects>
 </document>

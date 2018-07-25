@@ -180,6 +180,8 @@
 
 - (void)showEnterTagALongCodeAlert {
     
+    [self unsubscribeForKeyboardNotification];
+    
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"TagALong"
                                                                               message: @"Input Pro Code. If you don’t have one, contact Pro.Tagalong@tagalong.pro"
                                                                        preferredStyle:UIAlertControllerStyleAlert];
@@ -199,6 +201,7 @@
 
                                                               NSString *textCode = codeTextField.text;
                                                               
+                                                              [weakSelf subscribeForKeyboardNotification];
                                                               if ([weakSelf isEnteredCodeValid:textCode]) {
                                                                   [weakSelf showProUserRegistrationScreen];
                                                               }
@@ -206,11 +209,14 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleCancel
-                                                         handler:nil];
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             [weakSelf subscribeForKeyboardNotification];
+                                                         }];
     
     UIAlertAction *contactAction = [UIAlertAction actionWithTitle:@"Contact Pro.Tagalong@tagalong.pro"
                                                            style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                              [weakSelf subscribeForKeyboardNotification];
                                                               [weakSelf showMailScreen];
                                                           }];
     
@@ -239,14 +245,10 @@
 
 #pragma mark - click events
 - (IBAction)onClickLogin:(id)sender {
-    
-    [_tfEmail resignFirstResponder];
-    [_tfPassword resignFirstResponder];
 
     if ([self CheckValidForLogin]) {
         [self ReqLogin];
     }
-
 }
 
 - (IBAction)onClickSignUp:(id)sender {
@@ -393,11 +395,14 @@
         
     CGFloat keyboardHeight = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         UIEdgeInsets inset = self.scrollView.contentInset;
         inset.bottom  = keyboardHeight;
         self.scrollView.contentInset = inset;
-        [self scrollToPasswordField];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self shiftFields];
+        }
     }];
 }
 
@@ -420,8 +425,10 @@
 
 #pragma mark - Helpers
 
-- (void)scrollToPasswordField {
-    CGRect rect = [self.scrollView convertRect:self.tfPassword.frame fromView:self.tfPassword];
+- (void)shiftFields {
+    
+    CGRect rect = [self.scrollView convertRect:self.loginButton.frame fromView:self.loginButton];
+    rect.size.height += rect.size.height;
     [self.scrollView scrollRectToVisible:rect animated:YES];
 }
 

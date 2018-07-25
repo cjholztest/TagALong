@@ -45,6 +45,7 @@ QLPreviewControllerDataSource
 @property (nonatomic, strong) ProUserSignUpDataModel *proUser;
 
 @property (nonatomic, assign) BOOL isPrivacyActive;
+@property (nonatomic, assign) BOOL isPrivacyAccepted;
 
 @end
 
@@ -81,7 +82,7 @@ QLPreviewControllerDataSource
                                  [[ProUserSignUpEmailCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpPhoneCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpCityCellAdapter alloc] initWithOutput:self],
-                                 [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self],
+//                                 [[ProUserSignUpAddressCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpLocationCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpPasswordCellAdapter alloc] initWithOutput:self],
                                  [[ProUserSignUpConfirmPasswordCellAdapter alloc] initWithOutput:self],
@@ -121,8 +122,20 @@ QLPreviewControllerDataSource
 #pragma mark - ProUserSignUpViewOutput
 
 - (void)signUpButtonDidTap {
-    [SharedAppDelegate showLoading];
-    [self.model signUpaProUser:self.proUser];
+    
+    NSString *validationErrorMessage = [self.model isUserDataValid:self.proUser];
+    if (validationErrorMessage) {
+        [Commons showToast:validationErrorMessage];
+        return;
+    }
+    
+    if (self.isAccepted) {
+        [SharedAppDelegate showLoading];
+        [self.model signUpaProUser:self.proUser];
+    } else {
+        NSString *message = @"Terms and Privacy Policy are not accepted";
+        [self showAllertWithTitle:@"ERROR" message:message okCompletion:nil];
+    }
 }
 
 #pragma mark - ProUserSignUpModuleInput
@@ -250,6 +263,15 @@ QLPreviewControllerDataSource
     [self showPreview];
 }
 
+- (void)iAcceptDidTap {
+    self.isPrivacyAccepted = !self.isPrivacyAccepted;
+    [self.contentView.tableView reloadData];
+}
+
+- (BOOL)isAccepted {
+    return self.isPrivacyAccepted;
+}
+
 #pragma mark - ProUserSignUpLocationCellAdapterOutput
 
 - (void)locationDidTapAtIndexPath:(NSIndexPath *)indexPath {
@@ -323,7 +345,7 @@ QLPreviewControllerDataSource
     
     [self.model updateAddressByLocation:location withConpletion:^(NSString *city, NSString *address) {
         weakSelf.proUser.cityName = city;
-        weakSelf.proUser.address = address;
+//        weakSelf.proUser.address = address;
         [weakSelf.contentView.tableView reloadData];
     }];
 }

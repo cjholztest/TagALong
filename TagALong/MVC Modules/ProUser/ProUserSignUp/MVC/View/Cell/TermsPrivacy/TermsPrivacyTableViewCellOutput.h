@@ -12,5 +12,6 @@
 
 - (void)termsDidTap;
 - (void)privacyDidTap;
+- (void)iAcceptDidTap;
 
 @end

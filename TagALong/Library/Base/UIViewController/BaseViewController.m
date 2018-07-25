@@ -22,6 +22,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self subscribeForKeyboardNotification];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self unsubscribeForKeyboardNotification];
+}
+
+#pragma mark - Keyboard Notifications
+
+- (void)subscribeForKeyboardNotification {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidAppear:)
@@ -39,12 +50,9 @@
                                                object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)unsubscribeForKeyboardNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-#pragma mark - Keyboard Notifications
 
 - (void)keyboardDidAppear:(NSNotification*)notification {
     

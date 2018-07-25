@@ -15,6 +15,8 @@
 - (void)signUpSimpleUser:(SimpleUserSignUpDataModel*)userModel;
 - (void)updateCityByLocation:(CLLocationCoordinate2D)location withCompletion:(void(^)(NSString *city))completion;
 
+- (NSString*)isUserDataValid:(SimpleUserSignUpDataModel*)user;
+
 @end
 
 @protocol SimpleUserSignUpModelOutput <NSObject>

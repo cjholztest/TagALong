@@ -98,12 +98,12 @@ static const NSInteger kAddtitonalInfoTextViewTag = 289;
 //    UITapGestureRecognizer *tapRecog = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(showLoctionPopup)];
 //    [self.tfLocation addGestureRecognizer:tapRecog];
 
-    locationManager = [[CLLocationManager alloc] init];
-    geocoder = [[CLGeocoder alloc] init];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.delegate = self;
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager startUpdatingLocation];
+//    locationManager = [[CLLocationManager alloc] init];
+//    geocoder = [[CLGeocoder alloc] init];
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    locationManager.delegate = self;
+//    [locationManager requestWhenInUseAuthorization];
+//    [locationManager startUpdatingLocation];
     
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
