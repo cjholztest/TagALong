@@ -103,7 +103,9 @@
                 break;
             case MilesPickerType:
                 if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMiles:)]) {
-                    [self.moduleOutput pickerDoneButtonDidTapWithMiles:title];
+                    NSInteger mileIndex = [self.model selectedComponentIndex];
+                    NSString *milesValue = mileIndex != 0 ? title : @"100000000";
+                    [self.moduleOutput pickerDoneButtonDidTapWithMiles:milesValue];
                 }
                 break;
             case StartTimePickerType:

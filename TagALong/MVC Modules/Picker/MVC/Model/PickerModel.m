@@ -133,7 +133,7 @@
 }
 
 - (void)setupMilesComponents {
-    self.pickerComponents = [NSMutableArray arrayWithObjects:@"5", @"10", @"15", @"20", @"25", @"30", nil];
+    self.pickerComponents = [NSMutableArray arrayWithObjects:@"No filter", @"5", @"10", @"15", @"20", @"25", @"30", nil];
 }
 
 - (void)setupGenderComponentes {
