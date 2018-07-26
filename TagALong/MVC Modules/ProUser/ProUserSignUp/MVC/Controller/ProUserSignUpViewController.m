@@ -345,7 +345,6 @@ QLPreviewControllerDataSource
     
     [self.model updateAddressByLocation:location withConpletion:^(NSString *city, NSString *address) {
         weakSelf.proUser.cityName = city;
-//        weakSelf.proUser.address = address;
         [weakSelf.contentView.tableView reloadData];
     }];
 }

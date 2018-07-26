@@ -350,7 +350,7 @@
                 }
             }];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [self showAlert:@"The password is incorrects"];
+            [self showAlert:@"The password is incorrect"];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [self showAlert:@"User does not exist"];
         }

@@ -6,10 +6,10 @@
 //  Copyright © 2018 PJH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "SimpleUserSignUpModuleProtocols.h"
 
-@interface SimpleUserSignUpViewController : UIViewController <SimpleUserSignUpModuleInput>
+@interface SimpleUserSignUpViewController : BaseViewController <SimpleUserSignUpModuleInput>
 
 @property (nonatomic, weak) id <SimpleUserSignUpModuleOutput> moduleOutput;
 

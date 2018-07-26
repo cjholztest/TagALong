@@ -14,6 +14,8 @@
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIButton *doneButton;
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewBottomConstraint;
 
