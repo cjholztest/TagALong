@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIButton *doneButton;
+@property (nonatomic, weak) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 

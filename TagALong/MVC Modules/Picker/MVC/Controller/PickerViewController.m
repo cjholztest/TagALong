@@ -45,10 +45,10 @@
     self.model = [[PickerModel alloc] initWithOutput:self andPickerType:self.pickerType];    
     self.contentView.output = self;
     
-    self.contentView.titleLabel.text = self.pickerType == MilesPickerType ? @"Miles" : nil;
+    self.contentView.titleLabel.text = nil;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
-    [self.contentView addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:tap];
     
     self.contentView.pickerView.dataSource = self;
     self.contentView.pickerView.delegate = self;
@@ -103,8 +103,7 @@
                 break;
             case MilesPickerType:
                 if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMiles:)]) {
-                    NSInteger mileIndex = [self.model selectedComponentIndex];
-                    NSString *milesValue = mileIndex != 0 ? title : @"100000000";
+                    NSString *milesValue = [self.model selectedMilesValue];
                     [self.moduleOutput pickerDoneButtonDidTapWithMiles:milesValue];
                 }
                 break;
@@ -135,6 +134,10 @@
         }
     }
     [self hidePickerView];
+}
+
+- (void)cancelButtonDidTap {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)pickerViewDidHide {

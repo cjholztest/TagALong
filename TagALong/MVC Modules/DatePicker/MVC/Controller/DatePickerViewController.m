@@ -43,7 +43,7 @@
     [self.contentView.datePickerView setValue:UIColor.textColor forKey:@"textColor"];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
-    [self.view addGestureRecognizer:tap];
+    [self.contentView addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

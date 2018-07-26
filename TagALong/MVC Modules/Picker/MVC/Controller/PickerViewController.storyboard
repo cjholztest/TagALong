@@ -37,6 +37,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFI-UD-59X">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koK-Oa-bFh">
+                                                <rect key="frame" x="15" y="0.0" width="70" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="Yqg-ym-sW4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="0.89945419520000003" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonAction:" destination="SQS-VX-kI8" eventType="touchUpInside" id="ygQ-vh-mVL"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-cH-obe">
                                                 <rect key="frame" x="187.5" y="0.0" width="0.0" height="44"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -63,10 +76,14 @@
                                             <constraint firstItem="WT5-zr-fDQ" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="top" id="Ddc-1e-CTm"/>
                                             <constraint firstItem="WT5-zr-fDQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="b4g-cH-obe" secondAttribute="trailing" constant="15" id="Ly9-Gc-jht"/>
                                             <constraint firstAttribute="bottom" secondItem="WT5-zr-fDQ" secondAttribute="bottom" id="MOX-Rr-gXT"/>
+                                            <constraint firstItem="koK-Oa-bFh" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="top" id="Nsi-rp-HOu"/>
                                             <constraint firstItem="b4g-cH-obe" firstAttribute="centerX" secondItem="AFI-UD-59X" secondAttribute="centerX" id="aXW-RL-5D5"/>
                                             <constraint firstAttribute="trailing" secondItem="WT5-zr-fDQ" secondAttribute="trailing" constant="15" id="gIh-sj-aFn"/>
+                                            <constraint firstAttribute="bottom" secondItem="koK-Oa-bFh" secondAttribute="bottom" id="hZt-2U-c9c"/>
                                             <constraint firstAttribute="bottom" secondItem="b4g-cH-obe" secondAttribute="bottom" id="i3e-Vd-XK8"/>
+                                            <constraint firstItem="b4g-cH-obe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="koK-Oa-bFh" secondAttribute="trailing" constant="15" id="p96-he-2NR"/>
                                             <constraint firstItem="b4g-cH-obe" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="top" id="vKJ-NU-wdR"/>
+                                            <constraint firstItem="koK-Oa-bFh" firstAttribute="leading" secondItem="AFI-UD-59X" secondAttribute="leading" constant="15" id="yLu-yy-5Oa"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -81,6 +98,7 @@
                                     <constraint firstItem="cKs-UC-pW0" firstAttribute="top" secondItem="AFI-UD-59X" secondAttribute="bottom" id="zdG-Xd-D3k"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="cancelButton" destination="koK-Oa-bFh" id="AtK-1X-TRf"/>
                                     <outlet property="contentViewBottomConstraint" destination="nBs-5u-Ejr" id="GXY-52-IVV"/>
                                     <outlet property="contentViewHightConstraint" destination="tfy-Zz-xGg" id="lY1-AG-LII"/>
                                     <outlet property="doneButton" destination="WT5-zr-fDQ" id="p8i-FZ-FMh"/>
