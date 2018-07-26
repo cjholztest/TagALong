@@ -47,7 +47,7 @@
     cell.textField.text = [self.output cityName];
     
     NSDictionary *attributes = @{NSForegroundColorAttributeName : UIColor.placeholderColor, NSFontAttributeName : [UIFont textFont]};
-    cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"City" attributes:attributes];
+    cell.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"City, State" attributes:attributes];
     
     cell.textField.delegate = self;
     cell.output = self;

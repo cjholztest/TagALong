@@ -261,7 +261,7 @@
             [Commons parseAndSaveUserInfo:responseObject pwd:_pwd];
             [self goStartedPage];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [self showAlert:@"The password is incorrects"];
+            [self showAlert:@"The password is incorrect"];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [self showAlert:@"User does not exist"];
         }
@@ -315,7 +315,7 @@
             [Commons parseAndSaveUserInfo:responseObject pwd:_pwd];
             [self goStartedPage];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             //            [_tfPassword becomeFirstResponder];
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];

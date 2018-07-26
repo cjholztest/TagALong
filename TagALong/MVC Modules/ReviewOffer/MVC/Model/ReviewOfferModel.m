@@ -197,7 +197,7 @@
             }
             
         }  else if(res_code == RESULT_ERROR_PASSWORD) {
-            message = @"The password is incorrect.";
+            message = @"The password is incorrect";
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST) {
             message = @"User does not exist.";
         }  else if(res_code == RESULT_ERROR_PARAMETER) {

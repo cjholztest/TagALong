@@ -294,7 +294,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
         if (res_code == RESULT_CODE_SUCCESS) {
             result = responseObject;
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            message = @"The password is incorrect.";
+            message = @"The password is incorrect";
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             message = @"User does not exist.";
         }
@@ -531,7 +531,7 @@ static NSString *kUserDidPay = @"CurrentUserDidPay";
                 message = @"You booked successfully";
                 break;
             case RESULT_ERROR_PASSWORD:
-                message = @"The password is incorrect.";
+                message = @"The password is incorrect";
                 break;
             case RESULT_ERROR_USER_NO_EXIST:
                 message = @"User does not exist.";

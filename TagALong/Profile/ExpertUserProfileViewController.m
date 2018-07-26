@@ -407,7 +407,7 @@
             [self requestOffers];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];

@@ -279,7 +279,7 @@
             [self setData:workout_info profile:profile_info];
             [self requestBookedUsers];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -364,7 +364,7 @@
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"PaySuccess" object:nil];
 
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];

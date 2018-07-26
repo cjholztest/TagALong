@@ -45,6 +45,8 @@
     self.model = [[PickerModel alloc] initWithOutput:self andPickerType:self.pickerType];    
     self.contentView.output = self;
     
+    self.contentView.titleLabel.text = self.pickerType == MilesPickerType ? @"Miles" : nil;
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentDidTap)];
     [self.contentView addGestureRecognizer:tap];
     

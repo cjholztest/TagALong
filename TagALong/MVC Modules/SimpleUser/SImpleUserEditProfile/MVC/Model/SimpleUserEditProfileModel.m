@@ -203,7 +203,7 @@
         if (res_code == RESULT_CODE_SUCCESS) {
             success = YES;
         }  else if(res_code == RESULT_ERROR_PASSWORD) {
-            errorMessage = @"The password is incorrect.";
+            errorMessage = @"The password is incorrect";
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST) {
             errorMessage = @"User does not exist.";
         }  else if(res_code == RESULT_ERROR_PARAMETER) {

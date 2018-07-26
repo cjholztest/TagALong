@@ -613,7 +613,7 @@ static const NSInteger kMaxImageCnt = 1;
             [weakSelf updateNextWorkoutsForDate:selectedDate];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -711,7 +711,7 @@ static const NSInteger kMaxImageCnt = 1;
             [_tvSchedule reloadData];
 
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
 
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -758,7 +758,7 @@ static const NSInteger kMaxImageCnt = 1;
             workoutsExist = arrData.count > 0;
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -866,7 +866,7 @@ static const NSInteger kMaxImageCnt = 1;
             _ivProfile.image = [UIImage imageWithData:imgData];
             [Commons showToast:@"Your profile was changed"];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];

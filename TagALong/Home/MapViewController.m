@@ -908,7 +908,7 @@ static NSString *const kProPrefix = @"athlete";
             
             [self OhterPlayPosSet];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -973,7 +973,7 @@ static NSString *const kProPrefix = @"athlete";
             
             [self OhterPlayPosSet];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -1082,7 +1082,7 @@ static NSString *const kProPrefix = @"athlete";
 
             [self OhterPlayPosSet];
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -1143,7 +1143,7 @@ static NSString *const kProPrefix = @"athlete";
             [self OhterPlayPosSet];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
+            [Commons showToast:@"The password is incorrect"];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
@@ -1257,8 +1257,8 @@ static NSString *const kProPrefix = @"athlete";
             result  = [responseObject objectForKey:API_RES_KEY_WORKOUT_LIST];
             
         }  else if(res_code == RESULT_ERROR_PASSWORD){
-            [Commons showToast:@"The password is incorrect."];
-            error = [[NSError alloc] initWithDomain:@"error.generated.locally" code:500 userInfo:@{NSLocalizedDescriptionKey : @"The password is incorrect."}];
+            [Commons showToast:@"The password is incorrect"];
+            error = [[NSError alloc] initWithDomain:@"error.generated.locally" code:500 userInfo:@{NSLocalizedDescriptionKey : @"The password is incorrect"}];
             
         }  else if(res_code == RESULT_ERROR_USER_NO_EXIST){
             [Commons showToast:@"User does not exist."];
