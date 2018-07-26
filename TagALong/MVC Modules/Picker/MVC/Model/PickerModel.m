@@ -13,6 +13,7 @@
 @property (nonatomic, weak) id <PickerModelOutput> output;
 
 @property (nonatomic, strong) NSMutableArray *pickerComponents;
+@property (nonatomic, strong) NSArray *milesValues;
 
 @property (nonatomic, assign) PickerType type;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -60,6 +61,13 @@
     return self;
 }
 
+- (NSArray*)milesValues {
+    if (!_milesValues) {
+        _milesValues = @[@"5", @"10", @"20", @"50", @"10000000"];
+    }
+    return _milesValues;
+}
+
 #pragma mark - PickerModelInput
 
 - (NSInteger)componentsCount {
@@ -80,6 +88,11 @@
 
 - (void)updateSelectedComponentWithIndex:(NSInteger)selectedIndex {
     self.selectedIndex = selectedIndex;
+}
+
+- (NSString*)selectedMilesValue {
+    NSInteger currentIndex = [self selectedComponentIndex];
+    return self.milesValues[currentIndex];
 }
 
 #pragma mark - Private
@@ -133,7 +146,13 @@
 }
 
 - (void)setupMilesComponents {
-    self.pickerComponents = [NSMutableArray arrayWithObjects:@"No filter", @"5", @"10", @"15", @"20", @"25", @"30", nil];
+    [self milesValues];
+    self.pickerComponents = [NSMutableArray arrayWithObjects:
+                             @" 5 miles",
+                             @"10 miles",
+                             @"20 miles",
+                             @"50 miles",
+                             @"No Limit", nil];
 }
 
 - (void)setupGenderComponentes {

@@ -24,4 +24,10 @@
     }
 }
 
+- (IBAction)cancelButtonAction:(UIButton*)cancelButton {
+    if ([self.output respondsToSelector:@selector(cancelButtonDidTap)]) {
+        [self.output cancelButtonDidTap];
+    }
+}
+
 @end

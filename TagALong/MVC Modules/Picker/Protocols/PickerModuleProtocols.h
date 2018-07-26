@@ -17,6 +17,8 @@
 - (NSString*)selectedComponent;
 - (NSInteger)selectedComponentIndex;
 
+- (NSString*)selectedMilesValue;
+
 - (void)updateSelectedComponentWithIndex:(NSInteger)selectedIndex;
 
 @end
@@ -32,6 +34,7 @@
 @protocol PickerViewOutput <NSObject>
 
 - (void)doneButtonDidTap;
+- (void)cancelButtonDidTap;
 - (void)pickerViewDidHide;
 
 @end
