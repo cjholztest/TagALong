@@ -28,6 +28,8 @@
 #import "MKMapView+ZoomLevel.h"
 #import "NSObject+CheckEmpty.h"
 #import "AthleteInfoViewController.h"
+#import "DataStorage+Filter.h"
+#import "Miles.h"
 
 static NSString *const kProPrefix = @"athlete";
 
@@ -1177,11 +1179,12 @@ static NSString *const kProPrefix = @"athlete";
         longitude = @(Global.g_expert.expert_longitude.floatValue);
     }
     
-    NSNumber *radius = self.miles ? @(self.miles.floatValue) : @(30.0f);
+    NSInteger index = [DataStorage mapRadiusSelectedIndex];
+    NSString *miles = [Miles milesValues][index];
     
     NSDictionary *params = @{API_REQ_KEY_USER_LATITUDE      :   latitude,
                              API_REQ_KEY_USER_LONGITUDE     :   longitude,
-                             @"radius" : radius};
+                             @"radius" : miles};
     
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"JSON: %@", responseObject);

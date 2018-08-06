@@ -10,6 +10,8 @@
 #import "ProsTableViewCellDisplayModel.h"
 #import "AthleteDataModel.h"
 #import "AthleteMapper.h"
+#import "DataStorage+Filter.h"
+#import "Miles.h"
 
 static const CGFloat kMetersInMile = 1609.34f;
 
@@ -34,6 +36,12 @@ static const CGFloat kMetersInMile = 1609.34f;
 }
 
 #pragma mark - ProsModelInput
+
+- (void)loadPros {
+    NSInteger index = [DataStorage prosRadiusSelectedIndex];
+    NSString *miles = [Miles milesValues][index];
+    [self loadProsInRadius:miles];
+}
 
 - (void)loadProsInRadius:(NSString*)miles {
     

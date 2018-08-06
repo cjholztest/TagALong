@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PickerModuleProtocols.h"
 
-@interface PickerModel : NSObject <PickerModelInput>
+@interface PickerModel : NSObject <PickerModelInput, PickerMilesProtocol>
 
 - (instancetype)initWithOutput:(id <PickerModelOutput>)output andPickerType:(PickerType)type;
 

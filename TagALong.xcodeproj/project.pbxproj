@@ -290,6 +290,9 @@
 		CE7E0F5C20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F5B20ADC93E00D93035 /* ReviewOfferAdditionalSectionAdapter.m */; };
 		CE7E0F6020ADC98900D93035 /* ReviewOfferMainSectionAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E0F5F20ADC98900D93035 /* ReviewOfferMainSectionAdapter.m */; };
 		CE88B1032080D52B00C4EFB7 /* PerviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88B1022080D52B00C4EFB7 /* PerviewController.m */; };
+		CEAAB0732118622600FCF4AE /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAB0722118622600FCF4AE /* DataStorage.m */; };
+		CEAAB0762118624600FCF4AE /* DataStorage+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAB0752118624600FCF4AE /* DataStorage+Filter.m */; };
+		CEAAB07A21187A4800FCF4AE /* Miles.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAAB07921187A4800FCF4AE /* Miles.m */; };
 		CEB2894F2063E68500C8DD0E /* PaymentClient+Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */; };
 		CEB289522063E69800C8DD0E /* PaymentClient+CreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289512063E69800C8DD0E /* PaymentClient+CreditCard.m */; };
 		CEB289582063F91F00C8DD0E /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB289572063F91F00C8DD0E /* UIViewController+Alert.m */; };
@@ -1020,6 +1023,12 @@
 		CE7FF97B20AEC328000A43F6 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE88B1012080D52B00C4EFB7 /* PerviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PerviewController.h; path = Login/PerviewController.h; sourceTree = "<group>"; };
 		CE88B1022080D52B00C4EFB7 /* PerviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PerviewController.m; path = Login/PerviewController.m; sourceTree = "<group>"; };
+		CEAAB0712118622600FCF4AE /* DataStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataStorage.h; sourceTree = "<group>"; };
+		CEAAB0722118622600FCF4AE /* DataStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataStorage.m; sourceTree = "<group>"; };
+		CEAAB0742118624600FCF4AE /* DataStorage+Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DataStorage+Filter.h"; sourceTree = "<group>"; };
+		CEAAB0752118624600FCF4AE /* DataStorage+Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DataStorage+Filter.m"; sourceTree = "<group>"; };
+		CEAAB07821187A4800FCF4AE /* Miles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Miles.h; sourceTree = "<group>"; };
+		CEAAB07921187A4800FCF4AE /* Miles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Miles.m; sourceTree = "<group>"; };
 		CEB2894D2063E68500C8DD0E /* PaymentClient+Customer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+Customer.h"; sourceTree = "<group>"; };
 		CEB2894E2063E68500C8DD0E /* PaymentClient+Customer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PaymentClient+Customer.m"; sourceTree = "<group>"; };
 		CEB289502063E69800C8DD0E /* PaymentClient+CreditCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PaymentClient+CreditCard.h"; sourceTree = "<group>"; };
@@ -1555,6 +1564,7 @@
 		1ACFEA32205FF80800675150 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAB070211861F300FCF4AE /* DataStorage */,
 				CE2A636020BD6CF800AE9CD3 /* Sport */,
 				CEDF04BD20A9761D0012AAC4 /* Network */,
 				1ACFEA33205FF80800675150 /* Payments */,
@@ -3617,6 +3627,26 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		CEAAB070211861F300FCF4AE /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAB0712118622600FCF4AE /* DataStorage.h */,
+				CEAAB0722118622600FCF4AE /* DataStorage.m */,
+				CEAAB0742118624600FCF4AE /* DataStorage+Filter.h */,
+				CEAAB0752118624600FCF4AE /* DataStorage+Filter.m */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		CEAAB07721187A3200FCF4AE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAB07821187A4800FCF4AE /* Miles.h */,
+				CEAAB07921187A4800FCF4AE /* Miles.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		CEB289552063F90600C8DD0E /* ViewControllerCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -4520,6 +4550,7 @@
 		CEDF055C20AC2FED0012AAC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAB07721187A3200FCF4AE /* Entity */,
 				CE7E0F2D20AD9E9900D93035 /* PickerModel.h */,
 				CE7E0F2E20AD9E9900D93035 /* PickerModel.m */,
 			);
@@ -4857,6 +4888,7 @@
 				CEDA65D820B02313009417BF /* ProUserSignUpMainSectionAdapter.m in Sources */,
 				3256F2641F73688A00D0874E /* OtherUserProfileViewController.m in Sources */,
 				CE7E0F2C20AC6A4400D93035 /* OfferDataModel.m in Sources */,
+				CEAAB07A21187A4800FCF4AE /* Miles.m in Sources */,
 				CE4C37DA20FC9BCA009B1135 /* ProUserEditProfileFirstNameCellAdapter.m in Sources */,
 				CE36D77A20A59173008B0E75 /* ProsTableViewCellDisplayModel.m in Sources */,
 				CE4C381020FDE3CA009B1135 /* ProUserEditProfileCityHeaderCellAdapter.m in Sources */,
@@ -4872,6 +4904,7 @@
 				CE2A636C20BECC9B00AE9CD3 /* WorkoutProfileInfoMapper.m in Sources */,
 				CE4C37B920FC8CC7009B1135 /* ProUserEditProfileViewController.m in Sources */,
 				32FAA0C21F614EA700CD4395 /* LoginViewController.m in Sources */,
+				CEAAB0732118622600FCF4AE /* DataStorage.m in Sources */,
 				CE4C38552101FD42009B1135 /* ProsFilterView.m in Sources */,
 				323016421F7A48FC0001BCB4 /* BSCollectionController+UICollectionView.m in Sources */,
 				CE2A637820BEE17700AE9CD3 /* WorkoutTitleDetailsTableViewCell.m in Sources */,
@@ -5106,6 +5139,7 @@
 				3232FFB11F7A055E00A0F55D /* SignupViewController.m in Sources */,
 				32FAA0881F6144D500CD4395 /* main.m in Sources */,
 				CE2A639520C1C1CF00AE9CD3 /* SimpleUserSignUpModel.m in Sources */,
+				CEAAB0762118624600FCF4AE /* DataStorage+Filter.m in Sources */,
 				CEDF052820A9CABD0012AAC4 /* SubmitOfferDurationTableViewCellDisplayModel.m in Sources */,
 				CEDF053D20A9D08D0012AAC4 /* UITableViewCell+Styles.m in Sources */,
 				CEDA65D320B021CF009417BF /* ProUserSignUpTableViewAdapter.m in Sources */,

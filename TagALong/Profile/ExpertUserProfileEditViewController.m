@@ -144,7 +144,7 @@ static const NSInteger kMaxImageCnt = 1;
 
 - (void)areaViewTapAction {
     PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
-    [pickerVC setupWithType:MilesPickerType];
+    [pickerVC setupWithType:MapMilesPickerType];
     pickerVC.moduleOutput = self;
     [self presentCrossDissolveVC:pickerVC];
 }

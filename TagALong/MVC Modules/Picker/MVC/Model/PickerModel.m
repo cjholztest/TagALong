@@ -7,6 +7,8 @@
 //
 
 #import "PickerModel.h"
+#import "DataStorage+Filter.h"
+#import "Miles.h"
 
 @interface PickerModel()
 
@@ -39,8 +41,13 @@
             case TotalPeoplePickerType:
                 [self setupTotalOfPeopleComponents];
                 break;
-            case MilesPickerType:
+            case ProsMilesPickerType:
                 [self setupMilesComponents];
+                self.selectedIndex = [DataStorage prosRadiusSelectedIndex];
+                break;
+            case MapMilesPickerType:
+                [self setupMilesComponents];
+                self.selectedIndex = [DataStorage mapRadiusSelectedIndex];
                 break;
             case StartTimePickerType:
                 [self setupStartTimeComponents];
@@ -63,7 +70,7 @@
 
 - (NSArray*)milesValues {
     if (!_milesValues) {
-        _milesValues = @[@"5", @"10", @"20", @"50", @"10000000"];
+        _milesValues = [Miles milesValues];
     }
     return _milesValues;
 }
@@ -147,12 +154,7 @@
 
 - (void)setupMilesComponents {
     [self milesValues];
-    self.pickerComponents = [NSMutableArray arrayWithObjects:
-                             @" 5 miles",
-                             @"10 miles",
-                             @"20 miles",
-                             @"50 miles",
-                             @"No Limit", nil];
+    self.pickerComponents = [NSMutableArray arrayWithArray:[Miles milesTitles]];
 }
 
 - (void)setupGenderComponentes {
@@ -183,6 +185,16 @@
     }
     
     self.pickerComponents = years;
+}
+
+#pragma mark - PickerMilesProtocol
+
+- (void)saveMapMilesSelectedIndex:(NSInteger)index {
+    [DataStorage saveMapRadiusSelectedIndex:index];
+}
+
+- (void)saveProsMilesSelectedIndex:(NSInteger)index {
+    [DataStorage saveProsRadiusSelectedIndex:index];
 }
 
 @end
