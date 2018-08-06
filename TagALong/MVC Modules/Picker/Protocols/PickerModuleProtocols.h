@@ -59,3 +59,10 @@
 - (void)pickerDoneButtonDidTapWithYear:(NSString*)year;
 
 @end
+
+@protocol PickerMilesProtocol <NSObject>
+
+- (void)saveProsMilesSelectedIndex:(NSInteger)index;
+- (void)saveMapMilesSelectedIndex:(NSInteger)index;
+
+@end

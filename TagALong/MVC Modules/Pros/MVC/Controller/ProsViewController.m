@@ -38,7 +38,7 @@ ProsFilterModuleOutput
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
-    [self.model loadProsInRadius:@"30"];
+    [self.model loadPros];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

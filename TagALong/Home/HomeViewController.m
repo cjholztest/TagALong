@@ -481,7 +481,7 @@
     self.navigationItem.title = @"Explore Workouts";
     
     //[self addAlarmBarButton];
-    _nCurPageIdx = PAGE_MENU_LIST;
+    _nCurPageIdx = PAGE_MENU_MAP;
     [self setPage];
     
     _nCurButtonIdx = BUTTON_SEARDCH;
@@ -511,7 +511,7 @@
     PickerViewController *sportsPickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
     
     sportsPickerVC.moduleOutput = self;
-    [sportsPickerVC setupWithType:MilesPickerType];
+    [sportsPickerVC setupWithType:self.isMapFilter ? MapMilesPickerType : ProsMilesPickerType];
     
     [self presentCrossDissolveVC:sportsPickerVC];
 }

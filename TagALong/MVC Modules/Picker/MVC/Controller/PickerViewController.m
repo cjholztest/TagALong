@@ -19,7 +19,7 @@
 @property (nonatomic, assign) PickerType pickerType;
 
 @property (nonatomic, weak) IBOutlet PickerView *contentView;
-@property (nonatomic, strong) id <PickerModelInput> model;
+@property (nonatomic, strong) id <PickerModelInput, PickerMilesProtocol> model;
 
 
 @end
@@ -52,6 +52,11 @@
     
     self.contentView.pickerView.dataSource = self;
     self.contentView.pickerView.delegate = self;
+    
+    if (self.pickerType == ProsMilesPickerType || self.pickerType == MapMilesPickerType) {
+        NSInteger index = [self.model selectedComponentIndex];
+        [self.contentView.pickerView selectRow:index inComponent:0 animated:NO];
+    }
 }
 
 
@@ -101,8 +106,22 @@
                     [self.moduleOutput pickerDoneButtonDidTapWithTotalOfPeople:title];
                 }
                 break;
-            case MilesPickerType:
+            case ProsMilesPickerType:
                 if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMiles:)]) {
+                    
+                    NSInteger index = [self.model selectedComponentIndex];
+                    [self.model saveProsMilesSelectedIndex:index];
+                    
+                    NSString *milesValue = [self.model selectedMilesValue];
+                    [self.moduleOutput pickerDoneButtonDidTapWithMiles:milesValue];
+                }
+                break;
+            case MapMilesPickerType:
+                if ([self.moduleOutput respondsToSelector:@selector(pickerDoneButtonDidTapWithMiles:)]) {
+                    
+                    NSInteger index = [self.model selectedComponentIndex];
+                    [self.model saveMapMilesSelectedIndex:index];
+                    
                     NSString *milesValue = [self.model selectedMilesValue];
                     [self.moduleOutput pickerDoneButtonDidTapWithMiles:milesValue];
                 }

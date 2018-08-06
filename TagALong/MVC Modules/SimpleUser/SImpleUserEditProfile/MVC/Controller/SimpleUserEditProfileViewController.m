@@ -132,7 +132,7 @@ ProUserEditProfileChangePasswordCellAdapterOutput
 
 - (void)areaRadiusDidTap {
     PickerViewController *pickerVC = (PickerViewController*)PickerViewController.fromStoryboard;
-    [pickerVC setupWithType:MilesPickerType];
+    [pickerVC setupWithType:MapMilesPickerType];
     pickerVC.moduleOutput = self;
     [self presentCrossDissolveVC:pickerVC];
 }
