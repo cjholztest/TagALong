@@ -29,6 +29,8 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     
 //    [self registerForPushNotification];
     //Global.g_token = [[NSUserDefaults standardUserDefaults] stringForKey:PREFCONST_TOKEN];
+    [self restBageNumber];
+    
     return YES;
 }
 
@@ -42,16 +44,20 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self restBageNumber];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
+    
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self restBageNumber];
 }
 
 
@@ -76,6 +82,9 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     NSLog(@"token: %@", token);
     
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"device_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self registerDeviceTokenToken];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -129,6 +138,44 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
             }
         });
     }];
+}
+
+- (void)registerDeviceTokenToken {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:Global.access_token forHTTPHeaderField:@"access_token"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", TEST_SERVER_URL, @"add_device_token"];
+    
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"device_token"];
+    
+    if (deviceToken) {
+        NSDictionary *params = @{@"token" : deviceToken};
+        
+        [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
+            NSLog(@"JSON: %@", respObject);
+            int res_code = [[respObject objectForKey:API_RES_KEY_RESULT_CODE] intValue];
+            if (res_code == RESULT_CODE_SUCCESS) {
+                NSLog(@"device token was registered successfully");
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            NSLog(@"device token was not registered");
+        }];
+    } else {
+        NSLog(@"device token was not registered");
+    }
+}
+
+- (void)restBageNumber {
+    if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    }
 }
 
 @end
