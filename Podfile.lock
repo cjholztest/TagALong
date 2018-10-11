@@ -14,8 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CCHMapClusterController (1.7.1)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - CCHMapClusterController (1.7.2)
   - DZNEmptyDataSet (1.8.1)
+  - FacebookSDK (4.37.0):
+    - Bolts (~> 1.7)
+    - FacebookSDK/CoreKit (= 4.37.0)
+    - FacebookSDK/MarketingKit (= 4.37.0)
+  - FacebookSDK/CoreKit (4.37.0):
+    - Bolts (~> 1.7)
+  - FacebookSDK/MarketingKit (4.37.0):
+    - Bolts (~> 1.7)
+    - FacebookSDK/CoreKit
   - FSCalendar (2.7.9)
   - JElasticPullToRefresh (1.0.3)
   - Stripe (11.4.0)
@@ -23,8 +38,10 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - Bolts
   - CCHMapClusterController (~> 1.7.0)
   - DZNEmptyDataSet (~> 1.8.1)
+  - FacebookSDK
   - FSCalendar (~> 2.7.9)
   - JElasticPullToRefresh (~> 1.0.3)
   - Stripe (~> 11.4.0)
@@ -33,8 +50,10 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Bolts
     - CCHMapClusterController
     - DZNEmptyDataSet
+    - FacebookSDK
     - FSCalendar
     - JElasticPullToRefresh
     - Stripe
@@ -42,13 +61,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CCHMapClusterController: 3de2f03cb659a98ef8518d22de3fcb129d888049
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CCHMapClusterController: 682e1eb1373a7decda1b75fd7b24b3047fed9daa
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FacebookSDK: aac401153feabdedd7dfeb46acaccad7ac53fb69
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   JElasticPullToRefresh: 63b15bfbb96ea476dce3df9460509d59473b1e94
   Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: b00bdad2e710f38ba47216cb419bfe31f5b5e1a9
+PODFILE CHECKSUM: 79721b120b15f9f053ed8a153c26002f42bff193
 
 COCOAPODS: 1.5.3
