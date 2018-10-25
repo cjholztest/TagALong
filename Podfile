@@ -28,5 +28,7 @@ inhibit_all_warnings!
   pod 'DZNEmptyDataSet', '~>1.8.1', :inhibit_warnings => true
   pod 'CCHMapClusterController', '~>1.7.0', :inhibit_warnings => true
   pod 'Stripe', '~>11.4.0', :inhibit_warnings => true
+  pod 'FacebookSDK'
+  pod 'Bolts'
   
 end

@@ -10,6 +10,8 @@
 #import "SVProgressHUD.h"
 #import <Stripe/Stripe.h>
 #import <UserNotifications/UserNotifications.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 
 const NSString *kStripeAccountTestKey = @"pk_test_VKdmHHXsKzJ8L7VQecG4HcSh";
 const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
@@ -22,6 +24,9 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     BOOL isStripeTest = NO;
     
     NSString *key = [NSString stringWithFormat:@"%@", isStripeTest ? kStripeAccountTestKey : kStripeAccountLiveKey];
@@ -32,6 +37,19 @@ const NSString *kStripeAccountLiveKey = @"pk_live_aXftjw1cnlbTAhz1juzgtM6I";
     [self restBageNumber];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    openURL:url
+                                    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+    ];
+    
+    return handled;
 }
 
 

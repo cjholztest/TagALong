@@ -4587,6 +4587,7 @@
 				32FAA0801F6144D500CD4395 /* Frameworks */,
 				32FAA0811F6144D500CD4395 /* Resources */,
 				262073FBE29B61CB83E8405F /* [CP] Embed Pods Frameworks */,
+				46D465BB35926971088AF0DD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4809,6 +4810,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CCHMapClusterController/CCHMapClusterController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
@@ -4819,6 +4821,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CCHMapClusterController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
@@ -4829,6 +4832,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46D465BB35926971088AF0DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-resources.sh",
+				"${PODS_ROOT}/FacebookSDK/FacebookSDKs-iOS-universal-4.37.0/iOS/FacebookSDKStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagALong/Pods-TagALong-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A092376ACCBA31190B8636B0 /* [CP] Check Pods Manifest.lock */ = {

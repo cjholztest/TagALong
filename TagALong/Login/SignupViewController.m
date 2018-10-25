@@ -10,6 +10,7 @@
 #import "SignupResultViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuickLook/QuickLook.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface SignupViewController ()<UITextFieldDelegate, CLLocationManagerDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource, SignupResultViewControllerDelegate>{
     double latitude;
@@ -280,6 +281,12 @@
                                  @"longitude"   : @(0.0),
                                  @"hide_phone" : @(NO)
                                  };
+    
+        NSDictionary *fb_params = @{
+                             API_REQ_KEY_USER_EMAIL         :   _email,
+                             API_REQ_KEY_USER_CITY          :   _city,
+                             API_REQ_KEY_USER_PHONE         :   _phone,
+                             };
         
         [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id respObject) {
             NSLog(@"JSON: %@", respObject);
@@ -296,6 +303,7 @@
                 //            [self.navigationController popViewControllerAnimated:NO];
                 
                 [self showSuccessAlert];
+                [self logCompletedRegistrationEvent:@"app":fb_params];
                 
             } else if (res_code == RESULT_ERROR_EMAIL_DUPLICATE){
                 [self showAlert:@"This email is in use"];
@@ -312,6 +320,20 @@
             [SharedAppDelegate closeLoading];
             [self showAlert:@"Failed to communicate with the server"];
         }];
+}
+
+/**
+ * For more details, please take a look at:
+ * developers.facebook.com/docs/reference/ios/current/class/FBSDKAppEvents
+ */
+- (void)logCompletedRegistrationEvent:(NSString *)registrationMethod :(NSDictionary *)pre_params {
+    NSDictionary *params =
+    @{FBSDKAppEventParameterNameRegistrationMethod : registrationMethod,
+      @"USER_INFO" : pre_params
+    };
+    [FBSDKAppEvents
+     logEvent:FBSDKAppEventNameCompletedRegistration
+     parameters:params];
 }
 
 #pragma mark - Keyboar Notifications
